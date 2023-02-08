@@ -7,14 +7,29 @@
   <script src="ptk.js"></script>
   <script src="vcpp.js"></script>
   <script src="index.js"></script>
+  <style>
+    #chunkid {font-size:200%; font-family: 'DFKai-SB';}
+    #headword {font-size:125%; }
+  </style>
 <body>
-<h1>法雲版 金剛經</h1>
+<h4>法雲版 金剛經</h4>
+<span id="chunkid"></span><br/>
+<span id="headword"></span>
+<br>
+<pre>
+梵文原文 
+漢文譯本（萻提流支  真諦  玄奘  笈多  )  
+當代譯本（英文）
+注釋  ：江味農《金剛經講義》 、印順導師《般若經講記》
+短片  ：
 
-<span id="chunkid"></span>
+</pre>
+
 
 </body>
 <script>
     document.getElementById('chunkid').innerHTML=getSutra(document.location.search.slice(1));
+    document.getElementById('headword').innerHTML=getHeadword(document.location.search.slice(1));
 </script>
 
 </html>

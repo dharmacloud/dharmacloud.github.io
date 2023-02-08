@@ -23,7 +23,20 @@ const getSutra=(id)=>{
     const m=id.match(/([a-z]+)\.(.+?):(\d+)/);
     if (!m) return ''
     const s=sutras[m[1]][m[2]][parseInt(m[3])]
-    console.log(s)
+
     return s;
+}
+const headwords={
+    vcpp:{
+        '0:0':'鳩摩羅什',
+        '1:1':'我：指阿難   ，一時：某一個時候',
+        '1:2':'舍衛國：Śrāvastī恆河中游北岸拘薩羅國（Kosala）都城；祇園精舍，Jetavana-vihāra 祇陀太子樹 ，給孤獨布施之園 ',
+    }
+}
+const getHeadword=(id)=>{
+    const m=id.match(/([a-z]+)\.(.+?:\d+)/);
+    if (!m) return ''
+    const s=headwords[m[1]][m[2]];
+    return s||'';
 }
 loadSutra();
