@@ -4,14 +4,17 @@
   <meta charset="UTF-8" />
   <link rel="icon" href="data:;base64,="> 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="ptk.js"></script>
+  <script src="vcpp.js"></script>
+  <script src="index.js"></script>
 <body>
 <h1>法雲版 金剛經</h1>
 
-你掃瞄了 <span id="chunkid"></span>
+<span id="chunkid"></span>
 
 </body>
 <script>
-    document.getElementById('chunkid').innerHTML=document.location.search.slice(1);
+    document.getElementById('chunkid').innerHTML=getSutra(document.location.search.slice(1));
 </script>
 
 </html>
