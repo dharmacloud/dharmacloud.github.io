@@ -1,0 +1,22 @@
+jsonp(0,{"starts":[2057,3367,3371,4134,5035,5380,5384,5389,5394,5396,5462,5464,5466,5469,5471,5474],"sectionnames":["0.off","y0.off","y00.off","y01.off","_tokens","_postings","^ak","^bk","^ck","^n","^o","^j","^f","^https","^fn","^title"],"sectionstarts":[0,0,1,275,3367,3371,5380,5384,5389,5394,5396,5462,5464,5466,5469,5471],"sectiontypes":["txt","txt","txt","txt","tokens","postings","tag","tag","tag","tag","tag","tag","tag","tag","tag","tag"],"preload":["_tokens","_toc"],"fulltext":["y0.off","y00.off","y01.off"],"fulltextcaption":["y0.off","y00.off","y01.off"],"eot":3367,"name":"yinshun","buildtime":"2023-02-11T13:54:17.398Z"},`^:<ptk=yinshun zh=印順 lang=zh>
+^:title<bracket=false>
+^:ptr
+^:q
+^:h
+^:pb
+^:en
+^:bibl
+^:cit
+^:i
+^:bo
+^:xsa
+^:fr
+^:id
+^:note
+^:ref
+^:table
+^:figure
+^:graphic
+^:sa
+^:pi
+^:xsapi`)

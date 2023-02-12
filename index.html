@@ -11,18 +11,25 @@
     #chunkid {font-size:200%; font-family: 'DFKai-SB';}
     #headword {font-size:125%; }
   </style>
+<script>
+const accelon22=()=>{
+  document.location="accelon22/index.html#dc:"+document.location.search.slice(1);
+}
+const play=url=>{
+  document.getElementById("movie").src=url+'?autoplay=1';
+}
+</script>
 <body>
 <h4>法雲版 金剛經</h4>
 <span id="chunkid"></span><br/>
 <span id="headword"></span>
 <br>
 <pre>
-梵文原文 
-漢文譯本（萻提流支 真諦 玄奘 達磨笈多 義淨) 
-當代譯本（英文）
-《金剛經講義》江味農 《般若經講記》印順導師
-短片  ：
-
+短片：<div id="movieclip"></div>
+<button onclick="javascript:accelon22()">Accelon22</button>
+<iframe width="560" height="315" id="movie" src="" 
+frameborder="0" 
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </pre>
 
 
@@ -30,6 +37,7 @@
 <script>
     document.getElementById('chunkid').innerHTML=getSutra(document.location.search.slice(1));
     document.getElementById('headword').innerHTML=getHeadword(document.location.search.slice(1));
+    document.getElementById('movieclip').innerHTML=getMovieClip(document.location.search.slice(1));
 </script>
 
 </html>

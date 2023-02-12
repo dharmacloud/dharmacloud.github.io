@@ -1,4 +1,448 @@
-jsonp(3,{"name":"dc","start":1357},`^:<type="tokens">
-1111214151617181922021222324252829331456789AssemblyBhagavantaṃ Bhagavataḥ Bhagavān Bhagavāñ Bhagavāṃs BodhisattvaBodhisattvasBuddhaBuddha Buddhahood DharmaDharma Dharmabody EyesFive Gnosis Great Jetavane MarkMeritMerit Once Perfect Perfections Practice SaintsSelfless Subhuti The Views Vow WisdomWisdom aa abhaviṣyad abhaviṣyat abhijānāmy abhisaṃbuddhas abhisaṃbuddhaḥ abhisaṃbuddheti abhisaṃbuddhoabhisaṃbuddhā abhisaṃbudhyate abhisaṃhṛtya abhivandya abhiśraddhāsyanti abhraṃ abhyanandann abhyācakṣīta abhāvaḥ abhāṣata abhūtaabhūvam abhūvan abodhisattvaabout acintya acintyena acquired adakṣiṇīkṛtya adharmaadharmasaṃjñā adharmaḥ adharmāś adhimoktavyā adhimoktavyāḥ adhimucyate adhimuktikaiḥ adhivacanam adhāraiṣā adhātuḥ adṛṣṭiḥ agryaḥ agryo agrāha agrāhyaḥ aham ahaṃ akāyaḥ alakṣanaalakṣaṇaalakṣaṇatas amāpyena and anekaanena antaśaś antikād antyanāgate anugraheṇaanugraheṇa anupadhiśeṣe anuparigṛhītās anuparigṛhītāḥ anuprāpnuyuś anuprāpsyanti anutpannasya anutpattikeṣu anutpāda anuttarā anuttarāyāṃ anuttarāṃ anyataraanyataro anyathāvādī anāgataṃ anāgateanāgate anāgāmianāgāmina anāgāmiphalaṃ apagatā aparaṃ aparimāṇena aparimāṇā aparimāṇān apariniṣpattir aparyāyam aparyāyas aparyāyād api aprameyam aprameyeṇa apratiṣṭhitam apratiṣṭhitaṃ apratiṣṭhitena apy apyupamām apāyaaraṇāardhatrayodaśabhir arhan arhann arhata arhataḥ arhattvaṃ arhatā arhatāṃ artham arthāya arthāyaśreṣṭhaarūpiṇo as asatodgṛhītena asattvās asau asaṃjñaiṣā asaṃjñino asaṃjñā asaṃkhyeyaiḥ asaṃkhyeyam asaṃkhyeyatarair asaṃkhyeyaṃ asaṃkhyeyena asaṃkhyeyāṃllokadhātūn asaṃskṛtaasmi asmy asti asuraasurasya asya atha ato attitudesatulyena atyanta atītaṃ atīte aupamyam aupapādukā avakalpayāmyadhimucye avakṣyat avaropitaavastupatito avaśyāya avocad avocat ayam ayaṃ añjaliṃ aścaryaṃ aśrūṇi aśubhāni aśītiaṃjñino aṅgaaṇur aṇḍajā babhūva babhūvana bahavas bahu bahutaraṃ bahuḥ bahvyo bahūni bhagavan bhagavann bhagavanta bhagavantam bhagavantametadavocat bhagavantaḥ bhagavanto bhagavataḥ bhagavato bhagavatī bhagavañ bhagavaṃl bhagavaṃs bhagavān bhagavānāha bhagavāṃs bhaktabhavati bhaved bhaven bhavet bhaveyus bhaveyuḥ bhaviṣy bhaviṣyad bhaviṣyan bhaviṣyanna bhaviṣyantibhaviṣyanti bhaviṣyanty bhaviṣyasi bhaviṣyat bhaviṣyati bhikṣavo bhikṣubhikṣuṇybhisaṃbuddho bhyudgate bhāvaḥ bhāvo bhāvān bhāṣante bhāṣate bhāṣeyaṃ bhāṣita bhāṣitam bhāṣitas bhāṣitasya bhāṣitaḥbhāṣitaḥ bhāṣitobhāṣito bhāṣitā bhāṣitāni bhāṣitāny bhāṣitās bhāṣitāḥ bhāṣiṣyat bhāṣiṣye bhāṣyamāṇam bhāṣyamāṇe bhāṣyamāṇeṣu bhāṣyamāṇeṣv bhāṣyeta bhūt bhūtabhūtasaṃjñām bhūto bodhisattvabodhisattva bodhisattvair bodhisattvasya bodhisattvayāna bodhisattvena bodhisattvenaivaṃrūpo bodhisattvo bodhisattvodraṣṭavyo bodhisattvonāma bodhisattvā bodhisattvānāṃ bodhisattvāḥ bodhiṃ bodybody budbudaṃ buddhabuddhabodhiṃ buddhadharmā buddhadharmāś buddho buddhā buddhās bālapṛthagbālapṛthagjanair bālapṛthagjanā ca cainaṃ caityacaityabhūtaḥ caiva caiṣā cakravartī cakṣuḥcakṣuḥ cakṣuṣmān cakṣuṣā caritvā caturcatuṣpādikām cchedasya cemaṃ ceto cintyo cittacittadhārāṃ cittam cittaṃ const convocation cādrākṣur cānvaguḥ cīvaraṃ dadyāddadyād dadyātdadyāt dadāti dakṣiṇadakṣiṇaṃ daśasu deedsdeeds derived deśaneti deśanā deśayed deśayet deśita deśitaḥ deśito deśitonidhyāto dharmdharmadharma dharmair dharmakāyā dharmam dharmaparyāyam dharmaparyāyas dharmaparyāyaḥ dharmaparyāyaṃ dharmaparyāyo dharmaparyāyād dharmas dharmasaṃjñeti dharmasaṃjñā dharmasya dharmato dharmatā dharmatāyā dharme dharmeṣu dharmo dharmā dharmān dharmās dharmāñ dharmāḥ dhvani dhvany dhāraya dhārayed dhārayituṃ dhārayiṣyanti dhārayāmi dhāreti dhārā dhātuḥ dhātūn digvidikṣu dikṣu dine divyaṃ diśy drakṣyanti draṣṭavyam draṣṭavyaḥ draṣṭavyaṃ draṣṭavyo draṣṭavyā dvātriṃśandvātriṃśan dānaparityāgaḥ dānaṃ dātavyam dātavyaṃ dīpaṃkaras dīpaṃkarasya dīpaṃkareṇa dīpo dṛṣṭa dṛṣṭikair dṛṣṭikaiḥ dṛṣṭās effectiveness ekaekacittaekasmin ekānte ekāṃsam emancipationendingenlightenmentetad etan etat evaeva evam evaṃ evaṃrūpaṃ evaṃrūpeṣu evaṃrūpo evaṃrūpān evādharmā evāsattvāḥ export eṣa eṣā first four freedomfrom gacchati gaccheyuḥ gandhagandharvaś gandhān gavgānadīgaṅgāgaṅgānadyo gaṅgāyāṃ gaṇanām ghoṣeṇa gragrayānagrāha grāhaḥ grāho guṇavantaḥ gāthe gāthām haṃ hetoḥ hi hy hīdaṃ hīnaidam idaṃ iha imaṃ ime imeṣv imān initdatainner is itiiti ito ity iyaṃ janmikānyjanā janāḥ jarāyujā jñānam jñānena jñātavyā jñātavyādraṣṭavyā jñātās jānujātijātv jīvajīvadṛṣṭiḥ jīvagrāhaḥ jīvasaṃjñā kaccid kaccit kaliṅgarājākalpakalpair kalpayati kalpāṃs kalāmapi kalāṃ karmāṇi kartavyaḥ kasya kasyacid kathaṃ kaścid kaścit kaḥ kaṃcid kecit key khalu khalv khalvāyuṣmān kiṃ kiṃcid knowledgeko kolopamaṃ koṭikoṭitamīm kuladuhitaro kuladuhitfṇāṃ kuladuhitrā kuladuhitā kulaputreṇa kulaputro kulaputrā kulaputrāṇāṃ kuryāt kutaścid kuśalakuśalair kuśalā kvacid kvacidgato kvacit kācit kālakāle kāyakāyaṃ kāyo kṛtakṛtvā kṛtyaḥ kṛtāny kṣamate kṣapayiṣyanti kṣetrakṣāntikṣāntivādī kṣāntiṃp lakṣaṇalakṣaṇais lakṣaṇasaṃpadā lakṣaṇāni lakṣaṇānīti likhitvodgṛhṇīyād lokalokadhātau lokadhātavo lokadhāteṣu lokadhātur lokadhātus lokadhātuṃ lokadhātūn lokadhātūnām lokasyalokasya loko madhyāmahasattvāḥ mahatā mahāmahākāya mahākāyaḥ mahān mahānadyāṃ mahāpuruṣamahāsattva mahāsattvaiḥ mahāsattvena mahāsattvenaivam mahāsattvo mahāsattvā mahāsattvānām mahāsattvānāṃ mahāsattvāḥ mahāsāhasre mahāsāhasro makes mama manasikariṣyanti manasikuru manyase material mayā maṇḍalaṃ maṣiṃ me meritmerit meritorious mithyāmore mā mānaḥ mānuṣamāyāmāṃ māṃsamāṃsānyacchaitsīt māṇavamūlā mūlās mṛśā mṛṣeti mṛṣā na nabhilapyaḥ nadyo nadyāṃ nadīnadīṣu nagarīṃ naiva nan nanu nature naśabdandhakāranedaṃ nidānaṃ nimittanirdiṣṭaḥ nirjātā nirjātāś nirjīvatvena nirjīvā nirvāṇadhātau nirātmakeṣv nirātmatvena nirātmānaḥ nirātmāno nivāsya niyutaniḥsattvatvena niṣpoṣāniṣpudgalāḥ niṣpudgalatvena niṣpādayiṣyāmi niṣpādayiṣyāmīti niṣīdati no nocchedaḥ nodgrahītavyaḥ nopaiti nopalabhyate nottrasiṣyanti nu nupadhiśeṣe nutpādo nuttarā nuttarāṃ nv nvarhata nvasti nyaṣīdannyaṣīdat nābhāvaḥ nādharmasaṃjñā nādharmaḥ nāgāmitvam nāgāmīti nāma nāmopalabhyate nānābhāvāṃ nānāvidhāni nāpi nāsattvāḥ nāsaṃjñino nāsaṃjñā nāsti nāsīnnāthapiṇḍadasyanātmanāyakāḥ ofof padeṣu paramaparamapāramiteyaṃ paramayā parameṇa paramārthaḥ paramāṇuparatareṇa parebhyaś parebhyaśca parebhyo pareṇa paribhūtatayā parigrahītavya parigrahītavyaḥ parimocitaḥ parimocitā parinirvāpayitavyāḥ parinirvāpayiṣyāmīti parinirvāpito parinirvāpya pariniṣpattir pariniṣpattyā pariniṣpattī paripūrṇaṃ paripūrṇāṃ parityajangaṅgāparityajati parityajed parityajet parvataparyavāpnuyāt paryavāpsyanti paryavāptuṃ paryaṅkam paryupāsitā paryāyam paryāyas paryāyeṇa paryāyād parīndanayā parīnditās parīnditāḥ parṣadi patience paurvapaurvajanmikāny paurvakaḥ pañcapañca pañcaśatyāṃ paścimapaścime paścimāyāṃ paścādbhaktapaśyet paśyetevaṃ perfect phalaṃ physical pi piṇḍagrāha piṇḍagrāhas piṇḍagrāhaś piṇḍagrāhopiṇḍapātapiṇḍāya prabhātāyāṃ prabhāvitā pradakṣiṇīyaś pradeśa pradeśaś pradeśe pragrahītavyam prahātavyāḥ prahāṇaprajñapta prajñapto prajñapyaprajñapyate prajñāprajñāpāramiteti prajñāpāramitāprajñāpāramitā prajñāpāramitāyā prajñāvantaś prajānāmi prakāśayet prakāśayiṣyate prakṣalya prameyam prameyān pramāṇam pramāṇamudgrahītum pramṛjya prasaved prasaviṣyanti prasunuyād prasunuyāt prasādam prasṛtā pratigrahīṣyanti pratigrahīṣyanty pratijñaiḥ pratikrāntaḥ pratikāṅkṣitavyaḥ pratikṣipet pratilapsyante pratimukhīṃ pratipattavyaṃ pratitiṣṭhet prativedayāmi pratiśāmya pratiṣṭhitaṃ pratiṣṭhitena pratiṣṭhito pratiṣṭhāpya pratyaśrauṣīt pratyaṅgapratyupasthāhepratyupatiṣṭhetpratyutpannaṃ pravartate pravartetapravarteta pravartiṣyate praviṣṭo praṇamya praṇidhāya presuppositions prāg prāmuñcat prāptam prāptamiti prāvikṣat pudgalapudgaladṛṣṭis pudgalagrāha pudgalagrāho pudgalasaṃjñā punar punas punaḥ puruṣaḥ puruṣo puṇyapuṇyaskandhasya puṇyaskandhaḥ puṇyaskandhaṃ py pādau pāramiteti pāramitā pāramitāṃ pātrapātracīvaram pūjanīyaḥ pūrvpūrvasyāṃ pūrvaḥ pūrvāhṇapṛthivyāṃ pṛthivīpṛthivīpradeśa pṛthivīpradeśo pṛthivīraja pṛthivīrajas pṛthivīrajaḥ pṛthivīrajo rajas rajāṃsi rasarasān ratilabhate ratnaratnaparipūrṇaṃ ratnānām raṇārequestresult rhadbhyaḥ rhan rhann rājaḥ rājārājānas rātrau rāśīn rūparūpakāyarūpam rūpaṇi rūpeṇa rūpiṇo s sa sabhagavan saced sacen sacet saddharmasadevasadeva sahasratamīm saivasaiva saivāpāramitā saivāsaṃjñā sakalasakṛdāgāmina sakṛdāgāmiphalaṃ sakṛdāgāmitvam sakṛdāgāmīti samantād samanvāgatā samanvāgatās samaya samayesamaye samayegaṅgāsamayena samaḥ sambahulaiś sambahulā samcayaḥ sampadā samyagvadamāno samyaksamyaksaṃbodhau samyaksaṃbodhim samyaksaṃbodhir samyaksaṃbodhiḥ samyaksaṃbuddha samyaksaṃbuddhasya samyaksaṃbuddhaḥ samyaksaṃbuddhebhyo samyaksaṃbuddhena samyaksaṃbuddho samyaksaṃbuddhānām samā samān samāptaṃ samāptā samāṃl samāṃśena saptasaptaratnasaptānāṃ sarvasarvadharmā sarvaiḥ sarve satodgṛhītena sattvasattvadhātau sattvadhātuḥ sattvadṛṣṭikair sattvadṛṣṭir sattvagrāho sattvaiḥ sattvasaṃjñā sattvaḥ sattvo sattvā sattvāaprameyam sattvān sattvānāmsattvānām sattvānāṃ sattvās sattvāḥ satyavādī satyaṃ sau savioursaṁghena saṁprasthitaiḥ saṃbuddhena saṃcaya saṃcayas saṃcayaḥ saṃcayo saṃdhāya saṃgraheṇa saṃgṛhītā saṃjñeti saṃjñino saṃjñāsaṃjñā saṃjñām saṃjñāyām saṃkhyām saṃkramya saṃnipatito saṃniṣaṇṇaḥ saṃpad saṃpadā saṃpat saṃprakāśayed saṃprakāśayet saṃprakāśayiṣyanti saṃprakāśayiṣyantysaṃprakāśyeta saṃprasthitaiḥ saṃprasthitena saṃprasthito saṃprasthitānāṃ saṃskṛtaṃ saṃsvedajā saṃtrasiṣyanti saṃtrāsam saṃvartanīyāni saṃvidyate skandha skandhas skandhasya skandhaḥ skandhaṃ skandhena skandho sma smṛtim so spraṣṭavyaspraṣṭavyān srotāpanna srotāpannasyaivaṃ srotāpattisthavira sthānaṃ sthānīyaḥ sthātavyaṃ strī subhūta subhūtesubhūte subhūtelakṣaṇasubhūtim subhūtir subhūtirāha subhūtis subhūtiḥ sugata sukaram sukaraṃ sumeravaḥ sumeruḥ suparibhūtāś supreme suṣṭhu svapnaṃ syāt sā sādhu sānuttarā sārdham sāyasūryesūtraṃ sūtre sūtrāntasūtrāntapadeṣu sūtrāntān ta tad tadyathāpi tarhi tasmin tasmiṃś tasmād tasmānna tasmāt tasmāttathāgato tasya tasyaivaṃrūpa tasyām tasyāṃ tat tathaiva tathatāyā tathā tathāgata tathāgataiti tathāgatasya tathāgatasyaivaṃ tathāgatasyaprajñātathāgataḥ tathāgatebhyotathāgatebhyo tathāgatenatathāgatena tathāgatenabuddhatathāgatenārhatā tathāgato tathāgatānām tathāvādyan tatkasya tatkiṃ tato tatra te teachingteachingstena tenocyante tenocyata tenocyate tenopasaṃkraman teparibhūtā teṣu teṣām teṣāṃ the thirtythought timiraṃ tiṣṭhati to trisāhasratrisāhasramahāsāhasraṃ trisāhasramahāsāhasre triṣpr true tu tulyo tvam tvaṃ two tā tām tān tāni tārakā tāsu tāvad tāvan tāvantaś tāvato tāvatya tāvatāṃ tīte ucchedo ucyante ucyate udgrahītavyo udgrahītum udgrahīṣyanti udgṛhya udgṛhītaḥ ukta ukte unmādaṃ upa upaniṣadam upasthāpya upetaupetakāyo upāsakopāsikās utpannam utpādayitavyam utpādayitavyaṃ utpādayiṣyanti uttarāsaṅgaṃ uttarāsvadhautthāyavadasi vaded vadet vajracchedikā vaktavyaḥvaktavyaḥ vaktavyo vandanīyaḥ vartamāne vastupatito vastupratiṣṭhitena vegenavelāyām vemaṃ vemān vetaḥ veti veto vevaṃ vidyate vidyud viharati viharaty vihāriṇām vihāry vihārīti vijñaguruvijñeyā vijānitum vikṣepaṃ vināśaḥ vipralopavipralope vipākaḥ virāgitāvirāgitāḥ vistareṇa vitathavitathaṃ vivarjayitvā viṣamaḥ vocaḥ vodgrahītuṃ vyavahāro vyākariṣyad vyākṛto vyāpādavyūhā vyūhān vyūhās vyūhāḥ vā vācayet vācayituṃ vācayiṣyanti vādo vādī vāg vālukāvālukā vālukās vālukāḥ vīryeṇa vītarāga vītarāgaḥ worldya yac yad yadi yadutayadā yaiva yaiṣā yanna yas yasmin yasmāt yastathāgatena yasya yat yathā yathāhaṃ yathāpi yato yatra yaś yaśca yaśceto yaḥ yaṃ ye yena yoyo yoniśaśca yā yānayāni yās yāvad yāvantas yāvantaḥ yāvat yāvatyas yāvatyo yāvān yāṃ ābhujya ādāya āgacchati āgataḥ āha āhṇaājānadbhir ājānāmi ājānāti ākhyātaḥ ākāśasya āpannaḥ āpanno āpatsyante āpi ārocayāmi āryaāryapudgalāḥ ārāgitā ārāgya ārāme āsane āsanād ātmaātmabhāva ātmabhāvo ātmabhāvān ātmabhāvānparityajet ātmadṛṣṭir ātmadṛṣṭis ātmagrāho ātmasaṃjñā āttamanāḥ āyuṣmantaṃ āyuṣmān āścaryaāścaryaṃ āścaryeṇa Śrāvastyāṃ Śrāvastīṃ śabdaśabdān śakyam śakyaṃ śakyā śataiḥ śatasahasraśatasahasratamīm śatasahasrāṇy śatatamīm śatyāṃ śatāni śayyāṃ śirobhir śreṣṭhaśrotuṃ śrutaśrutam śrutvā śrūṇi śākyamunir śāstā śīlavantaḥ śṛṇu ūrdhvaṃ ṛjuṃ ṛṣir 
-h!2$%.!# ;2$1';-%;L'(5-";C(% &89,&3+;( )"-;;).;4'.<;.,:/;\`8;2&8;! $;#6;'/<[;!( &8;)=6  ;( &0.,&$-70:+%"!+;**;";##;!;P#;I,;&;!;<;@;+!#;28"'#;/6;'5;;H;^;+;B;0;!;<Y )$.8#;F*;)#;-;&;'#<1;$<$<V$;4$;;8;X0);";-;/!4;0=$"*;</;& 6,;/;<;1;<;<;4&;.;; ;';G3,;%8=M"/ ;);;;%;S;M;*3;&+/#/2/;;T;*".;(;!9(;["0; ;:=-45;57<.=0;;)&;n.2$$;;!!$;#;;|;:;;u"($/<-;L$.;?'$ #1(;5&<(Bq;-;97% -;%#;s;" ;R*;;)<2;\\?/
-'#7%*/#!/ ;"/"&!&%%%"*34,+-.%#%&%0(9$/,*%& ;&!."3!;32%$$'148+&;%;3"*"6 7!;;"#;:;.,%+2;;8;3&#!$&;;*0%--;1+/;*;.)%.,!!.-,2;6%')$$'$#+#"6';()%$1$#(#'+5#8#$; '"&, ,#-&;!#(%+&("6!#/!/$/,;!3#8;-704$);-#/0,'(2"3;+ #'!4!;;/;16(633:+-,1;.;532;91//; :.;03.;,;;3140;;;*;.;A8;<;.45;3"*($;1;1;:+;;#;,583;;);;;;*;+:5-17;9;%;2.;;;(;;;;>;;2;4;;;%3;;!;;.;4;345 ;;"23.88 %$%$%$%$%8/;%.5.; ;;#&9&%6-*3+;*#5(*;11.8;H6;#+5!0;;6$(&5:%//$&;4;'-31;5;#4:17;#"*;+)%05&2" ;%;!&/%&!%#%'"  '&!&((;&1/6)#5&,1*;*6,6,;;;-$#*;-+6+;:;8,;#"+3&;;)2;;%,&20$;3:;+$'-!**;;%3*!+;;;,9;!5;';;"/+150;;88)-0#(*'("""""(;*#/7#3%"+&");#5"+.;-1&2;45+!&&-/)0-2)$,%(1'8&'(5+;;:''9!-;'.-;.3;-5;;&(;8'-;8/)%/%/9!&'#7;;;06";;!-9-"-;;;%;753;#76.;):.;0;0;E;";'664;;2;;;1;:9;A;991;9'&)';0;';V*;*;%;H;;0;;;4;;;.;?;<;..'28;;?;7;*16;(;;Z;;;;A;;0;7;;(;<&;;;;6;&;4;:;1!99"'(2.;5&%'%'%'%'%/);%-73.;'#4&((7((9.7);!,4;0.;-9;c9;1((,;=))2:7%61 )*6;;(&)'(84;++;";03;(,3;')3%5)9;-&&;!$;((&(*###$($$51:$#"-)#.)#/.-(!5(*;-&*;4+0,0-;;;-)-*;',68&54;.&&%1);;(;<;:'- 5;&; -;1#/($(6;;'3$!)7;;1;93;/.8;%&','35+'912,4.)"1"";+.-1(&#/!*(&&/%'- .&;#1;2.;)'$";))&'2&1!;'(-537(;+%; 4;"`)
+jsonp(3,{"name":"dc","start":275},`6=;>s4=(;g:;f</?;>W;2;;#<;4>Z<A<-=l;Q;B<T@W;Z>e;{;n<;q;
+E3B#Th?x??X
+!<0;.?I<b3;2;Q=W>.=E;2$?B>y<&<L6;?/4/";;## @>8,"2/7<\\'#9;6,"+<N;;<J
+?wIEl
+?xf#
+?*&)(:;@;<$;d;,;w';;9;33;)8;;;+;1=;;+<[;c<I9;+;<4;; <Z;<H;A=;,;/11117; ;*;5;;;=;!!=$ <;.:/.;+; &!6;.*;M";;G;P
+;*;H#;Y=,;);/>M-;w;1;&;&0; ;1:;V;,;';2;?;I(&+/;e.2&(=<t=V;4;.;#;1<7;H;<<C11117;;O);8;(;l;3<#=/*</;;c*;;U!;m;d
+;C0gb
+;@;DU>=A;o>HAiCU>C9;@Z
+B4>$B9>EzI<2Cq
+=f;Ja>*@.<O,@Z
+=EVT
+;9
+?f,;)@k;1;&;&<Z@AI0C.;(
+]$
+\\(R>
+;AHI$Wz'#9
+<J=\\;G>$;^<;0;%;&<8;;R;'=;)6;0Gv;n?6111117;p;J;'?,;b=f;i<8<Q
+;!A!9K<=
+@&=1<0N[?5?TJA?
+;#;l;0<=|;:8 &<9 ; =d$<r;q; ;"!=C ;6";2';!;=01<A&.&0;+;+5'';;0;"+;#7;$<};S";8>Z#<[<s;9';L,<<$;H";<#%#;?((;1
+&
+<{J<@JCL
+E~B>HE3K$
+<,;)
+U?
+>"
+>G;H;f ;^;73;4;T)4.;;A;1;&;&;_;N;V;P <Y;|$5<P%,;;;=U;!;;U;@;=J/<';<9;,=]#;#/2$7$; ;K;z;G;G;9'#9';.;6;;G:4&;;h;i;0
+<Q;0;Zl
+@6Fkb
+<L;0<#!*;/+EEE ;N'@y
+<K<J;H,;G,<B3;;$$;",.:;;".;/2020<;!;@%;3<;/6/6;01<v();;;>];i>$;*20<7<9;,;"111117;-&;;J031; ;K=E,;E<h;Q;.;$);;L+<5 
+:;^; ;G>9*;<j<7(=9;M!$)!;T;x;<;'%69<d<?=<5>V:;Y7;m,"; /";;;e6#<5%;%<9<%7,;!>G1<}<";\`='8
+AU?[;0;%;&;;#F5@+?r6</;-@]>I<u.-(;h?b
+<#;)>=!7;;<;r;9;T<O; <N%?T$;0%;\`;%.;x2<\`+-;*)<0;?S;3$);$7(;;f1+!!!!7;76;:;1#6);!;<(;h/"/1'#/5*.<K*;P6;P;U
+NGD;u3
+E
+A*/7;JA;,@O>qG@F<=
+AgFkGDKIE}
+;$
+\\
+EzB7> Uo=&AP
+;x
+[|TM
+gh
+Xk=u;Jm
+g
+[I!
+WU
+;4=BC?Jv
+\\
+;>;g;0;<?A@;e?=<@]<b=8Pa<v
+]EC$$$A7.
+N?>;;@l
+AgG@B
+E;l
+X@>LJd
+=cAm;gB9@3<b;4>Z>=u;QCG?l>w;q;
+X>
+E
+T]<:
+A"<IA2;g>;B=M);!;'=; ;-;<c;;;7<<#<<X6;,C%<>'+;5>b#*%'
+MSIK5>|
+N|
+T_
+R=@;;d;(=;Nc
+Xl=e
+gJ
+F@X<FR^?m
+g">V
+=vcO@eC1
+?r
+;"P$Wz'#9
+;AZ=\\B0=CCJ=u;E?j;%@.;9
+?p
+;s=@<g<z&<l;<=*B?==aDs;F<$?F;(;"E};<
+=j
+U6A$E3Ew2
+U3;~
+F$Q J[!DJ
+C %&;dg-
+EtB!;3;=5<,?F;i;;K;<;T;$=q;FV>Z;"&)?;V
+AF8;>)B7> UoD#
+?L",/2 >MF3$C%;=zCp;a;(;d;D;'=c@(
+;z
+<gz;n
+cd
+DG=(;;;;b;S;P==%;f;#<(;];*H#;1!;'%=C<B;&;8;7;44;"@j;H)3;o;1
+G8' ( 
+=K>;'C*=#;<+?>DlBi
+? BR>mE+
+Q(S%
+<Z
+=6
+;b
+;\`;.!?YE#;>6A.;=J<;;3Gu;%@z> 
+g*
+CqSCJm
+J ;'!Rd#
+<-;)
+?u<g>BB7> E3KD#
+-fv#
+;ej
+[
+;
+J";'!Rq#=B
+;;BI$>KFpFS
+<
+;[gw
+;8
+];
+NGI
+g
+Ox-\\w'
+[O
+>\\>c6 &@-D^'<.;?B>n>uC5<PA%;
+<@;0AZ5;L);@f;=8<>x>{<(<N8;A161$;;%%"?";b$&=X.$41>N.$-<h=
+gX
+;,;<(B>A;R=ED'C""?6?l@s;;>F
+MzGDDM7
+gv@B
+g
+Nq/ba
+<;;0J:;>9A2;=N<;?7O>#
+1;q;#;;;);U;K#!7,(;<;e0+;T?"%;0;;<?; ;H$;0%;W#;;^62"<G+"-&;;:;003>[;K.2$;D7(; ,;I1+!!!!1!!6;B.;1#6);R;;\\7;@/"/1#5*.<K,;P6;P;8$;E
+A
+>g
+
+gg
+g
+<8;0J;;;j="A1;=N<;?7O>$
+O
+;
+=G
+DE
+QMZo
+>;<Y;[;@=;&;;\`;(<g@#>u/Aq;;K;(;:8;c?>@K@;(
+EAALT(G2
+Y
+E4B#Th?x??X
+;+;H#;Y=,;);/>k;w;1;&;&0; ;1:;V;,;0;;E);I;;&;e.2&ER<7=7<C11117; ;i;8;(;l;>>p*<l;~;;s!
+Z5
+g 
+CuC0
+N2>Y@;<4
+\`:;Pc
+KY[1
+E
+;E AVlS
+?";/?iB1>g?b%;;&;MHq?|??Z
+<?bG_>;";2;O
+Cd
+f0
+gB
+gY
+>*Z@>XE9)
+;Y+
+N
+Y]
+NM
+KX[1
+g[
+FMRKdFg
+G^Gq
+A]Kf@8>1;#
+>?<w;/;c< ;p;w;0;%;&;*;;2%=>1;l;.;K=o;S<4<H0;;"<i61$,!01%"?p;#&=D#2;,>N.;R
+;tEF+Zp
+>m;~==^BF>!;G<1?06<z;ZI[@%
+Ow-\\w'
+?J;.==>(B>?<@;;d;(=;E?[?&
+<G;$;>i;eBhA5>* ;P&<>h;+2B]=t;p?r?/;@
+T?;GV.
+<&;)@>{;0;%;&;;#F+A$Gv>I<u.-(
+S|
+?M",/S[;/=z
+E^
+L!(8>nArG19EN
+U,
+<YQ
+BEP<.<~Df
+Qc
+[P
+>
+?V;G>$;^<;0;%;&<8;;R;'=f6;0I%?6111117;p;J;'?,;b>|<8
+R@TG?e
+<I;0;;u6;[=n.Aq=#Ak;!+%>{; <s;DB;(@z=$>1;;R
+N1>Y@;<4Qi
+3=m;>c9 &8;#<x;0;%;&;&=X<]=a;2;#;s%;?E<;%;";;69;<;<;<C;*;@+2<;+<';";V3<-;X<c*-
+Af
+]
+T\`
+<e;N;n;z;";j<[3#;;S;*=L:;C;4;6<;67$$<];y<c;+;T2><#)/<:;,<G6>+912=&#;u;\`5;,<P<b;;;:,;f ;M<(
+\\'
+;1A>cB!;3;+/<j<,?F4;D;<4;T;$J'Ct#
+Cw
+<
+;l;-*;:;Q597*,'$;30;B<*!';&5;'!&*;*7+7+;\`$;;;,35,;;;;+0&"#*3;%;!<b;,(;.;!;!;-!;;$;I;S:;&;!;J;1($#;0)6!;;% **.3:;0111117;;2;:;';/;(4"3""$%1-;G);+)%*);4)(-%;&.;#<1);=..;\\
+$=>H 
+Z
+U
+;P
+>H;H<<B3;% ;R;I8;A;1;& ;<Z#;B?J<3;%;;;;;0;$>T<=E<X2;4.;9$;=];p; ;(; &;4=b<y.;;?:;;";*;h<F
+@:Gu
+[
+<YQ
+;X
+>5HE;6J6CmAS
+G6' 
+gO;>/
+?['
+;=>9-;G;v$!<K;^;-;7;0;%;&<8$;R;';_<Z6;0;=>+7<C;"=*<4!;<h5;:;;=<v111117;p;J;'<;Y<69;b<|;<!<8;J;A3
+?";/?iB1>g?b%;;&;MHq?|??Z
+Y;
+WT;>
+WV
+J3B,=08
+I2
+2<v;;);U;K;@;#63*3;!<0+;Q;%;&;';;#&;N;,,<;;";B3;;0+#!-7-/;{;$1%;i;-;;+;I;<>;H<;>;C%;904(11111/);;*;T;&,;2;;**;"1;B;_4; 0.-(;o7;)'&)!!";;:+;\\
+7-;MF=K=h0CFo@
+XNd
+Y
+R
+I6?PEl
+,
+<<&(;=)8=$;;:=W<;i;&;(;v*;V;;h#;!5);#;8&;V;\\<&;;";27;:<";*#;t%/26.%;;"'<;f!!!!#95;6;<6#;;k6;@;V"=T;H;Y;(<u#;#
+RO4=k
+\\6;#
+;I
+?Z
+Ff;0;%Ox
+B
+[&5!
+>'
+=>G&Jq
+;
+;B>IEHJb
+=?FS
+T\\
+g)
+=F>6G
+Am>N;A\\!3;J=<C>R;4;X<%)$;;T;$Dw?l?!?Z
+AbKf
+;C0b~E7
+g8
+<d%A9CT<zKa;C>U=
+L&00>nArG4$EL
+L"(8>nArG19EN
+CzC1<EM
++>[->0/&%#6#;g;0<1<$;@=P);LA;] &=??!26.%;;.;;>";1;j<H=#$0;;'/8%<Y<j-:>w!;I
+gZ
+N|*?BRW
+Qd
+;T
+F[&-
+G
+>&
+[a
+Qa
+Qb
+B:B:;ZAWCLJa
+Q\\*
+K'AW
+>)=oJEDg=>XG\\;=/
+E,B,T_D??W
+g2
+HN-; 
+=r
+=?J;f<L;;;U;u;>+=34;a;P;;N<<-;Q;(<+<;h2#;;7;.A;=o;=O;{<E;n?*>#&
+=~; ;h<X; ;];;<;;2;&;;;0;(;C;&;!=^><';$;;[);5;%;h<Q1;p;I;;,.;(;:6;M%%;$>Z<V;D2/6";;E;<^<;g>)
+=7GQ$L=d5;-;
+WX
+J6$L=d5;-;
+;'L2<5=K=h;0B[C.>#@
+\`9;
+]#
+]&
+;
+KZCWR-=
+;aeP
+@@gL
+EL@v;,;0=D<;<bLV;wF
+=e;*=78;$ ) &<)>W<WA<;-2'</66;)>->7*>D;=t>.!;l<$$A$;;
+E6B1TZ?|D
+.[p
+<7;0J;;>9A1;=N<;?7O>$
+E2B2=E;P ;G'?l?&</;;=
+T
+W
+=?OFI;;8=g;;f>5=g;@<;G<\`;<6;.@\\>V
+]'
+<=;0S0>/>h8;AKx-?/;G
+<?nH;I<dF>Fq;>>p=
+; A#Kf=>=t;Jl
+>!=G>3);vB1D\`<4;d;h@?;K7
+VE
+N 
+WS
+>S;-;/; <%!&=_DW$;;8#;%;e#1;DBMC[;;$?k!'#9;+.8/<1;m<);8
+VqG<L\`
+RLG!!!!
+;;5<G;'*=7;d ) &@-D:2'</;;K)>->D*>D;=t>.-;l<$$?T';X;
+U+
+A|;;xDZ;>Y<0>V<3;f<}CYE*=\\;v
+gQ
+;[MTM
+?I;.<&;?=>(-@X;U;>CB Hh#?;)?&?'
+[
+ 
+BPI)
+Y9;"
+]E
+?],Vu
+]F
+AE8;
+;CHH?L>W;2;\`
+Ch<f@u;n7;R<|%A\\;}F8@(;L+;>0?z
+Cp
+\\^Jm
+U
+;
+Ee;A\\:;(;"<y6-";-;K>Q7;07;n);,;T;$2IrD#;.
+?v
+g$#
+[
+gS?I
+;2/
+[K!
+<+;0AZ5<2<v-; >r;Z*?B;s>{;0;K<N8;A161$;;%%"Cw.$41;2=o.$-?/<J
+C_;5GpF)<b<H[=Z<~ 
+;ig\\
+>B*=_;&;6 &6;Z<=7;3;W>o=t;=!<.;;p=;;<;;@;[2*%;b;:;F;k9(=O=\\;5;|,<(;4<!.<#;7;4;;$2;
+;Z;<e>F=L<Q;1;&</<<\\>j@"&>%=rJ;x
+<?;0AZ5<2J$>{<(<N8;A161$;;%%"Cw.$41>N.$-?/
+D+a!
+Ed?
+g?
+4=>S;BI{;;.;K?V>lGDGe
+?BR>mE+S}
+<}X$
+cu
+;{
+=n
+Ap??;0;%;&@%D2<8;J;*;g;G:>=
+;~
+g
+;HA@>$B9>EzI<2Cq
+;_\`;
+;5
+N|*Wj
+={;[BV>hE+;;xJ^#$AI
+=\`;;D<.<L!%<B;#=c;1=d;;[;*<5";G;/;U;n;[;_&3;;!;3;3;;1;C;+<<;R<;+;=6;2;<H=B.;Q;e;$:;;& ;I;;;*;+</#
+Z
+J;'!Rd#
+ATb1>Y=#;
+;k;%*,:;M"6"!*,$!;30;B<*!';&5;'!&*;*7+7+;\`$;8;,35,;;;;+0&"#*3;%;!<b;,(;.;;9-!&*;$;I;S:;&;!;J;1($#;")6!;;% **.'0!,111117;;2;:;';/;(4"3""$%1-;G);+)%*);4)(-%0+;#<1);=../;<
+[
+B&Q&=u;Jm
+;/;2A_ &@-KpQu<z
+<);";.;N"!9";/'E;E";#;@&A\`">)'"4!0Gb0&?
+"
+<C;0AZ5<2J$>{<(<N8;A161$;;%%"Cw.$41>N.$-?/
+Ir&
+;JL};"Fp(&
+?\\,;bPbD~
+\`6;
+O&?BRW
+>h$EJGn&N<>[BE
+;5
+;00
+;y
+?q
+Y+
+@B!7;yH\\%A,';<3;$H$;$A ?( ;1
+ceE&'#9B,
+D=Gs;Z,<Y>_<?<D\`@=Z<~;D
+?"BR>mE+
+<; ?0=I;d;w;0;&;&=];,0;<!;I;<7B>z<];R6;658;-@r;,;!;u=$12<d;<s<
+;N
+\`);
+=TH 
+V~
+Vr
+N&D5;i;;J;=;T;$J2D#
+<f+>A;'"<a%.);J+=p; <c<%*<.$;; ;"&*;1<&2<:5=4;J=<|<h;;/;1<=;A;b; ;(%&#/;<(;1;Z/;M%;a1;Y;;F'50.- ;J;/;9
+;c
+I0
+<|
+<';";.>;a1 3=d?K;l(>'>=M?;Y:??L;!<b$={>W;G@-
+?A~]8>V
+gG
+KPKc?sEM
+'g<?I
+Y5;/=z
+<%;)
+N%D5;i;;J;=;T;$J2D#
+gc;J<z
+D~
+[D#
+;v
+Q_
+;UQgOd$$$A7.
+@P E2)?j>>8Ch"@,$@:
+[C#
+gj
+gi
+T@;G
+\`8;
+Y
+cO=u
+U5A$5D~
+HY;;.LANA
+cP
+;G
+>7T@;k;#
+Gz( <&LW
+g>
+\`7;
+MZ;E
+>3;n",/<J;P";';&;<XA$M|
+N|
+;h\`o"O-
+MyGDVs
+W<
+<>;0AZ5<2<4( -;  &>IB>>{;1;J$<98;A161$;;%%"Cw.$41>N.$-?/;1;m
+FZ&-' 
+<P;0;Zl
+['
+Mf
+I>BQ<]<bLU
+Rk
+ga
+g^
+gj
+>;'<g*<:;+1;G;;;<?;Q=~;G;$<$;F;1,<3;BR=\\;;f=Z<?;(;d&<(<=+?O*2;e;<
+g6
+;j;H;@;Q597*,'$;30;B<*/;>5;'-&-*7+7+;\`$;;;!35,;;;;+0&"#*3;%;!<b;,(;.;;3;-!;;$;I;\\:;&;&;J;1;;$0';3&;i%8*.3:;0111117;;2;:;';/;(4"35;;-;8);+)%*);4/-;&;&.;#<1);=9.;\\
+A:c
+==
+=g
+;,"
+;L
+NGD;u3
+>%
+?BR>mE+?\`
+Sy
+TbIT
+gG
+#`)

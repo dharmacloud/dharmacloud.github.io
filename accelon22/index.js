@@ -482,7 +482,7 @@
     }
     component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
   }
-  function init(component, options, instance55, create_fragment58, not_equal, props, append_styles, dirty = [-1]) {
+  function init(component, options, instance56, create_fragment58, not_equal, props, append_styles, dirty = [-1]) {
     const parent_component = current_component;
     set_current_component(component);
     const $$ = component.$$ = {
@@ -508,7 +508,7 @@
     };
     append_styles && append_styles($$.root);
     let ready = false;
-    $$.ctx = instance55 ? instance55(component, options.props || {}, (i, ret, ...rest) => {
+    $$.ctx = instance56 ? instance56(component, options.props || {}, (i, ret, ...rest) => {
       const value = rest.length ? rest[0] : ret;
       if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
         if (!$$.skip_bound && $$.bound[i])
@@ -6076,8 +6076,8 @@
   // ../ptk/compiler/predefines.ts
   var predefines = {
     generic: `^:ak<id=unique bracket=false reset=n>
-^:bk<id=unique bracket=false reset=ck,juan>
-^:ck<id=unique bracket=false>
+^:bk<id=unique heading=text bracket=false reset=ck,juan>
+^:ck<id=unique heading=text bracket=false>
 ^:n<id=unique_number>
 ^:o<@=link>
 ^:j<@=link>
@@ -6744,6 +6744,37 @@
   addTemplate("generic", {});
 
   // ../ptk/basket/parallel.ts
+  var bookPrefix = (bookname) => {
+    let prefix = bookname;
+    const at = bookname.lastIndexOf("_");
+    if (~at)
+      prefix = bookname.slice(0, at);
+    return prefix;
+  };
+  function getParallelLine(sourceptk, line) {
+    const chunk = sourceptk.nearestChunk(line + 1);
+    if (!chunk)
+      return [];
+    const lineoff = line - chunk.line;
+    const books = this.getParallelBook(chunk.bkid);
+    if (!~books.indexOf(chunk.bkid))
+      books.push(chunk.bkid);
+    const out = [];
+    for (let i = 0; i < books.length; i++) {
+      const [start, end] = this.rangeOfAddress("bk#" + books[i] + ".ck#" + chunk.id);
+      if (lineoff <= end - start) {
+        out.push(start + lineoff - line);
+      }
+    }
+    return out;
+  }
+  function getParallelBook(bookname) {
+    if (typeof bookname == "number") {
+      bookname = this.defines.bk.fields.id.values[bookname];
+    }
+    const prefix = bookPrefix(bookname);
+    return this.defines.bk.fields.id.values.filter((it) => bookPrefix(it) == prefix && bookname !== it);
+  }
   function foreignLinksAtTag(tagname, line) {
     const tag = this.defines[tagname];
     const linepos = tag?.linepos;
@@ -6754,7 +6785,7 @@
     const out = [];
     for (let sptkname in this.foreignlinks) {
       const sptk = poolGet(sptkname);
-      const linkarr = this.foreignlinks[this.name];
+      const linkarr = this.foreignlinks[sptkname];
       for (let i = 0; i < linkarr.length; i++) {
         const [srctag, bk, targettagname, idStrArr, idxarr] = linkarr[i];
         if (targettagname !== tagname)
@@ -6763,11 +6794,11 @@
         const at2 = idStrArr.find(val);
         const tagvalues = this.defines[srctag].fields["@"].values;
         const arr = idxarr[at2];
-        for (let j2 = 0; j2 < arr.length; j2++) {
+        for (let j2 = 0; j2 < arr?.length; j2++) {
           const address = tagvalues[arr[j2]];
           const line2 = srclinepos[arr[j2]];
           const ck = sptk.nearestChunk(line2 + 1);
-          out.push({ text: address, line: line2, ck });
+          out.push({ text: address, line: line2, ck, basket: sptkname });
         }
       }
     }
@@ -6777,7 +6808,7 @@
   // ../ptk/basket/links.ts
   function addBacklinks(tagname, tptk, bk, targettagname, chunks, nlinks) {
     if (!tptk)
-      tptk = this.name;
+      tptk = "*";
     if (!this.backlinks[tptk])
       this.backlinks[tptk] = {};
     if (!this.backlinks[tptk][this.name]) {
@@ -6787,9 +6818,9 @@
   }
   function addForeignLinks(fptk) {
     for (let tptk in fptk.backlinks) {
-      if (tptk == this.name) {
-        for (let sptk in fptk.backlinks[this.name]) {
-          this.foreignlinks[sptk] = fptk.backlinks[this.name][sptk];
+      if (tptk == this.name || tptk === "*") {
+        for (let sptk in fptk.backlinks[tptk]) {
+          this.foreignlinks[sptk] = fptk.backlinks[tptk][sptk];
         }
       }
     }
@@ -6851,12 +6882,17 @@
     const innertext2 = chunktag.innertext.get(at);
     const caption2 = this.caption(at);
     const depth = chunktag.depths ? chunktag.depths[at] || 1 : 1;
+    const bkheading = booktag.fields.heading?.values[bkat] || booktag.innertext.get(bkat);
     return {
       bkid,
       caption: caption2,
       at: at + 1,
       id,
-      bk: { id: bkid, caption: booktag?.innertext.get(bkat) },
+      bk: {
+        id: bkid,
+        caption: booktag?.innertext.get(bkat),
+        heading: bkheading
+      },
       depth,
       line: chunktag.linepos[at],
       innertext: innertext2
@@ -6971,6 +7007,8 @@
       this.footNoteAddress = footNoteAddress;
       this.footNoteByAddress = footNoteByAddress;
       this.foreignLinksAtTag = foreignLinksAtTag;
+      this.getParallelBook = getParallelBook;
+      this.getParallelLine = getParallelLine;
       this.taggedLines = {};
       this.foreignlinks = {};
       this.backlinks = {};
@@ -7100,8 +7138,9 @@
       const id = chunktag?.fields?.id?.values[at];
       const bkat = this.nearestTag(line, booktag) - 1;
       const bkid = booktag.fields.id.values[bkat];
+      const bkheading = booktag.fields.heading?.values[bkat] || booktag.innertext.get(bkat);
       const caption2 = this.caption(at);
-      return { id, tagname: "ck", caption: caption2, lineoff, bkid };
+      return { id, tagname: "ck", caption: caption2, lineoff, bkid, bkheading };
     }
     getPostings(s) {
       const nPostings = this.inverted.nPostingOf(s);
@@ -7252,7 +7291,7 @@
       if (!pitaka_lines[divisions[i].ptkname])
         pitaka_lines[divisions[i].ptkname] = [];
       pitaka_lines[divisions[i].ptkname].push(...divisions[i].getLines());
-      const parallels2 = divisions[i].getParallelWithDiff();
+      const parallels2 = divisions[i].ownerdraw ? [] : divisions[i].getParallelWithDiff();
       const ptk = usePtk(divisions[i].ptkname);
       if (!noparallel) {
         for (let j2 = 0; j2 < parallels2.length; j2++) {
@@ -7260,8 +7299,8 @@
           if (!ptk.parallels[pptk.name])
             continue;
           let lines = divisions[i].getLines();
-          if (linediff !== 0)
-            lines = lines.map((i2) => i2 + linediff);
+          if (linediff)
+            lines = lines.map((it) => it + linediff);
           if (!pitaka_lines[pptk.name])
             pitaka_lines[pptk.name] = [];
           pitaka_lines[pptk.name].push(...lines);
@@ -7272,6 +7311,7 @@
       const ptk = usePtk(ptkname);
       if (!ptk)
         continue;
+      pitaka_lines[ptkname].sort((a, b) => a - b);
       jobs.push(ptk.loadLines(pitaka_lines[ptkname]));
     }
     await Promise.all(jobs);
@@ -7405,22 +7445,22 @@
       const parallelPitakas = poolParallelPitakas(ptk);
       for (let i = 0; i < parallelPitakas.length; i++) {
         const pptk = usePtk(parallelPitakas[i]);
-        const line = this.lineOf(this.from);
-        const [hasparallel, linediff] = pptk.getParallelLine(ptk, line);
-        if (hasparallel)
-          out.push([pptk, linediff]);
+        const thisline = this.lineOf(this.from);
+        const lines = pptk.getParallelLine(ptk, thisline);
+        lines.forEach((it) => out.push([pptk, it]));
+      }
+      const line = this.lineOf(this.from);
+      const bk = ptk.nearestTag(line, "bk") - 1;
+      const bookstart = ptk.defines.bk.linepos[bk];
+      const lineoff = line - bookstart;
+      const books = ptk.getParallelBook(bk);
+      for (let i = 0; i < books.length; i++) {
+        const [start, end] = ptk.rangeOfAddress("bk#" + books[i]);
+        if (lineoff <= end - start) {
+          out.push([ptk, start - bookstart]);
+        }
       }
       return out;
-    }
-    async loadParallel(ptkname) {
-      let parallels2 = this.getParallelWithDiff().filter(([p2]) => p2.name == ptkname);
-      if (!parallels2.length)
-        return;
-      const ptk = usePtk(this.ptkname);
-      const pptk = parallels2[0][0];
-      const [hasparallel, linediff] = pptk.getParallelLine(ptk, this.first);
-      if (hasparallel)
-        await pptk.loadLines([[this.first + this.from + linediff, this.first + this.till + linediff]], true);
     }
     static parse(action) {
       return parseCriteria(action);
@@ -8042,7 +8082,7 @@
       if (!division)
         return;
       const pagesize = this.getViewPageSize(division);
-      return (division.till > 0 ? division.till : 0) + pagesize < division.last - division.first;
+      return (division.till > 0 ? division.till : 0) < division.last - division.first;
     }
     cannext(idx2) {
       const division = typeof idx2 == "number" ? this._divisions[idx2] : idx2;
@@ -12044,14 +12084,14 @@
   // src/lineview/parallelmenu.svelte
   function get_each_context5(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[7] = list[i][0];
+    child_ctx[8] = list[i];
     return child_ctx;
   }
   function create_each_block5(ctx) {
     let span;
     let t_value = (
       /*pptk*/
-      ctx[7]?.name + " "
+      ctx[8].humanName() + " "
     );
     let t;
     let span_aria_hidden_value;
@@ -12062,7 +12102,7 @@
         /*click_handler*/
         ctx[5](
           /*pptk*/
-          ctx[7],
+          ctx[8],
           ...args
         )
       );
@@ -12079,7 +12119,7 @@
           /*ptk*/
           ctx[0].parallels[
             /*pptk*/
-            ctx[7].name
+            ctx[8].name
           ]
         );
       },
@@ -12093,7 +12133,7 @@
       },
       p(new_ctx, dirty) {
         ctx = new_ctx;
-        if (dirty & /*ptk, parallels*/
+        if (dirty & /*ptk, parallelsPtk*/
         3) {
           toggle_class(
             span,
@@ -12101,7 +12141,7 @@
             /*ptk*/
             ctx[0].parallels[
               /*pptk*/
-              ctx[7].name
+              ctx[8].name
             ]
           );
         }
@@ -12117,7 +12157,7 @@
   function create_fragment7(ctx) {
     let each_1_anchor;
     let each_value = (
-      /*parallels*/
+      /*parallelsPtk*/
       ctx[1]
     );
     let each_blocks = [];
@@ -12138,9 +12178,9 @@
         insert(target, each_1_anchor, anchor);
       },
       p(ctx2, [dirty]) {
-        if (dirty & /*ptk, parallels, toggleParallel*/
+        if (dirty & /*ptk, parallelsPtk, toggleParallel*/
         7) {
-          each_value = /*parallels*/
+          each_value = /*parallelsPtk*/
           ctx2[1];
           let i;
           for (i = 0; i < each_value.length; i += 1) {
@@ -12174,7 +12214,8 @@
     let { division } = $$props;
     const parallels2 = division?.getParallelWithDiff();
     const LV = getContext("LV");
-    const toggleParallel = async (e, ptkname) => {
+    const parallelsPtk = unique(parallels2.map((it) => it[0]));
+    const toggleParallel = (e, ptkname) => {
       setTimeout(async function() {
         const v = ptk.parallels[ptkname] ? 0 : (/* @__PURE__ */ new Date()).valueOf();
         $$invalidate(0, ptk.parallels[ptkname] = v, ptk);
@@ -12192,7 +12233,7 @@
       if ("division" in $$props2)
         $$invalidate(4, division = $$props2.division);
     };
-    return [ptk, parallels2, toggleParallel, update2, division, click_handler];
+    return [ptk, parallelsPtk, toggleParallel, update2, division, click_handler];
   }
   var Parallelmenu = class extends SvelteComponent {
     constructor(options) {
@@ -12284,8 +12325,8 @@
         if (dirty & /*line*/
         2)
           button_changes.onclick = func;
-        if (dirty & /*$$scope*/
-        16384) {
+        if (dirty & /*$$scope, line*/
+        16386) {
           button_changes.$$scope = { dirty, ctx };
         }
         button.$set(button_changes);
@@ -12336,10 +12377,15 @@
     };
   }
   function create_default_slot2(ctx) {
-    let t_value = (
+    let t_value = _(
       /*pptk*/
-      ctx[9].humanName(true) + ""
-    );
+      ctx[9].getHeading(
+        /*line*/
+        ctx[1] + /*linediff*/
+        ctx[10]
+      ).bkheading || /*pptk*/
+      ctx[9].humanName(true)
+    ) + "";
     let t;
     return {
       c() {
@@ -12348,7 +12394,19 @@
       m(target, anchor) {
         insert(target, t, anchor);
       },
-      p: noop,
+      p(ctx2, dirty) {
+        if (dirty & /*line*/
+        2 && t_value !== (t_value = _(
+          /*pptk*/
+          ctx2[9].getHeading(
+            /*line*/
+            ctx2[1] + /*linediff*/
+            ctx2[10]
+          ).bkheading || /*pptk*/
+          ctx2[9].humanName(true)
+        ) + ""))
+          set_data(t, t_value);
+      },
       d(detaching) {
         if (detaching)
           detach(t);
@@ -12525,7 +12583,7 @@
         current = true;
       },
       p(ctx2, [dirty]) {
-        if (dirty & /*items, line, seq, addDivision*/
+        if (dirty & /*items, line, seq, addDivision, _*/
         15) {
           each_value = /*items*/
           ctx2[2];
@@ -14398,20 +14456,33 @@
       )
     );
     let t2;
-    let show_if = (
-      /*LV*/
-      ctx[5].cannext(
-        /*division*/
-        ctx[3]
-      )
-    );
+    let show_if;
+    let current_block_type_index;
+    let if_block3;
     let t3;
     let button;
     let current;
     let if_block0 = show_if_3 && create_if_block_5(ctx);
     let if_block1 = show_if_2 && create_if_block_42(ctx);
     let if_block2 = show_if_1 && create_if_block_32(ctx);
-    let if_block3 = show_if && create_if_block_22(ctx);
+    const if_block_creators = [create_if_block_22, create_else_block2];
+    const if_blocks = [];
+    function select_block_type(ctx2, dirty) {
+      if (dirty & /*division*/
+      8)
+        show_if = null;
+      if (show_if == null)
+        show_if = !!/*LV*/
+        ctx2[5].cannext(
+          /*division*/
+          ctx2[3]
+        );
+      if (show_if)
+        return 0;
+      return 1;
+    }
+    current_block_type_index = select_block_type(ctx, -1);
+    if_block3 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
     button = new button_default({
       props: {
         className: "clickable lineviewheading" + textClasses(
@@ -14437,8 +14508,7 @@
         if (if_block2)
           if_block2.c();
         t2 = space();
-        if (if_block3)
-          if_block3.c();
+        if_block3.c();
         t3 = space();
         create_component(button.$$.fragment);
       },
@@ -14452,8 +14522,7 @@
         if (if_block2)
           if_block2.m(target, anchor);
         insert(target, t2, anchor);
-        if (if_block3)
-          if_block3.m(target, anchor);
+        if_blocks[current_block_type_index].m(target, anchor);
         insert(target, t3, anchor);
         mount_component(button, target, anchor);
         current = true;
@@ -14540,32 +14609,25 @@
           });
           check_outros();
         }
-        if (dirty & /*division*/
-        8)
-          show_if = /*LV*/
-          ctx2[5].cannext(
-            /*division*/
-            ctx2[3]
-          );
-        if (show_if) {
-          if (if_block3) {
-            if_block3.p(ctx2, dirty);
-            if (dirty & /*division*/
-            8) {
-              transition_in(if_block3, 1);
-            }
-          } else {
-            if_block3 = create_if_block_22(ctx2);
-            if_block3.c();
-            transition_in(if_block3, 1);
-            if_block3.m(t3.parentNode, t3);
-          }
-        } else if (if_block3) {
+        let previous_block_index = current_block_type_index;
+        current_block_type_index = select_block_type(ctx2, dirty);
+        if (current_block_type_index === previous_block_index) {
+          if_blocks[current_block_type_index].p(ctx2, dirty);
+        } else {
           group_outros();
-          transition_out(if_block3, 1, 1, () => {
-            if_block3 = null;
+          transition_out(if_blocks[previous_block_index], 1, 1, () => {
+            if_blocks[previous_block_index] = null;
           });
           check_outros();
+          if_block3 = if_blocks[current_block_type_index];
+          if (!if_block3) {
+            if_block3 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
+            if_block3.c();
+          } else {
+            if_block3.p(ctx2, dirty);
+          }
+          transition_in(if_block3, 1);
+          if_block3.m(t3.parentNode, t3);
         }
         const button_changes = {};
         if (dirty & /*ptk*/
@@ -14615,8 +14677,7 @@
           if_block2.d(detaching);
         if (detaching)
           detach(t2);
-        if (if_block3)
-          if_block3.d(detaching);
+        if_blocks[current_block_type_index].d(detaching);
         if (detaching)
           detach(t3);
         destroy_component(button, detaching);
@@ -14824,6 +14885,35 @@
           detach(t0);
         if (detaching)
           detach(t1);
+      }
+    };
+  }
+  function create_else_block2(ctx) {
+    let t_value = (
+      /*division*/
+      ctx[3]?.last - /*division*/
+      ctx[3]?.first + ""
+    );
+    let t;
+    return {
+      c() {
+        t = text(t_value);
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*division*/
+        8 && t_value !== (t_value = /*division*/
+        ctx2[3]?.last - /*division*/
+        ctx2[3]?.first + ""))
+          set_data(t, t_value);
+      },
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(t);
       }
     };
   }
@@ -16110,7 +16200,7 @@
       }
     };
   }
-  function create_else_block2(ctx) {
+  function create_else_block3(ctx) {
     let t;
     return {
       c() {
@@ -16233,7 +16323,7 @@
         $$scope: { ctx }
       }
     });
-    const if_block_creators = [create_if_block8, create_else_block2];
+    const if_block_creators = [create_if_block8, create_else_block3];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -17465,9 +17555,9 @@
     let { links } = $$props;
     let { seq } = $$props;
     const LV = getContext("LV");
-    const jump = (ck, line) => {
+    const jump = (basket, ck, line) => {
       const address = makeChunkAddress(ck, line - ck.line);
-      LV.insertAddress(address, seq);
+      LV.insertAddress(basket + ":" + address, seq);
     };
     let prev = "";
     for (let i = 0; i < links.length; i++) {
@@ -17477,7 +17567,7 @@
         prev = links[i].ck.bk.caption;
       console.log(links[i].ck.bk.caption);
     }
-    const func = (link) => jump(link.ck, link.line);
+    const func = (link) => jump(link.basket, link.ck, link.line);
     $$self.$$set = ($$props2) => {
       if ("links" in $$props2)
         $$invalidate(0, links = $$props2.links);
@@ -17862,59 +17952,180 @@
   };
   var n_default = N;
 
-  // src/painters/j.svelte
+  // src/painters/ck.svelte
   function create_if_block12(ctx) {
+    let t0;
     let button;
+    let t1;
+    let if_block1_anchor;
     let current;
+    let if_block0 = (
+      /*links*/
+      ctx[6].length && create_if_block_24(ctx)
+    );
     button = new button_default({
       props: {
+        className: (
+          /*links*/
+          ctx[6].length ? "clickable " + /*tagname*/
+          ctx[4] : (
+            /*tagname*/
+            ctx[4]
+          )
+        ),
         onclick: (
-          /*jump*/
-          ctx[4]
+          /*func*/
+          ctx[9]
         ),
         $$slots: { default: [create_default_slot9] },
         $$scope: { ctx }
       }
     });
+    let if_block1 = (
+      /*showlink*/
+      ctx[5] && /*links*/
+      ctx[6].length && create_if_block_16(ctx)
+    );
     return {
       c() {
+        if (if_block0)
+          if_block0.c();
+        t0 = space();
         create_component(button.$$.fragment);
+        t1 = space();
+        if (if_block1)
+          if_block1.c();
+        if_block1_anchor = empty();
       },
       m(target, anchor) {
+        if (if_block0)
+          if_block0.m(target, anchor);
+        insert(target, t0, anchor);
         mount_component(button, target, anchor);
+        insert(target, t1, anchor);
+        if (if_block1)
+          if_block1.m(target, anchor);
+        insert(target, if_block1_anchor, anchor);
         current = true;
       },
       p(ctx2, dirty) {
+        if (
+          /*links*/
+          ctx2[6].length
+        ) {
+          if (if_block0) {
+            if_block0.p(ctx2, dirty);
+          } else {
+            if_block0 = create_if_block_24(ctx2);
+            if_block0.c();
+            if_block0.m(t0.parentNode, t0);
+          }
+        } else if (if_block0) {
+          if_block0.d(1);
+          if_block0 = null;
+        }
         const button_changes = {};
+        if (dirty & /*links, tagname*/
+        80)
+          button_changes.className = /*links*/
+          ctx2[6].length ? "clickable " + /*tagname*/
+          ctx2[4] : (
+            /*tagname*/
+            ctx2[4]
+          );
+        if (dirty & /*showlink*/
+        32)
+          button_changes.onclick = /*func*/
+          ctx2[9];
         if (dirty & /*$$scope, value*/
-        132) {
+        1032) {
           button_changes.$$scope = { dirty, ctx: ctx2 };
         }
         button.$set(button_changes);
+        if (
+          /*showlink*/
+          ctx2[5] && /*links*/
+          ctx2[6].length
+        ) {
+          if (if_block1) {
+            if_block1.p(ctx2, dirty);
+            if (dirty & /*showlink, links*/
+            96) {
+              transition_in(if_block1, 1);
+            }
+          } else {
+            if_block1 = create_if_block_16(ctx2);
+            if_block1.c();
+            transition_in(if_block1, 1);
+            if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+          }
+        } else if (if_block1) {
+          group_outros();
+          transition_out(if_block1, 1, 1, () => {
+            if_block1 = null;
+          });
+          check_outros();
+        }
       },
       i(local) {
         if (current)
           return;
         transition_in(button.$$.fragment, local);
+        transition_in(if_block1);
         current = true;
       },
       o(local) {
         transition_out(button.$$.fragment, local);
+        transition_out(if_block1);
         current = false;
       },
       d(detaching) {
+        if (if_block0)
+          if_block0.d(detaching);
+        if (detaching)
+          detach(t0);
         destroy_component(button, detaching);
+        if (detaching)
+          detach(t1);
+        if (if_block1)
+          if_block1.d(detaching);
+        if (detaching)
+          detach(if_block1_anchor);
+      }
+    };
+  }
+  function create_if_block_24(ctx) {
+    let span;
+    let t_value = (
+      /*links*/
+      ctx[6].length + ""
+    );
+    let t;
+    return {
+      c() {
+        span = element("span");
+        t = text(t_value);
+        attr(span, "class", "foreignlink");
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        append(span, t);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*links*/
+        64 && t_value !== (t_value = /*links*/
+        ctx2[6].length + ""))
+          set_data(t, t_value);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(span);
       }
     };
   }
   function create_default_slot9(ctx) {
-    let t_value = (
-      /*humanCaption*/
-      ctx[3](
-        /*value*/
-        ctx[2]
-      ) + ""
-    );
+    let t_value = " " + /*value*/
+    ctx[3] + " ";
     let t;
     return {
       c() {
@@ -17925,11 +18136,8 @@
       },
       p(ctx2, dirty) {
         if (dirty & /*value*/
-        4 && t_value !== (t_value = /*humanCaption*/
-        ctx2[3](
-          /*value*/
-          ctx2[2]
-        ) + ""))
+        8 && t_value !== (t_value = " " + /*value*/
+        ctx2[3] + " "))
           set_data(t, t_value);
       },
       d(detaching) {
@@ -17938,14 +18146,70 @@
       }
     };
   }
+  function create_if_block_16(ctx) {
+    let span;
+    let jump_target;
+    let current;
+    jump_target = new jump_target_default({
+      props: {
+        links: (
+          /*links*/
+          ctx[6]
+        ),
+        seq: (
+          /*seq*/
+          ctx[0]
+        )
+      }
+    });
+    return {
+      c() {
+        span = element("span");
+        create_component(jump_target.$$.fragment);
+        attr(span, "class", "toolbar");
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        mount_component(jump_target, span, null);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        const jump_target_changes = {};
+        if (dirty & /*links*/
+        64)
+          jump_target_changes.links = /*links*/
+          ctx2[6];
+        if (dirty & /*seq*/
+        1)
+          jump_target_changes.seq = /*seq*/
+          ctx2[0];
+        jump_target.$set(jump_target_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(jump_target.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(jump_target.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        if (detaching)
+          detach(span);
+        destroy_component(jump_target);
+      }
+    };
+  }
   function create_fragment20(ctx) {
     let if_block_anchor;
     let current;
     let if_block = (
       /*after*/
-      (ctx[0] || !/*innertext*/
-      ctx[1] && !/*after*/
-      ctx[0]) && create_if_block12(ctx)
+      (ctx[1] || !/*innertext*/
+      ctx[2] && !/*after*/
+      ctx[1]) && create_if_block12(ctx)
     );
     return {
       c() {
@@ -17962,14 +18226,14 @@
       p(ctx2, [dirty]) {
         if (
           /*after*/
-          ctx2[0] || !/*innertext*/
-          ctx2[1] && !/*after*/
-          ctx2[0]
+          ctx2[1] || !/*innertext*/
+          ctx2[2] && !/*after*/
+          ctx2[1]
         ) {
           if (if_block) {
             if_block.p(ctx2, dirty);
             if (dirty & /*after, innertext*/
-            3) {
+            6) {
               transition_in(if_block, 1);
             }
           } else {
@@ -18005,49 +18269,66 @@
     };
   }
   function instance21($$self, $$props, $$invalidate) {
+    let links;
+    let { ptk } = $$props;
+    let { line } = $$props;
     let { seq } = $$props;
     let { after } = $$props;
     let { innertext: innertext2 } = $$props;
     let { value } = $$props;
-    const humanCaption = (address) => {
-      const eleidarr = parseAction(address);
-      const last = eleidarr[eleidarr.length - 1];
-      return last[1] ? last[1] : last[0];
-    };
-    const LV = getContext("LV");
-    const jump = () => {
-      LV.insertAddress(value, seq);
-    };
+    let { tagname } = $$props;
+    let showlink = false;
+    const func = () => $$invalidate(5, showlink = !showlink);
     $$self.$$set = ($$props2) => {
+      if ("ptk" in $$props2)
+        $$invalidate(7, ptk = $$props2.ptk);
+      if ("line" in $$props2)
+        $$invalidate(8, line = $$props2.line);
       if ("seq" in $$props2)
-        $$invalidate(5, seq = $$props2.seq);
+        $$invalidate(0, seq = $$props2.seq);
       if ("after" in $$props2)
-        $$invalidate(0, after = $$props2.after);
+        $$invalidate(1, after = $$props2.after);
       if ("innertext" in $$props2)
-        $$invalidate(1, innertext2 = $$props2.innertext);
+        $$invalidate(2, innertext2 = $$props2.innertext);
       if ("value" in $$props2)
-        $$invalidate(2, value = $$props2.value);
+        $$invalidate(3, value = $$props2.value);
+      if ("tagname" in $$props2)
+        $$invalidate(4, tagname = $$props2.tagname);
     };
-    return [after, innertext2, value, humanCaption, jump, seq];
+    $$self.$$.update = () => {
+      if ($$self.$$.dirty & /*ptk, tagname, line*/
+      400) {
+        $:
+          $$invalidate(6, links = ptk.foreignLinksAtTag(tagname, line));
+      }
+    };
+    return [seq, after, innertext2, value, tagname, showlink, links, ptk, line, func];
   }
-  var J = class extends SvelteComponent {
+  var Ck = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance21, create_fragment20, safe_not_equal, { seq: 5, after: 0, innertext: 1, value: 2 });
+      init(this, options, instance21, create_fragment20, safe_not_equal, {
+        ptk: 7,
+        line: 8,
+        seq: 0,
+        after: 1,
+        innertext: 2,
+        value: 3,
+        tagname: 4
+      });
     }
   };
-  var j_default = J;
+  var ck_default = Ck;
 
-  // src/painters/f.svelte
+  // src/painters/j.svelte
   function create_if_block13(ctx) {
     let button;
     let current;
     button = new button_default({
       props: {
-        className: "clickable footnotebutton",
         onclick: (
-          /*shownote*/
-          ctx[3]
+          /*jump*/
+          ctx[4]
         ),
         $$slots: { default: [create_default_slot10] },
         $$scope: { ctx }
@@ -18063,8 +18344,8 @@
       },
       p(ctx2, dirty) {
         const button_changes = {};
-        if (dirty & /*$$scope, masterid*/
-        257) {
+        if (dirty & /*$$scope, value*/
+        132) {
           button_changes.$$scope = { dirty, ctx: ctx2 };
         }
         button.$set(button_changes);
@@ -18085,25 +18366,29 @@
     };
   }
   function create_default_slot10(ctx) {
+    let t_value = (
+      /*humanCaption*/
+      ctx[3](
+        /*value*/
+        ctx[2]
+      ) + ""
+    );
     let t;
     return {
       c() {
-        t = text(
-          /*masterid*/
-          ctx[0]
-        );
+        t = text(t_value);
       },
       m(target, anchor) {
         insert(target, t, anchor);
       },
       p(ctx2, dirty) {
-        if (dirty & /*masterid*/
-        1)
-          set_data(
-            t,
-            /*masterid*/
-            ctx2[0]
-          );
+        if (dirty & /*value*/
+        4 && t_value !== (t_value = /*humanCaption*/
+        ctx2[3](
+          /*value*/
+          ctx2[2]
+        ) + ""))
+          set_data(t, t_value);
       },
       d(detaching) {
         if (detaching)
@@ -18116,9 +18401,9 @@
     let current;
     let if_block = (
       /*after*/
-      (ctx[1] || !/*innertext*/
-      ctx[2] && !/*after*/
-      ctx[1]) && create_if_block13(ctx)
+      (ctx[0] || !/*innertext*/
+      ctx[1] && !/*after*/
+      ctx[0]) && create_if_block13(ctx)
     );
     return {
       c() {
@@ -18135,14 +18420,14 @@
       p(ctx2, [dirty]) {
         if (
           /*after*/
-          ctx2[1] || !/*innertext*/
-          ctx2[2] && !/*after*/
-          ctx2[1]
+          ctx2[0] || !/*innertext*/
+          ctx2[1] && !/*after*/
+          ctx2[0]
         ) {
           if (if_block) {
             if_block.p(ctx2, dirty);
             if (dirty & /*after, innertext*/
-            6) {
+            3) {
               transition_in(if_block, 1);
             }
           } else {
@@ -18178,6 +18463,179 @@
     };
   }
   function instance22($$self, $$props, $$invalidate) {
+    let { seq } = $$props;
+    let { after } = $$props;
+    let { innertext: innertext2 } = $$props;
+    let { value } = $$props;
+    const humanCaption = (address) => {
+      const eleidarr = parseAction(address);
+      const last = eleidarr[eleidarr.length - 1];
+      return last[1] ? last[1] : last[0];
+    };
+    const LV = getContext("LV");
+    const jump = () => {
+      LV.insertAddress(value, seq);
+    };
+    $$self.$$set = ($$props2) => {
+      if ("seq" in $$props2)
+        $$invalidate(5, seq = $$props2.seq);
+      if ("after" in $$props2)
+        $$invalidate(0, after = $$props2.after);
+      if ("innertext" in $$props2)
+        $$invalidate(1, innertext2 = $$props2.innertext);
+      if ("value" in $$props2)
+        $$invalidate(2, value = $$props2.value);
+    };
+    return [after, innertext2, value, humanCaption, jump, seq];
+  }
+  var J = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance22, create_fragment21, safe_not_equal, { seq: 5, after: 0, innertext: 1, value: 2 });
+    }
+  };
+  var j_default = J;
+
+  // src/painters/f.svelte
+  function create_if_block14(ctx) {
+    let button;
+    let current;
+    button = new button_default({
+      props: {
+        className: "clickable footnotebutton",
+        onclick: (
+          /*shownote*/
+          ctx[3]
+        ),
+        $$slots: { default: [create_default_slot11] },
+        $$scope: { ctx }
+      }
+    });
+    return {
+      c() {
+        create_component(button.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(button, target, anchor);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        const button_changes = {};
+        if (dirty & /*$$scope, masterid*/
+        257) {
+          button_changes.$$scope = { dirty, ctx: ctx2 };
+        }
+        button.$set(button_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(button.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(button.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(button, detaching);
+      }
+    };
+  }
+  function create_default_slot11(ctx) {
+    let t;
+    return {
+      c() {
+        t = text(
+          /*masterid*/
+          ctx[0]
+        );
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*masterid*/
+        1)
+          set_data(
+            t,
+            /*masterid*/
+            ctx2[0]
+          );
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_fragment22(ctx) {
+    let if_block_anchor;
+    let current;
+    let if_block = (
+      /*after*/
+      (ctx[1] || !/*innertext*/
+      ctx[2] && !/*after*/
+      ctx[1]) && create_if_block14(ctx)
+    );
+    return {
+      c() {
+        if (if_block)
+          if_block.c();
+        if_block_anchor = empty();
+      },
+      m(target, anchor) {
+        if (if_block)
+          if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
+        current = true;
+      },
+      p(ctx2, [dirty]) {
+        if (
+          /*after*/
+          ctx2[1] || !/*innertext*/
+          ctx2[2] && !/*after*/
+          ctx2[1]
+        ) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+            if (dirty & /*after, innertext*/
+            6) {
+              transition_in(if_block, 1);
+            }
+          } else {
+            if_block = create_if_block14(ctx2);
+            if_block.c();
+            transition_in(if_block, 1);
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        } else if (if_block) {
+          group_outros();
+          transition_out(if_block, 1, 1, () => {
+            if_block = null;
+          });
+          check_outros();
+        }
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(if_block);
+        current = true;
+      },
+      o(local) {
+        transition_out(if_block);
+        current = false;
+      },
+      d(detaching) {
+        if (if_block)
+          if_block.d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
+      }
+    };
+  }
+  function instance23($$self, $$props, $$invalidate) {
     let { ptk } = $$props;
     let { masterid } = $$props;
     let { line } = $$props;
@@ -18207,7 +18665,7 @@
   var F = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance22, create_fragment21, safe_not_equal, {
+      init(this, options, instance23, create_fragment22, safe_not_equal, {
         ptk: 4,
         masterid: 0,
         line: 5,
@@ -18220,7 +18678,7 @@
   var f_default = F;
 
   // src/painters/fn.svelte
-  function create_default_slot11(ctx) {
+  function create_default_slot12(ctx) {
     let t;
     return {
       c() {
@@ -18247,7 +18705,7 @@
       }
     };
   }
-  function create_fragment22(ctx) {
+  function create_fragment23(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -18256,7 +18714,7 @@
           /*showmaintext*/
           ctx[1]
         ),
-        $$slots: { default: [create_default_slot11] },
+        $$slots: { default: [create_default_slot12] },
         $$scope: { ctx }
       }
     });
@@ -18291,7 +18749,7 @@
       }
     };
   }
-  function instance23($$self, $$props, $$invalidate) {
+  function instance24($$self, $$props, $$invalidate) {
     let { ptk } = $$props;
     let { masterid } = $$props;
     let { line } = $$props;
@@ -18315,13 +18773,13 @@
   var Fn = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance23, create_fragment22, safe_not_equal, { ptk: 2, masterid: 0, line: 3, seq: 4 });
+      init(this, options, instance24, create_fragment23, safe_not_equal, { ptk: 2, masterid: 0, line: 3, seq: 4 });
     }
   };
   var fn_default = Fn;
 
   // src/painters/togglelink.svelte
-  function create_else_block3(ctx) {
+  function create_else_block4(ctx) {
     let span;
     let span_class_value;
     return {
@@ -18355,7 +18813,7 @@
       }
     };
   }
-  function create_if_block14(ctx) {
+  function create_if_block15(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -18368,7 +18826,7 @@
           /*classes*/
           ctx[0] + " clickable "
         ),
-        $$slots: { default: [create_default_slot12] },
+        $$slots: { default: [create_default_slot13] },
         $$scope: { ctx }
       }
     });
@@ -18411,7 +18869,7 @@
       }
     };
   }
-  function create_default_slot12(ctx) {
+  function create_default_slot13(ctx) {
     let html_tag;
     let html_anchor;
     return {
@@ -18445,12 +18903,12 @@
       }
     };
   }
-  function create_fragment23(ctx) {
+  function create_fragment24(ctx) {
     let current_block_type_index;
     let if_block;
     let if_block_anchor;
     let current;
-    const if_block_creators = [create_if_block14, create_else_block3];
+    const if_block_creators = [create_if_block15, create_else_block4];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -18511,7 +18969,7 @@
       }
     };
   }
-  function instance24($$self, $$props, $$invalidate) {
+  function instance25($$self, $$props, $$invalidate) {
     let { classes = "" } = $$props;
     let { clickable } = $$props;
     let { text: text2 = "" } = $$props;
@@ -18531,7 +18989,7 @@
   var Togglelink = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance24, create_fragment23, safe_not_equal, {
+      init(this, options, instance25, create_fragment24, safe_not_equal, {
         classes: 0,
         clickable: 1,
         text: 2,
@@ -18548,7 +19006,7 @@
     child_ctx[14] = i;
     return child_ctx;
   }
-  function create_if_block_16(ctx) {
+  function create_if_block_17(ctx) {
     let span;
     let span_class_value;
     let current;
@@ -18713,7 +19171,7 @@
       }
     };
   }
-  function create_if_block15(ctx) {
+  function create_if_block16(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -18722,7 +19180,7 @@
           /*showmore*/
           ctx[8]
         ),
-        $$slots: { default: [create_default_slot13] },
+        $$slots: { default: [create_default_slot14] },
         $$scope: { ctx }
       }
     });
@@ -18757,7 +19215,7 @@
       }
     };
   }
-  function create_default_slot13(ctx) {
+  function create_default_slot14(ctx) {
     let t0;
     let t1_value = (
       /*items*/
@@ -18789,19 +19247,19 @@
       }
     };
   }
-  function create_fragment24(ctx) {
+  function create_fragment25(ctx) {
     let if_block0_anchor;
     let span;
     let span_class_value;
     let current;
     let if_block0 = (
       /*displayitems*/
-      ctx[6].length && create_if_block_16(ctx)
+      ctx[6].length && create_if_block_17(ctx)
     );
     let if_block1 = (
       /*showcount*/
       ctx[5] < /*items*/
-      ctx[4].length && create_if_block15(ctx)
+      ctx[4].length && create_if_block16(ctx)
     );
     return {
       c() {
@@ -18837,7 +19295,7 @@
               transition_in(if_block0, 1);
             }
           } else {
-            if_block0 = create_if_block_16(ctx2);
+            if_block0 = create_if_block_17(ctx2);
             if_block0.c();
             transition_in(if_block0, 1);
             if_block0.m(if_block0_anchor.parentNode, if_block0_anchor);
@@ -18861,7 +19319,7 @@
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block15(ctx2);
+            if_block1 = create_if_block16(ctx2);
             if_block1.c();
             transition_in(if_block1, 1);
             if_block1.m(span.parentNode, span);
@@ -18906,7 +19364,7 @@
     };
   }
   var ITEMPERPAGE = 10;
-  function instance25($$self, $$props, $$invalidate) {
+  function instance26($$self, $$props, $$invalidate) {
     let displayitems;
     let { name: name2 } = $$props;
     let { seq } = $$props;
@@ -18961,7 +19419,7 @@
   var Reversekeys = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance25, create_fragment24, safe_not_equal, {
+      init(this, options, instance26, create_fragment25, safe_not_equal, {
         name: 0,
         seq: 9,
         ptk: 1,
@@ -18979,7 +19437,7 @@
     child_ctx[9] = list[i];
     return child_ctx;
   }
-  function create_if_block16(ctx) {
+  function create_if_block17(ctx) {
     let reversekeys;
     let current;
     reversekeys = new reversekeys_default({
@@ -19090,7 +19548,7 @@
       /*field*/
       ctx[9].type !== "number" && /*field*/
       ctx[9].value && /*field*/
-      ctx[9].value.length && create_if_block16(ctx)
+      ctx[9].value.length && create_if_block17(ctx)
     );
     return {
       c() {
@@ -19118,7 +19576,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block16(ctx2);
+            if_block = create_if_block17(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -19149,7 +19607,7 @@
       }
     };
   }
-  function create_fragment25(ctx) {
+  function create_fragment26(ctx) {
     let each_1_anchor;
     let current;
     let each_value = (
@@ -19224,7 +19682,7 @@
       }
     };
   }
-  function instance26($$self, $$props, $$invalidate) {
+  function instance27($$self, $$props, $$invalidate) {
     let { name: name2 } = $$props;
     let { seq } = $$props;
     let { classes = "" } = $$props;
@@ -19260,7 +19718,7 @@
   var Columnrow = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance26, create_fragment25, safe_not_equal, {
+      init(this, options, instance27, create_fragment26, safe_not_equal, {
         name: 0,
         seq: 1,
         classes: 2,
@@ -19279,7 +19737,7 @@
     child_ctx[7] = list[i];
     return child_ctx;
   }
-  function create_else_block4(ctx) {
+  function create_else_block5(ctx) {
     let t0_value = " " + /*item*/
     ctx[7][0];
     let t0;
@@ -19327,7 +19785,7 @@
       }
     };
   }
-  function create_if_block_17(ctx) {
+  function create_if_block_18(ctx) {
     let switch_instance;
     let switch_instance_anchor;
     let current;
@@ -19435,7 +19893,7 @@
     let if_block;
     let if_block_anchor;
     let current;
-    const if_block_creators = [create_if_block_17, create_else_block4];
+    const if_block_creators = [create_if_block_18, create_else_block5];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -19496,7 +19954,7 @@
       }
     };
   }
-  function create_if_block17(ctx) {
+  function create_if_block18(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -19505,7 +19963,7 @@
           /*showmore*/
           ctx[6]
         ),
-        $$slots: { default: [create_default_slot14] },
+        $$slots: { default: [create_default_slot15] },
         $$scope: { ctx }
       }
     });
@@ -19540,7 +19998,7 @@
       }
     };
   }
-  function create_default_slot14(ctx) {
+  function create_default_slot15(ctx) {
     let t0;
     let t1_value = (
       /*items*/
@@ -19572,7 +20030,7 @@
       }
     };
   }
-  function create_fragment26(ctx) {
+  function create_fragment27(ctx) {
     let t;
     let if_block_anchor;
     let current;
@@ -19590,7 +20048,7 @@
     let if_block = (
       /*showcount*/
       ctx[0] < /*items*/
-      ctx[2].length && create_if_block17(ctx)
+      ctx[2].length && create_if_block18(ctx)
     );
     return {
       c() {
@@ -19648,7 +20106,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block17(ctx2);
+            if_block = create_if_block18(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -19690,7 +20148,7 @@
     };
   }
   var ITEMPERPAGE2 = 5;
-  function instance27($$self, $$props, $$invalidate) {
+  function instance28($$self, $$props, $$invalidate) {
     let displayitems;
     let { ptk } = $$props;
     let { items = [] } = $$props;
@@ -19724,7 +20182,7 @@
   var Morelink = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance27, create_fragment26, safe_not_equal, {
+      init(this, options, instance28, create_fragment27, safe_not_equal, {
         ptk: 1,
         items: 2,
         onclick: 3,
@@ -19763,7 +20221,7 @@
       }
     };
   }
-  function create_default_slot15(ctx) {
+  function create_default_slot16(ctx) {
     let t_value = (
       /*caption*/
       ctx[1] + " "
@@ -19788,7 +20246,7 @@
       }
     };
   }
-  function create_if_block18(ctx) {
+  function create_if_block19(ctx) {
     let t0;
     let switch_instance;
     let t1;
@@ -19910,7 +20368,7 @@
       }
     };
   }
-  function create_fragment27(ctx) {
+  function create_fragment28(ctx) {
     let button0;
     let button1;
     let if_block_anchor;
@@ -19932,13 +20390,13 @@
           /*addCriteria*/
           ctx[10]
         ),
-        $$slots: { default: [create_default_slot15] },
+        $$slots: { default: [create_default_slot16] },
         $$scope: { ctx }
       }
     });
     let if_block = (
       /*opened*/
-      ctx[7] && create_if_block18(ctx)
+      ctx[7] && create_if_block19(ctx)
     );
     return {
       c() {
@@ -19980,7 +20438,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block18(ctx2);
+            if_block = create_if_block19(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -20017,7 +20475,7 @@
       }
     };
   }
-  function instance28($$self, $$props, $$invalidate) {
+  function instance29($$self, $$props, $$invalidate) {
     let opened;
     let tofind2;
     let { ptk } = $$props;
@@ -20086,7 +20544,7 @@
   var Reflistitem = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance28, create_fragment27, safe_not_equal, {
+      init(this, options, instance29, create_fragment28, safe_not_equal, {
         ptk: 0,
         caption: 1,
         count: 2,
@@ -20102,7 +20560,7 @@
   var reflistitem_default = Reflistitem;
 
   // src/painters/reflist.svelte
-  function create_if_block19(ctx) {
+  function create_if_block20(ctx) {
     let morelink;
     let current;
     morelink = new morelink_default({
@@ -20153,7 +20611,7 @@
       }
     };
   }
-  function create_fragment28(ctx) {
+  function create_fragment29(ctx) {
     let span;
     let t0;
     let t1;
@@ -20161,7 +20619,7 @@
     let current;
     let if_block = (
       /*items2*/
-      ctx[2].length && create_if_block19(ctx)
+      ctx[2].length && create_if_block20(ctx)
     );
     return {
       c() {
@@ -20204,7 +20662,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block19(ctx2);
+            if_block = create_if_block20(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -20239,7 +20697,7 @@
       }
     };
   }
-  function instance29($$self, $$props, $$invalidate) {
+  function instance30($$self, $$props, $$invalidate) {
     let items2;
     let { ptk } = $$props;
     let { items = [] } = $$props;
@@ -20298,7 +20756,7 @@
   var Reflist = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance29, create_fragment28, safe_not_equal, {
+      init(this, options, instance30, create_fragment29, safe_not_equal, {
         ptk: 0,
         items: 3,
         name: 4,
@@ -20313,7 +20771,7 @@
   var reflist_default = Reflist;
 
   // src/painters/backreflist.svelte
-  function create_if_block20(ctx) {
+  function create_if_block21(ctx) {
     let t_value = (
       /*items*/
       ctx[7].length + ""
@@ -20338,13 +20796,13 @@
       }
     };
   }
-  function create_fragment29(ctx) {
+  function create_fragment30(ctx) {
     let t;
     let reflist;
     let current;
     let if_block = (
       /*showitemlength*/
-      ctx[6] && create_if_block20(ctx)
+      ctx[6] && create_if_block21(ctx)
     );
     reflist = new reflist_default({
       props: {
@@ -20404,7 +20862,7 @@
           if (if_block) {
             if_block.p(ctx2, dirty);
           } else {
-            if_block = create_if_block20(ctx2);
+            if_block = create_if_block21(ctx2);
             if_block.c();
             if_block.m(t.parentNode, t);
           }
@@ -20462,7 +20920,7 @@
       }
     };
   }
-  function instance30($$self, $$props, $$invalidate) {
+  function instance31($$self, $$props, $$invalidate) {
     let items;
     let { tofind: tofind2 = "" } = $$props;
     let { seq, ptk, name: name2, backref, tagname, showitemlength } = $$props;
@@ -20501,7 +20959,7 @@
   var Backreflist = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance30, create_fragment29, safe_not_equal, {
+      init(this, options, instance31, create_fragment30, safe_not_equal, {
         tofind: 0,
         seq: 1,
         ptk: 2,
@@ -20515,7 +20973,7 @@
   var backreflist_default = Backreflist;
 
   // src/painters/backref.svelte
-  function create_if_block_18(ctx) {
+  function create_if_block_19(ctx) {
     let span;
     let span_aria_hidden_value;
     let mounted;
@@ -20566,7 +21024,7 @@
       }
     };
   }
-  function create_if_block21(ctx) {
+  function create_if_block22(ctx) {
     let t0;
     let switch_instance;
     let t1;
@@ -20725,19 +21183,19 @@
       }
     };
   }
-  function create_fragment30(ctx) {
+  function create_fragment31(ctx) {
     let if_block0_anchor;
     let if_block1_anchor;
     let current;
     let if_block0 = (
       /*togglebutton*/
       ctx[9] && /*backref*/
-      ctx[5] && create_if_block_18(ctx)
+      ctx[5] && create_if_block_19(ctx)
     );
     let if_block1 = (
       /*showing*/
       ctx[10] == /*key*/
-      ctx[7] && create_if_block21(ctx)
+      ctx[7] && create_if_block22(ctx)
     );
     return {
       c() {
@@ -20766,7 +21224,7 @@
           if (if_block0) {
             if_block0.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_18(ctx2);
+            if_block0 = create_if_block_19(ctx2);
             if_block0.c();
             if_block0.m(if_block0_anchor.parentNode, if_block0_anchor);
           }
@@ -20786,7 +21244,7 @@
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block21(ctx2);
+            if_block1 = create_if_block22(ctx2);
             if_block1.c();
             transition_in(if_block1, 1);
             if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
@@ -20821,7 +21279,7 @@
       }
     };
   }
-  function instance31($$self, $$props, $$invalidate) {
+  function instance32($$self, $$props, $$invalidate) {
     let tofind2;
     let painter;
     let { keys } = $$props;
@@ -20898,7 +21356,7 @@
   var Backref = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance31, create_fragment30, safe_not_equal, {
+      init(this, options, instance32, create_fragment31, safe_not_equal, {
         keys: 0,
         ptk: 1,
         name: 2,
@@ -20921,7 +21379,7 @@
     child_ctx[19] = i;
     return child_ctx;
   }
-  function create_if_block22(ctx) {
+  function create_if_block23(ctx) {
     let span0;
     let span0_class_value;
     let span1;
@@ -21025,7 +21483,7 @@
       }
     };
   }
-  function create_else_block5(ctx) {
+  function create_else_block6(ctx) {
     let t_value = " ";
     let t;
     return {
@@ -21044,7 +21502,7 @@
       }
     };
   }
-  function create_if_block_19(ctx) {
+  function create_if_block_110(ctx) {
     let backref;
     let current;
     backref = new backref_default({
@@ -21189,7 +21647,7 @@
         )
       }
     });
-    const if_block_creators = [create_if_block_19, create_else_block5];
+    const if_block_creators = [create_if_block_110, create_else_block6];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (dirty & /*items*/
@@ -21293,13 +21751,13 @@
       }
     };
   }
-  function create_fragment31(ctx) {
+  function create_fragment32(ctx) {
     let if_block_anchor;
     let current;
     let if_block = (
       /*after*/
       (ctx[3] || !/*value*/
-      ctx[5]) && create_if_block22(ctx)
+      ctx[5]) && create_if_block23(ctx)
     );
     return {
       c() {
@@ -21326,7 +21784,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block22(ctx2);
+            if_block = create_if_block23(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -21357,7 +21815,7 @@
       }
     };
   }
-  function instance32($$self, $$props, $$invalidate) {
+  function instance33($$self, $$props, $$invalidate) {
     let { name: name2 = "" } = $$props;
     let { seq } = $$props;
     let { after } = $$props;
@@ -21428,7 +21886,7 @@
   var Keys = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance32, create_fragment31, safe_not_equal, {
+      init(this, options, instance33, create_fragment32, safe_not_equal, {
         name: 1,
         seq: 2,
         after: 3,
@@ -21446,7 +21904,7 @@
   var keys_default = Keys;
 
   // src/painters/key.svelte
-  function create_if_block23(ctx) {
+  function create_if_block24(ctx) {
     let reversekeys;
     let current;
     reversekeys = new reversekeys_default({
@@ -21527,12 +21985,12 @@
       }
     };
   }
-  function create_fragment32(ctx) {
+  function create_fragment33(ctx) {
     let if_block_anchor;
     let current;
     let if_block = (
       /*after*/
-      ctx[0] && create_if_block23(ctx)
+      ctx[0] && create_if_block24(ctx)
     );
     return {
       c() {
@@ -21558,7 +22016,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block23(ctx2);
+            if_block = create_if_block24(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -21589,7 +22047,7 @@
       }
     };
   }
-  function instance33($$self, $$props, $$invalidate) {
+  function instance34($$self, $$props, $$invalidate) {
     let { after } = $$props;
     let { foreign } = $$props;
     let { field } = $$props;
@@ -21626,7 +22084,7 @@
   var Key = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance33, create_fragment32, safe_not_equal, {
+      init(this, options, instance34, create_fragment33, safe_not_equal, {
         after: 0,
         foreign: 1,
         field: 6,
@@ -21640,7 +22098,7 @@
   var key_default = Key;
 
   // src/painters/confer.svelte
-  function create_if_block24(ctx) {
+  function create_if_block25(ctx) {
     let t;
     return {
       c() {
@@ -21655,11 +22113,11 @@
       }
     };
   }
-  function create_fragment33(ctx) {
+  function create_fragment34(ctx) {
     let if_block_anchor;
     let if_block = (
       /*after*/
-      ctx[0] && create_if_block24(ctx)
+      ctx[0] && create_if_block25(ctx)
     );
     return {
       c() {
@@ -21679,7 +22137,7 @@
         ) {
           if (if_block) {
           } else {
-            if_block = create_if_block24(ctx2);
+            if_block = create_if_block25(ctx2);
             if_block.c();
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
           }
@@ -21698,7 +22156,7 @@
       }
     };
   }
-  function instance34($$self, $$props, $$invalidate) {
+  function instance35($$self, $$props, $$invalidate) {
     let { after } = $$props;
     $$self.$$set = ($$props2) => {
       if ("after" in $$props2)
@@ -21709,13 +22167,13 @@
   var Confer = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance34, create_fragment33, safe_not_equal, { after: 0 });
+      init(this, options, instance35, create_fragment34, safe_not_equal, { after: 0 });
     }
   };
   var confer_default = Confer;
 
   // src/painters/approxbackref.svelte
-  function create_default_slot16(ctx) {
+  function create_default_slot17(ctx) {
     let t;
     return {
       c() {
@@ -21730,7 +22188,7 @@
       }
     };
   }
-  function create_fragment34(ctx) {
+  function create_fragment35(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -21739,7 +22197,7 @@
           /*func*/
           ctx[5]
         ),
-        $$slots: { default: [create_default_slot16] },
+        $$slots: { default: [create_default_slot17] },
         $$scope: { ctx }
       }
     });
@@ -21774,7 +22232,7 @@
       }
     };
   }
-  function instance35($$self, $$props, $$invalidate) {
+  function instance36($$self, $$props, $$invalidate) {
     const LV = getContext("LV");
     let { seq } = $$props;
     let { id } = $$props;
@@ -21799,7 +22257,7 @@
   var Approxbackref = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance35, create_fragment34, safe_not_equal, { seq: 1, id: 2, line: 3, tagname: 4 });
+      init(this, options, instance36, create_fragment35, safe_not_equal, { seq: 1, id: 2, line: 3, tagname: 4 });
     }
   };
   var approxbackref_default = Approxbackref;
@@ -21810,7 +22268,7 @@
     child_ctx[13] = list[i];
     return child_ctx;
   }
-  function create_if_block25(ctx) {
+  function create_if_block26(ctx) {
     let button;
     let t;
     let if_block_anchor;
@@ -21827,7 +22285,7 @@
     });
     let if_block = (
       /*showing*/
-      ctx[1] && create_if_block_110(ctx)
+      ctx[1] && create_if_block_111(ctx)
     );
     return {
       c() {
@@ -21867,7 +22325,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block_110(ctx2);
+            if_block = create_if_block_111(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -21941,7 +22399,7 @@
       }
     };
   }
-  function create_if_block_110(ctx) {
+  function create_if_block_111(ctx) {
     let t0;
     let t1;
     let current;
@@ -22021,7 +22479,7 @@
       }
     };
   }
-  function create_default_slot17(ctx) {
+  function create_default_slot18(ctx) {
     let t_value = (
       /*sickname*/
       ctx[3](
@@ -22069,7 +22527,7 @@
       props: {
         className: "backref",
         onclick: func_1,
-        $$slots: { default: [create_default_slot17] },
+        $$slots: { default: [create_default_slot18] },
         $$scope: { ctx }
       }
     });
@@ -22112,12 +22570,12 @@
       }
     };
   }
-  function create_fragment35(ctx) {
+  function create_fragment36(ctx) {
     let if_block_anchor;
     let current;
     let if_block = (
       /*items*/
-      ctx[2].length && create_if_block25(ctx)
+      ctx[2].length && create_if_block26(ctx)
     );
     return {
       c() {
@@ -22143,7 +22601,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block25(ctx2);
+            if_block = create_if_block26(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -22174,7 +22632,7 @@
       }
     };
   }
-  function instance36($$self, $$props, $$invalidate) {
+  function instance37($$self, $$props, $$invalidate) {
     let items;
     let { ptk } = $$props;
     let { defattrs } = $$props;
@@ -22224,37 +22682,10 @@
   var Partialchunkid = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance36, create_fragment35, safe_not_equal, { ptk: 5, defattrs: 0, id: 6, seq: 7 });
+      init(this, options, instance37, create_fragment36, safe_not_equal, { ptk: 5, defattrs: 0, id: 6, seq: 7 });
     }
   };
   var partialchunkid_default = Partialchunkid;
-
-  // src/painters/chunk.svelte
-  function create_fragment36(ctx) {
-    let t;
-    return {
-      c() {
-        t = text("chunk");
-      },
-      m(target, anchor) {
-        insert(target, t, anchor);
-      },
-      p: noop,
-      i: noop,
-      o: noop,
-      d(detaching) {
-        if (detaching)
-          detach(t);
-      }
-    };
-  }
-  var Chunk = class extends SvelteComponent {
-    constructor(options) {
-      super();
-      init(this, options, null, create_fragment36, safe_not_equal, {});
-    }
-  };
-  var chunk_default = Chunk;
 
   // src/ownerdraw/abridge.svelte
   function get_each_context18(ctx, list, i) {
@@ -22263,7 +22694,7 @@
     child_ctx[17] = i;
     return child_ctx;
   }
-  function create_else_block6(ctx) {
+  function create_else_block7(ctx) {
     let renderunit;
     let current;
     renderunit = new renderunit_default({
@@ -22341,7 +22772,7 @@
       }
     };
   }
-  function create_if_block26(ctx) {
+  function create_if_block27(ctx) {
     let if_block0_anchor;
     let button;
     let if_block1_anchor;
@@ -22349,7 +22780,7 @@
     let if_block0 = (
       /*ab*/
       ctx[15][1] && /*ab*/
-      ctx[15][0] > 10 && create_if_block_24(ctx)
+      ctx[15][0] > 10 && create_if_block_25(ctx)
     );
     function func_1() {
       return (
@@ -22369,7 +22800,7 @@
       }
     });
     let if_block1 = !/*ab*/
-    ctx[15][2] && create_if_block_111(ctx);
+    ctx[15][2] && create_if_block_112(ctx);
     return {
       c() {
         if (if_block0)
@@ -22404,7 +22835,7 @@
               transition_in(if_block0, 1);
             }
           } else {
-            if_block0 = create_if_block_24(ctx);
+            if_block0 = create_if_block_25(ctx);
             if_block0.c();
             transition_in(if_block0, 1);
             if_block0.m(if_block0_anchor.parentNode, if_block0_anchor);
@@ -22431,7 +22862,7 @@
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block_111(ctx);
+            if_block1 = create_if_block_112(ctx);
             if_block1.c();
             transition_in(if_block1, 1);
             if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
@@ -22471,7 +22902,7 @@
       }
     };
   }
-  function create_if_block_24(ctx) {
+  function create_if_block_25(ctx) {
     let button;
     let current;
     function func() {
@@ -22562,7 +22993,7 @@
       }
     };
   }
-  function create_if_block_111(ctx) {
+  function create_if_block_112(ctx) {
     let button;
     let current;
     function func_2() {
@@ -22577,7 +23008,7 @@
     button = new button_default({
       props: {
         onclick: func_2,
-        $$slots: { default: [create_default_slot18] },
+        $$slots: { default: [create_default_slot19] },
         $$scope: { ctx }
       }
     });
@@ -22613,7 +23044,7 @@
       }
     };
   }
-  function create_default_slot18(ctx) {
+  function create_default_slot19(ctx) {
     let t;
     return {
       c() {
@@ -22634,7 +23065,7 @@
     let if_block;
     let if_block_anchor;
     let current;
-    const if_block_creators = [create_if_block26, create_else_block6];
+    const if_block_creators = [create_if_block27, create_else_block7];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (dirty & /*abridges*/
@@ -22825,7 +23256,7 @@
       }
     };
   }
-  function instance37($$self, $$props, $$invalidate) {
+  function instance38($$self, $$props, $$invalidate) {
     let runits;
     let abridges;
     let { ptk } = $$props;
@@ -22909,7 +23340,7 @@
   var Abridge = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance37, create_fragment37, safe_not_equal, {
+      init(this, options, instance38, create_fragment37, safe_not_equal, {
         ptk: 0,
         hits: 8,
         phraselength: 9,
@@ -22953,7 +23384,7 @@
       }
     };
   }
-  function create_default_slot19(ctx) {
+  function create_default_slot20(ctx) {
     let t;
     return {
       c() {
@@ -23000,7 +23431,7 @@
           /*next*/
           ctx[3]
         ),
-        $$slots: { default: [create_default_slot19] },
+        $$slots: { default: [create_default_slot20] },
         $$scope: { ctx }
       }
     });
@@ -23046,7 +23477,7 @@
       }
     };
   }
-  function instance38($$self, $$props, $$invalidate) {
+  function instance39($$self, $$props, $$invalidate) {
     let { from = 0 } = $$props;
     let { last } = $$props;
     const prev = () => {
@@ -23069,7 +23500,7 @@
   var Paging = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance38, create_fragment38, safe_not_equal, { from: 0, last: 1 });
+      init(this, options, instance39, create_fragment38, safe_not_equal, { from: 0, last: 1 });
     }
   };
   var paging_default = Paging;
@@ -23253,7 +23684,7 @@
       }
     };
   }
-  function create_if_block_25(ctx) {
+  function create_if_block_26(ctx) {
     let t_value = (
       /*ptk*/
       ctx[1].innertext(
@@ -23284,7 +23715,7 @@
       }
     };
   }
-  function create_if_block_112(ctx) {
+  function create_if_block_113(ctx) {
     let span;
     let t;
     return {
@@ -23315,7 +23746,7 @@
       }
     };
   }
-  function create_if_block27(ctx) {
+  function create_if_block28(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -23325,7 +23756,7 @@
           /*func*/
           ctx[14]
         ),
-        $$slots: { default: [create_default_slot20] },
+        $$slots: { default: [create_default_slot21] },
         $$scope: { ctx }
       }
     });
@@ -23364,7 +23795,7 @@
       }
     };
   }
-  function create_default_slot20(ctx) {
+  function create_default_slot21(ctx) {
     let t_value = (
       /*chunk*/
       ctx[7].caption + ""
@@ -23415,15 +23846,15 @@
     );
     let if_block3 = (
       /*section*/
-      ctx[3] && create_if_block_25(ctx)
+      ctx[3] && create_if_block_26(ctx)
     );
     let if_block4 = (
       /*hitcount*/
-      ctx[6] && create_if_block_112(ctx)
+      ctx[6] && create_if_block_113(ctx)
     );
     let if_block5 = (
       /*chunk*/
-      ctx[7] && create_if_block27(ctx)
+      ctx[7] && create_if_block28(ctx)
     );
     function paging_from_binding(value) {
       ctx[15](value);
@@ -23560,7 +23991,7 @@
           if (if_block3) {
             if_block3.p(ctx2, dirty);
           } else {
-            if_block3 = create_if_block_25(ctx2);
+            if_block3 = create_if_block_26(ctx2);
             if_block3.c();
             if_block3.m(span, if_block3_anchor);
           }
@@ -23575,7 +24006,7 @@
           if (if_block4) {
             if_block4.p(ctx2, dirty);
           } else {
-            if_block4 = create_if_block_112(ctx2);
+            if_block4 = create_if_block_113(ctx2);
             if_block4.c();
             if_block4.m(span, null);
           }
@@ -23594,7 +24025,7 @@
               transition_in(if_block5, 1);
             }
           } else {
-            if_block5 = create_if_block27(ctx2);
+            if_block5 = create_if_block28(ctx2);
             if_block5.c();
             transition_in(if_block5, 1);
             if_block5.m(div, t4);
@@ -23655,7 +24086,7 @@
       }
     };
   }
-  function instance39($$self, $$props, $$invalidate) {
+  function instance40($$self, $$props, $$invalidate) {
     let $pitakas;
     component_subscribe($$self, pitakas, ($$value) => $$invalidate(8, $pitakas = $$value));
     let { ptk } = $$props;
@@ -23729,7 +24160,7 @@
   var Excerptbar = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance39, create_fragment39, safe_not_equal, {
+      init(this, options, instance40, create_fragment39, safe_not_equal, {
         ptk: 1,
         name: 12,
         caption: 2,
@@ -23782,7 +24213,7 @@
       }
     };
   }
-  function instance40($$self, $$props, $$invalidate) {
+  function instance41($$self, $$props, $$invalidate) {
     let { id } = $$props;
     let { bkid } = $$props;
     let { tagname } = $$props;
@@ -23814,7 +24245,7 @@
   var Excerptheading = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance40, create_fragment40, safe_not_equal, {
+      init(this, options, instance41, create_fragment40, safe_not_equal, {
         id: 1,
         bkid: 2,
         tagname: 3,
@@ -23833,7 +24264,7 @@
     child_ctx[26] = i;
     return child_ctx;
   }
-  function create_if_block28(ctx) {
+  function create_if_block29(ctx) {
     let button;
     let t;
     let current;
@@ -23850,7 +24281,7 @@
       props: {
         className: "excerptheading clickable",
         onclick: func,
-        $$slots: { default: [create_default_slot21] },
+        $$slots: { default: [create_default_slot22] },
         $$scope: { ctx }
       }
     });
@@ -23893,7 +24324,7 @@
       }
     };
   }
-  function create_default_slot21(ctx) {
+  function create_default_slot22(ctx) {
     let t_value = " " + /*item*/
     ctx[24].ck.caption;
     let t;
@@ -23953,7 +24384,7 @@
     }
     abridge = new abridge_default({ props: abridge_props });
     let if_block = !/*chunk*/
-    ctx[9] && create_if_block28(ctx);
+    ctx[9] && create_if_block29(ctx);
     return {
       c() {
         div = element("div");
@@ -24015,7 +24446,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block28(ctx2);
+            if_block = create_if_block29(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(div, null);
@@ -24234,7 +24665,7 @@
       }
     };
   }
-  function instance41($$self, $$props, $$invalidate) {
+  function instance42($$self, $$props, $$invalidate) {
     let displayitems;
     let chunk;
     let { caption: caption2 } = $$props;
@@ -24364,7 +24795,7 @@
   var Excerpt = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance41, create_fragment41, safe_not_equal, {
+      init(this, options, instance42, create_fragment41, safe_not_equal, {
         caption: 1,
         action: 2,
         name: 12,
@@ -24536,7 +24967,7 @@
       }
     };
   }
-  function create_if_block29(ctx) {
+  function create_if_block30(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -24545,7 +24976,7 @@
           /*showmore*/
           ctx[9]
         ),
-        $$slots: { default: [create_default_slot22] },
+        $$slots: { default: [create_default_slot23] },
         $$scope: { ctx }
       }
     });
@@ -24580,7 +25011,7 @@
       }
     };
   }
-  function create_default_slot22(ctx) {
+  function create_default_slot23(ctx) {
     let t0;
     let t1_value = (
       /*items*/
@@ -24630,7 +25061,7 @@
     let if_block = (
       /*showcount*/
       ctx[7] < /*items*/
-      ctx[2].length && create_if_block29(ctx)
+      ctx[2].length && create_if_block30(ctx)
     );
     return {
       c() {
@@ -24688,7 +25119,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block29(ctx2);
+            if_block = create_if_block30(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -24730,7 +25161,7 @@
     };
   }
   var ITEMPERPAGE3 = 10;
-  function instance42($$self, $$props, $$invalidate) {
+  function instance43($$self, $$props, $$invalidate) {
     let showcount;
     let displayitems;
     const LV = getContext("LV");
@@ -24819,7 +25250,7 @@
   var Bmeresult = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance42, create_fragment42, safe_not_equal, {
+      init(this, options, instance43, create_fragment42, safe_not_equal, {
         ptk: 0,
         seq: 1,
         items: 2,
@@ -24834,7 +25265,7 @@
   var bmeresult_default = Bmeresult;
 
   // src/ownerdraw/queryresult.svelte
-  function create_if_block30(ctx) {
+  function create_if_block31(ctx) {
     let span;
     let t_value = (
       /*ptk*/
@@ -24886,7 +25317,7 @@
     let current;
     let if_block = (
       /*$pitakas*/
-      ctx[10].length > 1 && create_if_block30(ctx)
+      ctx[10].length > 1 && create_if_block31(ctx)
     );
     bmeresult = new bmeresult_default({
       props: {
@@ -24967,7 +25398,7 @@
           if (if_block) {
             if_block.p(ctx2, dirty);
           } else {
-            if_block = create_if_block30(ctx2);
+            if_block = create_if_block31(ctx2);
             if_block.c();
             if_block.m(t0.parentNode, t0);
           }
@@ -25052,7 +25483,7 @@
       }
     };
   }
-  function instance43($$self, $$props, $$invalidate) {
+  function instance44($$self, $$props, $$invalidate) {
     let $pitakas;
     component_subscribe($$self, pitakas, ($$value) => $$invalidate(10, $pitakas = $$value));
     let { caption: caption2 } = $$props;
@@ -25104,7 +25535,7 @@
   var Queryresult = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance43, create_fragment43, safe_not_equal, {
+      init(this, options, instance44, create_fragment43, safe_not_equal, {
         caption: 0,
         tofind: 1,
         name: 2,
@@ -25158,7 +25589,7 @@
       }
     };
   }
-  function create_if_block31(ctx) {
+  function create_if_block32(ctx) {
     let button;
     let current;
     function func_1() {
@@ -25174,7 +25605,7 @@
       props: {
         className: "hitcount clickable",
         onclick: func_1,
-        $$slots: { default: [create_default_slot23] },
+        $$slots: { default: [create_default_slot24] },
         $$scope: { ctx }
       }
     });
@@ -25213,7 +25644,7 @@
       }
     };
   }
-  function create_default_slot23(ctx) {
+  function create_default_slot24(ctx) {
     let t_value = "\u3000" + /*item*/
     ctx[18].count;
     let t;
@@ -25263,7 +25694,7 @@
     });
     let if_block = (
       /*item*/
-      ctx[18].count >= 0 && create_if_block31(ctx)
+      ctx[18].count >= 0 && create_if_block32(ctx)
     );
     return {
       c() {
@@ -25309,7 +25740,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block31(ctx);
+            if_block = create_if_block32(ctx);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(div, null);
@@ -25501,7 +25932,7 @@
       }
     };
   }
-  function instance44($$self, $$props, $$invalidate) {
+  function instance45($$self, $$props, $$invalidate) {
     let { caption: caption2 } = $$props;
     let { name: name2 } = $$props;
     let { tofind: tofind2 } = $$props;
@@ -25588,7 +26019,7 @@
   var Titlecount = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance44, create_fragment44, safe_not_equal, {
+      init(this, options, instance45, create_fragment44, safe_not_equal, {
         caption: 1,
         name: 2,
         tofind: 3,
@@ -25735,7 +26166,7 @@
       }
     };
   }
-  function instance45($$self, $$props, $$invalidate) {
+  function instance46($$self, $$props, $$invalidate) {
     let { onclick = null } = $$props;
     let { disabled = false } = $$props;
     let { title = "" } = $$props;
@@ -25833,7 +26264,7 @@
   var Statebutton = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance45, create_fragment46, safe_not_equal, {
+      init(this, options, instance46, create_fragment46, safe_not_equal, {
         onclick: 6,
         disabled: 2,
         title: 3,
@@ -25860,7 +26291,7 @@
     child_ctx[7] = list[i];
     return child_ctx;
   }
-  function create_default_slot24(ctx) {
+  function create_default_slot25(ctx) {
     let t_value = (
       /*pitaka*/
       ctx[4].name + ""
@@ -26009,7 +26440,7 @@
       props: {
         title: _("\u6E90\u78BC"),
         onclick: func,
-        $$slots: { default: [create_default_slot24] },
+        $$slots: { default: [create_default_slot25] },
         $$scope: { ctx }
       }
     });
@@ -26242,7 +26673,7 @@
       }
     };
   }
-  function instance46($$self, $$props, $$invalidate) {
+  function instance47($$self, $$props, $$invalidate) {
     let $pitakas;
     component_subscribe($$self, pitakas, ($$value) => $$invalidate(0, $pitakas = $$value));
     const getVerText = (ptk) => {
@@ -26258,13 +26689,13 @@
   var Versioninfo = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance46, create_fragment47, safe_not_equal, {});
+      init(this, options, instance47, create_fragment47, safe_not_equal, {});
     }
   };
   var versioninfo_default = Versioninfo;
 
   // src/ownerdraw/setting.svelte
-  function create_if_block32(ctx) {
+  function create_if_block33(ctx) {
     let t0_value = _("Pali:") + "";
     let t0;
     let t1;
@@ -26350,7 +26781,7 @@
         storeid: tosim
       }
     });
-    let if_block = show_if && create_if_block32(ctx);
+    let if_block = show_if && create_if_block33(ctx);
     versioninfo = new versioninfo_default({});
     return {
       c() {
@@ -26440,7 +26871,7 @@
   var setting_default = Setting;
 
   // src/ownerdraw/qrcode.svelte
-  function create_else_block7(ctx) {
+  function create_else_block8(ctx) {
     let t;
     return {
       c() {
@@ -26458,7 +26889,7 @@
       }
     };
   }
-  function create_if_block33(ctx) {
+  function create_if_block34(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -26467,7 +26898,7 @@
           /*func*/
           ctx[3]
         ),
-        $$slots: { default: [create_default_slot25] },
+        $$slots: { default: [create_default_slot26] },
         $$scope: { ctx }
       }
     });
@@ -26506,7 +26937,7 @@
       }
     };
   }
-  function create_default_slot25(ctx) {
+  function create_default_slot26(ctx) {
     let t0;
     let t1;
     return {
@@ -26545,7 +26976,7 @@
     let if_block;
     let if_block_anchor;
     let current;
-    const if_block_creators = [create_if_block33, create_else_block7];
+    const if_block_creators = [create_if_block34, create_else_block8];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -26619,7 +27050,7 @@
   function onScanFailure(error) {
     console.warn(`Code scan error = ${error}`);
   }
-  function instance47($$self, $$props, $$invalidate) {
+  function instance48($$self, $$props, $$invalidate) {
     let url;
     let html5QrcodeScanner;
     function onScanSuccess(decodedText, decodedResult) {
@@ -26667,7 +27098,7 @@
   var Qrcode = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance47, create_fragment49, safe_not_equal, {});
+      init(this, options, instance48, create_fragment49, safe_not_equal, {});
     }
   };
   var qrcode_default = Qrcode;
@@ -26918,7 +27349,7 @@
       }
     };
   }
-  function instance48($$self, $$props, $$invalidate) {
+  function instance49($$self, $$props, $$invalidate) {
     let { items = [] } = $$props;
     let { choices = [] } = $$props;
     let { unselectable = false } = $$props;
@@ -26954,7 +27385,7 @@
   var Statebuttons = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance48, create_fragment51, safe_not_equal, {
+      init(this, options, instance49, create_fragment51, safe_not_equal, {
         items: 0,
         choices: 5,
         unselectable: 1,
@@ -26965,7 +27396,7 @@
   var statebuttons_default = Statebuttons;
 
   // src/comps/groupstatlink.svelte
-  function create_default_slot26(ctx) {
+  function create_default_slot27(ctx) {
     let t0_value = " " + /*caption*/
     ctx[0];
     let t0;
@@ -27016,7 +27447,7 @@
           /*func*/
           ctx[4]
         ),
-        $$slots: { default: [create_default_slot26] },
+        $$slots: { default: [create_default_slot27] },
         $$scope: { ctx }
       }
     });
@@ -27055,7 +27486,7 @@
       }
     };
   }
-  function instance49($$self, $$props, $$invalidate) {
+  function instance50($$self, $$props, $$invalidate) {
     let { caption: caption2 } = $$props;
     let { count } = $$props;
     let { idx: idx2 } = $$props;
@@ -27076,7 +27507,7 @@
   var Groupstatlink = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance49, create_fragment52, safe_not_equal, { caption: 0, count: 1, idx: 2, onclick: 3 });
+      init(this, options, instance50, create_fragment52, safe_not_equal, { caption: 0, count: 1, idx: 2, onclick: 3 });
     }
   };
   var groupstatlink_default = Groupstatlink;
@@ -27257,7 +27688,7 @@
       }
     };
   }
-  function create_if_block_26(ctx) {
+  function create_if_block_27(ctx) {
     let t;
     return {
       c() {
@@ -27275,7 +27706,7 @@
       }
     };
   }
-  function create_if_block34(ctx) {
+  function create_if_block35(ctx) {
     let button;
     let t;
     let show_if = Object.keys(
@@ -27291,11 +27722,11 @@
           ctx[15]
         ),
         className: "hitcount clickable",
-        $$slots: { default: [create_default_slot27] },
+        $$slots: { default: [create_default_slot28] },
         $$scope: { ctx }
       }
     });
-    let if_block = show_if && create_if_block_113(ctx);
+    let if_block = show_if && create_if_block_114(ctx);
     return {
       c() {
         create_component(button.$$.fragment);
@@ -27345,7 +27776,7 @@
       }
     };
   }
-  function create_default_slot27(ctx) {
+  function create_default_slot28(ctx) {
     let t0_value = (
       /*items*/
       ctx[6].length + ""
@@ -27383,7 +27814,7 @@
       }
     };
   }
-  function create_if_block_113(ctx) {
+  function create_if_block_114(ctx) {
     let statebutton;
     let updating_selectedIndex;
     let t;
@@ -27483,7 +27914,7 @@
     let if_block;
     let if_block_anchor;
     let current;
-    const if_block_creators = [create_if_block34, create_if_block_26];
+    const if_block_creators = [create_if_block35, create_if_block_27];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -27674,7 +28105,7 @@
       }
     };
   }
-  function instance50($$self, $$props, $$invalidate) {
+  function instance51($$self, $$props, $$invalidate) {
     let groups;
     let items;
     let { ptk, seq } = $$props;
@@ -27773,7 +28204,7 @@
   var Guidefilter = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance50, create_fragment53, safe_not_equal, { ptk: 0, seq: 12 });
+      init(this, options, instance51, create_fragment53, safe_not_equal, { ptk: 0, seq: 12 });
     }
   };
   var guidefilter_default = Guidefilter;
@@ -27784,7 +28215,7 @@
     child_ctx[3] = list[i];
     return child_ctx;
   }
-  function create_if_block35(ctx) {
+  function create_if_block36(ctx) {
     let each_1_anchor;
     let current;
     let each_value = (
@@ -27978,7 +28409,7 @@
       ctx[0][
         /*line*/
         ctx[1]
-      ] && create_if_block35(ctx)
+      ] && create_if_block36(ctx)
     );
     return {
       c() {
@@ -28007,7 +28438,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block35(ctx2);
+            if_block = create_if_block36(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -28038,7 +28469,7 @@
       }
     };
   }
-  function instance51($$self, $$props, $$invalidate) {
+  function instance52($$self, $$props, $$invalidate) {
     let { activelinemenus } = $$props;
     let { line } = $$props;
     let { seq } = $$props;
@@ -28055,7 +28486,7 @@
   var Guidelinemenu = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance51, create_fragment54, safe_not_equal, { activelinemenus: 0, line: 1, seq: 2 });
+      init(this, options, instance52, create_fragment54, safe_not_equal, { activelinemenus: 0, line: 1, seq: 2 });
     }
   };
   var guidelinemenu_default = Guidelinemenu;
@@ -28066,7 +28497,7 @@
     child_ctx[14] = list[i];
     return child_ctx;
   }
-  function create_if_block_114(ctx) {
+  function create_if_block_115(ctx) {
     let t0_value = (
       /*ptk*/
       ctx[0].template.humanChoice(
@@ -28138,7 +28569,7 @@
         )
       }
     });
-    const if_block_creators = [create_if_block_27, create_else_block8];
+    const if_block_creators = [create_if_block_28, create_else_block9];
     const if_blocks = [];
     function select_block_type_1(ctx2, dirty) {
       if (
@@ -28284,7 +28715,7 @@
       }
     };
   }
-  function create_if_block36(ctx) {
+  function create_if_block37(ctx) {
     let guidefilter;
     let current;
     guidefilter = new guidefilter_default({
@@ -28417,7 +28848,7 @@
       }
     };
   }
-  function create_else_block8(ctx) {
+  function create_else_block9(ctx) {
     let each_1_anchor;
     let current;
     let each_value = (
@@ -28492,7 +28923,7 @@
       }
     };
   }
-  function create_if_block_27(ctx) {
+  function create_if_block_28(ctx) {
     let guidelinemenu;
     let button;
     let current;
@@ -28515,7 +28946,7 @@
           ctx[10]
         ),
         className: "ck clickable",
-        $$slots: { default: [create_default_slot28] },
+        $$slots: { default: [create_default_slot29] },
         $$scope: { ctx }
       }
     });
@@ -28668,7 +29099,7 @@
       }
     };
   }
-  function create_default_slot28(ctx) {
+  function create_default_slot29(ctx) {
     let t_value = (
       /*now*/
       ctx[6]?.ck?.caption + ""
@@ -28698,7 +29129,7 @@
     let if_block;
     let if_block_anchor;
     let current;
-    const if_block_creators = [create_if_block36, create_if_block_114];
+    const if_block_creators = [create_if_block37, create_if_block_115];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (!/*action*/
@@ -28776,7 +29207,7 @@
       }
     };
   }
-  function instance52($$self, $$props, $$invalidate) {
+  function instance53($$self, $$props, $$invalidate) {
     let { ptk, action, items = [], seq } = $$props;
     const LV = getContext("LV");
     let from = 0, ready = false, now = {};
@@ -28847,7 +29278,7 @@
   var Guide = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance52, create_fragment55, safe_not_equal, { ptk: 0, action: 1, items: 2, seq: 3 });
+      init(this, options, instance53, create_fragment55, safe_not_equal, { ptk: 0, action: 1, items: 2, seq: 3 });
     }
   };
   var guide_default = Guide;
@@ -28858,7 +29289,7 @@
     child_ctx[14] = list[i];
     return child_ctx;
   }
-  function create_if_block37(ctx) {
+  function create_if_block38(ctx) {
     let t;
     return {
       c() {
@@ -29007,7 +29438,7 @@
     let each_1_anchor;
     let current;
     let if_block = !/*displayitems*/
-    ctx[4].length && create_if_block37(ctx);
+    ctx[4].length && create_if_block38(ctx);
     function paging_from_binding(value) {
       ctx[9](value);
     }
@@ -29068,7 +29499,7 @@
         ctx2[4].length) {
           if (if_block) {
           } else {
-            if_block = create_if_block37(ctx2);
+            if_block = create_if_block38(ctx2);
             if_block.c();
             if_block.m(t0.parentNode, t0);
           }
@@ -29146,7 +29577,7 @@
       }
     };
   }
-  function instance53($$self, $$props, $$invalidate) {
+  function instance54($$self, $$props, $$invalidate) {
     let displayitems;
     let { name: name2 } = $$props;
     let { lines } = $$props;
@@ -29234,7 +29665,7 @@
   var Approx = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance53, create_fragment56, safe_not_equal, {
+      init(this, options, instance54, create_fragment56, safe_not_equal, {
         name: 5,
         lines: 6,
         seq: 1,
@@ -29258,7 +29689,7 @@
   }
 
   // src/app.svelte
-  function create_else_block9(ctx) {
+  function create_else_block10(ctx) {
     let t0;
     let a;
     return {
@@ -29283,7 +29714,7 @@
       }
     };
   }
-  function create_if_block38(ctx) {
+  function create_if_block39(ctx) {
     let librarymain;
     let current;
     librarymain = new librarymain_default({});
@@ -29316,7 +29747,7 @@
     let if_block;
     let if_block_anchor;
     let current;
-    const if_block_creators = [create_if_block38, create_else_block9];
+    const if_block_creators = [create_if_block39, create_else_block10];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -29378,13 +29809,14 @@
       }
     };
   }
-  function instance54($$self, $$props, $$invalidate) {
+  function instance55($$self, $$props, $$invalidate) {
     let ready;
     initPainters({
       note: note_default,
       keys: keys_default,
       key: key_default,
       confer: confer_default,
+      ck: ck_default,
       j: j_default,
       n: n_default,
       f: f_default,
@@ -29392,8 +29824,7 @@
       backref: backref_default,
       backreflist: backreflist_default,
       approxbackref: approxbackref_default,
-      partialchunkid: partialchunkid_default,
-      chunk: chunk_default
+      partialchunkid: partialchunkid_default
     });
     initOwnerdraws({
       queryresult: queryresult_default,
@@ -29418,7 +29849,7 @@
   var App = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance54, create_fragment57, safe_not_equal, {});
+      init(this, options, instance55, create_fragment57, safe_not_equal, {});
     }
   };
   var app_default = App;
