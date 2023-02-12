@@ -44,7 +44,7 @@ const getHeadword=(id)=>{
 const clips={
     vcpp:{
         '0:0':[
-            ['覺培法師','https://www.youtube.com/iOmnkIK7x8g?start=904'],
+            ['覺培法師','https://www.youtube.com/embed/iOmnkIK7x8g?start=904'],
         ],
         '1:2':[
             ['刀郎','https://www.youtube.com/embed/vxIFNYssEGw?start=20']
