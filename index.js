@@ -44,20 +44,20 @@ const getHeadword=(id)=>{
 const clips={
     vcpp:{
         '0:0':[
-            ['覺培法師','https://www.youtube.com/embed/iOmnkIK7x8g?start=904'],
+            ['覺培法師','https://www.youtube.com/embed/iOmnkIK7x8g?start=904&autoplay=1'],
         ],
         '1:2':[
-            ['刀郎','https://www.youtube.com/embed/vxIFNYssEGw?start=20']
+            ['刀郎','https://www.youtube.com/embed/vxIFNYssEGw?start=20&autoplay=1']
         ],
         '2:0':[
-            ['木魚佛堂','https://www.youtube.com/embed/UfbMZ0Uu-A8?start=280'],
+            ['木魚佛堂','https://www.youtube.com/embed/UfbMZ0Uu-A8?start=280&autoplay=1'],
         ],
         '2:2':[ 
-            ['心定法師', 'https://www.youtube.com/embed/m9ZmMrY88qE?start=469'],
-            ['黃慧音','https://www.youtube.com/embed/LZDdosrsf-k?start=104'],
+            ['心定法師', 'https://www.youtube.com/embed/m9ZmMrY88qE?start=469&autoplay=1'],
+            ['黃慧音','https://www.youtube.com/embed/LZDdosrsf-k?start=104&autoplay=1'],
         ],
         '2:3':[
-            ['蔣勳','https://www.youtube.com/embed/wjvwySjCVoQ?start=55']
+            ['蔣勳','https://www.youtube.com/embed/wjvwySjCVoQ?start=55&autoplay=1']
         ]
     }
 }
