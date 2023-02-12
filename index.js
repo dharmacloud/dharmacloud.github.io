@@ -54,11 +54,14 @@ const clips={
         ],
         '2:2':[ 
             ['心定法師', 'https://www.youtube.com/embed/m9ZmMrY88qE?start=469&autoplay=1'],
-            ['黃慧音','https://www.youtube.com/embed/LZDdosrsf-k?start=104&autoplay=1'],
         ],
         '2:3':[
             ['蔣勳','https://www.youtube.com/embed/wjvwySjCVoQ?start=55&autoplay=1']
+        ],
+        '2:4':[
+            ['黃慧音','https://www.youtube.com/embed/LZDdosrsf-k?start=128&autoplay=1'],
         ]
+
     }
 }
 const getMovieClip=(id)=>{
