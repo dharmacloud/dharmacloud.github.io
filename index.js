@@ -44,20 +44,20 @@ const getHeadword=(id)=>{
 const clips={
     vcpp:{
         '0:0':[
-            ['覺培法師','https://youtu.be/iOmnkIK7x8g?t=904'],
+            ['覺培法師','https://www.youtube.com/iOmnkIK7x8g?start=904'],
         ],
         '1:2':[
-            ['刀郎','https://youtu.be/embed/vxIFNYssEGw?t=20']
+            ['刀郎','https://www.youtube.com/embed/vxIFNYssEGw?start=20']
         ],
         '2:0':[
-            ['木魚佛堂','https://youtu.be/embed/UfbMZ0Uu-A8?t=280'],
+            ['木魚佛堂','https://www.youtube.com/embed/UfbMZ0Uu-A8?start=280'],
         ],
         '2:2':[ 
-            ['心定法師', 'https://youtu.be/embed/m9ZmMrY88qE?t=469'],
-            ['黃慧音','https://youtu.be/embed/LZDdosrsf-k?t=104'],
+            ['心定法師', 'https://www.youtube.com/embed/m9ZmMrY88qE?start=469'],
+            ['黃慧音','https://www.youtube.com/embed/LZDdosrsf-k?start=104'],
         ],
         '2:3':[
-            ['蔣勳','https://youtu.be/embed/wjvwySjCVoQ?t=55']
+            ['蔣勳','https://www.youtube.com/embed/wjvwySjCVoQ?start=55']
         ]
     }
 }
