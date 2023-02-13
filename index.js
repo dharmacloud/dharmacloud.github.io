@@ -46,9 +46,18 @@ const clips={
         '0:0':[
             ['覺培法師','https://www.youtube.com/embed/iOmnkIK7x8g?start=904&autoplay=1'],
         ],
-        '1:2':[
-            ['刀郎','https://www.youtube.com/embed/vxIFNYssEGw?start=20&autoplay=1']
+        '1:1':[
+            ['王菲','https://www.youtube.com/embed/nWXV8DORi64?start=45&autoplay=1'],
         ],
+        '1:2':[
+            ['如本法師','https://www.youtube.com/embed/E2tLeZDdFCk?start=754&autoplay=1']            
+        ],
+        '1:3':[
+            ['法鼓山','https://www.youtube.com/embed/RquHJ4jzXKs?start=49&autoplay=1']
+        ],
+        '1:4':[
+            ['刀郎','https://www.youtube.com/embed/vxIFNYssEGw?start=43&autoplay=1']
+        ],        
         '2:0':[
             ['木魚佛堂','https://www.youtube.com/embed/UfbMZ0Uu-A8?start=280&autoplay=1'],
         ],
