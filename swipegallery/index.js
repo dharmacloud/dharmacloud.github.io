@@ -1359,7 +1359,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ctx[2]))
           attr(img, "src", img_src_value);
         attr(img, "alt", "");
-        attr(img, "class", "svelte-lvbaqb");
+        attr(img, "class", "svelte-lgmlo6");
       },
       m(target, anchor) {
         insert(target, img, anchor);
@@ -1518,7 +1518,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       c() {
         div = element("div");
         create_component(swipe.$$.fragment);
-        attr(div, "class", "swipe-holder svelte-lvbaqb");
+        attr(div, "class", "swipe-holder svelte-lgmlo6");
       },
       m(target, anchor) {
         insert(target, div, anchor);
