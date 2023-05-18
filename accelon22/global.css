@@ -25,6 +25,7 @@ body {
 .parallelchunkbutton:after{content:'⇋'}
 .toolbar {background:  var(--panel-background) ;  ;user-select: none;padding-left:0.5em;padding-right:0.5em}
 .clickable:hover{text-decoration: underline;cursor:pointer}
+.clicked {background:gray}
 
 .unclickable{color: gray}
 /* .closelink{background: hsl(40,20%,30%); } */
@@ -56,6 +57,17 @@ body {
 .bgdepth7  {background: hsl(320,70%,70%)}
 .bgdepth8  {background:  hsl(360,80%,70%)}
 
+.za  {color:  hsl(40,70%,70%)}
+.zb {color:  hsl(80,70%,70%)}
+.zc {color:  hsl(120,70%,70%)}
+.zd  {color:  hsl(160,70%,70%)}
+.ze  {color:  hsl(200,70%,70%)}
+.zf  {color: hsl(240,70%,70%)}
+.zg  {color:  hsl(280,70%,70%)}
+.zh  {color: hsl(320,70%,70%)}
+.zi  {color:  hsl(360,80%,70%)}
+
+
 .field {color: lightsalmon;}
 /* default reader stying */
 .e {color: goldenrod; font-size: 110%}
@@ -83,8 +95,7 @@ body {
     line-height: 1.8;
     padding-right: 5px;
 }
-.lineviewmenu {z-index: 99; 
-	position:absolute;right:0px; padding-right: 0.5em ;user-select: none;}
+.lineviewmenu { z-index: 99; position:absolute;right:0px; padding-right: 0.5em ;user-select: none;} 
 
 .chunkmenu {z-index:999;
 position:absolute;right:0px;
@@ -101,6 +112,7 @@ color:black;
 }
 .highlight {color:rgb(255,255,196)}
 .excerptheading {color: var(--heading) ; padding-right: 0.2em}
+.excerptpaging {}
 .lineviewheading {color: var(--heading) ;padding: 0.1em}
 .errorcount {color: red}
 .offtagname {color: salmon;}
@@ -113,6 +125,9 @@ color:black;
 .footnote { color:salmon;}
 .footnotebutton {font-family: 'Courier New', Courier, monospace;
 	 font-size:75%;position:absolute;color:salmon;font-weight: bold;}
+	 
+.fn {font-family: 'Courier New', Courier, monospace;color:salmon;font-weight: bold;}
+
 .hitcount {color:goldenrod;}
 .tofind {background:silver;color:black;padding-left:0.1em;padding-right:0.1em}
 
@@ -141,7 +156,7 @@ color:black;
 .pickercriteria {padding-right:2px;padding-left: 2px; }
 .pickercriteria:after{content:','}
 
-.statebutton{ user-select: none; vertical-align: top;cursor:pointer;fill:var(--button-selected);padding-right:0.2em}
+.statebutton{ user-select: none; cursor:pointer;fill:var(--button-selected);padding-right:0.2em}
 .statebutton.disabled {cursor:auto;fill:none;stroke:var(--button-unselected) }
 .statebutton.unselected {color:gray}
 .statebutton.disabled:hover {fill:none; stroke: var(--button-unselected)}
@@ -151,8 +166,10 @@ color:black;
 .warning {color:red}
 .pagingbutton {user-select:none}
 .https{text-decoration:underline; cursor:pointer}
-.setting {float:right;}
+.floatright {float:right;}
 
 /* 搜尋範圍 */
 .ak {border:1px dotted silver; }
 .o_div {font-family: DFKai-SB;}
+.linemenushown {color:yellow}
+.linemenu {padding-right: 0.4em;}

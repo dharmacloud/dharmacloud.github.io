@@ -25,6 +25,14 @@
   function safe_not_equal(a, b) {
     return a != a ? b == b : a !== b || (a && typeof a === "object" || typeof a === "function");
   }
+  var src_url_equal_anchor;
+  function src_url_equal(element_src, url) {
+    if (!src_url_equal_anchor) {
+      src_url_equal_anchor = document.createElement("a");
+    }
+    src_url_equal_anchor.href = url;
+    return element_src === src_url_equal_anchor.href;
+  }
   function is_empty(obj) {
     return Object.keys(obj).length === 0;
   }
@@ -87,8 +95,8 @@
     }
     return -1;
   }
-  function null_to_empty(value) {
-    return value == null ? "" : value;
+  function action_destroyer(action_result) {
+    return action_result && is_function(action_result.destroy) ? action_result.destroy : noop;
   }
   var is_hydrating = false;
   function start_hydrating() {
@@ -482,7 +490,7 @@
     }
     component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
   }
-  function init(component, options, instance56, create_fragment58, not_equal, props, append_styles, dirty = [-1]) {
+  function init(component, options, instance64, create_fragment67, not_equal, props, append_styles, dirty = [-1]) {
     const parent_component = current_component;
     set_current_component(component);
     const $$ = component.$$ = {
@@ -508,7 +516,7 @@
     };
     append_styles && append_styles($$.root);
     let ready = false;
-    $$.ctx = instance56 ? instance56(component, options.props || {}, (i, ret, ...rest) => {
+    $$.ctx = instance64 ? instance64(component, options.props || {}, (i, ret, ...rest) => {
       const value = rest.length ? rest[0] : ret;
       if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
         if (!$$.skip_bound && $$.bound[i])
@@ -521,7 +529,7 @@
     $$.update();
     ready = true;
     run_all($$.before_update);
-    $$.fragment = create_fragment58 ? create_fragment58($$.ctx) : false;
+    $$.fragment = create_fragment67 ? create_fragment67($$.ctx) : false;
     if (options.target) {
       if (options.hydrate) {
         start_hydrating();
@@ -860,6 +868,15 @@
     const U = union(arr, basearr);
     return I.length / U.length;
   };
+  var indexOfs = (arr, tofind2) => {
+    const out = [];
+    for (let j2 = 0; j2 < arr.length; j2++) {
+      if (~arr[j2].indexOf(tofind2)) {
+        out.push(j2);
+      }
+    }
+    return out;
+  };
 
   // ../ptk/utils/unpackintarray.ts
   var maxlen2 = 113 * 113;
@@ -881,7 +898,7 @@
     let arr = [];
     if (!s)
       return [];
-    let o, i = 0, c2 = 0, prev = 0;
+    let o, i = 0, c3 = 0, prev = 0;
     while (i < s.length) {
       o = s.charCodeAt(i) - CodeStart;
       if (o < BYTE2_START) {
@@ -910,9 +927,9 @@
       } else {
         throw new Error("exit max integer 0x7f," + o);
       }
-      arr[c2] = o + (delta ? prev : 0) - 1;
-      prev = arr[c2];
-      c2++;
+      arr[c3] = o + (delta ? prev : 0) - 1;
+      prev = arr[c3];
+      c3++;
       i++;
     }
     return arr;
@@ -1065,8 +1082,8 @@
         this.buildcharpos();
     }
     buildcharpos() {
-      let prev = -1, p2 = 0;
-      while (p2 < this.buf.length) {
+      let prev = -1, p3 = 0;
+      while (p3 < this.buf.length) {
         const at = this.buf.indexOf(this.sep, prev);
         if (at == -1) {
           this.charpos.push(this.buf.length);
@@ -1252,6 +1269,57 @@
     }
     return str;
   };
+  var cjkSplitPuncs = (str) => {
+    const out = [];
+    let prev = 0;
+    str.replace(/([\u3001-\u301f\uff00-\ufffc]+)/g, (m4, m1, idx2) => {
+      out.push(str.slice(prev, idx2));
+      out.push(m1);
+      prev = idx2 + m1.length;
+    });
+    out.push(str.slice(prev));
+    return out;
+  };
+  var textlength = (str) => {
+    return str.replace(/\^[a-z:\d\.\-@#]+/g, "").replace(/<[^>]+/g, "").length;
+  };
+  var breakChineseSentence = (line, opts = {}) => {
+    const max = opts.threshold || 22;
+    const mid = opts.threshold || 14;
+    const min = opts.threshold || 6;
+    let thres = 0, t = "";
+    const phrases = cjkSplitPuncs(line);
+    const out = [];
+    for (let i = 0; i < phrases.length / 2; i++) {
+      const nonpunc = phrases[i * 2];
+      let punc = phrases[i * 2 + 1] || "";
+      const strongbreak = punc.match(/[。！？]/) || nonpunc.slice(0, 2) == "^k";
+      const nextstrongbreak = (phrases[(i + 1) * 2 + 1] || "").match(/[。！？]/);
+      thres += textlength(nonpunc);
+      t += nonpunc + punc;
+      if (t && (thres > max || thres > mid && !nextstrongbreak || thres > min && strongbreak)) {
+        out.push(t);
+        t = "";
+        thres = 0;
+      }
+    }
+    t && out.push(t);
+    const out2 = [];
+    let lead = "";
+    for (let i = 0; i < out.length; i++) {
+      const m4 = out[i].match(/([（《「『︵｛︷〔︹【︻︽〈︿﹃﹙﹛﹝‘“〝‵]+)$/);
+      if (m4) {
+        out2.push(lead + out[i].slice(0, out[i].length - m4[1].length));
+        lead = m4[1];
+      } else {
+        out2.push(lead + out[i]);
+        lead = "";
+      }
+    }
+    if (lead && out2.length)
+      out2[out2.length - 1] += lead;
+    return out2.join("\n").replace(/\n(\^[jkf][#a-z\d@:\-]+)([：；，、。！？」』）〕】》]*)/g, (m4, m1, punc) => m1 + (punc || "") + "\n").replace(/\n+/g, "\n").trimEnd();
+  };
 
   // ../ptk/utils/misc.ts
   var lineBreaksOffset = (str) => {
@@ -1326,6 +1394,74 @@
   // ../ptk/utils/bopomofo.ts
   var consonants = "b,p,m,f,d,t,n,l,g,k,h,j,q,x,zh,ch,sh,r,z,c,s".split(",");
   var vowels = "a,o,e,e,ai,ei,ao,ou,an,en,ang,eng,er,i,u,v".split(",");
+
+  // ../ptk/utils/base26.ts
+  var toBase26 = (num) => {
+    const str = num.toString(26).toLowerCase();
+    let out = "";
+    for (let i = 0; i < str.length; i++) {
+      const code = str.charCodeAt(i);
+      if (code >= 48 && code < 64) {
+        out += String.fromCharCode(code - 48 + 97);
+      } else {
+        out += String.fromCharCode(code + 10);
+      }
+    }
+    return out;
+  };
+
+  // ../ptk/utils/textinsert.ts
+  var getInserts = (milestones, msid) => {
+    if (!milestones)
+      return null;
+    const out = [];
+    let n = 0;
+    let id = msid;
+    let m4 = milestones[id];
+    while (m4) {
+      out.push(m4);
+      id = msid + "+" + ++n;
+      m4 = milestones[id];
+    }
+    if (!out.length)
+      return null;
+    else
+      return out;
+  };
+  var insertAtOccur = (text2, ins) => {
+    const [toinsert, tofind2] = ins;
+    if (typeof tofind2 === "number") {
+      if (text2.length > tofind2) {
+        return text2.substr(0, tofind2) + toinsert + text2.substr(tofind2);
+      } else {
+        ins[1] = tofind2 - text2.length;
+        return text2;
+      }
+    } else {
+      let at = text2.indexOf(tofind2);
+      while (at > -1 && ins[2] > 0) {
+        at = text2.indexOf(tofind2, at + tofind2.length);
+        ins[2]--;
+      }
+      return at === -1 ? text2 : text2.substr(0, at) + toinsert + text2.substr(at);
+    }
+  };
+  var insertText = (text2, inserts) => {
+    if (!inserts || !inserts.length)
+      return text2;
+    let t = text2;
+    while (inserts.length) {
+      const ins = inserts.shift();
+      const newtext = insertAtOccur(t, ins);
+      if (newtext === text2) {
+        inserts.unshift(ins);
+        break;
+      } else {
+        t = newtext;
+      }
+    }
+    return t;
+  };
 
   // ../ptk/offtext/parser.ts
   var parseCompactAttr = (str) => {
@@ -4466,9 +4602,9 @@
   // ../ptk/fts/posting.ts
   var counter = 0;
   var maxspeed = 0;
-  var plFind = (arr, v, p2 = 0) => {
+  var plFind = (arr, v, p3 = 0) => {
     let speed = 1;
-    let p22 = p2;
+    let p22 = p3;
     while (p22 < arr.length) {
       if (v > arr[p22]) {
         speed++;
@@ -4486,37 +4622,37 @@
     return p22;
   };
   var plAnd = (pl1, pl2, dist = 1) => {
-    let p2 = 0, c2 = 0;
+    let p22 = 0, c3 = 0;
     if (!pl1 || !pl2 || pl1.length == 0 || pl2.length == 0)
       return [];
     const sz = Math.min(pl1.length, pl2.length);
     let out = [];
     for (let p1 = 0; p1 < pl1.length; p1++) {
       let v1 = pl1[p1] + dist;
-      let v2 = pl2[p2];
-      while (v1 > v2 && p2 < pl2.length)
-        v2 = pl2[++p2];
+      let v2 = pl2[p22];
+      while (v1 > v2 && p22 < pl2.length)
+        v2 = pl2[++p22];
       if (v1 === v2) {
-        out[c2++] = v1 - dist;
+        out[c3++] = v1 - dist;
       }
     }
-    return out.slice(0, c2);
+    return out.slice(0, c3);
   };
   var plCount = (pl, plgroup) => {
-    let p2 = 0, start = 0, end = 0;
+    let p3 = 0, start = 0, end = 0;
     const out = [];
     for (let i = 0; i < plgroup.length; i++) {
       const [from, to] = plgroup[i];
-      start = p2;
-      if (from > pl[p2])
-        start = plFind(pl, from, p2);
+      start = p3;
+      if (from > pl[p3])
+        start = plFind(pl, from, p3);
       end = start;
       while (pl[end] < to && end < pl.length)
         end++;
       if (end > start) {
         out[i] = end - start;
       }
-      p2 = end;
+      p3 = end;
     }
     for (let i = 0; i < out.length; i++) {
       if (typeof out[i] !== "number")
@@ -4537,10 +4673,10 @@
     const out = [];
     let j2 = 0, r = ranges[j2];
     for (let i = 0; i < posting.length; i++) {
-      const p2 = posting[i];
-      if (p2 >= r[0] && r[1] >= p2)
-        out.push(p2);
-      while (p2 > r[0] && j2 < ranges.length - 1) {
+      const p3 = posting[i];
+      if (p3 >= r[0] && r[1] >= p3)
+        out.push(p3);
+      while (p3 > r[0] && j2 < ranges.length - 1) {
         r = ranges[++j2];
       }
       if (j2 >= ranges.length)
@@ -4549,11 +4685,11 @@
     return out;
   };
   var plContain = (posting, ltp, withHits = false) => {
-    let p2, i = 0, j2 = 0;
+    let p3, i = 0, j2 = 0;
     const lines = [], hits = [];
     while (i < posting.length) {
-      let p3 = posting[i];
-      let at = bsearchNumber(ltp, p3);
+      let p4 = posting[i];
+      let at = bsearchNumber(ltp, p4);
       if (at >= 0 && at < ltp.length) {
         if (lines[lines.length - 1] !== at) {
           lines.push(at);
@@ -4561,9 +4697,9 @@
         if (withHits) {
           if (!hits[lines.length - 1])
             hits[lines.length - 1] = [];
-          hits[lines.length - 1].push(p3 - ltp[at - 1]);
+          hits[lines.length - 1].push(p4 - ltp[at - 1]);
         }
-        p3 = posting[i];
+        p4 = posting[i];
       }
       i++;
     }
@@ -5093,7 +5229,10 @@
     return fn;
   };
   async function loadNodeJs(page) {
-    const fn = makePageURI(this.name, page);
+    let fn = makePageURI(this.name, page);
+    if (!fs.existsSync(fn) && fs.existsSync("../" + this.name + "/" + this.name)) {
+      fn = makePageURI("../" + this.name + "/" + this.name, page);
+    }
     try {
       const data = await fs.promises.readFile(fn, "utf8");
       this.setPage(page, ...parseJsonp(data));
@@ -5296,17 +5435,17 @@
       if (!to)
         to = nline + 1;
       const p1 = this.pageOfLine(nline, this.pagestarts);
-      const p2 = this.pageOfLine(to, this.pagestarts);
+      const p22 = this.pageOfLine(to, this.pagestarts);
       let out = "";
-      for (let i = p1; i <= p2; i++) {
+      for (let i = p1; i <= p22; i++) {
         if (!this._pages[i])
           return out.split("\n");
-        if (i == p1 || i == p2) {
+        if (i == p1 || i == p22) {
           let slicefrom = this.getPageLineOffset(i, nline - (p1 > 0 ? this.pagestarts[p1 - 1] : 0));
           if (nline)
             slicefrom++;
-          const sliceto = this.getPageLineOffset(i, to - (p2 > 0 ? this.pagestarts[p2 - 1] : 0));
-          if (p2 > p1) {
+          const sliceto = this.getPageLineOffset(i, to - (p22 > 0 ? this.pagestarts[p22 - 1] : 0));
+          if (p22 > p1) {
             if (i == p1)
               out = this._pages[i].slice(slicefrom);
             else
@@ -5417,7 +5556,6 @@
       this.caption = "";
       this.type = def.type || "string";
       this.values = [];
-      this.bracket = [];
       this.sortedIndex;
       for (let n in def) {
         if (!this.hasOwnProperty(n)) {
@@ -5456,9 +5594,9 @@
     const branches = action.split(BRANCH_SEP);
     const out = [];
     for (let i = 0; i < branches.length; i++) {
-      const m1 = branches[i].match(/([a-z_\-]+)#([a-z\d_-]+)/);
-      const m22 = branches[i].match(/([a-z_\-]+)(\d+[a-z\d_-]+)/);
-      const m32 = branches[i].match(/([a-z_\-]+)(\d*)/);
+      const m1 = branches[i].match(/^([a-z_\-]+)#([a-z\d_-]+)$/);
+      const m22 = branches[i].match(/^([a-z_\-]+)(\d+[a-z\d_-]+)$/);
+      const m32 = branches[i].match(/^([a-z_\-]+)(\d*)$/);
       if (m1) {
         out.push([m1[1], m1[2]]);
       } else if (m22) {
@@ -5466,7 +5604,12 @@
       } else if (m32) {
         out.push([m32[1], m32[2]]);
       } else {
-        out.push(["ck", branches[i]]);
+        const at = branches[i].indexOf("#");
+        if (at > 0) {
+          out.push([branches[i].slice(0, at), branches[i].slice(at + 1)]);
+        } else {
+          out.push(["ck", branches[i]]);
+        }
       }
     }
     return out;
@@ -5602,8 +5745,6 @@
         this.invertlinks[addr.ptkname] = {};
       let invertlinks = this.invertlinks[addr.ptkname];
       if (act.length !== 2) {
-        console.log("act length", act);
-        return ["INVALID_LINK_ADDRESS" /* InvalidLinkAddress */, addr.action];
       }
       for (let i = 0; i < act.length; i++) {
         let [ele, id] = act[i];
@@ -5912,8 +6053,8 @@
       this.errors.push({ msg, offset: tag.offset, prev: this.prevzline });
     }
     let text2 = offtext.tagText(tag);
-    const bracket = closeBracketOf(text2);
-    if (text2.slice(text2.length - 1) == bracket)
+    const closebracket = closeBracketOf(text2);
+    if (text2.slice(text2.length - 1) == closebracket)
       text2 = text2.slice(1, text2.length - 1);
     const line = this.compiledLine + this.line;
     this.toc.push({ depth, text: text2, key: this.zcount, line });
@@ -5952,6 +6093,7 @@
       }
       this.attrs = attrs;
       this.column = "";
+      this.count = 0;
     }
     resetChildTag() {
       if (this.attrs.reset) {
@@ -5971,6 +6113,7 @@
     }
     validateFields(tag, line, onError) {
       let touched = false, newtag;
+      this.count++;
       for (let aname in tag.attrs) {
         const V = this.fields[aname];
         let value = tag.attrs[aname];
@@ -5996,9 +6139,12 @@
       if (this.fields.id || this.fields["@"] || this.attrs.savelinepos) {
         this.linepos.push(compiledLine + line);
       }
-      if (this.fields.bracket) {
+      if (this.attrs.bracket) {
         let tagtext = offtext.tagText(tag);
-        if (this.fields.bracket !== "true")
+        if (!tagtext) {
+          tagtext = offtext.plain.trim().slice(0, 10);
+        }
+        if (this.attrs.bracket !== "true")
           tagtext = removeBracket(tagtext);
         this.innertext.push(tagtext);
       }
@@ -6044,6 +6190,8 @@
     }
     serialize() {
       const attrs = [], out = [];
+      if (!this.count)
+        return null;
       if (this.linepos.length || this.fields.bracket) {
         out.push(packIntDelta(this.linepos));
       }
@@ -6078,24 +6226,55 @@
     generic: `^:ak<id=unique bracket=false reset=n>
 ^:bk<id=unique heading=text bracket=false reset=ck,juan>
 ^:ck<id=unique heading=text bracket=false>
-^:n<id=unique_number>
+^:p<id=text>
+^:n<id=number>
 ^:o<@=link>
 ^:j<@=link>
+^:k<id=text>
 ^:ad
 ^:bc
 ^:ver<savelinepos=true>
-^:f<id=number>
+^:f<id=text>
 ^:sponsor<savelinepos=true>
 ^:https<bracket=false onclick=gourl>
 ^:fn<id=number>`,
+    cbeta: `^:ak<id=unique bracket=false>
+^:bk<id=unique heading=text bracket=false reset=ck,p>
+^:ck<id=unique heading=text bracket=false>
+^:https<bracket=false onclick=gourl>
+^:p<id=text>
+^:f<id=text>
+^:ver<savelinepos=true>
+^:fn<id=number>
+^:fm<id=text>
+^:k<id=text>
+^:j<@=link>
+^:v
+^:h
+^:mc
+^:l`,
     cs: `^:ak<id=unique bracket=false reset=ck>
-^:bk<id=unique reset=n>
-^:ck<caption=chunk id=unique bracket=false>
-^:n<id=unique_number>
+^:bk<id=unique heading=text bracket=false reset=n>
+^:ck<id=unique heading=text bracket=false>
+^:n
 ^:h
 ^:sz
 ^:https<bracket=false onclick=gourl>
-`
+`,
+    zidian: `^:ak<id=unique bracket=false reset=ck>
+^:bk<id=unique heading=text bracket=false reset=n>
+^:ck<id=unique heading=text bracket=false>
+^:f<id=number>
+^:https<bracket=false onclick=gourl>
+^:j<@=link>
+^:o<@=link>
+`,
+    subtitle: `^:ak<id=unique bracket=false reset=n>
+^:bk<id=unique heading=text bracket=false reset=ck>
+^:ck<id=unique heading=text bracket=false>
+^:mpeg<id=text savelinepos=true>
+^:ts<id=range>
+^:ver<savelinepos=true>`
   };
 
   // ../ptk/compiler/compiler.ts
@@ -6213,7 +6392,7 @@
           }
         }
         if (tag.attrs.type === "txt" || filename == "0.off")
-          this.setPredefine(tag.attrs.define);
+          this.setPredefine(tag.attrs.define || tag.attrs.template);
         attributes = tag.attrs;
       }
       if (sourcetype === "tsv" /* TSV */) {
@@ -6529,10 +6708,48 @@
     }
     return out;
   }
-  function scanPrimaryKeys(tofind2) {
+  var getCacheKey = (name2, field, tofind2) => {
+    return name2 + ":" + field + "=" + tofind2;
+  };
+  function searchColumnField(name2, field, tofind2) {
+    const simtofind = fromSim(tofind2);
+    let cachekey = getCacheKey(name2, field, tofind2);
+    let cache = this.scanCache[cachekey];
+    if (!cache && simtofind !== tofind2) {
+      cache = this.scanCache[getCacheKey(name2, field, simtofind)];
+    }
+    if (!cache) {
+      const array = this.columns[name2][field];
+      if (!array) {
+        console.log("missing field", field, "in column", name2);
+        return null;
+      }
+      let contain = indexOfs(array, tofind2);
+      if (!contain.length && simtofind !== tofind2) {
+        contain = indexOfs(array, simtofind);
+        if (contain.length) {
+          cachekey = getCacheKey(name2, field, simtofind);
+        }
+      }
+      const caption2 = this.columns[name2].caption || name2;
+      cache = { name: name2, field, caption: caption2, contain };
+      this.scanCache[cachekey] = cache;
+    }
+    return cache;
+  }
+  function scanColumnFields(tofind2) {
     const out = [];
     if (!tofind2)
       return [];
+    for (let name2 in this.columns) {
+      if (!this.columns[name2].attrs.scan)
+        continue;
+      const scans = this.columns[name2].attrs.scan.split(",");
+      for (let i = 0; i < scans.length; i++) {
+        const cache = searchColumnField.call(this, name2, scans[i], tofind2);
+        out.push(cache);
+      }
+    }
     for (let name2 in this.primarykeys) {
       if (!this.columns[name2].attrs.bme)
         continue;
@@ -6692,13 +6909,26 @@
   }
 
   // ../ptk/basket/footnote.ts
+  function findFootmarkInBook(ptk, id, line) {
+    const ck = ptk.nearestChunk(line);
+    const fntag = ptk.defines.fn;
+    const closestfn = ptk.findClosestTag(fntag, "id", id, line);
+    if (~closestfn) {
+      return ptk.name + ":bk#" + ck.bk.id + ".fm" + id;
+    }
+  }
   function footNoteAddress(id, line) {
     const ptk = this;
+    const fnaddr = findFootmarkInBook(ptk, id, line);
+    if (fnaddr)
+      return fnaddr;
     const ck = ptk.nearestChunk(line);
     const chunktag = ptk.defines.ck;
     const bktag = ptk.defines.bk;
-    const footbk = ck.bkid + "_fn";
+    const footbk = "fn_" + ck.bkid;
     const at = bktag.fields.id.values.indexOf(footbk);
+    if (at == -1)
+      return ptk.name + ":" + ck.bk.id + ".fm" + id;
     const booknotebkline = bktag.linepos[at];
     const closestchunk = ptk.findClosestTag(chunktag, "id", ck.id, booknotebkline);
     const chunk = chunktag.fields.id.values[closestchunk];
@@ -6772,6 +7002,8 @@
     if (typeof bookname == "number") {
       bookname = this.defines.bk.fields.id.values[bookname];
     }
+    if (!bookname)
+      return [];
     const prefix = bookPrefix(bookname);
     return this.defines.bk.fields.id.values.filter((it) => bookPrefix(it) == prefix && bookname !== it);
   }
@@ -6827,17 +7059,23 @@
   }
 
   // ../ptk/basket/chunk.ts
-  function getCaption(at) {
+  function getCaption(at, short = false) {
     const chunktag = this.defines.ck;
     let caption2 = chunktag?.innertext.get(at);
     const id = chunktag?.fields?.id?.values[at];
-    const onChunkCaption2 = this.template.onChunkCaption;
+    const onChunkCaption = this.template.onChunkCaption;
     if (!caption2) {
-      caption2 = this.columns[chunktag?.column]?.keys?.get(at);
-      if (!caption2 && onChunkCaption2)
-        caption2 = onChunkCaption2(id);
+      caption2 = this.columns[chunktag?.column]?.keys?.get(at) || "";
+      if (!caption2 && onChunkCaption)
+        caption2 = onChunkCaption(id);
     }
-    return caption2;
+    const at2 = caption2?.indexOf(";");
+    let shortcaption = caption2 || "";
+    if (~at2) {
+      shortcaption = caption2.slice(at2);
+      caption2 = caption2.slice(0, at2);
+    }
+    return short ? shortcaption : caption2;
   }
   function caption(at) {
     let caption2 = this.getCaption(at);
@@ -6868,6 +7106,19 @@
     const at = this.nearestTag(line, chunktag) - 1;
     return this.getChunk(at);
   }
+  function getBookInfo(at) {
+    const booktag = this.defines.bk;
+    const bkid = booktag.fields.id.values[at];
+    let bkcaption = booktag?.innertext.get(at);
+    let short = bkcaption.slice(0, 2);
+    const bkheading = booktag?.fields.heading?.values[at] || booktag?.innertext?.get(at);
+    const at2 = bkcaption.indexOf(";");
+    if (~at2) {
+      short = bkcaption.slice(at2 + 1);
+      bkcaption = bkcaption.slice(0, at2);
+    }
+    return { id: bkid, caption: bkcaption, short, heading: bkheading };
+  }
   function getChunk(at) {
     const chunktag = this.defines.ck;
     const booktag = this.defines.bk;
@@ -6877,22 +7128,18 @@
       return null;
     const line = chunktag.linepos[at];
     const bkat = this.nearestTag(line, booktag) - 1;
-    const bkid = booktag.fields.id.values[bkat];
+    const bk = getBookInfo.call(this, bkat);
+    const bkid = bk.id;
     const id = chunktag.fields.id.values[at];
     const innertext2 = chunktag.innertext.get(at);
     const caption2 = this.caption(at);
     const depth = chunktag.depths ? chunktag.depths[at] || 1 : 1;
-    const bkheading = booktag.fields.heading?.values[bkat] || booktag.innertext.get(bkat);
     return {
+      bk,
       bkid,
       caption: caption2,
       at: at + 1,
       id,
-      bk: {
-        id: bkid,
-        caption: booktag?.innertext.get(bkat),
-        heading: bkheading
-      },
       depth,
       line: chunktag.linepos[at],
       innertext: innertext2
@@ -6925,33 +7172,33 @@
     return out;
   }
   function prevsiblingChunk(at, start) {
-    let p2 = at - 1;
+    let p3 = at - 1;
     const chunktag = this.defines.ck;
     if (!chunktag.depths && at > 0)
       return at - 1;
-    while (p2 > 0) {
-      if (chunktag.depths[p2] == chunktag.depths[at])
-        return p2;
-      else if (chunktag.depths[p2] < chunktag.depths[at])
+    while (p3 > 0) {
+      if (chunktag.depths[p3] == chunktag.depths[at])
+        return p3;
+      else if (chunktag.depths[p3] < chunktag.depths[at])
         break;
-      p2--;
-      if (start < chunktag.linepos[p2])
+      p3--;
+      if (start < chunktag.linepos[p3])
         break;
     }
     return -1;
   }
   function nextsiblingChunk(at, end) {
-    let p2 = at + 1;
+    let p3 = at + 1;
     const chunktag = this.defines.ck;
     if (!chunktag.depths && at < end)
       return at + 1;
-    while (p2 < chunktag.linepos.length) {
-      if (chunktag.depths[p2] == chunktag.depths[at])
-        return p2;
-      else if (chunktag.depths[p2] < chunktag.depths[at])
+    while (p3 < chunktag.linepos.length) {
+      if (chunktag.depths[p3] == chunktag.depths[at])
+        return p3;
+      else if (chunktag.depths[p3] < chunktag.depths[at])
         break;
-      p2++;
-      if (chunktag.linepos[p2] >= end)
+      p3++;
+      if (chunktag.linepos[p3] >= end)
         break;
     }
     return -1;
@@ -6996,7 +7243,8 @@
       this.tocs = {};
       this.rangeOfAddress = rangeOfAddress;
       this.innertext = innertext;
-      this.scanPrimaryKeys = scanPrimaryKeys;
+      this.scanColumnFields = scanColumnFields;
+      this.searchColumnField = searchColumnField;
       this.scanText = scanText;
       this.parseQuery = parseQuery;
       this.scoreLine = scoreLine;
@@ -7056,7 +7304,11 @@
       for (const n in this.defines) {
         if (!this.defines[n].fields.lazy) {
           const section = this.getSection("^" + n);
-          this.defines[n].deserialize(section, this);
+          if (section && section.length) {
+            this.defines[n].deserialize(section, this);
+          } else {
+            this.defines[n].empty = true;
+          }
         }
         for (let attr2 in this.defines[n].fields) {
           const A = this.defines[n].fields[attr2];
@@ -7064,6 +7316,10 @@
             A.keys = this.primarykeys[A.foreign];
           }
         }
+      }
+      for (const n in this.defines) {
+        if (this.defines[n].empty)
+          delete this.defines[n];
       }
       for (const n in this.columns) {
         const tagname = this.columns[n].attrs?.tagname;
@@ -7137,24 +7393,27 @@
       const lineoff = line - linepos[at];
       const id = chunktag?.fields?.id?.values[at];
       const bkat = this.nearestTag(line, booktag) - 1;
-      const bkid = booktag.fields.id.values[bkat];
-      const bkheading = booktag.fields.heading?.values[bkat] || booktag.innertext.get(bkat);
+      const bk = getBookInfo.call(this, bkat);
+      const bkid = bk?.id;
       const caption2 = this.caption(at);
-      return { id, tagname: "ck", caption: caption2, lineoff, bkid, bkheading };
+      return { id, tagname: "ck", caption: caption2, lineoff, bk, bkid };
     }
     getPostings(s) {
       const nPostings = this.inverted.nPostingOf(s);
       const postings = this.inverted.postings;
       return nPostings.map((np) => postings[np]);
     }
-    nearestTag(line, tag) {
+    nearestTag(line, tag, fieldname = "") {
       if (typeof tag == "string")
         tag = this.defines[tag];
       const linepos = tag.linepos;
       if (!linepos)
         return null;
       const at = bsearchNumber(linepos, line);
-      return line < linepos[linepos.length - 1] ? at : at + 1;
+      if (!fieldname)
+        return line < linepos[linepos.length - 1] ? at : at + 1;
+      else if (at > 0)
+        return tag.fields[fieldname].values[at - 1];
     }
     findClosestTag(typedef, key2, value, from = 0) {
       let at = typedef.fields[key2].values.indexOf(value);
@@ -7206,9 +7465,9 @@
   var makeUint8Array = (thing) => new Uint8Array(thing.buffer || thing);
   var wasm = "AGFzbQEAAAABCgJgAABgAn9/AXwDAwIAAQUDAQACBwkCAW0CAAFjAAEIAQAKlQECSQEDfwNAIAEhAEEAIQIDQCAAQQF2IABBAXFBoIbi7X5scyEAIAJBAWoiAkEIRw0ACyABQQJ0IAA2AgAgAUEBaiIBQYACRw0ACwtJAQF/IAFBf3MhAUGAgAQhAkGAgAQgAGohAANAIAFB/wFxIAItAABzQQJ0KAIAIAFBCHZzIQEgAkEBaiICIABJDQALIAFBf3O4Cw";
   var instance = new WebAssembly.Instance(
-    new WebAssembly.Module(Uint8Array.from(atob(wasm), (c2) => c2.charCodeAt(0)))
+    new WebAssembly.Module(Uint8Array.from(atob(wasm), (c3) => c3.charCodeAt(0)))
   );
-  var { c, m: m2 } = instance.exports;
+  var { c: c2, m: m2 } = instance.exports;
   var pageSize = 65536;
   var crcBuffer = makeUint8Array(m2).subarray(pageSize);
 
@@ -7269,19 +7528,6 @@
     return buildAST(tokenize3(expression));
   }
 
-  // ../ptk/meta/sponsor.ts
-  var sponsors = [
-    "\u91CB\u5E38\u660E",
-    "\u752F\u8000\u5357",
-    "\u9673\u4FE1\u826F",
-    "\u845B\u4ECB\u6B63",
-    "\u738B\u5FD7\u6500"
-  ];
-  var getSponsor = (ptk, line) => {
-    const sp = ptk.taggedLines.sponsor || sponsors;
-    return sp[Math.floor(Math.random() * sp.length)] || "";
-  };
-
   // ../ptk/lineview/loadline.ts
   async function loadLines(lva, noparallel = false) {
     const jobs = [], out = [];
@@ -7330,9 +7576,9 @@
       const lines = divisions[i].getLines();
       const linetexts = ptk.getLines(lines);
       const prevdepth = i ? divisions[i - 1].depth : 0;
-      const onLineText2 = ptk.template?.onLineText;
+      const onLineText = ptk.template?.onLineText;
       for (let j2 = 0; j2 < linetexts.length; j2++) {
-        const text2 = onLineText2 ? onLineText2(linetexts[j2], lines[j2]) : linetexts[j2];
+        const text2 = onLineText ? onLineText(linetexts[j2], lines[j2]) : linetexts[j2];
         let edge = 0;
         if (j2 === 0)
           edge |= 1;
@@ -7343,7 +7589,7 @@
         if (prevdepth > depth && edge & true)
           edge ^= 1;
         const closable2 = edge == 1 || edge == 3 || !divisions[i].diggable;
-        const sponsor = closable2 && from == 0 ? getSponsor(ptk, lines[j2]) : "";
+        const sponsor = "";
         const correspondences = from == 0 && j2 == 0 ? ptk.template?.getCorrespondence(ptk, lines[j2]) : [];
         const highlight = highlightline - divisions[i].from == j2;
         segment.push({
@@ -7400,6 +7646,7 @@
   var GUIDEACTIONPREFIX = "!";
   var TITLECOUNTACTIONPREFIX = "~";
   var OWNERDRAWPREFIX = "@";
+  var COLUMNFIELDSEP = ".";
   var Action = class {
     constructor(addr, depth = 0, dividx = 0) {
       this.act = Action.parse(addr.action);
@@ -7418,6 +7665,7 @@
       this.ptkname = addr.ptkname;
       this.opts = {};
       this.dividx = dividx;
+      this.pagable = true;
     }
     async run() {
     }
@@ -7474,7 +7722,6 @@
       this.eleid = this.action;
       this.address = addr;
       this.diggable = true;
-      this.pagable = true;
     }
     async run() {
       const ptk = usePtk(this.ptkname);
@@ -7492,40 +7739,53 @@
       const ptk = usePtk(this.ptkname);
       const caption2 = ptk.innertext(this.address);
       let { name: name2 } = this.act[0];
+      let out = [];
       const action = this.address.action.slice(1);
       const idx2 = this.dividx;
       const actionprefix = GUIDEACTIONPREFIX;
-      if (!ptk.template.parseChoice)
+      if (ptk.template.guidedrawer) {
+        this.ownerdraw = { painter: ptk.template.guidedrawer, data: {
+          from: this.from,
+          actionprefix,
+          idx: idx2,
+          name: name2,
+          action,
+          caption: caption2,
+          ptk
+        } };
         return;
-      const [choices, groupby, groupfilter] = ptk.template.parseChoice(action);
-      const col = ptk.columns[ptk.template.filterColumn];
-      const master = ptk.defines[col.attrs.master];
-      let { items, groups } = ptk.template.runFilter(ptk, col, { choices, groupby, groupfilter });
-      items = items.map((idx3) => {
-        const line = master.linepos[idx3];
-        const ck = ptk.nearestChunk(line);
-        const size = (master.linepos[idx3 + 1] ? master.linepos[idx3 + 1] : ptk.header.eot) - line;
-        const lineoff = line - ck.line;
-        const record = [];
-        const recordend = master.linepos[idx3 + 1];
-        for (let i = 0; i < col.fieldnames.length; i++) {
-          const def = ptk.defines[col.fieldnames[i]];
-          if (!def)
-            continue;
-          const at = bsearchNumber(def.linepos, line);
-          if (def.linepos[at] < recordend) {
-            record.push(def.linepos[at]);
+      }
+      if (ptk.template.parseChoice) {
+        const [choices, groupby, groupfilter] = ptk.template.parseChoice(action);
+        const col = ptk.columns[ptk.template.filterColumn];
+        const master = ptk.defines[col.attrs.master];
+        let { items, groups } = ptk.template.runFilter(ptk, col, { choices, groupby, groupfilter });
+        out = items.map((idx3) => {
+          const line = master.linepos[idx3];
+          const ck = ptk.nearestChunk(line);
+          const size = (master.linepos[idx3 + 1] ? master.linepos[idx3 + 1] : ptk.header.eot) - line;
+          const lineoff = line - ck.line;
+          const record = [];
+          const recordend = master.linepos[idx3 + 1];
+          for (let i = 0; i < col.fieldnames.length; i++) {
+            const def = ptk.defines[col.fieldnames[i]];
+            if (!def)
+              continue;
+            const at = bsearchNumber(def.linepos, line);
+            if (def.linepos[at] < recordend) {
+              record.push(def.linepos[at]);
+            }
           }
-        }
-        if (!ck)
-          return null;
-        return { chunkname: ck.name, line, size, ck, lineoff, record };
-      }).filter((it) => !!it);
+          if (!ck)
+            return null;
+          return { chunkname: ck.name, line, size, ck, lineoff, record };
+        }).filter((it) => !!it);
+      }
       this.ownerdraw = { painter: "guide", data: {
         from: this.from,
         actionprefix,
         idx: idx2,
-        items,
+        items: out,
         name: name2,
         action,
         caption: caption2,
@@ -7885,35 +8145,50 @@
         return -1;
       return this.res[idx2].line;
     }
+    searchLexicon(ptk, name2, tofind2) {
+      const lexicon = ptk.primarykeys[name2];
+      let matcher = lexicon.enumMiddle;
+      let enummode = 1;
+      if (tofind2[0] == "$") {
+        enummode = 0;
+        matcher = lexicon.enumStart;
+        tofind2 = tofind2.slice(1);
+      } else if (tofind2[tofind2.length - 1] == "$") {
+        enummode = 2;
+        matcher = lexicon.enumEnd;
+        tofind2 = tofind2.slice(0, tofind2.length - 1);
+      }
+      const items = matcher.call(lexicon, tofind2);
+      const tagname = ptk.columns[name2]?.attrs?.tagname;
+      const foreign = ptk.columns[name2]?.attrs?.foreign || ptk.columns[name2]?.fieldnames[0];
+      const backref = ptk.columns[name2]?.attrs?.backref;
+      this.last = 1;
+      this.till = 1;
+      const caption2 = ptk.columns[name2]?.caption;
+      this.ownerdraw = {
+        painter: "queryresult",
+        data: { querytype: "BME", name: name2, caption: caption2, ptk, tagname, foreign, tofind: tofind2, items, backref, lexicon }
+      };
+    }
     async run() {
       const ptk = usePtk(this.ptkname);
       for (let i = 0; i < this.act.length; i++) {
         let { name: name2, tofind: tofind2 } = this.act[i];
-        const lexicon = ptk.primarykeys[name2];
-        if (!lexicon)
-          continue;
-        let matcher = lexicon.enumMiddle;
-        let enummode = 1;
-        if (tofind2[0] == "$") {
-          enummode = 0;
-          matcher = lexicon.enumStart;
-          tofind2 = tofind2.slice(1);
-        } else if (tofind2[tofind2.length - 1] == "$") {
-          enummode = 2;
-          matcher = lexicon.enumEnd;
-          tofind2 = tofind2.slice(0, tofind2.length - 1);
+        if (ptk.primarykeys[name2])
+          return this.searchLexicon(ptk, name2, tofind2);
+        else if (name2.indexOf(COLUMNFIELDSEP)) {
+          const [column, field] = name2.split(COLUMNFIELDSEP);
+          const out = ptk.searchColumnField(column, field, tofind2);
+          this.last = out.contain.length;
+          this.till = this.from + 5;
+          if (this.till + 1 >= this.last)
+            this.till = this.last - 1;
+          const items = out.contain.slice(this.from, this.till).map((it) => {
+            return it;
+          });
+          const caption2 = field;
+          this.ownerdraw = { painter: "queryresult", data: { ptk, caption: caption2, column, field, tofind: tofind2, items, from: this.from, last: this.last } };
         }
-        const items = matcher.call(lexicon, tofind2);
-        const tagname = ptk.columns[name2]?.attrs?.tagname;
-        const foreign = ptk.columns[name2]?.attrs?.foreign || ptk.columns[name2]?.fieldnames[0];
-        const backref = ptk.columns[name2]?.attrs?.backref;
-        this.last = 1;
-        this.till = 1;
-        const caption2 = ptk.columns[name2]?.caption;
-        this.ownerdraw = {
-          painter: "queryresult",
-          data: { name: name2, caption: caption2, ptk, tagname, foreign, tofind: tofind2, items, backref, lexicon }
-        };
       }
     }
   };
@@ -7989,7 +8264,7 @@
         this._divisions = [];
         return this;
       }
-      const depth = this._divisions[idx2].depth;
+      const depth = this._divisions[idx2]?.depth;
       let next = idx2 + 1;
       let nextdepth = this._divisions[next]?.depth;
       while (next < this._divisions.length && nextdepth > depth) {
@@ -8053,14 +8328,14 @@
       return out.join("^").replace(/\^?([\(\)])\^?/g, "$1").replace(/\++/g, "^");
     }
     removeSameAction(newaddr, from = 0, depth = -1) {
-      let p2 = from;
-      while (p2 < this._divisions.length && this._divisions[p2].depth > depth) {
-        if (sameAddress(this._divisions[p2], newaddr) && newaddr.action) {
-          this._divisions.splice(p2, 1);
-          return p2;
+      let p3 = from;
+      while (p3 < this._divisions.length && this._divisions[p3].depth > depth) {
+        if (sameAddress(this._divisions[p3], newaddr) && newaddr.action) {
+          this._divisions.splice(p3, 1);
+          return p3;
           break;
         }
-        p2++;
+        p3++;
       }
       return -1;
     }
@@ -8169,7 +8444,7 @@
       this._divisions = this._divisions.filter((it) => !!it);
       this._combine();
     }
-    next(idx2) {
+    next(idx2, nline) {
       const division = typeof idx2 == "number" ? this._divisions[idx2] : idx2;
       if (!division)
         return;
@@ -8180,7 +8455,7 @@
         return this;
       if (division.till == -1)
         division.till = division.from + ACTIONPAGESIZE;
-      division.from = division.till - 1;
+      division.from += nline || pagesize;
       if (division.from < 0)
         division.from = 0;
       division.till = division.from + pagesize;
@@ -8190,12 +8465,41 @@
         division.till = linecount;
       return this;
     }
-    prev(idx2) {
+    end(idx2) {
+      const division = typeof idx2 == "number" ? this._divisions[idx2] : idx2;
+      if (!division)
+        return;
+      const linecount = division.last - division.first;
+      const pagesize = this.getViewPageSize(division);
+      division.till = linecount;
+      if (linecount > pagesize) {
+        division.from = division.till - pagesize;
+      } else {
+        division.from = 0;
+      }
+      return this;
+    }
+    start(idx2) {
+      const division = typeof idx2 == "number" ? this._divisions[idx2] : idx2;
+      if (!division)
+        return;
+      this.removeChildren(idx2);
+      const linecount = division.last - division.first;
+      const pagesize = this.getViewPageSize(division);
+      if (linecount <= pagesize || linecount <= ACTIONPAGESIZE)
+        return this;
+      division.from = 0;
+      division.till = pagesize;
+      if (division.till > linecount)
+        division.till = linecount;
+      return this;
+    }
+    prev(idx2, pgsize) {
       const division = typeof idx2 == "number" ? this._divisions[idx2] : idx2;
       if (!division)
         return;
       const pagesize = this.getViewPageSize(division);
-      division.from -= pagesize - 1;
+      division.from -= pgsize || pagesize;
       if (division.from < 0)
         division.from = 0;
       division.till = division.from + pagesize;
@@ -8336,6 +8640,8 @@
     for (let i = 0; i < tags.length; i++) {
       const tag = tags[i];
       const def = ptk.defines[tag.name];
+      if (!def)
+        continue;
       const value = def.attrs[attr2];
       if (typeof value !== "undefined") {
         const backref = def.attrs.backref;
@@ -8354,764 +8660,6 @@
     }
     return out;
   };
-
-  // ../ptk/meta/cm.ts
-  var tounge = [
-    { prefix: "l", caption: "\u2693", factors: ["\u5C16,\u908A", "\u4E2D", "\u6839"] },
-    //location
-    { prefix: "b", caption: "\u{1F505}", factors: ["\u6DE1", "\u6697,\u9EEF"] },
-    //brightness*/
-    { prefix: "c", caption: "\u{1F308}", factors: ["\u767D", "\u9EC3", "\u7D05,\u8D64", "\u7D2B,\u7D73", "\u9752", "\u9ED1,\u7070"] },
-    //color
-    { prefix: "t", caption: "\u{1F35E}", factors: ["\u8584,\u5C11", "\u539A,\u80D6,\u5AE9"] },
-    //thickness
-    { prefix: "o", caption: "\u{1F406}", factors: ["\u7D0B,\u88C2", "\u6591,\u75D5,\u5370", "\u523A", "\u7600"] },
-    { prefix: "p", caption: "\u2618\uFE0F", factors: ["\u6E05,\u7121", "\u57A2", "\u81A9,\u9ECF", "\u525D,\u5149"] },
-    //pattern
-    { prefix: "h", caption: "\u{1F911}", factors: ["\u4E7E,\u71E5,\u7CD9,\u7126,\u5C11\u6D25,\u7121\u6D25", "\u6F64,\u6ED1,\u591A\u6D25,\u6709\u6D25,\u6D8E"] }
-    // humidity
-  ];
-  var pulse = [
-    { prefix: "l", caption: "\u2693", factors: ["\u5BF8", "\u95DC", "\u5C3A"] },
-    //location
-    { prefix: "t", caption: "\u{1F476}", factors: ["\u7D30"] },
-    //thickness
-    { prefix: "g", caption: "\u{1F4AA}", factors: ["\u8EDF", "\u5F31,\u5FAE,\u7121\u529B", "\u6D2A,\u6709\u529B,\u5927", "\u5BE6,\u5805", "\u865B"] },
-    //strength
-    { prefix: "q", caption: "\u{1F422}", factors: ["\u6025,\u75BE,\u4FC3", "\u6578,\u983B", "\u7DE9", "\u9072"] },
-    //frequency
-    { prefix: "p", caption: "\u{1F418}", factors: ["\u6D6E", "\u6C89,\u4F0F", "\u6309"] },
-    //pressure
-    { prefix: "s", caption: "\u{1F3BF}", factors: ["\u6ED1", "\u6F80,\u6F81"] },
-    //smoothness
-    { prefix: "w", caption: "\u{1F30A}", factors: ["\u5F26", "\u7DCA", "\u7D50,\u7D50\u4EE3", "\u6FE1"] }
-    //waveform
-  ];
-  var symtom = [
-    { prefix: "a", caption: "\u{1F9CD}", factors: ["\u80A9", "\u9838,\u9805", "\u7662", "\u9EBB"] },
-    { prefix: "b", caption: "\u{1F9D1}", factors: ["\u982D\u75DB", "\u982D\u6688", "\u982D\u91CD", "\u982D\u8139"] },
-    { prefix: "c", caption: "\u{1F610}", factors: ["\u767D", "\u9EC3"], include: "\u9762,\u81C9" },
-    { prefix: "d", caption: "\u{1F9B5}", factors: ["\u51B7", "\u62BD\u6410", "\u986B,\u6296"], inluce: "\u624B,\u8DB3,\u80A2" },
-    { prefix: "g", caption: "\u{1F930}", factors: ["\u8179\u75DB,\u8179\u75BC", "\u8179\u8139", "\u80F8\u60B6"] },
-    { prefix: "h", caption: "\u{1F42A}", factors: ["\u8170\u9178,\u8170\u75E0", "\u8170\u75DB", "\u80CC\u75DB"] },
-    { prefix: "e", caption: "\u2744\uFE0F", factors: ["\u5BD2,\u754F\u5BD2,\u60E1\u5BD2", "\u60E1\u98A8"] },
-    { prefix: "f", caption: "\u2668\uFE0F", factors: ["\u767C\u71B1,\u58EF\u71B1", "\u5C11\u71B1", "\u5BD2\u71B1"] },
-    { prefix: "i", caption: "\u{1F4A6}", factors: ["\u81EA\u6C57", "\u76DC\u6C57", "\u7121\u6C57"] },
-    { prefix: "j", caption: "\u{1F440}", factors: ["\u754F\u5149,\u7F9E\u660E", "\u816B", "\u8D64,\u7D05", "\u6DDA", "\u4E0D\u6E05,\u7CCA"], include: "\u773C,\u76EE,\u8996" },
-    { prefix: "k", caption: "\u{1F442}", factors: ["\u8033\u9CF4", "\u807E"] },
-    { prefix: "l", caption: "\u{1F443}", factors: ["\u9F3B\u585E", "\u5598,\u54EE", "\u6D95", "\u9F3B\u8840,\u8842"] },
-    { prefix: "m", caption: "\u{1F444}", factors: ["\u6E34,\u4E7E", "\u5614,\u5443", "\u53E3\u81ED", "\u53E3\u6DE1", "\u53E3\u82E6", "\u54B3\u8840"] },
-    { prefix: "n", caption: "\u{1F4AC}", factors: ["\u54B3\u55FD", "\u75F0", "\u54BD\u75DB", "\u8B6B,\u8A9E"] },
-    { prefix: "o", caption: "\u{1F9B7}", factors: ["\u9F66,\u7259\u5BA3", "\u7259\u75DB", "\u86C0"] },
-    { prefix: "p", caption: "\u{1F494}", factors: ["\u60B8,\u75F5,\u6014,\u5FE1", "\u7D5E\u75DB"] },
-    { prefix: "q", caption: "\u{1F61E}", factors: ["\u7169,\u8E81,\u4EA2", "\u6012,\u72C2", "\u9B30,\u4E0D\u6A02", "\u75B2,\u5026,\u6020,\u61F6,\u60F0"] },
-    { prefix: "r", caption: "\u{1F6CC}", factors: ["\u5931\u7720,\u4E0D\u5BD0", "\u6613\u9192,\u6DFA\u7720", "\u591A\u5922"] },
-    { prefix: "s", caption: "\u{1F4A9}", factors: ["\u4FBF\u79D8,\u79D8\u7D50,\u4FBF\u7D50", "\u4FBF\u6E8F,\u6E8F,\u62C9\u7A00", "\u4FBF\u8840,\u4E0B\u8840", "\u809B", "\u75D4"] },
-    { prefix: "t", caption: "\u{1F6BD}", factors: ["\u4E0D\u901A,\u4E0D\u5229", "\u6FC1", "\u6E05\u9577", "\u591A\u5C3F,\u983B\u6578", "\u5931\u7981,\u591C\u5C3F", "\u8840\u5C3F,\u5C3F\u8840"] }
-  ];
-  var expandFactor = (arr) => {
-    for (let i = 0; i < arr.length; i++) {
-      if (~arr[i].indexOf(",")) {
-        arr[i] = arr[i].split(",");
-      }
-    }
-  };
-  var splitFactors = (allFactors) => {
-    for (let i = 0; i < allFactors.length; i++) {
-      expandFactor(allFactors[i].factors);
-      if (typeof allFactors[i].include == "string") {
-        allFactors[i].include = allFactors[i].include.split(",");
-      }
-    }
-  };
-  splitFactors(tounge);
-  splitFactors(pulse);
-  splitFactors(symtom);
-  var SickFactors = { tounge, pulse, symtom };
-  var SickCauses = {
-    //病因
-    l01: "\u98A8\u5BD2",
-    l02: "\u98A8\u71B1",
-    l03: "\u98A8\u71E5",
-    l04: "\u865B\u98A8",
-    l05: "\u9670\u5BD2",
-    l06: "\u5BD2\u71B1",
-    l07: "\u865B\u5BD2",
-    l08: "\u98A8\u6691",
-    l09: "\u6691\u6FD5",
-    l10: "\u98A8\u6FD5",
-    l11: "\u5BD2\u6FD5",
-    l12: "\u6FD5\u71B1",
-    l13: "\u71E5\u706B",
-    l14: "\u6EAB\u71E5",
-    l15: "\u71E5\u71B1",
-    l16: "\u71E5\u6FD5",
-    l17: "\u865B\u71E5",
-    l18: "\u98A8\u706B",
-    l19: "\u5BD2\u706B",
-    l20: "\u6FD5\u706B",
-    l21: "\u71E5\u706B",
-    l22: "\u9B30\u706B",
-    l23: "\u865B\u706B",
-    l24: "\u6C23\u9B30",
-    l25: "\u6C23\u7600",
-    l26: "\u6C23\u75F0",
-    l27: "\u6C23\u706B",
-    l28: "\u5BD2\u7600",
-    l29: "\u7600\u71B1",
-    l30: "\u75F0\u7600",
-    l31: "\u75F0\u6FD5",
-    l32: "\u71B1\u75F0",
-    l33: "\u75F0\u706B",
-    l34: "\u98A8\u75F0",
-    l35: "\u865B\u75F0",
-    l36: "\u6C34\u98F2",
-    l37: "\u5BD2\u98F2",
-    l38: "\u98F2\u71B1",
-    l39: "\u98DF\u6EEF",
-    l40: "\u7A4D\u71B1",
-    l41: "\u87F2\u7A4D",
-    l42: "\u6C23\u865B",
-    l43: "\u8840\u865B",
-    l44: "\u9670\u865B",
-    l45: "\u967D\u865B"
-  };
-  var SickLocations = {
-    //病位
-    z01: "\u80BA\u885B",
-    z02: "\u80BA\u813E",
-    z03: "\u5FC3\u80BA",
-    z04: "\u809D\u80BA",
-    z05: "\u80BA\u814E",
-    z06: "\u5FC3\u71DF",
-    z07: "\u5FC3\u80C3",
-    z08: "\u5FC3\u813E",
-    z09: "\u5FC3\u81BD",
-    z10: "\u5FC3\u809D",
-    z11: "\u5FC3\u814E",
-    z12: "\u80BA\u80C3",
-    z13: "\u813E\u80C3",
-    z14: "\u80C3\u8178",
-    z15: "\u81BD\u80C3",
-    z16: "\u809D\u80C3",
-    z17: "\u814E\u80C3",
-    z18: "\u809D\u813E",
-    z19: "\u813E\u814E",
-    z20: "\u809D\u81BD",
-    z21: "\u809D\u814E"
-  };
-  var SickSigns = {
-    //病候
-    h001: "\u885B\u6C23\u5931\u5BA3",
-    h002: "\u885B\u6C23\u9B30\u84B8",
-    h003: "\u885B\u6C23\u4E0D\u632F",
-    h004: "\u885B\u6C23\u865B\u9B30",
-    h005: "\u885B\u967D\u5931\u5BA3",
-    h006: "\u885B\u967D\u602B\u9B30",
-    h007: "\u885B\u967D\u9B30\u9589",
-    h008: "\u885B\u967D\u9B30\u84B8",
-    h009: "\u885B\u967D\u4E0D\u632F",
-    h010: "\u885B\u967D\u865B\u9B30",
-    h011: "\u885B\u967D\u4E0D\u56FA",
-    h012: "\u71DF\u885B\u9B30\u6EEF",
-    h013: "\u71DF\u885B\u9B30\u84B8",
-    h014: "\u71DF\u885B\u9B30\u71BE",
-    h015: "\u71DF\u885B\u865B\u5F31",
-    h016: "\u71DF\u885B\u865B\u9B30",
-    h017: "\u71DF\u885B\u5931\u8ABF",
-    h018: "\u71DF\u885B\u4E0D\u884C",
-    h019: "\u71DF\u6C23\u5931\u5BA3",
-    h020: "\u71DF\u6C23\u9B30\u84B8",
-    h021: "\u6C23\u71DF\u860A\u84B8",
-    h022: "\u6C23\u71DF\u84B8\u707C",
-    h023: "\u6C23\u71DF\u860A\u9589",
-    h024: "\u71DF\u8840\u5931\u5BA3",
-    h025: "\u71DF\u8840\u9B30\u84B8",
-    h026: "\u71DF\u8840\u9B30\u9589",
-    h027: "\u71DF\u8840\u84B8\u707C",
-    h028: "\u71DF\u8840\u860A\u9589",
-    h029: "\u71DF\u8840\u5931\u990A",
-    h030: "\u71DF\u6DB2\u84B8\u707C",
-    h031: "\u71DF\u9670\u6D88\u707C",
-    h032: "\u71DF\u9670\u5931\u990A",
-    h033: "\u6E05\u6C23\u5931\u5BA3",
-    h034: "\u6E05\u6C23\u9B30\u904F",
-    h035: "\u6E05\u6C23\u9B30\u84B8",
-    h036: "\u6E05\u6C23\u9B30\u71BE",
-    h037: "\u6E05\u6C23\u9B30\u9589",
-    h038: "\u6E05\u6C23\u9B30\u9677",
-    h039: "\u6E05\u6C23\u602B\u9B30",
-    h040: "\u6E05\u6C23\u860A\u84B8",
-    h041: "\u6E05\u6C23\u860A\u71BE",
-    h042: "\u6E05\u6C23\u5931\u5BE7",
-    h043: "\u6E05\u6C23\u9B30\u6EEF",
-    h044: "\u6E05\u6C23\u4E0D\u5316",
-    h045: "\u6E05\u6C23\u9B30\u9006",
-    h046: "\u6E05\u6C23\u9006\u4E82",
-    h047: "\u6E05\u6C23\u9B30\u7D50",
-    h048: "\u6E05\u6C23\u9589\u53A5",
-    h049: "\u6E05\u6C23\u865B\u9B30",
-    h050: "\u6E05\u6C23\u865B\u6EEF",
-    h051: "\u6E05\u6C23\u53A5\u819A",
-    h052: "\u6E05\u6C23\u865B\u84B8",
-    h053: "\u6E05\u6C23\u865B\u9677",
-    h054: "\u6E05\u6C23\u4E0D\u5347",
-    h055: "\u6E05\u6C23\u4E0B\u9677",
-    h056: "\u6E05\u967D\u5931\u5BA3",
-    h057: "\u6E05\u967D\u9B30\u904F",
-    h058: "\u6E05\u967D\u9B30\u6EEF",
-    h059: "\u6E05\u967D\u602B\u9B30",
-    h060: "\u6E05\u967D\u9B30\u84B8",
-    h061: "\u6E05\u967D\u9B30\u71BE",
-    h062: "\u6E05\u967D\u9B30\u9589",
-    h063: "\u6E05\u967D\u9B30\u7D50",
-    h064: "\u6E05\u967D\u9B30\u9006",
-    h065: "\u6E05\u967D\u9006\u4E82",
-    h066: "\u6E05\u967D\u9B30\u9677",
-    h067: "\u6E05\u967D\u9B30\u75F9",
-    h068: "\u6E05\u967D\u4E0D\u884C",
-    h069: "\u6E05\u967D\u4E0D\u5316",
-    h070: "\u6E05\u967D\u5931\u4F4D",
-    h071: "\u6E05\u967D\u8499\u9589",
-    h072: "\u6E05\u967D\u9589\u53A5",
-    h073: "\u6E05\u967D\u865B\u9B30",
-    h074: "\u6E05\u967D\u865B\u9677",
-    h075: "\u6E05\u967D\u865B\u9589",
-    h076: "\u6E05\u967D\u5931\u8ABF",
-    h077: "\u6E05\u967D\u865B\u6EEF",
-    h078: "\u6E05\u967D\u865B\u7D50",
-    h079: "\u6E05\u967D\u865B\u71BE",
-    h080: "\u6E05\u967D\u4E0D\u5347",
-    h081: "\u6E05\u967D\u4E0B\u9677",
-    h082: "\u6A1E\u6A5F\u9B30\u904F",
-    h083: "\u6A1E\u6A5F\u9B30\u6EEF",
-    h084: "\u6A1E\u6A5F\u9B30\u84B8",
-    h085: "\u6A1E\u6A5F\u9B30\u71BE",
-    h086: "\u6A1E\u6A5F\u9B30\u7D50",
-    h087: "\u6A1E\u6A5F\u865B\u84B8",
-    h088: "\u6A1E\u6A5F\u865B\u9B30",
-    h089: "\u6D25\u6C23\u4E0D\u5316",
-    h090: "\u6D25\u6C23\u9B30\u6EEF",
-    h091: "\u6D25\u6C23\u9B30\u7D50",
-    h092: "\u6C23\u865B\u4E0D\u5316",
-    h093: "\u6D25\u6C23\u9B30\u84B8",
-    h094: "\u6D25\u6C23\u9B30\u71BE",
-    h095: "\u6D25\u6C23\u860A\u84B8",
-    h096: "\u6D25\u6C23\u84B8\u707C",
-    h097: "\u6D25\u6C23\u84B8\u9589",
-    h098: "\u6D25\u6C23\u860A\u9589",
-    h099: "\u6D25\u6C23\u84B8\u71BE",
-    h100: "\u6D25\u6C23\u71E5\u7D50",
-    h101: "\u6D25\u6C23\u714E\u8FEB",
-    h102: "\u6D25\u6C23\u71BE\u9006",
-    h103: "\u6D25\u6C23\u9677\u9589",
-    h104: "\u6D25\u6C23\u71BE\u9589",
-    h105: "\u6D25\u6C23\u9589\u53A5",
-    h106: "\u6D25\u6C23\u865B\u707C",
-    h107: "\u6D25\u6C23\u865B\u9589",
-    h108: "\u6D25\u6C23\u9589\u812B",
-    h109: "\u6D25\u6C23\u4E0D\u5E03",
-    h110: "\u6D25\u6C23\u4E0D\u56FA",
-    h111: "\u6C23\u6DB2\u6D88\u707C",
-    h112: "\u6C23\u6DB2\u6D88\u6DB8",
-    h113: "\u6C23\u6DB2\u812B\u7D55",
-    h114: "\u6DB2\u7AED\u967D\u812B",
-    h115: "\u6C23\u6DB2\u9B30\u84B8",
-    h116: "\u6DB2\u7AED\u967D\u9B30",
-    h117: "\u6C23\u6DB2\u9B30\u6EEF",
-    h118: "\u6C23\u6DB2\u714E\u8FEB",
-    h119: "\u6C23\u6DB2\u9589\u53A5",
-    h120: "\u6C23\u6DB2\u865B\u9B30",
-    h121: "\u6C23\u6DB2\u865B\u9006",
-    h122: "\u6C23\u6DB2\u865B\u6EEF",
-    h123: "\u6C23\u6DB2\u4E0D\u5316",
-    h124: "\u6C23\u6DB2\u865B\u71E5",
-    h125: "\u6C23\u6DB2\u865B\u9589",
-    h126: "\u6C23\u6DB2\u4E0D\u56FA",
-    h127: "\u6C23\u8840\u9B30\u6EEF",
-    h128: "\u6C23\u8840\u9B30\u904F",
-    h129: "\u6C23\u8840\u602B\u9B30",
-    h130: "\u6C23\u8840\u9B30\u9006",
-    h131: "\u6C23\u8840\u9B30\u7D50",
-    h132: "\u6C23\u8840\u9B30\u84B8",
-    h133: "\u6C23\u8840\u9B30\u71BE",
-    h134: "\u6C23\u8840\u860A\u84B8",
-    h135: "\u6C23\u8840\u860A\u71BE",
-    h136: "\u6C23\u8840\u5169\u71D4",
-    h137: "\u6C23\u8840\u84B8\u71BE",
-    h138: "\u6C23\u8840\u71E5\u7D50",
-    h139: "\u6C23\u8840\u714E\u8FEB",
-    h140: "\u6C23\u8840\u71BE\u9589",
-    h141: "\u6C23\u8840\u9589\u812B",
-    h142: "\u6C23\u8840\u5931\u990A",
-    h143: "\u6C23\u8840\u5931\u8ABF",
-    h144: "\u6C23\u8840\u865B\u7D50",
-    h145: "\u6C23\u8840\u865B\u9B30",
-    h146: "\u6C23\u8840\u865B\u84B8",
-    h147: "\u6C23\u8840\u865B\u71BE",
-    h148: "\u6C23\u865B\u5931\u651D",
-    h149: "\u8840\u865B\u967D\u6D6E",
-    h150: "\u6C23\u8840\u53A5\u812B",
-    h151: "\u6C23\u8840\u812B\u7D55",
-    h152: "\u6C23\u9670\u9B30\u84B8",
-    h153: "\u6C23\u9670\u860A\u84B8",
-    h154: "\u6C23\u9670\u6D88\u707C",
-    h155: "\u6C23\u9670\u5169\u865B",
-    h156: "\u6C23\u9670\u865B\u9B30",
-    h157: "\u6C23\u9670\u865B\u6EEF",
-    h158: "\u6C23\u9670\u4E0D\u5316",
-    h159: "\u6C23\u9670\u865B\u71E5",
-    h160: "\u6C23\u9670\u865B\u84B8",
-    h161: "\u6C23\u9670\u4E0D\u651D",
-    h162: "\u6C23\u9670\u4E0D\u56FA",
-    h163: "\u6C23\u9670\u9589\u812B",
-    h164: "\u6C23\u9670\u7AED\u7D55",
-    h165: "\u967D\u6C23\u4EA2\u9006",
-    h166: "\u967D\u6C23\u53A5\u9006",
-    h167: "\u967D\u9B30\u4E0D\u5316",
-    h168: "\u967D\u6EEF\u4E0D\u5316",
-    h169: "\u967D\u865B\u4E0D\u5316",
-    h170: "\u967D\u6C23\u865B\u6EEF",
-    h171: "\u967D\u6C23\u865B\u7D50",
-    h172: "\u967D\u6C23\u865B\u9B30",
-    h173: "\u967D\u6C23\u865B\u71BE",
-    h174: "\u967D\u6C23\u865B\u9006",
-    h175: "\u967D\u865B\u5931\u7D0D",
-    h176: "\u967D\u865B\u5931\u56FA",
-    h177: "\u967D\u865B\u5931\u651D",
-    h178: "\u967D\u6C23\u865B\u640D",
-    h179: "\u967D\u640D\u53CA\u9670",
-    h180: "\u967D\u6C23\u9589\u812B",
-    h181: "\u967D\u6C23\u53A5\u812B",
-    h182: "\u865B\u967D\u6D6E\u8D8A",
-    h183: "\u967D\u6C23\u865B\u812B",
-    h184: "\u8840\u6DB2\u9B30\u7D50",
-    h185: "\u8840\u6DB2\u860A\u84B8",
-    h186: "\u8840\u6DB2\u9B30\u84B8",
-    h187: "\u8840\u6DB2\u71D4\u707C",
-    h188: "\u8840\u6DB2\u9589\u53A5",
-    h189: "\u8840\u6DB2\u9589\u812B",
-    h190: "\u8840\u6DB2\u9B30\u6EEF",
-    h191: "\u8840\u6DB2\u865B\u71E5",
-    h192: "\u8840\u6DB2\u6D88\u707C",
-    h193: "\u8840\u6DB2\u6D88\u6DB8",
-    h194: "\u9670\u8840\u860A\u71BE",
-    h195: "\u9670\u8840\u714E\u8FEB",
-    h196: "\u9670\u8840\u9589\u53A5",
-    h197: "\u9670\u8840\u9589\u812B",
-    h198: "\u9670\u8840\u5931\u990A",
-    h199: "\u9670\u8840\u865B\u9B30",
-    h200: "\u9670\u8840\u865B\u6EEF",
-    h201: "\u9670\u8840\u865B\u84B8",
-    h202: "\u9670\u8840\u6D88\u707C",
-    h203: "\u9670\u8840\u865B\u71E5",
-    h204: "\u9670\u8840\u865B\u640D",
-    h205: "\u9670\u67AF\u706B\u71BE",
-    h206: "\u9670\u6DB2\u714E\u8FEB",
-    h207: "\u9670\u6DB2\u865B\u71E5",
-    h208: "\u9670\u6DB2\u9589\u53A5",
-    h209: "\u9670\u6DB2\u53A5\u812B",
-    h210: "\u9670\u6DB2\u6D88\u707C",
-    h211: "\u9670\u6DB2\u67AF\u6DB8",
-    h212: "\u9670\u865B\u967D\u6D6E",
-    h213: "\u9670\u7AED\u967D\u53A5",
-    h214: "\u9670\u7AED\u967D\u8D8A",
-    h215: "\u9670\u7AED\u967D\u812B",
-    h216: "\u9670\u865B\u5931\u990A",
-    h217: "\u9670\u865B\u967D\u5F31",
-    h218: "\u9670\u865B\u967D\u9B30",
-    h219: "\u9670\u865B\u4E0D\u5316",
-    h220: "\u9670\u865B\u5931\u7D0D",
-    h221: "\u9670\u865B\u5931\u651D",
-    h222: "\u9670\u865B\u4E0D\u56FA",
-    h223: "\u9670\u7CBE\u4E0D\u56FA",
-    h224: "\u771F\u9670\u865B\u640D",
-    h225: "\u9670\u640D\u53CA\u967D",
-    h226: "\u80BA\u6C23\u5931\u5BA3",
-    h227: "\u80BA\u5931\u5BA3\u964D",
-    h228: "\u80BA\u6C23\u9B30\u9589",
-    h229: "\u80BA\u6C23\u9B30\u75F9",
-    h230: "\u80BA\u6C23\u5931\u5145",
-    h231: "\u80BA\u967D\u5931\u5BA3",
-    h232: "\u80BA\u967D\u4E0D\u5E03",
-    h233: "\u80BA\u7D61\u5931\u5BA3",
-    h234: "\u80BA\u5931\u6E05\u8085",
-    h235: "\u80BA\u9670\u5931\u990A",
-    h236: "\u5FC3\u795E\u5931\u5BE7",
-    h237: "\u5FC3\u6C23\u4E0D\u632F",
-    h238: "\u5FC3\u967D\u4EA2\u76DB",
-    h239: "\u5FC3\u967D\u5931\u5BA3",
-    h240: "\u5FC3\u967D\u9589\u585E",
-    h241: "\u5FC3\u967D\u4E0D\u632F",
-    h242: "\u5FC3\u7D61\u5931\u5BA3",
-    h243: "\u5FC3\u8840\u5931\u990A",
-    h244: "\u5FC3\u9670\u5931\u990A",
-    h245: "\u5FC3\u9670\u865B\u6EEF",
-    h246: "\u80C3\u6C23\u4E0D\u9192",
-    h247: "\u80C3\u6C23\u5931\u548C",
-    h248: "\u80C3\u5931\u548C\u964D",
-    h249: "\u80C3\u6C23\u9B30\u7D50",
-    h250: "\u80C3\u6C23\u4E0D\u632F",
-    h251: "\u80C3\u967D\u5931\u548C",
-    h252: "\u80C3\u967D\u865B\u9006",
-    h253: "\u80C3\u967D\u4E0D\u632F",
-    h254: "\u80C3\u7D61\u5931\u548C",
-    h255: "\u80C3\u9670\u6D88\u6DB8",
-    h256: "\u813E\u6C23\u5931\u904B",
-    h257: "\u813E\u80C3\u9B30\u6EEF",
-    h258: "\u4E2D\u6C23\u9B30\u7D50",
-    h259: "\u4E2D\u6C23\u7A92\u9589",
-    h260: "\u813E\u6C23\u4E0D\u5065",
-    h261: "\u813E\u6C23\u865B\u6EEF",
-    h262: "\u813E\u6C23\u865B\u7D50",
-    h263: "\u813E\u80C3\u4E0D\u548C",
-    h264: "\u813E\u967D\u5931\u904B",
-    h265: "\u813E\u967D\u9B30\u9589",
-    h266: "\u813E\u967D\u9B30\u7D50",
-    h267: "\u4E2D\u967D\u9B30\u6EEF",
-    h268: "\u4E2D\u967D\u9589\u585E",
-    h269: "\u4E2D\u967D\u4E0D\u548C",
-    h270: "\u813E\u967D\u865B\u6EEF",
-    h271: "\u813E\u967D\u4E0D\u632F",
-    h272: "\u813E\u9670\u6D88\u6DB8",
-    h273: "\u81BD\u6C23\u9B30\u6EEF",
-    h274: "\u81BD\u6C23\u9B30\u7D50",
-    h275: "\u81BD\u6C23\u4E0D\u632F",
-    h276: "\u6728\u706B\u9B30\u904F",
-    h277: "\u6728\u706B\u9B30\u6EEF",
-    h278: "\u6728\u706B\u9B30\u9589",
-    h279: "\u6728\u706B\u9B30\u9006",
-    h280: "\u6728\u706B\u9B30\u84B8",
-    h281: "\u6728\u706B\u9B30\u71BE",
-    h282: "\u6728\u706B\u860A\u71BE",
-    h283: "\u6728\u706B\u5347\u9006",
-    h284: "\u6728\u706B\u71BE\u9006",
-    h285: "\u6728\u706B\u860A\u9589",
-    h286: "\u6728\u706B\u9589\u53A5",
-    h287: "\u6728\u706B\u865B\u84B8",
-    h288: "\u6728\u706B\u865B\u71BE",
-    h289: "\u6728\u706B\u865B\u9006",
-    h290: "\u809D\u6C23\u5931\u758F",
-    h291: "\u809D\u6C23\u9B30\u7D50",
-    h292: "\u809D\u6C23\u6A6B\u9006",
-    h293: "\u809D\u6C23\u4E0D\u632F",
-    h294: "\u809D\u6C23\u5931\u8ABF",
-    h295: "\u809D\u967D\u4EA2\u76DB",
-    h296: "\u809D\u967D\u5931\u5BA3",
-    h297: "\u809D\u967D\u9589\u585E",
-    h298: "\u809D\u967D\u5931\u548C",
-    h299: "\u809D\u967D\u4E0D\u632F",
-    h300: "\u809D\u7D61\u5931\u5BA3",
-    h301: "\u809D\u7D61\u5931\u548C",
-    h302: "\u809D\u8840\u5931\u990A",
-    h303: "\u809D\u9670\u865B\u6EEF",
-    h304: "\u809D\u9670\u5931\u990A",
-    h305: "\u814E\u6C23\u5931\u5BA3",
-    h306: "\u814E\u6C23\u9B30\u7D50",
-    h307: "\u814E\u6C23\u4E0D\u5145",
-    h308: "\u814E\u967D\u5931\u5BA3",
-    h309: "\u814E\u967D\u9589\u585E",
-    h310: "\u814E\u967D\u4E0D\u632F",
-    h311: "\u814E\u967D\u4E0D\u5316",
-    h312: "\u814E\u967D\u865B\u7D50",
-    h313: "\u814E\u967D\u865B\u9006",
-    h314: "\u814E\u7D61\u5931\u5BA3",
-    h315: "\u814E\u9670\u6D88\u707C",
-    h316: "\u814E\u9670\u865B\u71BE",
-    h317: "\u814E\u9670\u865B\u6EEF",
-    h318: "\u814E\u9670\u5931\u990A",
-    h319: "\u541B\u76F8\u5931\u5BE7",
-    h320: "\u5FC3\u814E\u4E0D\u4EA4",
-    h321: "\u9F8D\u96F7\u4E0D\u85CF",
-    h322: "\u706B\u4E0D\u6B78\u5143"
-  };
-  var onLineText = (t, line) => {
-    if (~t.indexOf("^ck")) {
-      return t.replace(/\^ck(\d+)z(\d+)h(\d+)/, (m4, l, z, h) => {
-        const caption2 = onChunkCaption(l + "z" + z + "h" + h);
-        const [sick, sign] = caption2.split("|");
-        return m4 + " ^sick\u3010" + sick + "\u3011^sign" + h + "\u3010" + sign + "\u3011";
-      });
-    }
-    return t;
-  };
-  var parseChunkId = (chunkid) => {
-    const l = chunkid.slice(0, 2);
-    const z = chunkid.slice(3, 5);
-    const h = chunkid.slice(6);
-    return { l, z, h };
-  };
-  var onChunkCaption = (chunkid, part) => {
-    const { l, z, h } = parseChunkId(chunkid);
-    if (isNaN(parseInt(z)) || isNaN(parseInt(z)) || isNaN(parseInt(h))) {
-      return "";
-    }
-    const part1 = SickCauses["l" + l] + SickLocations["z" + z] + "\u8B49";
-    const part2 = SickSigns["h" + h] + "\u5019";
-    if (part == 1)
-      return part1;
-    if (part == 2)
-      return part2;
-    return part1 + "|" + part2;
-  };
-  var findPrefix = (Factors, prefix) => {
-    for (let i = 0; i < Factors.length; i++) {
-      if (Factors[i].prefix == prefix)
-        return Factors[i].factors;
-    }
-    return [];
-  };
-  var decodeFactor = (field, code) => {
-    const [m0, prefix, n] = code.split(/([a-z])(\d+)/);
-    const factors = findPrefix(SickFactors[field], prefix);
-    let caption2 = factors[n];
-    if (typeof caption2 !== "string")
-      caption2 = caption2[0];
-    return caption2;
-  };
-  var makeButtonStates = (Factors) => {
-    const out = [];
-    for (let i = 0; i < Factors.length; i++) {
-      const states = [];
-      const { caption: caption2, factors, prefix } = Factors[i];
-      for (let j2 = 0; j2 < factors.length; j2++) {
-        if (typeof factors[j2] !== "string") {
-          states[factors[j2][0]] = prefix + j2;
-        } else
-          states[factors[j2]] = prefix + j2;
-      }
-      out.push({ caption: caption2, states, prefix });
-    }
-    return out;
-  };
-  var icons = { symtom: "\u26A0\uFE0F", tounge: "\u{1F445}", pulse: "\u270B\u{1F3FB}" };
-  var getMultiStateFilters = () => {
-    return [
-      { name: "symtom", caption: icons.symtom, states: makeButtonStates(symtom), newline: true },
-      { name: "tounge", caption: icons.tounge, states: makeButtonStates(tounge) },
-      { name: "pulse", caption: icons.pulse, states: makeButtonStates(pulse) }
-    ];
-  };
-  var stringifyChoice = (choices, groupby = 0, groupfilter = "") => {
-    let symtom2 = "", tounge2 = "", pulse2 = "";
-    for (let key2 in choices) {
-      if (key2 == "symtom")
-        symtom2 = choices[key2].join("");
-      if (key2 == "tounge")
-        tounge2 = choices[key2].join("");
-      if (key2 == "pulse")
-        pulse2 = choices[key2].join("");
-    }
-    return symtom2 + "_" + tounge2 + "_" + pulse2 + "_" + groupby + "_" + groupfilter;
-  };
-  var humanChoice = (choices) => {
-    if (typeof choices == "string")
-      [choices] = parseChoice(choices);
-    let out = "";
-    for (let field in choices) {
-      if (choices[field].length) {
-        out += icons[field];
-        for (let i = 0; i < choices[field].length; i++) {
-          out += " " + decodeFactor(field, choices[field][i]);
-        }
-      }
-    }
-    return out;
-  };
-  var parseChoice = (str) => {
-    const [_symtom, _tounge, _pulse, _groupby, _groupfilter] = str.split("_");
-    const symtom2 = (_symtom || "").split(/([a-z]\d+)/).filter((it) => !!it) || [];
-    const tounge2 = (_tounge || "").split(/([a-z]\d+)/).filter((it) => !!it) || [];
-    const pulse2 = (_pulse || "").split(/([a-z]\d+)/).filter((it) => !!it) || [];
-    const groupby = parseInt(_groupby) || 0;
-    const groupfilter = _groupfilter;
-    return [{ symtom: symtom2, tounge: tounge2, pulse: pulse2 }, groupby, groupfilter];
-  };
-  var factorString = (code, groupby) => {
-    if (groupby == 1) {
-      return SickLocations["z" + code];
-    } else if (groupby == 2) {
-      return SickCauses["l" + code];
-    } else if (groupby == 3) {
-      const [m0, z, l] = code.match(/(\d+)z(\d+)/);
-      return SickLocations["z" + z] + SickCauses["l" + l];
-    } else if (groupby == 4) {
-      return SickSigns["h" + code];
-    }
-    return "";
-  };
-  var groupBy = (items, chunks, groupby = 1, groupfilter = "") => {
-    const obj = {};
-    for (let i = 0; i < items.length; i++) {
-      const ck = chunks[i];
-      const { l, z, h } = parseChunkId(ck.id);
-      let gkey = "";
-      if (groupby == 1)
-        gkey = z;
-      else if (groupby == 2)
-        gkey = l;
-      else if (groupby == 3)
-        gkey = l + "z" + z;
-      else if (groupby == 4)
-        gkey = h;
-      if (!obj[gkey])
-        obj[gkey] = 0;
-      obj[gkey]++;
-    }
-    return fromObj(obj, (code, count) => [factorString(code, groupby), count, code]).sort((a, b) => b[1] - a[1]);
-  };
-  var matchGroup = (ck, groupby, groupfilter) => {
-    if (groupby && groupfilter) {
-      if (groupby == 1) {
-        return ~ck.id.indexOf("z" + groupfilter);
-      } else if (groupby == 2) {
-        return ck.id.indexOf(groupfilter) == 0;
-      } else if (groupby == 3) {
-        return ~ck.id.indexOf(groupfilter);
-      } else if (groupby == 4) {
-        return ~ck.id.indexOf("h" + groupfilter);
-      }
-    }
-    return true;
-  };
-  var runFilter = (ptk, col, opts = {}) => {
-    const items = [], chunks = [];
-    const choices = opts.choices;
-    const groupby = opts.groupby;
-    const groupfilter = opts.groupfilter;
-    const tag = ptk.defines[col.attrs.master];
-    let choicecount = 0;
-    for (let field in choices) {
-      choicecount += choices[field].length;
-    }
-    for (let i = 0; i < tag.linepos.length; i++) {
-      let hit = 0;
-      for (let field in choices) {
-        if (choices[field].length == 0)
-          continue;
-        for (let j2 = 0; j2 < choices[field].length; j2++) {
-          const key2 = choices[field][j2];
-          if (typeof col[field][i] == "undefined") {
-            console.log("wrong field", field, "iindex", i);
-          } else {
-            if (~col[field][i].indexOf(key2))
-              hit++;
-          }
-        }
-        if (hit * 1.1 < choicecount)
-          continue;
-        const line = tag.linepos[i];
-        const ck = ptk.nearestChunk(line);
-        if (groupby == 0 && groupfilter) {
-          if (tag.innertext?.get(i) !== groupfilter)
-            continue;
-        } else {
-          if (!matchGroup(ck, groupby, groupfilter))
-            continue;
-        }
-        items.push(i);
-        chunks.push(ck);
-      }
-    }
-    let groups = [], grouping = {};
-    if (groupby) {
-      groups = groupBy(items, chunks, groupby, groupfilter);
-    } else {
-      for (let i = 0; i < items.length; i++) {
-        const t = tag.innertext?.get(items[i]);
-        if (!grouping[t])
-          grouping[t] = 0;
-        grouping[t]++;
-      }
-      groups = fromObj(grouping, (text2, count) => [text2, count, text2]);
-      groups.sort((a, b) => b[1] - a[1]);
-    }
-    return { items, groups, mastertag: tag };
-  };
-  var groupStates = (format) => {
-    if (format == "statebutton") {
-      return {};
-    } else {
-      return [];
-    }
-    if (format == "statebutton") {
-      return { "\u540D": 0, "\u4F4D": 1, "\u56E0": 2, "\u8B49": 3, "\u5019": 4 };
-    } else {
-      return ["\u540D", "\u4F4D", "\u56E0", "\u8B49", "\u5019"];
-    }
-  };
-  var factorSimilarity = (factors, str) => {
-    const len = str.length / 2, count = factors.length;
-    let match = 0;
-    for (let i = 0; i < factors.length; i++) {
-      if (~str.indexOf(factors[i]))
-        match++;
-    }
-    const r = match * 2 / (len + count);
-    return r;
-  };
-  var similarFactors = (ptk, tagname, factors) => {
-    const out = [];
-    for (let i = 0; i < ptk.columns.manifest[tagname].length; i++) {
-      const str = ptk.columns.manifest[tagname][i];
-      if (!str)
-        continue;
-      const similarity = factorSimilarity(factors, str);
-      if (similarity > 0.5) {
-        const illline = ptk.defines.ill.linepos[i];
-        const at2 = bsearchNumber(ptk.defines[tagname].linepos, illline);
-        const id = i;
-        out.push({ i, id, similarity, line: ptk.defines[tagname].linepos[at2] });
-      }
-      out.sort((a, b) => b.similarity - a.similarity);
-    }
-    return out;
-  };
-  var getApprox = (ptk, tagname, id) => {
-    const at = bsearchNumber(ptk.defines.ill.linepos, id) - 1;
-    if (!ptk.columns.manifest[tagname])
-      return [];
-    const v = ptk.columns.manifest[tagname][at];
-    const factors = v.split(/([a-z]\d)/).filter((it) => !!it);
-    const out = similarFactors(ptk, tagname, factors).filter((it) => it.i !== at);
-    return out;
-  };
-  addTemplate("cm", {
-    filterColumn: "manifest",
-    getApprox,
-    similarFactors,
-    parseChoice,
-    stringifyChoice,
-    humanChoice,
-    groupStates,
-    onLineText,
-    onChunkCaption,
-    getMultiStateFilters,
-    runFilter
-  });
-
-  // ../ptk/meta/vny.ts
-  var getCorrespondece = (ptk, line) => {
-    const ck = ptk.nearestChunk(line + 1);
-    const bktag = ptk.defines.bk;
-    const pc = ptk.columns.pc;
-    const pcid = parseInt(ck.id.slice(2));
-    const out = [];
-    const bkidarr = bktag.fields.id.values;
-    const at = pc[ck.bkid].indexOf(pcid);
-    for (let i = 0; i < pc.fieldnames.length; i++) {
-      const bkid = pc.fieldnames[i];
-      const bkat = bkidarr.indexOf(bkid);
-      const caption2 = bktag.innertext.get(bkat);
-      if (~bkidarr.indexOf(bkid) && ck.bkid !== bkid) {
-        out.push({ caption: caption2, bkid, ckid: "pc" + pc.fieldvalues[i][at] });
-      }
-    }
-    return out;
-  };
-  addTemplate("vny", {
-    getCorrespondece
-  });
 
   // ../ptk/denote/tokenizers.ts
   var isIASTToken = (w) => w.match(/^[a-zA-Zḍṭṇñḷṃṁṣśṅṛāīūâîû]+\d*$/);
@@ -9217,7 +8765,8 @@
       const buildtime = new Date(ptk.header.buildtime);
       const chunkcount = ptk.defines.ck?.linepos.length;
       const eot = ptk.header.eot;
-      out.push({ name: ptk.name, ptk, location: "local", buildtime, eot, chunkcount });
+      const wordcount = ptk.header.wordcount || 0;
+      out.push({ name: ptk.name, ptk, location: "local", buildtime, eot, chunkcount, wordcount });
       jobs.push(loadScript(ptk.name + "/accelon22.css"));
       console.log(ptk);
     }
@@ -10127,37 +9676,37 @@
     p2i[i2p[key2]] = key2;
   for (let key2 in beginVowels)
     p2i[beginVowels[key2]] = key2;
-  var toIASTWord = (p2) => {
+  var toIASTWord = (p3) => {
     let ch = "", out = "", i = 0;
-    ch = p2[0];
+    ch = p3[0];
     const leadv = "aeiou".indexOf(ch);
     if (leadv > -1) {
-      if (p2[0] == "a" && p2[1] == "A") {
+      if (p3[0] == "a" && p3[1] == "A") {
         out += "\u0101";
         i++;
-      } else if (p2[0] == "i" && p2[1] == "A") {
+      } else if (p3[0] == "i" && p3[1] == "A") {
         out += "\u012B";
         i++;
-      } else if (p2[0] == "u" && p2[1] == "A") {
+      } else if (p3[0] == "u" && p3[1] == "A") {
         out += "\u016B";
         i++;
       } else
         out += ch;
       i++;
-      ch = p2[i];
+      ch = p3[i];
     }
     let needvowel = false, noEndingA = false;
-    if (p2.charAt(p2.length - 1) == "V") {
+    if (p3.charAt(p3.length - 1) == "V") {
       noEndingA = true;
-      p2 = p2.slice(0, p2.length - 1);
+      p3 = p3.slice(0, p3.length - 1);
     }
-    while (i < p2.length) {
-      ch = p2[i];
+    while (i < p3.length) {
+      ch = p3[i];
       const v = "MAEIOU".indexOf(ch);
       if (v > -1) {
         if (v == 0 && needvowel)
           out += "a";
-        if (p2[i + 1] == "A") {
+        if (p3[i + 1] == "A") {
           i++;
           if (v == 1)
             out += "\u0101";
@@ -10178,28 +9727,28 @@
       } else {
         if (needvowel)
           out += "a";
-        let cons = p2[i];
+        let cons = p3[i];
         if (cons == "V")
-          return out + "??1" + p2;
-        while (i < p2.length && p2[i + 1] == "V") {
-          cons += "V" + p2[i + 2];
+          return out + "??1" + p3;
+        while (i < p3.length && p3[i + 1] == "V") {
+          cons += "V" + p3[i + 2];
           needvowel = true;
           i += 2;
         }
-        const c2 = p2i[cons];
-        if (!c2) {
+        const c3 = p2i[cons];
+        if (!c3) {
           if (isNaN(parseInt(cons))) {
-            return out + "??2" + p2;
+            return out + "??2" + p3;
           } else {
             return out + cons;
           }
         } else {
-          needvowel = "aeiou\u0964\u0965".indexOf(c2) == -1;
-          if (c2 == "a" && p2[i + 1] == "A") {
+          needvowel = "aeiou\u0964\u0965".indexOf(c3) == -1;
+          if (c3 == "a" && p3[i + 1] == "A") {
             i++;
             out += "\u0101";
           } else {
-            out += c2;
+            out += c3;
           }
           i++;
         }
@@ -10233,28 +9782,28 @@
   };
   var DeNormLexeme = {};
   var samecount = (s1, s2) => {
-    let c2 = 0, i1 = 0, i2 = 0;
+    let c3 = 0, i1 = 0, i2 = 0;
     while (i1 < s1.length && i2 < s2.length) {
       if (s1[i1] == s2[i2])
-        c2++;
+        c3++;
       else
         break;
       i1++;
       i2++;
     }
-    return c2;
+    return c3;
   };
   var sameendcount = (s1, s2) => {
-    let c2 = 0, i1 = s1.length - 1, i2 = s2.length - 1;
+    let c3 = 0, i1 = s1.length - 1, i2 = s2.length - 1;
     while (i1 > 0 && i2 > 0) {
       if (s1[i1] == s2[i2])
-        c2++;
+        c3++;
       else
         break;
       i1--;
       i2--;
     }
-    return c2;
+    return c3;
   };
   for (let key2 in NormLexeme) {
     const rkey = NormLexeme[key2];
@@ -10971,8 +10520,8 @@
         o = table[content[i]];
       if (o) {
         if (content[i] === "N" && content[i + 1] === "V") {
-          const c2 = content[i + 2];
-          if (c2 === "k" || c2 == "K" || c2 == "g" || c2 === "G") {
+          const c3 = content[i + 2];
+          if (c3 === "k" || c3 == "K" || c3 == "g" || c3 === "G") {
             o = table.NG;
             if (table == tables.my) {
               o += String.fromCharCode(4154);
@@ -11748,18 +11297,19 @@
   // src/comps/button.svelte
   function create_fragment5(ctx) {
     let span;
+    let span_class_value;
     let current;
     let mounted;
     let dispose;
     const default_slot_template = (
       /*#slots*/
-      ctx[4].default
+      ctx[5].default
     );
     const default_slot = create_slot(
       default_slot_template,
       ctx,
       /*$$scope*/
-      ctx[3],
+      ctx[4],
       null
     );
     return {
@@ -11767,12 +11317,9 @@
         span = element("span");
         if (default_slot)
           default_slot.c();
-        attr(
-          span,
-          "class",
-          /*className*/
-          ctx[1]
-        );
+        attr(span, "class", span_class_value = /*className*/
+        ctx[1] + /*clicked*/
+        (ctx[3] ? " clicked" : ""));
         attr(
           span,
           "title",
@@ -11792,7 +11339,7 @@
             span,
             "click",
             /*click_handler*/
-            ctx[5]
+            ctx[6]
           );
           mounted = true;
         }
@@ -11800,20 +11347,20 @@
       p(ctx2, [dirty]) {
         if (default_slot) {
           if (default_slot.p && (!current || dirty & /*$$scope*/
-          8)) {
+          16)) {
             update_slot_base(
               default_slot,
               default_slot_template,
               ctx2,
               /*$$scope*/
-              ctx2[3],
+              ctx2[4],
               !current ? get_all_dirty_from_scope(
                 /*$$scope*/
-                ctx2[3]
+                ctx2[4]
               ) : get_slot_changes(
                 default_slot_template,
                 /*$$scope*/
-                ctx2[3],
+                ctx2[4],
                 dirty,
                 null
               ),
@@ -11821,14 +11368,11 @@
             );
           }
         }
-        if (!current || dirty & /*className*/
-        2) {
-          attr(
-            span,
-            "class",
-            /*className*/
-            ctx2[1]
-          );
+        if (!current || dirty & /*className, clicked*/
+        10 && span_class_value !== (span_class_value = /*className*/
+        ctx2[1] + /*clicked*/
+        (ctx2[3] ? " clicked" : ""))) {
+          attr(span, "class", span_class_value);
         }
         if (!current || dirty & /*title*/
         4) {
@@ -11865,6 +11409,7 @@
     let { onclick } = $$props;
     let { className = "clickable" } = $$props;
     let { title } = $$props;
+    let { clicked } = $$props;
     const click_handler = () => onclick();
     $$self.$$set = ($$props2) => {
       if ("onclick" in $$props2)
@@ -11873,15 +11418,22 @@
         $$invalidate(1, className = $$props2.className);
       if ("title" in $$props2)
         $$invalidate(2, title = $$props2.title);
+      if ("clicked" in $$props2)
+        $$invalidate(3, clicked = $$props2.clicked);
       if ("$$scope" in $$props2)
-        $$invalidate(3, $$scope = $$props2.$$scope);
+        $$invalidate(4, $$scope = $$props2.$$scope);
     };
-    return [onclick, className, title, $$scope, slots, click_handler];
+    return [onclick, className, title, clicked, $$scope, slots, click_handler];
   }
   var Button = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance6, create_fragment5, safe_not_equal, { onclick: 0, className: 1, title: 2 });
+      init(this, options, instance6, create_fragment5, safe_not_equal, {
+        onclick: 0,
+        className: 1,
+        title: 2,
+        clicked: 3
+      });
     }
   };
   var button_default = Button;
@@ -12383,7 +11935,7 @@
         /*line*/
         ctx[1] + /*linediff*/
         ctx[10]
-      ).bkheading || /*pptk*/
+      ).bk?.caption || /*pptk*/
       ctx[9].humanName(true)
     ) + "";
     let t;
@@ -12402,7 +11954,7 @@
             /*line*/
             ctx2[1] + /*linediff*/
             ctx2[10]
-          ).bkheading || /*pptk*/
+          ).bk?.caption || /*pptk*/
           ctx2[9].humanName(true)
         ) + ""))
           set_data(t, t_value);
@@ -12674,10 +12226,252 @@
   };
   var paralleltexts_default = Paralleltexts;
 
+  // src/lineview/mediaplayer.svelte
+  function create_default_slot3(ctx) {
+    let t;
+    return {
+      c() {
+        t = text("\u{1F3A5}");
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_else_block(ctx) {
+    let audio;
+    let source;
+    let source_src_value;
+    let setTimestamp_action;
+    let mounted;
+    let dispose;
+    return {
+      c() {
+        audio = element("audio");
+        source = element("source");
+        if (!src_url_equal(source.src, source_src_value = /*ptk*/
+        ctx[0].name + "/" + /*filename*/
+        ctx[3]))
+          attr(source, "src", source_src_value);
+        attr(source, "type", "audio/mpeg");
+        audio.autoplay = "true";
+      },
+      m(target, anchor) {
+        insert(target, audio, anchor);
+        append(audio, source);
+        if (!mounted) {
+          dispose = action_destroyer(setTimestamp_action = /*setTimestamp*/
+          ctx[4].call(null, audio));
+          mounted = true;
+        }
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*ptk*/
+        1 && !src_url_equal(source.src, source_src_value = /*ptk*/
+        ctx2[0].name + "/" + /*filename*/
+        ctx2[3])) {
+          attr(source, "src", source_src_value);
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(audio);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_if_block3(ctx) {
+    let br;
+    let video_1;
+    let source;
+    let source_src_value;
+    let track0;
+    let track1;
+    let track1_src_value;
+    let setTimestamp_action;
+    let mounted;
+    let dispose;
+    return {
+      c() {
+        br = element("br");
+        video_1 = element("video");
+        source = element("source");
+        track0 = element("track");
+        track1 = element("track");
+        if (!src_url_equal(source.src, source_src_value = /*ptk*/
+        ctx[0].name + "/" + /*filename*/
+        ctx[3]))
+          attr(source, "src", source_src_value);
+        attr(source, "type", "audio/mpeg");
+        attr(track0, "kind", "captions");
+        attr(track1, "kind", "subtitles");
+        attr(track1, "srclang", "zh");
+        if (!src_url_equal(track1.src, track1_src_value = /*subtitleurl*/
+        ctx[1]))
+          attr(track1, "src", track1_src_value);
+        track1.default = true;
+        video_1.controls = true;
+        attr(video_1, "width", "480");
+        video_1.autoplay = "true";
+      },
+      m(target, anchor) {
+        insert(target, br, anchor);
+        insert(target, video_1, anchor);
+        append(video_1, source);
+        append(video_1, track0);
+        append(video_1, track1);
+        if (!mounted) {
+          dispose = action_destroyer(setTimestamp_action = /*setTimestamp*/
+          ctx[4].call(null, video_1));
+          mounted = true;
+        }
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*ptk*/
+        1 && !src_url_equal(source.src, source_src_value = /*ptk*/
+        ctx2[0].name + "/" + /*filename*/
+        ctx2[3])) {
+          attr(source, "src", source_src_value);
+        }
+        if (dirty & /*subtitleurl*/
+        2 && !src_url_equal(track1.src, track1_src_value = /*subtitleurl*/
+        ctx2[1])) {
+          attr(track1, "src", track1_src_value);
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(br);
+        if (detaching)
+          detach(video_1);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_fragment9(ctx) {
+    let button;
+    let t;
+    let if_block_anchor;
+    let current;
+    button = new button_default({
+      props: {
+        onclick: (
+          /*playvideo*/
+          ctx[5]
+        ),
+        $$slots: { default: [create_default_slot3] },
+        $$scope: { ctx }
+      }
+    });
+    function select_block_type(ctx2, dirty) {
+      if (
+        /*video*/
+        ctx2[2]
+      )
+        return create_if_block3;
+      return create_else_block;
+    }
+    let current_block_type = select_block_type(ctx, -1);
+    let if_block = current_block_type(ctx);
+    return {
+      c() {
+        create_component(button.$$.fragment);
+        t = space();
+        if_block.c();
+        if_block_anchor = empty();
+      },
+      m(target, anchor) {
+        mount_component(button, target, anchor);
+        insert(target, t, anchor);
+        if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
+        current = true;
+      },
+      p(ctx2, [dirty]) {
+        const button_changes = {};
+        if (dirty & /*$$scope*/
+        16384) {
+          button_changes.$$scope = { dirty, ctx: ctx2 };
+        }
+        button.$set(button_changes);
+        if (current_block_type === (current_block_type = select_block_type(ctx2, dirty)) && if_block) {
+          if_block.p(ctx2, dirty);
+        } else {
+          if_block.d(1);
+          if_block = current_block_type(ctx2);
+          if (if_block) {
+            if_block.c();
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        }
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(button.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(button.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(button, detaching);
+        if (detaching)
+          detach(t);
+        if_block.d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
+      }
+    };
+  }
+  function instance10($$self, $$props, $$invalidate) {
+    let { ts } = $$props;
+    let { ptk } = $$props;
+    let { line } = $$props;
+    const { mpegfileOfID: mpegfileOfID2, parseTimeStamp: parseTimeStamp2, subtitleOfID: subtitleOfID2 } = ptk.template;
+    const id = ptk.nearestTag(line, "mpeg", "id");
+    const filename = mpegfileOfID2(id);
+    const [start, end] = parseTimeStamp2(ts);
+    let subtitleurl = null;
+    const setTimestamp = (node) => {
+      node.currentTime = start;
+    };
+    onMount(async () => {
+      $$invalidate(1, subtitleurl = await subtitleOfID2(ptk, id));
+    });
+    let video = false;
+    const playvideo = () => {
+      $$invalidate(2, video = !video);
+    };
+    $$self.$$set = ($$props2) => {
+      if ("ts" in $$props2)
+        $$invalidate(6, ts = $$props2.ts);
+      if ("ptk" in $$props2)
+        $$invalidate(0, ptk = $$props2.ptk);
+      if ("line" in $$props2)
+        $$invalidate(7, line = $$props2.line);
+    };
+    return [ptk, subtitleurl, video, filename, setTimestamp, playvideo, ts, line];
+  }
+  var Mediaplayer = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance10, create_fragment9, safe_not_equal, { ts: 6, ptk: 0, line: 7 });
+    }
+  };
+  var mediaplayer_default = Mediaplayer;
+
   // src/lineview/activelinemenu.svelte
   function get_each_context7(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[13] = list[i];
+    child_ctx[15] = list[i];
     return child_ctx;
   }
   function create_each_block7(ctx) {
@@ -12690,7 +12484,7 @@
         ctx[1]
       ) },
       /*menuitem*/
-      ctx[13].data,
+      ctx[15].data,
       { line: (
         /*line*/
         ctx[2]
@@ -12698,7 +12492,7 @@
     ];
     var switch_value = Painters[
       /*menuitem*/
-      ctx[13].painter
+      ctx[15].painter
     ];
     function switch_props(ctx2) {
       let switch_instance_props = {};
@@ -12733,7 +12527,7 @@
           dirty & /*activelinemenu*/
           64 && get_spread_object(
             /*menuitem*/
-            ctx2[13].data
+            ctx2[15].data
           ),
           dirty & /*line*/
           4 && { line: (
@@ -12743,7 +12537,7 @@
         ]) : {};
         if (switch_value !== (switch_value = Painters[
           /*menuitem*/
-          ctx2[13].painter
+          ctx2[15].painter
         ])) {
           if (switch_instance) {
             group_outros();
@@ -12785,10 +12579,10 @@
       }
     };
   }
-  function create_default_slot3(ctx) {
+  function create_default_slot4(ctx) {
     let t_value = (
       /*show*/
-      ctx[8] ? "\u25B8" : "\u25BE"
+      ctx[9] ? "\u{1F4D6} " : "\u{1F4D8}"
     );
     let t;
     return {
@@ -12800,13 +12594,79 @@
       },
       p(ctx2, dirty) {
         if (dirty & /*show*/
-        256 && t_value !== (t_value = /*show*/
-        ctx2[8] ? "\u25B8" : "\u25BE"))
+        512 && t_value !== (t_value = /*show*/
+        ctx2[9] ? "\u{1F4D6} " : "\u{1F4D8}"))
           set_data(t, t_value);
       },
       d(detaching) {
         if (detaching)
           detach(t);
+      }
+    };
+  }
+  function create_if_block_2(ctx) {
+    let mediaplayer;
+    let current;
+    mediaplayer = new mediaplayer_default({
+      props: {
+        line: (
+          /*line*/
+          ctx[2]
+        ),
+        ts: (
+          /*linetag*/
+          ctx[7].attrs.id
+        ),
+        ptk: (
+          /*ptk*/
+          ctx[0]
+        ),
+        seq: (
+          /*seq*/
+          ctx[1]
+        )
+      }
+    });
+    return {
+      c() {
+        create_component(mediaplayer.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(mediaplayer, target, anchor);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        const mediaplayer_changes = {};
+        if (dirty & /*line*/
+        4)
+          mediaplayer_changes.line = /*line*/
+          ctx2[2];
+        if (dirty & /*linetag*/
+        128)
+          mediaplayer_changes.ts = /*linetag*/
+          ctx2[7].attrs.id;
+        if (dirty & /*ptk*/
+        1)
+          mediaplayer_changes.ptk = /*ptk*/
+          ctx2[0];
+        if (dirty & /*seq*/
+        2)
+          mediaplayer_changes.seq = /*seq*/
+          ctx2[1];
+        mediaplayer.$set(mediaplayer_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(mediaplayer.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(mediaplayer.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(mediaplayer, detaching);
       }
     };
   }
@@ -12833,7 +12693,7 @@
         ),
         update: (
           /*update*/
-          ctx[11]
+          ctx[12]
         )
       }
     });
@@ -12880,7 +12740,7 @@
       }
     };
   }
-  function create_if_block3(ctx) {
+  function create_if_block4(ctx) {
     let span;
     let t_value = _(
       /*explainword*/
@@ -12894,10 +12754,10 @@
       c() {
         span = element("span");
         t = text(t_value);
-        attr(span, "class", span_class_value = null_to_empty(textClasses(
+        attr(span, "class", span_class_value = textClasses(
           /*ptk*/
           ctx[0]
-        )) + " svelte-v327pe");
+        ));
       },
       m(target, anchor) {
         insert(target, span, anchor);
@@ -12913,10 +12773,10 @@
         ) + ""))
           set_data(t, t_value);
         if (dirty & /*ptk*/
-        1 && span_class_value !== (span_class_value = null_to_empty(textClasses(
+        1 && span_class_value !== (span_class_value = textClasses(
           /*ptk*/
           ctx2[0]
-        )) + " svelte-v327pe")) {
+        ))) {
           attr(span, "class", span_class_value);
         }
       },
@@ -12932,7 +12792,7 @@
     let current;
     let if_block = (
       /*explainword*/
-      ctx[5] && create_if_block3(ctx)
+      ctx[5] && create_if_block4(ctx)
     );
     paralleltexts = new paralleltexts_default({
       props: {
@@ -12954,11 +12814,11 @@
         ),
         parallels_linediff: (
           /*parallels_linediff*/
-          ctx[9]
+          ctx[10]
         ),
         updatecount: (
           /*updatecount*/
-          ctx[7]
+          ctx[8]
         )
       }
     });
@@ -12984,7 +12844,7 @@
           if (if_block) {
             if_block.p(ctx2, dirty);
           } else {
-            if_block = create_if_block3(ctx2);
+            if_block = create_if_block4(ctx2);
             if_block.c();
             if_block.m(t.parentNode, t);
           }
@@ -13010,13 +12870,13 @@
           paralleltexts_changes.ptk = /*ptk*/
           ctx2[0];
         if (dirty & /*parallels_linediff*/
-        512)
+        1024)
           paralleltexts_changes.parallels_linediff = /*parallels_linediff*/
-          ctx2[9];
+          ctx2[10];
         if (dirty & /*updatecount*/
-        128)
+        256)
           paralleltexts_changes.updatecount = /*updatecount*/
-          ctx2[7];
+          ctx2[8];
         paralleltexts.$set(paralleltexts_changes);
       },
       i(local) {
@@ -13038,14 +12898,15 @@
       }
     };
   }
-  function create_fragment9(ctx) {
+  function create_fragment10(ctx) {
     let t0;
     let button;
     let t1;
     let t2;
+    let t3;
     let previous_key = (
       /*updatecount*/
-      ctx[7]
+      ctx[8]
     );
     let key_block_anchor;
     let current;
@@ -13062,18 +12923,23 @@
     });
     button = new button_default({
       props: {
-        className: "menu clickable",
+        className: "linemenu clickable" + /*show*/
+        (ctx[9] ? " linemenushown" : ""),
         onclick: (
           /*toggleshow*/
-          ctx[10]
+          ctx[11]
         ),
-        $$slots: { default: [create_default_slot3] },
+        $$slots: { default: [create_default_slot4] },
         $$scope: { ctx }
       }
     });
-    let if_block = (
+    let if_block0 = (
+      /*linetag*/
+      ctx[7]?.name == "ts" && create_if_block_2(ctx)
+    );
+    let if_block1 = (
       /*show*/
-      ctx[8] && create_if_block_1(ctx)
+      ctx[9] && create_if_block_1(ctx)
     );
     let key_block = create_key_block2(ctx);
     return {
@@ -13084,9 +12950,12 @@
         t0 = space();
         create_component(button.$$.fragment);
         t1 = space();
-        if (if_block)
-          if_block.c();
+        if (if_block0)
+          if_block0.c();
         t2 = space();
+        if (if_block1)
+          if_block1.c();
+        t3 = space();
         key_block.c();
         key_block_anchor = empty();
       },
@@ -13097,9 +12966,12 @@
         insert(target, t0, anchor);
         mount_component(button, target, anchor);
         insert(target, t1, anchor);
-        if (if_block)
-          if_block.m(target, anchor);
+        if (if_block0)
+          if_block0.m(target, anchor);
         insert(target, t2, anchor);
+        if (if_block1)
+          if_block1.m(target, anchor);
+        insert(target, t3, anchor);
         key_block.m(target, anchor);
         insert(target, key_block_anchor, anchor);
         current = true;
@@ -13129,37 +13001,64 @@
           check_outros();
         }
         const button_changes = {};
+        if (dirty & /*show*/
+        512)
+          button_changes.className = "linemenu clickable" + /*show*/
+          (ctx2[9] ? " linemenushown" : "");
         if (dirty & /*$$scope, show*/
-        65792) {
+        262656) {
           button_changes.$$scope = { dirty, ctx: ctx2 };
         }
         button.$set(button_changes);
         if (
-          /*show*/
-          ctx2[8]
+          /*linetag*/
+          ctx2[7]?.name == "ts"
         ) {
-          if (if_block) {
-            if_block.p(ctx2, dirty);
-            if (dirty & /*show*/
-            256) {
-              transition_in(if_block, 1);
+          if (if_block0) {
+            if_block0.p(ctx2, dirty);
+            if (dirty & /*linetag*/
+            128) {
+              transition_in(if_block0, 1);
             }
           } else {
-            if_block = create_if_block_1(ctx2);
-            if_block.c();
-            transition_in(if_block, 1);
-            if_block.m(t2.parentNode, t2);
+            if_block0 = create_if_block_2(ctx2);
+            if_block0.c();
+            transition_in(if_block0, 1);
+            if_block0.m(t2.parentNode, t2);
           }
-        } else if (if_block) {
+        } else if (if_block0) {
           group_outros();
-          transition_out(if_block, 1, 1, () => {
-            if_block = null;
+          transition_out(if_block0, 1, 1, () => {
+            if_block0 = null;
+          });
+          check_outros();
+        }
+        if (
+          /*show*/
+          ctx2[9]
+        ) {
+          if (if_block1) {
+            if_block1.p(ctx2, dirty);
+            if (dirty & /*show*/
+            512) {
+              transition_in(if_block1, 1);
+            }
+          } else {
+            if_block1 = create_if_block_1(ctx2);
+            if_block1.c();
+            transition_in(if_block1, 1);
+            if_block1.m(t3.parentNode, t3);
+          }
+        } else if (if_block1) {
+          group_outros();
+          transition_out(if_block1, 1, 1, () => {
+            if_block1 = null;
           });
           check_outros();
         }
         if (dirty & /*updatecount*/
-        128 && safe_not_equal(previous_key, previous_key = /*updatecount*/
-        ctx2[7])) {
+        256 && safe_not_equal(previous_key, previous_key = /*updatecount*/
+        ctx2[8])) {
           group_outros();
           transition_out(key_block, 1, 1, noop);
           check_outros();
@@ -13178,7 +13077,8 @@
           transition_in(each_blocks[i]);
         }
         transition_in(button.$$.fragment, local);
-        transition_in(if_block);
+        transition_in(if_block0);
+        transition_in(if_block1);
         transition_in(key_block);
         current = true;
       },
@@ -13188,7 +13088,8 @@
           transition_out(each_blocks[i]);
         }
         transition_out(button.$$.fragment, local);
-        transition_out(if_block);
+        transition_out(if_block0);
+        transition_out(if_block1);
         transition_out(key_block);
         current = false;
       },
@@ -13199,17 +13100,21 @@
         destroy_component(button, detaching);
         if (detaching)
           detach(t1);
-        if (if_block)
-          if_block.d(detaching);
+        if (if_block0)
+          if_block0.d(detaching);
         if (detaching)
           detach(t2);
+        if (if_block1)
+          if_block1.d(detaching);
+        if (detaching)
+          detach(t3);
         if (detaching)
           detach(key_block_anchor);
         key_block.d(detaching);
       }
     };
   }
-  function instance10($$self, $$props, $$invalidate) {
+  function instance11($$self, $$props, $$invalidate) {
     let show;
     let parallels_linediff;
     let updatecount;
@@ -13220,17 +13125,22 @@
     let { key: key2 } = $$props;
     let { explainword } = $$props;
     let { activelinemenu } = $$props;
+    let { linetag } = $$props;
     const LV = getContext("LV");
     if (ptk)
       ptk.parallels = JSON.parse(get_store_value(LV.parallels))[ptk.name] || {};
     const toggleshow = (e) => {
-      $$invalidate(9, parallels_linediff = division?.getParallelWithDiff());
+      $$invalidate(10, parallels_linediff = division?.getParallelWithDiff());
       e?.stopPropagation();
-      $$invalidate(8, show = !show);
+      $$invalidate(9, show = !show);
     };
     const update2 = () => {
-      $$invalidate(8, show = false);
-      $$invalidate(7, updatecount++, updatecount);
+      $$invalidate(9, show = false);
+      $$invalidate(8, updatecount++, updatecount);
+    };
+    const getCaption2 = (line2) => {
+      const ck = ptk.nearestChunk(line2);
+      return ck?.caption;
     };
     $$self.$$set = ($$props2) => {
       if ("seq" in $$props2)
@@ -13247,18 +13157,20 @@
         $$invalidate(5, explainword = $$props2.explainword);
       if ("activelinemenu" in $$props2)
         $$invalidate(6, activelinemenu = $$props2.activelinemenu);
+      if ("linetag" in $$props2)
+        $$invalidate(7, linetag = $$props2.linetag);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*division*/
       8) {
         $:
-          $$invalidate(9, parallels_linediff = division?.getParallelWithDiff());
+          $$invalidate(10, parallels_linediff = division?.getParallelWithDiff());
       }
     };
     $:
-      $$invalidate(8, show = false);
+      $$invalidate(9, show = false);
     $:
-      $$invalidate(7, updatecount = 0);
+      $$invalidate(8, updatecount = 0);
     return [
       ptk,
       seq,
@@ -13267,6 +13179,7 @@
       key2,
       explainword,
       activelinemenu,
+      linetag,
       updatecount,
       show,
       parallels_linediff,
@@ -13277,14 +13190,15 @@
   var Activelinemenu = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance10, create_fragment9, safe_not_equal, {
+      init(this, options, instance11, create_fragment10, safe_not_equal, {
         seq: 1,
         line: 2,
         division: 3,
         ptk: 0,
         key: 4,
         explainword: 5,
-        activelinemenu: 6
+        activelinemenu: 6,
+        linetag: 7
       });
     }
   };
@@ -13342,12 +13256,12 @@
   };
 
   // src/lineview/lineviewitem.svelte
-  function create_else_block(ctx) {
+  function create_else_block2(ctx) {
     let t0;
     let t1;
-    let if_block2_anchor;
-    let inlinetext;
     let t2;
+    let inlinetext;
+    let t3;
     let if_block3_anchor;
     let current;
     let if_block0 = (
@@ -13360,7 +13274,7 @@
     );
     let if_block2 = (
       /*idx*/
-      ctx[7] > -1 && create_if_block_2(ctx)
+      ctx[7] > -1 && create_if_block_22(ctx)
     );
     inlinetext = new inlinetext_default({
       props: {
@@ -13410,9 +13324,9 @@
         t1 = space();
         if (if_block2)
           if_block2.c();
-        if_block2_anchor = empty();
-        create_component(inlinetext.$$.fragment);
         t2 = space();
+        create_component(inlinetext.$$.fragment);
+        t3 = space();
         if (if_block3)
           if_block3.c();
         if_block3_anchor = empty();
@@ -13426,9 +13340,9 @@
         insert(target, t1, anchor);
         if (if_block2)
           if_block2.m(target, anchor);
-        insert(target, if_block2_anchor, anchor);
-        mount_component(inlinetext, target, anchor);
         insert(target, t2, anchor);
+        mount_component(inlinetext, target, anchor);
+        insert(target, t3, anchor);
         if (if_block3)
           if_block3.m(target, anchor);
         insert(target, if_block3_anchor, anchor);
@@ -13487,9 +13401,9 @@
         ) {
           if (if_block2) {
           } else {
-            if_block2 = create_if_block_2(ctx2);
+            if_block2 = create_if_block_22(ctx2);
             if_block2.c();
-            if_block2.m(if_block2_anchor.parentNode, if_block2_anchor);
+            if_block2.m(t2.parentNode, t2);
           }
         } else if (if_block2) {
           if_block2.d(1);
@@ -13577,10 +13491,10 @@
         if (if_block2)
           if_block2.d(detaching);
         if (detaching)
-          detach(if_block2_anchor);
+          detach(t2);
         destroy_component(inlinetext, detaching);
         if (detaching)
-          detach(t2);
+          detach(t3);
         if (if_block3)
           if_block3.d(detaching);
         if (detaching)
@@ -13588,7 +13502,7 @@
       }
     };
   }
-  function create_if_block4(ctx) {
+  function create_if_block5(ctx) {
     let switch_instance;
     let switch_instance_anchor;
     let current;
@@ -13793,7 +13707,7 @@
       }
     };
   }
-  function create_if_block_2(ctx) {
+  function create_if_block_22(ctx) {
     let br;
     return {
       c() {
@@ -13815,7 +13729,7 @@
       props: {
         explainword: (
           /*explainword*/
-          ctx[19]
+          ctx[20]
         ),
         key: (
           /*key*/
@@ -13828,6 +13742,10 @@
         ptk: (
           /*ptk*/
           ctx[12]
+        ),
+        linetag: (
+          /*linetag*/
+          ctx[19]
         ),
         seq: (
           /*seq*/
@@ -13865,9 +13783,9 @@
       p(ctx2, dirty) {
         const activelinemenu_1_changes = {};
         if (dirty & /*explainword*/
-        524288)
+        1048576)
           activelinemenu_1_changes.explainword = /*explainword*/
-          ctx2[19];
+          ctx2[20];
         if (dirty & /*key*/
         8)
           activelinemenu_1_changes.key = /*key*/
@@ -13880,6 +13798,10 @@
         4096)
           activelinemenu_1_changes.ptk = /*ptk*/
           ctx2[12];
+        if (dirty & /*linetag*/
+        524288)
+          activelinemenu_1_changes.linetag = /*linetag*/
+          ctx2[19];
         if (dirty & /*seq*/
         512)
           activelinemenu_1_changes.seq = /*seq*/
@@ -13920,14 +13842,14 @@
       }
     };
   }
-  function create_fragment10(ctx) {
+  function create_fragment11(ctx) {
     let div;
     let current_block_type_index;
     let if_block;
     let div_style_value;
     let div_class_value;
     let current;
-    const if_block_creators = [create_if_block4, create_else_block];
+    const if_block_creators = [create_if_block5, create_else_block2];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -14057,7 +13979,7 @@
       }
     };
   }
-  function instance11($$self, $$props, $$invalidate) {
+  function instance12($$self, $$props, $$invalidate) {
     let explainword;
     let { edge } = $$props;
     let { depth } = $$props;
@@ -14076,15 +13998,18 @@
     let { highlight } = $$props;
     let { active } = $$props;
     let units, activelinemenu, extra;
-    let linestyle = "";
+    let linestyle = "", linetag;
     const render = (text3, line2) => {
+      $$invalidate(19, linetag = null);
       const [units2, ot] = renderOfftext(text3, { line: line2 });
       $$invalidate(17, extra = getExtraPainter(ptk, ot, "backref", true).concat(getExtraPainter(ptk, ot, "backlink")));
       $$invalidate(16, activelinemenu = getExtraPainter(ptk, ot, "activelinemenu"));
       if (units2.length && units2[0].tags.length) {
         $$invalidate(18, linestyle = ot.tags[units2[0].tags[0]]?.name || "");
-        if (linestyle)
+        if (linestyle) {
+          $$invalidate(19, linetag = ot.tags[units2[0].tags[0]]);
           $$invalidate(18, linestyle = " " + linestyle + "_div");
+        }
       } else
         $$invalidate(18, linestyle = "");
       return units2;
@@ -14127,12 +14052,12 @@
       if ($$self.$$.dirty & /*text, line*/
       68) {
         $:
-          $$invalidate(20, units = render(text2, line));
+          $$invalidate(21, units = render(text2, line));
       }
       if ($$self.$$.dirty & /*active, units, activeword*/
-      1089536) {
+      2138112) {
         $:
-          $$invalidate(19, explainword = active && units.filter((ru) => ru.text == activeword2).length > 0 ? activeword2 : "");
+          $$invalidate(20, explainword = active && units.filter((ru) => ru.text == activeword2).length > 0 ? activeword2 : "");
       }
     };
     return [
@@ -14155,6 +14080,7 @@
       activelinemenu,
       extra,
       linestyle,
+      linetag,
       explainword,
       units
     ];
@@ -14162,7 +14088,7 @@
   var Lineviewitem = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance11, create_fragment10, safe_not_equal, {
+      init(this, options, instance12, create_fragment11, safe_not_equal, {
         edge: 0,
         depth: 1,
         text: 2,
@@ -14191,10 +14117,10 @@
     child_ctx[11] = i;
     return child_ctx;
   }
-  function create_default_slot4(ctx) {
+  function create_default_slot5(ctx) {
     let t_value = _(
       /*ck*/
-      ctx[2].bk.caption
+      ctx[2]?.bk?.caption
     ) + "";
     let t;
     return {
@@ -14211,7 +14137,7 @@
       }
     };
   }
-  function create_if_block5(ctx) {
+  function create_if_block6(ctx) {
     let t;
     return {
       c() {
@@ -14239,7 +14165,7 @@
     let if_block = (
       /*item*/
       ctx[9].line == /*line*/
-      ctx[0] && create_if_block5(ctx)
+      ctx[0] && create_if_block6(ctx)
     );
     function click_handler() {
       return (
@@ -14279,7 +14205,7 @@
         ) {
           if (if_block) {
           } else {
-            if_block = create_if_block5(ctx);
+            if_block = create_if_block6(ctx);
             if_block.c();
             if_block.m(div, null);
           }
@@ -14298,7 +14224,7 @@
       }
     };
   }
-  function create_fragment11(ctx) {
+  function create_fragment12(ctx) {
     let div;
     let button;
     let t;
@@ -14310,7 +14236,7 @@
           ctx[1]
         ),
         className: "bk fullwidth",
-        $$slots: { default: [create_default_slot4] },
+        $$slots: { default: [create_default_slot5] },
         $$scope: { ctx }
       }
     });
@@ -14391,14 +14317,14 @@
       }
     };
   }
-  function instance12($$self, $$props, $$invalidate) {
+  function instance13($$self, $$props, $$invalidate) {
     let { idx: idx2 } = $$props;
     let { line } = $$props;
     let { onHide } = $$props;
     let { ptk } = $$props;
     const LV = getContext("LV");
     const ck = ptk.nearestChunk(line);
-    const items = ptk.neighborChunks(ck.at);
+    const items = ptk.neighborChunks(ck?.at);
     const goChunk = (n) => {
       const ck2 = items[n];
       if (ck2.line == line) {
@@ -14425,7 +14351,7 @@
   var Chunkmenu = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance12, create_fragment11, safe_not_equal, { idx: 5, line: 0, onHide: 1, ptk: 6 });
+      init(this, options, instance13, create_fragment12, safe_not_equal, { idx: 5, line: 0, onHide: 1, ptk: 6 });
     }
   };
   var chunkmenu_default = Chunkmenu;
@@ -14465,7 +14391,7 @@
     let if_block0 = show_if_3 && create_if_block_5(ctx);
     let if_block1 = show_if_2 && create_if_block_42(ctx);
     let if_block2 = show_if_1 && create_if_block_32(ctx);
-    const if_block_creators = [create_if_block_22, create_else_block2];
+    const if_block_creators = [create_if_block_23, create_else_block3];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (dirty & /*division*/
@@ -14736,7 +14662,7 @@
     let t;
     return {
       c() {
-        t = text("\u29FF");
+        t = text("\u29FF\u3000");
       },
       m(target, anchor) {
         insert(target, t, anchor);
@@ -14799,7 +14725,7 @@
     let t;
     return {
       c() {
-        t = text("\u29FE");
+        t = text("\u29FE\u3000");
       },
       m(target, anchor) {
         insert(target, t, anchor);
@@ -14868,7 +14794,7 @@
     return {
       c() {
         t0 = text(t0_value);
-        t1 = text("/");
+        t1 = text(" /");
       },
       m(target, anchor) {
         insert(target, t0, anchor);
@@ -14888,7 +14814,7 @@
       }
     };
   }
-  function create_else_block2(ctx) {
+  function create_else_block3(ctx) {
     let t_value = (
       /*division*/
       ctx[3]?.last - /*division*/
@@ -14917,7 +14843,7 @@
       }
     };
   }
-  function create_if_block_22(ctx) {
+  function create_if_block_23(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -14969,7 +14895,7 @@
     let t_value = (
       /*division*/
       ctx[3].last - /*division*/
-      ctx[3].first + ""
+      ctx[3].first + "\u3000"
     );
     let t;
     return {
@@ -14983,7 +14909,7 @@
         if (dirty & /*division*/
         8 && t_value !== (t_value = /*division*/
         ctx2[3].last - /*division*/
-        ctx2[3].first + ""))
+        ctx2[3].first + "\u3000"))
           set_data(t, t_value);
       },
       d(detaching) {
@@ -14995,7 +14921,7 @@
   function create_default_slot_1(ctx) {
     let t_value = _(
       /*caption*/
-      ctx[4],
+      ctx[4].slice(0, 6),
       /*ptk*/
       ctx[1]?.lang
     ) + "";
@@ -15011,7 +14937,7 @@
         if (dirty & /*caption, ptk*/
         18 && t_value !== (t_value = _(
           /*caption*/
-          ctx2[4],
+          ctx2[4].slice(0, 6),
           /*ptk*/
           ctx2[1]?.lang
         ) + ""))
@@ -15023,7 +14949,7 @@
       }
     };
   }
-  function create_default_slot5(ctx) {
+  function create_default_slot6(ctx) {
     let t;
     return {
       c() {
@@ -15038,7 +14964,7 @@
       }
     };
   }
-  function create_if_block6(ctx) {
+  function create_if_block7(ctx) {
     let chunkmenu_1;
     let current;
     const chunkmenu_1_spread_levels = [
@@ -15102,7 +15028,7 @@
       }
     };
   }
-  function create_fragment12(ctx) {
+  function create_fragment13(ctx) {
     let span;
     let t0;
     let button;
@@ -15120,13 +15046,13 @@
           /*func_5*/
           ctx[14]
         ),
-        $$slots: { default: [create_default_slot5] },
+        $$slots: { default: [create_default_slot6] },
         $$scope: { ctx }
       }
     });
     let if_block1 = (
       /*showchunkmenu*/
-      ctx[2] && create_if_block6(ctx)
+      ctx[2] && create_if_block7(ctx)
     );
     return {
       c() {
@@ -15199,7 +15125,7 @@
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block6(ctx2);
+            if_block1 = create_if_block7(ctx2);
             if_block1.c();
             transition_in(if_block1, 1);
             if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
@@ -15241,7 +15167,7 @@
       }
     };
   }
-  function instance13($$self, $$props, $$invalidate) {
+  function instance14($$self, $$props, $$invalidate) {
     let caption2;
     let division;
     let { item } = $$props;
@@ -15304,19 +15230,37 @@
   var Lineviewmenu = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance13, create_fragment12, safe_not_equal, { item: 0, ptk: 1, lva: 8 });
+      init(this, options, instance14, create_fragment13, safe_not_equal, { item: 0, ptk: 1, lva: 8 });
     }
   };
   var lineviewmenu_default = Lineviewmenu;
 
+  // src/comps/icons.ts
+  var github = '<svg width="24" height="24" viewBox="0 0 98 96"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z" fill="#fff"/></svg>';
+  var swipeprev = '<svg width="100px" height="100px" viewBox="0 0 1024 1024" fill="#afafaf"><path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="#afafaf"></path></svg>';
+  var swipenext = '<svg width="100px" height="100px" viewBox="0 0 1024 1024" fill="#afafaf" ><path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"></path></svg>';
+  var swipestart = '<svg width="100px" height="100px" viewBox="0 0 1024 1024" fill="#afafaf"><path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="#afafaf"></path><rect x="113" y="68" width="78" height="900"></svg>';
+  var swipeend = '<svg width="100px" height="100px" viewBox="0 0 1024 1024" fill="#afafaf" ><path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"></path><rect x="853" y="68" width="78" height="900"></svg>';
+
   // src/lineview/lineview.svelte
   function get_each_context9(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[7] = list[i];
+    child_ctx[23] = list[i];
+    child_ctx[26] = i;
+    const constants_0 = (
+      /*findDivisionIndex*/
+      child_ctx[5](
+        /*item*/
+        child_ctx[23].seq
+      )
+    );
+    child_ctx[24] = constants_0;
     return child_ctx;
   }
-  function create_if_block7(ctx) {
+  function create_if_block8(ctx) {
     let lineviewmenu;
+    let t;
+    let if_block_anchor;
     let current;
     lineviewmenu = new lineviewmenu_default({
       props: {
@@ -15326,20 +15270,34 @@
         ),
         item: (
           /*item*/
-          ctx[7]
+          ctx[23]
         ),
         ptk: usePtk(
           /*item*/
-          ctx[7].key.replace(/:.+/, "")
+          ctx[23].key.replace(/:.+/, "")
         )
       }
     });
+    let if_block = (
+      /*touching*/
+      ctx[3] == /*dividx*/
+      ctx[24] && /*direction*/
+      ctx[4] && create_if_block_14(ctx)
+    );
     return {
       c() {
         create_component(lineviewmenu.$$.fragment);
+        t = space();
+        if (if_block)
+          if_block.c();
+        if_block_anchor = empty();
       },
       m(target, anchor) {
         mount_component(lineviewmenu, target, anchor);
+        insert(target, t, anchor);
+        if (if_block)
+          if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
         current = true;
       },
       p(ctx2, dirty) {
@@ -15351,14 +15309,31 @@
         if (dirty & /*items*/
         2)
           lineviewmenu_changes.item = /*item*/
-          ctx2[7];
+          ctx2[23];
         if (dirty & /*items*/
         2)
           lineviewmenu_changes.ptk = usePtk(
             /*item*/
-            ctx2[7].key.replace(/:.+/, "")
+            ctx2[23].key.replace(/:.+/, "")
           );
         lineviewmenu.$set(lineviewmenu_changes);
+        if (
+          /*touching*/
+          ctx2[3] == /*dividx*/
+          ctx2[24] && /*direction*/
+          ctx2[4]
+        ) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+          } else {
+            if_block = create_if_block_14(ctx2);
+            if_block.c();
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        } else if (if_block) {
+          if_block.d(1);
+          if_block = null;
+        }
       },
       i(local) {
         if (current)
@@ -15372,6 +15347,46 @@
       },
       d(detaching) {
         destroy_component(lineviewmenu, detaching);
+        if (detaching)
+          detach(t);
+        if (if_block)
+          if_block.d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
+      }
+    };
+  }
+  function create_if_block_14(ctx) {
+    let span;
+    let raw_value = (
+      /*swipeshapes*/
+      ctx[11][
+        /*direction*/
+        ctx[4] + 2
+      ] + ""
+    );
+    return {
+      c() {
+        span = element("span");
+        attr(span, "class", "swipe svelte-19xqcxs");
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        span.innerHTML = raw_value;
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*direction*/
+        16 && raw_value !== (raw_value = /*swipeshapes*/
+        ctx2[11][
+          /*direction*/
+          ctx2[4] + 2
+        ] + ""))
+          span.innerHTML = raw_value;
+        ;
+      },
+      d(detaching) {
+        if (detaching)
+          detach(span);
       }
     };
   }
@@ -15386,11 +15401,11 @@
     let dispose;
     let if_block = (
       /*item*/
-      ctx[7].closable && create_if_block7(ctx)
+      ctx[23].closable && create_if_block8(ctx)
     );
     const lineviewitem_spread_levels = [
       /*item*/
-      ctx[7],
+      ctx[23],
       { lva: (
         /*lva*/
         ctx[0]
@@ -15399,19 +15414,14 @@
         /*activeword*/
         ctx[2]
       ) },
-      {
-        dividx: (
-          /*findDivisionIndex*/
-          ctx[3](
-            /*item*/
-            ctx[7].seq
-          )
-        )
-      },
+      { dividx: (
+        /*dividx*/
+        ctx[24]
+      ) },
       {
         ptk: usePtk(
           /*item*/
-          ctx[7].key.replace(/:.+/, "")
+          ctx[23].key.replace(/:.+/, "")
         )
       }
     ];
@@ -15420,12 +15430,52 @@
       lineviewitem_props = assign(lineviewitem_props, lineviewitem_spread_levels[i]);
     }
     lineviewitem = new lineviewitem_default({ props: lineviewitem_props });
+    function touchstart_handler(...args) {
+      return (
+        /*touchstart_handler*/
+        ctx[12](
+          /*dividx*/
+          ctx[24],
+          ...args
+        )
+      );
+    }
+    function touchmove_handler(...args) {
+      return (
+        /*touchmove_handler*/
+        ctx[13](
+          /*dividx*/
+          ctx[24],
+          ...args
+        )
+      );
+    }
+    function touchend_handler(...args) {
+      return (
+        /*touchend_handler*/
+        ctx[14](
+          /*dividx*/
+          ctx[24],
+          ...args
+        )
+      );
+    }
     function click_handler() {
       return (
         /*click_handler*/
-        ctx[5](
+        ctx[15](
           /*item*/
-          ctx[7]
+          ctx[23]
+        )
+      );
+    }
+    function wheel_handler(...args) {
+      return (
+        /*wheel_handler*/
+        ctx[16](
+          /*dividx*/
+          ctx[24],
+          ...args
         )
       );
     }
@@ -15442,8 +15492,8 @@
           div,
           "lineviewitem",
           /*item*/
-          ctx[7].closable && !/*item*/
-          ctx[7].depth
+          ctx[23].closable && !/*item*/
+          ctx[23].depth
         );
       },
       m(target, anchor) {
@@ -15455,7 +15505,13 @@
         append(div, t1);
         current = true;
         if (!mounted) {
-          dispose = listen(div, "click", click_handler);
+          dispose = [
+            listen(div, "touchstart", touchstart_handler, { passive: true }),
+            listen(div, "touchmove", touchmove_handler, { passive: true }),
+            listen(div, "touchend", touchend_handler, { passive: true }),
+            listen(div, "click", click_handler),
+            listen(div, "wheel", wheel_handler)
+          ];
           mounted = true;
         }
       },
@@ -15463,7 +15519,7 @@
         ctx = new_ctx;
         if (
           /*item*/
-          ctx[7].closable
+          ctx[23].closable
         ) {
           if (if_block) {
             if_block.p(ctx, dirty);
@@ -15472,7 +15528,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block7(ctx);
+            if_block = create_if_block8(ctx);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(div, t0);
@@ -15485,11 +15541,11 @@
           check_outros();
         }
         const lineviewitem_changes = dirty & /*items, lva, activeword, findDivisionIndex, usePtk*/
-        15 ? get_spread_update(lineviewitem_spread_levels, [
+        39 ? get_spread_update(lineviewitem_spread_levels, [
           dirty & /*items*/
           2 && get_spread_object(
             /*item*/
-            ctx[7]
+            ctx[23]
           ),
           dirty & /*lva*/
           1 && { lva: (
@@ -15502,20 +15558,15 @@
             ctx[2]
           ) },
           dirty & /*findDivisionIndex, items*/
-          10 && {
-            dividx: (
-              /*findDivisionIndex*/
-              ctx[3](
-                /*item*/
-                ctx[7].seq
-              )
-            )
-          },
+          34 && { dividx: (
+            /*dividx*/
+            ctx[24]
+          ) },
           dirty & /*usePtk, items*/
           2 && {
             ptk: usePtk(
               /*item*/
-              ctx[7].key.replace(/:.+/, "")
+              ctx[23].key.replace(/:.+/, "")
             )
           }
         ]) : {};
@@ -15526,8 +15577,8 @@
             div,
             "lineviewitem",
             /*item*/
-            ctx[7].closable && !/*item*/
-            ctx[7].depth
+            ctx[23].closable && !/*item*/
+            ctx[23].depth
           );
         }
       },
@@ -15550,12 +15601,12 @@
           if_block.d();
         destroy_component(lineviewitem);
         mounted = false;
-        dispose();
+        run_all(dispose);
       }
     };
   }
-  function create_fragment13(ctx) {
-    let each_1_anchor;
+  function create_fragment14(ctx) {
+    let div;
     let current;
     let each_value = (
       /*items*/
@@ -15570,21 +15621,21 @@
     });
     return {
       c() {
+        div = element("div");
         for (let i = 0; i < each_blocks.length; i += 1) {
           each_blocks[i].c();
         }
-        each_1_anchor = empty();
       },
       m(target, anchor) {
+        insert(target, div, anchor);
         for (let i = 0; i < each_blocks.length; i += 1) {
-          each_blocks[i].m(target, anchor);
+          each_blocks[i].m(div, null);
         }
-        insert(target, each_1_anchor, anchor);
         current = true;
       },
       p(ctx2, [dirty]) {
-        if (dirty & /*items, setActive, lva, activeword, findDivisionIndex, usePtk*/
-        31) {
+        if (dirty & /*items, ontouchstart, findDivisionIndex, ontouchmove, ontouchend, setActive, mousewheel, lva, activeword, usePtk, swipeshapes, direction, touching*/
+        4095) {
           each_value = /*items*/
           ctx2[1];
           let i;
@@ -15597,7 +15648,7 @@
               each_blocks[i] = create_each_block9(child_ctx);
               each_blocks[i].c();
               transition_in(each_blocks[i], 1);
-              each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+              each_blocks[i].m(div, null);
             }
           }
           group_outros();
@@ -15623,13 +15674,13 @@
         current = false;
       },
       d(detaching) {
-        destroy_each(each_blocks, detaching);
         if (detaching)
-          detach(each_1_anchor);
+          detach(div);
+        destroy_each(each_blocks, detaching);
       }
     };
   }
-  function instance14($$self, $$props, $$invalidate) {
+  function instance15($$self, $$props, $$invalidate) {
     const LV = getContext("LV");
     let { lva } = $$props;
     let { items = [] } = $$props;
@@ -15645,7 +15696,71 @@
     const setActive = (item) => {
       LV.setActive(item);
     };
+    const mousewheel = (e, idx2) => {
+      if (e.ctrlKey)
+        return;
+      if (e.deltaY > 0) {
+        LV.onnext(idx2, 2);
+      } else {
+        LV.onprev(idx2, 2);
+      }
+      e.preventDefault();
+    };
+    let touching = -1;
+    let touchx = 0, touchy = 0, startx = 0, starty = 0, direction = 0;
+    const ontouchstart = (e, idx2) => {
+      if (e.touches.length == 1) {
+        startx = e.touches[0].pageX;
+        starty = e.touches[0].pageY;
+        touchx = startx;
+        touchy = starty;
+        $$invalidate(3, touching = idx2);
+      }
+    };
+    const getDirection = (idx2) => {
+      if (Math.abs(touchy - starty) > 30)
+        return 0;
+      const delta = touchx - startx;
+      if (delta > 60) {
+        if (!LV.cannext(idx2))
+          return 0;
+        return delta > 200 ? -2 : -1;
+      } else if (delta < -60) {
+        if (!LV.canprev(idx2))
+          return 0;
+        return delta < -200 ? 2 : 1;
+      }
+      return 0;
+    };
+    const ontouchmove = (e, idx2) => {
+      if (touching == -1)
+        return;
+      if (touching > -1) {
+        touchx = e.touches[0].pageX;
+        touchy = e.touches[0].pageY;
+        $$invalidate(4, direction = getDirection(idx2));
+      }
+    };
+    const ontouchend = (e, idx2) => {
+      if (touching !== -1 && direction !== 0) {
+        if (direction == 1)
+          LV.onprev(idx2);
+        else if (direction == 2)
+          LV.onstart(idx2);
+        else if (direction == -1)
+          LV.onnext(idx2);
+        else if (direction == -2)
+          LV.onend(idx2);
+      }
+      $$invalidate(3, touching = -1);
+      $$invalidate(4, direction = 0);
+    };
+    const swipeshapes = [swipeend, swipenext, , swipeprev, swipestart];
+    const touchstart_handler = (dividx, e) => ontouchstart(e, dividx);
+    const touchmove_handler = (dividx, e) => ontouchmove(e, dividx);
+    const touchend_handler = (dividx, e) => ontouchend(e, dividx);
     const click_handler = (item) => setActive(item);
+    const wheel_handler = (dividx, e) => mousewheel(e, dividx);
     $$self.$$set = ($$props2) => {
       if ("lva" in $$props2)
         $$invalidate(0, lva = $$props2.lva);
@@ -15654,12 +15769,30 @@
       if ("activeword" in $$props2)
         $$invalidate(2, activeword2 = $$props2.activeword);
     };
-    return [lva, items, activeword2, findDivisionIndex, setActive, click_handler];
+    return [
+      lva,
+      items,
+      activeword2,
+      touching,
+      direction,
+      findDivisionIndex,
+      setActive,
+      mousewheel,
+      ontouchstart,
+      ontouchmove,
+      ontouchend,
+      swipeshapes,
+      touchstart_handler,
+      touchmove_handler,
+      touchend_handler,
+      click_handler,
+      wheel_handler
+    ];
   }
   var Lineview = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance14, create_fragment13, safe_not_equal, { lva: 0, items: 1, activeword: 2 });
+      init(this, options, instance15, create_fragment14, safe_not_equal, { lva: 0, items: 1, activeword: 2 });
     }
   };
   var lineview_default = Lineview;
@@ -15764,7 +15897,7 @@
       }
     };
   }
-  function create_fragment14(ctx) {
+  function create_fragment15(ctx) {
     let each_1_anchor;
     let each_value = (
       /*$pitakas*/
@@ -15818,7 +15951,7 @@
       }
     };
   }
-  function instance15($$self, $$props, $$invalidate) {
+  function instance16($$self, $$props, $$invalidate) {
     let $pitakas;
     let $activepitaka;
     component_subscribe($$self, pitakas, ($$value) => $$invalidate(0, $pitakas = $$value));
@@ -15851,81 +15984,174 @@
   var Pitakas = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance15, create_fragment14, safe_not_equal, { ptkname: 3, oninsert: 4 });
+      init(this, options, instance16, create_fragment15, safe_not_equal, { ptkname: 3, oninsert: 4 });
     }
   };
   var pitakas_default = Pitakas;
 
-  // src/comps/icons.ts
-  var github = '<svg width="24" height="24" viewBox="0 0 98 96"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z" fill="#fff"/></svg>';
-  var qrcode = '<svg  width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M8,2A1,1,0,0,1,8,4H4V8A1,1,0,0,1,2,8V3A1,1,0,0,1,3,2ZM8,20H4V16a1,1,0,0,0-2,0v5a1,1,0,0,0,1,1H8a1,1,0,0,0,0-2Zm13-5a1,1,0,0,0-1,1v4H16a1,1,0,0,0,0,2h5a1,1,0,0,0,1-1V16A1,1,0,0,0,21,15Zm0-6a1,1,0,0,0,1-1V3a1,1,0,0,0-1-1H16a1,1,0,0,0,0,2h4V8A1,1,0,0,0,21,9Zm1,2H2a1,1,0,0,0,0,2H22a1,1,0,0,0,0-2Z"/></svg>';
-
   // src/librarytoolbar.svelte
   function get_each_context11(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[20] = list[i];
-    child_ctx[22] = i;
+    child_ctx[23] = list[i];
+    child_ctx[25] = i;
     return child_ctx;
   }
   function get_each_context_1(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[20] = list[i];
-    child_ctx[22] = i;
+    child_ctx[23] = list[i];
+    child_ctx[25] = i;
     return child_ctx;
   }
-  function create_if_block_14(ctx) {
+  function create_if_block_33(ctx) {
+    let button;
+    let current;
+    function func() {
+      return (
+        /*func*/
+        ctx[15](
+          /*item*/
+          ctx[23]
+        )
+      );
+    }
+    button = new button_default({
+      props: {
+        onclick: func,
+        $$slots: { default: [create_default_slot_7] },
+        $$scope: { ctx }
+      }
+    });
+    return {
+      c() {
+        create_component(button.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(button, target, anchor);
+        current = true;
+      },
+      p(new_ctx, dirty) {
+        ctx = new_ctx;
+        const button_changes = {};
+        if (dirty & /*items*/
+        16)
+          button_changes.onclick = func;
+        if (dirty & /*$$scope, items*/
+        134217744) {
+          button_changes.$$scope = { dirty, ctx };
+        }
+        button.$set(button_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(button.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(button.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(button, detaching);
+      }
+    };
+  }
+  function create_default_slot_7(ctx) {
+    let t0_value = (
+      /*item*/
+      ctx[23].caption + ""
+    );
+    let t0;
+    let t1;
+    let t2_value = (
+      /*item*/
+      ctx[23].contain.length + ""
+    );
+    let t2;
+    return {
+      c() {
+        t0 = text(t0_value);
+        t1 = space();
+        t2 = text(t2_value);
+      },
+      m(target, anchor) {
+        insert(target, t0, anchor);
+        insert(target, t1, anchor);
+        insert(target, t2, anchor);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*items*/
+        16 && t0_value !== (t0_value = /*item*/
+        ctx2[23].caption + ""))
+          set_data(t0, t0_value);
+        if (dirty & /*items*/
+        16 && t2_value !== (t2_value = /*item*/
+        ctx2[23].contain.length + ""))
+          set_data(t2, t2_value);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t0);
+        if (detaching)
+          detach(t1);
+        if (detaching)
+          detach(t2);
+      }
+    };
+  }
+  function create_if_block_24(ctx) {
     let button0;
     let t;
     let button1;
     let button2;
     let current;
-    function func() {
+    function func_1() {
       return (
-        /*func*/
-        ctx[14](
+        /*func_1*/
+        ctx[16](
           /*item*/
-          ctx[20]
+          ctx[23]
         )
       );
     }
     button0 = new button_default({
       props: {
         title: "beginsWith \u5F00\u5934\u7B26\u5408",
-        onclick: func,
-        $$slots: { default: [create_default_slot_6] },
-        $$scope: { ctx }
-      }
-    });
-    function func_1() {
-      return (
-        /*func_1*/
-        ctx[15](
-          /*item*/
-          ctx[20]
-        )
-      );
-    }
-    button1 = new button_default({
-      props: {
-        title: "inMiddle \u4E2D\u95F4\u7B26\u5408",
         onclick: func_1,
-        $$slots: { default: [create_default_slot_52] },
+        $$slots: { default: [create_default_slot_6] },
         $$scope: { ctx }
       }
     });
     function func_2() {
       return (
         /*func_2*/
-        ctx[16](
+        ctx[17](
           /*item*/
-          ctx[20]
+          ctx[23]
+        )
+      );
+    }
+    button1 = new button_default({
+      props: {
+        title: "inMiddle \u4E2D\u95F4\u7B26\u5408",
+        onclick: func_2,
+        $$slots: { default: [create_default_slot_52] },
+        $$scope: { ctx }
+      }
+    });
+    function func_3() {
+      return (
+        /*func_3*/
+        ctx[18](
+          /*item*/
+          ctx[23]
         )
       );
     }
     button2 = new button_default({
       props: {
         title: "endsWith \u7ED3\u5C3E\u7B26\u5408",
-        onclick: func_2,
+        onclick: func_3,
         $$slots: { default: [create_default_slot_42] },
         $$scope: { ctx }
       }
@@ -15949,27 +16175,27 @@
         const button0_changes = {};
         if (dirty & /*items*/
         16)
-          button0_changes.onclick = func;
+          button0_changes.onclick = func_1;
         if (dirty & /*$$scope, items*/
-        16777232) {
+        134217744) {
           button0_changes.$$scope = { dirty, ctx };
         }
         button0.$set(button0_changes);
         const button1_changes = {};
         if (dirty & /*items*/
         16)
-          button1_changes.onclick = func_1;
+          button1_changes.onclick = func_2;
         if (dirty & /*$$scope, items*/
-        16777232) {
+        134217744) {
           button1_changes.$$scope = { dirty, ctx };
         }
         button1.$set(button1_changes);
         const button2_changes = {};
         if (dirty & /*items*/
         16)
-          button2_changes.onclick = func_2;
+          button2_changes.onclick = func_3;
         if (dirty & /*$$scope, items*/
-        16777232) {
+        134217744) {
           button2_changes.$$scope = { dirty, ctx };
         }
         button2.$set(button2_changes);
@@ -16000,12 +16226,12 @@
   function create_default_slot_6(ctx) {
     let t0_value = (
       /*item*/
-      ctx[20].caption + ""
+      ctx[23].caption + ""
     );
     let t0;
     let t1_value = (
       /*item*/
-      ctx[20].start.length + ""
+      ctx[23].start.length + ""
     );
     let t1;
     return {
@@ -16020,11 +16246,11 @@
       p(ctx2, dirty) {
         if (dirty & /*items*/
         16 && t0_value !== (t0_value = /*item*/
-        ctx2[20].caption + ""))
+        ctx2[23].caption + ""))
           set_data(t0, t0_value);
         if (dirty & /*items*/
         16 && t1_value !== (t1_value = /*item*/
-        ctx2[20].start.length + ""))
+        ctx2[23].start.length + ""))
           set_data(t1, t1_value);
       },
       d(detaching) {
@@ -16039,7 +16265,7 @@
     let t0;
     let t1_value = (
       /*item*/
-      ctx[20].middle.length + ""
+      ctx[23].middle.length + ""
     );
     let t1;
     let t2;
@@ -16057,7 +16283,7 @@
       p(ctx2, dirty) {
         if (dirty & /*items*/
         16 && t1_value !== (t1_value = /*item*/
-        ctx2[20].middle.length + ""))
+        ctx2[23].middle.length + ""))
           set_data(t1, t1_value);
       },
       d(detaching) {
@@ -16075,7 +16301,7 @@
     let t0;
     let t1_value = (
       /*item*/
-      ctx[20].end.length + ""
+      ctx[23].end.length + ""
     );
     let t1;
     let t2_value = " ";
@@ -16094,7 +16320,7 @@
       p(ctx2, dirty) {
         if (dirty & /*items*/
         16 && t1_value !== (t1_value = /*item*/
-        ctx2[20].end.length + ""))
+        ctx2[23].end.length + ""))
           set_data(t1, t1_value);
       },
       d(detaching) {
@@ -16108,49 +16334,83 @@
     };
   }
   function create_each_block_1(ctx) {
-    let if_block_anchor;
+    let t;
+    let if_block1_anchor;
     let current;
-    let if_block = (
+    let if_block0 = (
       /*item*/
-      ctx[20].start.length + /*item*/
-      ctx[20].middle.length + /*item*/
-      ctx[20].end.length && create_if_block_14(ctx)
+      ctx[23].contain?.length && create_if_block_33(ctx)
+    );
+    let if_block1 = (
+      /*item*/
+      ctx[23].start?.length + /*item*/
+      ctx[23].middle?.length + /*item*/
+      ctx[23].end?.length && create_if_block_24(ctx)
     );
     return {
       c() {
-        if (if_block)
-          if_block.c();
-        if_block_anchor = empty();
+        if (if_block0)
+          if_block0.c();
+        t = space();
+        if (if_block1)
+          if_block1.c();
+        if_block1_anchor = empty();
       },
       m(target, anchor) {
-        if (if_block)
-          if_block.m(target, anchor);
-        insert(target, if_block_anchor, anchor);
+        if (if_block0)
+          if_block0.m(target, anchor);
+        insert(target, t, anchor);
+        if (if_block1)
+          if_block1.m(target, anchor);
+        insert(target, if_block1_anchor, anchor);
         current = true;
       },
       p(ctx2, dirty) {
         if (
           /*item*/
-          ctx2[20].start.length + /*item*/
-          ctx2[20].middle.length + /*item*/
-          ctx2[20].end.length
+          ctx2[23].contain?.length
         ) {
-          if (if_block) {
-            if_block.p(ctx2, dirty);
+          if (if_block0) {
+            if_block0.p(ctx2, dirty);
             if (dirty & /*items*/
             16) {
-              transition_in(if_block, 1);
+              transition_in(if_block0, 1);
             }
           } else {
-            if_block = create_if_block_14(ctx2);
-            if_block.c();
-            transition_in(if_block, 1);
-            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+            if_block0 = create_if_block_33(ctx2);
+            if_block0.c();
+            transition_in(if_block0, 1);
+            if_block0.m(t.parentNode, t);
           }
-        } else if (if_block) {
+        } else if (if_block0) {
           group_outros();
-          transition_out(if_block, 1, 1, () => {
-            if_block = null;
+          transition_out(if_block0, 1, 1, () => {
+            if_block0 = null;
+          });
+          check_outros();
+        }
+        if (
+          /*item*/
+          ctx2[23].start?.length + /*item*/
+          ctx2[23].middle?.length + /*item*/
+          ctx2[23].end?.length
+        ) {
+          if (if_block1) {
+            if_block1.p(ctx2, dirty);
+            if (dirty & /*items*/
+            16) {
+              transition_in(if_block1, 1);
+            }
+          } else {
+            if_block1 = create_if_block_24(ctx2);
+            if_block1.c();
+            transition_in(if_block1, 1);
+            if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+          }
+        } else if (if_block1) {
+          group_outros();
+          transition_out(if_block1, 1, 1, () => {
+            if_block1 = null;
           });
           check_outros();
         }
@@ -16158,147 +16418,28 @@
       i(local) {
         if (current)
           return;
-        transition_in(if_block);
+        transition_in(if_block0);
+        transition_in(if_block1);
         current = true;
       },
       o(local) {
-        transition_out(if_block);
+        transition_out(if_block0);
+        transition_out(if_block1);
         current = false;
       },
       d(detaching) {
-        if (if_block)
-          if_block.d(detaching);
-        if (detaching)
-          detach(if_block_anchor);
-      }
-    };
-  }
-  function create_default_slot_32(ctx) {
-    let t_value = _(
-      /*item*/
-      ctx[20].caption
-    ) + "";
-    let t;
-    return {
-      c() {
-        t = text(t_value);
-      },
-      m(target, anchor) {
-        insert(target, t, anchor);
-      },
-      p(ctx2, dirty) {
-        if (dirty & /*ftsitems*/
-        8 && t_value !== (t_value = _(
-          /*item*/
-          ctx2[20].caption
-        ) + ""))
-          set_data(t, t_value);
-      },
-      d(detaching) {
+        if (if_block0)
+          if_block0.d(detaching);
         if (detaching)
           detach(t);
-      }
-    };
-  }
-  function create_else_block3(ctx) {
-    let t;
-    return {
-      c() {
-        t = text("0|");
-      },
-      m(target, anchor) {
-        insert(target, t, anchor);
-      },
-      p: noop,
-      i: noop,
-      o: noop,
-      d(detaching) {
+        if (if_block1)
+          if_block1.d(detaching);
         if (detaching)
-          detach(t);
+          detach(if_block1_anchor);
       }
     };
   }
-  function create_if_block8(ctx) {
-    let button;
-    let current;
-    function func_4() {
-      return (
-        /*func_4*/
-        ctx[18](
-          /*item*/
-          ctx[20]
-        )
-      );
-    }
-    button = new button_default({
-      props: {
-        className: "clickable hitcount",
-        onclick: func_4,
-        $$slots: { default: [create_default_slot_22] },
-        $$scope: { ctx }
-      }
-    });
-    return {
-      c() {
-        create_component(button.$$.fragment);
-      },
-      m(target, anchor) {
-        mount_component(button, target, anchor);
-        current = true;
-      },
-      p(new_ctx, dirty) {
-        ctx = new_ctx;
-        const button_changes = {};
-        if (dirty & /*ftsitems*/
-        8)
-          button_changes.onclick = func_4;
-        if (dirty & /*$$scope, ftsitems*/
-        16777224) {
-          button_changes.$$scope = { dirty, ctx };
-        }
-        button.$set(button_changes);
-      },
-      i(local) {
-        if (current)
-          return;
-        transition_in(button.$$.fragment, local);
-        current = true;
-      },
-      o(local) {
-        transition_out(button.$$.fragment, local);
-        current = false;
-      },
-      d(detaching) {
-        destroy_component(button, detaching);
-      }
-    };
-  }
-  function create_default_slot_22(ctx) {
-    let t_value = (
-      /*item*/
-      ctx[20].count + ""
-    );
-    let t;
-    return {
-      c() {
-        t = text(t_value);
-      },
-      m(target, anchor) {
-        insert(target, t, anchor);
-      },
-      p(ctx2, dirty) {
-        if (dirty & /*ftsitems*/
-        8 && t_value !== (t_value = /*item*/
-        ctx2[20].count + ""))
-          set_data(t, t_value);
-      },
-      d(detaching) {
-        if (detaching)
-          detach(t);
-      }
-    };
-  }
-  function create_each_block11(ctx) {
+  function create_if_block9(ctx) {
     let span;
     let button;
     let current_block_type_index;
@@ -16306,29 +16447,29 @@
     let t_value = " ";
     let t;
     let current;
-    function func_3() {
+    function func_4() {
       return (
-        /*func_3*/
-        ctx[17](
+        /*func_4*/
+        ctx[19](
           /*item*/
-          ctx[20]
+          ctx[23]
         )
       );
     }
     button = new button_default({
       props: {
         title: "fulltext \u5168\u6587",
-        onclick: func_3,
+        onclick: func_4,
         $$slots: { default: [create_default_slot_32] },
         $$scope: { ctx }
       }
     });
-    const if_block_creators = [create_if_block8, create_else_block3];
+    const if_block_creators = [create_if_block_15, create_else_block4];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
         /*item*/
-        ctx2[20].count
+        ctx2[23].count
       )
         return 0;
       return 1;
@@ -16355,9 +16496,9 @@
         const button_changes = {};
         if (dirty & /*ftsitems*/
         8)
-          button_changes.onclick = func_3;
+          button_changes.onclick = func_4;
         if (dirty & /*$$scope, ftsitems*/
-        16777224) {
+        134217736) {
           button_changes.$$scope = { dirty, ctx };
         }
         button.$set(button_changes);
@@ -16404,7 +16545,207 @@
       }
     };
   }
+  function create_default_slot_32(ctx) {
+    let t_value = _(
+      /*item*/
+      ctx[23].caption
+    ) + "";
+    let t;
+    return {
+      c() {
+        t = text(t_value);
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*ftsitems*/
+        8 && t_value !== (t_value = _(
+          /*item*/
+          ctx2[23].caption
+        ) + ""))
+          set_data(t, t_value);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_else_block4(ctx) {
+    let t;
+    return {
+      c() {
+        t = text("0");
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      p: noop,
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_if_block_15(ctx) {
+    let button;
+    let current;
+    function func_5() {
+      return (
+        /*func_5*/
+        ctx[20](
+          /*item*/
+          ctx[23]
+        )
+      );
+    }
+    button = new button_default({
+      props: {
+        className: "clickable hitcount",
+        onclick: func_5,
+        $$slots: { default: [create_default_slot_22] },
+        $$scope: { ctx }
+      }
+    });
+    return {
+      c() {
+        create_component(button.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(button, target, anchor);
+        current = true;
+      },
+      p(new_ctx, dirty) {
+        ctx = new_ctx;
+        const button_changes = {};
+        if (dirty & /*ftsitems*/
+        8)
+          button_changes.onclick = func_5;
+        if (dirty & /*$$scope, ftsitems*/
+        134217736) {
+          button_changes.$$scope = { dirty, ctx };
+        }
+        button.$set(button_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(button.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(button.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(button, detaching);
+      }
+    };
+  }
+  function create_default_slot_22(ctx) {
+    let t_value = " " + /*item*/
+    ctx[23].count + " ";
+    let t;
+    return {
+      c() {
+        t = text(t_value);
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*ftsitems*/
+        8 && t_value !== (t_value = " " + /*item*/
+        ctx2[23].count + " "))
+          set_data(t, t_value);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_each_block11(ctx) {
+    let if_block_anchor;
+    let current;
+    let if_block = (
+      /*item*/
+      ctx[23].count && create_if_block9(ctx)
+    );
+    return {
+      c() {
+        if (if_block)
+          if_block.c();
+        if_block_anchor = empty();
+      },
+      m(target, anchor) {
+        if (if_block)
+          if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        if (
+          /*item*/
+          ctx2[23].count
+        ) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+            if (dirty & /*ftsitems*/
+            8) {
+              transition_in(if_block, 1);
+            }
+          } else {
+            if_block = create_if_block9(ctx2);
+            if_block.c();
+            transition_in(if_block, 1);
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        } else if (if_block) {
+          group_outros();
+          transition_out(if_block, 1, 1, () => {
+            if_block = null;
+          });
+          check_outros();
+        }
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(if_block);
+        current = true;
+      },
+      o(local) {
+        transition_out(if_block);
+        current = false;
+      },
+      d(detaching) {
+        if (if_block)
+          if_block.d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
+      }
+    };
+  }
   function create_default_slot_12(ctx) {
+    let t;
+    return {
+      c() {
+        t = text("\u274C");
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_default_slot7(ctx) {
     let t;
     return {
       c() {
@@ -16419,30 +16760,7 @@
       }
     };
   }
-  function create_default_slot6(ctx) {
-    let html_tag;
-    let t_value = "\u3000";
-    let t;
-    return {
-      c() {
-        html_tag = new HtmlTag(false);
-        t = text(t_value);
-        html_tag.a = t;
-      },
-      m(target, anchor) {
-        html_tag.m(qrcode, target, anchor);
-        insert(target, t, anchor);
-      },
-      p: noop,
-      d(detaching) {
-        if (detaching)
-          html_tag.d();
-        if (detaching)
-          detach(t);
-      }
-    };
-  }
-  function create_fragment15(ctx) {
+  function create_fragment16(ctx) {
     let div;
     let selectpitakas;
     let updating_ptkname;
@@ -16458,7 +16776,7 @@
     let mounted;
     let dispose;
     function selectpitakas_ptkname_binding(value) {
-      ctx[12](value);
+      ctx[13](value);
     }
     let selectpitakas_props = { oninsert: (
       /*oninsert*/
@@ -16497,10 +16815,10 @@
     });
     button0 = new button_default({
       props: {
-        className: "setting",
+        className: "floatright",
         onclick: (
-          /*opensetting*/
-          ctx[9]
+          /*closeall*/
+          ctx[11]
         ),
         $$slots: { default: [create_default_slot_12] },
         $$scope: { ctx }
@@ -16508,12 +16826,12 @@
     });
     button1 = new button_default({
       props: {
-        className: "setting",
+        className: "floatright",
         onclick: (
-          /*scanqrcode*/
-          ctx[10]
+          /*opensetting*/
+          ctx[9]
         ),
-        $$slots: { default: [create_default_slot6] },
+        $$slots: { default: [create_default_slot7] },
         $$scope: { ctx }
       }
     });
@@ -16568,7 +16886,7 @@
               input,
               "input",
               /*input_input_handler*/
-              ctx[13]
+              ctx[14]
             ),
             listen(input, "input", debounce(
               /*dosearch*/
@@ -16602,8 +16920,8 @@
             ctx2[0]
           );
         }
-        if (dirty & /*items, insert*/
-        80) {
+        if (dirty & /*items, insert, insertContainList*/
+        1104) {
           each_value_1 = /*items*/
           ctx2[4];
           let i;
@@ -16650,13 +16968,13 @@
         }
         const button0_changes = {};
         if (dirty & /*$$scope*/
-        16777216) {
+        134217728) {
           button0_changes.$$scope = { dirty, ctx: ctx2 };
         }
         button0.$set(button0_changes);
         const button1_changes = {};
         if (dirty & /*$$scope*/
-        16777216) {
+        134217728) {
           button1_changes.$$scope = { dirty, ctx: ctx2 };
         }
         button1.$set(button1_changes);
@@ -16702,7 +17020,7 @@
       }
     };
   }
-  function instance16($$self, $$props, $$invalidate) {
+  function instance17($$self, $$props, $$invalidate) {
     let items;
     let ftsitems;
     let { oninsert } = $$props;
@@ -16713,7 +17031,7 @@
       const ptk = usePtk(ptkname);
       if (!ptk)
         return;
-      $$invalidate(4, items = ptk.scanPrimaryKeys(value));
+      $$invalidate(4, items = ptk.scanColumnFields(value));
       setTimeout(() => {
         ptk.scanText(value).then((res) => {
           $$invalidate(3, ftsitems = res);
@@ -16780,6 +17098,18 @@
         }
       });
     };
+    const insertContainList = (columnname, field) => {
+      const tofind2 = value;
+      oninsert({
+        detail: {
+          seq: -1,
+          address: ptkname + ":" + columnname + "." + field + "=" + tofind2
+        }
+      });
+    };
+    const closeall = () => {
+      lvaddr.set("");
+    };
     function selectpitakas_ptkname_binding(value2) {
       ptkname = value2;
       $$invalidate(2, ptkname);
@@ -16788,16 +17118,17 @@
       value = this.value;
       $$invalidate(0, value);
     }
-    const func = (item) => item.start.length && insert2(item.name, 0);
-    const func_1 = (item) => item.middle.length && insert2(item.name, 1);
-    const func_2 = (item) => item.end.length && insert2(item.name, 2);
-    const func_3 = (item) => listchunk(item.scope);
-    const func_4 = (item) => fulltext(item.scope);
+    const func = (item) => insertContainList(item.name, item.field);
+    const func_1 = (item) => item.start.length && insert2(item.name, 0);
+    const func_2 = (item) => item.middle.length && insert2(item.name, 1);
+    const func_3 = (item) => item.end.length && insert2(item.name, 2);
+    const func_4 = (item) => listchunk(item.scope);
+    const func_5 = (item) => fulltext(item.scope);
     $$self.$$set = ($$props2) => {
       if ("oninsert" in $$props2)
         $$invalidate(1, oninsert = $$props2.oninsert);
       if ("setTofind" in $$props2)
-        $$invalidate(11, setTofind = $$props2.setTofind);
+        $$invalidate(12, setTofind = $$props2.setTofind);
       if ("value" in $$props2)
         $$invalidate(0, value = $$props2.value);
     };
@@ -16823,7 +17154,8 @@
       fulltext,
       listchunk,
       opensetting,
-      scanqrcode,
+      insertContainList,
+      closeall,
       setTofind,
       selectpitakas_ptkname_binding,
       input_input_handler,
@@ -16831,19 +17163,20 @@
       func_1,
       func_2,
       func_3,
-      func_4
+      func_4,
+      func_5
     ];
   }
   var Librarytoolbar = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance16, create_fragment15, safe_not_equal, { oninsert: 1, setTofind: 11, value: 0 });
+      init(this, options, instance17, create_fragment16, safe_not_equal, { oninsert: 1, setTofind: 12, value: 0 });
     }
   };
   var librarytoolbar_default = Librarytoolbar;
 
   // src/librarymain.svelte
-  function create_if_block9(ctx) {
+  function create_if_block10(ctx) {
     let librarytoolbar;
     let current;
     librarytoolbar = new librarytoolbar_default({
@@ -16893,13 +17226,13 @@
       }
     };
   }
-  function create_fragment16(ctx) {
+  function create_fragment17(ctx) {
     let t;
     let lineview;
     let current;
     let if_block = (
       /*loaded*/
-      ctx[3] && create_if_block9(ctx)
+      ctx[3] && create_if_block10(ctx)
     );
     lineview = new lineview_default({
       props: {
@@ -16943,7 +17276,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block9(ctx2);
+            if_block = create_if_block10(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(t.parentNode, t);
@@ -16991,7 +17324,7 @@
       }
     };
   }
-  function instance17($$self, $$props, $$invalidate) {
+  function instance18($$self, $$props, $$invalidate) {
     let loaded;
     let $tosim;
     let $palitrans;
@@ -17046,15 +17379,25 @@
       }
       lvaddr.set(lva.stringify());
     };
-    const onnext = (idx2) => {
+    const onnext = (idx2, inc) => {
       if (idx2?.detail)
         idx2 = idx2.detail;
-      lvaddr.set(lva.next(idx2).stringify());
+      lvaddr.set(lva.next(idx2, inc).stringify());
     };
-    const onprev = (idx2) => {
+    const onend = (idx2) => {
       if (idx2?.detail)
         idx2 = idx2.detail;
-      lvaddr.set(lva.prev(idx2).stringify());
+      lvaddr.set(lva.end(idx2).stringify());
+    };
+    const onprev = (idx2, inc) => {
+      if (idx2?.detail)
+        idx2 = idx2.detail;
+      lvaddr.set(lva.prev(idx2, inc).stringify());
+    };
+    const onstart = (idx2) => {
+      if (idx2?.detail)
+        idx2 = idx2.detail;
+      lvaddr.set(lva.start(idx2).stringify());
     };
     const onnextchunk = (idx2) => {
       console.log("next chunk");
@@ -17185,6 +17528,8 @@
       onremove,
       onnext,
       onprev,
+      onstart,
+      onend,
       ontop,
       onmore,
       onless,
@@ -17219,13 +17564,26 @@
   var Librarymain = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance17, create_fragment16, safe_not_equal, {}, null, [-1, -1]);
+      init(this, options, instance18, create_fragment17, safe_not_equal, {}, null, [-1, -1]);
     }
   };
   var librarymain_default = Librarymain;
 
+  // src/meta/guides.ts
+  var MetaGuides = {};
+  var registerMetaGuide = (name2, component) => {
+    if (MetaGuides[name2])
+      console.warn(name2 + " already registered, override");
+    MetaGuides[name2] = component;
+  };
+  var initMetaGuide = (obj) => {
+    for (let n in obj) {
+      registerMetaGuide(n, obj[n]);
+    }
+  };
+
   // src/painters/note.svelte
-  function create_if_block10(ctx) {
+  function create_if_block11(ctx) {
     let span;
     let inlinetext;
     let current;
@@ -17281,12 +17639,12 @@
       }
     };
   }
-  function create_fragment17(ctx) {
+  function create_fragment18(ctx) {
     let if_block_anchor;
     let current;
     let if_block = (
       /*notetext*/
-      ctx[1] && create_if_block10(ctx)
+      ctx[1] && create_if_block11(ctx)
     );
     return {
       c() {
@@ -17312,7 +17670,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block10(ctx2);
+            if_block = create_if_block11(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -17343,7 +17701,7 @@
       }
     };
   }
-  function instance18($$self, $$props, $$invalidate) {
+  function instance19($$self, $$props, $$invalidate) {
     let notetext;
     let { text: text2 } = $$props;
     let { ptk } = $$props;
@@ -17371,7 +17729,7 @@
   var Note = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance18, create_fragment17, safe_not_equal, { text: 2, ptk: 0, tagname: 3, after: 4 });
+      init(this, options, instance19, create_fragment18, safe_not_equal, { text: 2, ptk: 0, tagname: 3, after: 4 });
     }
   };
   var note_default = Note;
@@ -17382,10 +17740,10 @@
     child_ctx[6] = list[i];
     return child_ctx;
   }
-  function create_default_slot7(ctx) {
+  function create_default_slot8(ctx) {
     let t_value = (
       /*link*/
-      ctx[6].ck.bk.caption + ""
+      ctx[6].ck.bk?.caption + ""
     );
     let t;
     return {
@@ -17398,7 +17756,7 @@
       p(ctx2, dirty) {
         if (dirty & /*links*/
         1 && t_value !== (t_value = /*link*/
-        ctx2[6].ck.bk.caption + ""))
+        ctx2[6].ck.bk?.caption + ""))
           set_data(t, t_value);
       },
       d(detaching) {
@@ -17429,7 +17787,7 @@
         ),
         className: "clickable backlink",
         onclick: func,
-        $$slots: { default: [create_default_slot7] },
+        $$slots: { default: [create_default_slot8] },
         $$scope: { ctx }
       }
     });
@@ -17476,7 +17834,7 @@
       }
     };
   }
-  function create_fragment18(ctx) {
+  function create_fragment19(ctx) {
     let each_1_anchor;
     let current;
     let each_value = (
@@ -17551,7 +17909,7 @@
       }
     };
   }
-  function instance19($$self, $$props, $$invalidate) {
+  function instance20($$self, $$props, $$invalidate) {
     let { links } = $$props;
     let { seq } = $$props;
     const LV = getContext("LV");
@@ -17561,7 +17919,7 @@
     };
     let prev = "";
     for (let i = 0; i < links.length; i++) {
-      if (links[i].ck.bk.caption == prev)
+      if (links[i].ck.bk?.caption == prev)
         links[i].ck.bk.caption = "";
       else
         prev = links[i].ck.bk.caption;
@@ -17579,380 +17937,12 @@
   var Jump_target = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance19, create_fragment18, safe_not_equal, { links: 0, seq: 2 });
+      init(this, options, instance20, create_fragment19, safe_not_equal, { links: 0, seq: 2 });
     }
   };
   var jump_target_default = Jump_target;
 
   // src/painters/n.svelte
-  function create_if_block11(ctx) {
-    let t0;
-    let button;
-    let t1;
-    let if_block1_anchor;
-    let current;
-    let if_block0 = (
-      /*links*/
-      ctx[6].length && create_if_block_23(ctx)
-    );
-    button = new button_default({
-      props: {
-        className: (
-          /*links*/
-          ctx[6].length ? "clickable " + /*tagname*/
-          ctx[4] : (
-            /*tagname*/
-            ctx[4]
-          )
-        ),
-        onclick: (
-          /*func*/
-          ctx[9]
-        ),
-        $$slots: { default: [create_default_slot8] },
-        $$scope: { ctx }
-      }
-    });
-    let if_block1 = (
-      /*showlink*/
-      ctx[5] && /*links*/
-      ctx[6].length && create_if_block_15(ctx)
-    );
-    return {
-      c() {
-        if (if_block0)
-          if_block0.c();
-        t0 = space();
-        create_component(button.$$.fragment);
-        t1 = space();
-        if (if_block1)
-          if_block1.c();
-        if_block1_anchor = empty();
-      },
-      m(target, anchor) {
-        if (if_block0)
-          if_block0.m(target, anchor);
-        insert(target, t0, anchor);
-        mount_component(button, target, anchor);
-        insert(target, t1, anchor);
-        if (if_block1)
-          if_block1.m(target, anchor);
-        insert(target, if_block1_anchor, anchor);
-        current = true;
-      },
-      p(ctx2, dirty) {
-        if (
-          /*links*/
-          ctx2[6].length
-        ) {
-          if (if_block0) {
-            if_block0.p(ctx2, dirty);
-          } else {
-            if_block0 = create_if_block_23(ctx2);
-            if_block0.c();
-            if_block0.m(t0.parentNode, t0);
-          }
-        } else if (if_block0) {
-          if_block0.d(1);
-          if_block0 = null;
-        }
-        const button_changes = {};
-        if (dirty & /*links, tagname*/
-        80)
-          button_changes.className = /*links*/
-          ctx2[6].length ? "clickable " + /*tagname*/
-          ctx2[4] : (
-            /*tagname*/
-            ctx2[4]
-          );
-        if (dirty & /*showlink*/
-        32)
-          button_changes.onclick = /*func*/
-          ctx2[9];
-        if (dirty & /*$$scope, value*/
-        1032) {
-          button_changes.$$scope = { dirty, ctx: ctx2 };
-        }
-        button.$set(button_changes);
-        if (
-          /*showlink*/
-          ctx2[5] && /*links*/
-          ctx2[6].length
-        ) {
-          if (if_block1) {
-            if_block1.p(ctx2, dirty);
-            if (dirty & /*showlink, links*/
-            96) {
-              transition_in(if_block1, 1);
-            }
-          } else {
-            if_block1 = create_if_block_15(ctx2);
-            if_block1.c();
-            transition_in(if_block1, 1);
-            if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
-          }
-        } else if (if_block1) {
-          group_outros();
-          transition_out(if_block1, 1, 1, () => {
-            if_block1 = null;
-          });
-          check_outros();
-        }
-      },
-      i(local) {
-        if (current)
-          return;
-        transition_in(button.$$.fragment, local);
-        transition_in(if_block1);
-        current = true;
-      },
-      o(local) {
-        transition_out(button.$$.fragment, local);
-        transition_out(if_block1);
-        current = false;
-      },
-      d(detaching) {
-        if (if_block0)
-          if_block0.d(detaching);
-        if (detaching)
-          detach(t0);
-        destroy_component(button, detaching);
-        if (detaching)
-          detach(t1);
-        if (if_block1)
-          if_block1.d(detaching);
-        if (detaching)
-          detach(if_block1_anchor);
-      }
-    };
-  }
-  function create_if_block_23(ctx) {
-    let span;
-    let t_value = (
-      /*links*/
-      ctx[6].length + ""
-    );
-    let t;
-    return {
-      c() {
-        span = element("span");
-        t = text(t_value);
-        attr(span, "class", "foreignlink");
-      },
-      m(target, anchor) {
-        insert(target, span, anchor);
-        append(span, t);
-      },
-      p(ctx2, dirty) {
-        if (dirty & /*links*/
-        64 && t_value !== (t_value = /*links*/
-        ctx2[6].length + ""))
-          set_data(t, t_value);
-      },
-      d(detaching) {
-        if (detaching)
-          detach(span);
-      }
-    };
-  }
-  function create_default_slot8(ctx) {
-    let t_value = " " + /*value*/
-    ctx[3];
-    let t;
-    return {
-      c() {
-        t = text(t_value);
-      },
-      m(target, anchor) {
-        insert(target, t, anchor);
-      },
-      p(ctx2, dirty) {
-        if (dirty & /*value*/
-        8 && t_value !== (t_value = " " + /*value*/
-        ctx2[3]))
-          set_data(t, t_value);
-      },
-      d(detaching) {
-        if (detaching)
-          detach(t);
-      }
-    };
-  }
-  function create_if_block_15(ctx) {
-    let span;
-    let jump_target;
-    let current;
-    jump_target = new jump_target_default({
-      props: {
-        links: (
-          /*links*/
-          ctx[6]
-        ),
-        seq: (
-          /*seq*/
-          ctx[0]
-        )
-      }
-    });
-    return {
-      c() {
-        span = element("span");
-        create_component(jump_target.$$.fragment);
-        attr(span, "class", "toolbar");
-      },
-      m(target, anchor) {
-        insert(target, span, anchor);
-        mount_component(jump_target, span, null);
-        current = true;
-      },
-      p(ctx2, dirty) {
-        const jump_target_changes = {};
-        if (dirty & /*links*/
-        64)
-          jump_target_changes.links = /*links*/
-          ctx2[6];
-        if (dirty & /*seq*/
-        1)
-          jump_target_changes.seq = /*seq*/
-          ctx2[0];
-        jump_target.$set(jump_target_changes);
-      },
-      i(local) {
-        if (current)
-          return;
-        transition_in(jump_target.$$.fragment, local);
-        current = true;
-      },
-      o(local) {
-        transition_out(jump_target.$$.fragment, local);
-        current = false;
-      },
-      d(detaching) {
-        if (detaching)
-          detach(span);
-        destroy_component(jump_target);
-      }
-    };
-  }
-  function create_fragment19(ctx) {
-    let if_block_anchor;
-    let current;
-    let if_block = (
-      /*after*/
-      (ctx[1] || !/*innertext*/
-      ctx[2] && !/*after*/
-      ctx[1]) && create_if_block11(ctx)
-    );
-    return {
-      c() {
-        if (if_block)
-          if_block.c();
-        if_block_anchor = empty();
-      },
-      m(target, anchor) {
-        if (if_block)
-          if_block.m(target, anchor);
-        insert(target, if_block_anchor, anchor);
-        current = true;
-      },
-      p(ctx2, [dirty]) {
-        if (
-          /*after*/
-          ctx2[1] || !/*innertext*/
-          ctx2[2] && !/*after*/
-          ctx2[1]
-        ) {
-          if (if_block) {
-            if_block.p(ctx2, dirty);
-            if (dirty & /*after, innertext*/
-            6) {
-              transition_in(if_block, 1);
-            }
-          } else {
-            if_block = create_if_block11(ctx2);
-            if_block.c();
-            transition_in(if_block, 1);
-            if_block.m(if_block_anchor.parentNode, if_block_anchor);
-          }
-        } else if (if_block) {
-          group_outros();
-          transition_out(if_block, 1, 1, () => {
-            if_block = null;
-          });
-          check_outros();
-        }
-      },
-      i(local) {
-        if (current)
-          return;
-        transition_in(if_block);
-        current = true;
-      },
-      o(local) {
-        transition_out(if_block);
-        current = false;
-      },
-      d(detaching) {
-        if (if_block)
-          if_block.d(detaching);
-        if (detaching)
-          detach(if_block_anchor);
-      }
-    };
-  }
-  function instance20($$self, $$props, $$invalidate) {
-    let links;
-    let { ptk } = $$props;
-    let { line } = $$props;
-    let { seq } = $$props;
-    let { after } = $$props;
-    let { innertext: innertext2 } = $$props;
-    let { value } = $$props;
-    let { tagname } = $$props;
-    let showlink = false;
-    const func = () => $$invalidate(5, showlink = !showlink);
-    $$self.$$set = ($$props2) => {
-      if ("ptk" in $$props2)
-        $$invalidate(7, ptk = $$props2.ptk);
-      if ("line" in $$props2)
-        $$invalidate(8, line = $$props2.line);
-      if ("seq" in $$props2)
-        $$invalidate(0, seq = $$props2.seq);
-      if ("after" in $$props2)
-        $$invalidate(1, after = $$props2.after);
-      if ("innertext" in $$props2)
-        $$invalidate(2, innertext2 = $$props2.innertext);
-      if ("value" in $$props2)
-        $$invalidate(3, value = $$props2.value);
-      if ("tagname" in $$props2)
-        $$invalidate(4, tagname = $$props2.tagname);
-    };
-    $$self.$$.update = () => {
-      if ($$self.$$.dirty & /*ptk, tagname, line*/
-      400) {
-        $:
-          $$invalidate(6, links = ptk.foreignLinksAtTag(tagname, line));
-      }
-    };
-    return [seq, after, innertext2, value, tagname, showlink, links, ptk, line, func];
-  }
-  var N = class extends SvelteComponent {
-    constructor(options) {
-      super();
-      init(this, options, instance20, create_fragment19, safe_not_equal, {
-        ptk: 7,
-        line: 8,
-        seq: 0,
-        after: 1,
-        innertext: 2,
-        value: 3,
-        tagname: 4
-      });
-    }
-  };
-  var n_default = N;
-
-  // src/painters/ck.svelte
   function create_if_block12(ctx) {
     let t0;
     let button;
@@ -17961,7 +17951,7 @@
     let current;
     let if_block0 = (
       /*links*/
-      ctx[6].length && create_if_block_24(ctx)
+      ctx[6].length && create_if_block_25(ctx)
     );
     button = new button_default({
       props: {
@@ -18016,7 +18006,7 @@
           if (if_block0) {
             if_block0.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_24(ctx2);
+            if_block0 = create_if_block_25(ctx2);
             if_block0.c();
             if_block0.m(t0.parentNode, t0);
           }
@@ -18094,7 +18084,7 @@
       }
     };
   }
-  function create_if_block_24(ctx) {
+  function create_if_block_25(ctx) {
     let span;
     let t_value = (
       /*links*/
@@ -18125,7 +18115,7 @@
   }
   function create_default_slot9(ctx) {
     let t_value = " " + /*value*/
-    ctx[3] + " ";
+    ctx[3];
     let t;
     return {
       c() {
@@ -18137,7 +18127,7 @@
       p(ctx2, dirty) {
         if (dirty & /*value*/
         8 && t_value !== (t_value = " " + /*value*/
-        ctx2[3] + " "))
+        ctx2[3]))
           set_data(t, t_value);
       },
       d(detaching) {
@@ -18304,7 +18294,7 @@
     };
     return [seq, after, innertext2, value, tagname, showlink, links, ptk, line, func];
   }
-  var Ck = class extends SvelteComponent {
+  var N = class extends SvelteComponent {
     constructor(options) {
       super();
       init(this, options, instance21, create_fragment20, safe_not_equal, {
@@ -18318,61 +18308,182 @@
       });
     }
   };
-  var ck_default = Ck;
+  var n_default = N;
 
-  // src/painters/j.svelte
+  // src/painters/ck.svelte
   function create_if_block13(ctx) {
+    let t0;
     let button;
+    let t1;
+    let if_block1_anchor;
     let current;
+    let if_block0 = (
+      /*links*/
+      ctx[6].length && create_if_block_26(ctx)
+    );
     button = new button_default({
       props: {
+        className: (
+          /*links*/
+          ctx[6].length ? "clickable " + /*tagname*/
+          ctx[4] : (
+            /*tagname*/
+            ctx[4]
+          )
+        ),
         onclick: (
-          /*jump*/
-          ctx[4]
+          /*func*/
+          ctx[9]
         ),
         $$slots: { default: [create_default_slot10] },
         $$scope: { ctx }
       }
     });
+    let if_block1 = (
+      /*showlink*/
+      ctx[5] && /*links*/
+      ctx[6].length && create_if_block_17(ctx)
+    );
     return {
       c() {
+        if (if_block0)
+          if_block0.c();
+        t0 = space();
         create_component(button.$$.fragment);
+        t1 = space();
+        if (if_block1)
+          if_block1.c();
+        if_block1_anchor = empty();
       },
       m(target, anchor) {
+        if (if_block0)
+          if_block0.m(target, anchor);
+        insert(target, t0, anchor);
         mount_component(button, target, anchor);
+        insert(target, t1, anchor);
+        if (if_block1)
+          if_block1.m(target, anchor);
+        insert(target, if_block1_anchor, anchor);
         current = true;
       },
       p(ctx2, dirty) {
+        if (
+          /*links*/
+          ctx2[6].length
+        ) {
+          if (if_block0) {
+            if_block0.p(ctx2, dirty);
+          } else {
+            if_block0 = create_if_block_26(ctx2);
+            if_block0.c();
+            if_block0.m(t0.parentNode, t0);
+          }
+        } else if (if_block0) {
+          if_block0.d(1);
+          if_block0 = null;
+        }
         const button_changes = {};
+        if (dirty & /*links, tagname*/
+        80)
+          button_changes.className = /*links*/
+          ctx2[6].length ? "clickable " + /*tagname*/
+          ctx2[4] : (
+            /*tagname*/
+            ctx2[4]
+          );
+        if (dirty & /*showlink*/
+        32)
+          button_changes.onclick = /*func*/
+          ctx2[9];
         if (dirty & /*$$scope, value*/
-        132) {
+        1032) {
           button_changes.$$scope = { dirty, ctx: ctx2 };
         }
         button.$set(button_changes);
+        if (
+          /*showlink*/
+          ctx2[5] && /*links*/
+          ctx2[6].length
+        ) {
+          if (if_block1) {
+            if_block1.p(ctx2, dirty);
+            if (dirty & /*showlink, links*/
+            96) {
+              transition_in(if_block1, 1);
+            }
+          } else {
+            if_block1 = create_if_block_17(ctx2);
+            if_block1.c();
+            transition_in(if_block1, 1);
+            if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+          }
+        } else if (if_block1) {
+          group_outros();
+          transition_out(if_block1, 1, 1, () => {
+            if_block1 = null;
+          });
+          check_outros();
+        }
       },
       i(local) {
         if (current)
           return;
         transition_in(button.$$.fragment, local);
+        transition_in(if_block1);
         current = true;
       },
       o(local) {
         transition_out(button.$$.fragment, local);
+        transition_out(if_block1);
         current = false;
       },
       d(detaching) {
+        if (if_block0)
+          if_block0.d(detaching);
+        if (detaching)
+          detach(t0);
         destroy_component(button, detaching);
+        if (detaching)
+          detach(t1);
+        if (if_block1)
+          if_block1.d(detaching);
+        if (detaching)
+          detach(if_block1_anchor);
+      }
+    };
+  }
+  function create_if_block_26(ctx) {
+    let span;
+    let t_value = (
+      /*links*/
+      ctx[6].length + ""
+    );
+    let t;
+    return {
+      c() {
+        span = element("span");
+        t = text(t_value);
+        attr(span, "class", "foreignlink");
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        append(span, t);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*links*/
+        64 && t_value !== (t_value = /*links*/
+        ctx2[6].length + ""))
+          set_data(t, t_value);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(span);
       }
     };
   }
   function create_default_slot10(ctx) {
-    let t_value = (
-      /*humanCaption*/
-      ctx[3](
-        /*value*/
-        ctx[2]
-      ) + ""
-    );
+    let t_value = " " + /*value*/
+    ctx[3] + " ";
     let t;
     return {
       c() {
@@ -18383,11 +18494,8 @@
       },
       p(ctx2, dirty) {
         if (dirty & /*value*/
-        4 && t_value !== (t_value = /*humanCaption*/
-        ctx2[3](
-          /*value*/
-          ctx2[2]
-        ) + ""))
+        8 && t_value !== (t_value = " " + /*value*/
+        ctx2[3] + " "))
           set_data(t, t_value);
       },
       d(detaching) {
@@ -18396,14 +18504,70 @@
       }
     };
   }
+  function create_if_block_17(ctx) {
+    let span;
+    let jump_target;
+    let current;
+    jump_target = new jump_target_default({
+      props: {
+        links: (
+          /*links*/
+          ctx[6]
+        ),
+        seq: (
+          /*seq*/
+          ctx[0]
+        )
+      }
+    });
+    return {
+      c() {
+        span = element("span");
+        create_component(jump_target.$$.fragment);
+        attr(span, "class", "toolbar");
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        mount_component(jump_target, span, null);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        const jump_target_changes = {};
+        if (dirty & /*links*/
+        64)
+          jump_target_changes.links = /*links*/
+          ctx2[6];
+        if (dirty & /*seq*/
+        1)
+          jump_target_changes.seq = /*seq*/
+          ctx2[0];
+        jump_target.$set(jump_target_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(jump_target.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(jump_target.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        if (detaching)
+          detach(span);
+        destroy_component(jump_target);
+      }
+    };
+  }
   function create_fragment21(ctx) {
     let if_block_anchor;
     let current;
     let if_block = (
       /*after*/
-      (ctx[0] || !/*innertext*/
-      ctx[1] && !/*after*/
-      ctx[0]) && create_if_block13(ctx)
+      (ctx[1] || !/*innertext*/
+      ctx[2] && !/*after*/
+      ctx[1]) && create_if_block13(ctx)
     );
     return {
       c() {
@@ -18420,14 +18584,14 @@
       p(ctx2, [dirty]) {
         if (
           /*after*/
-          ctx2[0] || !/*innertext*/
-          ctx2[1] && !/*after*/
-          ctx2[0]
+          ctx2[1] || !/*innertext*/
+          ctx2[2] && !/*after*/
+          ctx2[1]
         ) {
           if (if_block) {
             if_block.p(ctx2, dirty);
             if (dirty & /*after, innertext*/
-            3) {
+            6) {
               transition_in(if_block, 1);
             }
           } else {
@@ -18463,49 +18627,66 @@
     };
   }
   function instance22($$self, $$props, $$invalidate) {
+    let links;
+    let { ptk } = $$props;
+    let { line } = $$props;
     let { seq } = $$props;
     let { after } = $$props;
     let { innertext: innertext2 } = $$props;
     let { value } = $$props;
-    const humanCaption = (address) => {
-      const eleidarr = parseAction(address);
-      const last = eleidarr[eleidarr.length - 1];
-      return last[1] ? last[1] : last[0];
-    };
-    const LV = getContext("LV");
-    const jump = () => {
-      LV.insertAddress(value, seq);
-    };
+    let { tagname } = $$props;
+    let showlink = false;
+    const func = () => $$invalidate(5, showlink = !showlink);
     $$self.$$set = ($$props2) => {
+      if ("ptk" in $$props2)
+        $$invalidate(7, ptk = $$props2.ptk);
+      if ("line" in $$props2)
+        $$invalidate(8, line = $$props2.line);
       if ("seq" in $$props2)
-        $$invalidate(5, seq = $$props2.seq);
+        $$invalidate(0, seq = $$props2.seq);
       if ("after" in $$props2)
-        $$invalidate(0, after = $$props2.after);
+        $$invalidate(1, after = $$props2.after);
       if ("innertext" in $$props2)
-        $$invalidate(1, innertext2 = $$props2.innertext);
+        $$invalidate(2, innertext2 = $$props2.innertext);
       if ("value" in $$props2)
-        $$invalidate(2, value = $$props2.value);
+        $$invalidate(3, value = $$props2.value);
+      if ("tagname" in $$props2)
+        $$invalidate(4, tagname = $$props2.tagname);
     };
-    return [after, innertext2, value, humanCaption, jump, seq];
+    $$self.$$.update = () => {
+      if ($$self.$$.dirty & /*ptk, tagname, line*/
+      400) {
+        $:
+          $$invalidate(6, links = ptk.foreignLinksAtTag(tagname, line));
+      }
+    };
+    return [seq, after, innertext2, value, tagname, showlink, links, ptk, line, func];
   }
-  var J = class extends SvelteComponent {
+  var Ck = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance22, create_fragment21, safe_not_equal, { seq: 5, after: 0, innertext: 1, value: 2 });
+      init(this, options, instance22, create_fragment21, safe_not_equal, {
+        ptk: 7,
+        line: 8,
+        seq: 0,
+        after: 1,
+        innertext: 2,
+        value: 3,
+        tagname: 4
+      });
     }
   };
-  var j_default = J;
+  var ck_default = Ck;
 
-  // src/painters/f.svelte
+  // src/painters/j.svelte
   function create_if_block14(ctx) {
     let button;
     let current;
     button = new button_default({
       props: {
-        className: "clickable footnotebutton",
         onclick: (
-          /*shownote*/
-          ctx[3]
+          /*jump*/
+          ctx[4]
         ),
         $$slots: { default: [create_default_slot11] },
         $$scope: { ctx }
@@ -18521,8 +18702,8 @@
       },
       p(ctx2, dirty) {
         const button_changes = {};
-        if (dirty & /*$$scope, masterid*/
-        257) {
+        if (dirty & /*$$scope, value*/
+        132) {
           button_changes.$$scope = { dirty, ctx: ctx2 };
         }
         button.$set(button_changes);
@@ -18543,25 +18724,29 @@
     };
   }
   function create_default_slot11(ctx) {
+    let t_value = (
+      /*humanCaption*/
+      ctx[3](
+        /*value*/
+        ctx[2]
+      ) + ""
+    );
     let t;
     return {
       c() {
-        t = text(
-          /*masterid*/
-          ctx[0]
-        );
+        t = text(t_value);
       },
       m(target, anchor) {
         insert(target, t, anchor);
       },
       p(ctx2, dirty) {
-        if (dirty & /*masterid*/
-        1)
-          set_data(
-            t,
-            /*masterid*/
-            ctx2[0]
-          );
+        if (dirty & /*value*/
+        4 && t_value !== (t_value = /*humanCaption*/
+        ctx2[3](
+          /*value*/
+          ctx2[2]
+        ) + ""))
+          set_data(t, t_value);
       },
       d(detaching) {
         if (detaching)
@@ -18574,9 +18759,9 @@
     let current;
     let if_block = (
       /*after*/
-      (ctx[1] || !/*innertext*/
-      ctx[2] && !/*after*/
-      ctx[1]) && create_if_block14(ctx)
+      (ctx[0] || !/*innertext*/
+      ctx[1] && !/*after*/
+      ctx[0]) && create_if_block14(ctx)
     );
     return {
       c() {
@@ -18593,14 +18778,14 @@
       p(ctx2, [dirty]) {
         if (
           /*after*/
-          ctx2[1] || !/*innertext*/
-          ctx2[2] && !/*after*/
-          ctx2[1]
+          ctx2[0] || !/*innertext*/
+          ctx2[1] && !/*after*/
+          ctx2[0]
         ) {
           if (if_block) {
             if_block.p(ctx2, dirty);
             if (dirty & /*after, innertext*/
-            6) {
+            3) {
               transition_in(if_block, 1);
             }
           } else {
@@ -18636,6 +18821,179 @@
     };
   }
   function instance23($$self, $$props, $$invalidate) {
+    let { seq } = $$props;
+    let { after } = $$props;
+    let { innertext: innertext2 } = $$props;
+    let { value } = $$props;
+    const humanCaption = (address) => {
+      const eleidarr = parseAction(address);
+      const last = eleidarr[eleidarr.length - 1];
+      return last[1] ? last[1] : last[0];
+    };
+    const LV = getContext("LV");
+    const jump = () => {
+      LV.insertAddress(value, seq);
+    };
+    $$self.$$set = ($$props2) => {
+      if ("seq" in $$props2)
+        $$invalidate(5, seq = $$props2.seq);
+      if ("after" in $$props2)
+        $$invalidate(0, after = $$props2.after);
+      if ("innertext" in $$props2)
+        $$invalidate(1, innertext2 = $$props2.innertext);
+      if ("value" in $$props2)
+        $$invalidate(2, value = $$props2.value);
+    };
+    return [after, innertext2, value, humanCaption, jump, seq];
+  }
+  var J = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance23, create_fragment22, safe_not_equal, { seq: 5, after: 0, innertext: 1, value: 2 });
+    }
+  };
+  var j_default = J;
+
+  // src/painters/f.svelte
+  function create_if_block15(ctx) {
+    let button;
+    let current;
+    button = new button_default({
+      props: {
+        className: "clickable footnotebutton",
+        onclick: (
+          /*shownote*/
+          ctx[3]
+        ),
+        $$slots: { default: [create_default_slot12] },
+        $$scope: { ctx }
+      }
+    });
+    return {
+      c() {
+        create_component(button.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(button, target, anchor);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        const button_changes = {};
+        if (dirty & /*$$scope, masterid*/
+        257) {
+          button_changes.$$scope = { dirty, ctx: ctx2 };
+        }
+        button.$set(button_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(button.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(button.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(button, detaching);
+      }
+    };
+  }
+  function create_default_slot12(ctx) {
+    let t;
+    return {
+      c() {
+        t = text(
+          /*masterid*/
+          ctx[0]
+        );
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*masterid*/
+        1)
+          set_data(
+            t,
+            /*masterid*/
+            ctx2[0]
+          );
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_fragment23(ctx) {
+    let if_block_anchor;
+    let current;
+    let if_block = (
+      /*after*/
+      (ctx[1] || !/*innertext*/
+      ctx[2] && !/*after*/
+      ctx[1]) && create_if_block15(ctx)
+    );
+    return {
+      c() {
+        if (if_block)
+          if_block.c();
+        if_block_anchor = empty();
+      },
+      m(target, anchor) {
+        if (if_block)
+          if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
+        current = true;
+      },
+      p(ctx2, [dirty]) {
+        if (
+          /*after*/
+          ctx2[1] || !/*innertext*/
+          ctx2[2] && !/*after*/
+          ctx2[1]
+        ) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+            if (dirty & /*after, innertext*/
+            6) {
+              transition_in(if_block, 1);
+            }
+          } else {
+            if_block = create_if_block15(ctx2);
+            if_block.c();
+            transition_in(if_block, 1);
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        } else if (if_block) {
+          group_outros();
+          transition_out(if_block, 1, 1, () => {
+            if_block = null;
+          });
+          check_outros();
+        }
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(if_block);
+        current = true;
+      },
+      o(local) {
+        transition_out(if_block);
+        current = false;
+      },
+      d(detaching) {
+        if (if_block)
+          if_block.d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
+      }
+    };
+  }
+  function instance24($$self, $$props, $$invalidate) {
     let { ptk } = $$props;
     let { masterid } = $$props;
     let { line } = $$props;
@@ -18665,7 +19023,7 @@
   var F = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance23, create_fragment22, safe_not_equal, {
+      init(this, options, instance24, create_fragment23, safe_not_equal, {
         ptk: 4,
         masterid: 0,
         line: 5,
@@ -18677,8 +19035,184 @@
   };
   var f_default = F;
 
+  // src/painters/o.svelte
+  function create_if_block16(ctx) {
+    let button;
+    let current;
+    button = new button_default({
+      props: {
+        onclick: (
+          /*jump*/
+          ctx[4]
+        ),
+        $$slots: { default: [create_default_slot13] },
+        $$scope: { ctx }
+      }
+    });
+    return {
+      c() {
+        create_component(button.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(button, target, anchor);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        const button_changes = {};
+        if (dirty & /*$$scope, value*/
+        132) {
+          button_changes.$$scope = { dirty, ctx: ctx2 };
+        }
+        button.$set(button_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(button.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(button.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(button, detaching);
+      }
+    };
+  }
+  function create_default_slot13(ctx) {
+    let t_value = (
+      /*humanCaption*/
+      ctx[3](
+        /*value*/
+        ctx[2]
+      ) + ""
+    );
+    let t;
+    return {
+      c() {
+        t = text(t_value);
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*value*/
+        4 && t_value !== (t_value = /*humanCaption*/
+        ctx2[3](
+          /*value*/
+          ctx2[2]
+        ) + ""))
+          set_data(t, t_value);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_fragment24(ctx) {
+    let if_block_anchor;
+    let current;
+    let if_block = (
+      /*after*/
+      (ctx[0] || !/*innertext*/
+      ctx[1] && !/*after*/
+      ctx[0]) && create_if_block16(ctx)
+    );
+    return {
+      c() {
+        if (if_block)
+          if_block.c();
+        if_block_anchor = empty();
+      },
+      m(target, anchor) {
+        if (if_block)
+          if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
+        current = true;
+      },
+      p(ctx2, [dirty]) {
+        if (
+          /*after*/
+          ctx2[0] || !/*innertext*/
+          ctx2[1] && !/*after*/
+          ctx2[0]
+        ) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+            if (dirty & /*after, innertext*/
+            3) {
+              transition_in(if_block, 1);
+            }
+          } else {
+            if_block = create_if_block16(ctx2);
+            if_block.c();
+            transition_in(if_block, 1);
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        } else if (if_block) {
+          group_outros();
+          transition_out(if_block, 1, 1, () => {
+            if_block = null;
+          });
+          check_outros();
+        }
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(if_block);
+        current = true;
+      },
+      o(local) {
+        transition_out(if_block);
+        current = false;
+      },
+      d(detaching) {
+        if (if_block)
+          if_block.d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
+      }
+    };
+  }
+  function instance25($$self, $$props, $$invalidate) {
+    let { seq } = $$props;
+    let { after } = $$props;
+    let { innertext: innertext2 } = $$props;
+    let { value } = $$props;
+    const humanCaption = (address) => {
+      const eleidarr = parseAction(address);
+      const last = eleidarr[eleidarr.length - 1];
+      return last[1] ? last[1] : last[0];
+    };
+    const LV = getContext("LV");
+    const jump = () => {
+      LV.insertAddress(value, seq);
+    };
+    $$self.$$set = ($$props2) => {
+      if ("seq" in $$props2)
+        $$invalidate(5, seq = $$props2.seq);
+      if ("after" in $$props2)
+        $$invalidate(0, after = $$props2.after);
+      if ("innertext" in $$props2)
+        $$invalidate(1, innertext2 = $$props2.innertext);
+      if ("value" in $$props2)
+        $$invalidate(2, value = $$props2.value);
+    };
+    return [after, innertext2, value, humanCaption, jump, seq];
+  }
+  var O = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance25, create_fragment24, safe_not_equal, { seq: 5, after: 0, innertext: 1, value: 2 });
+    }
+  };
+  var o_default = O;
+
   // src/painters/fn.svelte
-  function create_default_slot12(ctx) {
+  function create_default_slot14(ctx) {
     let t;
     return {
       c() {
@@ -18705,16 +19239,17 @@
       }
     };
   }
-  function create_fragment23(ctx) {
+  function create_fragment25(ctx) {
     let button;
     let current;
     button = new button_default({
       props: {
+        className: "fn",
         onclick: (
           /*showmaintext*/
           ctx[1]
         ),
-        $$slots: { default: [create_default_slot12] },
+        $$slots: { default: [create_default_slot14] },
         $$scope: { ctx }
       }
     });
@@ -18749,7 +19284,7 @@
       }
     };
   }
-  function instance24($$self, $$props, $$invalidate) {
+  function instance26($$self, $$props, $$invalidate) {
     let { ptk } = $$props;
     let { masterid } = $$props;
     let { line } = $$props;
@@ -18773,13 +19308,13 @@
   var Fn = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance24, create_fragment23, safe_not_equal, { ptk: 2, masterid: 0, line: 3, seq: 4 });
+      init(this, options, instance26, create_fragment25, safe_not_equal, { ptk: 2, masterid: 0, line: 3, seq: 4 });
     }
   };
   var fn_default = Fn;
 
   // src/painters/togglelink.svelte
-  function create_else_block4(ctx) {
+  function create_else_block5(ctx) {
     let span;
     let span_class_value;
     return {
@@ -18813,7 +19348,7 @@
       }
     };
   }
-  function create_if_block15(ctx) {
+  function create_if_block17(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -18826,7 +19361,7 @@
           /*classes*/
           ctx[0] + " clickable "
         ),
-        $$slots: { default: [create_default_slot13] },
+        $$slots: { default: [create_default_slot15] },
         $$scope: { ctx }
       }
     });
@@ -18869,7 +19404,7 @@
       }
     };
   }
-  function create_default_slot13(ctx) {
+  function create_default_slot15(ctx) {
     let html_tag;
     let html_anchor;
     return {
@@ -18903,12 +19438,12 @@
       }
     };
   }
-  function create_fragment24(ctx) {
+  function create_fragment26(ctx) {
     let current_block_type_index;
     let if_block;
     let if_block_anchor;
     let current;
-    const if_block_creators = [create_if_block15, create_else_block4];
+    const if_block_creators = [create_if_block17, create_else_block5];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -18969,7 +19504,7 @@
       }
     };
   }
-  function instance25($$self, $$props, $$invalidate) {
+  function instance27($$self, $$props, $$invalidate) {
     let { classes = "" } = $$props;
     let { clickable } = $$props;
     let { text: text2 = "" } = $$props;
@@ -18989,7 +19524,7 @@
   var Togglelink = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance25, create_fragment24, safe_not_equal, {
+      init(this, options, instance27, create_fragment26, safe_not_equal, {
         classes: 0,
         clickable: 1,
         text: 2,
@@ -19006,7 +19541,7 @@
     child_ctx[14] = i;
     return child_ctx;
   }
-  function create_if_block_17(ctx) {
+  function create_if_block_18(ctx) {
     let span;
     let span_class_value;
     let current;
@@ -19171,7 +19706,7 @@
       }
     };
   }
-  function create_if_block16(ctx) {
+  function create_if_block18(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -19180,7 +19715,7 @@
           /*showmore*/
           ctx[8]
         ),
-        $$slots: { default: [create_default_slot14] },
+        $$slots: { default: [create_default_slot16] },
         $$scope: { ctx }
       }
     });
@@ -19215,7 +19750,7 @@
       }
     };
   }
-  function create_default_slot14(ctx) {
+  function create_default_slot16(ctx) {
     let t0;
     let t1_value = (
       /*items*/
@@ -19247,19 +19782,19 @@
       }
     };
   }
-  function create_fragment25(ctx) {
+  function create_fragment27(ctx) {
     let if_block0_anchor;
     let span;
     let span_class_value;
     let current;
     let if_block0 = (
       /*displayitems*/
-      ctx[6].length && create_if_block_17(ctx)
+      ctx[6].length && create_if_block_18(ctx)
     );
     let if_block1 = (
       /*showcount*/
       ctx[5] < /*items*/
-      ctx[4].length && create_if_block16(ctx)
+      ctx[4].length && create_if_block18(ctx)
     );
     return {
       c() {
@@ -19295,7 +19830,7 @@
               transition_in(if_block0, 1);
             }
           } else {
-            if_block0 = create_if_block_17(ctx2);
+            if_block0 = create_if_block_18(ctx2);
             if_block0.c();
             transition_in(if_block0, 1);
             if_block0.m(if_block0_anchor.parentNode, if_block0_anchor);
@@ -19319,7 +19854,7 @@
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block16(ctx2);
+            if_block1 = create_if_block18(ctx2);
             if_block1.c();
             transition_in(if_block1, 1);
             if_block1.m(span.parentNode, span);
@@ -19364,7 +19899,7 @@
     };
   }
   var ITEMPERPAGE = 10;
-  function instance26($$self, $$props, $$invalidate) {
+  function instance28($$self, $$props, $$invalidate) {
     let displayitems;
     let { name: name2 } = $$props;
     let { seq } = $$props;
@@ -19419,7 +19954,7 @@
   var Reversekeys = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance26, create_fragment25, safe_not_equal, {
+      init(this, options, instance28, create_fragment27, safe_not_equal, {
         name: 0,
         seq: 9,
         ptk: 1,
@@ -19437,7 +19972,7 @@
     child_ctx[9] = list[i];
     return child_ctx;
   }
-  function create_if_block17(ctx) {
+  function create_if_block19(ctx) {
     let reversekeys;
     let current;
     reversekeys = new reversekeys_default({
@@ -19548,7 +20083,7 @@
       /*field*/
       ctx[9].type !== "number" && /*field*/
       ctx[9].value && /*field*/
-      ctx[9].value.length && create_if_block17(ctx)
+      ctx[9].value.length && create_if_block19(ctx)
     );
     return {
       c() {
@@ -19576,7 +20111,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block17(ctx2);
+            if_block = create_if_block19(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -19607,7 +20142,7 @@
       }
     };
   }
-  function create_fragment26(ctx) {
+  function create_fragment28(ctx) {
     let each_1_anchor;
     let current;
     let each_value = (
@@ -19682,7 +20217,7 @@
       }
     };
   }
-  function instance27($$self, $$props, $$invalidate) {
+  function instance29($$self, $$props, $$invalidate) {
     let { name: name2 } = $$props;
     let { seq } = $$props;
     let { classes = "" } = $$props;
@@ -19718,7 +20253,7 @@
   var Columnrow = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance27, create_fragment26, safe_not_equal, {
+      init(this, options, instance29, create_fragment28, safe_not_equal, {
         name: 0,
         seq: 1,
         classes: 2,
@@ -19737,7 +20272,7 @@
     child_ctx[7] = list[i];
     return child_ctx;
   }
-  function create_else_block5(ctx) {
+  function create_else_block6(ctx) {
     let t0_value = " " + /*item*/
     ctx[7][0];
     let t0;
@@ -19785,7 +20320,7 @@
       }
     };
   }
-  function create_if_block_18(ctx) {
+  function create_if_block_19(ctx) {
     let switch_instance;
     let switch_instance_anchor;
     let current;
@@ -19893,7 +20428,7 @@
     let if_block;
     let if_block_anchor;
     let current;
-    const if_block_creators = [create_if_block_18, create_else_block5];
+    const if_block_creators = [create_if_block_19, create_else_block6];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -19954,7 +20489,7 @@
       }
     };
   }
-  function create_if_block18(ctx) {
+  function create_if_block20(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -19963,7 +20498,7 @@
           /*showmore*/
           ctx[6]
         ),
-        $$slots: { default: [create_default_slot15] },
+        $$slots: { default: [create_default_slot17] },
         $$scope: { ctx }
       }
     });
@@ -19998,7 +20533,7 @@
       }
     };
   }
-  function create_default_slot15(ctx) {
+  function create_default_slot17(ctx) {
     let t0;
     let t1_value = (
       /*items*/
@@ -20030,7 +20565,7 @@
       }
     };
   }
-  function create_fragment27(ctx) {
+  function create_fragment29(ctx) {
     let t;
     let if_block_anchor;
     let current;
@@ -20048,7 +20583,7 @@
     let if_block = (
       /*showcount*/
       ctx[0] < /*items*/
-      ctx[2].length && create_if_block18(ctx)
+      ctx[2].length && create_if_block20(ctx)
     );
     return {
       c() {
@@ -20106,7 +20641,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block18(ctx2);
+            if_block = create_if_block20(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -20148,7 +20683,7 @@
     };
   }
   var ITEMPERPAGE2 = 5;
-  function instance28($$self, $$props, $$invalidate) {
+  function instance30($$self, $$props, $$invalidate) {
     let displayitems;
     let { ptk } = $$props;
     let { items = [] } = $$props;
@@ -20182,7 +20717,7 @@
   var Morelink = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance28, create_fragment27, safe_not_equal, {
+      init(this, options, instance30, create_fragment29, safe_not_equal, {
         ptk: 1,
         items: 2,
         onclick: 3,
@@ -20221,7 +20756,7 @@
       }
     };
   }
-  function create_default_slot16(ctx) {
+  function create_default_slot18(ctx) {
     let t_value = (
       /*caption*/
       ctx[1] + " "
@@ -20246,7 +20781,7 @@
       }
     };
   }
-  function create_if_block19(ctx) {
+  function create_if_block21(ctx) {
     let t0;
     let switch_instance;
     let t1;
@@ -20368,7 +20903,7 @@
       }
     };
   }
-  function create_fragment28(ctx) {
+  function create_fragment30(ctx) {
     let button0;
     let button1;
     let if_block_anchor;
@@ -20390,13 +20925,13 @@
           /*addCriteria*/
           ctx[10]
         ),
-        $$slots: { default: [create_default_slot16] },
+        $$slots: { default: [create_default_slot18] },
         $$scope: { ctx }
       }
     });
     let if_block = (
       /*opened*/
-      ctx[7] && create_if_block19(ctx)
+      ctx[7] && create_if_block21(ctx)
     );
     return {
       c() {
@@ -20438,7 +20973,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block19(ctx2);
+            if_block = create_if_block21(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -20475,7 +21010,7 @@
       }
     };
   }
-  function instance29($$self, $$props, $$invalidate) {
+  function instance31($$self, $$props, $$invalidate) {
     let opened;
     let tofind2;
     let { ptk } = $$props;
@@ -20544,7 +21079,7 @@
   var Reflistitem = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance29, create_fragment28, safe_not_equal, {
+      init(this, options, instance31, create_fragment30, safe_not_equal, {
         ptk: 0,
         caption: 1,
         count: 2,
@@ -20560,7 +21095,7 @@
   var reflistitem_default = Reflistitem;
 
   // src/painters/reflist.svelte
-  function create_if_block20(ctx) {
+  function create_if_block22(ctx) {
     let morelink;
     let current;
     morelink = new morelink_default({
@@ -20611,7 +21146,7 @@
       }
     };
   }
-  function create_fragment29(ctx) {
+  function create_fragment31(ctx) {
     let span;
     let t0;
     let t1;
@@ -20619,7 +21154,7 @@
     let current;
     let if_block = (
       /*items2*/
-      ctx[2].length && create_if_block20(ctx)
+      ctx[2].length && create_if_block22(ctx)
     );
     return {
       c() {
@@ -20662,7 +21197,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block20(ctx2);
+            if_block = create_if_block22(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -20697,7 +21232,7 @@
       }
     };
   }
-  function instance30($$self, $$props, $$invalidate) {
+  function instance32($$self, $$props, $$invalidate) {
     let items2;
     let { ptk } = $$props;
     let { items = [] } = $$props;
@@ -20756,7 +21291,7 @@
   var Reflist = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance30, create_fragment29, safe_not_equal, {
+      init(this, options, instance32, create_fragment31, safe_not_equal, {
         ptk: 0,
         items: 3,
         name: 4,
@@ -20771,7 +21306,7 @@
   var reflist_default = Reflist;
 
   // src/painters/backreflist.svelte
-  function create_if_block21(ctx) {
+  function create_if_block23(ctx) {
     let t_value = (
       /*items*/
       ctx[7].length + ""
@@ -20796,13 +21331,13 @@
       }
     };
   }
-  function create_fragment30(ctx) {
+  function create_fragment32(ctx) {
     let t;
     let reflist;
     let current;
     let if_block = (
       /*showitemlength*/
-      ctx[6] && create_if_block21(ctx)
+      ctx[6] && create_if_block23(ctx)
     );
     reflist = new reflist_default({
       props: {
@@ -20862,7 +21397,7 @@
           if (if_block) {
             if_block.p(ctx2, dirty);
           } else {
-            if_block = create_if_block21(ctx2);
+            if_block = create_if_block23(ctx2);
             if_block.c();
             if_block.m(t.parentNode, t);
           }
@@ -20920,7 +21455,7 @@
       }
     };
   }
-  function instance31($$self, $$props, $$invalidate) {
+  function instance33($$self, $$props, $$invalidate) {
     let items;
     let { tofind: tofind2 = "" } = $$props;
     let { seq, ptk, name: name2, backref, tagname, showitemlength } = $$props;
@@ -20959,7 +21494,7 @@
   var Backreflist = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance31, create_fragment30, safe_not_equal, {
+      init(this, options, instance33, create_fragment32, safe_not_equal, {
         tofind: 0,
         seq: 1,
         ptk: 2,
@@ -20973,7 +21508,7 @@
   var backreflist_default = Backreflist;
 
   // src/painters/backref.svelte
-  function create_if_block_19(ctx) {
+  function create_if_block_110(ctx) {
     let span;
     let span_aria_hidden_value;
     let mounted;
@@ -21024,7 +21559,7 @@
       }
     };
   }
-  function create_if_block22(ctx) {
+  function create_if_block24(ctx) {
     let t0;
     let switch_instance;
     let t1;
@@ -21183,19 +21718,19 @@
       }
     };
   }
-  function create_fragment31(ctx) {
+  function create_fragment33(ctx) {
     let if_block0_anchor;
     let if_block1_anchor;
     let current;
     let if_block0 = (
       /*togglebutton*/
       ctx[9] && /*backref*/
-      ctx[5] && create_if_block_19(ctx)
+      ctx[5] && create_if_block_110(ctx)
     );
     let if_block1 = (
       /*showing*/
       ctx[10] == /*key*/
-      ctx[7] && create_if_block22(ctx)
+      ctx[7] && create_if_block24(ctx)
     );
     return {
       c() {
@@ -21224,7 +21759,7 @@
           if (if_block0) {
             if_block0.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_19(ctx2);
+            if_block0 = create_if_block_110(ctx2);
             if_block0.c();
             if_block0.m(if_block0_anchor.parentNode, if_block0_anchor);
           }
@@ -21244,7 +21779,7 @@
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block22(ctx2);
+            if_block1 = create_if_block24(ctx2);
             if_block1.c();
             transition_in(if_block1, 1);
             if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
@@ -21279,7 +21814,7 @@
       }
     };
   }
-  function instance32($$self, $$props, $$invalidate) {
+  function instance34($$self, $$props, $$invalidate) {
     let tofind2;
     let painter;
     let { keys } = $$props;
@@ -21356,7 +21891,7 @@
   var Backref = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance32, create_fragment31, safe_not_equal, {
+      init(this, options, instance34, create_fragment33, safe_not_equal, {
         keys: 0,
         ptk: 1,
         name: 2,
@@ -21379,7 +21914,7 @@
     child_ctx[19] = i;
     return child_ctx;
   }
-  function create_if_block23(ctx) {
+  function create_if_block25(ctx) {
     let span0;
     let span0_class_value;
     let span1;
@@ -21483,7 +22018,7 @@
       }
     };
   }
-  function create_else_block6(ctx) {
+  function create_else_block7(ctx) {
     let t_value = " ";
     let t;
     return {
@@ -21502,7 +22037,7 @@
       }
     };
   }
-  function create_if_block_110(ctx) {
+  function create_if_block_111(ctx) {
     let backref;
     let current;
     backref = new backref_default({
@@ -21647,7 +22182,7 @@
         )
       }
     });
-    const if_block_creators = [create_if_block_110, create_else_block6];
+    const if_block_creators = [create_if_block_111, create_else_block7];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (dirty & /*items*/
@@ -21751,13 +22286,13 @@
       }
     };
   }
-  function create_fragment32(ctx) {
+  function create_fragment34(ctx) {
     let if_block_anchor;
     let current;
     let if_block = (
       /*after*/
       (ctx[3] || !/*value*/
-      ctx[5]) && create_if_block23(ctx)
+      ctx[5]) && create_if_block25(ctx)
     );
     return {
       c() {
@@ -21784,7 +22319,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block23(ctx2);
+            if_block = create_if_block25(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -21815,7 +22350,7 @@
       }
     };
   }
-  function instance33($$self, $$props, $$invalidate) {
+  function instance35($$self, $$props, $$invalidate) {
     let { name: name2 = "" } = $$props;
     let { seq } = $$props;
     let { after } = $$props;
@@ -21886,7 +22421,7 @@
   var Keys = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance33, create_fragment32, safe_not_equal, {
+      init(this, options, instance35, create_fragment34, safe_not_equal, {
         name: 1,
         seq: 2,
         after: 3,
@@ -21904,7 +22439,7 @@
   var keys_default = Keys;
 
   // src/painters/key.svelte
-  function create_if_block24(ctx) {
+  function create_if_block26(ctx) {
     let reversekeys;
     let current;
     reversekeys = new reversekeys_default({
@@ -21985,12 +22520,12 @@
       }
     };
   }
-  function create_fragment33(ctx) {
+  function create_fragment35(ctx) {
     let if_block_anchor;
     let current;
     let if_block = (
       /*after*/
-      ctx[0] && create_if_block24(ctx)
+      ctx[0] && create_if_block26(ctx)
     );
     return {
       c() {
@@ -22016,7 +22551,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block24(ctx2);
+            if_block = create_if_block26(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -22047,7 +22582,7 @@
       }
     };
   }
-  function instance34($$self, $$props, $$invalidate) {
+  function instance36($$self, $$props, $$invalidate) {
     let { after } = $$props;
     let { foreign } = $$props;
     let { field } = $$props;
@@ -22084,7 +22619,7 @@
   var Key = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance34, create_fragment33, safe_not_equal, {
+      init(this, options, instance36, create_fragment35, safe_not_equal, {
         after: 0,
         foreign: 1,
         field: 6,
@@ -22098,7 +22633,7 @@
   var key_default = Key;
 
   // src/painters/confer.svelte
-  function create_if_block25(ctx) {
+  function create_if_block27(ctx) {
     let t;
     return {
       c() {
@@ -22113,11 +22648,11 @@
       }
     };
   }
-  function create_fragment34(ctx) {
+  function create_fragment36(ctx) {
     let if_block_anchor;
     let if_block = (
       /*after*/
-      ctx[0] && create_if_block25(ctx)
+      ctx[0] && create_if_block27(ctx)
     );
     return {
       c() {
@@ -22137,7 +22672,7 @@
         ) {
           if (if_block) {
           } else {
-            if_block = create_if_block25(ctx2);
+            if_block = create_if_block27(ctx2);
             if_block.c();
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
           }
@@ -22156,7 +22691,7 @@
       }
     };
   }
-  function instance35($$self, $$props, $$invalidate) {
+  function instance37($$self, $$props, $$invalidate) {
     let { after } = $$props;
     $$self.$$set = ($$props2) => {
       if ("after" in $$props2)
@@ -22167,13 +22702,13 @@
   var Confer = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance35, create_fragment34, safe_not_equal, { after: 0 });
+      init(this, options, instance37, create_fragment36, safe_not_equal, { after: 0 });
     }
   };
   var confer_default = Confer;
 
   // src/painters/approxbackref.svelte
-  function create_default_slot17(ctx) {
+  function create_default_slot19(ctx) {
     let t;
     return {
       c() {
@@ -22188,7 +22723,7 @@
       }
     };
   }
-  function create_fragment35(ctx) {
+  function create_fragment37(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -22197,7 +22732,7 @@
           /*func*/
           ctx[5]
         ),
-        $$slots: { default: [create_default_slot17] },
+        $$slots: { default: [create_default_slot19] },
         $$scope: { ctx }
       }
     });
@@ -22232,7 +22767,7 @@
       }
     };
   }
-  function instance36($$self, $$props, $$invalidate) {
+  function instance38($$self, $$props, $$invalidate) {
     const LV = getContext("LV");
     let { seq } = $$props;
     let { id } = $$props;
@@ -22257,7 +22792,7 @@
   var Approxbackref = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance36, create_fragment35, safe_not_equal, { seq: 1, id: 2, line: 3, tagname: 4 });
+      init(this, options, instance38, create_fragment37, safe_not_equal, { seq: 1, id: 2, line: 3, tagname: 4 });
     }
   };
   var approxbackref_default = Approxbackref;
@@ -22268,7 +22803,7 @@
     child_ctx[13] = list[i];
     return child_ctx;
   }
-  function create_if_block26(ctx) {
+  function create_if_block28(ctx) {
     let button;
     let t;
     let if_block_anchor;
@@ -22285,7 +22820,7 @@
     });
     let if_block = (
       /*showing*/
-      ctx[1] && create_if_block_111(ctx)
+      ctx[1] && create_if_block_112(ctx)
     );
     return {
       c() {
@@ -22325,7 +22860,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block_111(ctx2);
+            if_block = create_if_block_112(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -22399,7 +22934,7 @@
       }
     };
   }
-  function create_if_block_111(ctx) {
+  function create_if_block_112(ctx) {
     let t0;
     let t1;
     let current;
@@ -22479,7 +23014,7 @@
       }
     };
   }
-  function create_default_slot18(ctx) {
+  function create_default_slot20(ctx) {
     let t_value = (
       /*sickname*/
       ctx[3](
@@ -22527,7 +23062,7 @@
       props: {
         className: "backref",
         onclick: func_1,
-        $$slots: { default: [create_default_slot18] },
+        $$slots: { default: [create_default_slot20] },
         $$scope: { ctx }
       }
     });
@@ -22570,12 +23105,12 @@
       }
     };
   }
-  function create_fragment36(ctx) {
+  function create_fragment38(ctx) {
     let if_block_anchor;
     let current;
     let if_block = (
       /*items*/
-      ctx[2].length && create_if_block26(ctx)
+      ctx[2].length && create_if_block28(ctx)
     );
     return {
       c() {
@@ -22601,7 +23136,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block26(ctx2);
+            if_block = create_if_block28(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -22632,7 +23167,7 @@
       }
     };
   }
-  function instance37($$self, $$props, $$invalidate) {
+  function instance39($$self, $$props, $$invalidate) {
     let items;
     let { ptk } = $$props;
     let { defattrs } = $$props;
@@ -22682,7 +23217,7 @@
   var Partialchunkid = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance37, create_fragment36, safe_not_equal, { ptk: 5, defattrs: 0, id: 6, seq: 7 });
+      init(this, options, instance39, create_fragment38, safe_not_equal, { ptk: 5, defattrs: 0, id: 6, seq: 7 });
     }
   };
   var partialchunkid_default = Partialchunkid;
@@ -22694,7 +23229,7 @@
     child_ctx[17] = i;
     return child_ctx;
   }
-  function create_else_block7(ctx) {
+  function create_else_block8(ctx) {
     let renderunit;
     let current;
     renderunit = new renderunit_default({
@@ -22772,7 +23307,7 @@
       }
     };
   }
-  function create_if_block27(ctx) {
+  function create_if_block29(ctx) {
     let if_block0_anchor;
     let button;
     let if_block1_anchor;
@@ -22780,7 +23315,7 @@
     let if_block0 = (
       /*ab*/
       ctx[15][1] && /*ab*/
-      ctx[15][0] > 10 && create_if_block_25(ctx)
+      ctx[15][0] > 10 && create_if_block_27(ctx)
     );
     function func_1() {
       return (
@@ -22800,7 +23335,7 @@
       }
     });
     let if_block1 = !/*ab*/
-    ctx[15][2] && create_if_block_112(ctx);
+    ctx[15][2] && create_if_block_113(ctx);
     return {
       c() {
         if (if_block0)
@@ -22835,7 +23370,7 @@
               transition_in(if_block0, 1);
             }
           } else {
-            if_block0 = create_if_block_25(ctx);
+            if_block0 = create_if_block_27(ctx);
             if_block0.c();
             transition_in(if_block0, 1);
             if_block0.m(if_block0_anchor.parentNode, if_block0_anchor);
@@ -22862,7 +23397,7 @@
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block_112(ctx);
+            if_block1 = create_if_block_113(ctx);
             if_block1.c();
             transition_in(if_block1, 1);
             if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
@@ -22902,7 +23437,7 @@
       }
     };
   }
-  function create_if_block_25(ctx) {
+  function create_if_block_27(ctx) {
     let button;
     let current;
     function func() {
@@ -22993,7 +23528,7 @@
       }
     };
   }
-  function create_if_block_112(ctx) {
+  function create_if_block_113(ctx) {
     let button;
     let current;
     function func_2() {
@@ -23008,7 +23543,7 @@
     button = new button_default({
       props: {
         onclick: func_2,
-        $$slots: { default: [create_default_slot19] },
+        $$slots: { default: [create_default_slot21] },
         $$scope: { ctx }
       }
     });
@@ -23044,7 +23579,7 @@
       }
     };
   }
-  function create_default_slot19(ctx) {
+  function create_default_slot21(ctx) {
     let t;
     return {
       c() {
@@ -23065,7 +23600,7 @@
     let if_block;
     let if_block_anchor;
     let current;
-    const if_block_creators = [create_if_block27, create_else_block7];
+    const if_block_creators = [create_if_block29, create_else_block8];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (dirty & /*abridges*/
@@ -23206,7 +23741,7 @@
       }
     };
   }
-  function create_fragment37(ctx) {
+  function create_fragment39(ctx) {
     let previous_key = (
       /*refreshcount*/
       ctx[4]
@@ -23256,7 +23791,7 @@
       }
     };
   }
-  function instance38($$self, $$props, $$invalidate) {
+  function instance40($$self, $$props, $$invalidate) {
     let runits;
     let abridges;
     let { ptk } = $$props;
@@ -23340,7 +23875,7 @@
   var Abridge = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance38, create_fragment37, safe_not_equal, {
+      init(this, options, instance40, create_fragment39, safe_not_equal, {
         ptk: 0,
         hits: 8,
         phraselength: 9,
@@ -23364,7 +23899,7 @@
     return {
       c() {
         t0 = text(t0_value);
-        t1 = text("/");
+        t1 = text(" /");
       },
       m(target, anchor) {
         insert(target, t0, anchor);
@@ -23384,7 +23919,7 @@
       }
     };
   }
-  function create_default_slot20(ctx) {
+  function create_default_slot22(ctx) {
     let t;
     return {
       c() {
@@ -23411,15 +23946,20 @@
       }
     };
   }
-  function create_fragment38(ctx) {
+  function create_fragment40(ctx) {
     let button0;
+    let t;
     let button1;
     let current;
     button0 = new button_default({
       props: {
+        className: (
+          /*className*/
+          ctx[2] + " clickable"
+        ),
         onclick: (
           /*prev*/
-          ctx[2]
+          ctx[3]
         ),
         $$slots: { default: [create_default_slot_16] },
         $$scope: { ctx }
@@ -23427,34 +23967,48 @@
     });
     button1 = new button_default({
       props: {
+        className: (
+          /*className*/
+          ctx[2] + " clickable"
+        ),
         onclick: (
           /*next*/
-          ctx[3]
+          ctx[4]
         ),
-        $$slots: { default: [create_default_slot20] },
+        $$slots: { default: [create_default_slot22] },
         $$scope: { ctx }
       }
     });
     return {
       c() {
         create_component(button0.$$.fragment);
+        t = space();
         create_component(button1.$$.fragment);
       },
       m(target, anchor) {
         mount_component(button0, target, anchor);
+        insert(target, t, anchor);
         mount_component(button1, target, anchor);
         current = true;
       },
       p(ctx2, [dirty]) {
         const button0_changes = {};
+        if (dirty & /*className*/
+        4)
+          button0_changes.className = /*className*/
+          ctx2[2] + " clickable";
         if (dirty & /*$$scope, from*/
-        17) {
+        65) {
           button0_changes.$$scope = { dirty, ctx: ctx2 };
         }
         button0.$set(button0_changes);
         const button1_changes = {};
+        if (dirty & /*className*/
+        4)
+          button1_changes.className = /*className*/
+          ctx2[2] + " clickable";
         if (dirty & /*$$scope, last*/
-        18) {
+        66) {
           button1_changes.$$scope = { dirty, ctx: ctx2 };
         }
         button1.$set(button1_changes);
@@ -23473,34 +24027,42 @@
       },
       d(detaching) {
         destroy_component(button0, detaching);
+        if (detaching)
+          detach(t);
         destroy_component(button1, detaching);
       }
     };
   }
-  function instance39($$self, $$props, $$invalidate) {
+  function instance41($$self, $$props, $$invalidate) {
     let { from = 0 } = $$props;
     let { last } = $$props;
+    let { count = 5 } = $$props;
+    let { className = "" } = $$props;
     const prev = () => {
-      $$invalidate(0, from -= 1);
+      $$invalidate(0, from -= count);
       if (from < 0)
         $$invalidate(0, from = 0);
     };
     const next = () => {
-      if (from + 5 < last)
-        $$invalidate(0, from += 1);
+      if (from + count < last)
+        $$invalidate(0, from += count);
     };
     $$self.$$set = ($$props2) => {
       if ("from" in $$props2)
         $$invalidate(0, from = $$props2.from);
       if ("last" in $$props2)
         $$invalidate(1, last = $$props2.last);
+      if ("count" in $$props2)
+        $$invalidate(5, count = $$props2.count);
+      if ("className" in $$props2)
+        $$invalidate(2, className = $$props2.className);
     };
-    return [from, last, prev, next];
+    return [from, last, className, prev, next, count];
   }
   var Paging = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance39, create_fragment38, safe_not_equal, { from: 0, last: 1 });
+      init(this, options, instance41, create_fragment40, safe_not_equal, { from: 0, last: 1, count: 5, className: 2 });
     }
   };
   var paging_default = Paging;
@@ -23613,7 +24175,7 @@
       }
     };
   }
-  function create_if_block_33(ctx) {
+  function create_if_block_34(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -23684,7 +24246,7 @@
       }
     };
   }
-  function create_if_block_26(ctx) {
+  function create_if_block_28(ctx) {
     let t_value = (
       /*ptk*/
       ctx[1].innertext(
@@ -23715,7 +24277,7 @@
       }
     };
   }
-  function create_if_block_113(ctx) {
+  function create_if_block_114(ctx) {
     let span;
     let t;
     return {
@@ -23746,7 +24308,7 @@
       }
     };
   }
-  function create_if_block28(ctx) {
+  function create_if_block30(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -23756,7 +24318,7 @@
           /*func*/
           ctx[14]
         ),
-        $$slots: { default: [create_default_slot21] },
+        $$slots: { default: [create_default_slot23] },
         $$scope: { ctx }
       }
     });
@@ -23795,32 +24357,55 @@
       }
     };
   }
-  function create_default_slot21(ctx) {
-    let t_value = (
+  function create_default_slot23(ctx) {
+    let t0_value = (
       /*chunk*/
       ctx[7].caption + ""
     );
-    let t;
+    let t0;
+    let t1;
+    let t2_value = (
+      /*chunk*/
+      ctx[7].bk.short + ""
+    );
+    let t2;
+    let t3;
     return {
       c() {
-        t = text(t_value);
+        t0 = text(t0_value);
+        t1 = text("(");
+        t2 = text(t2_value);
+        t3 = text(")");
       },
       m(target, anchor) {
-        insert(target, t, anchor);
+        insert(target, t0, anchor);
+        insert(target, t1, anchor);
+        insert(target, t2, anchor);
+        insert(target, t3, anchor);
       },
       p(ctx2, dirty) {
         if (dirty & /*chunk*/
-        128 && t_value !== (t_value = /*chunk*/
+        128 && t0_value !== (t0_value = /*chunk*/
         ctx2[7].caption + ""))
-          set_data(t, t_value);
+          set_data(t0, t0_value);
+        if (dirty & /*chunk*/
+        128 && t2_value !== (t2_value = /*chunk*/
+        ctx2[7].bk.short + ""))
+          set_data(t2, t2_value);
       },
       d(detaching) {
         if (detaching)
-          detach(t);
+          detach(t0);
+        if (detaching)
+          detach(t1);
+        if (detaching)
+          detach(t2);
+        if (detaching)
+          detach(t3);
       }
     };
   }
-  function create_fragment39(ctx) {
+  function create_fragment41(ctx) {
     let div;
     let t0;
     let t1;
@@ -23842,27 +24427,30 @@
     );
     let if_block2 = (
       /*caption*/
-      ctx[2] && create_if_block_33(ctx)
+      ctx[2] && create_if_block_34(ctx)
     );
     let if_block3 = (
       /*section*/
-      ctx[3] && create_if_block_26(ctx)
+      ctx[3] && create_if_block_28(ctx)
     );
     let if_block4 = (
       /*hitcount*/
-      ctx[6] && create_if_block_113(ctx)
+      ctx[6] && create_if_block_114(ctx)
     );
     let if_block5 = (
       /*chunk*/
-      ctx[7] && create_if_block28(ctx)
+      ctx[7] && create_if_block30(ctx)
     );
     function paging_from_binding(value) {
       ctx[15](value);
     }
-    let paging_props = { last: (
-      /*last*/
-      ctx[5]
-    ) };
+    let paging_props = {
+      className: "excerptpaging",
+      last: (
+        /*last*/
+        ctx[5]
+      )
+    };
     if (
       /*from*/
       ctx[0] !== void 0
@@ -23972,7 +24560,7 @@
               transition_in(if_block2, 1);
             }
           } else {
-            if_block2 = create_if_block_33(ctx2);
+            if_block2 = create_if_block_34(ctx2);
             if_block2.c();
             transition_in(if_block2, 1);
             if_block2.m(div, t2);
@@ -23991,7 +24579,7 @@
           if (if_block3) {
             if_block3.p(ctx2, dirty);
           } else {
-            if_block3 = create_if_block_26(ctx2);
+            if_block3 = create_if_block_28(ctx2);
             if_block3.c();
             if_block3.m(span, if_block3_anchor);
           }
@@ -24006,7 +24594,7 @@
           if (if_block4) {
             if_block4.p(ctx2, dirty);
           } else {
-            if_block4 = create_if_block_113(ctx2);
+            if_block4 = create_if_block_114(ctx2);
             if_block4.c();
             if_block4.m(span, null);
           }
@@ -24025,7 +24613,7 @@
               transition_in(if_block5, 1);
             }
           } else {
-            if_block5 = create_if_block28(ctx2);
+            if_block5 = create_if_block30(ctx2);
             if_block5.c();
             transition_in(if_block5, 1);
             if_block5.m(div, t4);
@@ -24086,7 +24674,7 @@
       }
     };
   }
-  function instance40($$self, $$props, $$invalidate) {
+  function instance42($$self, $$props, $$invalidate) {
     let $pitakas;
     component_subscribe($$self, pitakas, ($$value) => $$invalidate(8, $pitakas = $$value));
     let { ptk } = $$props;
@@ -24160,7 +24748,7 @@
   var Excerptbar = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance40, create_fragment39, safe_not_equal, {
+      init(this, options, instance42, create_fragment41, safe_not_equal, {
         ptk: 1,
         name: 12,
         caption: 2,
@@ -24177,7 +24765,7 @@
   var excerptbar_default = Excerptbar;
 
   // src/ownerdraw/excerptheading.svelte
-  function create_fragment40(ctx) {
+  function create_fragment42(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -24213,7 +24801,7 @@
       }
     };
   }
-  function instance41($$self, $$props, $$invalidate) {
+  function instance43($$self, $$props, $$invalidate) {
     let { id } = $$props;
     let { bkid } = $$props;
     let { tagname } = $$props;
@@ -24245,7 +24833,7 @@
   var Excerptheading = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance41, create_fragment40, safe_not_equal, {
+      init(this, options, instance43, create_fragment42, safe_not_equal, {
         id: 1,
         bkid: 2,
         tagname: 3,
@@ -24264,7 +24852,7 @@
     child_ctx[26] = i;
     return child_ctx;
   }
-  function create_if_block29(ctx) {
+  function create_if_block31(ctx) {
     let button;
     let t;
     let current;
@@ -24281,7 +24869,7 @@
       props: {
         className: "excerptheading clickable",
         onclick: func,
-        $$slots: { default: [create_default_slot22] },
+        $$slots: { default: [create_default_slot24] },
         $$scope: { ctx }
       }
     });
@@ -24324,26 +24912,49 @@
       }
     };
   }
-  function create_default_slot22(ctx) {
-    let t_value = " " + /*item*/
+  function create_default_slot24(ctx) {
+    let t0_value = " " + /*item*/
     ctx[24].ck.caption;
-    let t;
+    let t0;
+    let t1;
+    let t2_value = (
+      /*item*/
+      ctx[24].ck.bk?.short + ""
+    );
+    let t2;
+    let t3;
     return {
       c() {
-        t = text(t_value);
+        t0 = text(t0_value);
+        t1 = text("(");
+        t2 = text(t2_value);
+        t3 = text(")");
       },
       m(target, anchor) {
-        insert(target, t, anchor);
+        insert(target, t0, anchor);
+        insert(target, t1, anchor);
+        insert(target, t2, anchor);
+        insert(target, t3, anchor);
       },
       p(ctx2, dirty) {
         if (dirty & /*displayitems*/
-        1024 && t_value !== (t_value = " " + /*item*/
+        1024 && t0_value !== (t0_value = " " + /*item*/
         ctx2[24].ck.caption))
-          set_data(t, t_value);
+          set_data(t0, t0_value);
+        if (dirty & /*displayitems*/
+        1024 && t2_value !== (t2_value = /*item*/
+        ctx2[24].ck.bk?.short + ""))
+          set_data(t2, t2_value);
       },
       d(detaching) {
         if (detaching)
-          detach(t);
+          detach(t0);
+        if (detaching)
+          detach(t1);
+        if (detaching)
+          detach(t2);
+        if (detaching)
+          detach(t3);
       }
     };
   }
@@ -24384,7 +24995,7 @@
     }
     abridge = new abridge_default({ props: abridge_props });
     let if_block = !/*chunk*/
-    ctx[9] && create_if_block29(ctx);
+    ctx[9] && create_if_block31(ctx);
     return {
       c() {
         div = element("div");
@@ -24446,7 +25057,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block29(ctx2);
+            if_block = create_if_block31(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(div, null);
@@ -24483,7 +25094,7 @@
       }
     };
   }
-  function create_fragment41(ctx) {
+  function create_fragment43(ctx) {
     let excerptbar;
     let updating_from;
     let t;
@@ -24665,7 +25276,7 @@
       }
     };
   }
-  function instance42($$self, $$props, $$invalidate) {
+  function instance44($$self, $$props, $$invalidate) {
     let displayitems;
     let chunk;
     let { caption: caption2 } = $$props;
@@ -24795,7 +25406,7 @@
   var Excerpt = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance42, create_fragment41, safe_not_equal, {
+      init(this, options, instance44, create_fragment43, safe_not_equal, {
         caption: 1,
         action: 2,
         name: 12,
@@ -24967,7 +25578,7 @@
       }
     };
   }
-  function create_if_block30(ctx) {
+  function create_if_block32(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -24976,7 +25587,7 @@
           /*showmore*/
           ctx[9]
         ),
-        $$slots: { default: [create_default_slot23] },
+        $$slots: { default: [create_default_slot25] },
         $$scope: { ctx }
       }
     });
@@ -25011,7 +25622,7 @@
       }
     };
   }
-  function create_default_slot23(ctx) {
+  function create_default_slot25(ctx) {
     let t0;
     let t1_value = (
       /*items*/
@@ -25043,7 +25654,7 @@
       }
     };
   }
-  function create_fragment42(ctx) {
+  function create_fragment44(ctx) {
     let t;
     let if_block_anchor;
     let current;
@@ -25061,7 +25672,7 @@
     let if_block = (
       /*showcount*/
       ctx[7] < /*items*/
-      ctx[2].length && create_if_block30(ctx)
+      ctx[2].length && create_if_block32(ctx)
     );
     return {
       c() {
@@ -25119,7 +25730,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block30(ctx2);
+            if_block = create_if_block32(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -25161,7 +25772,7 @@
     };
   }
   var ITEMPERPAGE3 = 10;
-  function instance43($$self, $$props, $$invalidate) {
+  function instance45($$self, $$props, $$invalidate) {
     let showcount;
     let displayitems;
     const LV = getContext("LV");
@@ -25250,7 +25861,7 @@
   var Bmeresult = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance43, create_fragment42, safe_not_equal, {
+      init(this, options, instance45, create_fragment44, safe_not_equal, {
         ptk: 0,
         seq: 1,
         items: 2,
@@ -25264,8 +25875,340 @@
   };
   var bmeresult_default = Bmeresult;
 
+  // src/ownerdraw/fieldresult.svelte
+  function get_each_context21(ctx, list, i) {
+    const child_ctx = ctx.slice();
+    child_ctx[14] = list[i];
+    return child_ctx;
+  }
+  function create_each_block21(ctx) {
+    let br;
+    let t0;
+    let t1_value = (
+      /*getKey*/
+      ctx[7](
+        /*column*/
+        ctx[4],
+        /*item*/
+        ctx[14]
+      ) + ""
+    );
+    let t1;
+    let t2;
+    let t3_value = (
+      /*getField*/
+      ctx[6](
+        /*column*/
+        ctx[4],
+        /*field*/
+        ctx[5],
+        /*item*/
+        ctx[14]
+      ) + ""
+    );
+    let t3;
+    return {
+      c() {
+        br = element("br");
+        t0 = text("No");
+        t1 = text(t1_value);
+        t2 = space();
+        t3 = text(t3_value);
+      },
+      m(target, anchor) {
+        insert(target, br, anchor);
+        insert(target, t0, anchor);
+        insert(target, t1, anchor);
+        insert(target, t2, anchor);
+        insert(target, t3, anchor);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*column, items*/
+        18 && t1_value !== (t1_value = /*getKey*/
+        ctx2[7](
+          /*column*/
+          ctx2[4],
+          /*item*/
+          ctx2[14]
+        ) + ""))
+          set_data(t1, t1_value);
+        if (dirty & /*column, field, items*/
+        50 && t3_value !== (t3_value = /*getField*/
+        ctx2[6](
+          /*column*/
+          ctx2[4],
+          /*field*/
+          ctx2[5],
+          /*item*/
+          ctx2[14]
+        ) + ""))
+          set_data(t3, t3_value);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(br);
+        if (detaching)
+          detach(t0);
+        if (detaching)
+          detach(t1);
+        if (detaching)
+          detach(t2);
+        if (detaching)
+          detach(t3);
+      }
+    };
+  }
+  function create_fragment45(ctx) {
+    let t0;
+    let t1;
+    let t2;
+    let t3;
+    let t4;
+    let t5;
+    let paging;
+    let updating_from;
+    let t6;
+    let each_1_anchor;
+    let current;
+    function paging_from_binding(value) {
+      ctx[10](value);
+    }
+    let paging_props = {
+      className: "excerptpaging",
+      last: (
+        /*last*/
+        ctx[2]
+      )
+    };
+    if (
+      /*from*/
+      ctx[0] !== void 0
+    ) {
+      paging_props.from = /*from*/
+      ctx[0];
+    }
+    paging = new paging_default({ props: paging_props });
+    binding_callbacks.push(() => bind(paging, "from", paging_from_binding));
+    let each_value = (
+      /*items*/
+      ctx[1]
+    );
+    let each_blocks = [];
+    for (let i = 0; i < each_value.length; i += 1) {
+      each_blocks[i] = create_each_block21(get_each_context21(ctx, each_value, i));
+    }
+    return {
+      c() {
+        t0 = text(
+          /*column*/
+          ctx[4]
+        );
+        t1 = space();
+        t2 = text(
+          /*field*/
+          ctx[5]
+        );
+        t3 = space();
+        t4 = text(
+          /*tofind*/
+          ctx[3]
+        );
+        t5 = space();
+        create_component(paging.$$.fragment);
+        t6 = space();
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          each_blocks[i].c();
+        }
+        each_1_anchor = empty();
+      },
+      m(target, anchor) {
+        insert(target, t0, anchor);
+        insert(target, t1, anchor);
+        insert(target, t2, anchor);
+        insert(target, t3, anchor);
+        insert(target, t4, anchor);
+        insert(target, t5, anchor);
+        mount_component(paging, target, anchor);
+        insert(target, t6, anchor);
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          each_blocks[i].m(target, anchor);
+        }
+        insert(target, each_1_anchor, anchor);
+        current = true;
+      },
+      p(ctx2, [dirty]) {
+        if (!current || dirty & /*column*/
+        16)
+          set_data(
+            t0,
+            /*column*/
+            ctx2[4]
+          );
+        if (!current || dirty & /*field*/
+        32)
+          set_data(
+            t2,
+            /*field*/
+            ctx2[5]
+          );
+        if (!current || dirty & /*tofind*/
+        8)
+          set_data(
+            t4,
+            /*tofind*/
+            ctx2[3]
+          );
+        const paging_changes = {};
+        if (dirty & /*last*/
+        4)
+          paging_changes.last = /*last*/
+          ctx2[2];
+        if (!updating_from && dirty & /*from*/
+        1) {
+          updating_from = true;
+          paging_changes.from = /*from*/
+          ctx2[0];
+          add_flush_callback(() => updating_from = false);
+        }
+        paging.$set(paging_changes);
+        if (dirty & /*getField, column, field, items, getKey*/
+        242) {
+          each_value = /*items*/
+          ctx2[1];
+          let i;
+          for (i = 0; i < each_value.length; i += 1) {
+            const child_ctx = get_each_context21(ctx2, each_value, i);
+            if (each_blocks[i]) {
+              each_blocks[i].p(child_ctx, dirty);
+            } else {
+              each_blocks[i] = create_each_block21(child_ctx);
+              each_blocks[i].c();
+              each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+            }
+          }
+          for (; i < each_blocks.length; i += 1) {
+            each_blocks[i].d(1);
+          }
+          each_blocks.length = each_value.length;
+        }
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(paging.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(paging.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t0);
+        if (detaching)
+          detach(t1);
+        if (detaching)
+          detach(t2);
+        if (detaching)
+          detach(t3);
+        if (detaching)
+          detach(t4);
+        if (detaching)
+          detach(t5);
+        destroy_component(paging, detaching);
+        if (detaching)
+          detach(t6);
+        destroy_each(each_blocks, detaching);
+        if (detaching)
+          detach(each_1_anchor);
+      }
+    };
+  }
+  function instance46($$self, $$props, $$invalidate) {
+    let { ptk } = $$props;
+    let { items = [] } = $$props;
+    let { from } = $$props;
+    let { last } = $$props;
+    let { tofind: tofind2 } = $$props;
+    let { column } = $$props;
+    let { field } = $$props;
+    let { dividx } = $$props;
+    const LV = getContext("LV");
+    let pfrom = from;
+    const getField = (column2, field2, idx2) => {
+      return ptk.columns[column2][field2][idx2];
+    };
+    const getKey = (column2, idx2) => {
+      return ptk.columns[column2].keys.get(idx2);
+    };
+    const setFrom = () => {
+      if (pfrom == from)
+        return;
+      LV.setFrom(dividx, from);
+      pfrom = from;
+    };
+    function paging_from_binding(value) {
+      from = value;
+      $$invalidate(0, from);
+    }
+    $$self.$$set = ($$props2) => {
+      if ("ptk" in $$props2)
+        $$invalidate(8, ptk = $$props2.ptk);
+      if ("items" in $$props2)
+        $$invalidate(1, items = $$props2.items);
+      if ("from" in $$props2)
+        $$invalidate(0, from = $$props2.from);
+      if ("last" in $$props2)
+        $$invalidate(2, last = $$props2.last);
+      if ("tofind" in $$props2)
+        $$invalidate(3, tofind2 = $$props2.tofind);
+      if ("column" in $$props2)
+        $$invalidate(4, column = $$props2.column);
+      if ("field" in $$props2)
+        $$invalidate(5, field = $$props2.field);
+      if ("dividx" in $$props2)
+        $$invalidate(9, dividx = $$props2.dividx);
+    };
+    $$self.$$.update = () => {
+      if ($$self.$$.dirty & /*from*/
+      1) {
+        $:
+          setFrom(from);
+      }
+    };
+    return [
+      from,
+      items,
+      last,
+      tofind2,
+      column,
+      field,
+      getField,
+      getKey,
+      ptk,
+      dividx,
+      paging_from_binding
+    ];
+  }
+  var Fieldresult = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance46, create_fragment45, safe_not_equal, {
+        ptk: 8,
+        items: 1,
+        from: 0,
+        last: 2,
+        tofind: 3,
+        column: 4,
+        field: 5,
+        dividx: 9
+      });
+    }
+  };
+  var fieldresult_default = Fieldresult;
+
   // src/ownerdraw/queryresult.svelte
-  function create_if_block31(ctx) {
+  function create_if_block_115(ctx) {
     let span;
     let t_value = (
       /*ptk*/
@@ -25301,24 +26244,133 @@
       }
     };
   }
-  function create_fragment43(ctx) {
-    let t0;
+  function create_else_block9(ctx) {
+    let fieldresult;
+    let current;
+    fieldresult = new fieldresult_default({
+      props: {
+        seq: (
+          /*seq*/
+          ctx[9]
+        ),
+        from: (
+          /*from*/
+          ctx[10]
+        ),
+        last: (
+          /*last*/
+          ctx[11]
+        ),
+        items: (
+          /*items*/
+          ctx[6]
+        ),
+        name: (
+          /*name*/
+          ctx[2]
+        ),
+        ptk: (
+          /*ptk*/
+          ctx[5]
+        ),
+        tofind: (
+          /*tofind*/
+          ctx[1]
+        ),
+        field: (
+          /*field*/
+          ctx[13]
+        ),
+        column: (
+          /*column*/
+          ctx[14]
+        ),
+        dividx: (
+          /*dividx*/
+          ctx[15]
+        )
+      }
+    });
+    return {
+      c() {
+        create_component(fieldresult.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(fieldresult, target, anchor);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        const fieldresult_changes = {};
+        if (dirty & /*seq*/
+        512)
+          fieldresult_changes.seq = /*seq*/
+          ctx2[9];
+        if (dirty & /*from*/
+        1024)
+          fieldresult_changes.from = /*from*/
+          ctx2[10];
+        if (dirty & /*last*/
+        2048)
+          fieldresult_changes.last = /*last*/
+          ctx2[11];
+        if (dirty & /*items*/
+        64)
+          fieldresult_changes.items = /*items*/
+          ctx2[6];
+        if (dirty & /*name*/
+        4)
+          fieldresult_changes.name = /*name*/
+          ctx2[2];
+        if (dirty & /*ptk*/
+        32)
+          fieldresult_changes.ptk = /*ptk*/
+          ctx2[5];
+        if (dirty & /*tofind*/
+        2)
+          fieldresult_changes.tofind = /*tofind*/
+          ctx2[1];
+        if (dirty & /*field*/
+        8192)
+          fieldresult_changes.field = /*field*/
+          ctx2[13];
+        if (dirty & /*column*/
+        16384)
+          fieldresult_changes.column = /*column*/
+          ctx2[14];
+        if (dirty & /*dividx*/
+        32768)
+          fieldresult_changes.dividx = /*dividx*/
+          ctx2[15];
+        fieldresult.$set(fieldresult_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(fieldresult.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(fieldresult.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(fieldresult, detaching);
+      }
+    };
+  }
+  function create_if_block33(ctx) {
     let span0;
+    let t0;
     let t1;
-    let t2;
     let span1;
-    let t3_value = (
+    let t2_value = (
       /*items*/
       ctx[6].length + ""
     );
+    let t2;
     let t3;
-    let t4;
     let bmeresult;
     let current;
-    let if_block = (
-      /*$pitakas*/
-      ctx[10].length > 1 && create_if_block31(ctx)
-    );
     bmeresult = new bmeresult_default({
       props: {
         seq: (
@@ -25361,62 +26413,41 @@
     });
     return {
       c() {
-        if (if_block)
-          if_block.c();
-        t0 = space();
         span0 = element("span");
-        t1 = text(
+        t0 = text(
           /*caption*/
           ctx[0]
         );
-        t2 = space();
+        t1 = space();
         span1 = element("span");
-        t3 = text(t3_value);
-        t4 = space();
+        t2 = text(t2_value);
+        t3 = space();
         create_component(bmeresult.$$.fragment);
         attr(span0, "class", "field");
         attr(span1, "class", "hitcount");
       },
       m(target, anchor) {
-        if (if_block)
-          if_block.m(target, anchor);
-        insert(target, t0, anchor);
         insert(target, span0, anchor);
-        append(span0, t1);
-        insert(target, t2, anchor);
+        append(span0, t0);
+        insert(target, t1, anchor);
         insert(target, span1, anchor);
-        append(span1, t3);
-        insert(target, t4, anchor);
+        append(span1, t2);
+        insert(target, t3, anchor);
         mount_component(bmeresult, target, anchor);
         current = true;
       },
-      p(ctx2, [dirty]) {
-        if (
-          /*$pitakas*/
-          ctx2[10].length > 1
-        ) {
-          if (if_block) {
-            if_block.p(ctx2, dirty);
-          } else {
-            if_block = create_if_block31(ctx2);
-            if_block.c();
-            if_block.m(t0.parentNode, t0);
-          }
-        } else if (if_block) {
-          if_block.d(1);
-          if_block = null;
-        }
+      p(ctx2, dirty) {
         if (!current || dirty & /*caption*/
         1)
           set_data(
-            t1,
+            t0,
             /*caption*/
             ctx2[0]
           );
         if ((!current || dirty & /*items*/
-        64) && t3_value !== (t3_value = /*items*/
+        64) && t2_value !== (t2_value = /*items*/
         ctx2[6].length + ""))
-          set_data(t3, t3_value);
+          set_data(t2, t2_value);
         const bmeresult_changes = {};
         if (dirty & /*seq*/
         512)
@@ -25467,25 +26498,117 @@
         current = false;
       },
       d(detaching) {
-        if (if_block)
-          if_block.d(detaching);
-        if (detaching)
-          detach(t0);
         if (detaching)
           detach(span0);
         if (detaching)
-          detach(t2);
+          detach(t1);
         if (detaching)
           detach(span1);
         if (detaching)
-          detach(t4);
+          detach(t3);
         destroy_component(bmeresult, detaching);
       }
     };
   }
-  function instance44($$self, $$props, $$invalidate) {
+  function create_fragment46(ctx) {
+    let t;
+    let current_block_type_index;
+    let if_block1;
+    let if_block1_anchor;
+    let current;
+    let if_block0 = (
+      /*$pitakas*/
+      ctx[16].length > 1 && create_if_block_115(ctx)
+    );
+    const if_block_creators = [create_if_block33, create_else_block9];
+    const if_blocks = [];
+    function select_block_type(ctx2, dirty) {
+      if (
+        /*querytype*/
+        ctx2[12] == "BME"
+      )
+        return 0;
+      return 1;
+    }
+    current_block_type_index = select_block_type(ctx, -1);
+    if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    return {
+      c() {
+        if (if_block0)
+          if_block0.c();
+        t = space();
+        if_block1.c();
+        if_block1_anchor = empty();
+      },
+      m(target, anchor) {
+        if (if_block0)
+          if_block0.m(target, anchor);
+        insert(target, t, anchor);
+        if_blocks[current_block_type_index].m(target, anchor);
+        insert(target, if_block1_anchor, anchor);
+        current = true;
+      },
+      p(ctx2, [dirty]) {
+        if (
+          /*$pitakas*/
+          ctx2[16].length > 1
+        ) {
+          if (if_block0) {
+            if_block0.p(ctx2, dirty);
+          } else {
+            if_block0 = create_if_block_115(ctx2);
+            if_block0.c();
+            if_block0.m(t.parentNode, t);
+          }
+        } else if (if_block0) {
+          if_block0.d(1);
+          if_block0 = null;
+        }
+        let previous_block_index = current_block_type_index;
+        current_block_type_index = select_block_type(ctx2, dirty);
+        if (current_block_type_index === previous_block_index) {
+          if_blocks[current_block_type_index].p(ctx2, dirty);
+        } else {
+          group_outros();
+          transition_out(if_blocks[previous_block_index], 1, 1, () => {
+            if_blocks[previous_block_index] = null;
+          });
+          check_outros();
+          if_block1 = if_blocks[current_block_type_index];
+          if (!if_block1) {
+            if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
+            if_block1.c();
+          } else {
+            if_block1.p(ctx2, dirty);
+          }
+          transition_in(if_block1, 1);
+          if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+        }
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(if_block1);
+        current = true;
+      },
+      o(local) {
+        transition_out(if_block1);
+        current = false;
+      },
+      d(detaching) {
+        if (if_block0)
+          if_block0.d(detaching);
+        if (detaching)
+          detach(t);
+        if_blocks[current_block_type_index].d(detaching);
+        if (detaching)
+          detach(if_block1_anchor);
+      }
+    };
+  }
+  function instance47($$self, $$props, $$invalidate) {
     let $pitakas;
-    component_subscribe($$self, pitakas, ($$value) => $$invalidate(10, $pitakas = $$value));
+    component_subscribe($$self, pitakas, ($$value) => $$invalidate(16, $pitakas = $$value));
     let { caption: caption2 } = $$props;
     let { tofind: tofind2 } = $$props;
     let { name: name2 } = $$props;
@@ -25496,6 +26619,11 @@
     let { lexicon } = $$props;
     let { backref } = $$props;
     let { seq } = $$props;
+    let { from, last } = $$props;
+    let { querytype } = $$props;
+    let { field } = $$props;
+    let { column } = $$props;
+    let { dividx } = $$props;
     $$self.$$set = ($$props2) => {
       if ("caption" in $$props2)
         $$invalidate(0, caption2 = $$props2.caption);
@@ -25517,6 +26645,18 @@
         $$invalidate(8, backref = $$props2.backref);
       if ("seq" in $$props2)
         $$invalidate(9, seq = $$props2.seq);
+      if ("from" in $$props2)
+        $$invalidate(10, from = $$props2.from);
+      if ("last" in $$props2)
+        $$invalidate(11, last = $$props2.last);
+      if ("querytype" in $$props2)
+        $$invalidate(12, querytype = $$props2.querytype);
+      if ("field" in $$props2)
+        $$invalidate(13, field = $$props2.field);
+      if ("column" in $$props2)
+        $$invalidate(14, column = $$props2.column);
+      if ("dividx" in $$props2)
+        $$invalidate(15, dividx = $$props2.dividx);
     };
     return [
       caption2,
@@ -25529,13 +26669,19 @@
       lexicon,
       backref,
       seq,
+      from,
+      last,
+      querytype,
+      field,
+      column,
+      dividx,
       $pitakas
     ];
   }
   var Queryresult = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance44, create_fragment43, safe_not_equal, {
+      init(this, options, instance47, create_fragment46, safe_not_equal, {
         caption: 0,
         tofind: 1,
         name: 2,
@@ -25545,14 +26691,20 @@
         items: 6,
         lexicon: 7,
         backref: 8,
-        seq: 9
+        seq: 9,
+        from: 10,
+        last: 11,
+        querytype: 12,
+        field: 13,
+        column: 14,
+        dividx: 15
       });
     }
   };
   var queryresult_default = Queryresult;
 
   // src/ownerdraw/titlecount.svelte
-  function get_each_context21(ctx, list, i) {
+  function get_each_context22(ctx, list, i) {
     const child_ctx = ctx.slice();
     child_ctx[18] = list[i];
     child_ctx[20] = i;
@@ -25589,7 +26741,7 @@
       }
     };
   }
-  function create_if_block32(ctx) {
+  function create_if_block34(ctx) {
     let button;
     let current;
     function func_1() {
@@ -25605,7 +26757,7 @@
       props: {
         className: "hitcount clickable",
         onclick: func_1,
-        $$slots: { default: [create_default_slot24] },
+        $$slots: { default: [create_default_slot26] },
         $$scope: { ctx }
       }
     });
@@ -25644,7 +26796,7 @@
       }
     };
   }
-  function create_default_slot24(ctx) {
+  function create_default_slot26(ctx) {
     let t_value = "\u3000" + /*item*/
     ctx[18].count;
     let t;
@@ -25667,7 +26819,7 @@
       }
     };
   }
-  function create_each_block21(ctx) {
+  function create_each_block22(ctx) {
     let div;
     let button;
     let t;
@@ -25694,7 +26846,7 @@
     });
     let if_block = (
       /*item*/
-      ctx[18].count >= 0 && create_if_block32(ctx)
+      ctx[18].count >= 0 && create_if_block34(ctx)
     );
     return {
       c() {
@@ -25740,7 +26892,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block32(ctx);
+            if_block = create_if_block34(ctx);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(div, null);
@@ -25774,7 +26926,7 @@
       }
     };
   }
-  function create_fragment44(ctx) {
+  function create_fragment47(ctx) {
     let excerptbar;
     let updating_from;
     let t;
@@ -25824,7 +26976,7 @@
     );
     let each_blocks = [];
     for (let i = 0; i < each_value.length; i += 1) {
-      each_blocks[i] = create_each_block21(get_each_context21(ctx, each_value, i));
+      each_blocks[i] = create_each_block22(get_each_context22(ctx, each_value, i));
     }
     const out = (i) => transition_out(each_blocks[i], 1, 1, () => {
       each_blocks[i] = null;
@@ -25887,12 +27039,12 @@
           ctx2[4];
           let i;
           for (i = 0; i < each_value.length; i += 1) {
-            const child_ctx = get_each_context21(ctx2, each_value, i);
+            const child_ctx = get_each_context22(ctx2, each_value, i);
             if (each_blocks[i]) {
               each_blocks[i].p(child_ctx, dirty);
               transition_in(each_blocks[i], 1);
             } else {
-              each_blocks[i] = create_each_block21(child_ctx);
+              each_blocks[i] = create_each_block22(child_ctx);
               each_blocks[i].c();
               transition_in(each_blocks[i], 1);
               each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
@@ -25932,7 +27084,7 @@
       }
     };
   }
-  function instance45($$self, $$props, $$invalidate) {
+  function instance48($$self, $$props, $$invalidate) {
     let { caption: caption2 } = $$props;
     let { name: name2 } = $$props;
     let { tofind: tofind2 } = $$props;
@@ -26019,7 +27171,7 @@
   var Titlecount = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance45, create_fragment44, safe_not_equal, {
+      init(this, options, instance48, create_fragment47, safe_not_equal, {
         caption: 1,
         name: 2,
         tofind: 3,
@@ -26036,7 +27188,7 @@
   var titlecount_default = Titlecount;
 
   // src/ownerdraw/systeminfo.svelte
-  function create_fragment45(ctx) {
+  function create_fragment48(ctx) {
     let t;
     return {
       c() {
@@ -26057,13 +27209,13 @@
   var Systeminfo = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, null, create_fragment45, safe_not_equal, {});
+      init(this, options, null, create_fragment48, safe_not_equal, {});
     }
   };
   var systeminfo_default = Systeminfo;
 
   // src/comps/statebutton.svelte
-  function create_fragment46(ctx) {
+  function create_fragment49(ctx) {
     let span1;
     let span0;
     let raw_value = (
@@ -26166,7 +27318,7 @@
       }
     };
   }
-  function instance46($$self, $$props, $$invalidate) {
+  function instance49($$self, $$props, $$invalidate) {
     let { onclick = null } = $$props;
     let { disabled = false } = $$props;
     let { title = "" } = $$props;
@@ -26187,7 +27339,7 @@
       if (storeid)
         $$invalidate(1, caption2 = states[get_store_value(storeid)]);
       else
-        $$invalidate(1, caption2 = selectedIndex == -1 ? unselectedcaption : statekeys[selectedIndex]);
+        $$invalidate(1, caption2 = selectedIndex == -1 ? unselectedcaption : states[selectedIndex]);
     };
     const highlight = (str, selectedIndex2) => {
       if (!styles)
@@ -26264,7 +27416,7 @@
   var Statebutton = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance46, create_fragment46, safe_not_equal, {
+      init(this, options, instance49, create_fragment49, safe_not_equal, {
         onclick: 6,
         disabled: 2,
         title: 3,
@@ -26280,7 +27432,7 @@
   var statebutton_default = Statebutton;
 
   // src/ownerdraw/versioninfo.svelte
-  function get_each_context22(ctx, list, i) {
+  function get_each_context23(ctx, list, i) {
     const child_ctx = ctx.slice();
     child_ctx[4] = list[i];
     child_ctx[6] = i;
@@ -26291,7 +27443,7 @@
     child_ctx[7] = list[i];
     return child_ctx;
   }
-  function create_default_slot25(ctx) {
+  function create_default_slot27(ctx) {
     let t_value = (
       /*pitaka*/
       ctx[4].name + ""
@@ -26384,7 +27536,7 @@
       }
     };
   }
-  function create_each_block22(ctx) {
+  function create_each_block23(ctx) {
     let div1;
     let span0;
     let t0_value = (
@@ -26407,7 +27559,7 @@
     let span2;
     let t6_value = (
       /*pitaka*/
-      ctx[4].eot + ""
+      ctx[4].wordcount + ""
     );
     let t6;
     let t7;
@@ -26416,16 +27568,25 @@
     let span3;
     let t9_value = (
       /*pitaka*/
-      ctx[4].chunkcount + ""
+      ctx[4].eot + ""
     );
     let t9;
     let t10;
     let span3_title_value;
     let t11;
     let span4;
+    let t12_value = (
+      /*pitaka*/
+      ctx[4].chunkcount + ""
+    );
     let t12;
-    let div0;
     let t13;
+    let span4_title_value;
+    let t14;
+    let span5;
+    let t15;
+    let div0;
+    let t16;
     let current;
     function func() {
       return (
@@ -26440,7 +27601,7 @@
       props: {
         title: _("\u6E90\u78BC"),
         onclick: func,
-        $$slots: { default: [create_default_slot25] },
+        $$slots: { default: [create_default_slot27] },
         $$scope: { ctx }
       }
     });
@@ -26472,23 +27633,28 @@
         t5 = space();
         span2 = element("span");
         t6 = text(t6_value);
-        t7 = text("\u23CE");
+        t7 = text("\u{1F004}");
         t8 = space();
         span3 = element("span");
         t9 = text(t9_value);
-        t10 = text("\u2756");
+        t10 = text("\u23CE");
         t11 = space();
         span4 = element("span");
+        t12 = text(t12_value);
+        t13 = text("\u2756");
+        t14 = space();
+        span5 = element("span");
         for (let i = 0; i < each_blocks.length; i += 1) {
           each_blocks[i].c();
         }
-        t12 = space();
+        t15 = space();
         div0 = element("div");
-        t13 = space();
+        t16 = space();
         attr(span0, "class", "excerptheading");
         attr(span1, "title", span1_title_value = _("\u5EFA\u7F6E\u65BC"));
-        attr(span2, "title", span2_title_value = _("\u63DB\u884C"));
-        attr(span3, "title", span3_title_value = _("\u6587\u584A"));
+        attr(span2, "title", span2_title_value = _("\u5B57\u6578"));
+        attr(span3, "title", span3_title_value = _("\u63DB\u884C"));
+        attr(span4, "title", span4_title_value = _("\u6587\u584A"));
         attr(div0, "class", "divider");
       },
       m(target, anchor) {
@@ -26511,12 +27677,16 @@
         append(span3, t10);
         append(div1, t11);
         append(div1, span4);
+        append(span4, t12);
+        append(span4, t13);
+        append(div1, t14);
+        append(div1, span5);
         for (let i = 0; i < each_blocks.length; i += 1) {
-          each_blocks[i].m(span4, null);
+          each_blocks[i].m(span5, null);
         }
-        append(div1, t12);
+        append(div1, t15);
         append(div1, div0);
-        append(div1, t13);
+        append(div1, t16);
         current = true;
       },
       p(new_ctx, dirty) {
@@ -26540,12 +27710,16 @@
           set_data(t3, t3_value);
         if ((!current || dirty & /*$pitakas*/
         1) && t6_value !== (t6_value = /*pitaka*/
-        ctx[4].eot + ""))
+        ctx[4].wordcount + ""))
           set_data(t6, t6_value);
         if ((!current || dirty & /*$pitakas*/
         1) && t9_value !== (t9_value = /*pitaka*/
-        ctx[4].chunkcount + ""))
+        ctx[4].eot + ""))
           set_data(t9, t9_value);
+        if ((!current || dirty & /*$pitakas*/
+        1) && t12_value !== (t12_value = /*pitaka*/
+        ctx[4].chunkcount + ""))
+          set_data(t12, t12_value);
         if (dirty & /*getVerText, $pitakas*/
         3) {
           each_value_1 = /*getVerText*/
@@ -26563,7 +27737,7 @@
               each_blocks[i] = create_each_block_12(child_ctx);
               each_blocks[i].c();
               transition_in(each_blocks[i], 1);
-              each_blocks[i].m(span4, null);
+              each_blocks[i].m(span5, null);
             }
           }
           group_outros();
@@ -26598,7 +27772,7 @@
       }
     };
   }
-  function create_fragment47(ctx) {
+  function create_fragment50(ctx) {
     let each_1_anchor;
     let current;
     let each_value = (
@@ -26607,7 +27781,7 @@
     );
     let each_blocks = [];
     for (let i = 0; i < each_value.length; i += 1) {
-      each_blocks[i] = create_each_block22(get_each_context22(ctx, each_value, i));
+      each_blocks[i] = create_each_block23(get_each_context23(ctx, each_value, i));
     }
     const out = (i) => transition_out(each_blocks[i], 1, 1, () => {
       each_blocks[i] = null;
@@ -26633,12 +27807,12 @@
           ctx2[0];
           let i;
           for (i = 0; i < each_value.length; i += 1) {
-            const child_ctx = get_each_context22(ctx2, each_value, i);
+            const child_ctx = get_each_context23(ctx2, each_value, i);
             if (each_blocks[i]) {
               each_blocks[i].p(child_ctx, dirty);
               transition_in(each_blocks[i], 1);
             } else {
-              each_blocks[i] = create_each_block22(child_ctx);
+              each_blocks[i] = create_each_block23(child_ctx);
               each_blocks[i].c();
               transition_in(each_blocks[i], 1);
               each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
@@ -26673,7 +27847,7 @@
       }
     };
   }
-  function instance47($$self, $$props, $$invalidate) {
+  function instance50($$self, $$props, $$invalidate) {
     let $pitakas;
     component_subscribe($$self, pitakas, ($$value) => $$invalidate(0, $pitakas = $$value));
     const getVerText = (ptk) => {
@@ -26689,13 +27863,13 @@
   var Versioninfo = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance47, create_fragment47, safe_not_equal, {});
+      init(this, options, instance50, create_fragment50, safe_not_equal, {});
     }
   };
   var versioninfo_default = Versioninfo;
 
   // src/ownerdraw/setting.svelte
-  function create_if_block33(ctx) {
+  function create_if_block35(ctx) {
     let t0_value = _("Pali:") + "";
     let t0;
     let t1;
@@ -26749,7 +27923,7 @@
       }
     };
   }
-  function create_fragment48(ctx) {
+  function create_fragment51(ctx) {
     let statebtn0;
     let t0;
     let statebtn1;
@@ -26781,7 +27955,7 @@
         storeid: tosim
       }
     });
-    let if_block = show_if && create_if_block33(ctx);
+    let if_block = show_if && create_if_block35(ctx);
     versioninfo = new versioninfo_default({});
     return {
       c() {
@@ -26796,7 +27970,7 @@
         create_component(versioninfo.$$.fragment);
         t3 = space();
         div1 = element("div");
-        div1.textContent = "\u{1F9E7}Accelon2023.2.9\u{1F407}";
+        div1.textContent = "Accelon2023.5.16";
         t5 = space();
         hr = element("hr");
         attr(div1, "class", "logo svelte-1yzj5q6");
@@ -26865,13 +28039,13 @@
   var Setting = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, null, create_fragment48, safe_not_equal, {});
+      init(this, options, null, create_fragment51, safe_not_equal, {});
     }
   };
   var setting_default = Setting;
 
   // src/ownerdraw/qrcode.svelte
-  function create_else_block8(ctx) {
+  function create_else_block10(ctx) {
     let t;
     return {
       c() {
@@ -26889,7 +28063,7 @@
       }
     };
   }
-  function create_if_block34(ctx) {
+  function create_if_block36(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -26898,7 +28072,7 @@
           /*func*/
           ctx[3]
         ),
-        $$slots: { default: [create_default_slot26] },
+        $$slots: { default: [create_default_slot28] },
         $$scope: { ctx }
       }
     });
@@ -26937,7 +28111,7 @@
       }
     };
   }
-  function create_default_slot26(ctx) {
+  function create_default_slot28(ctx) {
     let t0;
     let t1;
     return {
@@ -26969,14 +28143,14 @@
       }
     };
   }
-  function create_fragment49(ctx) {
+  function create_fragment52(ctx) {
     let div;
     let t;
     let current_block_type_index;
     let if_block;
     let if_block_anchor;
     let current;
-    const if_block_creators = [create_if_block34, create_else_block8];
+    const if_block_creators = [create_if_block36, create_else_block10];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -27050,7 +28224,7 @@
   function onScanFailure(error) {
     console.warn(`Code scan error = ${error}`);
   }
-  function instance48($$self, $$props, $$invalidate) {
+  function instance51($$self, $$props, $$invalidate) {
     let url;
     let html5QrcodeScanner;
     function onScanSuccess(decodedText, decodedResult) {
@@ -27098,13 +28272,13 @@
   var Qrcode = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance48, create_fragment49, safe_not_equal, {});
+      init(this, options, instance51, create_fragment52, safe_not_equal, {});
     }
   };
   var qrcode_default = Qrcode;
 
   // src/ownerdraw/unknown.svelte
-  function create_fragment50(ctx) {
+  function create_fragment53(ctx) {
     let t;
     return {
       c() {
@@ -27125,18 +28299,18 @@
   var Unknown = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, null, create_fragment50, safe_not_equal, {});
+      init(this, options, null, create_fragment53, safe_not_equal, {});
     }
   };
   var unknown_default = Unknown;
 
   // src/comps/statebuttons.svelte
-  function get_each_context23(ctx, list, i) {
+  function get_each_context24(ctx, list, i) {
     const child_ctx = ctx.slice();
     child_ctx[7] = list[i];
     return child_ctx;
   }
-  function create_each_block23(ctx) {
+  function create_each_block24(ctx) {
     let statebutton;
     let current;
     function func(...args) {
@@ -27233,7 +28407,7 @@
     );
     let each_blocks = [];
     for (let i = 0; i < each_value.length; i += 1) {
-      each_blocks[i] = create_each_block23(get_each_context23(ctx, each_value, i));
+      each_blocks[i] = create_each_block24(get_each_context24(ctx, each_value, i));
     }
     const out = (i) => transition_out(each_blocks[i], 1, 1, () => {
       each_blocks[i] = null;
@@ -27259,12 +28433,12 @@
           ctx2[0];
           let i;
           for (i = 0; i < each_value.length; i += 1) {
-            const child_ctx = get_each_context23(ctx2, each_value, i);
+            const child_ctx = get_each_context24(ctx2, each_value, i);
             if (each_blocks[i]) {
               each_blocks[i].p(child_ctx, dirty);
               transition_in(each_blocks[i], 1);
             } else {
-              each_blocks[i] = create_each_block23(child_ctx);
+              each_blocks[i] = create_each_block24(child_ctx);
               each_blocks[i].c();
               transition_in(each_blocks[i], 1);
               each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
@@ -27299,7 +28473,7 @@
       }
     };
   }
-  function create_fragment51(ctx) {
+  function create_fragment54(ctx) {
     let previous_key = (
       /*refresh*/
       ctx[2]
@@ -27349,7 +28523,7 @@
       }
     };
   }
-  function instance49($$self, $$props, $$invalidate) {
+  function instance52($$self, $$props, $$invalidate) {
     let { items = [] } = $$props;
     let { choices = [] } = $$props;
     let { unselectable = false } = $$props;
@@ -27385,7 +28559,7 @@
   var Statebuttons = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance49, create_fragment51, safe_not_equal, {
+      init(this, options, instance52, create_fragment54, safe_not_equal, {
         items: 0,
         choices: 5,
         unselectable: 1,
@@ -27396,7 +28570,7 @@
   var statebuttons_default = Statebuttons;
 
   // src/comps/groupstatlink.svelte
-  function create_default_slot27(ctx) {
+  function create_default_slot29(ctx) {
     let t0_value = " " + /*caption*/
     ctx[0];
     let t0;
@@ -27438,7 +28612,7 @@
       }
     };
   }
-  function create_fragment52(ctx) {
+  function create_fragment55(ctx) {
     let button;
     let current;
     button = new button_default({
@@ -27447,7 +28621,7 @@
           /*func*/
           ctx[4]
         ),
-        $$slots: { default: [create_default_slot27] },
+        $$slots: { default: [create_default_slot29] },
         $$scope: { ctx }
       }
     });
@@ -27486,7 +28660,7 @@
       }
     };
   }
-  function instance50($$self, $$props, $$invalidate) {
+  function instance53($$self, $$props, $$invalidate) {
     let { caption: caption2 } = $$props;
     let { count } = $$props;
     let { idx: idx2 } = $$props;
@@ -27507,13 +28681,13 @@
   var Groupstatlink = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance50, create_fragment52, safe_not_equal, { caption: 0, count: 1, idx: 2, onclick: 3 });
+      init(this, options, instance53, create_fragment55, safe_not_equal, { caption: 0, count: 1, idx: 2, onclick: 3 });
     }
   };
   var groupstatlink_default = Groupstatlink;
 
   // src/ownerdraw/guidefilter.svelte
-  function get_each_context24(ctx, list, i) {
+  function get_each_context25(ctx, list, i) {
     const child_ctx = ctx.slice();
     child_ctx[20] = list[i];
     child_ctx[21] = list;
@@ -27540,7 +28714,7 @@
       }
     };
   }
-  function create_if_block_34(ctx) {
+  function create_if_block_35(ctx) {
     let br;
     return {
       c() {
@@ -27555,7 +28729,7 @@
       }
     };
   }
-  function create_each_block24(ctx) {
+  function create_each_block25(ctx) {
     let button;
     let t0;
     let statebuttons;
@@ -27615,7 +28789,7 @@
     binding_callbacks.push(() => bind(statebuttons, "choices", statebuttons_choices_binding));
     let if_block = (
       /*filter*/
-      ctx[20].newline && create_if_block_34(ctx)
+      ctx[20].newline && create_if_block_35(ctx)
     );
     return {
       c() {
@@ -27688,7 +28862,7 @@
       }
     };
   }
-  function create_if_block_27(ctx) {
+  function create_if_block_29(ctx) {
     let t;
     return {
       c() {
@@ -27706,7 +28880,7 @@
       }
     };
   }
-  function create_if_block35(ctx) {
+  function create_if_block37(ctx) {
     let button;
     let t;
     let show_if = Object.keys(
@@ -27722,11 +28896,11 @@
           ctx[15]
         ),
         className: "hitcount clickable",
-        $$slots: { default: [create_default_slot28] },
+        $$slots: { default: [create_default_slot30] },
         $$scope: { ctx }
       }
     });
-    let if_block = show_if && create_if_block_114(ctx);
+    let if_block = show_if && create_if_block_116(ctx);
     return {
       c() {
         create_component(button.$$.fragment);
@@ -27776,7 +28950,7 @@
       }
     };
   }
-  function create_default_slot28(ctx) {
+  function create_default_slot30(ctx) {
     let t0_value = (
       /*items*/
       ctx[6].length + ""
@@ -27814,7 +28988,7 @@
       }
     };
   }
-  function create_if_block_114(ctx) {
+  function create_if_block_116(ctx) {
     let statebutton;
     let updating_selectedIndex;
     let t;
@@ -27914,7 +29088,7 @@
     let if_block;
     let if_block_anchor;
     let current;
-    const if_block_creators = [create_if_block35, create_if_block_27];
+    const if_block_creators = [create_if_block37, create_if_block_29];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -28002,7 +29176,7 @@
       }
     };
   }
-  function create_fragment53(ctx) {
+  function create_fragment56(ctx) {
     let t;
     let previous_key = (
       /*items*/
@@ -28016,7 +29190,7 @@
     );
     let each_blocks = [];
     for (let i = 0; i < each_value.length; i += 1) {
-      each_blocks[i] = create_each_block24(get_each_context24(ctx, each_value, i));
+      each_blocks[i] = create_each_block25(get_each_context25(ctx, each_value, i));
     }
     const out = (i) => transition_out(each_blocks[i], 1, 1, () => {
       each_blocks[i] = null;
@@ -28047,12 +29221,12 @@
           ctx2[7];
           let i;
           for (i = 0; i < each_value.length; i += 1) {
-            const child_ctx = get_each_context24(ctx2, each_value, i);
+            const child_ctx = get_each_context25(ctx2, each_value, i);
             if (each_blocks[i]) {
               each_blocks[i].p(child_ctx, dirty);
               transition_in(each_blocks[i], 1);
             } else {
-              each_blocks[i] = create_each_block24(child_ctx);
+              each_blocks[i] = create_each_block25(child_ctx);
               each_blocks[i].c();
               transition_in(each_blocks[i], 1);
               each_blocks[i].m(t.parentNode, t);
@@ -28105,7 +29279,7 @@
       }
     };
   }
-  function instance51($$self, $$props, $$invalidate) {
+  function instance54($$self, $$props, $$invalidate) {
     let groups;
     let items;
     let { ptk, seq } = $$props;
@@ -28204,18 +29378,18 @@
   var Guidefilter = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance51, create_fragment53, safe_not_equal, { ptk: 0, seq: 12 });
+      init(this, options, instance54, create_fragment56, safe_not_equal, { ptk: 0, seq: 12 });
     }
   };
   var guidefilter_default = Guidefilter;
 
   // src/ownerdraw/guidelinemenu.svelte
-  function get_each_context25(ctx, list, i) {
+  function get_each_context26(ctx, list, i) {
     const child_ctx = ctx.slice();
     child_ctx[3] = list[i];
     return child_ctx;
   }
-  function create_if_block36(ctx) {
+  function create_if_block38(ctx) {
     let each_1_anchor;
     let current;
     let each_value = (
@@ -28227,7 +29401,7 @@
     );
     let each_blocks = [];
     for (let i = 0; i < each_value.length; i += 1) {
-      each_blocks[i] = create_each_block25(get_each_context25(ctx, each_value, i));
+      each_blocks[i] = create_each_block26(get_each_context26(ctx, each_value, i));
     }
     const out = (i) => transition_out(each_blocks[i], 1, 1, () => {
       each_blocks[i] = null;
@@ -28256,12 +29430,12 @@
           ];
           let i;
           for (i = 0; i < each_value.length; i += 1) {
-            const child_ctx = get_each_context25(ctx2, each_value, i);
+            const child_ctx = get_each_context26(ctx2, each_value, i);
             if (each_blocks[i]) {
               each_blocks[i].p(child_ctx, dirty);
               transition_in(each_blocks[i], 1);
             } else {
-              each_blocks[i] = create_each_block25(child_ctx);
+              each_blocks[i] = create_each_block26(child_ctx);
               each_blocks[i].c();
               transition_in(each_blocks[i], 1);
               each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
@@ -28296,7 +29470,7 @@
       }
     };
   }
-  function create_each_block25(ctx) {
+  function create_each_block26(ctx) {
     let switch_instance;
     let switch_instance_anchor;
     let current;
@@ -28401,7 +29575,7 @@
       }
     };
   }
-  function create_fragment54(ctx) {
+  function create_fragment57(ctx) {
     let if_block_anchor;
     let current;
     let if_block = (
@@ -28409,7 +29583,7 @@
       ctx[0][
         /*line*/
         ctx[1]
-      ] && create_if_block36(ctx)
+      ] && create_if_block38(ctx)
     );
     return {
       c() {
@@ -28438,7 +29612,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block36(ctx2);
+            if_block = create_if_block38(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -28469,7 +29643,7 @@
       }
     };
   }
-  function instance52($$self, $$props, $$invalidate) {
+  function instance55($$self, $$props, $$invalidate) {
     let { activelinemenus } = $$props;
     let { line } = $$props;
     let { seq } = $$props;
@@ -28486,18 +29660,18 @@
   var Guidelinemenu = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance52, create_fragment54, safe_not_equal, { activelinemenus: 0, line: 1, seq: 2 });
+      init(this, options, instance55, create_fragment57, safe_not_equal, { activelinemenus: 0, line: 1, seq: 2 });
     }
   };
   var guidelinemenu_default = Guidelinemenu;
 
   // src/ownerdraw/guide.svelte
-  function get_each_context26(ctx, list, i) {
+  function get_each_context27(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[14] = list[i];
+    child_ctx[15] = list[i];
     return child_ctx;
   }
-  function create_if_block_115(ctx) {
+  function create_if_block_210(ctx) {
     let t0_value = (
       /*ptk*/
       ctx[0].template.humanChoice(
@@ -28569,7 +29743,7 @@
         )
       }
     });
-    const if_block_creators = [create_if_block_28, create_else_block9];
+    const if_block_creators = [create_if_block_36, create_else_block11];
     const if_blocks = [];
     function select_block_type_1(ctx2, dirty) {
       if (
@@ -28624,19 +29798,19 @@
           set_data(t0, t0_value);
         const button0_changes = {};
         if (dirty & /*$$scope, from*/
-        131088) {
+        262160) {
           button0_changes.$$scope = { dirty, ctx: ctx2 };
         }
         button0.$set(button0_changes);
         const button1_changes = {};
         if (dirty & /*$$scope, items*/
-        131076) {
+        262148) {
           button1_changes.$$scope = { dirty, ctx: ctx2 };
         }
         button1.$set(button1_changes);
         const button2_changes = {};
         if (dirty & /*$$scope, ptk, now*/
-        131137) {
+        262209) {
           button2_changes.$$scope = { dirty, ctx: ctx2 };
         }
         button2.$set(button2_changes);
@@ -28715,50 +29889,65 @@
       }
     };
   }
-  function create_if_block37(ctx) {
-    let guidefilter;
+  function create_if_block39(ctx) {
+    let if_block_anchor;
     let current;
-    guidefilter = new guidefilter_default({
-      props: { ptk: (
-        /*ptk*/
-        ctx[0]
-      ), seq: (
-        /*seq*/
-        ctx[3]
-      ) }
-    });
+    let if_block = (
+      /*ptk*/
+      ctx[0].template.getMultiStateFilters && create_if_block_117(ctx)
+    );
     return {
       c() {
-        create_component(guidefilter.$$.fragment);
+        if (if_block)
+          if_block.c();
+        if_block_anchor = empty();
       },
       m(target, anchor) {
-        mount_component(guidefilter, target, anchor);
+        if (if_block)
+          if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
         current = true;
       },
       p(ctx2, dirty) {
-        const guidefilter_changes = {};
-        if (dirty & /*ptk*/
-        1)
-          guidefilter_changes.ptk = /*ptk*/
-          ctx2[0];
-        if (dirty & /*seq*/
-        8)
-          guidefilter_changes.seq = /*seq*/
-          ctx2[3];
-        guidefilter.$set(guidefilter_changes);
+        if (
+          /*ptk*/
+          ctx2[0].template.getMultiStateFilters
+        ) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+            if (dirty & /*ptk*/
+            1) {
+              transition_in(if_block, 1);
+            }
+          } else {
+            if_block = create_if_block_117(ctx2);
+            if_block.c();
+            transition_in(if_block, 1);
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        } else if (if_block) {
+          group_outros();
+          transition_out(if_block, 1, 1, () => {
+            if_block = null;
+          });
+          check_outros();
+        }
       },
       i(local) {
         if (current)
           return;
-        transition_in(guidefilter.$$.fragment, local);
+        transition_in(if_block);
         current = true;
       },
       o(local) {
-        transition_out(guidefilter.$$.fragment, local);
+        transition_out(if_block);
         current = false;
       },
       d(detaching) {
-        destroy_component(guidefilter, detaching);
+        if (if_block)
+          if_block.d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
       }
     };
   }
@@ -28848,7 +30037,7 @@
       }
     };
   }
-  function create_else_block9(ctx) {
+  function create_else_block11(ctx) {
     let each_1_anchor;
     let current;
     let each_value = (
@@ -28857,7 +30046,7 @@
     );
     let each_blocks = [];
     for (let i = 0; i < each_value.length; i += 1) {
-      each_blocks[i] = create_each_block26(get_each_context26(ctx, each_value, i));
+      each_blocks[i] = create_each_block27(get_each_context27(ctx, each_value, i));
     }
     const out = (i) => transition_out(each_blocks[i], 1, 1, () => {
       each_blocks[i] = null;
@@ -28883,12 +30072,12 @@
           ctx2[6]?.record;
           let i;
           for (i = 0; i < each_value.length; i += 1) {
-            const child_ctx = get_each_context26(ctx2, each_value, i);
+            const child_ctx = get_each_context27(ctx2, each_value, i);
             if (each_blocks[i]) {
               each_blocks[i].p(child_ctx, dirty);
               transition_in(each_blocks[i], 1);
             } else {
-              each_blocks[i] = create_each_block26(child_ctx);
+              each_blocks[i] = create_each_block27(child_ctx);
               each_blocks[i].c();
               transition_in(each_blocks[i], 1);
               each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
@@ -28923,7 +30112,7 @@
       }
     };
   }
-  function create_if_block_28(ctx) {
+  function create_if_block_36(ctx) {
     let guidelinemenu;
     let button;
     let current;
@@ -28946,7 +30135,7 @@
           ctx[10]
         ),
         className: "ck clickable",
-        $$slots: { default: [create_default_slot29] },
+        $$slots: { default: [create_default_slot31] },
         $$scope: { ctx }
       }
     });
@@ -28973,7 +30162,7 @@
         guidelinemenu.$set(guidelinemenu_changes);
         const button_changes = {};
         if (dirty & /*$$scope, now*/
-        131136) {
+        262208) {
           button_changes.$$scope = { dirty, ctx: ctx2 };
         }
         button.$set(button_changes);
@@ -28996,7 +30185,7 @@
       }
     };
   }
-  function create_each_block26(ctx) {
+  function create_each_block27(ctx) {
     let div;
     let inlinetext;
     let t0;
@@ -29009,7 +30198,7 @@
           /*ptk*/
           ctx[0].getLine(
             /*rec*/
-            ctx[14]
+            ctx[15]
           )
         ),
         ptk: (
@@ -29030,7 +30219,7 @@
         ),
         line: (
           /*rec*/
-          ctx[14]
+          ctx[15]
         )
       }
     });
@@ -29057,7 +30246,7 @@
           inlinetext_changes.text = /*ptk*/
           ctx2[0].getLine(
             /*rec*/
-            ctx2[14]
+            ctx2[15]
           );
         if (dirty & /*ptk*/
         1)
@@ -29076,7 +30265,7 @@
         if (dirty & /*now*/
         64)
           guidelinemenu_changes.line = /*rec*/
-          ctx2[14];
+          ctx2[15];
         guidelinemenu.$set(guidelinemenu_changes);
       },
       i(local) {
@@ -29099,7 +30288,7 @@
       }
     };
   }
-  function create_default_slot29(ctx) {
+  function create_default_slot31(ctx) {
     let t_value = (
       /*now*/
       ctx[6]?.ck?.caption + ""
@@ -29124,12 +30313,86 @@
       }
     };
   }
-  function create_fragment55(ctx) {
+  function create_if_block_117(ctx) {
+    let guidefilter;
+    let current;
+    guidefilter = new guidefilter_default({
+      props: { ptk: (
+        /*ptk*/
+        ctx[0]
+      ), seq: (
+        /*seq*/
+        ctx[3]
+      ) }
+    });
+    return {
+      c() {
+        create_component(guidefilter.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(guidefilter, target, anchor);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        const guidefilter_changes = {};
+        if (dirty & /*ptk*/
+        1)
+          guidefilter_changes.ptk = /*ptk*/
+          ctx2[0];
+        if (dirty & /*seq*/
+        8)
+          guidefilter_changes.seq = /*seq*/
+          ctx2[3];
+        guidefilter.$set(guidefilter_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(guidefilter.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(guidefilter.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(guidefilter, detaching);
+      }
+    };
+  }
+  function create_fragment58(ctx) {
+    let switch_instance;
+    let t;
     let current_block_type_index;
     let if_block;
     let if_block_anchor;
     let current;
-    const if_block_creators = [create_if_block37, create_if_block_115];
+    var switch_value = (
+      /*customcomponent*/
+      ctx[12]
+    );
+    function switch_props(ctx2) {
+      return {
+        props: {
+          ptk: (
+            /*ptk*/
+            ctx2[0]
+          ),
+          seq: (
+            /*seq*/
+            ctx2[3]
+          ),
+          action: (
+            /*action*/
+            ctx2[1]
+          )
+        }
+      };
+    }
+    if (switch_value) {
+      switch_instance = construct_svelte_component(switch_value, switch_props(ctx));
+    }
+    const if_block_creators = [create_if_block39, create_if_block_210];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (!/*action*/
@@ -29147,11 +30410,17 @@
     }
     return {
       c() {
+        if (switch_instance)
+          create_component(switch_instance.$$.fragment);
+        t = space();
         if (if_block)
           if_block.c();
         if_block_anchor = empty();
       },
       m(target, anchor) {
+        if (switch_instance)
+          mount_component(switch_instance, target, anchor);
+        insert(target, t, anchor);
         if (~current_block_type_index) {
           if_blocks[current_block_type_index].m(target, anchor);
         }
@@ -29159,6 +30428,40 @@
         current = true;
       },
       p(ctx2, [dirty]) {
+        const switch_instance_changes = {};
+        if (dirty & /*ptk*/
+        1)
+          switch_instance_changes.ptk = /*ptk*/
+          ctx2[0];
+        if (dirty & /*seq*/
+        8)
+          switch_instance_changes.seq = /*seq*/
+          ctx2[3];
+        if (dirty & /*action*/
+        2)
+          switch_instance_changes.action = /*action*/
+          ctx2[1];
+        if (switch_value !== (switch_value = /*customcomponent*/
+        ctx2[12])) {
+          if (switch_instance) {
+            group_outros();
+            const old_component = switch_instance;
+            transition_out(old_component.$$.fragment, 1, 0, () => {
+              destroy_component(old_component, 1);
+            });
+            check_outros();
+          }
+          if (switch_value) {
+            switch_instance = construct_svelte_component(switch_value, switch_props(ctx2));
+            create_component(switch_instance.$$.fragment);
+            transition_in(switch_instance.$$.fragment, 1);
+            mount_component(switch_instance, t.parentNode, t);
+          } else {
+            switch_instance = null;
+          }
+        } else if (switch_value) {
+          switch_instance.$set(switch_instance_changes);
+        }
         let previous_block_index = current_block_type_index;
         current_block_type_index = select_block_type(ctx2, dirty);
         if (current_block_type_index === previous_block_index) {
@@ -29191,14 +30494,22 @@
       i(local) {
         if (current)
           return;
+        if (switch_instance)
+          transition_in(switch_instance.$$.fragment, local);
         transition_in(if_block);
         current = true;
       },
       o(local) {
+        if (switch_instance)
+          transition_out(switch_instance.$$.fragment, local);
         transition_out(if_block);
         current = false;
       },
       d(detaching) {
+        if (switch_instance)
+          destroy_component(switch_instance, detaching);
+        if (detaching)
+          detach(t);
         if (~current_block_type_index) {
           if_blocks[current_block_type_index].d(detaching);
         }
@@ -29207,7 +30518,7 @@
       }
     };
   }
-  function instance53($$self, $$props, $$invalidate) {
+  function instance56($$self, $$props, $$invalidate) {
     let { ptk, action, items = [], seq } = $$props;
     const LV = getContext("LV");
     let from = 0, ready = false, now = {};
@@ -29243,6 +30554,7 @@
     };
     const oncaption = () => {
     };
+    const customcomponent = MetaGuides[ptk.name] || MetaGuides[ptk.attributes.define];
     $$self.$$set = ($$props2) => {
       if ("ptk" in $$props2)
         $$invalidate(0, ptk = $$props2.ptk);
@@ -29272,24 +30584,25 @@
       next,
       prev,
       open,
-      oncaption
+      oncaption,
+      customcomponent
     ];
   }
   var Guide = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance53, create_fragment55, safe_not_equal, { ptk: 0, action: 1, items: 2, seq: 3 });
+      init(this, options, instance56, create_fragment58, safe_not_equal, { ptk: 0, action: 1, items: 2, seq: 3 });
     }
   };
   var guide_default = Guide;
 
   // src/ownerdraw/approx.svelte
-  function get_each_context27(ctx, list, i) {
+  function get_each_context28(ctx, list, i) {
     const child_ctx = ctx.slice();
     child_ctx[14] = list[i];
     return child_ctx;
   }
-  function create_if_block38(ctx) {
+  function create_if_block40(ctx) {
     let t;
     return {
       c() {
@@ -29304,7 +30617,7 @@
       }
     };
   }
-  function create_each_block27(ctx) {
+  function create_each_block28(ctx) {
     let div;
     let excerptheading;
     let t0;
@@ -29428,7 +30741,7 @@
       }
     };
   }
-  function create_fragment56(ctx) {
+  function create_fragment59(ctx) {
     let t0;
     let div;
     let t1;
@@ -29438,7 +30751,7 @@
     let each_1_anchor;
     let current;
     let if_block = !/*displayitems*/
-    ctx[4].length && create_if_block38(ctx);
+    ctx[4].length && create_if_block40(ctx);
     function paging_from_binding(value) {
       ctx[9](value);
     }
@@ -29461,7 +30774,7 @@
     );
     let each_blocks = [];
     for (let i = 0; i < each_value.length; i += 1) {
-      each_blocks[i] = create_each_block27(get_each_context27(ctx, each_value, i));
+      each_blocks[i] = create_each_block28(get_each_context28(ctx, each_value, i));
     }
     const out = (i) => transition_out(each_blocks[i], 1, 1, () => {
       each_blocks[i] = null;
@@ -29499,7 +30812,7 @@
         ctx2[4].length) {
           if (if_block) {
           } else {
-            if_block = create_if_block38(ctx2);
+            if_block = create_if_block40(ctx2);
             if_block.c();
             if_block.m(t0.parentNode, t0);
           }
@@ -29526,12 +30839,12 @@
           ctx2[4];
           let i;
           for (i = 0; i < each_value.length; i += 1) {
-            const child_ctx = get_each_context27(ctx2, each_value, i);
+            const child_ctx = get_each_context28(ctx2, each_value, i);
             if (each_blocks[i]) {
               each_blocks[i].p(child_ctx, dirty);
               transition_in(each_blocks[i], 1);
             } else {
-              each_blocks[i] = create_each_block27(child_ctx);
+              each_blocks[i] = create_each_block28(child_ctx);
               each_blocks[i].c();
               transition_in(each_blocks[i], 1);
               each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
@@ -29577,7 +30890,7 @@
       }
     };
   }
-  function instance54($$self, $$props, $$invalidate) {
+  function instance57($$self, $$props, $$invalidate) {
     let displayitems;
     let { name: name2 } = $$props;
     let { lines } = $$props;
@@ -29665,7 +30978,7 @@
   var Approx = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance54, create_fragment56, safe_not_equal, {
+      init(this, options, instance57, create_fragment59, safe_not_equal, {
         name: 5,
         lines: 6,
         seq: 1,
@@ -29678,18 +30991,5510 @@
   };
   var approx_default = Approx;
 
+  // ../ptk/meta/subtitle.ts
+  var parseTimeStamp = (str) => {
+    let [m0, start, delta] = str.match(/(\d+)\-(\d+)/);
+    start = parseInt(start) / 10;
+    const end = parseInt(delta) / 10 + start;
+    return [start, end];
+  };
+  var mpegfileOfID = (id) => {
+    const filename = id.endsWith(".mp3") || id.endsWith(".mp4") ? id : id + ".mp4";
+    return filename;
+  };
+  var subtitleOfID = async (ptk, id) => {
+    const addr = await ptk.fetchAddress("mpeg#" + id);
+    const blob = new Blob([genWebVTT(addr)], { type: "plain/text" });
+    return URL.createObjectURL(blob);
+  };
+  var formatSeconds = (sec) => {
+    const hh = Math.floor(sec / 3600).toString();
+    const mm = Math.floor((sec - hh * 3600) / 60).toString();
+    const ss = Math.floor((sec - hh * 3600 - mm * 60) % 60).toString();
+    return hh.padStart(2, "0") + ":" + mm.padStart(2, "0") + ":" + ss.padStart(2, "0") + (sec - Math.floor(sec)).toFixed(3).slice(1);
+  };
+  var genWebVTT = (lines) => {
+    const out = ["WEBVTT", "", ""];
+    for (let i = 0; i < lines.length; i++) {
+      const [ot, tags] = parseOfftext(lines[i]);
+      if (tags.length && tags[0].name == "ts") {
+        const [startsec, endsec] = parseTimeStamp(tags[0].attrs.id);
+        out.push(formatSeconds(startsec) + " --> " + formatSeconds(endsec));
+      }
+      out.push(ot);
+    }
+    return out.join("\n");
+  };
+  var meta_subtitle = { guidedrawer: "subtitle", genWebVTT, parseTimeStamp, mpegfileOfID, subtitleOfID };
+  addTemplate("subtitle", meta_subtitle);
+
+  // src/ownerdraw/subtitle.svelte
+  function get_each_context29(ctx, list, i) {
+    const child_ctx = ctx.slice();
+    child_ctx[8] = list[i];
+    return child_ctx;
+  }
+  function create_default_slot32(ctx) {
+    let t_value = (
+      /*mpegfile*/
+      ctx[8] + " "
+    );
+    let t;
+    return {
+      c() {
+        t = text(t_value);
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      p: noop,
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_each_block29(ctx) {
+    let button;
+    let current;
+    function func() {
+      return (
+        /*func*/
+        ctx[6](
+          /*mpegfile*/
+          ctx[8]
+        )
+      );
+    }
+    button = new button_default({
+      props: {
+        clicked: (
+          /*mpegfile*/
+          ctx[8] == /*selected*/
+          ctx[1]
+        ),
+        onclick: func,
+        $$slots: { default: [create_default_slot32] },
+        $$scope: { ctx }
+      }
+    });
+    return {
+      c() {
+        create_component(button.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(button, target, anchor);
+        current = true;
+      },
+      p(new_ctx, dirty) {
+        ctx = new_ctx;
+        const button_changes = {};
+        if (dirty & /*selected*/
+        2)
+          button_changes.clicked = /*mpegfile*/
+          ctx[8] == /*selected*/
+          ctx[1];
+        if (dirty & /*$$scope*/
+        2048) {
+          button_changes.$$scope = { dirty, ctx };
+        }
+        button.$set(button_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(button.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(button.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(button, detaching);
+      }
+    };
+  }
+  function create_if_block41(ctx) {
+    let video;
+    let track0;
+    let source;
+    let source_src_value;
+    let track1;
+    let track1_src_value;
+    return {
+      c() {
+        video = element("video");
+        track0 = element("track");
+        source = element("source");
+        track1 = element("track");
+        attr(track0, "kind", "captions");
+        if (!src_url_equal(source.src, source_src_value = /*ptk*/
+        ctx[0].name + "/" + /*mpegfileOfID*/
+        ctx[3](
+          /*selected*/
+          ctx[1]
+        )))
+          attr(source, "src", source_src_value);
+        attr(source, "type", "audio/mpeg");
+        attr(track1, "kind", "subtitles");
+        attr(track1, "srclang", "zh");
+        if (!src_url_equal(track1.src, track1_src_value = /*subtitleurl*/
+        ctx[2]))
+          attr(track1, "src", track1_src_value);
+        track1.default = true;
+        video.controls = true;
+        attr(video, "width", "480");
+        video.autoplay = "true";
+      },
+      m(target, anchor) {
+        insert(target, video, anchor);
+        append(video, track0);
+        append(video, source);
+        append(video, track1);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*ptk, selected*/
+        3 && !src_url_equal(source.src, source_src_value = /*ptk*/
+        ctx2[0].name + "/" + /*mpegfileOfID*/
+        ctx2[3](
+          /*selected*/
+          ctx2[1]
+        ))) {
+          attr(source, "src", source_src_value);
+        }
+        if (dirty & /*subtitleurl*/
+        4 && !src_url_equal(track1.src, track1_src_value = /*subtitleurl*/
+        ctx2[2])) {
+          attr(track1, "src", track1_src_value);
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(video);
+      }
+    };
+  }
+  function create_fragment60(ctx) {
+    let t;
+    let if_block_anchor;
+    let current;
+    let each_value = (
+      /*mpegfiles*/
+      ctx[4]
+    );
+    let each_blocks = [];
+    for (let i = 0; i < each_value.length; i += 1) {
+      each_blocks[i] = create_each_block29(get_each_context29(ctx, each_value, i));
+    }
+    const out = (i) => transition_out(each_blocks[i], 1, 1, () => {
+      each_blocks[i] = null;
+    });
+    let if_block = (
+      /*selected*/
+      ctx[1] && create_if_block41(ctx)
+    );
+    return {
+      c() {
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          each_blocks[i].c();
+        }
+        t = space();
+        if (if_block)
+          if_block.c();
+        if_block_anchor = empty();
+      },
+      m(target, anchor) {
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          each_blocks[i].m(target, anchor);
+        }
+        insert(target, t, anchor);
+        if (if_block)
+          if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
+        current = true;
+      },
+      p(ctx2, [dirty]) {
+        if (dirty & /*mpegfiles, selected, loadVideo*/
+        50) {
+          each_value = /*mpegfiles*/
+          ctx2[4];
+          let i;
+          for (i = 0; i < each_value.length; i += 1) {
+            const child_ctx = get_each_context29(ctx2, each_value, i);
+            if (each_blocks[i]) {
+              each_blocks[i].p(child_ctx, dirty);
+              transition_in(each_blocks[i], 1);
+            } else {
+              each_blocks[i] = create_each_block29(child_ctx);
+              each_blocks[i].c();
+              transition_in(each_blocks[i], 1);
+              each_blocks[i].m(t.parentNode, t);
+            }
+          }
+          group_outros();
+          for (i = each_value.length; i < each_blocks.length; i += 1) {
+            out(i);
+          }
+          check_outros();
+        }
+        if (
+          /*selected*/
+          ctx2[1]
+        ) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+          } else {
+            if_block = create_if_block41(ctx2);
+            if_block.c();
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        } else if (if_block) {
+          if_block.d(1);
+          if_block = null;
+        }
+      },
+      i(local) {
+        if (current)
+          return;
+        for (let i = 0; i < each_value.length; i += 1) {
+          transition_in(each_blocks[i]);
+        }
+        current = true;
+      },
+      o(local) {
+        each_blocks = each_blocks.filter(Boolean);
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          transition_out(each_blocks[i]);
+        }
+        current = false;
+      },
+      d(detaching) {
+        destroy_each(each_blocks, detaching);
+        if (detaching)
+          detach(t);
+        if (if_block)
+          if_block.d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
+      }
+    };
+  }
+  function instance58($$self, $$props, $$invalidate) {
+    let { ptk } = $$props;
+    let selected;
+    const { mpegfileOfID: mpegfileOfID2, subtitleOfID: subtitleOfID2 } = ptk.template;
+    const mpegfiles = ptk.defines.mpeg.fields.id.values;
+    let subtitleurl;
+    const loadVideo = async (id) => {
+      if (id == selected) {
+        $$invalidate(1, selected = "");
+        return;
+      }
+      $$invalidate(1, selected = "");
+      $$invalidate(2, subtitleurl = await subtitleOfID2(ptk, id));
+      $$invalidate(1, selected = id);
+    };
+    const func = (mpegfile) => loadVideo(mpegfile);
+    $$self.$$set = ($$props2) => {
+      if ("ptk" in $$props2)
+        $$invalidate(0, ptk = $$props2.ptk);
+    };
+    return [ptk, selected, subtitleurl, mpegfileOfID2, mpegfiles, loadVideo, func];
+  }
+  var Subtitle = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance58, create_fragment60, safe_not_equal, { ptk: 0 });
+    }
+  };
+  var subtitle_default = Subtitle;
+
+  // ../ptk/xml/escape.ts
+  var unescapeXMLTable = {
+    "&amp;": "&",
+    "&lt;": "<",
+    "&gt;": ">",
+    "&quot;": '"',
+    "&apos;": "'"
+  };
+  function unescapeXMLReplace(match) {
+    if (match[1] === "#") {
+      const num = match[2] === "x" ? parseInt(match.slice(3), 16) : parseInt(match.slice(2), 10);
+      if (num === 9 || num === 10 || num === 13 || num >= 32 && num <= 55295 || num >= 57344 && num <= 65533 || num >= 65536 && num <= 1114111) {
+        return String.fromCodePoint(num);
+      }
+      throw new Error("Illegal XML character 0x" + num.toString(16));
+    }
+    if (unescapeXMLTable[match]) {
+      return unescapeXMLTable[match] || match;
+    }
+    throw new Error("Illegal XML entity " + match);
+  }
+  function unescapeXML(s) {
+    let result = "";
+    let start = -1;
+    let end = -1;
+    let previous = 0;
+    while ((start = s.indexOf("&", previous)) !== -1 && (end = s.indexOf(";", start + 1)) !== -1) {
+      result = result + s.slice(previous, start) + unescapeXMLReplace(s.slice(start, end + 1));
+      previous = end + 1;
+    }
+    if (previous === 0)
+      return s;
+    result = result + s.substring(previous);
+    return result;
+  }
+
+  // ../ptk/xml/sax.ts
+  var STATE_TEXT = 0;
+  var STATE_IGNORE_COMMENT = 1;
+  var STATE_IGNORE_INSTRUCTION = 2;
+  var STATE_TAG_NAME = 3;
+  var STATE_TAG = 4;
+  var STATE_ATTR_NAME = 5;
+  var STATE_ATTR_EQ = 6;
+  var STATE_ATTR_QUOT = 7;
+  var STATE_ATTR_VALUE = 8;
+  var STATE_CDATA = 9;
+  var STATE_IGNORE_CDATA = 10;
+  var Sax = class {
+    constructor(opts) {
+      let state = STATE_TEXT;
+      let remainder;
+      let parseRemainder;
+      let tagName;
+      let attrs;
+      let endTag;
+      let selfClosing;
+      let attrQuote;
+      let attrQuoteChar;
+      let recordStart = 0;
+      let attrName;
+      this.startElement = opts.startElement || function(tagName2, attrs2) {
+      };
+      this.endElement = opts.endElement || function(tagName2) {
+      };
+      this.onText = opts.onText || function(t) {
+      };
+      this._handleTagOpening = function _handleTagOpening(endTag2, tagName2, attrs2) {
+        if (!endTag2) {
+          this.startElement(tagName2, attrs2);
+          if (selfClosing) {
+            this.endElement(tagName2);
+          }
+        } else {
+          this.endElement(tagName2);
+        }
+      };
+      this.write = function write(data) {
+        if (typeof data !== "string") {
+          data = data.toString();
+        }
+        let pos = 0;
+        if (remainder) {
+          data = remainder + data;
+          pos += !parseRemainder ? remainder.length : 0;
+          parseRemainder = false;
+          remainder = null;
+        }
+        function endRecording() {
+          if (typeof recordStart === "number") {
+            const recorded = data.slice(recordStart, pos);
+            recordStart = void 0;
+            return recorded;
+          }
+        }
+        for (; pos < data.length; pos++) {
+          switch (state) {
+            case STATE_TEXT: {
+              const lt = data.indexOf("<", pos);
+              if (lt !== -1 && pos !== lt) {
+                pos = lt;
+              }
+              break;
+            }
+            case STATE_ATTR_VALUE: {
+              const quot = data.indexOf(attrQuoteChar, pos);
+              if (quot !== -1) {
+                pos = quot;
+              }
+              break;
+            }
+            case STATE_IGNORE_COMMENT: {
+              const endcomment = data.indexOf("-->", pos);
+              if (endcomment !== -1) {
+                pos = endcomment + 2;
+              }
+              break;
+            }
+            case STATE_IGNORE_CDATA: {
+              const endCDATA = data.indexOf("]]>", pos);
+              if (endCDATA !== -1) {
+                pos = endCDATA + 2;
+              }
+              break;
+            }
+          }
+          const c3 = data.charCodeAt(pos);
+          switch (state) {
+            case STATE_TEXT:
+              if (c3 === 60) {
+                const text2 = endRecording();
+                if (text2) {
+                  this.onText(unescapeXML(text2));
+                }
+                state = STATE_TAG_NAME;
+                recordStart = pos + 1;
+                attrs = {};
+              }
+              break;
+            case STATE_CDATA:
+              if (c3 === 93) {
+                if (data.substr(pos + 1, 2) === "]>") {
+                  const cData = endRecording();
+                  if (cData) {
+                    this.onText(cData);
+                  }
+                  state = STATE_TEXT;
+                } else if (data.length < pos + 2) {
+                  parseRemainder = true;
+                  pos = data.length;
+                }
+              }
+              break;
+            case STATE_TAG_NAME:
+              if (c3 === 47 && recordStart === pos) {
+                recordStart = pos + 1;
+                endTag = true;
+              } else if (c3 === 33) {
+                if (data.substr(pos + 1, 7) === "[CDATA[") {
+                  recordStart = pos + 8;
+                  state = STATE_CDATA;
+                } else if (data.length < pos + 8 && "[CDATA[".startsWith(data.slice(pos + 1))) {
+                  parseRemainder = true;
+                  pos = data.length;
+                } else {
+                  recordStart = void 0;
+                  state = STATE_IGNORE_COMMENT;
+                }
+              } else if (c3 === 63) {
+                recordStart = void 0;
+                state = STATE_IGNORE_INSTRUCTION;
+              } else if (c3 <= 32 || c3 === 47 || c3 === 62) {
+                tagName = endRecording();
+                pos--;
+                state = STATE_TAG;
+              }
+              break;
+            case STATE_IGNORE_COMMENT:
+              if (c3 === 62) {
+                const prevFirst = data.charCodeAt(pos - 1);
+                const prevSecond = data.charCodeAt(pos - 2);
+                if (prevFirst === 45 && prevSecond === 45 || prevFirst === 93 && prevSecond === 93) {
+                  state = STATE_TEXT;
+                }
+              }
+              break;
+            case STATE_IGNORE_INSTRUCTION:
+              if (c3 === 62) {
+                const prev = data.charCodeAt(pos - 1);
+                if (prev === 63) {
+                  state = STATE_TEXT;
+                }
+              }
+              break;
+            case STATE_TAG:
+              if (c3 === 62) {
+                this._handleTagOpening(endTag, tagName, attrs);
+                tagName = void 0;
+                attrs = void 0;
+                endTag = void 0;
+                selfClosing = void 0;
+                state = STATE_TEXT;
+                recordStart = pos + 1;
+              } else if (c3 === 47) {
+                selfClosing = true;
+              } else if (c3 > 32) {
+                recordStart = pos;
+                state = STATE_ATTR_NAME;
+              }
+              break;
+            case STATE_ATTR_NAME:
+              if (c3 <= 32 || c3 === 61) {
+                attrName = endRecording();
+                pos--;
+                state = STATE_ATTR_EQ;
+              }
+              break;
+            case STATE_ATTR_EQ:
+              if (c3 === 61) {
+                state = STATE_ATTR_QUOT;
+              }
+              break;
+            case STATE_ATTR_QUOT:
+              if (c3 === 34 || c3 === 39) {
+                attrQuote = c3;
+                attrQuoteChar = c3 === 34 ? '"' : "'";
+                state = STATE_ATTR_VALUE;
+                recordStart = pos + 1;
+              }
+              break;
+            case STATE_ATTR_VALUE:
+              if (c3 === attrQuote) {
+                const value = unescapeXML(endRecording());
+                attrs[attrName] = value;
+                attrName = void 0;
+                state = STATE_TAG;
+              }
+              break;
+          }
+        }
+        if (typeof recordStart === "number" && recordStart <= data.length) {
+          remainder = data.slice(recordStart);
+          recordStart = 0;
+        }
+      };
+    }
+  };
+
+  // ../ptk/xml/element.ts
+  var Element = class {
+    constructor(name2, attrs) {
+      this.name = name2;
+      this.parent = null;
+      this.children = [];
+      this.attrs = {};
+      this.setAttrs(attrs);
+    }
+    setAttrs(attrs) {
+      if (typeof attrs === "string") {
+        this.attrs.xmlns = attrs;
+      } else if (attrs) {
+        Object.assign(this.attrs, attrs);
+      }
+    }
+    c(name2, attrs) {
+      return this.cnode(new Element(name2, attrs));
+    }
+    cnode(child) {
+      this.children.push(child);
+      if (typeof child === "object") {
+        child.parent = this;
+      }
+      return child;
+    }
+    t(text2) {
+      this.children.push(text2);
+      return this;
+    }
+    innerText(trim = false) {
+      const out = [];
+      for (let i = 0; i < this.children.length; i++) {
+        if (typeof this.children[i] === "string") {
+          const t = this.children[i];
+          out.push(trim ? t.trim() : t);
+        } else {
+          const t = this.children[i].innerText(trim);
+          out.push(trim ? t.trim() : t);
+        }
+      }
+      out.push(this.attrs.text || "");
+      return out.join("");
+    }
+  };
+
+  // ../ptk/xml/dom.ts
+  var DOMFromString = (str) => {
+    let tree;
+    let el;
+    const startElement = (name2, attrs) => {
+      const child = new Element(name2, attrs);
+      el = !el ? child : el.cnode(child);
+    };
+    const endElement = (name2) => {
+      if (name2 === el.name) {
+        if (el.parent) {
+          el = el.parent;
+        } else if (!tree) {
+          tree = el;
+          el = void 0;
+        }
+      }
+    };
+    const onText = (text2) => {
+      if (el)
+        el.t(text2);
+    };
+    const sax = new Sax({ startElement, endElement, onText });
+    sax.write(str);
+    return tree;
+  };
+  var walkDOM = (el, ctx, onOpen2 = {}, onClose2 = {}, onText = null) => {
+    onText = onText || ctx.onText;
+    ctx.out = ctx.out || "";
+    if (typeof el === "string")
+      ctx.out += onText ? onText(el, ctx) : el;
+    const openhandler = onOpen2[el.name] || onOpen2["*"];
+    if (openhandler) {
+      const out2 = openhandler(el, ctx) || "";
+      if (typeof out2 === "string" && !ctx.hide)
+        ctx.out += out2;
+    }
+    if (el.children && el.children.length) {
+      for (let i = 0; i < el.children.length; i++) {
+        walkDOM(el.children[i], ctx, onOpen2, onClose2, onText);
+      }
+    }
+    const closehandler = onClose2[el.name] || onClose2["*"];
+    if (closehandler) {
+      const out2 = closehandler(el, ctx) || "";
+      if (!ctx.hide)
+        ctx.out += out2;
+    }
+  };
+  var xpath = (root, p3) => {
+    const paths = p3.split("/");
+    if (!root || !root.children)
+      return null;
+    let found, el, children2 = root.children;
+    for (let i = 0; i < paths.length; i++) {
+      for (let j2 = 0; j2 < children2.length; j2++) {
+        found = false;
+        if (children2[j2].name === paths[i]) {
+          el = children2[j2];
+          if (el)
+            children2 = children2[j2].children;
+          found = true;
+          break;
+        }
+      }
+      if (!found)
+        return null;
+    }
+    return el;
+  };
+  var onOfftext = (el, ctx, onText) => {
+    onText = onText || ctx.onText;
+    let s = el;
+    if (ctx.hide || ctx.delete) {
+      ctx.delete = false;
+      return "";
+    }
+    if (ctx.compact && s.charCodeAt(0) < 127) {
+      s = " " + s;
+      ctx.compact = false;
+    }
+    if (onText) {
+      return onText(el, ctx, ctx.started ? s : "");
+    } else {
+      return ctx.started ? s : "";
+    }
+  };
+  var walkDOMOfftext = (el, ctx, onOpen2 = {}, onClose2 = {}) => {
+    walkDOM(el, ctx, onOpen2, onClose2, onOfftext);
+    return ctx.out;
+  };
+
+  // ../ptk/xml/tei.ts
+  var unhide = (ctx) => {
+    ctx.hide ? ctx.hide-- : 0;
+  };
+  var onTextWithInserts = (el, ctx) => {
+    if (ctx.inserts && ctx.inserts.length) {
+      el = insertText(el, ctx.inserts);
+    }
+    return onOfftext(el, ctx);
+  };
+  var byline = (el, ctx) => {
+    let s = "\n";
+    const type = el.attrs["cb:type"];
+    if (type) {
+      ctx.compact = true;
+      s += "^h<o=" + type.toLowerCase() + ">";
+    }
+    return s;
+  };
+  var onClose = {
+    "cb:div": (el, ctx) => {
+      ctx.div--;
+    },
+    "cb:tt": (el, ctx) => unhide(ctx),
+    "cb:docNumber": (el, ctx) => unhide(ctx),
+    "cb:mulu": (el, ctx) => {
+      if (!ctx.started)
+        return;
+      unhide(ctx);
+      if (ctx.mulu && ctx.started) {
+        ctx.mulu = false;
+        return '">';
+      }
+    },
+    byline: (el, ctx) => "\n",
+    note: (el, ctx) => unhide(ctx),
+    lem: (el, ctx) => unhide(ctx),
+    // l:(el,ctx)=>{ 
+    //     if (ctx.snippet.substr(ctx.snippet.length-1)=='。') {
+    //         ctx.compact=true;
+    //         return '^r';    
+    //     }
+    // },
+    lg: (el, ctx) => {
+      return "\n";
+    }
+  };
+  var corPrefix = (fn) => {
+    const m4 = fn.match(/([A-Z]+)\d\d/);
+    return m4 ? m4[1] : "";
+  };
+  var pb = (el, ctx) => {
+    ctx.lbcount = 0;
+    ctx.compact = true;
+    let out = "", pn = el.attrs.n.replace(/^0+/, "");
+    let voltag = "";
+    ctx.vol = parseInt(el.attrs["xml:id"].substr(1, 2));
+    if (el.attrs.n === "0001a") {
+      ctx.compact = true;
+      const ak = ctx.volumname[ctx.vol] ? "^ak" + ctx.vol + "\u3010" + ctx.volumname[ctx.vol] + "\u3011" : "";
+      voltag = "^v" + ctx.vol + ak;
+    }
+    if (corPrefix(ctx.fn) === "N") {
+      out = voltag + "^p" + pn.replace(/a$/, "");
+      ctx.compact = true;
+    } else if (corPrefix(ctx.fn) === "T" || corPrefix(ctx.fn) === "X") {
+      ctx.pn = pn;
+      if (voltag)
+        out = voltag;
+    }
+    return out;
+  };
+  var p2 = (el, ctx) => {
+    if (ctx.prevpn == ctx.pn && ctx.prevlb == ctx.lbcount) {
+      return "\n";
+    }
+    ctx.prevlb = ctx.lbcount;
+    ctx.prevpn = ctx.pn;
+    ctx.compact = true;
+    return "\n^p" + ctx.pn + ctx.lbcount;
+  };
+  var g = (el, ctx) => {
+    if (ctx.hide)
+      return;
+    const uni = ctx.charmap[el.attrs.ref.slice(1)];
+    if (uni)
+      return uni;
+    else {
+      ctx.compact = true;
+      return "^mc" + el.attrs.ref.substr(3);
+    }
+  };
+  var lb = (el, ctx) => {
+    ctx.lbcount++;
+    if (ctx.transclusion[ctx.fn] && el.attrs.type !== "old") {
+      ctx.ptr = ctx.transclusion[ctx.fn][el.attrs.n];
+    }
+    const inserts = getInserts(ctx.milestones, ctx.vol + "p" + el.attrs.n);
+    let out = "";
+    if (inserts) {
+      if (ctx.inserts && ctx.inserts.length) {
+        console.log("unclear inserts", ctx.inserts);
+      }
+      ctx.inserts = null;
+      inserts.forEach((ms) => {
+        if (Array.isArray(ms)) {
+          if (!ctx.inserts)
+            ctx.inserts = [];
+          ctx.inserts.push(ms);
+        } else {
+          ctx.compact = true;
+          out += ms;
+        }
+      });
+    }
+    return out;
+  };
+  var caesura = (el, ctx) => "\u3000";
+  var onOpen = {
+    p: p2,
+    pb,
+    g,
+    lb,
+    caesura,
+    byline,
+    milestone: (el, ctx) => {
+      ctx.started = true;
+    },
+    //skip the redundant mulu before milestone, see T30n1579_037
+    note: (el, ctx) => {
+      ctx.hide++;
+      return "";
+    },
+    l: (el, ctx) => {
+      ctx.compact = true;
+      return "\n^l";
+    },
+    lem: (el, ctx) => {
+      ctx.hide += 1;
+    },
+    //just keep the rdg
+    quote: (el, ctx) => {
+      if (ctx.ptr) {
+        const ptr = ctx.ptr;
+        ctx.ptr = "";
+        return "^t@" + ptr;
+      }
+    },
+    "cb:docNumber": (el, ctx) => {
+      ctx.hide++;
+    },
+    // 經號 privided by from catalog.json
+    "cb:mulu": (el, ctx) => {
+      if (!ctx.started)
+        return;
+      const level = parseInt(el.attrs.level);
+      if (level) {
+        if (ctx.defs.mu && ctx.defs.mu.compact) {
+          ctx.hide++;
+          ctx.compact = true;
+          return "^z" + toBase26(level - 1);
+        } else {
+          ctx.mulu = true;
+          return "^z" + toBase26(level - 1) + '<t="';
+        }
+      }
+    },
+    "cb:div": (el, ctx) => {
+      ctx.div++;
+      return corPrefix(ctx.fn) === "Y" ? "\n" : "\n^h<o=" + el.attrs.type + ">";
+    },
+    "ref": (el, ctx) => {
+      if (el.attrs.target && el.attrs.type) {
+        const ty = el.attrs.type;
+        if (ty === "taisho") {
+          const m4 = el.attrs.target.match(/#vol:(\d+);page:p(\d+[abc])/);
+          if (m4) {
+            return "^q<loc=/cb-t/v#" + m4[1] + "/p#" + m4[2] + ">";
+          }
+        }
+      }
+    },
+    t_rdg(el, ctx) {
+      return el.attrs.t;
+    }
+    // deal with app inside cb:tt <app n="0002008">  t01n0001_001
+    /*
+    app:(el,ctx)=>{
+        ctx.hide++;
+        let s='';
+        if (el.children[0].name==='lem' && el.children[1].name==='rdg') {
+            let lem=el.children[0].innerText(true);
+            let rdg=el.children[1].innerText(true);
+            s='^ap[o='+lem+(rdg?' '+rdg:'') +']';
+        }
+        return s;
+    }
+    */
+  };
+
+  // ../ptk/xml/utils.ts
+  var parseXMLAttribute = (attrs) => {
+    const arr = attrs.split(/([a-z\:\_]+=".+?")/).filter((it) => !!it.trim());
+    const out = {};
+    for (let i = 0; i < arr.length; i++) {
+      const [key2, value] = arr[i].split(/="/);
+      out[key2] = value.slice(0, value.length - 1);
+    }
+    return out;
+  };
+
+  // ../ptk/meta/cbeta-textlinks.ts
+  var CiteFormats = [/\(CBETA[ \d\.Q]*, ([A-Z]+)(\d+), no\. ([\da-z]+), p\. ([^\)]+)\)/g];
+  var RefTargetFormats = [
+    /vol:(\d+);page:p(\d+), ([abcd])(\d+)/,
+    // with col and line
+    /vol:(\d+);page:p(\d+)/,
+    // page only
+    /no:([\d\.]+)/
+    // sutra number
+  ];
+  var parseVolNoPage = (str) => {
+    const m4 = str.match(/([A-Z]{1,2})(\d\d)n(\d\d\d\d[A-Za-z]?)_?p(\d+)([a-z])(\d*)/);
+    if (m4) {
+      return {
+        cor: m4[1],
+        vol: parseInt(m4[2]),
+        no: m4[3],
+        page: parseInt(m4[4]),
+        col: m4[5].charCodeAt(0) - 97,
+        line: parseInt(m4[6])
+      };
+    }
+  };
+  var parseRefTarget = (str, reftype) => {
+    for (let i = 0; i < RefTargetFormats.length; i++) {
+      const m4 = str.match(RefTargetFormats[i]);
+      if (m4) {
+        if (str.startsWith("vol")) {
+          return reftype + m4[1] + "p" + m4[2] + (m4[3] ? m4[3] + m4[4] : "");
+        } else if (str.startsWith("no")) {
+          return reftype + "n" + m4[1];
+        }
+      }
+    }
+    return str;
+  };
+  var convertCitationToTEIRef = (str) => {
+    const out = [];
+    for (let i = 0; i < CiteFormats.length; i++) {
+      str = str.replace(CiteFormats[i], (m0, cor, vol, no, page) => {
+        const target = "vol:" + vol + ";page:p" + page;
+        const text2 = "^j#" + parseRefTarget(target, cor.toLowerCase());
+        return '<ref text="' + text2 + '"/>';
+      });
+    }
+    return str;
+  };
+
+  // ../ptk/meta/nullify_cbeta.ts
+  var escapeQuote = (t) => {
+    return t.replace(/"/g, "\uFF02");
+  };
+  var nullify_note = (content) => {
+    content = content.replace(/<note([^>]*?)>([^<]+)<\/note>/g, (m4, _attrs, t) => {
+      const attrs = parseXMLAttribute(_attrs);
+      const { place, type, n, resp } = attrs;
+      let note = "";
+      if (place == "inline")
+        note = "\u3014" + t + "\u3015";
+      else if (place == "foot text" && type == "orig") {
+        note = '<origfoot n="' + n + '" t="' + escapeQuote(t) + '"/>';
+      } else if (type) {
+        if (type.startsWith("cf")) {
+          note = "[" + type + "_" + t + "]";
+        } else {
+          note = "<" + type + "_note" + (n ? ' n="' + n + '"' : "") + (resp ? ' resp="' + resp + '"' : "") + ' t="' + escapeQuote(t) + '"/>';
+        }
+      } else if (!attrs["xml:id"]) {
+        note = "<_note>" + convertCitationToTEIRef(t) + "</_note>";
+      } else {
+        note = m4;
+      }
+      return note;
+    });
+    return content;
+  };
+  var nullify_rdg = (content) => {
+    content = content.replace(/<rdg([^>]*?)>([^<]*?)<\/rdg>/g, (m4, _attrs, t) => {
+      const { resp, wit } = parseXMLAttribute(_attrs);
+      if (resp == "Taisho" || typeof resp == "undefined") {
+        return '<t_rdg t="' + t + '" wit="' + wit + '"/>';
+      } else {
+        return '<_rdg t="' + t + '" resp="' + resp + '" wit="' + wit + '"/>';
+      }
+    });
+    return content;
+  };
+  var nullify_choice = (content) => {
+    content = content.replace(/<orig([^>]*?)>([^<]*?)<\/orig>/g, (m4, _attrs, t) => {
+      return '<_orig t="' + t + '"/>';
+    }).replace(/<sic([^>]*?)>([^<]*?)<\/sic>/g, (m4, _attrs, t) => {
+      return '<_sic t="' + t + '"/>';
+    });
+    return content;
+  };
+  var nullify_cbtt = (content) => {
+    content = content.replace(/<cb:t ([^>]+)>([^<]+)<\/cb:t>/g, (m4, _attrs, t) => {
+      const attrs = parseXMLAttribute(_attrs);
+      const lang = attrs["xml:lang"];
+      if (lang === "zh-Hant") {
+        return t;
+      } else {
+        return "";
+      }
+    });
+    return content;
+  };
+  var nullify_cbeta = (content) => {
+    content = content.replace(/<figure><graphic url="([^>]+)"><\/graphic><\/figure>/g, "[fg_$1]");
+    content = content.replace(/<space([^>]*?)\/>/g, (m4, attrs) => {
+      const attributes = parseXMLAttribute(attrs);
+      return " ".repeat(parseInt(attributes.quantity));
+    });
+    content = content.replace(/<unclear><\/unclear>/g, "[??]");
+    content = nullify_cbtt(content);
+    content = nullify_note(content);
+    content = nullify_note(content);
+    content = nullify_rdg(content);
+    content = nullify_choice(content);
+    content = nullify_note(content);
+    return content;
+  };
+
+  // ../ptk/meta/offtag_cbeta.ts
+  var createChunkId_cbeta = (arr) => {
+    const lb2 = {}, p3 = {};
+    for (let i = 0; i < arr.length; i++) {
+      const [id, tag, caption2] = arr[i];
+      const insert2 = tag ? tag + (caption2 ? "\u3010" + caption2 + "\u3011" : "") : caption2;
+      if (id.length > 11) {
+        p3[id] = insert2;
+      } else {
+        const at = id.indexOf("#");
+        if (~at) {
+          lb2[id.slice(0, at)] = [insert2, id.slice(at + 1)];
+        } else {
+          lb2[id] = insert2;
+        }
+      }
+    }
+    return { lb: lb2, p: p3 };
+  };
+  var insertTag_cbeta = (txt, tags, chunkidarr) => {
+    const chunkid = createChunkId_cbeta(chunkidarr);
+    let vol = "", offset = 0;
+    let insertcount = 0, inserttag = "", insertoffset = 0;
+    const out = [];
+    for (let i = 0; i < tags.length; i++) {
+      const [type, ntag, name2, dist, _attrs] = tags[i];
+      offset += dist;
+      if (inserttag && offset >= insertoffset) {
+        out.push(["^", insertcount++, inserttag, dist - offset + insertoffset]);
+        out.push([type, ntag, name2, offset - insertoffset, _attrs]);
+        inserttag = "";
+      } else {
+        out.push([type, ntag, name2, dist, _attrs]);
+      }
+      if (name2 === "TEI" && type == "+") {
+        const attrs = JSON.parse(_attrs || "");
+        vol = attrs["xml:id"]?.slice(0, 3);
+      } else if (name2 === "p" && _attrs) {
+        const attrs = JSON.parse(_attrs);
+        const id = attrs["xml:id"] || "";
+        const _ckid = chunkid.p[id.slice(1)];
+        if (_ckid) {
+          inserttag = _ckid;
+          insertoffset = offset;
+        }
+      } else if (name2 === "lb") {
+        const attrs = JSON.parse(_attrs);
+        const id = attrs.n;
+        if (!vol) {
+          console.log(tags[i]);
+          throw "no vol";
+        }
+        let _ckid = chunkid.lb[vol + "p" + id];
+        if (_ckid) {
+          if (_ckid && Array.isArray(_ckid)) {
+            const pintext = _ckid[1];
+            const at = txt.indexOf(pintext, offset);
+            if (~at) {
+              inserttag = _ckid[0];
+              insertoffset = at;
+            } else {
+              console.error("\u67E5\u7121\u6B64\u91D8\u6587", pintext);
+            }
+          } else if (typeof _ckid == "string") {
+            inserttag = _ckid;
+            insertoffset = offset;
+            const preveol = txt.charAt(offset - 1);
+            if (preveol !== "\u3002" && preveol !== "\u300D") {
+              let at = txt.indexOf("\u3002", offset);
+              if (~at && at > offset && offset + 19 > at) {
+                if (txt.charAt(at + 1) == "\u300D")
+                  at++;
+                insertoffset = at + 1;
+              }
+            }
+          }
+        }
+      }
+    }
+    return out;
+  };
+  var offGen_cbeta = (txt, tags, charmaps) => {
+    const out = [];
+    let offset = 0, prevoff = 0, started = false, hide = false;
+    for (let i = 0; i < tags.length; i++) {
+      const [type, ntag, name2, dist, _attrs] = tags[i];
+      offset += dist;
+      if (started) {
+        const t = txt.slice(prevoff, offset);
+        if (!hide)
+          out.push(t);
+        if (type == "^") {
+          if (name2.match(/^[a-z]/))
+            out.push("\n^ck#" + name2 + "\n");
+          else
+            out.push(name2);
+        }
+      }
+      if (name2 == "body") {
+        started = true;
+      } else if ((name2 == "p" || name2 == "l" || name2 == "lg") && type == "+") {
+        out.push("\n");
+      } else if (name2 == "cb:docNumber" || name2 == "note") {
+        hide = type == "+";
+      }
+      prevoff = offset;
+    }
+    return out.join("").replace(/\[cf[A-Za-z\d_]+\]/g, "").replace(/\[mc_([A-Za-z\d_]+)\]/g, (m0, mc) => {
+      const m4 = charmaps[mc];
+      if (!m4) {
+        console.log("cannot replace CBxxx", mc);
+      }
+      return m4;
+    }).replace(/([！。？][」])/g, "$1\n").replace(/。([^』」])/g, "\u3002\n$1").replace(/([：；，])([一二三四五六七八九十])([，、])/g, "$1\n$2$3").replace(/ *\n+/g, "\n").trim();
+  };
+  var StockCharMap_cbeta = {
+    "CB01647": "\uFE35\u{2E4BB}\u81F3\u58EC\uFE36",
+    "CB01808": "\u64EA"
+  };
+  var buildCharMap_cbeta = (tree) => {
+    const out = StockCharMap_cbeta;
+    const charDecl = xpath(tree, "teiHeader/encodingDesc/charDecl");
+    for (let i = 0; i < charDecl?.children.length; i++) {
+      const item = charDecl.children[i];
+      if (item.name == "char") {
+        const id = item.attrs["xml:id"];
+        for (let j2 = 0; j2 < item.children.length; j2++) {
+          const m4 = item.children[j2];
+          if (m4.name == "mapping" && (m4.attrs?.type == "unicode" || m4.attrs?.type == "normal_unicode")) {
+            const code = parseInt("0x" + m4.children[0].slice(2), 16);
+            const c3 = String.fromCodePoint(code);
+            out[id] = c3;
+          }
+        }
+      }
+    }
+    return out;
+  };
+
+  // ../ptk/meta/taishosutrajuan.ts
+  var TaishoJuanPagePacked = `-%#!! ###+" % %$&'$
+>Q
+>^
+>l
+>p&
+?.&
+?\\ 
+@
+@.
+@6
+@G
+@U
+@i
+A
+A
+A,
+A1
+A9
+AB
+AG
+AT
+Ah
+A{ !!
+Bm!  
+D0"  
+Eg!!&'!#(&&'!%$"&#&&  $" " &'+! #"#! "%"%) ""\x1B$  #'
+P\x1B
+P
+P
+P 
+P$
+P(
+P0
+P3
+P6
+P8
+P:
+P<
+P@
+PE
+PH
+PM
+PR
+PU
+PZ
+Ph
+Pl
+Pn
+Pr
+P|
+Q
+Q
+Q
+Q
+Q 
+Q%
+Q&
+Q-
+Q3
+Q4
+Q:
+Q=
+QD
+QG
+QJ
+QM
+QU
+QZ
+Qd
+Qm
+Qq
+Qx
+Qy
+Q|
+R
+R
+R
+R!
+R$
+R,
+R9
+RK
+RN
+RQ
+RT
+R\\
+Rg
+Rk
+Rn
+Rp
+Rt
+Rw
+Rz
+R{
+R~
+S
+S
+S
+"'$%'##('#&#&&'+$##%&+#*%$&"#%')*&+$%$"#$(&#('&
+DK$#'%*'!*'!(#'+
+G]
+Gq
+Gr
+Gs
+Gu
+Gw
+Gy
+Gz
+G|
+G~
+H
+H
+H
+H
+H
+H
+H
+H
+H 
+H&,+"
+I
+I
+I
+I
+I## %!#!(\x1B"(''*\x1B!\x1B $! "\x1B #&%
+PZ
+Pe
+Ph
+P~
+Q
+Q/
+Q0
+Q3
+Q7
+Q9
+Q>
+Q@
+QC
+QD
+QF
+QI
+QK
+QQ
+QU
+Q\\
+Q\`
+Qd
+Qg
+Qk
+Qn
+R
+%'$
+<"!
+<C(%'$
+=F
+=t"!!" $
+?%$%%"#$! 
+@j(%$'' $
+B4"
+C=\x1B\x1B\x1B\x1B
+Do
+Du
+D}
+E
+E
+E;
+EA
+EF
+EI
+EL
+E\`
+Eq
+E|
+F$
+F*
+F:
+FA
+FF
+FM
+FS
+FT
+FY
+Fd
+Fn
+G 
+G?!'&* !
+Hv# #%## !#(!
+K
+K&')
+L!\x1B
+S6\x1B
+,(22
+<(+#+-'
+=Z(/
+>E
+>J(
+>z#
+?)%
+?X
+@\x1B "\x1B! 
+A? !## " ##"
+Cq()$$%/$%!#&
+FD#"#\x1B
+Gp
+Gx\x1B
+H "
+HD
+H_ 
+I\x1B
+IA'
+Ir,%+
+Jg!   !  !!!  !! " !!
+O)!!
+Om
+Oo
+Op
+Or
+Os
+Ot
+! !  !   ! ! "!""  !  !!"!" !!! !$!  !     "    !     " ""  "  !   
+"($'%&)#$"$"#%%((%#
+>H**!$#(!!
+@8'&#(*-+$%$+#$&##'""#(#)(#)
+Es % \x1B!
+G1\x1B  
+H""
+Ho \x1B
+J$\x1B\x1B\x1B
+LO
+Lg
+Ln#$ 
+Mr
+N
+N+
+NE
+NQ
+Nm
+N{
+O
+O&
+O-
+O7
+O>
+OE\x1B" #
+PH
+Pc!
+Q
+Q
+Q
+Q\x1B
+Q
+Q
+Q 
+Q"
+Q#
+Q%
+Q)
+Q*
+Q.
+Q0
+QO! \x1B\x1B"
++)(,+)
+<..#(!('$"
+>"*(.+++
+?m
+?q+1
+@S ("
+A7# 
+B$
+B2
+BP 
+C$!
+D2
+DM
+DZ
+Dg
+Dy
+E!!$&("$"*&!""("!!""  "##)$$' !%$$" !*"$!$!!&$$''!&!
+!#"\x1B$!&#\x1B#\x1B!" ! #\x1B #\x1B!"\x1B!&"!  !(&   "$!!$\x1B'!)"
+F>
+FB
+FP
+FZ
+Fa
+Fe. 1
+Gk*%-
+Hj\x1B\x1B
+Ip
+J2
+J3
+J5 #"
+K"$"$#
+L \x1B \x1B \x1B\x1B!
+Q'*#
+Qq
+Qx
+Q|
+R
+R\x1B\x1B\x1B
+RV
+Rb
+Rk
+R{
+S
+S,  !$
+T
+T
+T#
+T+$')(*')&'
+#%  !"!!!%    \x1B\x1B& """%'$' !$%" """"""!" !\x1B $*\x1B"*$$&%(!\x1B!$\x1B *" ! .($ '&!
+Ln\x1B!
+M1
+NM#
+Ns
+O
+O5
+R
+R+ 
+RN"
+S
+\x1B
+;
+;'
+;?
+;R
+;b
+;d
+<
+<
+<0
+<7
+<E
+<J
+<V
+<]
+<f
+<l
+<}
+=%
+=D
+=Z!"
+>!.
+>\\
+>\`
+>c
+?
+?6
+?M
+?N
+?V
+?d
+?x
+@8
+@K
+@k
+@t
+@z
+A*
+A5
+AY#
+B!
+BO,
+C
+C."
+CW
+Ci
+Co
+Cy
+Cz
+C{
+C~
+D
+D.
+D0#%""!"$# "!  !"#" "%"#!""""#
+JZ"%##")'(( !&&(#"#!#%!&"#"$+'$%$
+Q+'$&$)
+RG#
+Rk*
+S,!
+S^ ! 
+T@
+To
+U/
+UM!" 
+V_ 
+W
+W' 
+X
+X
+X
+X#
+X$
+X'
+X)
+X/
+X1
+''!#!"&$%*+$'"&$(".)" '%"&! '! $\x1B#" '$!5$&(/""#
+EC"!
+FS!"
+G#
+HE#
+Ho"!\x1B
+J\x1B\x1B
+Jr
+Ki
+L
+L#
+L4
+LQ
+L\\! \x1B
+Mc$#   
+O+!
+OP
+OY#$''
+PW\x1B\x1B\x1B
+Qd!
+R@
+RO !
+S
+S 
+S@#
+Sh 
+T
+TK
+.')#'&(
+<6
+<J
+<M
+<P
+<R
+<U
+<Y
+<[
+<v" 
+=<
+=B
+=F
+=J
+=R
+=V!# #"%  
+?I#\x1B#\x1B! 
+Bs
+C\x1B \x1B
+D
+D
+D/
+DQ
+Du
+E+
+E6
+EC
+E_
+Eg
+Eo
+Ev
+E}
+F
+F!
+F4
+FG
+FT#
+F~
+G7
+G:
+GA
+GK
+GS
+G[)
+H
+H
+H%
+H-
+H2
+H:*
+Hp$'
+I=!"
+J(
+JB
+J[
+Jy
+K%\x1B
+KX# "
+L1
+L7
+LD$  
+M\x1B
+M
+M%
+M1
+NM
+NO
+NR
+N]
+Na
+Nb
+Ng
+Nl
+Np
+O
+O
+O
+O
+O
+O
+O
+O 
+O!
+O%
+O)
+O-
+O/
+O5
+O<
+OC
+OF
+OM
+OS
+OU
+OX
+OY
+O\\
+O^
+Oa
+Of
+On
+Op
+Os
+Ow
+Oz
+O~
+P
+P
+P'
+P*
+P2
+P7
+P:
+P<
+P>
+PH
+PM
+PT
+PV
+Pl
+Pv\x1B
+Q#
+Q+
+Q,
+Q/
+QO
+R8
+R:
+R=
+RN
+RZ
+R^
+Rd
+Rf
+Rj
+Rl
+Rm
+Ro
+Rr
+Ru
+S
+S2
+SL
+SP
+ST
+SW
+SZ
+S[
+S^
+Sb
+Sg
+Si
+Sk
+Sn
+Sp 
+T!
+T(
+T,
+T.
+T1
++'&
+;E%#'
+<+! "
+="
+=P
+=b
+=e
+=u
+=w
+=}
+>
+>
+>
+>!##
+>g
+>h
+>m
+>x
+?&
+?<
+?>
+??&#*#%
+@a
+@s
+@v
+@z
+@~
+A
+A*+
+Ae&
+B%
+B&"
+BH
+BQ8
+C+
+CA
+C_
+Ca
+Ci
+Co# 
+D7! 
+Dx'
+E;$&
+E}\x1B
+FJ
+FQ
+Ff
+Fm
+G
+G&
+GO 
+H 
+H8#
+H_+
+I#("/&)!!
+K
+K 
+K2'
+Kc " !\x1B 
+M\x1B
+M"
+M6
+ME\x1B
+Mi
+Mv\x1B 
+NI"
+Nk\x1B
+O 
+O:$%
+O~
+P
+'51&(7.%%&&!'
+=}$!(*)-01
+@ !##
+A!$##\x1B
+B
+C4
+C:
+CG  !
+D!% \x1B
+E1\x1B"#
+Fb
+Fl
+F}
+G 
+G3-)&
+H-$ #"#"!!/
+J$%!$%&)
+KT 
+Ky"
+L,
+Lr 
+MF
+MP
+MZ
+Ma
+Mj%'
+NA(/
+O)
+O.
+O/
+O2
+O3
+O5
+O8
+O=
+OB
+OJ
+OL
+OP
+Od
+Og
+Oj
+Om
+Op
+Or
+Ov
+Oy
+P
+P
+P#
+P%
+P&
+P+
+P/
+P6
+P=
+PC
+PL
+PO
+PT
+PX
+Pm
+Q
+Q
+Q"
+    !"" !" %# #   #!!! "#!""!"!"!"%" !!"!   ! ! "$ ""&!   
+Ea\x1B\x1B
+FB
+FO
+FU
+F\\
+Fd
+Fe !! "!#
+H3
+HH
+HV
+H[
+Hi
+Hk
+Hn
+Hs
+Hw
+H|
+I
+I
+I
+I"
+I&
+I,
+I<
+IE
+IK
+IR
+IU
+Ii
+Ik
+Io
+Iq
+Ir"
+J)
+J.
+J2
+JL
+JN
+JZ
+Jh! $&%
+Kq
+K|
+L
+L$  
+M"
+M&
+M(
+M4
+M7
+M;
+M=
+M>
+M?
+MG
+MI
+MN
+MO
+MR
+MS
+M\\
+M_
+Ma
+Mf
+Ml
+Mr
+Ms
+Mu
+Mw
+M{
+N 
+N!
+N"
+N&
+N*
+N,
+N3
+N8
+N9
+N:
+N;
+N@
+NF
+NG
+NJ
+NL
+NM
+NU
+NV
+N\\#
+O
+O
+O#
+O7
+OH
+Om
+P0
+PH\x1B
+Pb
+Pc
+Pm
+Q
+Q(
+Q=
+QU
+QY
+Q_
+Q\`
+Qe
+Qj
+Qp
+Qw
+Qz
+R
+R$
+R*
+R.
+R=
+RL
+Rg
+Rk
+Rn
+S
+S3
+S7
+S<
+S?,)
+('#")!
+<
+<49
+=(&
+=F);
+>>%&
+>}\x1B
+?#
+?*
+?.
+?2
+?3
+?=
+?R
+?V
+?a
+?i
+@
+@K''&
+A5!
+Af 
+B!
+B*
+B6
+BH
+BM
+Bm$
+C!
+C.
+C<
+CI
+CM
+CQ
+CS
+CY\x1B\x1B\x1B
+FA\x1B
+Fu
+G  &!
+H#
+H,\x1B\x1B\x1B
+Ho
+H~\x1B
+IB \x1B
+J
+J&
+JT+6;0;(
+L~\x1B2
+M]!/
+N>
+Ni
+O
+O(
+O7
+OA-,&7'%/*)''
+RA
+RC
+RG
+Rc
+Rl
+Rs
+Rw
+S
+S 
+S$
+S-
+S>
+SC
+SO
+SS
+SU
+
+
+"
+;
+;
+;&
+;:
+;E
+;_
+;s
+<-
+<8
+<;
+<K
+<R
+<_
+<a
+<b
+<g
+<p
+<u
+<y
+=
+=#
+=%
+='
+=,
+=<\x1B(
+>a#
+?:
+?U
+?Y
+?a%!)
+@M*#"/
+AR  !
+B$*#
+Bf
+Bw
+B~
+C\x1B
+C/
+C1
+C8
+C9
+CG
+CN
+CQ
+CS
+C]
+Cq
+C}
+D
+D
+D&
+D.
+D:+
+Dh
+E$
+E+
+E4
+E>
+EF
+EG
+EI
+EU&/
+F.
+FB 
+Fh%
+G/
+G3
+G;
+GD\x1B
+G\\
+G^
+Gt
+H
+H*
+H;
+HC
+HL\x1B"""
+Iw
+I{"
+J9
+JR
+J^
+J\`
+K
+K"
+KG\x1B
+L
+L6
+LL
+LX
+LZ
+L\`
+Lh
+Lq
+L}
+M
+M
+M,
+M;
+M@
+MA
+MB
+MQ
+MY
+Me
+Mr
+Mx
+N/
+N7
+
+
+#
+*
+;
+;
+;
+;
+;"
+;(
+;>
+;B
+;E
+;I
+;T
+;Y
+;e
+;f
+;h
+;m
+;o\x1B
+<1
+<:
+<=
+<A
+<E
+<I
+<k"
+=!
+=7
+==
+=P
+=U
+=X
+=Z
+=g
+=|
+>
+>-
+>2
+>N
+>W
+>\`'
+?
+?!
+?%
+?6
+?I
+?M
+?O
+?S
+?k
+?n
+?w
+?}
+@
+@
+@'
+@4
+@9
+@A
+@N
+@V$    !#"!%$ "$" $#
+E%
+E/
+E:
+ED
+Eh
+F
+F9
+FD
+FM
+FY
+Fc
+G
+G
+G%
+G+
+G1
+GB
+GD
+GQ
+GU
+Gk
+Gu
+Gy
+G{
+H
+H
+H
+H*
+HA
+HH
+HU
+H^
+Hk
+Hv
+H~
+I
+I" 
+IO
+Ia
+Id
+Iq
+It
+Iz
+I}
+J
+J
+J
+J&
+J-
+JL
+JL
+JM
+JP
+JT
+JY
+J\`
+J\`
+Jg
+Jk
+Ju
+J{"
+KJ
+K_
+Kn
+Kt
+Kv
+Kx
+L
+L
+L1
+L4
+L:
+LB
+LI
+LJ
+LM
+LQ\x1B
+L|
+M3
+M?
+MB
+ML
+MV
+Mj
+Mm#\x1B$"  
+O,
+O-
+O0
+O2
+O5
+O8
+O?
+OT
+P
+P
+P)
+P9
+PK
+Pf\x1B
+RV (
+S0
+S<
+SD
+SH
+SJ
+SN
+
+$
+6\x1B
+;'
+;4
+;?
+;E
+;S
+;T
+;V
+;X
+;]
+;\`
+;v
+<J
+<L
+<U
+<Y
+<d\x1B\x1B
+=
+=$
+=&
+=+
+=2"")\x1B
+>
+>
+>&
+>7
+>:
+>i
+>m
+>s
+?
+?
+? 
+?&
+?.
+?0
+?4
+?8
+?P"
+?}
+?~
+@
+@
+@2
+@8
+@?
+@O
+@Q
+@X
+@_
+@h*"
+A1
+A4
+A;
+AF
+AL
+AN\x1B
+B"
+B$
+B%
+B/
+B3
+B6
+B8
+B=
+BC
+BG
+BJ
+BX
+BY
+B\`
+Bb\x1B\x1B
+C
+C$
+C&
+C+
+C6
+C;
+CU
+CW
+C]
+C^
+C\`
+Cq
+D
+D
+D
+D\x1B
+D7
+DK
+DR
+DT
+DW
+DY
+D]
+De
+Dh
+Dm
+Dr#
+E' 
+EG
+Ed
+Eg
+Ek
+Eo
+Eq
+Et
+Ew;
+FT
+Fc
+Fi
+Ft
+Fx
+F|
+G
+G
+G
+G
+G
+G#
+GC
+GO
+GS
+GT
+GU
+GW
+GX
+GX
+GX
+GY
+Gc\x1B
+Hn%!
+IH
+IS
+I\\
+J $&!# 
+KK
+KR
+KU \x1B
+L \x1B
+NX \x1B
+Pr
+Q
+Q"
+Q/
+Q<
+Q@
+QB
+QI
+QL
+QN
+QP
+QR
+QY
+Qe
+Ql
+Qn
+Qp
+Qs
+Qv
+Qw
+R
+R
+R
+R
+R
+R
+R\x1B
+R
+R
+R$
+R'
+R(
+R*
+R7
+R:
+RC
+RL
+RN
+RO
+RR
+RS
+RT
+RU
+RW
+RX
+RY
+R[
+R]
+R]
+R_
+R\`
+Rf
+Rh
+Rl
+Rn
+Rp
+Rs
+Rv
+Rw
+R{
+R~
+S
+S
+S
+S
+S
+S
+S
+S#
+S%
+S&
+S'
+S*
+S,
+S4
+S6
+S:
+SB
+T 
+!%(&$(()*  ! "$!%&$#"&
+?f
+@
+@/
+@V'%1(*--+.&"!##%'(*)+(+%%'()(%+(&!&%%#&#
+I#
+I8
+IY) ##$"$#%&'&!&#&%$&#%$%%$&$#&&'(+**%&#%%'.*-,"'(&%%% $&&&#
+UM
+Ue
+U|
+V*
+VI
+Vs
+""&(4 "+'" #%# '$"()-$("- #%$%(*!%%&(&%$##$-!,#((&."#))0%&
+G
+G3
+GQ
+Gf
+G}#$$$%###
+IR##"##%"!
+K+!\x1B " !!" ## !!   "!# !!!"
+R\\"  !   "\x1B!"!  "
+U] 
+V*
+V5
+VA
+#$#'
+=$
+=) !   
+@\x1B\x1B! !%$ " !#! 
+EU\x1B\x1B\x1B
+F^\x1B
+Gs
+H
+H6
+H?
+HL $"" &! !$
+K9;
+L
+L-
+LE)%'(%#(%&%&%&&
+Oq! !" (
+Q%"!!
+RF
+RP
+Rf
+Ri
+Rk
+Rm#
+S$
+S7
+S@
+SE
+SI
+SM
+S[
+S^
+S{
+T
+T
+T%
+T>;
+U!
+U?#
+Ue
+Uv
+V!!"  !
+W!
+W1
+WB
+WL
+WP
+W\\
+Wk
+Wq
+Wv
+Ww
+Wx
+X
+X
+X(
+X+
+X9
+&
+;
+;<#
+<
+<*,*+&"##!)*()" ",%)*"&!"!*&"!*0" !($## '$ "#$$"$# %"#"("%! *$!!$ $%,&$&%#* %#% "$&)+($ \x1B ## $ 
+N^,
+O6 
+Oh"&(%)&''&
+Qm\x1B
+R
+R 
+RA
+RI
+Rm
+
+/
+;!# ""!!!" $&
+=q&%%&"!$&
+@'"!
+@a
+@i\x1B\x1B
+Aq
+A}
+B
+B
+B5!
+C2
+CM
+D
+D
+D/
+D6\x1B\x1B\x1B\x1B\x1B
+FW
+H+
+H^!   \x1B  
+Jv
+K+%\x1B ! 
+L~\x1B
+O\x1B,\x1B\x1B\x1B%\x1B#
+R}"  ""!& !"
+!      "  !      #"   ! \x1B\x1B\x1B\x1B\x1B\x1B\x1B#\x1B\x1B 
+(&* &!!'.-%''& '!&*'%'"$% $%"*"&",)'"$1))+(*'# #\x1B
+EX#&))"&)"#&,)$
+HL+),%'%+#!"%#$% "#&&"!
+Mc((')/"!8(
+P"!
+Pa"!"! 
+Q]0%2'*$&0'*
+T+'
+TV
+Tp
+U
+U
+!" !"!   
+>r')$$"#$##"#"($"#!$&
+Bo
+C)
+C5!$!"!  ""$"## #$#$# "!# !##&  !! "  !   
+O)\x1B!!! ! !
+'/-
+;Y
+;z"%# $!#
+>'
+>l
+?$
+?@
+?O !!!"&#"
+A+
+A3
+A6
+A7
+A<
+A>!
+A\`
+B "!%#"%!#$%!$! ""   &!$%"   ! $("'# !&" "\x1B! ! !% &!$"!!$&&##$"#""$%&$
+R
+R# "!"!+"9
+T'!   "
+UI
+UW 
+ !!!" ""
+<%
+<*
+<0
+<C
+<P
+<Y\x1B\x1B
+=#%
+=Q$"
+>&
+>W(%&!,&%#((+(&(
+Ai\x1B 
+C !""!%
+D] #"$& '&)
+FP$
+Fx
+G/
+G7  ! ! 
+J
+J+!#"  #
+L&\x1B 
+M  \x1B"!\x1B
+O 
+O*
+O5
+OG$$ 
+P$+ *
+Q
+Q$
+Q2
+Q3
+QC
+QV 
+Qx
+R
+R
+R
+R
+R"
+R$
+R&
+R/
+R6
+
+!
+0
+7
+;(
+;8
+;N#
+;w
+<S\x1B\x1B
+>C
+>Q
+>\`
+>e
+>j
+?
+?"
+?%$\x1B(!
+@S 
+@z(**#*'(*'),)%+%
+DN( 
+E' ! !"
+Fq
+G!
+G8
+G<
+GI
+GT
+GX
+G^
+H
+H
+H\x1B
+H5\x1B\x1B
+H}
+I
+IJ
+IM
+Ii
+Iq
+J
+J2.2++%#!$
+L7
+M/ 
+M]
+N;
+NC
+NL
+NV
+N\\
+N^
+N_
+N\`
+Nb
+Nm
+O
+O
+O\x1B
+O
+O
+O%
+O)
+O?
+O@
+OH
+OK
+
++)
+;-36
+<.
+<>
+<R
+<m4)*
+=t;
+>_(
+?+,*--
+@Y
+@z&
+A3" !
+B%,
+Bz:;
+D;3;#
+F;3;A
+HG-
+I
+I,
+I6"
+I_
+Ih45929;8
+L\\255::;754
+P*&&''&%&$%&#$)#%$%#%
+;9;;9;;:;
+>T;";#;!;;!;;";;"
+D$//"'*-(+,
+FP;;;4;;;;;;\x1B*
+K>
+Ks; ;&;;";&;!; ;;!
+Q0
+Q\`
+Qs&
+R/&*"
+S'
+SB!
+T4;
+
+7;\x1B;;#;
+=A;;#;;/;;(;";;9;;;;#; ;;$;*;
+G[
+G{"(*$%(%!*+*'+('!* &"*2%%%$1*$*-*'##!'"!$#,'%"*$ !('#++%$
+*$&'")("''''*#$+(*&%&'#%!'$)$'('$)&%&)($'*()+',%)'+('''+(-).(*'+%%%%&'$#"# #!),'&!%'!"%
+M(
+MA
+Mc"#!#"$!%$##$%$&%&&&$'"'%$&##%&$%$"&&*''
+U:
+UC+,,
+VD&
+Vq
+;1;@
+=7
+=^
+=x
+>1;
+?%
+?M
+?g#$"#
+@i
+A!,*
+B#(
+Ba
+Be
+Bo
+C5(!
+Cn
+Cv
+D
+D,
+DT"! \x1B\x1B% \x1B\x1B\x1B*\x1B " 
+Jr;;;9;8;7;7;8;<;<;8
+$
+;$"#
+;_!   ! %!,)   !  !!$
+@_
+@z
+A?
+AQ
+Am9
+BL
+BX
+C/2/0..+!#/
+Eg;);0;-
+H:''$$
+IL;;2;;;;15
+ME;858:673:
+Q+-'%&$$
+Ra;18;7
+T|;;(;!;;
+ 
+4"!!
+;m#!$%
+<k67;52
+>o
+?+;;2;E;I;A
+C_;(;;
+Eu
+F\x1B&(&%''%%!
+H
+H'
+H2
+HG;3
+I}:4/-/10,/11*-+-,*-/
+OP)
+P
+PB;;7;34+;9
+T1
+TL" '
+U-
+UD;
+;i<!
+>f= =A
+F77
+Ft5
+GZ,
+H#,*
+Ht)'
+IM(
+J,"
+JQ2$*'&
+L9
+Lu/
+M];';)
+O;
+OA;:
+PK*
+Q
+;F;":;&;; ;364$';6; 74;;+9.9;2;8;1
+FV;\`;5;;;-,0, $6/1(%+9)8-1.,200(
+P$7%!'" !#!! 
+;\x1B9;\x1B;;78;;
+?;'$
+@**
+@e;6;4
+Bp;-;(;;$;1;!;&;5;.;0;;);+;);$;#;(;0;8;&;(;&;!
+;9;;;17-+,8;;!;;
+@\\;S;b;S;\\;Y;V;S;N;G
+J\`;2
+L;%;1;;\x1B;-; 
+P;';3;-;';;#
+TQ7
+:;
+;l
+<\x1B
+<(
+<X
+=;;
+><
+>j
+?+;
+?|9
+@S
+A/;
+B)
+BF!!!!  ! ! ! 
+ED
+Ek"'&""
+Fz;);%;:;!; ;;; ;;!; ;$; ;:;;.;;
+
+;-.8:
+<Y;3
+=\\
+=o%#
+>=
+>Q
+>t6;
+?y2;
+A\x1B;';0;$;4;
+DN)3
+EA7+'
+FK
+G
+G-&%$
+H
+H+
+H:+
+Ho13;
+J,
+JB
+JF'
+Jr#
+K+
+KI
+KV
+Kr
+L
+L&
+L2
+L>
+LA
+Lc
+L~&
+M;
+ME;B
+N~
+O
+O%
+OY
+P
+P6$
+Pc
+Ps$
+Q0%
+Q[
+Qj
+R$
+R=
+RM
+RO
+RR
+RV
+Rk
+Rt
+R~
+S
+S \x1B\x1B\x1B
+T0\x1B
+-.:6;";;;;
+>6;];J;L;.;};7;A;#;&
+FD!
+Fh
+Fq
+G')&,$(&"
+I#
+I7%\x1B"
+J
+J
+J%% %$
+K
+K-
+KU!" 
+L*0-
+M
+M,
+M2(
+Mc\x1B\x1B
+O
+O
+O5
+OE
+OY$''
+PE
+PZ1
+Q4,*/3-,
+S<
+SD
+SW
+Si
+S}
+T
+T
+T
+T
+T$
+T+
+T1
+T@
+TP
+T^
+Tj
+Tn
+Tq,
+U5
+
+\x1B.
+;%
+;=##"#"$
+<X
+<f
+<k#$
+=8
+=K
+=h"
+>!\x1B
+>A
+>K;;;;;3
+A-"\x1B\x1B
+B0
+B7
+BW#&'
+D3
+D\`
+Dl%
+Ec
+Ef
+Eq"
+F*
+FG
+F\`,
+G&%
+GV
+Gc
+H
+HP:
+I*8
+Iw
+J
+J'
+J:72
+K3
+KR
+Km%!
+L8%*$ #
+ML
+P\x1B\x1B \x1B\x1B
+T
+Ta+.'&-#$/
+;+%;%;;
+=k!
+>04.()$%$%'
+@S223&1
+B7
+BO#$&\x1B
+CM
+Cf
+D0
+DR
+DT
+D[
+Ds
+E\x1B
+E )
+EU"#  "(! & "''! ,$  #!'"% !" #! $  \x1B  "\x1B "\x1B\x1B"!\x1B !\x1B\x1B 
+T29
+T~
+U
+U1
+U=
+UQ!"!
+V)& "" "
+Wc
+X!'$!#!!
+
+
+$
+,
+5
+;
+;
+;
+;&#;" $"&" %%!
+>1!;))#)\x1B'/.*$($$,- 3"#,'"*!%%#  *
+G-7"%)&-+.)4529;983;;;
+N";Z;L;n
+RP;;
+Sw;9;)
+;{0(
+<n
+=)
+>\x1B\x1B
+?
+?"
+?C
+?F
+?N
+?R
+?[
+?p 
+@/
+@C %" #&
+B
+B1
+B8
+B?
+BF\x1B
+C"%%*"))(#( *
+Es$&$6')$*)%##,$2/.'*;$/'1;(0& +
+M? #"$)"  ""!)$"'''##$! !
+RJ\x1B 
+S<
+Sg"#&%($)%
+UM
+ 
+4\x1B\x1B
+;s
+=#
+=8
+=E!"
+={23
+>Z 
+?&
+?7
+?k: $2.!%+(&2'((),+%-+&,-11'1&
+G'"!""  $/(,#&"#!(%)$+"$)%##,
+MQ$"!#("
+O
+O\x1B
+O=
+OH
+Ot2
+PK12
+Q7
+QT
+QV'$!! ($"$
+Sf7
+TF
+U
+U
+U 
+Uc
+Uh
+Uj%  
+VK
+VV45
+WT
+Wm(+
+XJ
+Xb
+($ &'!")%,
+=#\x1B ! #(*%(%2&9\x1B'.($!-+)21;98
+D*)&'
+E 
+E4*-
+F 
+F8 ! 
+G&(
+GS% %/\x1B5
+I)
+IC
+Ik$ )!%%#
+KI
+Kf& !%" #!"! 
+NL!)
+O5"
+O]" 
+P3
+PM# "
+!&$$! $! "$(\x1B%&\x1B'&!\x1B! %\x1B *
+Ac)'%'-0//.3 -","'"$$.#'$$!+++5,1%4-'%#%#!&" )'%#:&%"+!1*-)!''%$'$""#" $ ) *1$+$%" '%'!
+&0(/)/,1*;/*/+%/**
+?g
+@%$%
+@k$$
+A@;;
+Bp# ! #"$""""(!#" '%(!*,0#"&$!$ $%&$)!!"()")!"(#&%!!%  %""%$" &#"&\x1B\x1B\x1B\x1B! 
+S<\x1B\x1B
+TX.-!"*!)"
+VT;;;;;\x1B;
+Z
+Z%
+Zt
+[
+[N
+[Y" 
+\\
+\\'
+\\4
+\\P
+\\d
+\\j
+\\l
+-!;\x1B)(%!4$
+=Y(  
+>Q!!.
+?<(&/ 
+@>%;6:81".7
+C\\
+Cn
+D8
+DG& ! !&*$;)
+G-.;*23+'.,+6;;270+)0
+Ml!$
+ND,(
+O"%'$)2$&(*$#"$$ #!+17;6;5;(;
+V?
+VT
+V^
+Vd
+Vu
+V}
+W
+W
+W#
+W)
+WE
+WR
+WT
+W]
+Wb
+Wp
+X
+X
+X!4
+X[
+Xc
+Xi
+Xl
+Xr
+Y
+Y
+YL&
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+);
+<
+<9;$
+=H
+=h
+>
+>
+>,
+>6
+>^
+>e
+>o
+?
+?
+?
+?
+?:
+?V
+?f
+?s
+@
+@
+@9
+@k
+@m
+@q
+@|
+A(
+A4
+AM
+B
+B9
+B[
+Ba
+Bo
+C5
+CU
+D
+D.
+DP;'
+Eo
+F
+F
+F)
+F/;E
+Gv;
+Hm
+Ho
+Hy
+I
+I9
+I=
+IA
+IL
+IY\x1B;)
+J}
+K\`
+Ky
+K|
+L
+LB
+Ld
+Lz9
+M]
+Mu
+N:
+Nj*
+O9
+Oz;q;H5;
+SG
+Se
+T"
+T\\'
+U
+UA
+Ud
+V\x1B
+V9
+Vs
+V{
+WI;
+X:;;
+Yf
+Yr
+Z
+Z
+Z-
+Z<
+ZQ
+ZT
+ZW
+[
+[
+[>
+[R6
+\\'
+\\(
+\\.
+\\0
+\\4
+\\5
+\\=
+\\K
+\\V
+\\Z
+\\r
+\\t
+\\x
+\\z
+\\~
+]
+]
+]
+]
+]
+]
+]\x1B
+]
+]
+]
+] 
+]&
+])
+]-
+]/
+]1
+]G
+]X
+]Z
+]\`
+]a
+]d
+]g
+]k
+]m
+]q
+^
+^
+^"\x1B
+^R
+^S
+^[
+^]
+^b
+^c
+^c
+^g
+^x\x1B
+_+
+_4
+_8
+_H
+_K"
+_k
+_p
+_r
+_u
+_u
+_w
+\`
+\`
+\`
+\`!
+\`%
+\`8
+\`A
+\`C
+\`T
+\`V
+\`\`
+\`|
+a
+a
+a
+a"
+a&
+a*
+a+
+a.
+a2
+a5
+a7
+a=
+a>
+a>
+a@
+aA
+aB
+   !!$ !!   !  !! !"  #"       "        ! !!         #       
+!   !!      !  ! "           $   !   !   ! !!  ! #! ! !   !#!! !"!   # !  !   !  # #         " !      !!!`;
+
+  // ../ptk/meta/cbeta.ts
+  var fixJuanT = (bkno, juan, sutraname) => {
+    let bk = "";
+    if (juan === 1) {
+      bk = "^bk" + bkno + "\u3010" + sutraname;
+    }
+    if (bkno === "946") {
+      if (juan >= 4)
+        juan--;
+    } else if (bkno === "2799" || bkno === "2825") {
+      if (juan === 3)
+        juan = 2;
+    } else if (bkno === "2805") {
+      if (juan === 5) {
+        bk = "^bk#" + bkno + "\u3010" + sutraname;
+        juan = 1;
+      } else if (juan === 7)
+        juan = 2;
+    } else if (bkno === "2139") {
+      if (juan === 10)
+        juan = 2;
+    } else if (bkno === "2772") {
+      if (juan === 3) {
+        bk = "^bk#" + bkno + "\u3010" + sutraname;
+        juan = 1;
+      } else if (juan === 6)
+        juan = 2;
+    } else if (bkno === "2748" || bkno === "2754" || bkno === "2757" || bkno === "2764b" || bkno === "2769" || bkno === "2803" || bkno == "2809" || bkno === "2820") {
+      bk = "^bk<id=" + bkno + "\u3010" + sutraname;
+      juan = 1;
+    }
+    return [bk, juan];
+  };
+  var parseBuffer = (buf, fn = "", ctx) => {
+    buf = buf.replace(/\r?\n<lb/g, "<lb").replace(/\r?\n<pb/g, "<pb");
+    ctx.rawContent = buf;
+    const el = DOMFromString(buf);
+    const body = xpath(el, "text/body");
+    const charmap = buildCharMap_cbeta(el);
+    let m4 = fn.match(/n([\dabcdefABCDEF]+)_(\d+)\.xml/);
+    let bk = "", bkno = "", chunk = "";
+    const sutraNo = m4[1].replace("_" + m4[2], "").toLowerCase();
+    let sutraname = ctx.catalog && ctx.catalog[sutraNo] && ctx.catalog[sutraNo].trim() || "";
+    bkno = sutraNo.replace(/^0+/, "");
+    const at = sutraname.indexOf("^");
+    if (at > -1) {
+      sutraname = sutraname.substr(0, at) + "\u3011" + sutraname.substr(at);
+    } else
+      sutraname += "\u3011";
+    let juan = parseInt(m4[2]);
+    if (fn[0] == "T") {
+      [bk, juan] = fixJuanT(bkno, juan, sutraname);
+    } else if (juan === 1) {
+      bk = "^bk" + bkno + "\u3010" + sutraname;
+    }
+    chunk = "^" + (ctx.juantag || "ck") + juan + "\u3010\u5377" + juan + "\u3011";
+    if (!ctx.teictx) {
+      ctx.teictx = {
+        defs: ctx.labeldefs || {},
+        lbcount: 0,
+        hide: 0,
+        snippet: "",
+        volumname: ctx.volumname,
+        div: 0,
+        charmap,
+        fn,
+        started: false,
+        transclusion: ctx.transclusion || {},
+        milestones: ctx.milestones || {}
+      };
+    }
+    ctx.teictx.sutraNo = sutraNo;
+    ctx.teictx.started = false;
+    const openhandler = Object.assign({}, onOpen, ctx.onOpen || {});
+    const closehandler = Object.assign({}, onClose, ctx.onClose || {});
+    let content = bk + chunk + walkDOMOfftext(body, ctx.teictx, openhandler, closehandler, onTextWithInserts);
+    ctx.teictx.out = "";
+    content = content.replace(/\^r\n/g, "\n").replace(/\n+/g, "\n");
+    return content;
+  };
+  var tidy = (content) => {
+    return content.replace(/，<caesura\/>/g, "\uFF0C");
+  };
+  var parseFile = async (f, ctx) => {
+    let fn = f;
+    if (typeof f.name === "string")
+      fn = f.name;
+    const ext = fn.match(/(\.\w+)$/)[1];
+    if (ext == ".xml") {
+      const xmlcontent = tidy(await fs.promises.readFile(f, "utf8"));
+      const nullified = nullify_cbeta(xmlcontent);
+      const parsed = parseBuffer(nullified, fn, ctx);
+      const lines = parsed.split("\n");
+      for (let i = 0; i < lines.length; i++) {
+        let line = lines[i];
+        if (!(line.startsWith("^h") || line.startsWith("^bk"))) {
+          lines[i] = breakChineseSentence(line);
+        }
+      }
+      return lines.join("\n");
+    } else {
+      throw "unknown extension " + ext;
+    }
+  };
+  var translatePointer = (str) => {
+    const m4 = str.match(/([A-Z])(\d\d)n(\d{4}[abcde]*)_p(\d\d\d\d)([abcdef])/);
+    if (m4) {
+      const [mm, zj, vol, sutrano, page, col] = m4;
+      return "/cb-" + zj.toLowerCase() + "/v#" + vol.replace(/^0/, "") + "/p#" + page.replace(/^0+/, "") + col;
+    }
+    return "";
+  };
+  var fromCBETA = (cbeta) => {
+  };
+  var toCBETA = (address) => {
+  };
+  var TaishoMaxPage = [
+    0,
+    //每一冊之頁數
+    924,
+    884,
+    975,
+    802,
+    1074,
+    1073,
+    1110,
+    917,
+    788,
+    //1
+    1047,
+    977,
+    1119,
+    998,
+    968,
+    807,
+    857,
+    963,
+    946,
+    744,
+    //10
+    940,
+    968,
+    1072,
+    1057,
+    1122,
+    914,
+    1031,
+    1004,
+    1001,
+    977,
+    //20
+    1035,
+    896,
+    790,
+    963,
+    1008,
+    963,
+    1066,
+    903,
+    1114,
+    1040,
+    //30
+    857,
+    982,
+    868,
+    1009,
+    875,
+    978,
+    1013,
+    1064,
+    1160,
+    1019,
+    //40
+    1023,
+    1140,
+    860,
+    1030,
+    1290,
+    1178,
+    828,
+    782,
+    22,
+    802,
+    //50
+    782,
+    810,
+    802,
+    970,
+    778,
+    796,
+    926,
+    916,
+    778,
+    866,
+    //60
+    840,
+    912,
+    768,
+    726,
+    822,
+    960,
+    888,
+    878,
+    918,
+    824,
+    //70
+    760,
+    724,
+    786,
+    930,
+    906,
+    1464
+  ];
+  var TaishoVolSutra = [
+    //每一冊開頭的經號
+    1,
+    99,
+    152,
+    192,
+    220,
+    220,
+    220,
+    221,
+    262,
+    279,
+    310,
+    321,
+    397,
+    425,
+    585,
+    656,
+    721,
+    848,
+    918,
+    1030,
+    1199,
+    1421,
+    1435,
+    1448,
+    1505,
+    1519,
+    1545,
+    1546,
+    1558,
+    1564,
+    1585,
+    1628,
+    1693,
+    1718,
+    1731,
+    1736,
+    1744,
+    1765,
+    1783,
+    1804,
+    1821,
+    1824,
+    1829,
+    1835,
+    1852,
+    1911,
+    1957,
+    2001,
+    2026,
+    2040,
+    2066,
+    2102,
+    2121,
+    2123,
+    2145,
+    2185,
+    2201,
+    2211,
+    2216,
+    2218,
+    // from sat
+    2221,
+    2246,
+    2249,
+    2251,
+    2255,
+    2263,
+    2266,
+    2267,
+    2272,
+    2291,
+    2309,
+    2326,
+    2341,
+    2347,
+    2385,
+    2409,
+    2411,
+    2461,
+    2501,
+    2543,
+    2562,
+    2580,
+    2608,
+    2680,
+    2732,
+    2921
+    //terminator
+  ];
+  var TaishoJuanPage = TaishoJuanPagePacked.split(/\n/).map(unpackIntDelta);
+  var TaishoPageFromJuan = (sutranumber, juan) => {
+    let vol = bsearchNumber(TaishoVolSutra, sutranumber + 1);
+    if (sutranumber == 220) {
+      if (juan > 400) {
+        juan -= 400;
+        sutranumber = 2922;
+        vol = 7;
+      } else if (juan > 200) {
+        juan -= 200;
+        sutranumber = 2921;
+        vol = 6;
+      } else {
+        vol = 5;
+      }
+    }
+    const jpage = TaishoJuanPage[sutranumber - 1];
+    if (!jpage)
+      return [0, 0, 0];
+    const pgcol = jpage[juan - 1] || 0;
+    return [vol, Math.floor(pgcol / 3), pgcol % 3];
+  };
+  var TaishoJuanFromPage = (volpage, page = 1, col = 0) => {
+    let vol = volpage;
+    if (typeof volpage == "string") {
+      [vol, _page] = volpage.split("p");
+      if (_page)
+        page = _page;
+    }
+    if (typeof page == "string") {
+      const m4 = page.match(/([bc])$/);
+      if (m4)
+        col = m4[1].charCodeAt(0) - 97;
+      page = parseInt(page);
+    }
+    vol = parseInt(vol);
+    if (isNaN(vol))
+      return [0, 0];
+    const pn = page * 3 + col;
+    let startsutra = TaishoVolSutra[vol - 1];
+    let endsutra = TaishoVolSutra[vol];
+    if (vol == 5) {
+      startsutra = 220;
+      endsutra = 221;
+    } else if (vol == 6) {
+      startsutra = 2921;
+      endsutra = 2922;
+    } else if (vol == 7) {
+      startsutra = 2922;
+      endsutra = 2923;
+    }
+    for (let i = startsutra; i < endsutra; i++) {
+      const pages = TaishoJuanPage[i - 1];
+      const at = bsearchNumber(pages, pn + 1);
+      if (~at && pages[at] >= pn) {
+        if (i == 2921) {
+          return [220, at + 200];
+        } else if (i == 2922) {
+          return [220, at + 400];
+        }
+        if (i > 0 && at == 0) {
+          return [i - 1, TaishoJuanPage[i - 2].length];
+        } else {
+          return [i, at];
+        }
+      }
+    }
+    return [0, 0];
+  };
+  var getSutraInfo = (ptk, no) => {
+    const catalog = ptk.columns.catalog;
+    if (typeof no == "number")
+      no = no.toString().padStart(4, "0");
+    const at = catalog.keys.indexOf(no);
+    return { title: catalog.title[at], bulei: catalog.bulei[at], author: catalog.author[at], no };
+  };
+  var TaishoSutraCode = {
+    1: "da",
+    26: "ma",
+    99: "sa",
+    100: "ssa",
+    //shorter samyutta agama
+    125: "ea"
+  };
+  var nextColumn = (obj) => {
+    if (obj.col === 2) {
+      obj.col = 0;
+      obj.page++;
+    } else if (obj.col < 2)
+      obj.col++;
+    return obj;
+  };
+  var meta_cbeta = {
+    translatePointer,
+    parseFile,
+    parseBuffer,
+    onOpen,
+    onClose,
+    createChunkId: createChunkId_cbeta,
+    insertTag: insertTag_cbeta,
+    offGen: offGen_cbeta,
+    buildCharMap: buildCharMap_cbeta,
+    StockCharMap: StockCharMap_cbeta,
+    parseRefTarget,
+    TaishoMaxPage,
+    TaishoVolSutra,
+    TaishoJuanPage,
+    TaishoSutraCode,
+    getSutraInfo,
+    TaishoJuanFromPage,
+    TaishoPageFromJuan,
+    fromCBETA,
+    toCBETA,
+    parseVolNoPage,
+    //行首格式
+    nextColumn,
+    nullify: nullify_cbeta
+  };
+  addTemplate("cbeta", { TaishoMaxPage, guidedrawer: "cbeta" });
+
+  // src/comps/inputnumber.svelte
+  function create_if_block_118(ctx) {
+    let span;
+    let mounted;
+    let dispose;
+    return {
+      c() {
+        span = element("span");
+        span.textContent = "\u23F4";
+        attr(span, "title", "Ctrl \u2190 min");
+        attr(span, "class", "stepper svelte-5fv0ws");
+        toggle_class(
+          span,
+          "disabled",
+          /*value*/
+          ctx[0] == /*min*/
+          ctx[3]
+        );
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        if (!mounted) {
+          dispose = listen(
+            span,
+            "mousedown",
+            /*valdec*/
+            ctx[7]
+          );
+          mounted = true;
+        }
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*value, min*/
+        9) {
+          toggle_class(
+            span,
+            "disabled",
+            /*value*/
+            ctx2[0] == /*min*/
+            ctx2[3]
+          );
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(span);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_if_block42(ctx) {
+    let span;
+    let mounted;
+    let dispose;
+    return {
+      c() {
+        span = element("span");
+        span.textContent = "\u23F5";
+        attr(span, "title", "Ctrl \u2192 max");
+        attr(span, "class", "stepper svelte-5fv0ws");
+        toggle_class(
+          span,
+          "disabled",
+          /*value*/
+          ctx[0] == /*max*/
+          ctx[4]
+        );
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        if (!mounted) {
+          dispose = listen(
+            span,
+            "mousedown",
+            /*valinc*/
+            ctx[6]
+          );
+          mounted = true;
+        }
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*value, max*/
+        17) {
+          toggle_class(
+            span,
+            "disabled",
+            /*value*/
+            ctx2[0] == /*max*/
+            ctx2[4]
+          );
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(span);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_fragment61(ctx) {
+    let span;
+    let input;
+    let setfocus_action;
+    let mounted;
+    let dispose;
+    let if_block0 = (
+      /*stepper*/
+      ctx[1] && create_if_block_118(ctx)
+    );
+    let if_block1 = (
+      /*stepper*/
+      ctx[1] && create_if_block42(ctx)
+    );
+    return {
+      c() {
+        span = element("span");
+        if (if_block0)
+          if_block0.c();
+        input = element("input");
+        if (if_block1)
+          if_block1.c();
+        attr(input, "title", "\u2191 \u2193 Ctrl-\u2191  Ctrl-\u2193");
+        attr(
+          input,
+          "style",
+          /*style*/
+          ctx[2]
+        );
+        input.value = /*value*/
+        ctx[0];
+        attr(span, "class", "numinput svelte-5fv0ws");
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        if (if_block0)
+          if_block0.m(span, null);
+        append(span, input);
+        if (if_block1)
+          if_block1.m(span, null);
+        if (!mounted) {
+          dispose = [
+            action_destroyer(setfocus_action = /*setfocus*/
+            ctx[9].call(null, input)),
+            listen(
+              input,
+              "keydown",
+              /*keydown*/
+              ctx[8]
+            ),
+            listen(
+              input,
+              "input",
+              /*oninput*/
+              ctx[5]
+            )
+          ];
+          mounted = true;
+        }
+      },
+      p(ctx2, [dirty]) {
+        if (
+          /*stepper*/
+          ctx2[1]
+        ) {
+          if (if_block0) {
+            if_block0.p(ctx2, dirty);
+          } else {
+            if_block0 = create_if_block_118(ctx2);
+            if_block0.c();
+            if_block0.m(span, input);
+          }
+        } else if (if_block0) {
+          if_block0.d(1);
+          if_block0 = null;
+        }
+        if (dirty & /*style*/
+        4) {
+          attr(
+            input,
+            "style",
+            /*style*/
+            ctx2[2]
+          );
+        }
+        if (dirty & /*value*/
+        1 && input.value !== /*value*/
+        ctx2[0]) {
+          input.value = /*value*/
+          ctx2[0];
+        }
+        if (
+          /*stepper*/
+          ctx2[1]
+        ) {
+          if (if_block1) {
+            if_block1.p(ctx2, dirty);
+          } else {
+            if_block1 = create_if_block42(ctx2);
+            if_block1.c();
+            if_block1.m(span, null);
+          }
+        } else if (if_block1) {
+          if_block1.d(1);
+          if_block1 = null;
+        }
+      },
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(span);
+        if (if_block0)
+          if_block0.d();
+        if (if_block1)
+          if_block1.d();
+        mounted = false;
+        run_all(dispose);
+      }
+    };
+  }
+  function instance59($$self, $$props, $$invalidate) {
+    let { stepper = true } = $$props;
+    let { style = "width:2rem" } = $$props;
+    let { min = 1 } = $$props;
+    let { value = min } = $$props;
+    let { onChange } = $$props;
+    let { autofocus = false } = $$props;
+    let { max = max ? max : value > min ? value : Number.MAX_SAFE_INTEGER } = $$props;
+    const clamp = (num, min2, max2) => num < min2 ? min2 : num > max2 ? max2 : num;
+    const oninput = (evt) => {
+      let val = parseInt(evt.target.value) || min;
+      updateValue(val);
+    };
+    const updateValue = (val) => {
+      val = parseInt(val);
+      val = clamp(val, min, max) || min;
+      if (value !== val) {
+        if (onChange) {
+          $$invalidate(0, value = onChange(val, value));
+        } else {
+          $$invalidate(0, value = val);
+        }
+      }
+      return value;
+    };
+    const valinc = (evt) => {
+      $$invalidate(0, value = value < max ? updateValue(evt.ctrlKey ? max : parseInt(value) + 1) : max);
+    };
+    const valdec = (evt) => $$invalidate(0, value = value > min ? updateValue(evt.ctrlKey ? min : parseInt(value) - 1) : min);
+    const keydown = (evt) => {
+      if (evt.key == "ArrowDown")
+        valdec(evt);
+      else if (evt.key == "ArrowUp")
+        valinc(evt);
+      else if (evt.key == "Enter")
+        updateValue(value);
+    };
+    function setfocus(node) {
+      if (autofocus)
+        node.focus();
+    }
+    $$self.$$set = ($$props2) => {
+      if ("stepper" in $$props2)
+        $$invalidate(1, stepper = $$props2.stepper);
+      if ("style" in $$props2)
+        $$invalidate(2, style = $$props2.style);
+      if ("min" in $$props2)
+        $$invalidate(3, min = $$props2.min);
+      if ("value" in $$props2)
+        $$invalidate(0, value = $$props2.value);
+      if ("onChange" in $$props2)
+        $$invalidate(10, onChange = $$props2.onChange);
+      if ("autofocus" in $$props2)
+        $$invalidate(11, autofocus = $$props2.autofocus);
+      if ("max" in $$props2)
+        $$invalidate(4, max = $$props2.max);
+    };
+    return [
+      value,
+      stepper,
+      style,
+      min,
+      max,
+      oninput,
+      valinc,
+      valdec,
+      keydown,
+      setfocus,
+      onChange,
+      autofocus
+    ];
+  }
+  var Inputnumber = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance59, create_fragment61, safe_not_equal, {
+        stepper: 1,
+        style: 2,
+        min: 3,
+        value: 0,
+        onChange: 10,
+        autofocus: 11,
+        max: 4
+      });
+    }
+  };
+  var inputnumber_default = Inputnumber;
+
+  // src/ownerdraw/taishogoto.svelte
+  function create_default_slot33(ctx) {
+    let t;
+    return {
+      c() {
+        t = text("Cbeta");
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_fragment62(ctx) {
+    let t0_value = (
+      /*ptk*/
+      ctx[0].attributes.zh + ""
+    );
+    let t0;
+    let inputnumber0;
+    let updating_value;
+    let t1;
+    let inputnumber1;
+    let updating_value_1;
+    let statebutton;
+    let updating_selectedIndex;
+    let t2;
+    let inputnumber2;
+    let updating_value_2;
+    let t3;
+    let inputnumber3;
+    let updating_value_3;
+    let t4;
+    let br;
+    let inlinetext;
+    let t5;
+    let button;
+    let current;
+    function inputnumber0_value_binding(value) {
+      ctx[13](value);
+    }
+    let inputnumber0_props = { onChange: (
+      /*onVol*/
+      ctx[8]
+    ), max: 85 };
+    if (
+      /*vol*/
+      ctx[2] !== void 0
+    ) {
+      inputnumber0_props.value = /*vol*/
+      ctx[2];
+    }
+    inputnumber0 = new inputnumber_default({ props: inputnumber0_props });
+    binding_callbacks.push(() => bind(inputnumber0, "value", inputnumber0_value_binding));
+    function inputnumber1_value_binding(value) {
+      ctx[14](value);
+    }
+    let inputnumber1_props = { onChange: (
+      /*onPage*/
+      ctx[9]
+    ), max: 1464 };
+    if (
+      /*page*/
+      ctx[3] !== void 0
+    ) {
+      inputnumber1_props.value = /*page*/
+      ctx[3];
+    }
+    inputnumber1 = new inputnumber_default({ props: inputnumber1_props });
+    binding_callbacks.push(() => bind(inputnumber1, "value", inputnumber1_value_binding));
+    function statebutton_selectedIndex_binding(value) {
+      ctx[15](value);
+    }
+    let statebutton_props = { states: (
+      /*colstates*/
+      ctx[7]
+    ) };
+    if (
+      /*col*/
+      ctx[4] !== void 0
+    ) {
+      statebutton_props.selectedIndex = /*col*/
+      ctx[4];
+    }
+    statebutton = new statebutton_default({ props: statebutton_props });
+    binding_callbacks.push(() => bind(statebutton, "selectedIndex", statebutton_selectedIndex_binding));
+    function inputnumber2_value_binding(value) {
+      ctx[16](value);
+    }
+    let inputnumber2_props = { onChange: (
+      /*onSutra*/
+      ctx[10]
+    ), max: 2920 };
+    if (
+      /*sutra*/
+      ctx[1] !== void 0
+    ) {
+      inputnumber2_props.value = /*sutra*/
+      ctx[1];
+    }
+    inputnumber2 = new inputnumber_default({ props: inputnumber2_props });
+    binding_callbacks.push(() => bind(inputnumber2, "value", inputnumber2_value_binding));
+    function inputnumber3_value_binding(value) {
+      ctx[17](value);
+    }
+    let inputnumber3_props = { onChange: (
+      /*onJuan*/
+      ctx[11]
+    ), max: 600 };
+    if (
+      /*juan*/
+      ctx[5] !== void 0
+    ) {
+      inputnumber3_props.value = /*juan*/
+      ctx[5];
+    }
+    inputnumber3 = new inputnumber_default({ props: inputnumber3_props });
+    binding_callbacks.push(() => bind(inputnumber3, "value", inputnumber3_value_binding));
+    inlinetext = new inlinetext_default({
+      props: {
+        ptk: (
+          /*ptk*/
+          ctx[0]
+        ),
+        text: "^bl\u3010" + /*si*/
+        (ctx[6]?.bulei || "") + "\u3011^title\u3010" + /*si*/
+        (ctx[6]?.title || "") + "\u3011" + /*si*/
+        (ctx[6]?.author || "")
+      }
+    });
+    button = new button_default({
+      props: {
+        onclick: (
+          /*opencbetaonline*/
+          ctx[12]
+        ),
+        $$slots: { default: [create_default_slot33] },
+        $$scope: { ctx }
+      }
+    });
+    return {
+      c() {
+        t0 = text(t0_value);
+        create_component(inputnumber0.$$.fragment);
+        t1 = text("\u9801");
+        create_component(inputnumber1.$$.fragment);
+        create_component(statebutton.$$.fragment);
+        t2 = text("\nNo");
+        create_component(inputnumber2.$$.fragment);
+        t3 = text("\u5377");
+        create_component(inputnumber3.$$.fragment);
+        t4 = space();
+        br = element("br");
+        create_component(inlinetext.$$.fragment);
+        t5 = space();
+        create_component(button.$$.fragment);
+      },
+      m(target, anchor) {
+        insert(target, t0, anchor);
+        mount_component(inputnumber0, target, anchor);
+        insert(target, t1, anchor);
+        mount_component(inputnumber1, target, anchor);
+        mount_component(statebutton, target, anchor);
+        insert(target, t2, anchor);
+        mount_component(inputnumber2, target, anchor);
+        insert(target, t3, anchor);
+        mount_component(inputnumber3, target, anchor);
+        insert(target, t4, anchor);
+        insert(target, br, anchor);
+        mount_component(inlinetext, target, anchor);
+        insert(target, t5, anchor);
+        mount_component(button, target, anchor);
+        current = true;
+      },
+      p(ctx2, [dirty]) {
+        if ((!current || dirty & /*ptk*/
+        1) && t0_value !== (t0_value = /*ptk*/
+        ctx2[0].attributes.zh + ""))
+          set_data(t0, t0_value);
+        const inputnumber0_changes = {};
+        if (!updating_value && dirty & /*vol*/
+        4) {
+          updating_value = true;
+          inputnumber0_changes.value = /*vol*/
+          ctx2[2];
+          add_flush_callback(() => updating_value = false);
+        }
+        inputnumber0.$set(inputnumber0_changes);
+        const inputnumber1_changes = {};
+        if (!updating_value_1 && dirty & /*page*/
+        8) {
+          updating_value_1 = true;
+          inputnumber1_changes.value = /*page*/
+          ctx2[3];
+          add_flush_callback(() => updating_value_1 = false);
+        }
+        inputnumber1.$set(inputnumber1_changes);
+        const statebutton_changes = {};
+        if (!updating_selectedIndex && dirty & /*col*/
+        16) {
+          updating_selectedIndex = true;
+          statebutton_changes.selectedIndex = /*col*/
+          ctx2[4];
+          add_flush_callback(() => updating_selectedIndex = false);
+        }
+        statebutton.$set(statebutton_changes);
+        const inputnumber2_changes = {};
+        if (!updating_value_2 && dirty & /*sutra*/
+        2) {
+          updating_value_2 = true;
+          inputnumber2_changes.value = /*sutra*/
+          ctx2[1];
+          add_flush_callback(() => updating_value_2 = false);
+        }
+        inputnumber2.$set(inputnumber2_changes);
+        const inputnumber3_changes = {};
+        if (!updating_value_3 && dirty & /*juan*/
+        32) {
+          updating_value_3 = true;
+          inputnumber3_changes.value = /*juan*/
+          ctx2[5];
+          add_flush_callback(() => updating_value_3 = false);
+        }
+        inputnumber3.$set(inputnumber3_changes);
+        const inlinetext_changes = {};
+        if (dirty & /*ptk*/
+        1)
+          inlinetext_changes.ptk = /*ptk*/
+          ctx2[0];
+        if (dirty & /*si*/
+        64)
+          inlinetext_changes.text = "^bl\u3010" + /*si*/
+          (ctx2[6]?.bulei || "") + "\u3011^title\u3010" + /*si*/
+          (ctx2[6]?.title || "") + "\u3011" + /*si*/
+          (ctx2[6]?.author || "");
+        inlinetext.$set(inlinetext_changes);
+        const button_changes = {};
+        if (dirty & /*$$scope*/
+        524288) {
+          button_changes.$$scope = { dirty, ctx: ctx2 };
+        }
+        button.$set(button_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(inputnumber0.$$.fragment, local);
+        transition_in(inputnumber1.$$.fragment, local);
+        transition_in(statebutton.$$.fragment, local);
+        transition_in(inputnumber2.$$.fragment, local);
+        transition_in(inputnumber3.$$.fragment, local);
+        transition_in(inlinetext.$$.fragment, local);
+        transition_in(button.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(inputnumber0.$$.fragment, local);
+        transition_out(inputnumber1.$$.fragment, local);
+        transition_out(statebutton.$$.fragment, local);
+        transition_out(inputnumber2.$$.fragment, local);
+        transition_out(inputnumber3.$$.fragment, local);
+        transition_out(inlinetext.$$.fragment, local);
+        transition_out(button.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t0);
+        destroy_component(inputnumber0, detaching);
+        if (detaching)
+          detach(t1);
+        destroy_component(inputnumber1, detaching);
+        destroy_component(statebutton, detaching);
+        if (detaching)
+          detach(t2);
+        destroy_component(inputnumber2, detaching);
+        if (detaching)
+          detach(t3);
+        destroy_component(inputnumber3, detaching);
+        if (detaching)
+          detach(t4);
+        if (detaching)
+          detach(br);
+        destroy_component(inlinetext, detaching);
+        if (detaching)
+          detach(t5);
+        destroy_component(button, detaching);
+      }
+    };
+  }
+  function instance60($$self, $$props, $$invalidate) {
+    let si;
+    let { ptk } = $$props;
+    let vol = 1, page = 1, col = 0;
+    let sutra = 1, juan = 1;
+    const colstates = { "cb-t": { 0: "\u4E0A", 1: "\u4E2D", 2: "\u4E0B" } }[ptk.header.name] || { 0: "\u4E0A", 1: "\u4E0B" };
+    const onVol = (val, oldv) => {
+      if (oldv == 85 && val == 84)
+        val = 55;
+      else if (val == 56 && oldv == 55)
+        val = 85;
+      $$invalidate(1, [sutra, juan] = meta_cbeta.TaishoJuanFromPage(val, page), sutra, $$invalidate(5, juan));
+      return val;
+    };
+    const onPage = (val) => {
+      const max = meta_cbeta.TaishoMaxPage[vol];
+      if (val > max)
+        val = max;
+      $$invalidate(1, [sutra, juan] = meta_cbeta.TaishoJuanFromPage(vol, val), sutra, $$invalidate(5, juan));
+      return val;
+    };
+    const clampjuan = (sutra2) => {
+      if (sutra2 == 220)
+        return 600;
+      const maxjuan = (meta_cbeta.TaishoJuanPage[sutra2 - 1] || []).length;
+      if (maxjuan && juan > maxjuan)
+        $$invalidate(5, juan = maxjuan);
+      return maxjuan;
+    };
+    const onSutra = (val) => {
+      clampjuan(val);
+      $$invalidate(2, [vol, page, col] = meta_cbeta.TaishoPageFromJuan(val, juan), vol, $$invalidate(3, page), $$invalidate(4, col));
+      return val;
+    };
+    const onJuan = (val) => {
+      const max = clampjuan(sutra);
+      val = val > max ? max : val;
+      $$invalidate(2, [vol, page, col] = meta_cbeta.TaishoPageFromJuan(sutra, val), vol, $$invalidate(3, page), $$invalidate(4, col));
+      return val;
+    };
+    const opencbetaonline = () => {
+      p = page;
+      c = col;
+      if (c == 2) {
+        p++;
+        c = 0;
+      } else
+        c++;
+      let url = "https://cbetaonline.dila.edu.tw/zh/T" + vol.toString().padStart(2, "0") + "n" + sutra.toString().padStart(4, "0") + "_p" + p.toString().padStart(4, "0") + String.fromCharCode(c + 97) + "01";
+      window.open(url, "_new");
+    };
+    function inputnumber0_value_binding(value) {
+      vol = value;
+      $$invalidate(2, vol);
+    }
+    function inputnumber1_value_binding(value) {
+      page = value;
+      $$invalidate(3, page);
+    }
+    function statebutton_selectedIndex_binding(value) {
+      col = value;
+      $$invalidate(4, col);
+    }
+    function inputnumber2_value_binding(value) {
+      sutra = value;
+      $$invalidate(1, sutra);
+    }
+    function inputnumber3_value_binding(value) {
+      juan = value;
+      $$invalidate(5, juan);
+    }
+    $$self.$$set = ($$props2) => {
+      if ("ptk" in $$props2)
+        $$invalidate(0, ptk = $$props2.ptk);
+    };
+    $$self.$$.update = () => {
+      if ($$self.$$.dirty & /*ptk, sutra*/
+      3) {
+        $:
+          $$invalidate(6, si = meta_cbeta.getSutraInfo(ptk, sutra));
+      }
+    };
+    return [
+      ptk,
+      sutra,
+      vol,
+      page,
+      col,
+      juan,
+      si,
+      colstates,
+      onVol,
+      onPage,
+      onSutra,
+      onJuan,
+      opencbetaonline,
+      inputnumber0_value_binding,
+      inputnumber1_value_binding,
+      statebutton_selectedIndex_binding,
+      inputnumber2_value_binding,
+      inputnumber3_value_binding
+    ];
+  }
+  var Taishogoto = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance60, create_fragment62, safe_not_equal, { ptk: 0 });
+    }
+  };
+  var taishogoto_default = Taishogoto;
+
+  // src/ownerdraw/cbeta.svelte
+  function create_if_block_119(ctx) {
+    let taishogoto;
+    let current;
+    taishogoto = new taishogoto_default({ props: { ptk: (
+      /*ptk*/
+      ctx[0]
+    ) } });
+    return {
+      c() {
+        create_component(taishogoto.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(taishogoto, target, anchor);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        const taishogoto_changes = {};
+        if (dirty & /*ptk*/
+        1)
+          taishogoto_changes.ptk = /*ptk*/
+          ctx2[0];
+        taishogoto.$set(taishogoto_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(taishogoto.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(taishogoto.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(taishogoto, detaching);
+      }
+    };
+  }
+  function create_if_block43(ctx) {
+    let t;
+    return {
+      c() {
+        t = text("YINSHUN");
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_fragment63(ctx) {
+    let t;
+    let if_block1_anchor;
+    let current;
+    let if_block0 = (
+      /*ptk*/
+      ctx[0].name == "cb-t" && create_if_block_119(ctx)
+    );
+    let if_block1 = (
+      /*ptk*/
+      ctx[0].name == "yinshun" && create_if_block43(ctx)
+    );
+    return {
+      c() {
+        if (if_block0)
+          if_block0.c();
+        t = space();
+        if (if_block1)
+          if_block1.c();
+        if_block1_anchor = empty();
+      },
+      m(target, anchor) {
+        if (if_block0)
+          if_block0.m(target, anchor);
+        insert(target, t, anchor);
+        if (if_block1)
+          if_block1.m(target, anchor);
+        insert(target, if_block1_anchor, anchor);
+        current = true;
+      },
+      p(ctx2, [dirty]) {
+        if (
+          /*ptk*/
+          ctx2[0].name == "cb-t"
+        ) {
+          if (if_block0) {
+            if_block0.p(ctx2, dirty);
+            if (dirty & /*ptk*/
+            1) {
+              transition_in(if_block0, 1);
+            }
+          } else {
+            if_block0 = create_if_block_119(ctx2);
+            if_block0.c();
+            transition_in(if_block0, 1);
+            if_block0.m(t.parentNode, t);
+          }
+        } else if (if_block0) {
+          group_outros();
+          transition_out(if_block0, 1, 1, () => {
+            if_block0 = null;
+          });
+          check_outros();
+        }
+        if (
+          /*ptk*/
+          ctx2[0].name == "yinshun"
+        ) {
+          if (if_block1) {
+          } else {
+            if_block1 = create_if_block43(ctx2);
+            if_block1.c();
+            if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+          }
+        } else if (if_block1) {
+          if_block1.d(1);
+          if_block1 = null;
+        }
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(if_block0);
+        current = true;
+      },
+      o(local) {
+        transition_out(if_block0);
+        current = false;
+      },
+      d(detaching) {
+        if (if_block0)
+          if_block0.d(detaching);
+        if (detaching)
+          detach(t);
+        if (if_block1)
+          if_block1.d(detaching);
+        if (detaching)
+          detach(if_block1_anchor);
+      }
+    };
+  }
+  function instance61($$self, $$props, $$invalidate) {
+    let { ptk } = $$props;
+    $$self.$$set = ($$props2) => {
+      if ("ptk" in $$props2)
+        $$invalidate(0, ptk = $$props2.ptk);
+    };
+    return [ptk];
+  }
+  var Cbeta = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance61, create_fragment63, safe_not_equal, { ptk: 0 });
+    }
+  };
+  var cbeta_default = Cbeta;
+
+  // src/meta/cvny.svelte
+  function create_fragment64(ctx) {
+    let t0_value = (
+      /*ptk*/
+      ctx[0].name + ""
+    );
+    let t0;
+    let t1;
+    let t2_value = JSON.stringify(
+      /*ptk*/
+      ctx[0].attributes
+    ) + "";
+    let t2;
+    return {
+      c() {
+        t0 = text(t0_value);
+        t1 = space();
+        t2 = text(t2_value);
+      },
+      m(target, anchor) {
+        insert(target, t0, anchor);
+        insert(target, t1, anchor);
+        insert(target, t2, anchor);
+      },
+      p(ctx2, [dirty]) {
+        if (dirty & /*ptk*/
+        1 && t0_value !== (t0_value = /*ptk*/
+        ctx2[0].name + ""))
+          set_data(t0, t0_value);
+        if (dirty & /*ptk*/
+        1 && t2_value !== (t2_value = JSON.stringify(
+          /*ptk*/
+          ctx2[0].attributes
+        ) + ""))
+          set_data(t2, t2_value);
+      },
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(t0);
+        if (detaching)
+          detach(t1);
+        if (detaching)
+          detach(t2);
+      }
+    };
+  }
+  function instance62($$self, $$props, $$invalidate) {
+    let { ptk } = $$props;
+    $$self.$$set = ($$props2) => {
+      if ("ptk" in $$props2)
+        $$invalidate(0, ptk = $$props2.ptk);
+    };
+    return [ptk];
+  }
+  var Cvny = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance62, create_fragment64, safe_not_equal, { ptk: 0 });
+    }
+  };
+  var cvny_default = Cvny;
+
+  // src/meta/kxzd.svelte
+  function create_fragment65(ctx) {
+    let t;
+    return {
+      c() {
+        t = text("KXZD");
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      p: noop,
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  var Kxzd = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, null, create_fragment65, safe_not_equal, {});
+    }
+  };
+  var kxzd_default = Kxzd;
+
   // ../ptk/platform/pwa.js
   function registerServiceWorker(swfn = "./sw.js") {
-    const p2 = document.location.protocol;
+    const p3 = document.location.protocol;
     const h = document.location.hostname;
-    const localhost = p2 == "http:" && (h == "127.0.0.1" || h == "localhost");
-    if ("serviceWorker" in navigator && (localhost || p2 == "https:")) {
+    const localhost = p3 == "http:" && (h == "127.0.0.1" || h == "localhost");
+    if ("serviceWorker" in navigator && (localhost || p3 == "https:")) {
       navigator.serviceWorker.register(swfn);
     }
   }
 
   // src/app.svelte
-  function create_else_block10(ctx) {
+  function create_else_block12(ctx) {
     let t0;
     let a;
     return {
@@ -29714,7 +36519,7 @@
       }
     };
   }
-  function create_if_block39(ctx) {
+  function create_if_block44(ctx) {
     let librarymain;
     let current;
     librarymain = new librarymain_default({});
@@ -29741,13 +36546,13 @@
       }
     };
   }
-  function create_fragment57(ctx) {
+  function create_fragment66(ctx) {
     let t;
     let current_block_type_index;
     let if_block;
     let if_block_anchor;
     let current;
-    const if_block_creators = [create_if_block39, create_else_block10];
+    const if_block_creators = [create_if_block44, create_else_block12];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -29809,7 +36614,7 @@
       }
     };
   }
-  function instance55($$self, $$props, $$invalidate) {
+  function instance63($$self, $$props, $$invalidate) {
     let ready;
     initPainters({
       note: note_default,
@@ -29821,10 +36626,12 @@
       n: n_default,
       f: f_default,
       fn: fn_default,
+      fm: fn_default,
       backref: backref_default,
       backreflist: backreflist_default,
       approxbackref: approxbackref_default,
-      partialchunkid: partialchunkid_default
+      partialchunkid: partialchunkid_default,
+      o: o_default
     });
     initOwnerdraws({
       queryresult: queryresult_default,
@@ -29835,8 +36642,11 @@
       qrcode: qrcode_default,
       unknown: unknown_default,
       guide: guide_default,
-      approx: approx_default
+      approx: approx_default,
+      subtitle: subtitle_default,
+      cbeta: cbeta_default
     });
+    initMetaGuide({ cvny: cvny_default, kxzd: kxzd_default });
     registerServiceWorker();
     onMount(async () => {
       await openPitakas();
@@ -29849,7 +36659,7 @@
   var App = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance55, create_fragment57, safe_not_equal, {});
+      init(this, options, instance63, create_fragment66, safe_not_equal, {});
     }
   };
   var app_default = App;
