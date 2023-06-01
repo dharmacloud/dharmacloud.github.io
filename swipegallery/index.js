@@ -490,7 +490,7 @@
         append(div, t2);
         append(div, video);
         append(video, source);
-        ctx[8](video);
+        ctx[9](video);
         if (!mounted) {
           dispose = [
             listen(
@@ -511,8 +511,14 @@
               div,
               "touchend",
               /*ontouchend*/
-              ctx[7],
+              ctx[8],
               { passive: true }
+            ),
+            listen(
+              div,
+              "wheel",
+              /*mousewheel*/
+              ctx[7]
             )
           ];
           mounted = true;
@@ -554,7 +560,7 @@
           detach(div);
         if (if_block)
           if_block.d();
-        ctx[8](null);
+        ctx[9](null);
         mounted = false;
         run_all(dispose);
       }
@@ -600,6 +606,16 @@
         $$invalidate(3, direction = getDirection());
       }
     };
+    const mousewheel = (e) => {
+      if (e.ctrlKey)
+        return;
+      if (e.deltaY > 0) {
+        $$invalidate(1, mp4player.currentTime += 1, mp4player);
+      } else {
+        $$invalidate(1, mp4player.currentTime += -1, mp4player);
+      }
+      e.preventDefault();
+    };
     const ontouchend = (e) => {
       if (touching !== -1 && direction !== 0) {
         if (direction == 1)
@@ -634,6 +650,7 @@
       swipeshapes,
       ontouchstart,
       ontouchmove,
+      mousewheel,
       ontouchend,
       video_binding
     ];
