@@ -14,7 +14,7 @@ self.addEventListener('install', (e) => {
     })());
 });
 
-
+/*
 self.addEventListener('fetch', (e) => {
 
   if (e.request.headers.has('range')) {//partial
@@ -33,3 +33,4 @@ self.addEventListener('fetch', (e) => {
     return response;
   })());
 });
+*/
