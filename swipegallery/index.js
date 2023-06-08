@@ -1126,8 +1126,8 @@
     }
   };
   var parseOfftext = (str, line = 0) => {
-    if (str.indexOf("^") == -1)
-      return [str, []];
+    if (!str || str.indexOf("^") == -1)
+      return [str || "", []];
     let tags = [];
     let choff = 0, prevoff = 0;
     let text2 = str.replace(OFFTAG_REGEX_G, (m4, rawName, rawAttrs, offset) => {
@@ -6956,7 +6956,7 @@
       c() {
         div = element("div");
         div.textContent = "\u4E2D\u5340\u4F9B\u4F5B\u9F4B\u50E7";
-        attr(div, "class", "sponsor svelte-12bmi97");
+        attr(div, "class", "sponsor svelte-q2m842");
       },
       m(target, anchor) {
         insert(target, div, anchor);
@@ -6979,7 +6979,7 @@
     return {
       c() {
         span = element("span");
-        attr(span, "class", "swipe svelte-12bmi97");
+        attr(span, "class", "swipe svelte-q2m842");
       },
       m(target, anchor) {
         insert(target, span, anchor);
@@ -7040,13 +7040,13 @@
         t3 = space();
         video = element("video");
         source = element("source");
-        attr(span, "class", "pagenumber svelte-12bmi97");
+        attr(span, "class", "pagenumber svelte-q2m842");
         if (!src_url_equal(source.src, source_src_value = /*src*/
         ctx[0]))
           attr(source, "src", source_src_value);
         attr(source, "type", "video/webm");
-        attr(video, "class", "svelte-12bmi97");
-        attr(div, "class", "container svelte-12bmi97");
+        attr(video, "class", "svelte-q2m842");
+        attr(div, "class", "container svelte-q2m842");
       },
       m(target, anchor) {
         if (if_block0)
@@ -7183,15 +7183,15 @@
     const getDirection = () => {
       const deltax = touchx - startx;
       const deltay = touchy - starty;
-      if (deltax > 60 && deltay < 20) {
-        return deltax > 250 ? -2 : -1;
-      } else if (deltax < -60 && deltay < 20) {
-        return deltax < -250 ? 2 : 1;
+      if (deltax > 30 && Math.abs(deltay) < Math.abs(deltax) / 2) {
+        return deltax > 200 ? -2 : -1;
+      } else if (deltax < -30 && Math.abs(deltay) < Math.abs(deltax) / 2) {
+        return deltax < -200 ? 2 : 1;
       }
-      if (deltax < 20 && deltay > 60) {
-        return deltay > 250 ? -4 : -3;
-      } else if (deltax < 20 && deltay < -60) {
-        return deltay < -250 ? 4 : 3;
+      if (Math.abs(deltax) < 20 && deltay > 30) {
+        return deltay > 200 ? -4 : -3;
+      } else if (Math.abs(deltax) < 20 && deltay < -30) {
+        return deltay < -200 ? 4 : 3;
       }
       return 0;
     };
@@ -7294,37 +7294,41 @@
 
   // src/dictpopup.svelte
   function create_else_block(ctx) {
-    let span;
+    let span0;
     let t0_value = (
       /*e*/
       ctx[3].attrs.id + ""
     );
     let t0;
     let t1;
+    let span1;
     let t2;
     let mounted;
     let dispose;
     return {
       c() {
-        span = element("span");
+        span0 = element("span");
         t0 = text(t0_value);
         t1 = space();
+        span1 = element("span");
         t2 = text(
           /*text*/
           ctx[4]
         );
-        attr(span, "class", "entry svelte-1nj1wg4");
-        toggle_class(span, "clickable", !!/*e*/
+        attr(span0, "class", "entry svelte-4vs9o4");
+        toggle_class(span0, "clickable", !!/*e*/
         ctx[3].attrs.wiki);
+        attr(span1, "class", "text svelte-4vs9o4");
       },
       m(target, anchor) {
-        insert(target, span, anchor);
-        append(span, t0);
+        insert(target, span0, anchor);
+        append(span0, t0);
         insert(target, t1, anchor);
-        insert(target, t2, anchor);
+        insert(target, span1, anchor);
+        append(span1, t2);
         if (!mounted) {
           dispose = listen(
-            span,
+            span0,
             "click",
             /*gowikipedia*/
             ctx[0]
@@ -7339,7 +7343,7 @@
           set_data(t0, t0_value);
         if (dirty & /*e*/
         8) {
-          toggle_class(span, "clickable", !!/*e*/
+          toggle_class(span0, "clickable", !!/*e*/
           ctx2[3].attrs.wiki);
         }
         if (dirty & /*text*/
@@ -7352,11 +7356,11 @@
       },
       d(detaching) {
         if (detaching)
-          detach(span);
+          detach(span0);
         if (detaching)
           detach(t1);
         if (detaching)
-          detach(t2);
+          detach(span1);
         mounted = false;
         dispose();
       }
@@ -7368,7 +7372,7 @@
     return {
       c() {
         iframe = element("iframe");
-        attr(iframe, "class", "iframe svelte-1nj1wg4");
+        attr(iframe, "class", "iframe svelte-4vs9o4");
         attr(iframe, "title", "wiki");
         if (!src_url_equal(iframe.src, iframe_src_value = /*src*/
         ctx[1]))
@@ -7406,7 +7410,7 @@
       c() {
         div = element("div");
         if_block.c();
-        attr(div, "class", "popup svelte-1nj1wg4");
+        attr(div, "class", "popup svelte-4vs9o4");
       },
       m(target, anchor) {
         insert(target, div, anchor);
@@ -7502,7 +7506,7 @@
         span.textContent = "\u2573";
         t1 = space();
         create_component(dictpopup.$$.fragment);
-        attr(span, "class", "closepopup svelte-1rjnolh");
+        attr(span, "class", "closepopup svelte-o8k8og");
       },
       m(target, anchor) {
         insert(target, span, anchor);
@@ -7577,7 +7581,7 @@
         t = space();
         if (if_block)
           if_block.c();
-        attr(div, "class", "app svelte-1rjnolh");
+        attr(div, "class", "app svelte-o8k8og");
       },
       m(target, anchor) {
         insert(target, div, anchor);
