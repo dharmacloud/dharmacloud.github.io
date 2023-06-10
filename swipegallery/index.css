@@ -32,28 +32,18 @@ video.svelte-1l6t7ji {
   writing-mode: vertical-lr;
 }
 
-/* fakecss:D:/2023/swipegallery/src/mainmenu.esbuild-svelte-fake-css */
-.popup.svelte-5p1dml {
-  position: absolute;
-  top: 5%;
-  left: 5%;
-  width: 90%;
-  height: 90%;
-  background: #dfdfdf;
-}
-
 /* fakecss:D:/2023/swipegallery/src/dictpopup.esbuild-svelte-fake-css */
-.iframe.svelte-3hykm9 {
+.iframe.svelte-5fpb3i {
   width: 100%;
   height: 100%;
 }
-.entry.svelte-3hykm9 {
-  font-size: 8vh;
+.entry.svelte-5fpb3i {
+  font-size: 7vh;
 }
-.text.svelte-3hykm9 {
+.text.svelte-5fpb3i {
   font-size: 5vh;
 }
-.clickable.svelte-3hykm9 {
+.clickable.svelte-5fpb3i {
   text-decoration: underline;
 }
 
@@ -63,10 +53,10 @@ video.svelte-1l6t7ji {
 }
 
 /* fakecss:D:/2023/swipegallery/src/app.esbuild-svelte-fake-css */
-.app.svelte-1b0e0oo {
-  height: 100vh;
+.app.svelte-1tur2b6 {
+  height: 99.5vh;
 }
-.closepopup.svelte-1b0e0oo {
+.closepopup.svelte-1tur2b6 {
   z-index: 99;
   font-size: 200%;
   position: absolute;

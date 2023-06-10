@@ -312,7 +312,7 @@
     }
     component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
   }
-  function init(component, options, instance8, create_fragment8, not_equal, props, append_styles, dirty = [-1]) {
+  function init(component, options, instance8, create_fragment9, not_equal, props, append_styles, dirty = [-1]) {
     const parent_component = current_component;
     set_current_component(component);
     const $$ = component.$$ = {
@@ -351,7 +351,7 @@
     $$.update();
     ready = true;
     run_all($$.before_update);
-    $$.fragment = create_fragment8 ? create_fragment8($$.ctx) : false;
+    $$.fragment = create_fragment9 ? create_fragment9($$.ctx) : false;
     if (options.target) {
       if (options.hydrate) {
         start_hydrating();
@@ -7352,7 +7352,7 @@
     };
     const getCharXY = (div, x, y) => {
       const [left, right] = videoRect();
-      const cx = folioLines - Math.floor(x / (right - left) * folioLines) + 1;
+      const cx = folioLines - Math.floor((x - left) / (right - left) * folioLines) - 1;
       const cy = Math.floor(y / (div.clientHeight - div.clientTop) * folioChars);
       return [cx, cy];
     };
@@ -7369,15 +7369,14 @@
     const ontouchend = async (e) => {
       if (touching !== -1 && direction !== 0) {
         if (direction == 1)
-          $$invalidate(1, mp4player.currentTime += -1, mp4player);
+          $$invalidate(1, mp4player.currentTime += -1.1, mp4player);
         else if (direction == 2)
           $$invalidate(1, mp4player.currentTime = 0, mp4player);
         else if (direction == -1)
-          $$invalidate(1, mp4player.currentTime += 1, mp4player);
+          $$invalidate(1, mp4player.currentTime += 1.1, mp4player);
         else if (direction == -2)
           $$invalidate(1, mp4player.currentTime = mp4player.duration, mp4player);
         else if (direction == 3 || direction == 4) {
-          console.log("main");
           onMainmenu();
         }
       } else {
@@ -7572,7 +7571,7 @@
     const getBookName = (nbk) => {
       const bk = ptk.defines.bk;
       const bookname = bk.innertext.get(nbk);
-      return bookname + " " + bk.fields.heading.values[nbk];
+      return bookname + "(" + bk.fields.heading.values[nbk] + ")";
     };
     const click_handler = (nbk) => selectbook(nbk);
     $$self.$$set = ($$props2) => {
@@ -7612,7 +7611,7 @@
       c() {
         div = element("div");
         create_component(filelist.$$.fragment);
-        attr(div, "class", "popup svelte-5p1dml");
+        attr(div, "class", "popup");
       },
       m(target, anchor) {
         insert(target, div, anchor);
@@ -7695,10 +7694,10 @@
         t0 = text(t0_value);
         t1 = space();
         span1 = element("span");
-        attr(span0, "class", "entry svelte-3hykm9");
+        attr(span0, "class", "entry svelte-5fpb3i");
         toggle_class(span0, "clickable", !!/*e*/
         ctx[4]?.attrs.wiki);
-        attr(span1, "class", "text svelte-3hykm9");
+        attr(span1, "class", "text svelte-5fpb3i");
       },
       m(target, anchor) {
         insert(target, span0, anchor);
@@ -7759,7 +7758,7 @@
     return {
       c() {
         iframe = element("iframe");
-        attr(iframe, "class", "iframe svelte-3hykm9");
+        attr(iframe, "class", "iframe svelte-5fpb3i");
         attr(iframe, "title", "wiki");
         if (!src_url_equal(iframe.src, iframe_src_value = /*src*/
         ctx[2]))
@@ -7916,6 +7915,33 @@
   };
   var translations_default = Translations;
 
+  // src/toc.svelte
+  function create_fragment6(ctx) {
+    let t;
+    return {
+      c() {
+        t = text("TOC");
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      p: noop,
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  var Toc = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, null, create_fragment6, safe_not_equal, {});
+    }
+  };
+  var toc_default = Toc;
+
   // src/taptext.svelte
   function create_if_block_12(ctx) {
     let span;
@@ -7939,8 +7965,8 @@
           dispose = listen(
             span,
             "click",
-            /*click_handler_1*/
-            ctx[6]
+            /*click_handler_2*/
+            ctx[7]
           );
           mounted = true;
         }
@@ -8032,15 +8058,20 @@
       }
     };
   }
-  function create_fragment6(ctx) {
-    let div2;
+  function create_fragment7(ctx) {
+    let div3;
     let div0;
-    let span;
+    let span0;
     let t1;
-    let t2;
-    let div1;
-    let translations;
+    let span1;
     let t3;
+    let t4;
+    let div1;
+    let toc;
+    let t5;
+    let div2;
+    let translations;
+    let t6;
     let current;
     let mounted;
     let dispose;
@@ -8048,6 +8079,7 @@
       /*def*/
       ctx[2] && create_if_block_12(ctx)
     );
+    toc = new toc_default({});
     translations = new translations_default({});
     let if_block1 = (
       /*def*/
@@ -8055,22 +8087,35 @@
     );
     return {
       c() {
-        div2 = element("div");
+        div3 = element("div");
         div0 = element("div");
-        span = element("span");
-        span.textContent = "\u7570\u8B6F";
+        span0 = element("span");
+        span0.textContent = "\u76EE\u9304";
         t1 = space();
+        span1 = element("span");
+        span1.textContent = "\u7570\u8B6F";
+        t3 = space();
         if (if_block0)
           if_block0.c();
-        t2 = space();
+        t4 = space();
         div1 = element("div");
+        create_component(toc.$$.fragment);
+        t5 = space();
+        div2 = element("div");
         create_component(translations.$$.fragment);
-        t3 = space();
+        t6 = space();
         if (if_block1)
           if_block1.c();
-        attr(span, "class", "clickable");
+        attr(span0, "class", "clickable");
         toggle_class(
-          span,
+          span0,
+          "selected",
+          /*thetab*/
+          ctx[1] == "toc"
+        );
+        attr(span1, "class", "clickable");
+        toggle_class(
+          span1,
           "selected",
           /*thetab*/
           ctx[1] == "translations"
@@ -8081,31 +8126,51 @@
           div1,
           "visible",
           /*thetab*/
+          ctx[1] == "toc"
+        );
+        attr(div2, "class", "tab-content");
+        toggle_class(
+          div2,
+          "visible",
+          /*thetab*/
           ctx[1] == "translations"
         );
-        attr(div2, "class", "popup");
+        attr(div3, "class", "popup");
       },
       m(target, anchor) {
-        insert(target, div2, anchor);
-        append(div2, div0);
-        append(div0, span);
+        insert(target, div3, anchor);
+        append(div3, div0);
+        append(div0, span0);
         append(div0, t1);
+        append(div0, span1);
+        append(div0, t3);
         if (if_block0)
           if_block0.m(div0, null);
-        append(div2, t2);
-        append(div2, div1);
-        mount_component(translations, div1, null);
-        append(div2, t3);
+        append(div3, t4);
+        append(div3, div1);
+        mount_component(toc, div1, null);
+        append(div3, t5);
+        append(div3, div2);
+        mount_component(translations, div2, null);
+        append(div3, t6);
         if (if_block1)
-          if_block1.m(div2, null);
+          if_block1.m(div3, null);
         current = true;
         if (!mounted) {
-          dispose = listen(
-            span,
-            "click",
-            /*click_handler*/
-            ctx[5]
-          );
+          dispose = [
+            listen(
+              span0,
+              "click",
+              /*click_handler*/
+              ctx[5]
+            ),
+            listen(
+              span1,
+              "click",
+              /*click_handler_1*/
+              ctx[6]
+            )
+          ];
           mounted = true;
         }
       },
@@ -8113,7 +8178,16 @@
         if (!current || dirty & /*thetab*/
         2) {
           toggle_class(
-            span,
+            span0,
+            "selected",
+            /*thetab*/
+            ctx2[1] == "toc"
+          );
+        }
+        if (!current || dirty & /*thetab*/
+        2) {
+          toggle_class(
+            span1,
             "selected",
             /*thetab*/
             ctx2[1] == "translations"
@@ -8140,6 +8214,15 @@
             div1,
             "visible",
             /*thetab*/
+            ctx2[1] == "toc"
+          );
+        }
+        if (!current || dirty & /*thetab*/
+        2) {
+          toggle_class(
+            div2,
+            "visible",
+            /*thetab*/
             ctx2[1] == "translations"
           );
         }
@@ -8157,7 +8240,7 @@
             if_block1 = create_if_block3(ctx2);
             if_block1.c();
             transition_in(if_block1, 1);
-            if_block1.m(div2, null);
+            if_block1.m(div3, null);
           }
         } else if (if_block1) {
           group_outros();
@@ -8170,25 +8253,28 @@
       i(local) {
         if (current)
           return;
+        transition_in(toc.$$.fragment, local);
         transition_in(translations.$$.fragment, local);
         transition_in(if_block1);
         current = true;
       },
       o(local) {
+        transition_out(toc.$$.fragment, local);
         transition_out(translations.$$.fragment, local);
         transition_out(if_block1);
         current = false;
       },
       d(detaching) {
         if (detaching)
-          detach(div2);
+          detach(div3);
         if (if_block0)
           if_block0.d();
+        destroy_component(toc);
         destroy_component(translations);
         if (if_block1)
           if_block1.d();
         mounted = false;
-        dispose();
+        run_all(dispose);
       }
     };
   }
@@ -8208,8 +8294,9 @@
         $$invalidate(1, thetab = "dict");
       }
     };
-    const click_handler = () => $$invalidate(1, thetab = "translations");
-    const click_handler_1 = () => $$invalidate(1, thetab = "dict");
+    const click_handler = () => $$invalidate(1, thetab = "toc");
+    const click_handler_1 = () => $$invalidate(1, thetab = "translations");
+    const click_handler_2 = () => $$invalidate(1, thetab = "dict");
     $$self.$$set = ($$props2) => {
       if ("tofind" in $$props2)
         $$invalidate(3, tofind = $$props2.tofind);
@@ -8225,12 +8312,21 @@
           onDict(tofind);
       }
     };
-    return [ptk, thetab, def, tofind, address, click_handler, click_handler_1];
+    return [
+      ptk,
+      thetab,
+      def,
+      tofind,
+      address,
+      click_handler,
+      click_handler_1,
+      click_handler_2
+    ];
   }
   var Taptext = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance6, create_fragment6, safe_not_equal, { tofind: 3, ptk: 0, address: 4 });
+      init(this, options, instance6, create_fragment7, safe_not_equal, { tofind: 3, ptk: 0, address: 4 });
     }
   };
   var taptext_default = Taptext;
@@ -8244,7 +8340,7 @@
       c() {
         span = element("span");
         span.textContent = "\u2573";
-        attr(span, "class", "closepopup svelte-1b0e0oo");
+        attr(span, "class", "closepopup svelte-1tur2b6");
       },
       m(target, anchor) {
         insert(target, span, anchor);
@@ -8371,7 +8467,7 @@
       }
     };
   }
-  function create_fragment7(ctx) {
+  function create_fragment8(ctx) {
     let div;
     let swipevideo;
     let t0;
@@ -8433,7 +8529,7 @@
         t1 = space();
         if (if_block1)
           if_block1.c();
-        attr(div, "class", "app svelte-1b0e0oo");
+        attr(div, "class", "app svelte-1tur2b6");
       },
       m(target, anchor) {
         insert(target, div, anchor);
@@ -8566,7 +8662,7 @@
   var App = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance7, create_fragment7, safe_not_equal, {});
+      init(this, options, instance7, create_fragment8, safe_not_equal, {});
     }
   };
   var app_default = App;

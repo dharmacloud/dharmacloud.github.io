@@ -14,7 +14,7 @@ body {
    margin: 0px;
 }
 
-.popup {position:absolute;top:5%;left:5%;width:90%;height:90%;background:#dfdfdf}
+.popup {position:absolute;top:3%;left:3%;width:94%;height:94%;background:#dfdfdf}
 .tabs {--webkit-user-select: none;overflow:hidden  ; font-size:5vh;
   user-select: none;padding-left: 0.3em; background:silver}
 .selected {background: gray;border-radius: 0.25em;}
@@ -34,5 +34,5 @@ body {
   position:relative
 }
 
-.book {font-size:200%}
+.book {font-size:5vh}
 .refer {text-decoration: underline;}
