@@ -1,47 +1,39 @@
 /* fakecss:D:/2023/swipegallery/src/swipevideo.esbuild-svelte-fake-css */
-.container.svelte-q2m842 {
-  height: 100%;
+.container.svelte-1l6t7ji {
   width: 100%;
+  background-color: rgb(243, 208, 160);
+  height: 100%;
 }
-video.svelte-q2m842 {
+video.svelte-1l6t7ji {
   height: 100%;
   user-select: none;
   pointer-events: none;
+  width: 100%;
 }
-.swipe.svelte-q2m842 {
+.swipe.svelte-1l6t7ji {
   position: absolute;
   margin-top: 50%;
   left: 40%;
 }
-.pagenumber.svelte-q2m842 {
+.pagenumber.svelte-1l6t7ji {
   position: absolute;
   bottom: 1%;
   font-size: 200%;
 }
-.sponsor.svelte-q2m842 {
+.sponsor.svelte-1l6t7ji {
   user-select: none;
   pointer-events: none;
-  font-size: 5vh;
+  font-size: 4vh;
   position: absolute;
   color: red;
   opacity: 0.75;
-  right: 1.2em;
+  right: 1.1em;
   top: 65vh;
   writing-mode: vertical-lr;
 }
 
-/* fakecss:D:/2023/swipegallery/src/dictpopup.esbuild-svelte-fake-css */
-.iframe.svelte-4vs9o4 {
-  width: 100%;
-  height: 100%;
-}
-.entry.svelte-4vs9o4 {
-  font-size: 8vh;
-}
-.text.svelte-4vs9o4 {
-  font-size: 5vh;
-}
-.popup.svelte-4vs9o4 {
+/* fakecss:D:/2023/swipegallery/src/mainmenu.esbuild-svelte-fake-css */
+.popup.svelte-5p1dml {
   position: absolute;
   top: 5%;
   left: 5%;
@@ -49,20 +41,37 @@ video.svelte-q2m842 {
   height: 90%;
   background: #dfdfdf;
 }
-.clickable.svelte-4vs9o4 {
+
+/* fakecss:D:/2023/swipegallery/src/dictpopup.esbuild-svelte-fake-css */
+.iframe.svelte-3hykm9 {
+  width: 100%;
+  height: 100%;
+}
+.entry.svelte-3hykm9 {
+  font-size: 8vh;
+}
+.text.svelte-3hykm9 {
+  font-size: 5vh;
+}
+.clickable.svelte-3hykm9 {
   text-decoration: underline;
 }
 
-/* fakecss:D:/2023/swipegallery/src/app.esbuild-svelte-fake-css */
-.app.svelte-o8k8og {
-  height: 97vh;
+/* fakecss:D:/2023/swipegallery/src/translations.esbuild-svelte-fake-css */
+.text.svelte-9lpogq {
+  font-size: 5vh;
 }
-.closepopup.svelte-o8k8og {
+
+/* fakecss:D:/2023/swipegallery/src/app.esbuild-svelte-fake-css */
+.app.svelte-1b0e0oo {
+  height: 100vh;
+}
+.closepopup.svelte-1b0e0oo {
   z-index: 99;
-  font-size: 150%;
+  font-size: 200%;
   position: absolute;
-  right: 0px;
-  top: 0px;
+  right: 0.5em;
+  top: 0.5em;
   color: black;
   font-weight: bold;
 }
