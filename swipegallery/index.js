@@ -1,6 +1,88 @@
 (() => {
+  var __create = Object.create;
+  var __defProp = Object.defineProperty;
+  var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+  var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __getProtoOf = Object.getPrototypeOf;
+  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __commonJS = (cb, mod) => function __require() {
+    return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+  };
+  var __copyProps = (to, from, except, desc) => {
+    if (from && typeof from === "object" || typeof from === "function") {
+      for (let key of __getOwnPropNames(from))
+        if (!__hasOwnProp.call(to, key) && key !== except)
+          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+    }
+    return to;
+  };
+  var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+    // If the importer is in node compatibility mode or this is not an ESM
+    // file that has been converted to a CommonJS file using a Babel-
+    // compatible transform (i.e. "__esModule" has not been set), then set
+    // "default" to the CommonJS "module.exports" for node compatibility.
+    isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+    mod
+  ));
+
+  // ../ptk/cli/colors.cjs
+  var require_colors = __commonJS({
+    "../ptk/cli/colors.cjs"(exports) {
+      var FORCE_COLOR;
+      var NODE_DISABLE_COLORS;
+      var NO_COLOR;
+      var TERM;
+      var isTTY = true;
+      if (typeof process !== "undefined") {
+        ({ FORCE_COLOR, NODE_DISABLE_COLORS, NO_COLOR, TERM } = process.env || {});
+        isTTY = process.stdout && process.stdout.isTTY;
+      }
+      var $ = exports.$ = {
+        enabled: !NODE_DISABLE_COLORS && NO_COLOR == null && TERM !== "dumb" && (FORCE_COLOR != null && FORCE_COLOR !== "0" || isTTY)
+      };
+      function init2(x, y) {
+        let rgx = new RegExp(`\\x1b\\[${y}m`, "g");
+        let open = `\x1B[${x}m`, close = `\x1B[${y}m`;
+        return function(txt) {
+          if (!$.enabled || txt == null)
+            return txt;
+          return open + (!!~("" + txt).indexOf(close) ? txt.replace(rgx, close + open) : txt) + close;
+        };
+      }
+      exports.reset = init2(0, 0);
+      exports.bold = init2(1, 22);
+      exports.dim = init2(2, 22);
+      exports.italic = init2(3, 23);
+      exports.underline = init2(4, 24);
+      exports.inverse = init2(7, 27);
+      exports.hidden = init2(8, 28);
+      exports.strikethrough = init2(9, 29);
+      exports.black = init2(30, 39);
+      exports.red = init2(31, 39);
+      exports.green = init2(32, 39);
+      exports.yellow = init2(33, 39);
+      exports.blue = init2(34, 39);
+      exports.magenta = init2(35, 39);
+      exports.cyan = init2(36, 39);
+      exports.white = init2(37, 39);
+      exports.gray = init2(90, 39);
+      exports.grey = init2(90, 39);
+      exports.bgBlack = init2(40, 49);
+      exports.bgRed = init2(41, 49);
+      exports.bgGreen = init2(42, 49);
+      exports.bgYellow = init2(43, 49);
+      exports.bgBlue = init2(44, 49);
+      exports.bgMagenta = init2(45, 49);
+      exports.bgCyan = init2(46, 49);
+      exports.bgWhite = init2(47, 49);
+    }
+  });
+
   // node_modules/svelte/internal/index.mjs
   function noop() {
+  }
+  function is_promise(value) {
+    return !!value && (typeof value === "object" || typeof value === "function") && typeof value.then === "function";
   }
   function run(fn) {
     return fn();
@@ -247,6 +329,84 @@
       callback();
     }
   }
+  function handle_promise(promise, info) {
+    const token = info.token = {};
+    function update2(type, index, key, value) {
+      if (info.token !== token)
+        return;
+      info.resolved = value;
+      let child_ctx = info.ctx;
+      if (key !== void 0) {
+        child_ctx = child_ctx.slice();
+        child_ctx[key] = value;
+      }
+      const block = type && (info.current = type)(child_ctx);
+      let needs_flush = false;
+      if (info.block) {
+        if (info.blocks) {
+          info.blocks.forEach((block2, i) => {
+            if (i !== index && block2) {
+              group_outros();
+              transition_out(block2, 1, 1, () => {
+                if (info.blocks[i] === block2) {
+                  info.blocks[i] = null;
+                }
+              });
+              check_outros();
+            }
+          });
+        } else {
+          info.block.d(1);
+        }
+        block.c();
+        transition_in(block, 1);
+        block.m(info.mount(), info.anchor);
+        needs_flush = true;
+      }
+      info.block = block;
+      if (info.blocks)
+        info.blocks[index] = block;
+      if (needs_flush) {
+        flush();
+      }
+    }
+    if (is_promise(promise)) {
+      const current_component2 = get_current_component();
+      promise.then((value) => {
+        set_current_component(current_component2);
+        update2(info.then, 1, info.value, value);
+        set_current_component(null);
+      }, (error) => {
+        set_current_component(current_component2);
+        update2(info.catch, 2, info.error, error);
+        set_current_component(null);
+        if (!info.hasCatch) {
+          throw error;
+        }
+      });
+      if (info.current !== info.pending) {
+        update2(info.pending, 0);
+        return true;
+      }
+    } else {
+      if (info.current !== info.then) {
+        update2(info.then, 1, info.value, promise);
+        return true;
+      }
+      info.resolved = promise;
+    }
+  }
+  function update_await_block_branch(info, ctx, dirty) {
+    const child_ctx = ctx.slice();
+    const { resolved } = info;
+    if (info.current === info.then) {
+      child_ctx[info.value] = resolved;
+    }
+    if (info.current === info.catch) {
+      child_ctx[info.error] = resolved;
+    }
+    info.block.p(child_ctx, dirty);
+  }
   var _boolean_attributes = [
     "allowfullscreen",
     "allowpaymentrequest",
@@ -312,7 +472,7 @@
     }
     component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
   }
-  function init(component, options, instance8, create_fragment9, not_equal, props, append_styles, dirty = [-1]) {
+  function init(component, options, instance9, create_fragment9, not_equal, props, append_styles, dirty = [-1]) {
     const parent_component = current_component;
     set_current_component(component);
     const $$ = component.$$ = {
@@ -338,7 +498,7 @@
     };
     append_styles && append_styles($$.root);
     let ready = false;
-    $$.ctx = instance8 ? instance8(component, options.props || {}, (i, ret, ...rest) => {
+    $$.ctx = instance9 ? instance9(component, options.props || {}, (i, ret, ...rest) => {
       const value = rest.length ? rest[0] : ret;
       if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
         if (!$$.skip_bound && $$.bound[i])
@@ -4577,6 +4737,19 @@
     }
     return out;
   };
+  var poolParallelPitakas = (ptk) => {
+    let align = ptk.attributes?.align;
+    if (!align)
+      align = ptk.name.replace(/\-[^-]+$/, "");
+    const out = [];
+    for (const n in _pool) {
+      if (_pool[n].attributes.align == align || n.replace(/\-[^-]+$/, "") == align) {
+        if (ptk.name !== _pool[n].name)
+          out.push(n);
+      }
+    }
+    return out;
+  };
 
   // ../ptk/linebase/loadpage.ts
   var pagefilename = (page) => page.toString().padStart(3, "0") + ".js";
@@ -5040,12 +5213,12 @@
     if (typeof address == "string") {
       addr = parseAddress(address);
     }
-    const { ptkname, from, till, action } = addr;
+    const { from, till, action } = addr;
     const eleid = parseAction(action);
     const ranges = rangeOfElementId.call(this, eleid);
     if (ranges.length) {
       const [first, last] = ranges[ranges.length - 1];
-      return [first, last];
+      return [first, last, from, till];
     } else {
       const end = till ? till : from + 1;
       return [0, end];
@@ -6353,15 +6526,19 @@
     const chunk = sourceptk.nearestChunk(line + 1);
     if (!chunk)
       return [];
-    const lineoff = line - chunk.line;
+    const bk = this.defines.bk;
     const books = this.getParallelBook(chunk.bkid);
-    if (!~books.indexOf(chunk.bkid))
-      books.push(chunk.bkid);
+    const bookats = books.map((id) => bk.fields.id.values.indexOf(id));
+    const bookstart = sourceptk.defines.bk.linepos[chunk.bkat];
+    const sourcelineoff = line - bookstart;
     const out = [];
-    for (let i = 0; i < books.length; i++) {
-      const [start, end] = this.rangeOfAddress("bk#" + books[i] + ".ck#" + chunk.id);
-      if (lineoff <= end - start) {
-        out.push(start + lineoff - line);
+    for (let i = 0; i < bookats.length; i++) {
+      const bkid = bk.fields.id.values[bookats[i]];
+      const [start, end] = this.rangeOfAddress("bk#" + bkid + ".ck#" + chunk.id);
+      const bookstart2 = bk.linepos[bookats[i]];
+      const theline = bookstart2 + sourcelineoff;
+      if (theline <= end) {
+        out.push([this, start - bookstart2, theline]);
       }
     }
     return out;
@@ -6485,7 +6662,7 @@
       short = bkcaption.slice(at2 + 1);
       bkcaption = bkcaption.slice(0, at2);
     }
-    return { id: bkid, caption: bkcaption, short, heading: bkheading };
+    return { id: bkid, caption: bkcaption, short, heading: bkheading, at };
   }
   function getChunk(at) {
     const chunktag = this.defines.ck;
@@ -6505,6 +6682,7 @@
     return {
       bk,
       bkid,
+      bkat,
       caption: caption2,
       at: at + 1,
       id,
@@ -6897,19 +7075,26 @@
   var getConreatePos = (linetext, nth, nextline) => {
     let [text2, tags] = parseOfftext(linetext);
     const isgatha = !!tags.filter((it) => it.name == "gatha").length;
-    text2 = removeBracket(text2).replace(/\t/g, "");
+    let ntag = 0;
     const chars = splitUTF32Char(text2);
-    let pos = 0, i = 0;
+    let pos = 0, i = 0, tagstart = 0;
+    if (ntag < tags.length)
+      tagstart = tags[ntag].start;
     while (nth && i < chars.length) {
       const r = CJKRangeName(chars[i]);
       if (r) {
         nth--;
       } else {
-        if (isgatha && ~"\uFF0C\u3001\uFF0E\uFF1B".indexOf(chars[i])) {
+        if (isgatha && ~"\uFF0C\u3001\uFF0E\uFF1B\u3002".indexOf(chars[i])) {
           nth--;
         }
       }
       pos += chars[i].codePointAt(0) >= 131072 ? 2 : 1;
+      if (ntag < tags.length && tags[ntag].choff > pos) {
+        ntag++;
+        if (ntag < tags.length)
+          tagstart = tags[ntag].start;
+      }
       i++;
     }
     while (i < chars.length) {
@@ -6925,7 +7110,82 @@
       const [nextlinetext] = parseOfftext(nextline);
       s += nextlinetext;
     }
-    return s;
+    return [s, pos + tagstart];
+  };
+  var folio2ChunkLine = async (ptk, foliotext, from, cx, pos) => {
+    const out = [];
+    for (let i = 0; i <= cx; i++) {
+      if (i == cx) {
+        out.push(foliotext[i].slice(0, pos));
+      } else {
+        out.push(foliotext[i]);
+      }
+    }
+    let startline = from;
+    let s = out.join("");
+    out.length = 0;
+    let at = s.lastIndexOf("^ck");
+    if (at == -1) {
+      while (startline > 0) {
+        startline--;
+        await ptk.loadLines([startline]);
+        const line = ptk.getLine(startline);
+        out.unshift(line);
+        if (~line.indexOf("^ck"))
+          break;
+      }
+      const at2 = out[0].indexOf("^ck");
+      out[0] = out[0].slice(at2);
+      s = out.join("	") + "	" + s;
+    } else {
+      s = s.slice(at);
+    }
+    const lines = s.split("	");
+    const m4 = lines[0].match(/\^ck#?([a-z\d\-_]+)/);
+    const ck = m4[1];
+    const lineoff = lines.length - 1;
+    return "ck#" + ck + (lineoff ? ">" + lineoff : "");
+  };
+
+  // ../ptk/align/parallels.ts
+  var parallelWithDiff = (ptk, line, includeself = false) => {
+    const out = [];
+    if (!ptk)
+      return out;
+    const parallelPitakas = poolParallelPitakas(ptk);
+    for (let i = 0; i < parallelPitakas.length; i++) {
+      const pptk = usePtk(parallelPitakas[i]);
+      const lines = pptk.getParallelLine(ptk, line);
+      lines.forEach((it) => out.push([...it]));
+    }
+    const bk = ptk.nearestTag(line, "bk") - 1;
+    const bookstart = ptk.defines.bk.linepos[bk];
+    if (includeself) {
+      out.push([ptk, bookstart, line]);
+    }
+    const lineoff = line - bookstart;
+    const books = ptk.getParallelBook(bk);
+    for (let i = 0; i < books.length; i++) {
+      const [start, end] = ptk.rangeOfAddress("bk#" + books[i]);
+      if (lineoff <= end - start) {
+        out.push([ptk, start - bookstart, start + lineoff]);
+      }
+    }
+    return out;
+  };
+  var getParallelLines = async (ptk, line, _out) => {
+    const lines = parallelWithDiff(ptk, line, true);
+    const out = [];
+    for (let i = 0; i < lines.length; i++) {
+      const [ptk2, bookstart, line2] = lines[i];
+      await ptk2.loadLines([line2]);
+      const linetext = ptk2.getLine(line2);
+      const heading = ptk2.getHeading(line2);
+      out.push({ ptk: ptk2, heading, linetext, line: line2 });
+    }
+    if (_out)
+      _out.push(...out);
+    return out;
   };
 
   // ../ptk/lexicon/entry.ts
@@ -7030,8 +7290,9 @@
   }
 
   // src/store.js
-  var activebook = writable("");
+  var activebook = writable(1);
   var activebookid = writable("vcpp_kumarajiva");
+  var activefolio = writable(0);
 
   // src/swipevideo.svelte
   function create_if_block_1(ctx) {
@@ -7102,7 +7363,7 @@
       m(target, anchor) {
         insert(target, video, anchor);
         append(video, source);
-        ctx[15](video);
+        ctx[17](video);
       },
       p(ctx2, dirty) {
         if (dirty & /*src*/
@@ -7114,7 +7375,7 @@
       d(detaching) {
         if (detaching)
           detach(video);
-        ctx[15](null);
+        ctx[17](null);
       }
     };
   }
@@ -7279,7 +7540,9 @@
   }
   function instance2($$self, $$props, $$invalidate) {
     let $activebookid;
-    component_subscribe($$self, activebookid, ($$value) => $$invalidate(20, $activebookid = $$value));
+    let $activefolio;
+    component_subscribe($$self, activebookid, ($$value) => $$invalidate(15, $activebookid = $$value));
+    component_subscribe($$self, activefolio, ($$value) => $$invalidate(16, $activefolio = $$value));
     let { src } = $$props;
     let mp4player;
     let touching = -1;
@@ -7301,9 +7564,6 @@
       const [left, right] = videoRect();
       return x > left && x < right;
     };
-    const videoLeft = () => {
-      return videoRect()[0];
-    };
     const ontouchstart = (e) => {
       $$invalidate(3, direction = 0);
       if (e.touches.length == 1) {
@@ -7319,15 +7579,16 @@
     const getDirection = () => {
       const deltax = touchx - startx;
       const deltay = touchy - starty;
+      const w = mp4player.videoWidth / 2;
       if (deltax > 30 && Math.abs(deltay) < Math.abs(deltax) / 2) {
-        return deltax > 200 ? -2 : -1;
+        return deltax > w ? -2 : -1;
       } else if (deltax < -30 && Math.abs(deltay) < Math.abs(deltax) / 2) {
-        return deltax < -200 ? 2 : 1;
+        return deltax < -w ? 2 : 1;
       }
       if (Math.abs(deltax) < Math.abs(deltay) / 2 && deltay > 30) {
-        return deltay > 200 ? -4 : -3;
+        return deltay > w ? -4 : -3;
       } else if (Math.abs(deltax) < Math.abs(deltay) / 2 && deltay < -30) {
-        return deltay < -200 ? 4 : 3;
+        return deltay < -w ? 4 : 3;
       }
       return 0;
     };
@@ -7356,8 +7617,6 @@
       const cy = Math.floor(y / (div.clientHeight - div.clientTop) * folioChars);
       return [cx, cy];
     };
-    const folio2ChunkLine = () => {
-    };
     const onclick = async (e, _x, _y) => {
       const x = _x || e.offsetX;
       const y = _y || e.offsetY;
@@ -7365,8 +7624,9 @@
         return;
       const [cx, cy] = getCharXY(mp4player, x, y);
       const [foliotext, from, to] = await fetchFolioText(ptk, $activebookid, 1 + Math.floor(mp4player.currentTime));
-      const t = getConreatePos(foliotext[cx], cy, foliotext[cx + 1]);
-      await onTapText(t);
+      const [t, pos] = getConreatePos(foliotext[cx], cy, foliotext[cx + 1]);
+      const address = await folio2ChunkLine(ptk, foliotext, from, cx, pos);
+      await onTapText(t, address);
     };
     const ontouchend = async (e) => {
       if (touching !== -1 && direction !== 0) {
@@ -7385,6 +7645,16 @@
       }
       $$invalidate(2, touching = -1);
       $$invalidate(3, direction = 0);
+    };
+    const gotoFolio = (t, bkid) => {
+      if (t !== mp4player?.currentTime + 0.1) {
+        setTimeout(
+          () => {
+            $$invalidate(1, mp4player.currentTime = t + 0.1, mp4player);
+          },
+          1e3
+        );
+      }
     };
     function video_binding($$value) {
       binding_callbacks[$$value ? "unshift" : "push"](() => {
@@ -7406,6 +7676,13 @@
       if ("onMainmenu" in $$props2)
         $$invalidate(14, onMainmenu = $$props2.onMainmenu);
     };
+    $$self.$$.update = () => {
+      if ($$self.$$.dirty & /*$activefolio, $activebookid*/
+      98304) {
+        $:
+          gotoFolio($activefolio, $activebookid);
+      }
+    };
     return [
       src,
       mp4player,
@@ -7422,6 +7699,8 @@
       folioLines,
       onTapText,
       onMainmenu,
+      $activebookid,
+      $activefolio,
       video_binding
     ];
   }
@@ -7440,19 +7719,20 @@
   };
   var swipevideo_default = Swipevideo;
 
-  // src/filelist.svelte
+  // src/foliolist.svelte
   function get_each_context(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[7] = list[i];
+    child_ctx[8] = list[i];
     return child_ctx;
   }
   function create_each_block(ctx) {
     let div;
+    let span;
     let t_value = (
       /*getBookName*/
-      ctx[2](
+      ctx[3](
         /*nbk*/
-        ctx[7]
+        ctx[8]
       ) + ""
     );
     let t;
@@ -7461,21 +7741,30 @@
     function click_handler() {
       return (
         /*click_handler*/
-        ctx[5](
+        ctx[6](
           /*nbk*/
-          ctx[7]
+          ctx[8]
         )
       );
     }
     return {
       c() {
         div = element("div");
+        span = element("span");
         t = text(t_value);
+        toggle_class(
+          span,
+          "selecteditem",
+          /*$activebook*/
+          ctx[0] == /*nbk*/
+          ctx[8]
+        );
         attr(div, "class", "book");
       },
       m(target, anchor) {
         insert(target, div, anchor);
-        append(div, t);
+        append(div, span);
+        append(span, t);
         if (!mounted) {
           dispose = listen(div, "click", click_handler);
           mounted = true;
@@ -7483,6 +7772,16 @@
       },
       p(new_ctx, dirty) {
         ctx = new_ctx;
+        if (dirty & /*$activebook, books*/
+        3) {
+          toggle_class(
+            span,
+            "selecteditem",
+            /*$activebook*/
+            ctx[0] == /*nbk*/
+            ctx[8]
+          );
+        }
       },
       d(detaching) {
         if (detaching)
@@ -7496,7 +7795,7 @@
     let each_1_anchor;
     let each_value = (
       /*books*/
-      ctx[0]
+      ctx[1]
     );
     let each_blocks = [];
     for (let i = 0; i < each_value.length; i += 1) {
@@ -7518,10 +7817,10 @@
         insert(target, each_1_anchor, anchor);
       },
       p(ctx2, [dirty]) {
-        if (dirty & /*selectbook, books, getBookName*/
-        7) {
+        if (dirty & /*selectbook, books, $activebook, getBookName*/
+        15) {
           each_value = /*books*/
-          ctx2[0];
+          ctx2[1];
           let i;
           for (i = 0; i < each_value.length; i += 1) {
             const child_ctx = get_each_context(ctx2, each_value, i);
@@ -7549,16 +7848,20 @@
     };
   }
   function instance3($$self, $$props, $$invalidate) {
+    let $activebook;
+    component_subscribe($$self, activebook, ($$value) => $$invalidate(0, $activebook = $$value));
     let { ptk } = $$props;
     let { onclose = function() {
     } } = $$props;
     const getBookList = () => {
+      const folio = ptk.defines.folio;
       const bk = ptk.defines.bk;
       const out = [];
-      for (let i = 0; i < bk.linepos.length; i++) {
-        const id = bk.fields.id.values[i];
-        if (~id.indexOf("_")) {
-          out.push(i);
+      for (let i = 0; i < folio.linepos.length; i++) {
+        const id = folio.fields.id.values[i];
+        const at = bk.fields.id.values.indexOf(id);
+        if (~at) {
+          out.push(at);
         }
       }
       return out;
@@ -7567,37 +7870,38 @@
     const selectbook = (nbk) => {
       const bk = ptk.defines.bk;
       activebook.set(nbk);
-      activebookid.set(ptk.defines.bk.fields.id.values[nbk]);
+      activebookid.set(bk.fields.id.values[nbk]);
+      activefolio.set(0);
       onclose();
     };
     const getBookName = (nbk) => {
       const bk = ptk.defines.bk;
       const bookname = bk.innertext.get(nbk);
-      return bookname + "(" + bk.fields.heading.values[nbk] + ")";
+      return bk.fields.heading.values[nbk] + "-" + bookname;
     };
     const click_handler = (nbk) => selectbook(nbk);
     $$self.$$set = ($$props2) => {
       if ("ptk" in $$props2)
-        $$invalidate(3, ptk = $$props2.ptk);
+        $$invalidate(4, ptk = $$props2.ptk);
       if ("onclose" in $$props2)
-        $$invalidate(4, onclose = $$props2.onclose);
+        $$invalidate(5, onclose = $$props2.onclose);
     };
-    return [books, selectbook, getBookName, ptk, onclose, click_handler];
+    return [$activebook, books, selectbook, getBookName, ptk, onclose, click_handler];
   }
-  var Filelist = class extends SvelteComponent {
+  var Foliolist = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance3, create_fragment2, safe_not_equal, { ptk: 3, onclose: 4 });
+      init(this, options, instance3, create_fragment2, safe_not_equal, { ptk: 4, onclose: 5 });
     }
   };
-  var filelist_default = Filelist;
+  var foliolist_default = Foliolist;
 
   // src/mainmenu.svelte
   function create_fragment3(ctx) {
     let div;
-    let filelist;
+    let foliolist;
     let current;
-    filelist = new filelist_default({
+    foliolist = new foliolist_default({
       props: {
         ptk: (
           /*ptk*/
@@ -7612,40 +7916,40 @@
     return {
       c() {
         div = element("div");
-        create_component(filelist.$$.fragment);
+        create_component(foliolist.$$.fragment);
         attr(div, "class", "popup");
       },
       m(target, anchor) {
         insert(target, div, anchor);
-        mount_component(filelist, div, null);
+        mount_component(foliolist, div, null);
         current = true;
       },
       p(ctx2, [dirty]) {
-        const filelist_changes = {};
+        const foliolist_changes = {};
         if (dirty & /*ptk*/
         1)
-          filelist_changes.ptk = /*ptk*/
+          foliolist_changes.ptk = /*ptk*/
           ctx2[0];
         if (dirty & /*onclose*/
         2)
-          filelist_changes.onclose = /*onclose*/
+          foliolist_changes.onclose = /*onclose*/
           ctx2[1];
-        filelist.$set(filelist_changes);
+        foliolist.$set(foliolist_changes);
       },
       i(local) {
         if (current)
           return;
-        transition_in(filelist.$$.fragment, local);
+        transition_in(foliolist.$$.fragment, local);
         current = true;
       },
       o(local) {
-        transition_out(filelist.$$.fragment, local);
+        transition_out(foliolist.$$.fragment, local);
         current = false;
       },
       d(detaching) {
         if (detaching)
           detach(div);
-        destroy_component(filelist);
+        destroy_component(foliolist);
       }
     };
   }
@@ -7696,10 +8000,10 @@
         t0 = text(t0_value);
         t1 = space();
         span1 = element("span");
-        attr(span0, "class", "entry svelte-5fpb3i");
+        attr(span0, "class", "entry svelte-1057x72");
         toggle_class(span0, "clickable", !!/*e*/
         ctx[4]?.attrs.wiki);
-        attr(span1, "class", "text svelte-5fpb3i");
+        attr(span1, "class", "text svelte-1057x72");
       },
       m(target, anchor) {
         insert(target, span0, anchor);
@@ -7760,7 +8064,7 @@
     return {
       c() {
         iframe = element("iframe");
-        attr(iframe, "class", "iframe svelte-5fpb3i");
+        attr(iframe, "class", "iframe svelte-1057x72");
         attr(iframe, "title", "wiki");
         if (!src_url_equal(iframe.src, iframe_src_value = /*src*/
         ctx[2]))
@@ -7798,6 +8102,7 @@
       c() {
         div = element("div");
         if_block.c();
+        attr(div, "class", "dictpopup svelte-1057x72");
       },
       m(target, anchor) {
         insert(target, div, anchor);
@@ -7888,31 +8193,277 @@
   };
   var dictpopup_default = Dictpopup;
 
+  // ../ptk/align/breaker.ts
+  var SENTENCESEP = String.fromCodePoint(12287);
+  var SENTENCESEP1 = String.fromCodePoint(12286);
+
+  // ../ptk/utils/diff.ts
+  var import_colors = __toESM(require_colors(), 1);
+
   // src/translations.svelte
-  function create_fragment5(ctx) {
+  function get_each_context2(ctx, list, i) {
+    const child_ctx = ctx.slice();
+    child_ctx[11] = list[i];
+    return child_ctx;
+  }
+  function create_catch_block(ctx) {
+    return { c: noop, m: noop, p: noop, d: noop };
+  }
+  function create_then_block(ctx) {
+    let t0;
     let div;
+    let each_value = (
+      /*out*/
+      ctx[4]
+    );
+    let each_blocks = [];
+    for (let i = 0; i < each_value.length; i += 1) {
+      each_blocks[i] = create_each_block2(get_each_context2(ctx, each_value, i));
+    }
     return {
       c() {
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          each_blocks[i].c();
+        }
+        t0 = space();
         div = element("div");
-        div.textContent = "translations";
-        attr(div, "class", "text svelte-9lpogq");
+        div.textContent = "--";
       },
       m(target, anchor) {
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          if (each_blocks[i]) {
+            each_blocks[i].m(target, anchor);
+          }
+        }
+        insert(target, t0, anchor);
         insert(target, div, anchor);
       },
-      p: noop,
-      i: noop,
-      o: noop,
+      p(ctx2, dirty) {
+        if (dirty & /*out, $activebook, goFolio, getBookTitle*/
+        114) {
+          each_value = /*out*/
+          ctx2[4];
+          let i;
+          for (i = 0; i < each_value.length; i += 1) {
+            const child_ctx = get_each_context2(ctx2, each_value, i);
+            if (each_blocks[i]) {
+              each_blocks[i].p(child_ctx, dirty);
+            } else {
+              each_blocks[i] = create_each_block2(child_ctx);
+              each_blocks[i].c();
+              each_blocks[i].m(t0.parentNode, t0);
+            }
+          }
+          for (; i < each_blocks.length; i += 1) {
+            each_blocks[i].d(1);
+          }
+          each_blocks.length = each_value.length;
+        }
+      },
       d(detaching) {
+        destroy_each(each_blocks, detaching);
+        if (detaching)
+          detach(t0);
         if (detaching)
           detach(div);
       }
     };
   }
+  function create_each_block2(ctx) {
+    let div;
+    let span;
+    let t0_value = (
+      /*getBookTitle*/
+      ctx[5](
+        /*item*/
+        ctx[11].ptk,
+        /*item*/
+        ctx[11].heading?.bk?.at
+      ) + ""
+    );
+    let t0;
+    let t1;
+    let t2_value = (
+      /*item*/
+      ctx[11].linetext.replace(/\^[a-z\d]+/g, "") + ""
+    );
+    let t2;
+    let mounted;
+    let dispose;
+    function click_handler() {
+      return (
+        /*click_handler*/
+        ctx[9](
+          /*item*/
+          ctx[11]
+        )
+      );
+    }
+    return {
+      c() {
+        div = element("div");
+        span = element("span");
+        t0 = text(t0_value);
+        t1 = space();
+        t2 = text(t2_value);
+        attr(span, "class", "clickable author");
+        toggle_class(
+          span,
+          "selecteditem",
+          /*item*/
+          ctx[11].heading?.bk?.at == /*$activebook*/
+          ctx[1]
+        );
+      },
+      m(target, anchor) {
+        insert(target, div, anchor);
+        append(div, span);
+        append(span, t0);
+        append(div, t1);
+        append(div, t2);
+        if (!mounted) {
+          dispose = listen(span, "click", click_handler);
+          mounted = true;
+        }
+      },
+      p(new_ctx, dirty) {
+        ctx = new_ctx;
+        if (dirty & /*out, $activebook*/
+        18) {
+          toggle_class(
+            span,
+            "selecteditem",
+            /*item*/
+            ctx[11].heading?.bk?.at == /*$activebook*/
+            ctx[1]
+          );
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(div);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_pending_block(ctx) {
+    return { c: noop, m: noop, p: noop, d: noop };
+  }
+  function create_fragment5(ctx) {
+    let div;
+    let promise;
+    let info = {
+      ctx,
+      current: null,
+      token: null,
+      hasCatch: false,
+      pending: create_pending_block,
+      then: create_then_block,
+      catch: create_catch_block
+    };
+    handle_promise(promise = getParallelLines(
+      /*ptk*/
+      ctx[0],
+      /*start*/
+      ctx[2] + /*line*/
+      ctx[3],
+      /*out*/
+      ctx[4]
+    ), info);
+    return {
+      c() {
+        div = element("div");
+        info.block.c();
+        attr(div, "class", "text svelte-1aqoojj");
+      },
+      m(target, anchor) {
+        insert(target, div, anchor);
+        info.block.m(div, info.anchor = null);
+        info.mount = () => div;
+        info.anchor = null;
+      },
+      p(new_ctx, [dirty]) {
+        ctx = new_ctx;
+        info.ctx = ctx;
+        if (dirty & /*ptk*/
+        1 && promise !== (promise = getParallelLines(
+          /*ptk*/
+          ctx[0],
+          /*start*/
+          ctx[2] + /*line*/
+          ctx[3],
+          /*out*/
+          ctx[4]
+        )) && handle_promise(promise, info)) {
+        } else {
+          update_await_block_branch(info, ctx, dirty);
+        }
+      },
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(div);
+        info.block.d();
+        info.token = null;
+        info = null;
+      }
+    };
+  }
+  function instance6($$self, $$props, $$invalidate) {
+    let $activebook;
+    component_subscribe($$self, activebook, ($$value) => $$invalidate(1, $activebook = $$value));
+    let { closePopup = function() {
+    } } = $$props;
+    let { address } = $$props;
+    let { ptk } = $$props;
+    const [start, end, line] = ptk.rangeOfAddress(address);
+    const out = [];
+    const getBookTitle = (ptk2, nbk) => {
+      const bk = ptk2.defines.bk;
+      const heading = bk.fields.heading.values[nbk];
+      return heading;
+    };
+    const goFolio = (ptk2, line2) => {
+      const pb = ptk2.defines.pb;
+      const bk = ptk2.defines.bk;
+      const folio = ptk2.defines.folio;
+      const pbat = ptk2.nearestTag(line2 + 1, "pb") - 1;
+      const bkat = ptk2.nearestTag(line2 + 1, "bk") - 1;
+      const folioat = ptk2.nearestTag(line2 + 1, "folio") - 1;
+      const pbid = pb.fields.id.values[pbat];
+      activebook.set(bkat);
+      activebookid.set(folio.fields.id.values[folioat]);
+      activefolio.set(parseInt(pbid) - 1);
+      closePopup();
+    };
+    const click_handler = (item) => goFolio(item.ptk, item.line);
+    $$self.$$set = ($$props2) => {
+      if ("closePopup" in $$props2)
+        $$invalidate(7, closePopup = $$props2.closePopup);
+      if ("address" in $$props2)
+        $$invalidate(8, address = $$props2.address);
+      if ("ptk" in $$props2)
+        $$invalidate(0, ptk = $$props2.ptk);
+    };
+    return [
+      ptk,
+      $activebook,
+      start,
+      line,
+      out,
+      getBookTitle,
+      goFolio,
+      closePopup,
+      address,
+      click_handler
+    ];
+  }
   var Translations = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, null, create_fragment5, safe_not_equal, {});
+      init(this, options, instance6, create_fragment5, safe_not_equal, { closePopup: 7, address: 8, ptk: 0 });
     }
   };
   var translations_default = Translations;
@@ -7958,7 +8509,7 @@
           span,
           "selected",
           /*thetab*/
-          ctx[1] == "dict"
+          ctx[3] == "dict"
         );
       },
       m(target, anchor) {
@@ -7968,19 +8519,19 @@
             span,
             "click",
             /*click_handler_2*/
-            ctx[7]
+            ctx[8]
           );
           mounted = true;
         }
       },
       p(ctx2, dirty) {
         if (dirty & /*thetab*/
-        2) {
+        8) {
           toggle_class(
             span,
             "selected",
             /*thetab*/
-            ctx2[1] == "dict"
+            ctx2[3] == "dict"
           );
         }
       },
@@ -7999,7 +8550,7 @@
     dictpopup = new dictpopup_default({
       props: { def: (
         /*def*/
-        ctx[2]
+        ctx[4]
       ), ptk: (
         /*ptk*/
         ctx[0]
@@ -8014,7 +8565,7 @@
           div,
           "visible",
           /*thetab*/
-          ctx[1] == "dict"
+          ctx[3] == "dict"
         );
       },
       m(target, anchor) {
@@ -8025,21 +8576,21 @@
       p(ctx2, dirty) {
         const dictpopup_changes = {};
         if (dirty & /*def*/
-        4)
+        16)
           dictpopup_changes.def = /*def*/
-          ctx2[2];
+          ctx2[4];
         if (dirty & /*ptk*/
         1)
           dictpopup_changes.ptk = /*ptk*/
           ctx2[0];
         dictpopup.$set(dictpopup_changes);
         if (!current || dirty & /*thetab*/
-        2) {
+        8) {
           toggle_class(
             div,
             "visible",
             /*thetab*/
-            ctx2[1] == "dict"
+            ctx2[3] == "dict"
           );
         }
       },
@@ -8079,13 +8630,28 @@
     let dispose;
     let if_block0 = (
       /*def*/
-      ctx[2] && create_if_block_12(ctx)
+      ctx[4] && create_if_block_12(ctx)
     );
     toc = new toc_default({});
-    translations = new translations_default({});
+    translations = new translations_default({
+      props: {
+        closePopup: (
+          /*closePopup*/
+          ctx[2]
+        ),
+        address: (
+          /*address*/
+          ctx[1]
+        ),
+        ptk: (
+          /*ptk*/
+          ctx[0]
+        )
+      }
+    });
     let if_block1 = (
       /*def*/
-      ctx[2] && create_if_block3(ctx)
+      ctx[4] && create_if_block3(ctx)
     );
     return {
       c() {
@@ -8113,14 +8679,14 @@
           span0,
           "selected",
           /*thetab*/
-          ctx[1] == "toc"
+          ctx[3] == "toc"
         );
         attr(span1, "class", "clickable");
         toggle_class(
           span1,
           "selected",
           /*thetab*/
-          ctx[1] == "translations"
+          ctx[3] == "translations"
         );
         attr(div0, "class", "tabs");
         attr(div1, "class", "tab-content");
@@ -8128,14 +8694,14 @@
           div1,
           "visible",
           /*thetab*/
-          ctx[1] == "toc"
+          ctx[3] == "toc"
         );
         attr(div2, "class", "tab-content");
         toggle_class(
           div2,
           "visible",
           /*thetab*/
-          ctx[1] == "translations"
+          ctx[3] == "translations"
         );
         attr(div3, "class", "popup");
       },
@@ -8164,13 +8730,13 @@
               span0,
               "click",
               /*click_handler*/
-              ctx[5]
+              ctx[6]
             ),
             listen(
               span1,
               "click",
               /*click_handler_1*/
-              ctx[6]
+              ctx[7]
             )
           ];
           mounted = true;
@@ -8178,26 +8744,26 @@
       },
       p(ctx2, [dirty]) {
         if (!current || dirty & /*thetab*/
-        2) {
+        8) {
           toggle_class(
             span0,
             "selected",
             /*thetab*/
-            ctx2[1] == "toc"
+            ctx2[3] == "toc"
           );
         }
         if (!current || dirty & /*thetab*/
-        2) {
+        8) {
           toggle_class(
             span1,
             "selected",
             /*thetab*/
-            ctx2[1] == "translations"
+            ctx2[3] == "translations"
           );
         }
         if (
           /*def*/
-          ctx2[2]
+          ctx2[4]
         ) {
           if (if_block0) {
             if_block0.p(ctx2, dirty);
@@ -8211,31 +8777,45 @@
           if_block0 = null;
         }
         if (!current || dirty & /*thetab*/
-        2) {
+        8) {
           toggle_class(
             div1,
             "visible",
             /*thetab*/
-            ctx2[1] == "toc"
+            ctx2[3] == "toc"
           );
         }
+        const translations_changes = {};
+        if (dirty & /*closePopup*/
+        4)
+          translations_changes.closePopup = /*closePopup*/
+          ctx2[2];
+        if (dirty & /*address*/
+        2)
+          translations_changes.address = /*address*/
+          ctx2[1];
+        if (dirty & /*ptk*/
+        1)
+          translations_changes.ptk = /*ptk*/
+          ctx2[0];
+        translations.$set(translations_changes);
         if (!current || dirty & /*thetab*/
-        2) {
+        8) {
           toggle_class(
             div2,
             "visible",
             /*thetab*/
-            ctx2[1] == "translations"
+            ctx2[3] == "translations"
           );
         }
         if (
           /*def*/
-          ctx2[2]
+          ctx2[4]
         ) {
           if (if_block1) {
             if_block1.p(ctx2, dirty);
             if (dirty & /*def*/
-            4) {
+            16) {
               transition_in(if_block1, 1);
             }
           } else {
@@ -8280,46 +8860,50 @@
       }
     };
   }
-  function instance6($$self, $$props, $$invalidate) {
+  function instance7($$self, $$props, $$invalidate) {
     let { tofind = "" } = $$props;
     let { ptk } = $$props;
     let { address = "" } = $$props;
+    let { closePopup } = $$props;
     let thetab = "translations";
     let def = "";
     const onDict = async (t) => {
       const entry = guessEntry(t, ptk.defines.e.fields.id.values);
       const defs = await ptk.fetchAddress("e#" + entry);
       if (defs.length) {
-        $$invalidate(2, def = defs.join("\n"));
+        $$invalidate(4, def = defs.join("\n"));
         showdict = true;
         showmainmenu = false;
-        $$invalidate(1, thetab = "dict");
+        $$invalidate(3, thetab = "dict");
       }
     };
-    const click_handler = () => $$invalidate(1, thetab = "toc");
-    const click_handler_1 = () => $$invalidate(1, thetab = "translations");
-    const click_handler_2 = () => $$invalidate(1, thetab = "dict");
+    const click_handler = () => $$invalidate(3, thetab = "toc");
+    const click_handler_1 = () => $$invalidate(3, thetab = "translations");
+    const click_handler_2 = () => $$invalidate(3, thetab = "dict");
     $$self.$$set = ($$props2) => {
       if ("tofind" in $$props2)
-        $$invalidate(3, tofind = $$props2.tofind);
+        $$invalidate(5, tofind = $$props2.tofind);
       if ("ptk" in $$props2)
         $$invalidate(0, ptk = $$props2.ptk);
       if ("address" in $$props2)
-        $$invalidate(4, address = $$props2.address);
+        $$invalidate(1, address = $$props2.address);
+      if ("closePopup" in $$props2)
+        $$invalidate(2, closePopup = $$props2.closePopup);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*tofind*/
-      8) {
+      32) {
         $:
           onDict(tofind);
       }
     };
     return [
       ptk,
+      address,
+      closePopup,
       thetab,
       def,
       tofind,
-      address,
       click_handler,
       click_handler_1,
       click_handler_2
@@ -8328,7 +8912,12 @@
   var Taptext = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance6, create_fragment7, safe_not_equal, { tofind: 3, ptk: 0, address: 4 });
+      init(this, options, instance7, create_fragment7, safe_not_equal, {
+        tofind: 5,
+        ptk: 0,
+        address: 1,
+        closePopup: 2
+      });
     }
   };
   var taptext_default = Taptext;
@@ -8418,15 +9007,19 @@
       props: {
         address: (
           /*address*/
-          ctx[3]
+          ctx[2]
         ),
         tofind: (
           /*tofind*/
-          ctx[4]
+          ctx[3]
         ),
         ptk: (
           /*ptk*/
           ctx[0]
+        ),
+        closePopup: (
+          /*closePopup*/
+          ctx[6]
         )
       }
     });
@@ -8441,13 +9034,13 @@
       p(ctx2, dirty) {
         const taptext_changes = {};
         if (dirty & /*address*/
-        8)
+        4)
           taptext_changes.address = /*address*/
-          ctx2[3];
+          ctx2[2];
         if (dirty & /*tofind*/
-        16)
+        8)
           taptext_changes.tofind = /*tofind*/
-          ctx2[4];
+          ctx2[3];
         if (dirty & /*ptk*/
         1)
           taptext_changes.ptk = /*ptk*/
@@ -8500,7 +9093,7 @@
     let if_block0 = (
       /*showdict*/
       (ctx[1] || /*showmainmenu*/
-      ctx[2]) && create_if_block_2(ctx)
+      ctx[4]) && create_if_block_2(ctx)
     );
     const if_block_creators = [create_if_block4, create_if_block_13];
     const if_blocks = [];
@@ -8512,7 +9105,7 @@
         return 0;
       if (
         /*showmainmenu*/
-        ctx2[2] && /*ptk*/
+        ctx2[4] && /*ptk*/
         ctx2[0]
       )
         return 1;
@@ -8559,7 +9152,7 @@
         if (
           /*showdict*/
           ctx2[1] || /*showmainmenu*/
-          ctx2[2]
+          ctx2[4]
         ) {
           if (if_block0) {
             if_block0.p(ctx2, dirty);
@@ -8625,36 +9218,37 @@
       }
     };
   }
-  function instance7($$self, $$props, $$invalidate) {
+  function instance8($$self, $$props, $$invalidate) {
     let $activebookid;
     component_subscribe($$self, activebookid, ($$value) => $$invalidate(5, $activebookid = $$value));
     let ptk;
     registerServiceWorker();
     onMount(async () => {
       $$invalidate(0, ptk = await openPtk("dc"));
+      await openPtk("dc_sanskrit");
       console.log(ptk);
     });
-    let showdict2 = false, showmainmenu2 = true, address = "", tofind = "";
+    let showdict2 = false, address = "", tofind = "", showmainmenu2 = true;
     const closePopup = () => {
       $$invalidate(1, showdict2 = false);
-      $$invalidate(2, showmainmenu2 = false);
+      $$invalidate(4, showmainmenu2 = false);
     };
     const onMainmenu = () => {
       $$invalidate(1, showdict2 = false);
-      $$invalidate(2, showmainmenu2 = true);
+      $$invalidate(4, showmainmenu2 = true);
     };
     const onTapText = (t, _address) => {
       $$invalidate(1, showdict2 = true);
-      $$invalidate(4, tofind = t);
-      $$invalidate(2, showmainmenu2 = false);
-      $$invalidate(3, address = _address);
+      $$invalidate(3, tofind = t);
+      $$invalidate(4, showmainmenu2 = false);
+      $$invalidate(2, address = _address);
     };
     return [
       ptk,
       showdict2,
-      showmainmenu2,
       address,
       tofind,
+      showmainmenu2,
       $activebookid,
       closePopup,
       onMainmenu,
@@ -8664,7 +9258,7 @@
   var App = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance7, create_fragment8, safe_not_equal, {});
+      init(this, options, instance8, create_fragment8, safe_not_equal, {});
     }
   };
   var app_default = App;

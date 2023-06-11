@@ -1,3 +1,3 @@
-jsonp(9,{"name":"dc","start":1634},`id
-
-金剛般若波羅蜜經	姚秦	三藏法師	鳩摩羅什	玄奘	如是我聞	一時	佛	舍衛	祇園精舍	祇樹給孤獨園	給孤獨	比丘	苾芻	爾時	世尊	衣	鉢	乞食	婆伽婆	薄伽梵	舍婆提	室羅筏	逝多林`)
+jsonp(9,{"name":"dc","start":2735},`id
+;#=2=2=2=2=2
+vcpp_kumarajiva	vcpp_bodhiruci	vcpp_gupta	vcpp_paramartha	vcpp_xuanzang	vcpp_yijing`)

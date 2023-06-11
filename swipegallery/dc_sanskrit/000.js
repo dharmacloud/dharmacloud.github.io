@@ -1,0 +1,2 @@
+jsonp(0,{"starts":[271,275,1624,1628,1633,1638],"sectionnames":["0.off","vcpp.off","_tokens","_postings","^ak","^bk","^ck"],"sectionstarts":[0,0,271,275,1624,1628,1633],"sectiontypes":["txt","txt","tokens","postings","tag","tag","tag"],"preload":["_tokens","_toc"],"fulltext":["vcpp.off"],"fulltextcaption":["vcpp.off"],"eot":271,"wordcount":4713,"name":"dc_sanskrit","buildtime":"2023-06-11T08:56:34.246Z"},`^:<ptk=dc_sanskrit zh=梵文 en=dc_sanskrit lang=sa align=dc>
+^:au`)

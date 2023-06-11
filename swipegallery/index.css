@@ -34,22 +34,22 @@ video.svelte-1n8xl7s {
 }
 
 /* fakecss:D:/2023/swipegallery/src/dictpopup.esbuild-svelte-fake-css */
-.iframe.svelte-5fpb3i {
+.dictpopup.svelte-1057x72 {
+  height: 90%;
+}
+.iframe.svelte-1057x72 {
   width: 100%;
   height: 100%;
 }
-.entry.svelte-5fpb3i {
+.entry.svelte-1057x72 {
   font-size: 7vh;
 }
-.text.svelte-5fpb3i {
+.text.svelte-1057x72 {
   font-size: 5vh;
-}
-.clickable.svelte-5fpb3i {
-  text-decoration: underline;
 }
 
 /* fakecss:D:/2023/swipegallery/src/translations.esbuild-svelte-fake-css */
-.text.svelte-9lpogq {
+.text.svelte-1aqoojj {
   font-size: 5vh;
 }
 
