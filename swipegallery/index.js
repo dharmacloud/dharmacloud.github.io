@@ -7039,8 +7039,8 @@
     return {
       c() {
         div = element("div");
-        div.textContent = "\u4E2D\u5340\u4F9B\u4F5B\u9F4B\u50E7";
-        attr(div, "class", "sponsor svelte-1l6t7ji");
+        div.textContent = "\u4E2D\u90E8\u5168\u570B\u4F9B\u4F5B\u9F4B\u50E7\u5927\u6703";
+        attr(div, "class", "sponsor svelte-1n8xl7s");
       },
       m(target, anchor) {
         insert(target, div, anchor);
@@ -7063,7 +7063,7 @@
     return {
       c() {
         span = element("span");
-        attr(span, "class", "swipe svelte-1l6t7ji");
+        attr(span, "class", "swipe svelte-1n8xl7s");
       },
       m(target, anchor) {
         insert(target, span, anchor);
@@ -7097,7 +7097,7 @@
         ctx[0]))
           attr(source, "src", source_src_value);
         attr(source, "type", "video/webm");
-        attr(video, "class", "svelte-1l6t7ji");
+        attr(video, "class", "svelte-1n8xl7s");
       },
       m(target, anchor) {
         insert(target, video, anchor);
@@ -7158,8 +7158,8 @@
         t2 = text(t2_value);
         t3 = space();
         key_block.c();
-        attr(span, "class", "pagenumber svelte-1l6t7ji");
-        attr(div, "class", "container svelte-1l6t7ji");
+        attr(span, "class", "pagenumber svelte-1n8xl7s");
+        attr(div, "class", "container svelte-1n8xl7s");
       },
       m(target, anchor) {
         if (if_block0)
@@ -7355,6 +7355,8 @@
       const cx = folioLines - Math.floor((x - left) / (right - left) * folioLines) - 1;
       const cy = Math.floor(y / (div.clientHeight - div.clientTop) * folioChars);
       return [cx, cy];
+    };
+    const folio2ChunkLine = () => {
     };
     const onclick = async (e, _x, _y) => {
       const x = _x || e.offsetX;

@@ -1,34 +1,35 @@
 /* fakecss:D:/2023/swipegallery/src/swipevideo.esbuild-svelte-fake-css */
-.container.svelte-1l6t7ji {
+.container.svelte-1n8xl7s {
   width: 100%;
   background-color: rgb(243, 208, 160);
   height: 100%;
 }
-video.svelte-1l6t7ji {
+video.svelte-1n8xl7s {
   height: 100%;
   user-select: none;
   pointer-events: none;
   width: 100%;
 }
-.swipe.svelte-1l6t7ji {
+.swipe.svelte-1n8xl7s {
   position: absolute;
   margin-top: 50%;
   left: 40%;
 }
-.pagenumber.svelte-1l6t7ji {
+.pagenumber.svelte-1n8xl7s {
   position: absolute;
   bottom: 1%;
   font-size: 200%;
 }
-.sponsor.svelte-1l6t7ji {
+.sponsor.svelte-1n8xl7s {
   user-select: none;
   pointer-events: none;
   font-size: 4vh;
+  font-weight: bold;
   position: absolute;
   color: red;
   opacity: 0.75;
   right: 1.1em;
-  top: 65vh;
+  top: 50vh;
   writing-mode: vertical-lr;
 }
 
