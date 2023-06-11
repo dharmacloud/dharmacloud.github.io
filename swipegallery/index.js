@@ -8270,7 +8270,7 @@
     };
   }
   function create_each_block2(ctx) {
-    let div;
+    let div0;
     let span;
     let t0_value = (
       /*getBookTitle*/
@@ -8288,6 +8288,8 @@
       ctx[11].linetext.replace(/\^[a-z\d]+/g, "") + ""
     );
     let t2;
+    let t3;
+    let div1;
     let mounted;
     let dispose;
     function click_handler() {
@@ -8301,26 +8303,31 @@
     }
     return {
       c() {
-        div = element("div");
+        div0 = element("div");
         span = element("span");
         t0 = text(t0_value);
         t1 = space();
         t2 = text(t2_value);
+        t3 = space();
+        div1 = element("div");
         attr(span, "class", "clickable author");
         toggle_class(
-          span,
+          div0,
           "selecteditem",
           /*item*/
           ctx[11].heading?.bk?.at == /*$activebook*/
           ctx[1]
         );
+        attr(div1, "class", "hr");
       },
       m(target, anchor) {
-        insert(target, div, anchor);
-        append(div, span);
+        insert(target, div0, anchor);
+        append(div0, span);
         append(span, t0);
-        append(div, t1);
-        append(div, t2);
+        append(div0, t1);
+        append(div0, t2);
+        insert(target, t3, anchor);
+        insert(target, div1, anchor);
         if (!mounted) {
           dispose = listen(span, "click", click_handler);
           mounted = true;
@@ -8331,7 +8338,7 @@
         if (dirty & /*out, $activebook*/
         18) {
           toggle_class(
-            span,
+            div0,
             "selecteditem",
             /*item*/
             ctx[11].heading?.bk?.at == /*$activebook*/
@@ -8341,7 +8348,11 @@
       },
       d(detaching) {
         if (detaching)
-          detach(div);
+          detach(div0);
+        if (detaching)
+          detach(t3);
+        if (detaching)
+          detach(div1);
         mounted = false;
         dispose();
       }
