@@ -7300,14 +7300,14 @@
   // src/punclayer.svelte
   function get_each_context(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[8] = list[i];
+    child_ctx[9] = list[i];
     return child_ctx;
   }
   function create_each_block(ctx) {
     let span;
     let t_value = (
       /*punc*/
-      ctx[8].text + ""
+      ctx[9].text + ""
     );
     let t;
     let span_style_value;
@@ -7315,15 +7315,15 @@
       c() {
         span = element("span");
         t = text(t_value);
-        attr(span, "class", "punc svelte-don625");
+        attr(span, "class", "punc svelte-1x4nvvj");
         attr(span, "style", span_style_value = /*puncStyle*/
         ctx[3](
           /*punc*/
-          ctx[8].line,
+          ctx[9].line,
           /*punc*/
-          ctx[8].ch,
+          ctx[9].ch,
           /*punc*/
-          ctx[8].text
+          ctx[9].text
         ));
       },
       m(target, anchor) {
@@ -7333,17 +7333,17 @@
       p(ctx2, dirty) {
         if (dirty & /*puncs*/
         2 && t_value !== (t_value = /*punc*/
-        ctx2[8].text + ""))
+        ctx2[9].text + ""))
           set_data(t, t_value);
         if (dirty & /*puncs*/
         2 && span_style_value !== (span_style_value = /*puncStyle*/
         ctx2[3](
           /*punc*/
-          ctx2[8].line,
+          ctx2[9].line,
           /*punc*/
-          ctx2[8].ch,
+          ctx2[9].ch,
           /*punc*/
-          ctx2[8].text
+          ctx2[9].text
         ))) {
           attr(span, "style", span_style_value);
         }
@@ -7355,8 +7355,20 @@
     };
   }
   function create_fragment(ctx) {
-    let div;
-    let div_style_value;
+    let div4;
+    let t0;
+    let div0;
+    let div0_style_value;
+    let t1;
+    let div1;
+    let div1_style_value;
+    let t2;
+    let div2;
+    let div2_style_value;
+    let t3;
+    let div3;
+    let div3_style_value;
+    let div4_style_value;
     let each_value = (
       /*puncs*/
       ctx[1]
@@ -7367,24 +7379,52 @@
     }
     return {
       c() {
-        div = element("div");
+        div4 = element("div");
         for (let i = 0; i < each_blocks.length; i += 1) {
           each_blocks[i].c();
         }
-        attr(div, "class", "puncs svelte-don625");
-        attr(div, "style", div_style_value = /*stylestring*/
+        t0 = space();
+        div0 = element("div");
+        t1 = space();
+        div1 = element("div");
+        t2 = space();
+        div2 = element("div");
+        t3 = space();
+        div3 = element("div");
+        attr(div0, "class", "vline svelte-1x4nvvj");
+        attr(div0, "style", div0_style_value = /*getVLine*/
+        ctx[4](1));
+        attr(div1, "class", "vline svelte-1x4nvvj");
+        attr(div1, "style", div1_style_value = /*getVLine*/
+        ctx[4](2));
+        attr(div2, "class", "vline svelte-1x4nvvj");
+        attr(div2, "style", div2_style_value = /*getVLine*/
+        ctx[4](3));
+        attr(div3, "class", "vline svelte-1x4nvvj");
+        attr(div3, "style", div3_style_value = /*getVLine*/
+        ctx[4](4));
+        attr(div4, "class", "puncs svelte-1x4nvvj");
+        attr(div4, "style", div4_style_value = /*stylestring*/
         ctx[2](
           /*frame*/
           ctx[0]
         ));
       },
       m(target, anchor) {
-        insert(target, div, anchor);
+        insert(target, div4, anchor);
         for (let i = 0; i < each_blocks.length; i += 1) {
           if (each_blocks[i]) {
-            each_blocks[i].m(div, null);
+            each_blocks[i].m(div4, null);
           }
         }
+        append(div4, t0);
+        append(div4, div0);
+        append(div4, t1);
+        append(div4, div1);
+        append(div4, t2);
+        append(div4, div2);
+        append(div4, t3);
+        append(div4, div3);
       },
       p(ctx2, [dirty]) {
         if (dirty & /*puncStyle, puncs*/
@@ -7399,7 +7439,7 @@
             } else {
               each_blocks[i] = create_each_block(child_ctx);
               each_blocks[i].c();
-              each_blocks[i].m(div, null);
+              each_blocks[i].m(div4, t0);
             }
           }
           for (; i < each_blocks.length; i += 1) {
@@ -7408,19 +7448,19 @@
           each_blocks.length = each_value.length;
         }
         if (dirty & /*frame*/
-        1 && div_style_value !== (div_style_value = /*stylestring*/
+        1 && div4_style_value !== (div4_style_value = /*stylestring*/
         ctx2[2](
           /*frame*/
           ctx2[0]
         ))) {
-          attr(div, "style", div_style_value);
+          attr(div4, "style", div4_style_value);
         }
       },
       i: noop,
       o: noop,
       d(detaching) {
         if (detaching)
-          detach(div);
+          detach(div4);
         destroy_each(each_blocks, detaching);
       }
     };
@@ -7440,14 +7480,17 @@
         yinc = unith * 0.4;
       }
       if (text2 == "\uFE41" || text2 == "\uFE43") {
-        xinc = -unitw * 0.6;
+        xinc = -unitw * 0.4;
         yinc = unith * 0.6;
       } else if (text2 == "\uFE44" || text2 == "\uFE42") {
         xinc = -unitw * 0.7;
         yinc = unith * 0.6;
       }
-      const style = "left:" + Math.floor(xinc + unitw * (folioLines - line) - unitw * 0.2) + "px; top:" + Math.floor(yinc + unith * (ch - 1) - unith * 0.2) + "px;font-size:" + fontsize + "px";
+      const style = "left:" + Math.floor(xinc + unitw * (folioLines - line) - unitw * 0.25) + "px; top:" + Math.floor(frame.top + yinc + unith * (ch - 1) - unith * 0.2) + "px;font-size:" + fontsize + "px";
       return style;
+    };
+    const getVLine = (i) => {
+      return "left:" + unitw * i + "px;top:0px;width:2px;height:" + frame.height + "px";
     };
     $$self.$$set = ($$props2) => {
       if ("frame" in $$props2)
@@ -7455,11 +7498,11 @@
       if ("puncs" in $$props2)
         $$invalidate(1, puncs = $$props2.puncs);
       if ("folioChars" in $$props2)
-        $$invalidate(4, folioChars = $$props2.folioChars);
+        $$invalidate(5, folioChars = $$props2.folioChars);
       if ("folioLines" in $$props2)
-        $$invalidate(5, folioLines = $$props2.folioLines);
+        $$invalidate(6, folioLines = $$props2.folioLines);
     };
-    return [frame, puncs, stylestring, puncStyle, folioChars, folioLines];
+    return [frame, puncs, stylestring, puncStyle, getVLine, folioChars, folioLines];
   }
   var Punclayer = class extends SvelteComponent {
     constructor(options) {
@@ -7467,8 +7510,8 @@
       init(this, options, instance2, create_fragment, safe_not_equal, {
         frame: 0,
         puncs: 1,
-        folioChars: 4,
-        folioLines: 5
+        folioChars: 5,
+        folioLines: 6
       });
     }
   };
@@ -9353,7 +9396,7 @@
       c() {
         span = element("span");
         span.textContent = "\u2573";
-        attr(span, "class", "closepopup svelte-1tur2b6");
+        attr(span, "class", "closepopup svelte-1vzgb8l");
       },
       m(target, anchor) {
         insert(target, span, anchor);
@@ -9546,7 +9589,7 @@
         t1 = space();
         if (if_block1)
           if_block1.c();
-        attr(div, "class", "app svelte-1tur2b6");
+        attr(div, "class", "app svelte-1vzgb8l");
       },
       m(target, anchor) {
         insert(target, div, anchor);
