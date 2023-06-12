@@ -20,9 +20,9 @@ body {
 .selected {background: gray;border-radius: 0.25em;}
 .tab-content {
   position: absolute;
-    /* height:90vh; */
+    height:90vh;
   width:100%;
-  height:100%;
+  /* height:100%; */
     /* width:30vw; */
     /* !important; */
   opacity: 0;
@@ -44,6 +44,8 @@ body {
 .selecteditem {background:silver}
 .hr {height: 1px ;background:black}
 .paralleltext {font-size:4vh;}
+.toctext {font-size:4vh;}
+.tocitem{margin-left: 0.5em;}
 .dicttext {font-size:4vh}
 .dictentry {font-size:6vh}
-.endmarker {width:100%;text-align: center;}
+.endmarker {width:100%;text-align: center;height: 3em;}

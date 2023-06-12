@@ -472,7 +472,7 @@
     }
     component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
   }
-  function init(component, options, instance10, create_fragment10, not_equal, props, append_styles, dirty = [-1]) {
+  function init(component, options, instance11, create_fragment10, not_equal, props, append_styles, dirty = [-1]) {
     const parent_component = current_component;
     set_current_component(component);
     const $$ = component.$$ = {
@@ -498,7 +498,7 @@
     };
     append_styles && append_styles($$.root);
     let ready = false;
-    $$.ctx = instance10 ? instance10(component, options.props || {}, (i, ret, ...rest) => {
+    $$.ctx = instance11 ? instance11(component, options.props || {}, (i, ret, ...rest) => {
       const value = rest.length ? rest[0] : ret;
       if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
         if (!$$.skip_bound && $$.bound[i])
@@ -1112,6 +1112,12 @@
         return rangename;
     }
   };
+  var isPunc = (str) => {
+    if (!str)
+      return false;
+    const cp = str.charCodeAt(0);
+    return cp >= 12289 && cp <= 12319 || cp > 65280 || cp >= 65040 && cp <= 65131;
+  };
   var openBrackets = "(\u300C\u300E\u3014\uFF08\uFE39\uFE35\uFE37\u3010\uFE3B\u300A\u3008\uFE3D\uFE3F\uFE41\uFE43\uFE59\uFE5D\u2018\u201C\u301D";
   var closeBracketOf = (ch) => {
     if (!ch)
@@ -1202,6 +1208,55 @@
   // ../ptk/utils/bopomofo.ts
   var consonants = "b,p,m,f,d,t,n,l,g,k,h,j,q,x,zh,ch,sh,r,z,c,s".split(",");
   var vowels = "a,o,e,e,ai,ei,ao,ou,an,en,ang,eng,er,i,u,v".split(",");
+
+  // ../ptk/utils/cnumber.ts
+  var StyledNumber1 = {
+    "\u2160": 10,
+    "\u2170": 10,
+    "\u249C": 26,
+    "\u24B6": 26,
+    "\u24D0": 26,
+    "\u24EB": 10,
+    "\u3251": 15,
+    "\u3358": 25,
+    "\u3359": 24,
+    "\u3220": 10,
+    "\u3280": 10,
+    "\u32C0": 12,
+    "\u33E0": 31,
+    "\u2460": 50,
+    "\u2474": 20,
+    "\u2488": 20,
+    "\u24F5": 10,
+    "\u2776": 10,
+    "\u2780": 10,
+    "\u278A": 10
+  };
+  var styledNumber = (n, style, offset = 1) => {
+    let max = StyledNumber1[style];
+    if (typeof n !== "number")
+      n = parseInt(n) || 0;
+    if (!max) {
+      return n.toString();
+    } else {
+      if (n - offset >= max) {
+        return n.toString();
+      }
+      if (style == "\u2460") {
+        if (n > 35) {
+          style = "\u32B1";
+          n -= 35;
+        } else if (n > 20) {
+          style = "\u3251";
+          n -= 20;
+        }
+        if (n == 0)
+          return "\u24EA";
+      }
+      let code = style.charCodeAt(0) + n - offset;
+      return String.fromCharCode(code);
+    }
+  };
 
   // ../ptk/offtext/parser.ts
   var parseCompactAttr = (str) => {
@@ -7176,13 +7231,20 @@
   var extractPuncPos = (foliotext, foliolines = 5, validpuncs = "\u300C\u300D\u300E\u300F\u3002\uFF0C\uFF1B\uFF1A\u3001\uFF01\uFF1F") => {
     const puncs = [];
     for (let i = 0; i < foliotext.length; i++) {
-      let ch = 0;
+      let ch = 0, ntag = 0, textsum = 0;
       const [text2, tags] = parseOfftext(foliotext[i]);
       const isgatha = !!tags.filter((it) => it.name == "gatha").length;
       if (i >= foliolines)
         break;
       const chars = splitUTF32Char(text2);
       for (let j2 = 0; j2 < chars.length; j2++) {
+        while (ntag < tags.length && textsum > tags[ntag].choff) {
+          if (tags[ntag].name == "ck") {
+            puncs.push({ line: i, ch, text: styledNumber(parseInt(tags[ntag].attrs.id), "\u2460") });
+          }
+          ntag++;
+        }
+        textsum += chars[j2].length;
         if (~validpuncs.indexOf(chars[j2])) {
           let text3 = toVerticalPunc(chars[j2]);
           puncs.push({ line: i, ch, text: text3 });
@@ -7252,7 +7314,7 @@
     for (let j2 = 0; j2 <= textbefore.length; j2++) {
       for (let i = 0; i < values.length; i++) {
         const tf = (textbefore.slice(textbefore.length - j2) + sentence).slice(0, values[i].length);
-        if (tf == values[i]) {
+        if (tf == values[i] && j2 < values[i].length) {
           return values[i];
         }
       }
@@ -7315,7 +7377,7 @@
       c() {
         span = element("span");
         t = text(t_value);
-        attr(span, "class", "punc svelte-1x4nvvj");
+        attr(span, "class", "punc svelte-1yqqrxb");
         attr(span, "style", span_style_value = /*puncStyle*/
         ctx[3](
           /*punc*/
@@ -7371,7 +7433,7 @@
         for (let i = 0; i < each_blocks.length; i += 1) {
           each_blocks[i].c();
         }
-        attr(div, "class", "puncs svelte-1x4nvvj");
+        attr(div, "class", "puncs svelte-1yqqrxb");
         attr(div, "style", div_style_value = /*stylestring*/
         ctx[2](
           /*frame*/
@@ -7438,13 +7500,15 @@
       if (text2 == "\uFF1F" || text2 == "\uFF01") {
         fontsize = fontsize / 1.5;
         yinc += unith * 0.4;
-      }
-      if (text2 == "\uFE41" || text2 == "\uFE43") {
+      } else if (text2 == "\uFE41" || text2 == "\uFE43") {
         xinc += -unitw * 0.4;
         yinc += unith * 0.6;
       } else if (text2 == "\uFE44" || text2 == "\uFE42") {
         xinc += -unitw * 0.7;
         yinc += unith * 0.6;
+      } else if (!isPunc(text2[0])) {
+        yinc += unith;
+        fontsize = fontsize / 1.5;
       }
       const style = "left:" + Math.floor(xinc + unitw * (folioLines - line) - unitw * 0.25) + "px; top:" + Math.floor(frame.top + yinc + unith * (ch - 1) - unith * 0.2) + "px;font-size:" + fontsize + "px";
       return style;
@@ -7529,6 +7593,7 @@
   }
 
   // src/store.js
+  var activePtk = writable("dc");
   var activebook = writable(1);
   var activebookid = writable("vcpp_kumarajiva");
   var activefolio = writable(0);
@@ -7586,6 +7651,52 @@
     };
   }
   function create_key_block_1(ctx) {
+    let video;
+    let source;
+    let source_src_value;
+    let mounted;
+    let dispose;
+    return {
+      c() {
+        video = element("video");
+        source = element("source");
+        if (!src_url_equal(source.src, source_src_value = /*src*/
+        ctx[0]))
+          attr(source, "src", source_src_value);
+        attr(source, "type", "video/webm");
+        attr(video, "class", "svelte-1n8xl7s");
+      },
+      m(target, anchor) {
+        insert(target, video, anchor);
+        append(video, source);
+        ctx[19](video);
+        if (!mounted) {
+          dispose = listen(
+            video,
+            "loadeddata",
+            /*videoloaded*/
+            ctx[14]
+          );
+          mounted = true;
+        }
+      },
+      p(ctx2, dirty) {
+        if (dirty[0] & /*src*/
+        1 && !src_url_equal(source.src, source_src_value = /*src*/
+        ctx2[0])) {
+          attr(source, "src", source_src_value);
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(video);
+        ctx[19](null);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_key_block(ctx) {
     let punclayer;
     let current;
     punclayer = new punclayer_default({
@@ -7647,39 +7758,6 @@
       }
     };
   }
-  function create_key_block(ctx) {
-    let video;
-    let source;
-    let source_src_value;
-    return {
-      c() {
-        video = element("video");
-        source = element("source");
-        if (!src_url_equal(source.src, source_src_value = /*src*/
-        ctx[0]))
-          attr(source, "src", source_src_value);
-        attr(source, "type", "video/webm");
-        attr(video, "class", "svelte-1n8xl7s");
-      },
-      m(target, anchor) {
-        insert(target, video, anchor);
-        append(video, source);
-        ctx[19](video);
-      },
-      p(ctx2, dirty) {
-        if (dirty[0] & /*src*/
-        1 && !src_url_equal(source.src, source_src_value = /*src*/
-        ctx2[0])) {
-          attr(source, "src", source_src_value);
-        }
-      },
-      d(detaching) {
-        if (detaching)
-          detach(video);
-        ctx[19](null);
-      }
-    };
-  }
   function create_fragment2(ctx) {
     let t0;
     let div;
@@ -7692,13 +7770,13 @@
     let t2;
     let t3;
     let previous_key = (
-      /*puncs*/
-      ctx[6]
+      /*src*/
+      ctx[0]
     );
     let t4;
     let previous_key_1 = (
-      /*src*/
-      ctx[0]
+      /*puncs*/
+      ctx[6]
     );
     let current;
     let mounted;
@@ -7823,25 +7901,25 @@
           ctx2[3]?.currentTime
         ) + ""))
           set_data(t2, t2_value);
-        if (dirty[0] & /*puncs*/
-        64 && safe_not_equal(previous_key, previous_key = /*puncs*/
-        ctx2[6])) {
-          group_outros();
-          transition_out(key_block0, 1, 1, noop);
-          check_outros();
+        if (dirty[0] & /*src*/
+        1 && safe_not_equal(previous_key, previous_key = /*src*/
+        ctx2[0])) {
+          key_block0.d(1);
           key_block0 = create_key_block_1(ctx2);
           key_block0.c();
-          transition_in(key_block0, 1);
           key_block0.m(div, t4);
         } else {
           key_block0.p(ctx2, dirty);
         }
-        if (dirty[0] & /*src*/
-        1 && safe_not_equal(previous_key_1, previous_key_1 = /*src*/
-        ctx2[0])) {
-          key_block1.d(1);
+        if (dirty[0] & /*puncs*/
+        64 && safe_not_equal(previous_key_1, previous_key_1 = /*puncs*/
+        ctx2[6])) {
+          group_outros();
+          transition_out(key_block1, 1, 1, noop);
+          check_outros();
           key_block1 = create_key_block(ctx2);
           key_block1.c();
+          transition_in(key_block1, 1);
           key_block1.m(div, null);
         } else {
           key_block1.p(ctx2, dirty);
@@ -7850,11 +7928,11 @@
       i(local) {
         if (current)
           return;
-        transition_in(key_block0);
+        transition_in(key_block1);
         current = true;
       },
       o(local) {
-        transition_out(key_block0);
+        transition_out(key_block1);
         current = false;
       },
       d(detaching) {
@@ -7874,20 +7952,23 @@
     };
   }
   function instance3($$self, $$props, $$invalidate) {
-    let $activebookid;
     let $activefolio;
-    component_subscribe($$self, activebookid, ($$value) => $$invalidate(17, $activebookid = $$value));
-    component_subscribe($$self, activefolio, ($$value) => $$invalidate(18, $activefolio = $$value));
+    let $activebookid;
+    let $activePtk;
+    component_subscribe($$self, activefolio, ($$value) => $$invalidate(17, $activefolio = $$value));
+    component_subscribe($$self, activebookid, ($$value) => $$invalidate(18, $activebookid = $$value));
+    component_subscribe($$self, activePtk, ($$value) => $$invalidate(26, $activePtk = $$value));
     let { src } = $$props;
     let mp4player;
     let touching = -1;
     let touchx = 0, touchy = 0, startx = 0, starty = 0, direction = 0;
     const swipeshapes = [down2, down1, swipeend, turnright, , turnleft, swipestart, up1, up2];
-    let { ptk, folioChars = 17, folioLines = 5 } = $$props;
+    let { folioChars = 17, folioLines = 5 } = $$props;
     let { onTapText = function() {
     } } = $$props;
     let { onMainmenu = function() {
     } } = $$props;
+    let ptk = usePtk($activePtk);
     let foliotext = "", foliofrom = 0, puncs = [];
     const videoRect = () => {
       if (!mp4player)
@@ -7957,14 +8038,14 @@
       return [cx, cy];
     };
     const onclick = async (e, _x, _y) => {
-      const x = _x || e.offsetX;
-      const y = _y || e.offsetY;
+      const x = _x || e.clientX;
+      const y = _y || e.clientY;
       if (!inVideoRect(x))
         return;
       const [cx, cy] = getCharXY(mp4player, x, y);
       const [t, pos] = getConreatePos(foliotext[cx], cy, foliotext[cx + 1]);
       const address = "bk#" + $activebookid + "." + await folio2ChunkLine(ptk, foliotext, foliofrom, cx, pos);
-      await onTapText(t, address);
+      await onTapText(t, address, ptk.name);
     };
     const ontouchend = async (e) => {
       if (touching !== -1 && direction !== 0) {
@@ -7994,11 +8075,11 @@
         setTimeout(
           () => {
             $$invalidate(3, mp4player.currentTime = t + 0.1, mp4player);
+            updateFolioText();
           },
-          1e3
+          500
         );
       }
-      updateFolioText();
     };
     const videoFrame = () => {
       const frame = videoRect();
@@ -8009,6 +8090,9 @@
         height: frame[3] - frame[1]
       };
     };
+    const videoloaded = () => {
+      gotoFolio($activefolio);
+    };
     function video_binding($$value) {
       binding_callbacks[$$value ? "unshift" : "push"](() => {
         mp4player = $$value;
@@ -8018,8 +8102,6 @@
     $$self.$$set = ($$props2) => {
       if ("src" in $$props2)
         $$invalidate(0, src = $$props2.src);
-      if ("ptk" in $$props2)
-        $$invalidate(14, ptk = $$props2.ptk);
       if ("folioChars" in $$props2)
         $$invalidate(1, folioChars = $$props2.folioChars);
       if ("folioLines" in $$props2)
@@ -8030,11 +8112,10 @@
         $$invalidate(16, onMainmenu = $$props2.onMainmenu);
     };
     $$self.$$.update = () => {
-      if ($$self.$$.dirty[0] & /*ptk, $activefolio, $activebookid*/
-      409600) {
+      if ($$self.$$.dirty[0] & /*$activefolio, $activebookid*/
+      393216) {
         $:
-          if (ptk)
-            gotoFolio($activefolio, $activebookid);
+          gotoFolio($activefolio, $activebookid);
       }
     };
     return [
@@ -8052,11 +8133,11 @@
       onclick,
       ontouchend,
       videoFrame,
-      ptk,
+      videoloaded,
       onTapText,
       onMainmenu,
-      $activebookid,
       $activefolio,
+      $activebookid,
       video_binding
     ];
   }
@@ -8071,7 +8152,6 @@
         safe_not_equal,
         {
           src: 0,
-          ptk: 14,
           folioChars: 1,
           folioLines: 2,
           onTapText: 15,
@@ -8576,9 +8656,7 @@
   }
   function create_then_block(ctx) {
     let t0;
-    let div0;
-    let t2;
-    let div1;
+    let div;
     let each_value = (
       /*out*/
       ctx[4]
@@ -8593,13 +8671,9 @@
           each_blocks[i].c();
         }
         t0 = space();
-        div0 = element("div");
-        div0.textContent = "\u203B\u203B\u203B";
-        t2 = space();
-        div1 = element("div");
-        div1.textContent = "\u203B\u203B\u203B";
-        attr(div0, "class", "endmarker");
-        attr(div1, "class", "endmarker");
+        div = element("div");
+        div.textContent = "\u203B\u203B\u203B";
+        attr(div, "class", "endmarker");
       },
       m(target, anchor) {
         for (let i = 0; i < each_blocks.length; i += 1) {
@@ -8608,9 +8682,7 @@
           }
         }
         insert(target, t0, anchor);
-        insert(target, div0, anchor);
-        insert(target, t2, anchor);
-        insert(target, div1, anchor);
+        insert(target, div, anchor);
       },
       p(ctx2, dirty) {
         if (dirty & /*out, $activebook, puretext, goFolio, hasfolio, getBookTitle*/
@@ -8639,11 +8711,7 @@
         if (detaching)
           detach(t0);
         if (detaching)
-          detach(div0);
-        if (detaching)
-          detach(t2);
-        if (detaching)
-          detach(div1);
+          detach(div);
       }
     };
   }
@@ -8841,6 +8909,8 @@
       const pb = ptk2.defines.pb;
       const bk = ptk2.defines.bk;
       const folio = ptk2.defines.folio;
+      if (!pb)
+        return;
       const pbat = ptk2.nearestTag(line + 1, "pb") - 1;
       const bkat = ptk2.nearestTag(line + 1, "bk") - 1;
       const folioat = ptk2.nearestTag(line + 1, "folio") - 1;
@@ -8848,6 +8918,7 @@
       activebook.set(bkat);
       activebookid.set(folio.fields.id.values[folioat]);
       activefolio.set(parseInt(pbid) - 1);
+      activePtk.set(ptk2.name);
       closePopup();
     };
     const hasfolio = (ptk2, line) => {
@@ -8891,28 +8962,211 @@
   var translations_default = Translations;
 
   // src/toc.svelte
-  function create_fragment7(ctx) {
+  function get_each_context4(ctx, list, i) {
+    const child_ctx = ctx.slice();
+    child_ctx[9] = list[i];
+    return child_ctx;
+  }
+  function create_each_block4(ctx) {
+    let div;
+    let t_value = styledNumber(
+      /*item*/
+      ctx[9].id,
+      "\u2460"
+    ) + /*item*/
+    ctx[9].caption + "";
     let t;
+    let mounted;
+    let dispose;
+    function click_handler() {
+      return (
+        /*click_handler*/
+        ctx[7](
+          /*item*/
+          ctx[9]
+        )
+      );
+    }
     return {
       c() {
-        t = text("TOC");
+        div = element("div");
+        t = text(t_value);
+        attr(div, "class", "tocitem");
+        toggle_class(
+          div,
+          "selecteditem",
+          /*cknow*/
+          ctx[1] == /*item*/
+          ctx[9].id
+        );
       },
       m(target, anchor) {
-        insert(target, t, anchor);
+        insert(target, div, anchor);
+        append(div, t);
+        if (!mounted) {
+          dispose = listen(div, "click", click_handler);
+          mounted = true;
+        }
       },
-      p: noop,
+      p(new_ctx, dirty) {
+        ctx = new_ctx;
+        if (dirty & /*tocitems*/
+        1 && t_value !== (t_value = styledNumber(
+          /*item*/
+          ctx[9].id,
+          "\u2460"
+        ) + /*item*/
+        ctx[9].caption + ""))
+          set_data(t, t_value);
+        if (dirty & /*cknow, tocitems*/
+        3) {
+          toggle_class(
+            div,
+            "selecteditem",
+            /*cknow*/
+            ctx[1] == /*item*/
+            ctx[9].id
+          );
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(div);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_fragment7(ctx) {
+    let div1;
+    let t0;
+    let div0;
+    let each_value = (
+      /*tocitems*/
+      ctx[0]
+    );
+    let each_blocks = [];
+    for (let i = 0; i < each_value.length; i += 1) {
+      each_blocks[i] = create_each_block4(get_each_context4(ctx, each_value, i));
+    }
+    return {
+      c() {
+        div1 = element("div");
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          each_blocks[i].c();
+        }
+        t0 = space();
+        div0 = element("div");
+        div0.textContent = "\u203B\u203B\u203B";
+        attr(div0, "class", "endmarker");
+        attr(div1, "class", "toctext");
+      },
+      m(target, anchor) {
+        insert(target, div1, anchor);
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          if (each_blocks[i]) {
+            each_blocks[i].m(div1, null);
+          }
+        }
+        append(div1, t0);
+        append(div1, div0);
+      },
+      p(ctx2, [dirty]) {
+        if (dirty & /*cknow, tocitems, gofolio, styledNumber*/
+        7) {
+          each_value = /*tocitems*/
+          ctx2[0];
+          let i;
+          for (i = 0; i < each_value.length; i += 1) {
+            const child_ctx = get_each_context4(ctx2, each_value, i);
+            if (each_blocks[i]) {
+              each_blocks[i].p(child_ctx, dirty);
+            } else {
+              each_blocks[i] = create_each_block4(child_ctx);
+              each_blocks[i].c();
+              each_blocks[i].m(div1, t0);
+            }
+          }
+          for (; i < each_blocks.length; i += 1) {
+            each_blocks[i].d(1);
+          }
+          each_blocks.length = each_value.length;
+        }
+      },
       i: noop,
       o: noop,
       d(detaching) {
         if (detaching)
-          detach(t);
+          detach(div1);
+        destroy_each(each_blocks, detaching);
       }
     };
+  }
+  function instance8($$self, $$props, $$invalidate) {
+    let { ptk } = $$props;
+    let { address } = $$props;
+    let { closePopup } = $$props;
+    let { pbid } = $$props;
+    let tocitems = [], cknow;
+    const getTocItems = (address2) => {
+      const m4 = address2.match(/(bk#?[a-z_\d]+)/);
+      const out = [];
+      const [from, to] = ptk.rangeOfAddress(m4[1]);
+      const ck = ptk.defines.ck;
+      const at = bsearchNumber(ck.linepos, from);
+      const at2 = bsearchNumber(ck.linepos, to);
+      for (let i = at; i < at2; i++) {
+        out.push({
+          caption: ck.innertext.get(i),
+          at: i,
+          id: ck.fields.id.values[i]
+        });
+      }
+      return out;
+    };
+    const gofolio = (at) => {
+      const ck = ptk.defines.ck;
+      const pb = ptk.defines.pb;
+      const ckline = ck.linepos[at];
+      const pbtag = ptk.nearestTag(ckline + 1, "pb") - 1;
+      const pbid2 = pb.fields.id.values[pbtag];
+      activefolio.set(parseInt(pbid2) - 1);
+      closePopup();
+    };
+    const click_handler = (item) => gofolio(item.at);
+    $$self.$$set = ($$props2) => {
+      if ("ptk" in $$props2)
+        $$invalidate(3, ptk = $$props2.ptk);
+      if ("address" in $$props2)
+        $$invalidate(4, address = $$props2.address);
+      if ("closePopup" in $$props2)
+        $$invalidate(5, closePopup = $$props2.closePopup);
+      if ("pbid" in $$props2)
+        $$invalidate(6, pbid = $$props2.pbid);
+    };
+    $$self.$$.update = () => {
+      if ($$self.$$.dirty & /*address*/
+      16) {
+        $:
+          $$invalidate(0, tocitems = getTocItems(address));
+      }
+      if ($$self.$$.dirty & /*address*/
+      16) {
+        $:
+          $$invalidate(1, cknow = address.match(/ck#?(\d+)/)[1]);
+      }
+    };
+    return [tocitems, cknow, gofolio, ptk, address, closePopup, pbid, click_handler];
   }
   var Toc = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, null, create_fragment7, safe_not_equal, {});
+      init(this, options, instance8, create_fragment7, safe_not_equal, {
+        ptk: 3,
+        address: 4,
+        closePopup: 5,
+        pbid: 6
+      });
     }
   };
   var toc_default = Toc;
@@ -8931,7 +9185,7 @@
           span,
           "selected",
           /*thetab*/
-          ctx[3] == "dict"
+          ctx[2] == "dict"
         );
       },
       m(target, anchor) {
@@ -8941,19 +9195,19 @@
             span,
             "click",
             /*click_handler_2*/
-            ctx[8]
+            ctx[9]
           );
           mounted = true;
         }
       },
       p(ctx2, dirty) {
         if (dirty & /*thetab*/
-        8) {
+        4) {
           toggle_class(
             span,
             "selected",
             /*thetab*/
-            ctx2[3] == "dict"
+            ctx2[2] == "dict"
           );
         }
       },
@@ -8972,10 +9226,10 @@
     dictpopup = new dictpopup_default({
       props: { def: (
         /*def*/
-        ctx[4]
+        ctx[3]
       ), ptk: (
         /*ptk*/
-        ctx[0]
+        ctx[4]
       ) }
     });
     return {
@@ -8987,7 +9241,7 @@
           div,
           "visible",
           /*thetab*/
-          ctx[3] == "dict"
+          ctx[2] == "dict"
         );
       },
       m(target, anchor) {
@@ -8998,21 +9252,21 @@
       p(ctx2, dirty) {
         const dictpopup_changes = {};
         if (dirty & /*def*/
-        16)
+        8)
           dictpopup_changes.def = /*def*/
-          ctx2[4];
+          ctx2[3];
         if (dirty & /*ptk*/
-        1)
+        16)
           dictpopup_changes.ptk = /*ptk*/
-          ctx2[0];
+          ctx2[4];
         dictpopup.$set(dictpopup_changes);
         if (!current || dirty & /*thetab*/
-        8) {
+        4) {
           toggle_class(
             div,
             "visible",
             /*thetab*/
-            ctx2[3] == "dict"
+            ctx2[2] == "dict"
           );
         }
       },
@@ -9052,28 +9306,43 @@
     let dispose;
     let if_block0 = (
       /*def*/
-      ctx[4] && create_if_block_12(ctx)
+      ctx[3] && create_if_block_12(ctx)
     );
-    toc = new toc_default({});
-    translations = new translations_default({
+    toc = new toc_default({
       props: {
-        closePopup: (
-          /*closePopup*/
-          ctx[2]
-        ),
         address: (
           /*address*/
+          ctx[0]
+        ),
+        closePopup: (
+          /*closePopup*/
           ctx[1]
         ),
         ptk: (
           /*ptk*/
+          ctx[4]
+        )
+      }
+    });
+    translations = new translations_default({
+      props: {
+        closePopup: (
+          /*closePopup*/
+          ctx[1]
+        ),
+        address: (
+          /*address*/
           ctx[0]
+        ),
+        ptk: (
+          /*ptk*/
+          ctx[4]
         )
       }
     });
     let if_block1 = (
       /*def*/
-      ctx[4] && create_if_block3(ctx)
+      ctx[3] && create_if_block3(ctx)
     );
     return {
       c() {
@@ -9101,14 +9370,14 @@
           span0,
           "selected",
           /*thetab*/
-          ctx[3] == "toc"
+          ctx[2] == "toc"
         );
         attr(span1, "class", "clickable");
         toggle_class(
           span1,
           "selected",
           /*thetab*/
-          ctx[3] == "translations"
+          ctx[2] == "translations"
         );
         attr(div0, "class", "tabs");
         attr(div1, "class", "tab-content");
@@ -9116,14 +9385,14 @@
           div1,
           "visible",
           /*thetab*/
-          ctx[3] == "toc"
+          ctx[2] == "toc"
         );
         attr(div2, "class", "tab-content");
         toggle_class(
           div2,
           "visible",
           /*thetab*/
-          ctx[3] == "translations"
+          ctx[2] == "translations"
         );
         attr(div3, "class", "popup");
       },
@@ -9152,13 +9421,13 @@
               span0,
               "click",
               /*click_handler*/
-              ctx[6]
+              ctx[7]
             ),
             listen(
               span1,
               "click",
               /*click_handler_1*/
-              ctx[7]
+              ctx[8]
             )
           ];
           mounted = true;
@@ -9166,26 +9435,26 @@
       },
       p(ctx2, [dirty]) {
         if (!current || dirty & /*thetab*/
-        8) {
+        4) {
           toggle_class(
             span0,
             "selected",
             /*thetab*/
-            ctx2[3] == "toc"
+            ctx2[2] == "toc"
           );
         }
         if (!current || dirty & /*thetab*/
-        8) {
+        4) {
           toggle_class(
             span1,
             "selected",
             /*thetab*/
-            ctx2[3] == "translations"
+            ctx2[2] == "translations"
           );
         }
         if (
           /*def*/
-          ctx2[4]
+          ctx2[3]
         ) {
           if (if_block0) {
             if_block0.p(ctx2, dirty);
@@ -9198,46 +9467,60 @@
           if_block0.d(1);
           if_block0 = null;
         }
+        const toc_changes = {};
+        if (dirty & /*address*/
+        1)
+          toc_changes.address = /*address*/
+          ctx2[0];
+        if (dirty & /*closePopup*/
+        2)
+          toc_changes.closePopup = /*closePopup*/
+          ctx2[1];
+        if (dirty & /*ptk*/
+        16)
+          toc_changes.ptk = /*ptk*/
+          ctx2[4];
+        toc.$set(toc_changes);
         if (!current || dirty & /*thetab*/
-        8) {
+        4) {
           toggle_class(
             div1,
             "visible",
             /*thetab*/
-            ctx2[3] == "toc"
+            ctx2[2] == "toc"
           );
         }
         const translations_changes = {};
         if (dirty & /*closePopup*/
-        4)
-          translations_changes.closePopup = /*closePopup*/
-          ctx2[2];
-        if (dirty & /*address*/
         2)
-          translations_changes.address = /*address*/
+          translations_changes.closePopup = /*closePopup*/
           ctx2[1];
-        if (dirty & /*ptk*/
+        if (dirty & /*address*/
         1)
-          translations_changes.ptk = /*ptk*/
+          translations_changes.address = /*address*/
           ctx2[0];
+        if (dirty & /*ptk*/
+        16)
+          translations_changes.ptk = /*ptk*/
+          ctx2[4];
         translations.$set(translations_changes);
         if (!current || dirty & /*thetab*/
-        8) {
+        4) {
           toggle_class(
             div2,
             "visible",
             /*thetab*/
-            ctx2[3] == "translations"
+            ctx2[2] == "translations"
           );
         }
         if (
           /*def*/
-          ctx2[4]
+          ctx2[3]
         ) {
           if (if_block1) {
             if_block1.p(ctx2, dirty);
             if (dirty & /*def*/
-            16) {
+            8) {
               transition_in(if_block1, 1);
             }
           } else {
@@ -9282,37 +9565,41 @@
       }
     };
   }
-  function instance8($$self, $$props, $$invalidate) {
+  function instance9($$self, $$props, $$invalidate) {
+    let $activePtk;
+    component_subscribe($$self, activePtk, ($$value) => $$invalidate(6, $activePtk = $$value));
     let { tofind = "" } = $$props;
-    let { ptk } = $$props;
     let { address = "" } = $$props;
     let { closePopup } = $$props;
     let thetab = "translations";
-    let def = "";
+    let def = "", ptk;
     const onDict = async (t) => {
       const entry = guessEntry(t, ptk.defines.e.fields.id.values);
       const defs = await ptk.fetchAddress("e#" + entry);
       if (defs.length) {
-        $$invalidate(4, def = defs.join("\n"));
+        $$invalidate(3, def = defs.join("\n"));
         showdict = true;
         showmainmenu = false;
-        $$invalidate(3, thetab = "dict");
+        $$invalidate(2, thetab = "dict");
       }
     };
-    const click_handler = () => $$invalidate(3, thetab = "toc");
-    const click_handler_1 = () => $$invalidate(3, thetab = "translations");
-    const click_handler_2 = () => $$invalidate(3, thetab = "dict");
+    const click_handler = () => $$invalidate(2, thetab = "toc");
+    const click_handler_1 = () => $$invalidate(2, thetab = "translations");
+    const click_handler_2 = () => $$invalidate(2, thetab = "dict");
     $$self.$$set = ($$props2) => {
       if ("tofind" in $$props2)
         $$invalidate(5, tofind = $$props2.tofind);
-      if ("ptk" in $$props2)
-        $$invalidate(0, ptk = $$props2.ptk);
       if ("address" in $$props2)
-        $$invalidate(1, address = $$props2.address);
+        $$invalidate(0, address = $$props2.address);
       if ("closePopup" in $$props2)
-        $$invalidate(2, closePopup = $$props2.closePopup);
+        $$invalidate(1, closePopup = $$props2.closePopup);
     };
     $$self.$$.update = () => {
+      if ($$self.$$.dirty & /*$activePtk*/
+      64) {
+        $:
+          $$invalidate(4, ptk = usePtk($activePtk));
+      }
       if ($$self.$$.dirty & /*tofind*/
       32) {
         $:
@@ -9320,12 +9607,13 @@
       }
     };
     return [
-      ptk,
       address,
       closePopup,
       thetab,
       def,
+      ptk,
       tofind,
+      $activePtk,
       click_handler,
       click_handler_1,
       click_handler_2
@@ -9334,18 +9622,190 @@
   var Taptext = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance8, create_fragment8, safe_not_equal, {
-        tofind: 5,
-        ptk: 0,
-        address: 1,
-        closePopup: 2
-      });
+      init(this, options, instance9, create_fragment8, safe_not_equal, { tofind: 5, address: 0, closePopup: 1 });
     }
   };
   var taptext_default = Taptext;
 
   // src/app.svelte
-  function create_if_block_2(ctx) {
+  function create_else_block2(ctx) {
+    let t;
+    return {
+      c() {
+        t = text("LOADING");
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      p: noop,
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_if_block4(ctx) {
+    let swipevideo;
+    let t0;
+    let t1;
+    let current_block_type_index;
+    let if_block1;
+    let if_block1_anchor;
+    let current;
+    swipevideo = new swipevideo_default({
+      props: {
+        src: (
+          /*$activebookid*/
+          ctx[6] + ".webm"
+        ),
+        ptk: (
+          /*ptk*/
+          ctx[0]
+        ),
+        onTapText: (
+          /*onTapText*/
+          ctx[9]
+        ),
+        onMainmenu: (
+          /*onMainmenu*/
+          ctx[8]
+        )
+      }
+    });
+    let if_block0 = (
+      /*showdict*/
+      (ctx[2] || /*showmainmenu*/
+      ctx[5]) && create_if_block_3(ctx)
+    );
+    const if_block_creators = [create_if_block_13, create_if_block_2];
+    const if_blocks = [];
+    function select_block_type_1(ctx2, dirty) {
+      if (
+        /*showdict*/
+        ctx2[2]
+      )
+        return 0;
+      if (
+        /*showmainmenu*/
+        ctx2[5] && /*ptk*/
+        ctx2[0]
+      )
+        return 1;
+      return -1;
+    }
+    if (~(current_block_type_index = select_block_type_1(ctx, -1))) {
+      if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    }
+    return {
+      c() {
+        create_component(swipevideo.$$.fragment);
+        t0 = space();
+        if (if_block0)
+          if_block0.c();
+        t1 = space();
+        if (if_block1)
+          if_block1.c();
+        if_block1_anchor = empty();
+      },
+      m(target, anchor) {
+        mount_component(swipevideo, target, anchor);
+        insert(target, t0, anchor);
+        if (if_block0)
+          if_block0.m(target, anchor);
+        insert(target, t1, anchor);
+        if (~current_block_type_index) {
+          if_blocks[current_block_type_index].m(target, anchor);
+        }
+        insert(target, if_block1_anchor, anchor);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        const swipevideo_changes = {};
+        if (dirty & /*$activebookid*/
+        64)
+          swipevideo_changes.src = /*$activebookid*/
+          ctx2[6] + ".webm";
+        if (dirty & /*ptk*/
+        1)
+          swipevideo_changes.ptk = /*ptk*/
+          ctx2[0];
+        swipevideo.$set(swipevideo_changes);
+        if (
+          /*showdict*/
+          ctx2[2] || /*showmainmenu*/
+          ctx2[5]
+        ) {
+          if (if_block0) {
+            if_block0.p(ctx2, dirty);
+          } else {
+            if_block0 = create_if_block_3(ctx2);
+            if_block0.c();
+            if_block0.m(t1.parentNode, t1);
+          }
+        } else if (if_block0) {
+          if_block0.d(1);
+          if_block0 = null;
+        }
+        let previous_block_index = current_block_type_index;
+        current_block_type_index = select_block_type_1(ctx2, dirty);
+        if (current_block_type_index === previous_block_index) {
+          if (~current_block_type_index) {
+            if_blocks[current_block_type_index].p(ctx2, dirty);
+          }
+        } else {
+          if (if_block1) {
+            group_outros();
+            transition_out(if_blocks[previous_block_index], 1, 1, () => {
+              if_blocks[previous_block_index] = null;
+            });
+            check_outros();
+          }
+          if (~current_block_type_index) {
+            if_block1 = if_blocks[current_block_type_index];
+            if (!if_block1) {
+              if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
+              if_block1.c();
+            } else {
+              if_block1.p(ctx2, dirty);
+            }
+            transition_in(if_block1, 1);
+            if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+          } else {
+            if_block1 = null;
+          }
+        }
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(swipevideo.$$.fragment, local);
+        transition_in(if_block1);
+        current = true;
+      },
+      o(local) {
+        transition_out(swipevideo.$$.fragment, local);
+        transition_out(if_block1);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(swipevideo, detaching);
+        if (detaching)
+          detach(t0);
+        if (if_block0)
+          if_block0.d(detaching);
+        if (detaching)
+          detach(t1);
+        if (~current_block_type_index) {
+          if_blocks[current_block_type_index].d(detaching);
+        }
+        if (detaching)
+          detach(if_block1_anchor);
+      }
+    };
+  }
+  function create_if_block_3(ctx) {
     let span;
     let mounted;
     let dispose;
@@ -9362,7 +9822,7 @@
             span,
             "click",
             /*closePopup*/
-            ctx[6]
+            ctx[7]
           );
           mounted = true;
         }
@@ -9376,7 +9836,7 @@
       }
     };
   }
-  function create_if_block_13(ctx) {
+  function create_if_block_2(ctx) {
     let mainmenu;
     let current;
     mainmenu = new mainmenu_default({
@@ -9387,7 +9847,7 @@
         ),
         onclose: (
           /*closePopup*/
-          ctx[6]
+          ctx[7]
         )
       }
     });
@@ -9422,26 +9882,22 @@
       }
     };
   }
-  function create_if_block4(ctx) {
+  function create_if_block_13(ctx) {
     let taptext;
     let current;
     taptext = new taptext_default({
       props: {
         address: (
           /*address*/
-          ctx[2]
+          ctx[3]
         ),
         tofind: (
           /*tofind*/
-          ctx[3]
-        ),
-        ptk: (
-          /*ptk*/
-          ctx[0]
+          ctx[4]
         ),
         closePopup: (
           /*closePopup*/
-          ctx[6]
+          ctx[7]
         )
       }
     });
@@ -9456,17 +9912,13 @@
       p(ctx2, dirty) {
         const taptext_changes = {};
         if (dirty & /*address*/
-        4)
-          taptext_changes.address = /*address*/
-          ctx2[2];
-        if (dirty & /*tofind*/
         8)
-          taptext_changes.tofind = /*tofind*/
+          taptext_changes.address = /*address*/
           ctx2[3];
-        if (dirty & /*ptk*/
-        1)
-          taptext_changes.ptk = /*ptk*/
-          ctx2[0];
+        if (dirty & /*tofind*/
+        16)
+          taptext_changes.tofind = /*tofind*/
+          ctx2[4];
         taptext.$set(taptext_changes);
       },
       i(local) {
@@ -9486,187 +9938,101 @@
   }
   function create_fragment9(ctx) {
     let div;
-    let swipevideo;
-    let t0;
-    let t1;
     let current_block_type_index;
-    let if_block1;
+    let if_block;
     let current;
-    swipevideo = new swipevideo_default({
-      props: {
-        src: (
-          /*$activebookid*/
-          ctx[5] + ".webm"
-        ),
-        ptk: (
-          /*ptk*/
-          ctx[0]
-        ),
-        onTapText: (
-          /*onTapText*/
-          ctx[8]
-        ),
-        onMainmenu: (
-          /*onMainmenu*/
-          ctx[7]
-        )
-      }
-    });
-    let if_block0 = (
-      /*showdict*/
-      (ctx[1] || /*showmainmenu*/
-      ctx[4]) && create_if_block_2(ctx)
-    );
-    const if_block_creators = [create_if_block4, create_if_block_13];
+    const if_block_creators = [create_if_block4, create_else_block2];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
-        /*showdict*/
+        /*loaded*/
         ctx2[1]
       )
         return 0;
-      if (
-        /*showmainmenu*/
-        ctx2[4] && /*ptk*/
-        ctx2[0]
-      )
-        return 1;
-      return -1;
+      return 1;
     }
-    if (~(current_block_type_index = select_block_type(ctx, -1))) {
-      if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-    }
+    current_block_type_index = select_block_type(ctx, -1);
+    if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
     return {
       c() {
         div = element("div");
-        create_component(swipevideo.$$.fragment);
-        t0 = space();
-        if (if_block0)
-          if_block0.c();
-        t1 = space();
-        if (if_block1)
-          if_block1.c();
+        if_block.c();
         attr(div, "class", "app svelte-1vzgb8l");
       },
       m(target, anchor) {
         insert(target, div, anchor);
-        mount_component(swipevideo, div, null);
-        append(div, t0);
-        if (if_block0)
-          if_block0.m(div, null);
-        append(div, t1);
-        if (~current_block_type_index) {
-          if_blocks[current_block_type_index].m(div, null);
-        }
+        if_blocks[current_block_type_index].m(div, null);
         current = true;
       },
       p(ctx2, [dirty]) {
-        const swipevideo_changes = {};
-        if (dirty & /*$activebookid*/
-        32)
-          swipevideo_changes.src = /*$activebookid*/
-          ctx2[5] + ".webm";
-        if (dirty & /*ptk*/
-        1)
-          swipevideo_changes.ptk = /*ptk*/
-          ctx2[0];
-        swipevideo.$set(swipevideo_changes);
-        if (
-          /*showdict*/
-          ctx2[1] || /*showmainmenu*/
-          ctx2[4]
-        ) {
-          if (if_block0) {
-            if_block0.p(ctx2, dirty);
-          } else {
-            if_block0 = create_if_block_2(ctx2);
-            if_block0.c();
-            if_block0.m(div, t1);
-          }
-        } else if (if_block0) {
-          if_block0.d(1);
-          if_block0 = null;
-        }
         let previous_block_index = current_block_type_index;
         current_block_type_index = select_block_type(ctx2, dirty);
         if (current_block_type_index === previous_block_index) {
-          if (~current_block_type_index) {
-            if_blocks[current_block_type_index].p(ctx2, dirty);
-          }
+          if_blocks[current_block_type_index].p(ctx2, dirty);
         } else {
-          if (if_block1) {
-            group_outros();
-            transition_out(if_blocks[previous_block_index], 1, 1, () => {
-              if_blocks[previous_block_index] = null;
-            });
-            check_outros();
-          }
-          if (~current_block_type_index) {
-            if_block1 = if_blocks[current_block_type_index];
-            if (!if_block1) {
-              if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
-              if_block1.c();
-            } else {
-              if_block1.p(ctx2, dirty);
-            }
-            transition_in(if_block1, 1);
-            if_block1.m(div, null);
+          group_outros();
+          transition_out(if_blocks[previous_block_index], 1, 1, () => {
+            if_blocks[previous_block_index] = null;
+          });
+          check_outros();
+          if_block = if_blocks[current_block_type_index];
+          if (!if_block) {
+            if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
+            if_block.c();
           } else {
-            if_block1 = null;
+            if_block.p(ctx2, dirty);
           }
+          transition_in(if_block, 1);
+          if_block.m(div, null);
         }
       },
       i(local) {
         if (current)
           return;
-        transition_in(swipevideo.$$.fragment, local);
-        transition_in(if_block1);
+        transition_in(if_block);
         current = true;
       },
       o(local) {
-        transition_out(swipevideo.$$.fragment, local);
-        transition_out(if_block1);
+        transition_out(if_block);
         current = false;
       },
       d(detaching) {
         if (detaching)
           detach(div);
-        destroy_component(swipevideo);
-        if (if_block0)
-          if_block0.d();
-        if (~current_block_type_index) {
-          if_blocks[current_block_type_index].d();
-        }
+        if_blocks[current_block_type_index].d();
       }
     };
   }
-  function instance9($$self, $$props, $$invalidate) {
+  function instance10($$self, $$props, $$invalidate) {
     let $activebookid;
-    component_subscribe($$self, activebookid, ($$value) => $$invalidate(5, $activebookid = $$value));
+    component_subscribe($$self, activebookid, ($$value) => $$invalidate(6, $activebookid = $$value));
     let ptk;
     registerServiceWorker();
+    let loaded = false;
     onMount(async () => {
       $$invalidate(0, ptk = await openPtk("dc"));
       await openPtk("dc_sanskrit");
-      console.log(ptk);
+      $$invalidate(1, loaded = true);
     });
     let showdict2 = false, address = "", tofind = "", showmainmenu2 = false;
     const closePopup = () => {
-      $$invalidate(1, showdict2 = false);
-      $$invalidate(4, showmainmenu2 = false);
+      $$invalidate(2, showdict2 = false);
+      $$invalidate(5, showmainmenu2 = false);
     };
     const onMainmenu = () => {
-      $$invalidate(1, showdict2 = false);
-      $$invalidate(4, showmainmenu2 = true);
+      $$invalidate(2, showdict2 = false);
+      $$invalidate(5, showmainmenu2 = true);
     };
-    const onTapText = (t, _address) => {
-      $$invalidate(1, showdict2 = true);
-      $$invalidate(3, tofind = t);
-      $$invalidate(4, showmainmenu2 = false);
-      $$invalidate(2, address = _address);
+    const onTapText = (t, _address, ptkname) => {
+      $$invalidate(2, showdict2 = true);
+      $$invalidate(4, tofind = t);
+      $$invalidate(5, showmainmenu2 = false);
+      $$invalidate(3, address = _address);
+      $$invalidate(0, ptk = usePtk(ptkname));
     };
     return [
       ptk,
+      loaded,
       showdict2,
       address,
       tofind,
@@ -9680,7 +10046,7 @@
   var App = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance9, create_fragment9, safe_not_equal, {});
+      init(this, options, instance10, create_fragment9, safe_not_equal, {});
     }
   };
   var app_default = App;
