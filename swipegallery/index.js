@@ -6953,6 +6953,8 @@
     nearestTag(line, tag, fieldname = "") {
       if (typeof tag == "string")
         tag = this.defines[tag];
+      if (!tag)
+        return -1;
       const linepos = tag.linepos;
       if (!linepos)
         return null;
@@ -7105,12 +7107,24 @@
         break;
       i++;
     }
+    let textbefore = "";
     let s = text2.slice(pos);
+    if (pos > 0) {
+      const befores = splitUTF32Char(text2.slice(0, pos));
+      let back = befores.length - 1;
+      while (pos > 0 && back > 0 && CJKRangeName(befores[back])) {
+        textbefore = befores[back] + textbefore;
+        back--;
+        pos--;
+      }
+    }
+    if (textbefore)
+      textbefore = textbefore + "^";
     if (nextline) {
       const [nextlinetext] = parseOfftext(nextline);
-      s += nextlinetext;
+      s = s + nextlinetext;
     }
-    return [s, pos + tagstart];
+    return [textbefore + s, pos + tagstart];
   };
   var folio2ChunkLine = async (ptk, foliotext, from, cx, pos) => {
     const out = [];
@@ -7131,6 +7145,8 @@
         await ptk.loadLines([startline]);
         const line = ptk.getLine(startline);
         out.unshift(line);
+        if (out.length > 5)
+          break;
         if (~line.indexOf("^ck"))
           break;
       }
@@ -7142,9 +7158,14 @@
     }
     const lines = s.split("	");
     const m4 = lines[0].match(/\^ck#?([a-z\d\-_]+)/);
+    if (!m4)
+      return "";
     const ck = m4[1];
     const lineoff = lines.length - 1;
     return "ck#" + ck + (lineoff ? ">" + lineoff : "");
+  };
+  var extractPuncPos = (foliotext) => {
+    return "puncs";
   };
 
   // ../ptk/align/parallels.ts
@@ -7190,9 +7211,18 @@
 
   // ../ptk/lexicon/entry.ts
   var guessEntry = (sentence, values) => {
-    for (let i = 0; i < values.length; i++) {
-      if (sentence.slice(0, values[i].length) == values[i]) {
-        return values[i];
+    const at = sentence.indexOf("^");
+    let textbefore = "";
+    if (~at) {
+      textbefore = sentence.slice(0, at);
+      sentence = sentence.slice(at + 1);
+    }
+    for (let j2 = 0; j2 <= textbefore.length; j2++) {
+      for (let i = 0; i < values.length; i++) {
+        const tf = (textbefore.slice(textbefore.length - j2) + sentence).slice(0, values[i].length);
+        if (tf == values[i]) {
+          return values[i];
+        }
       }
     }
     const chars = splitUTF32Char(sentence);
@@ -7398,7 +7428,7 @@
     let dispose;
     let if_block0 = (
       /*mp4player*/
-      ctx[1]?.currentTime == 0 && create_if_block_1(ctx)
+      ctx[1]?.currentTime < 1 && create_if_block_1(ctx)
     );
     let if_block1 = (
       /*touching*/
@@ -7476,7 +7506,7 @@
       p(ctx2, [dirty]) {
         if (
           /*mp4player*/
-          ctx2[1]?.currentTime == 0
+          ctx2[1]?.currentTime < 1
         ) {
           if (if_block0) {
           } else {
@@ -7553,6 +7583,7 @@
     } } = $$props;
     let { onMainmenu = function() {
     } } = $$props;
+    let foliotext = "", foliofrom = 0;
     const videoRect = () => {
       const r = mp4player.clientHeight / mp4player.videoHeight;
       const w = mp4player.videoWidth * r;
@@ -7610,6 +7641,7 @@
         $$invalidate(1, mp4player.currentTime += -1, mp4player);
       }
       e.preventDefault();
+      updateFolioText();
     };
     const getCharXY = (div, x, y) => {
       const [left, right] = videoRect();
@@ -7623,9 +7655,8 @@
       if (!inVideoRect(x))
         return;
       const [cx, cy] = getCharXY(mp4player, x, y);
-      const [foliotext, from, to] = await fetchFolioText(ptk, $activebookid, 1 + Math.floor(mp4player.currentTime));
       const [t, pos] = getConreatePos(foliotext[cx], cy, foliotext[cx + 1]);
-      const address = await folio2ChunkLine(ptk, foliotext, from, cx, pos);
+      const address = "bk#" + $activebookid + "." + await folio2ChunkLine(ptk, foliotext, foliofrom, cx, pos);
       await onTapText(t, address);
     };
     const ontouchend = async (e) => {
@@ -7641,12 +7672,17 @@
         else if (direction == 3 || direction == 4) {
           onMainmenu();
         }
+        updateFolioText();
       } else {
       }
       $$invalidate(2, touching = -1);
       $$invalidate(3, direction = 0);
     };
-    const gotoFolio = (t, bkid) => {
+    const updateFolioText = async () => {
+      [foliotext, foliofrom] = await fetchFolioText(ptk, $activebookid, 1 + Math.floor(mp4player?.currentTime || 0));
+      const puncs = extractPuncPos(foliotext);
+    };
+    const gotoFolio = async (t) => {
       if (t !== mp4player?.currentTime + 0.1) {
         setTimeout(
           () => {
@@ -7655,6 +7691,7 @@
           1e3
         );
       }
+      updateFolioText();
     };
     function video_binding($$value) {
       binding_callbacks[$$value ? "unshift" : "push"](() => {
@@ -7677,10 +7714,11 @@
         $$invalidate(14, onMainmenu = $$props2.onMainmenu);
     };
     $$self.$$.update = () => {
-      if ($$self.$$.dirty & /*$activefolio, $activebookid*/
-      98304) {
+      if ($$self.$$.dirty & /*ptk, $activefolio, $activebookid*/
+      99328) {
         $:
-          gotoFolio($activefolio, $activebookid);
+          if (ptk)
+            gotoFolio($activefolio, $activebookid);
       }
     };
     return [
@@ -8000,10 +8038,10 @@
         t0 = text(t0_value);
         t1 = space();
         span1 = element("span");
-        attr(span0, "class", "entry svelte-1057x72");
+        attr(span0, "class", "dictentry");
         toggle_class(span0, "clickable", !!/*e*/
         ctx[4]?.attrs.wiki);
-        attr(span1, "class", "text svelte-1057x72");
+        attr(span1, "class", "dicttext");
       },
       m(target, anchor) {
         insert(target, span0, anchor);
@@ -8064,7 +8102,7 @@
     return {
       c() {
         iframe = element("iframe");
-        attr(iframe, "class", "iframe svelte-1057x72");
+        attr(iframe, "class", "iframe svelte-jp8tgd");
         attr(iframe, "title", "wiki");
         if (!src_url_equal(iframe.src, iframe_src_value = /*src*/
         ctx[2]))
@@ -8102,7 +8140,7 @@
       c() {
         div = element("div");
         if_block.c();
-        attr(div, "class", "dictpopup svelte-1057x72");
+        attr(div, "class", "dictpopup svelte-jp8tgd");
       },
       m(target, anchor) {
         insert(target, div, anchor);
@@ -8203,7 +8241,7 @@
   // src/translations.svelte
   function get_each_context2(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[11] = list[i];
+    child_ctx[13] = list[i];
     return child_ctx;
   }
   function create_catch_block(ctx) {
@@ -8239,8 +8277,8 @@
         insert(target, div, anchor);
       },
       p(ctx2, dirty) {
-        if (dirty & /*out, $activebook, goFolio, getBookTitle*/
-        114) {
+        if (dirty & /*out, $activebook, puretext, goFolio, hasfolio, getBookTitle*/
+        498) {
           each_value = /*out*/
           ctx2[4];
           let i;
@@ -8276,16 +8314,26 @@
       /*getBookTitle*/
       ctx[5](
         /*item*/
-        ctx[11].ptk,
+        ctx[13].ptk,
         /*item*/
-        ctx[11].heading?.bk?.at
+        ctx[13].heading?.bk?.at
       ) + ""
     );
     let t0;
+    let t1_value = (
+      /*hasfolio*/
+      ctx[7](
+        /*item*/
+        ctx[13].ptk
+      ) ? "\u2190" : " "
+    );
     let t1;
     let t2_value = (
-      /*item*/
-      ctx[11].linetext.replace(/\^[a-z\d]+/g, "") + ""
+      /*puretext*/
+      ctx[8](
+        /*item*/
+        ctx[13].linetext
+      ) + ""
     );
     let t2;
     let t3;
@@ -8295,9 +8343,9 @@
     function click_handler() {
       return (
         /*click_handler*/
-        ctx[9](
+        ctx[11](
           /*item*/
-          ctx[11]
+          ctx[13]
         )
       );
     }
@@ -8306,7 +8354,7 @@
         div0 = element("div");
         span = element("span");
         t0 = text(t0_value);
-        t1 = space();
+        t1 = text(t1_value);
         t2 = text(t2_value);
         t3 = space();
         div1 = element("div");
@@ -8315,7 +8363,7 @@
           div0,
           "selecteditem",
           /*item*/
-          ctx[11].heading?.bk?.at == /*$activebook*/
+          ctx[13].heading?.bk?.at == /*$activebook*/
           ctx[1]
         );
         attr(div1, "class", "hr");
@@ -8324,7 +8372,7 @@
         insert(target, div0, anchor);
         append(div0, span);
         append(span, t0);
-        append(div0, t1);
+        append(span, t1);
         append(div0, t2);
         insert(target, t3, anchor);
         insert(target, div1, anchor);
@@ -8341,7 +8389,7 @@
             div0,
             "selecteditem",
             /*item*/
-            ctx[11].heading?.bk?.at == /*$activebook*/
+            ctx[13].heading?.bk?.at == /*$activebook*/
             ctx[1]
           );
         }
@@ -8377,7 +8425,7 @@
       /*ptk*/
       ctx[0],
       /*start*/
-      ctx[2] + /*line*/
+      ctx[2] + /*lineoff*/
       ctx[3],
       /*out*/
       ctx[4]
@@ -8386,7 +8434,7 @@
       c() {
         div = element("div");
         info.block.c();
-        attr(div, "class", "text svelte-1aqoojj");
+        attr(div, "class", "paralleltext");
       },
       m(target, anchor) {
         insert(target, div, anchor);
@@ -8402,7 +8450,7 @@
           /*ptk*/
           ctx[0],
           /*start*/
-          ctx[2] + /*line*/
+          ctx[2] + /*lineoff*/
           ctx[3],
           /*out*/
           ctx[4]
@@ -8429,32 +8477,40 @@
     } } = $$props;
     let { address } = $$props;
     let { ptk } = $$props;
-    const [start, end, line] = ptk.rangeOfAddress(address);
+    const [start, end, lineoff] = ptk.rangeOfAddress(address);
     const out = [];
     const getBookTitle = (ptk2, nbk) => {
       const bk = ptk2.defines.bk;
       const heading = bk.fields.heading.values[nbk];
       return heading;
     };
-    const goFolio = (ptk2, line2) => {
+    const goFolio = (ptk2, line) => {
       const pb = ptk2.defines.pb;
       const bk = ptk2.defines.bk;
       const folio = ptk2.defines.folio;
-      const pbat = ptk2.nearestTag(line2 + 1, "pb") - 1;
-      const bkat = ptk2.nearestTag(line2 + 1, "bk") - 1;
-      const folioat = ptk2.nearestTag(line2 + 1, "folio") - 1;
+      const pbat = ptk2.nearestTag(line + 1, "pb") - 1;
+      const bkat = ptk2.nearestTag(line + 1, "bk") - 1;
+      const folioat = ptk2.nearestTag(line + 1, "folio") - 1;
       const pbid = pb.fields.id.values[pbat];
       activebook.set(bkat);
       activebookid.set(folio.fields.id.values[folioat]);
       activefolio.set(parseInt(pbid) - 1);
       closePopup();
     };
+    const hasfolio = (ptk2, line) => {
+      const folioat = ptk2.nearestTag(line + 1, "folio");
+      return folioat > -1;
+    };
+    const puretext = (_text) => {
+      const [text2] = parseOfftext(_text);
+      return text2;
+    };
     const click_handler = (item) => goFolio(item.ptk, item.line);
     $$self.$$set = ($$props2) => {
       if ("closePopup" in $$props2)
-        $$invalidate(7, closePopup = $$props2.closePopup);
+        $$invalidate(9, closePopup = $$props2.closePopup);
       if ("address" in $$props2)
-        $$invalidate(8, address = $$props2.address);
+        $$invalidate(10, address = $$props2.address);
       if ("ptk" in $$props2)
         $$invalidate(0, ptk = $$props2.ptk);
     };
@@ -8462,10 +8518,12 @@
       ptk,
       $activebook,
       start,
-      line,
+      lineoff,
       out,
       getBookTitle,
       goFolio,
+      hasfolio,
+      puretext,
       closePopup,
       address,
       click_handler
@@ -8474,7 +8532,7 @@
   var Translations = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance6, create_fragment5, safe_not_equal, { closePopup: 7, address: 8, ptk: 0 });
+      init(this, options, instance6, create_fragment5, safe_not_equal, { closePopup: 9, address: 10, ptk: 0 });
     }
   };
   var translations_default = Translations;
@@ -8672,7 +8730,7 @@
         span0.textContent = "\u76EE\u9304";
         t1 = space();
         span1 = element("span");
-        span1.textContent = "\u7570\u8B6F";
+        span1.textContent = "\u5225\u8B6F";
         t3 = space();
         if (if_block0)
           if_block0.c();

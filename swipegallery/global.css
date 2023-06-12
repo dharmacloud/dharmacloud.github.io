@@ -36,10 +36,13 @@ body {
   position:relative
 }
 
-.book {font-size:5vh}
+.book {font-size:4vh}
 .refer {text-decoration: underline;}
 .clickable {border-bottom: blue solid 1px}
 
 .author {border:gray solid 1px ;border-radius: 0.25em;}
 .selecteditem {background:silver}
 .hr {height: 1px ;background:black}
+.paralleltext {font-size:4vh;}
+.dicttext {font-size:4vh}
+.dictentry {font-size:6vh}

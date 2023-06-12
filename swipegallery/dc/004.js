@@ -1,4 +1,4 @@
-jsonp(4,{"name":"dc","start":2715},`id
+jsonp(4,{"name":"dc","start":2742},`id
 
-金剛經
+〔金剛經詞典〕【st
 vcpp`)
