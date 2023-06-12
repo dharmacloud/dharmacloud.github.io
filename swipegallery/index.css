@@ -1,3 +1,15 @@
+/* fakecss:D:/2023/swipegallery/src/punclayer.esbuild-svelte-fake-css */
+.puncs.svelte-don625 {
+  z-index: 9;
+  position: absolute;
+}
+.punc.svelte-don625 {
+  z-index: 9;
+  position: absolute;
+  color: rgba(255, 0, 0, 0.6);
+  font-family: bolder;
+}
+
 /* fakecss:D:/2023/swipegallery/src/swipevideo.esbuild-svelte-fake-css */
 .container.svelte-1n8xl7s {
   width: 100%;
