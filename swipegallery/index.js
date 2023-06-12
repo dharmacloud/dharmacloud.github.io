@@ -7377,7 +7377,7 @@
       c() {
         span = element("span");
         t = text(t_value);
-        attr(span, "class", "punc svelte-1yqqrxb");
+        attr(span, "class", "punc svelte-pz7dv");
         attr(span, "style", span_style_value = /*puncStyle*/
         ctx[3](
           /*punc*/
@@ -7433,7 +7433,7 @@
         for (let i = 0; i < each_blocks.length; i += 1) {
           each_blocks[i].c();
         }
-        attr(div, "class", "puncs svelte-1yqqrxb");
+        attr(div, "class", "puncs svelte-pz7dv");
         attr(div, "style", div_style_value = /*stylestring*/
         ctx[2](
           /*frame*/
@@ -8237,6 +8237,8 @@
     };
   }
   function create_fragment3(ctx) {
+    let div;
+    let t1;
     let each_1_anchor;
     let each_value = (
       /*books*/
@@ -8248,12 +8250,18 @@
     }
     return {
       c() {
+        div = element("div");
+        div.textContent = "\u7D93\u9304";
+        t1 = space();
         for (let i = 0; i < each_blocks.length; i += 1) {
           each_blocks[i].c();
         }
         each_1_anchor = empty();
+        attr(div, "class", "toctext");
       },
       m(target, anchor) {
+        insert(target, div, anchor);
+        insert(target, t1, anchor);
         for (let i = 0; i < each_blocks.length; i += 1) {
           if (each_blocks[i]) {
             each_blocks[i].m(target, anchor);
@@ -8286,6 +8294,10 @@
       i: noop,
       o: noop,
       d(detaching) {
+        if (detaching)
+          detach(div);
+        if (detaching)
+          detach(t1);
         destroy_each(each_blocks, detaching);
         if (detaching)
           detach(each_1_anchor);

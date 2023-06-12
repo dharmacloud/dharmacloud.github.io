@@ -1,10 +1,11 @@
 /* fakecss:D:/2023/swipegallery/src/punclayer.esbuild-svelte-fake-css */
-.puncs.svelte-1yqqrxb {
+.puncs.svelte-pz7dv {
   z-index: 9;
   position: absolute;
   user-select: none;
+  overflow: hidden;
 }
-.punc.svelte-1yqqrxb {
+.punc.svelte-pz7dv {
   z-index: 9;
   position: absolute;
   color: rgba(255, 0, 0, 0.6);
