@@ -7496,16 +7496,16 @@
       return `left:${f.left}px;width:${f.width}px;top:${f.top}px;height:${f.height}px`;
     };
     const puncStyle = (line, ch, text2) => {
-      let fontsize = unith * 0.9, yinc = unith * 0.2, xinc = 0;
+      let fontsize = unith * 0.9, yinc = unith * 0.2, xinc = -unitw * 0.1;
       if (text2 == "\uFF1F" || text2 == "\uFF01") {
         fontsize = fontsize / 1.5;
         yinc += unith * 0.4;
       } else if (text2 == "\uFE41" || text2 == "\uFE43") {
-        xinc += -unitw * 0.4;
-        yinc += unith * 0.6;
+        xinc += -unitw * 0.3;
+        yinc += unith * 0.5;
       } else if (text2 == "\uFE44" || text2 == "\uFE42") {
-        xinc += -unitw * 0.7;
-        yinc += unith * 0.6;
+        xinc += -unitw * 0.6;
+        yinc += unith * 0.4;
       } else if (!isPunc(text2[0])) {
         yinc += unith;
         fontsize = fontsize / 1.5;
