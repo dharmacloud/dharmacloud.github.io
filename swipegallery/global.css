@@ -15,7 +15,7 @@ body {
 }
 
 .popup {position:absolute;top:3%;left:3%;width:94%;height:94%;background:#dfdfdf;overflow:hidden;z-index: 99}
-.tabs {--webkit-user-select: none;overflow:hidden  ; font-size:5vh;
+.tabs {--webkit-user-select: none;overflow:hidden  ; font-size:4.5vh;
   user-select: none;padding-left: 0.3em; background:silver}
 .selected {background: gray;border-radius: 0.25em;}
 .tab-content {
@@ -49,3 +49,4 @@ body {
 .dicttext {font-size:4vh}
 .dictentry {font-size:6vh}
 .endmarker {width:100%;text-align: center;height: 3em;}
+.sourcetext{font-weight: bold;color:brown}

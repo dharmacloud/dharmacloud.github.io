@@ -1,3 +1,5 @@
-jsonp(10,{"name":"dc","start":2787},`id
-
-金剛般若波羅蜜經	般若波羅蜜	般若	波羅蜜	姚秦	三藏法師	鳩摩羅什	玄奘	如是我聞	一時	佛	舍衛	祇園精舍	祇樹給孤獨園	給孤獨	比丘	苾芻	爾時	世尊	衣	鉢	乞食	婆伽婆	薄伽梵	舍婆提	室羅筏	逝多林	須菩提	妙生	善實	菩提	菩薩	阿耨多羅三藐三菩提	endmarker`)
+jsonp(10,{"name":"dc","start":5651},`idheading
+EV;9=H=H=H=H=H
+御製金剛般若波羅蜜經集註序金剛經詞典金剛般若波羅蜜經金剛般若波羅蜜經金剛能斷般若波羅蜜經金剛般若波羅蜜經能斷金剛般若波羅蜜多經能斷金剛般若波羅蜜多經
+ajiva_combined	vcppdict	vcpp_kumarajiva	vcpp_bodhiruci	vcpp_gupta	vcpp_paramartha	vcpp_xuanzang	vcpp_yijing
+集註	詞典	羅什	留支	笈多	真諦	玄奘	義淨`)

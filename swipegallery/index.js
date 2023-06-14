@@ -86,9 +86,6 @@
       tar[k] = src[k];
     return tar;
   }
-  function is_promise(value) {
-    return !!value && (typeof value === "object" || typeof value === "function") && typeof value.then === "function";
-  }
   function run(fn) {
     return fn();
   }
@@ -225,6 +222,9 @@
   function element(name2) {
     return document.createElement(name2);
   }
+  function svg_element(name2) {
+    return document.createElementNS("http://www.w3.org/2000/svg", name2);
+  }
   function text(data) {
     return document.createTextNode(data);
   }
@@ -261,6 +261,44 @@
     e.initCustomEvent(type, bubbles, cancelable, detail);
     return e;
   }
+  var HtmlTag = class {
+    constructor(is_svg = false) {
+      this.is_svg = false;
+      this.is_svg = is_svg;
+      this.e = this.n = null;
+    }
+    c(html) {
+      this.h(html);
+    }
+    m(html, target, anchor = null) {
+      if (!this.e) {
+        if (this.is_svg)
+          this.e = svg_element(target.nodeName);
+        else
+          this.e = element(target.nodeType === 11 ? "TEMPLATE" : target.nodeName);
+        this.t = target.tagName !== "TEMPLATE" ? target : target.content;
+        this.c(html);
+      }
+      this.i(anchor);
+    }
+    h(html) {
+      this.e.innerHTML = html;
+      this.n = Array.from(this.e.nodeName === "TEMPLATE" ? this.e.content.childNodes : this.e.childNodes);
+    }
+    i(anchor) {
+      for (let i = 0; i < this.n.length; i += 1) {
+        insert(this.t, this.n[i], anchor);
+      }
+    }
+    p(html) {
+      this.d();
+      this.h(html);
+      this.i(this.a);
+    }
+    d() {
+      this.n.forEach(detach);
+    }
+  };
   var current_component;
   function set_current_component(component) {
     current_component = component;
@@ -406,84 +444,6 @@
       callback();
     }
   }
-  function handle_promise(promise, info) {
-    const token = info.token = {};
-    function update2(type, index, key, value) {
-      if (info.token !== token)
-        return;
-      info.resolved = value;
-      let child_ctx = info.ctx;
-      if (key !== void 0) {
-        child_ctx = child_ctx.slice();
-        child_ctx[key] = value;
-      }
-      const block = type && (info.current = type)(child_ctx);
-      let needs_flush = false;
-      if (info.block) {
-        if (info.blocks) {
-          info.blocks.forEach((block2, i) => {
-            if (i !== index && block2) {
-              group_outros();
-              transition_out(block2, 1, 1, () => {
-                if (info.blocks[i] === block2) {
-                  info.blocks[i] = null;
-                }
-              });
-              check_outros();
-            }
-          });
-        } else {
-          info.block.d(1);
-        }
-        block.c();
-        transition_in(block, 1);
-        block.m(info.mount(), info.anchor);
-        needs_flush = true;
-      }
-      info.block = block;
-      if (info.blocks)
-        info.blocks[index] = block;
-      if (needs_flush) {
-        flush();
-      }
-    }
-    if (is_promise(promise)) {
-      const current_component2 = get_current_component();
-      promise.then((value) => {
-        set_current_component(current_component2);
-        update2(info.then, 1, info.value, value);
-        set_current_component(null);
-      }, (error) => {
-        set_current_component(current_component2);
-        update2(info.catch, 2, info.error, error);
-        set_current_component(null);
-        if (!info.hasCatch) {
-          throw error;
-        }
-      });
-      if (info.current !== info.pending) {
-        update2(info.pending, 0);
-        return true;
-      }
-    } else {
-      if (info.current !== info.then) {
-        update2(info.then, 1, info.value, promise);
-        return true;
-      }
-      info.resolved = promise;
-    }
-  }
-  function update_await_block_branch(info, ctx, dirty) {
-    const child_ctx = ctx.slice();
-    const { resolved } = info;
-    if (info.current === info.then) {
-      child_ctx[info.value] = resolved;
-    }
-    if (info.current === info.catch) {
-      child_ctx[info.error] = resolved;
-    }
-    info.block.p(child_ctx, dirty);
-  }
   var _boolean_attributes = [
     "allowfullscreen",
     "allowpaymentrequest",
@@ -556,7 +516,7 @@
     }
     component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
   }
-  function init(component, options, instance14, create_fragment13, not_equal, props, append_styles, dirty = [-1]) {
+  function init(component, options, instance16, create_fragment15, not_equal, props, append_styles, dirty = [-1]) {
     const parent_component = current_component;
     set_current_component(component);
     const $$ = component.$$ = {
@@ -582,7 +542,7 @@
     };
     append_styles && append_styles($$.root);
     let ready = false;
-    $$.ctx = instance14 ? instance14(component, options.props || {}, (i, ret, ...rest) => {
+    $$.ctx = instance16 ? instance16(component, options.props || {}, (i, ret, ...rest) => {
       const value = rest.length ? rest[0] : ret;
       if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
         if (!$$.skip_bound && $$.bound[i])
@@ -595,7 +555,7 @@
     $$.update();
     ready = true;
     run_all($$.before_update);
-    $$.fragment = create_fragment13 ? create_fragment13($$.ctx) : false;
+    $$.fragment = create_fragment15 ? create_fragment15($$.ctx) : false;
     if (options.target) {
       if (options.hydrate) {
         start_hydrating();
@@ -1316,7 +1276,7 @@
     "\u2780": 10,
     "\u278A": 10
   };
-  var styledNumber = (n, style, offset = 1) => {
+  var styledNumber = (n, style = "\u2460", offset = 1) => {
     let max = StyledNumber1[style];
     if (typeof n !== "number")
       n = parseInt(n) || 0;
@@ -5291,6 +5251,9 @@
     }
     return out;
   };
+  var makeAddress = (ptkname = "", action = "", from = 0, till = 0, lineoff = -1) => {
+    return (ptkname ? ptkname + ":" : "") + action + (from ? ">" + from : "") + (till ? "<" + till : "") + (lineoff > 0 ? ":" + lineoff : "");
+  };
   var parseAddress = (address) => {
     let m0, ptkname = "", action = "", from = "", till = "", highlightline = "";
     let m4 = address.match(PTK_ACTION_FROMTILL);
@@ -5366,15 +5329,15 @@
     if (typeof address == "string") {
       addr = parseAddress(address);
     }
-    const { from, till, action } = addr;
+    const { from, till, action, highlightline } = addr;
     const eleid = parseAction(action);
     const ranges = rangeOfElementId.call(this, eleid);
     if (ranges.length) {
       const [first, last] = ranges[ranges.length - 1];
-      return [first, last, from, till];
+      return [first, last, from, till, highlightline];
     } else {
       const end = till ? till : from + 1;
-      return [0, end];
+      return [0, end, from, till, highlightline];
     }
   }
   async function fetchAddress(eleid) {
@@ -7317,7 +7280,7 @@
       return "";
     const ck = m4[1];
     const lineoff = lines.length - 1;
-    return "ck#" + ck + (lineoff ? ">" + lineoff : "");
+    return "ck#" + ck + (lineoff ? ":" + lineoff : "");
   };
   var extractPuncPos = (foliotext, foliolines = 5, validpuncs = "\u300C\u300D\u300E\u300F\u3002\uFF0C\uFF1B\uFF1A\u3001\uFF01\uFF1F") => {
     const puncs = [];
@@ -7358,12 +7321,6 @@
     const out = [];
     if (!ptk)
       return out;
-    const parallelPitakas = poolParallelPitakas(ptk);
-    for (let i = 0; i < parallelPitakas.length; i++) {
-      const pptk = usePtk(parallelPitakas[i]);
-      const lines = pptk.getParallelLine(ptk, line);
-      lines.forEach((it) => out.push([...it]));
-    }
     const bk = ptk.nearestTag(line, "bk") - 1;
     const bookstart = ptk.defines.bk.linepos[bk];
     if (includeself) {
@@ -7376,6 +7333,12 @@
       if (lineoff <= end - start) {
         out.push([ptk, start - bookstart, start + lineoff]);
       }
+    }
+    const parallelPitakas = poolParallelPitakas(ptk);
+    for (let i = 0; i < parallelPitakas.length; i++) {
+      const pptk = usePtk(parallelPitakas[i]);
+      const lines = pptk.getParallelLine(ptk, line);
+      lines.forEach((it) => out.push([...it]));
     }
     return out;
   };
@@ -9713,102 +9676,209 @@
   // ../ptk/utils/diff.ts
   var import_colors = __toESM(require_colors(), 1);
 
+  // src/sentencenav.svelte
+  function create_key_block2(ctx) {
+    let div;
+    let span0;
+    let t1;
+    let t2;
+    let t3;
+    let span1;
+    let mounted;
+    let dispose;
+    return {
+      c() {
+        div = element("div");
+        span0 = element("span");
+        span0.textContent = "\u2190";
+        t1 = space();
+        t2 = text(
+          /*humanaddr*/
+          ctx[0]
+        );
+        t3 = space();
+        span1 = element("span");
+        span1.textContent = "\u2192";
+        attr(span0, "class", "toctext");
+        attr(span1, "class", "toctext");
+        attr(div, "class", "nav svelte-82p8iw");
+      },
+      m(target, anchor) {
+        insert(target, div, anchor);
+        append(div, span0);
+        append(div, t1);
+        append(div, t2);
+        append(div, t3);
+        append(div, span1);
+        if (!mounted) {
+          dispose = [
+            listen(
+              span0,
+              "click",
+              /*prevSentence*/
+              ctx[2]
+            ),
+            listen(
+              span1,
+              "click",
+              /*nextSentence*/
+              ctx[1]
+            )
+          ];
+          mounted = true;
+        }
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*humanaddr*/
+        1)
+          set_data(
+            t2,
+            /*humanaddr*/
+            ctx2[0]
+          );
+      },
+      d(detaching) {
+        if (detaching)
+          detach(div);
+        mounted = false;
+        run_all(dispose);
+      }
+    };
+  }
+  function create_fragment9(ctx) {
+    let previous_key = (
+      /*humanaddr*/
+      ctx[0]
+    );
+    let key_block_anchor;
+    let key_block = create_key_block2(ctx);
+    return {
+      c() {
+        key_block.c();
+        key_block_anchor = empty();
+      },
+      m(target, anchor) {
+        key_block.m(target, anchor);
+        insert(target, key_block_anchor, anchor);
+      },
+      p(ctx2, [dirty]) {
+        if (dirty & /*humanaddr*/
+        1 && safe_not_equal(previous_key, previous_key = /*humanaddr*/
+        ctx2[0])) {
+          key_block.d(1);
+          key_block = create_key_block2(ctx2);
+          key_block.c();
+          key_block.m(key_block_anchor.parentNode, key_block_anchor);
+        } else {
+          key_block.p(ctx2, dirty);
+        }
+      },
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(key_block_anchor);
+        key_block.d(detaching);
+      }
+    };
+  }
+  function instance10($$self, $$props, $$invalidate) {
+    let { ptk } = $$props;
+    let { address } = $$props;
+    let humanaddr = "", hl, addr, act, chunklines, ckid;
+    let maxchunk = 0;
+    const getHumanAddress = async (address2) => {
+      addr = parseAddress(address2);
+      hl = addr.highlightline;
+      act = parseAction(addr.action);
+      const r = ptk.rangeOfAddress(act[0].join("#"));
+      const ck = ptk.defines.ck;
+      const at = bsearchNumber(ck.linepos, r[1]) - 1;
+      maxchunk = parseInt(ck.fields.id.values[at]);
+      ckid = parseInt(act[act.length - 1][1]);
+      $$invalidate(0, humanaddr = styledNumber(ckid) + (hl ? hl : ""));
+      chunklines = await ptk.fetchAddress(addr.action);
+    };
+    const nextSentence = () => {
+      let action = addr.action;
+      if (hl < chunklines.length - 1) {
+        hl++;
+      } else {
+        if (ckid < maxchunk) {
+          action = act[0].join("#") + ".ck#" + (ckid + 1);
+          hl = 1;
+        }
+      }
+      $$invalidate(3, address = makeAddress("", action, 0, 0, hl));
+    };
+    const prevSentence = async () => {
+      let action = addr.action;
+      if (hl > 1) {
+        hl--;
+      } else {
+        if (ckid > 1) {
+          action = act[0].join("#") + ".ck#" + (ckid - 1);
+          chunklines = await ptk.fetchAddress(action);
+          hl = chunklines.length - 1;
+        }
+      }
+      $$invalidate(3, address = makeAddress("", action, 0, 0, hl));
+    };
+    $$self.$$set = ($$props2) => {
+      if ("ptk" in $$props2)
+        $$invalidate(4, ptk = $$props2.ptk);
+      if ("address" in $$props2)
+        $$invalidate(3, address = $$props2.address);
+    };
+    $$self.$$.update = () => {
+      if ($$self.$$.dirty & /*address*/
+      8) {
+        $:
+          getHumanAddress(address);
+      }
+    };
+    return [humanaddr, nextSentence, prevSentence, address, ptk];
+  }
+  var Sentencenav = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance10, create_fragment9, safe_not_equal, { ptk: 4, address: 3 });
+    }
+  };
+  var sentencenav_default = Sentencenav;
+
   // src/translations.svelte
   function get_each_context3(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[13] = list[i];
+    child_ctx[18] = list[i];
     return child_ctx;
-  }
-  function create_catch_block(ctx) {
-    return { c: noop, m: noop, p: noop, d: noop };
-  }
-  function create_then_block(ctx) {
-    let t0;
-    let div;
-    let each_value = (
-      /*out*/
-      ctx[4]
-    );
-    let each_blocks = [];
-    for (let i = 0; i < each_value.length; i += 1) {
-      each_blocks[i] = create_each_block3(get_each_context3(ctx, each_value, i));
-    }
-    return {
-      c() {
-        for (let i = 0; i < each_blocks.length; i += 1) {
-          each_blocks[i].c();
-        }
-        t0 = space();
-        div = element("div");
-        div.textContent = "\u203B\u203B\u203B";
-        attr(div, "class", "endmarker");
-      },
-      m(target, anchor) {
-        for (let i = 0; i < each_blocks.length; i += 1) {
-          if (each_blocks[i]) {
-            each_blocks[i].m(target, anchor);
-          }
-        }
-        insert(target, t0, anchor);
-        insert(target, div, anchor);
-      },
-      p(ctx2, dirty) {
-        if (dirty & /*out, $activebook, puretext, goFolio, hasfolio, getBookTitle*/
-        498) {
-          each_value = /*out*/
-          ctx2[4];
-          let i;
-          for (i = 0; i < each_value.length; i += 1) {
-            const child_ctx = get_each_context3(ctx2, each_value, i);
-            if (each_blocks[i]) {
-              each_blocks[i].p(child_ctx, dirty);
-            } else {
-              each_blocks[i] = create_each_block3(child_ctx);
-              each_blocks[i].c();
-              each_blocks[i].m(t0.parentNode, t0);
-            }
-          }
-          for (; i < each_blocks.length; i += 1) {
-            each_blocks[i].d(1);
-          }
-          each_blocks.length = each_value.length;
-        }
-      },
-      d(detaching) {
-        destroy_each(each_blocks, detaching);
-        if (detaching)
-          detach(t0);
-        if (detaching)
-          detach(div);
-      }
-    };
   }
   function create_each_block3(ctx) {
     let div0;
     let span;
     let t0_value = (
       /*getBookTitle*/
-      ctx[5](
+      ctx[4](
         /*item*/
-        ctx[13].ptk,
+        ctx[18].ptk,
         /*item*/
-        ctx[13].heading?.bk?.at
+        ctx[18].heading?.bk?.at
       ) + ""
     );
     let t0;
     let t1_value = (
       /*hasfolio*/
-      ctx[7](
+      ctx[6](
         /*item*/
-        ctx[13].ptk
+        ctx[18].ptk
       ) ? "\u2190" : " "
     );
     let t1;
     let t2_value = (
       /*puretext*/
-      ctx[8](
+      ctx[7](
         /*item*/
-        ctx[13].linetext
+        ctx[18].linetext
       ) + ""
     );
     let t2;
@@ -9819,9 +9889,9 @@
     function click_handler() {
       return (
         /*click_handler*/
-        ctx[11](
+        ctx[10](
           /*item*/
-          ctx[13]
+          ctx[18]
         )
       );
     }
@@ -9839,8 +9909,8 @@
           div0,
           "selecteditem",
           /*item*/
-          ctx[13].heading?.bk?.at == /*$activebook*/
-          ctx[1]
+          ctx[18].heading?.bk?.at == /*$activebook*/
+          ctx[3]
         );
         attr(div1, "class", "hr");
       },
@@ -9859,14 +9929,37 @@
       },
       p(new_ctx, dirty) {
         ctx = new_ctx;
-        if (dirty & /*out, $activebook*/
-        18) {
+        if (dirty & /*translations*/
+        4 && t0_value !== (t0_value = /*getBookTitle*/
+        ctx[4](
+          /*item*/
+          ctx[18].ptk,
+          /*item*/
+          ctx[18].heading?.bk?.at
+        ) + ""))
+          set_data(t0, t0_value);
+        if (dirty & /*translations*/
+        4 && t1_value !== (t1_value = /*hasfolio*/
+        ctx[6](
+          /*item*/
+          ctx[18].ptk
+        ) ? "\u2190" : " "))
+          set_data(t1, t1_value);
+        if (dirty & /*translations*/
+        4 && t2_value !== (t2_value = /*puretext*/
+        ctx[7](
+          /*item*/
+          ctx[18].linetext
+        ) + ""))
+          set_data(t2, t2_value);
+        if (dirty & /*translations, $activebook*/
+        12) {
           toggle_class(
             div0,
             "selecteditem",
             /*item*/
-            ctx[13].heading?.bk?.at == /*$activebook*/
-            ctx[1]
+            ctx[18].heading?.bk?.at == /*$activebook*/
+            ctx[3]
           );
         }
       },
@@ -9882,92 +9975,177 @@
       }
     };
   }
-  function create_pending_block(ctx) {
-    let t;
-    return {
-      c() {
-        t = text("Loading...");
-      },
-      m(target, anchor) {
-        insert(target, t, anchor);
-      },
-      p: noop,
-      d(detaching) {
-        if (detaching)
-          detach(t);
-      }
-    };
-  }
-  function create_fragment9(ctx) {
-    let div;
-    let promise;
-    let info = {
-      ctx,
-      current: null,
-      token: null,
-      hasCatch: false,
-      pending: create_pending_block,
-      then: create_then_block,
-      catch: create_catch_block
-    };
-    handle_promise(promise = getParallelLines(
+  function create_fragment10(ctx) {
+    let div2;
+    let sentencenav0;
+    let updating_address;
+    let t0;
+    let div0;
+    let t1;
+    let t2;
+    let sentencenav1;
+    let updating_address_1;
+    let t3;
+    let div1;
+    let current;
+    function sentencenav0_address_binding(value) {
+      ctx[9](value);
+    }
+    let sentencenav0_props = { ptk: (
       /*ptk*/
-      ctx[0],
-      /*start*/
-      ctx[2] + /*lineoff*/
-      ctx[3],
-      /*out*/
-      ctx[4]
-    ), info);
+      ctx[1]
+    ) };
+    if (
+      /*address*/
+      ctx[0] !== void 0
+    ) {
+      sentencenav0_props.address = /*address*/
+      ctx[0];
+    }
+    sentencenav0 = new sentencenav_default({ props: sentencenav0_props });
+    binding_callbacks.push(() => bind(sentencenav0, "address", sentencenav0_address_binding));
+    let each_value = (
+      /*translations*/
+      ctx[2]
+    );
+    let each_blocks = [];
+    for (let i = 0; i < each_value.length; i += 1) {
+      each_blocks[i] = create_each_block3(get_each_context3(ctx, each_value, i));
+    }
+    function sentencenav1_address_binding(value) {
+      ctx[11](value);
+    }
+    let sentencenav1_props = { ptk: (
+      /*ptk*/
+      ctx[1]
+    ) };
+    if (
+      /*address*/
+      ctx[0] !== void 0
+    ) {
+      sentencenav1_props.address = /*address*/
+      ctx[0];
+    }
+    sentencenav1 = new sentencenav_default({ props: sentencenav1_props });
+    binding_callbacks.push(() => bind(sentencenav1, "address", sentencenav1_address_binding));
     return {
       c() {
-        div = element("div");
-        info.block.c();
-        attr(div, "class", "paralleltext");
+        div2 = element("div");
+        create_component(sentencenav0.$$.fragment);
+        t0 = space();
+        div0 = element("div");
+        t1 = space();
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          each_blocks[i].c();
+        }
+        t2 = space();
+        create_component(sentencenav1.$$.fragment);
+        t3 = space();
+        div1 = element("div");
+        div1.textContent = "\u203B\u203B\u203B";
+        attr(div0, "class", "hr");
+        attr(div1, "class", "endmarker");
+        attr(div2, "class", "paralleltext");
       },
       m(target, anchor) {
-        insert(target, div, anchor);
-        info.block.m(div, info.anchor = null);
-        info.mount = () => div;
-        info.anchor = null;
-      },
-      p(new_ctx, [dirty]) {
-        ctx = new_ctx;
-        info.ctx = ctx;
-        if (dirty & /*ptk*/
-        1 && promise !== (promise = getParallelLines(
-          /*ptk*/
-          ctx[0],
-          /*start*/
-          ctx[2] + /*lineoff*/
-          ctx[3],
-          /*out*/
-          ctx[4]
-        )) && handle_promise(promise, info)) {
-        } else {
-          update_await_block_branch(info, ctx, dirty);
+        insert(target, div2, anchor);
+        mount_component(sentencenav0, div2, null);
+        append(div2, t0);
+        append(div2, div0);
+        append(div2, t1);
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          if (each_blocks[i]) {
+            each_blocks[i].m(div2, null);
+          }
         }
+        append(div2, t2);
+        mount_component(sentencenav1, div2, null);
+        append(div2, t3);
+        append(div2, div1);
+        current = true;
       },
-      i: noop,
-      o: noop,
+      p(ctx2, [dirty]) {
+        const sentencenav0_changes = {};
+        if (dirty & /*ptk*/
+        2)
+          sentencenav0_changes.ptk = /*ptk*/
+          ctx2[1];
+        if (!updating_address && dirty & /*address*/
+        1) {
+          updating_address = true;
+          sentencenav0_changes.address = /*address*/
+          ctx2[0];
+          add_flush_callback(() => updating_address = false);
+        }
+        sentencenav0.$set(sentencenav0_changes);
+        if (dirty & /*translations, $activebook, puretext, goFolio, hasfolio, getBookTitle*/
+        252) {
+          each_value = /*translations*/
+          ctx2[2];
+          let i;
+          for (i = 0; i < each_value.length; i += 1) {
+            const child_ctx = get_each_context3(ctx2, each_value, i);
+            if (each_blocks[i]) {
+              each_blocks[i].p(child_ctx, dirty);
+            } else {
+              each_blocks[i] = create_each_block3(child_ctx);
+              each_blocks[i].c();
+              each_blocks[i].m(div2, t2);
+            }
+          }
+          for (; i < each_blocks.length; i += 1) {
+            each_blocks[i].d(1);
+          }
+          each_blocks.length = each_value.length;
+        }
+        const sentencenav1_changes = {};
+        if (dirty & /*ptk*/
+        2)
+          sentencenav1_changes.ptk = /*ptk*/
+          ctx2[1];
+        if (!updating_address_1 && dirty & /*address*/
+        1) {
+          updating_address_1 = true;
+          sentencenav1_changes.address = /*address*/
+          ctx2[0];
+          add_flush_callback(() => updating_address_1 = false);
+        }
+        sentencenav1.$set(sentencenav1_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(sentencenav0.$$.fragment, local);
+        transition_in(sentencenav1.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(sentencenav0.$$.fragment, local);
+        transition_out(sentencenav1.$$.fragment, local);
+        current = false;
+      },
       d(detaching) {
         if (detaching)
-          detach(div);
-        info.block.d();
-        info.token = null;
-        info = null;
+          detach(div2);
+        destroy_component(sentencenav0);
+        destroy_each(each_blocks, detaching);
+        destroy_component(sentencenav1);
       }
     };
   }
-  function instance10($$self, $$props, $$invalidate) {
+  function instance11($$self, $$props, $$invalidate) {
+    let start;
+    let end;
+    let _from;
+    let _till;
+    let lineoff;
     let $activebook;
-    component_subscribe($$self, activebook, ($$value) => $$invalidate(1, $activebook = $$value));
+    component_subscribe($$self, activebook, ($$value) => $$invalidate(3, $activebook = $$value));
     let { closePopup = function() {
     } } = $$props;
     let { address } = $$props;
     let { ptk } = $$props;
-    const [start, end, lineoff] = ptk.rangeOfAddress(address);
-    const out = [];
+    let translations = [];
     const getBookTitle = (ptk2, nbk) => {
       const bk = ptk2.defines.bk;
       const heading = bk.fields.heading.values[nbk];
@@ -9997,37 +10175,248 @@
       const [text2] = parseOfftext(_text);
       return text2;
     };
+    const updateTranslation = async (address2) => {
+      $$invalidate(2, translations = await getParallelLines(ptk, start + lineoff));
+    };
+    function sentencenav0_address_binding(value) {
+      address = value;
+      $$invalidate(0, address);
+    }
     const click_handler = (item) => goFolio(item.ptk, item.line);
+    function sentencenav1_address_binding(value) {
+      address = value;
+      $$invalidate(0, address);
+    }
     $$self.$$set = ($$props2) => {
       if ("closePopup" in $$props2)
-        $$invalidate(9, closePopup = $$props2.closePopup);
+        $$invalidate(8, closePopup = $$props2.closePopup);
       if ("address" in $$props2)
-        $$invalidate(10, address = $$props2.address);
+        $$invalidate(0, address = $$props2.address);
       if ("ptk" in $$props2)
-        $$invalidate(0, ptk = $$props2.ptk);
+        $$invalidate(1, ptk = $$props2.ptk);
+    };
+    $$self.$$.update = () => {
+      if ($$self.$$.dirty & /*ptk, address*/
+      3) {
+        $:
+          [start, end, _from, _till, lineoff] = ptk.rangeOfAddress(address);
+      }
+      if ($$self.$$.dirty & /*address*/
+      1) {
+        $:
+          updateTranslation(address);
+      }
     };
     return [
+      address,
       ptk,
+      translations,
       $activebook,
-      start,
-      lineoff,
-      out,
       getBookTitle,
       goFolio,
       hasfolio,
       puretext,
       closePopup,
-      address,
-      click_handler
+      sentencenav0_address_binding,
+      click_handler,
+      sentencenav1_address_binding
     ];
   }
   var Translations = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance10, create_fragment9, safe_not_equal, { closePopup: 9, address: 10, ptk: 0 });
+      init(this, options, instance11, create_fragment10, safe_not_equal, { closePopup: 8, address: 0, ptk: 1 });
     }
   };
   var translations_default = Translations;
+
+  // src/variorum.svelte
+  function create_fragment11(ctx) {
+    let div1;
+    let sentencenav0;
+    let updating_address;
+    let t0;
+    let html_tag;
+    let t1;
+    let sentencenav1;
+    let updating_address_1;
+    let t2;
+    let div0;
+    let current;
+    function sentencenav0_address_binding(value) {
+      ctx[3](value);
+    }
+    let sentencenav0_props = { ptk: (
+      /*ptk*/
+      ctx[1]
+    ) };
+    if (
+      /*address*/
+      ctx[0] !== void 0
+    ) {
+      sentencenav0_props.address = /*address*/
+      ctx[0];
+    }
+    sentencenav0 = new sentencenav_default({ props: sentencenav0_props });
+    binding_callbacks.push(() => bind(sentencenav0, "address", sentencenav0_address_binding));
+    function sentencenav1_address_binding(value) {
+      ctx[4](value);
+    }
+    let sentencenav1_props = { ptk: (
+      /*ptk*/
+      ctx[1]
+    ) };
+    if (
+      /*address*/
+      ctx[0] !== void 0
+    ) {
+      sentencenav1_props.address = /*address*/
+      ctx[0];
+    }
+    sentencenav1 = new sentencenav_default({ props: sentencenav1_props });
+    binding_callbacks.push(() => bind(sentencenav1, "address", sentencenav1_address_binding));
+    return {
+      c() {
+        div1 = element("div");
+        create_component(sentencenav0.$$.fragment);
+        t0 = space();
+        html_tag = new HtmlTag(false);
+        t1 = space();
+        create_component(sentencenav1.$$.fragment);
+        t2 = space();
+        div0 = element("div");
+        div0.textContent = "\u203B\u203B\u203B";
+        html_tag.a = t1;
+        attr(div0, "class", "endmarker");
+        attr(div1, "class", "toctext");
+      },
+      m(target, anchor) {
+        insert(target, div1, anchor);
+        mount_component(sentencenav0, div1, null);
+        append(div1, t0);
+        html_tag.m(
+          /*text*/
+          ctx[2],
+          div1
+        );
+        append(div1, t1);
+        mount_component(sentencenav1, div1, null);
+        append(div1, t2);
+        append(div1, div0);
+        current = true;
+      },
+      p(ctx2, [dirty]) {
+        const sentencenav0_changes = {};
+        if (dirty & /*ptk*/
+        2)
+          sentencenav0_changes.ptk = /*ptk*/
+          ctx2[1];
+        if (!updating_address && dirty & /*address*/
+        1) {
+          updating_address = true;
+          sentencenav0_changes.address = /*address*/
+          ctx2[0];
+          add_flush_callback(() => updating_address = false);
+        }
+        sentencenav0.$set(sentencenav0_changes);
+        if (!current || dirty & /*text*/
+        4)
+          html_tag.p(
+            /*text*/
+            ctx2[2]
+          );
+        const sentencenav1_changes = {};
+        if (dirty & /*ptk*/
+        2)
+          sentencenav1_changes.ptk = /*ptk*/
+          ctx2[1];
+        if (!updating_address_1 && dirty & /*address*/
+        1) {
+          updating_address_1 = true;
+          sentencenav1_changes.address = /*address*/
+          ctx2[0];
+          add_flush_callback(() => updating_address_1 = false);
+        }
+        sentencenav1.$set(sentencenav1_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(sentencenav0.$$.fragment, local);
+        transition_in(sentencenav1.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(sentencenav0.$$.fragment, local);
+        transition_out(sentencenav1.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        if (detaching)
+          detach(div1);
+        destroy_component(sentencenav0);
+        destroy_component(sentencenav1);
+      }
+    };
+  }
+  function instance12($$self, $$props, $$invalidate) {
+    let { ptk } = $$props;
+    let { address } = $$props;
+    let text2 = "";
+    const updateVariorum = async (address2) => {
+      const r = ptk.defines.r;
+      if (!r)
+        return;
+      const addr = parseAddress(address2);
+      const act = parseAction(addr.action);
+      const id = act[act.length - 1][1] + ":" + addr.highlightline;
+      let at = r.fields.id.values.indexOf(id);
+      if (~at) {
+        const from = r.linepos[at];
+        let to = r.linepos[at + 1];
+        at++;
+        while (to == from) {
+          at++;
+          to = r.linepos[at];
+        }
+        await ptk.loadLines([[from, to]]);
+        const lines = ptk.slice(from, to);
+        if (lines[lines.length - 1].indexOf("^ck"))
+          lines.pop();
+        lines[0] = '<div class="sourcetext">' + lines[0].replace(/\^r(\d+):/g, (m4, m1) => styledNumber(m1)) + "</div>";
+        $$invalidate(2, text2 = lines.join("<br/>"));
+      }
+    };
+    function sentencenav0_address_binding(value) {
+      address = value;
+      $$invalidate(0, address);
+    }
+    function sentencenav1_address_binding(value) {
+      address = value;
+      $$invalidate(0, address);
+    }
+    $$self.$$set = ($$props2) => {
+      if ("ptk" in $$props2)
+        $$invalidate(1, ptk = $$props2.ptk);
+      if ("address" in $$props2)
+        $$invalidate(0, address = $$props2.address);
+    };
+    $$self.$$.update = () => {
+      if ($$self.$$.dirty & /*address*/
+      1) {
+        $:
+          updateVariorum(address);
+      }
+    };
+    return [address, ptk, text2, sentencenav0_address_binding, sentencenav1_address_binding];
+  }
+  var Variorum = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance12, create_fragment11, safe_not_equal, { ptk: 1, address: 0 });
+    }
+  };
+  var variorum_default = Variorum;
 
   // src/toc.svelte
   function get_each_context4(ctx, list, i) {
@@ -10105,7 +10494,7 @@
       }
     };
   }
-  function create_fragment10(ctx) {
+  function create_fragment12(ctx) {
     let div1;
     let t0;
     let div0;
@@ -10170,7 +10559,7 @@
       }
     };
   }
-  function instance11($$self, $$props, $$invalidate) {
+  function instance13($$self, $$props, $$invalidate) {
     let { ptk } = $$props;
     let { address } = $$props;
     let { closePopup } = $$props;
@@ -10231,7 +10620,7 @@
   var Toc = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance11, create_fragment10, safe_not_equal, { ptk: 3, address: 4, closePopup: 5 });
+      init(this, options, instance13, create_fragment12, safe_not_equal, { ptk: 3, address: 4, closePopup: 5 });
     }
   };
   var toc_default = Toc;
@@ -10244,7 +10633,7 @@
     return {
       c() {
         span = element("span");
-        span.textContent = "\u5B57\u5178";
+        span.textContent = "\u8A5E";
         attr(span, "class", "clickable");
         toggle_class(
           span,
@@ -10259,8 +10648,8 @@
           dispose = listen(
             span,
             "click",
-            /*click_handler_2*/
-            ctx[9]
+            /*click_handler_3*/
+            ctx[10]
           );
           mounted = true;
         }
@@ -10352,20 +10741,27 @@
       }
     };
   }
-  function create_fragment11(ctx) {
-    let div3;
+  function create_fragment13(ctx) {
+    let div4;
     let div0;
     let span0;
     let t1;
     let span1;
     let t3;
-    let t4;
+    let span2;
+    let t5;
+    let t6;
     let div1;
     let toc;
-    let t5;
+    let t7;
     let div2;
     let translations;
-    let t6;
+    let updating_address;
+    let t8;
+    let div3;
+    let variorum;
+    let updating_address_1;
+    let t9;
     let current;
     let mounted;
     let dispose;
@@ -10389,45 +10785,79 @@
         )
       }
     });
-    translations = new translations_default({
-      props: {
-        closePopup: (
-          /*closePopup*/
-          ctx[1]
-        ),
-        address: (
-          /*address*/
-          ctx[0]
-        ),
-        ptk: (
-          /*ptk*/
-          ctx[4]
-        )
-      }
-    });
+    function translations_address_binding(value) {
+      ctx[11](value);
+    }
+    let translations_props = {
+      closePopup: (
+        /*closePopup*/
+        ctx[1]
+      ),
+      ptk: (
+        /*ptk*/
+        ctx[4]
+      )
+    };
+    if (
+      /*address*/
+      ctx[0] !== void 0
+    ) {
+      translations_props.address = /*address*/
+      ctx[0];
+    }
+    translations = new translations_default({ props: translations_props });
+    binding_callbacks.push(() => bind(translations, "address", translations_address_binding));
+    function variorum_address_binding(value) {
+      ctx[12](value);
+    }
+    let variorum_props = {
+      closePopup: (
+        /*closePopup*/
+        ctx[1]
+      ),
+      ptk: (
+        /*ptk*/
+        ctx[4]
+      )
+    };
+    if (
+      /*address*/
+      ctx[0] !== void 0
+    ) {
+      variorum_props.address = /*address*/
+      ctx[0];
+    }
+    variorum = new variorum_default({ props: variorum_props });
+    binding_callbacks.push(() => bind(variorum, "address", variorum_address_binding));
     let if_block1 = (
       /*def*/
       ctx[3] && create_if_block4(ctx)
     );
     return {
       c() {
-        div3 = element("div");
+        div4 = element("div");
         div0 = element("div");
         span0 = element("span");
-        span0.textContent = "\u76EE\u9304";
+        span0.textContent = "\u5206";
         t1 = space();
         span1 = element("span");
-        span1.textContent = "\u5225\u8B6F";
+        span1.textContent = "\u8B6F";
         t3 = space();
+        span2 = element("span");
+        span2.textContent = "\u8A3B";
+        t5 = space();
         if (if_block0)
           if_block0.c();
-        t4 = space();
+        t6 = space();
         div1 = element("div");
         create_component(toc.$$.fragment);
-        t5 = space();
+        t7 = space();
         div2 = element("div");
         create_component(translations.$$.fragment);
-        t6 = space();
+        t8 = space();
+        div3 = element("div");
+        create_component(variorum.$$.fragment);
+        t9 = space();
         if (if_block1)
           if_block1.c();
         attr(span0, "class", "clickable");
@@ -10444,6 +10874,13 @@
           /*thetab*/
           ctx[2] == "translations"
         );
+        attr(span2, "class", "clickable");
+        toggle_class(
+          span2,
+          "selected",
+          /*thetab*/
+          ctx[2] == "variorum"
+        );
         attr(div0, "class", "tabs");
         attr(div1, "class", "tab-content");
         toggle_class(
@@ -10459,26 +10896,38 @@
           /*thetab*/
           ctx[2] == "translations"
         );
-        attr(div3, "class", "popup");
+        attr(div3, "class", "tab-content");
+        toggle_class(
+          div3,
+          "visible",
+          /*thetab*/
+          ctx[2] == "variorum"
+        );
+        attr(div4, "class", "popup");
       },
       m(target, anchor) {
-        insert(target, div3, anchor);
-        append(div3, div0);
+        insert(target, div4, anchor);
+        append(div4, div0);
         append(div0, span0);
         append(div0, t1);
         append(div0, span1);
         append(div0, t3);
+        append(div0, span2);
+        append(div0, t5);
         if (if_block0)
           if_block0.m(div0, null);
-        append(div3, t4);
-        append(div3, div1);
+        append(div4, t6);
+        append(div4, div1);
         mount_component(toc, div1, null);
-        append(div3, t5);
-        append(div3, div2);
+        append(div4, t7);
+        append(div4, div2);
         mount_component(translations, div2, null);
-        append(div3, t6);
+        append(div4, t8);
+        append(div4, div3);
+        mount_component(variorum, div3, null);
+        append(div4, t9);
         if (if_block1)
-          if_block1.m(div3, null);
+          if_block1.m(div4, null);
         current = true;
         if (!mounted) {
           dispose = [
@@ -10493,6 +10942,12 @@
               "click",
               /*click_handler_1*/
               ctx[8]
+            ),
+            listen(
+              span2,
+              "click",
+              /*click_handler_2*/
+              ctx[9]
             )
           ];
           mounted = true;
@@ -10515,6 +10970,15 @@
             "selected",
             /*thetab*/
             ctx2[2] == "translations"
+          );
+        }
+        if (!current || dirty & /*thetab*/
+        4) {
+          toggle_class(
+            span2,
+            "selected",
+            /*thetab*/
+            ctx2[2] == "variorum"
           );
         }
         if (
@@ -10560,14 +11024,17 @@
         2)
           translations_changes.closePopup = /*closePopup*/
           ctx2[1];
-        if (dirty & /*address*/
-        1)
-          translations_changes.address = /*address*/
-          ctx2[0];
         if (dirty & /*ptk*/
         16)
           translations_changes.ptk = /*ptk*/
           ctx2[4];
+        if (!updating_address && dirty & /*address*/
+        1) {
+          updating_address = true;
+          translations_changes.address = /*address*/
+          ctx2[0];
+          add_flush_callback(() => updating_address = false);
+        }
         translations.$set(translations_changes);
         if (!current || dirty & /*thetab*/
         4) {
@@ -10576,6 +11043,32 @@
             "visible",
             /*thetab*/
             ctx2[2] == "translations"
+          );
+        }
+        const variorum_changes = {};
+        if (dirty & /*closePopup*/
+        2)
+          variorum_changes.closePopup = /*closePopup*/
+          ctx2[1];
+        if (dirty & /*ptk*/
+        16)
+          variorum_changes.ptk = /*ptk*/
+          ctx2[4];
+        if (!updating_address_1 && dirty & /*address*/
+        1) {
+          updating_address_1 = true;
+          variorum_changes.address = /*address*/
+          ctx2[0];
+          add_flush_callback(() => updating_address_1 = false);
+        }
+        variorum.$set(variorum_changes);
+        if (!current || dirty & /*thetab*/
+        4) {
+          toggle_class(
+            div3,
+            "visible",
+            /*thetab*/
+            ctx2[2] == "variorum"
           );
         }
         if (
@@ -10592,7 +11085,7 @@
             if_block1 = create_if_block4(ctx2);
             if_block1.c();
             transition_in(if_block1, 1);
-            if_block1.m(div3, null);
+            if_block1.m(div4, null);
           }
         } else if (if_block1) {
           group_outros();
@@ -10607,22 +11100,25 @@
           return;
         transition_in(toc.$$.fragment, local);
         transition_in(translations.$$.fragment, local);
+        transition_in(variorum.$$.fragment, local);
         transition_in(if_block1);
         current = true;
       },
       o(local) {
         transition_out(toc.$$.fragment, local);
         transition_out(translations.$$.fragment, local);
+        transition_out(variorum.$$.fragment, local);
         transition_out(if_block1);
         current = false;
       },
       d(detaching) {
         if (detaching)
-          detach(div3);
+          detach(div4);
         if (if_block0)
           if_block0.d();
         destroy_component(toc);
         destroy_component(translations);
+        destroy_component(variorum);
         if (if_block1)
           if_block1.d();
         mounted = false;
@@ -10630,7 +11126,7 @@
       }
     };
   }
-  function instance12($$self, $$props, $$invalidate) {
+  function instance14($$self, $$props, $$invalidate) {
     let $activePtk;
     component_subscribe($$self, activePtk, ($$value) => $$invalidate(6, $activePtk = $$value));
     let { tofind = "" } = $$props;
@@ -10650,7 +11146,16 @@
     };
     const click_handler = () => $$invalidate(2, thetab = "toc");
     const click_handler_1 = () => $$invalidate(2, thetab = "translations");
-    const click_handler_2 = () => $$invalidate(2, thetab = "dict");
+    const click_handler_2 = () => $$invalidate(2, thetab = "variorum");
+    const click_handler_3 = () => $$invalidate(2, thetab = "dict");
+    function translations_address_binding(value) {
+      address = value;
+      $$invalidate(0, address);
+    }
+    function variorum_address_binding(value) {
+      address = value;
+      $$invalidate(0, address);
+    }
     $$self.$$set = ($$props2) => {
       if ("tofind" in $$props2)
         $$invalidate(5, tofind = $$props2.tofind);
@@ -10681,13 +11186,16 @@
       $activePtk,
       click_handler,
       click_handler_1,
-      click_handler_2
+      click_handler_2,
+      click_handler_3,
+      translations_address_binding,
+      variorum_address_binding
     ];
   }
   var Taptext = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance12, create_fragment11, safe_not_equal, { tofind: 5, address: 0, closePopup: 1 });
+      init(this, options, instance14, create_fragment13, safe_not_equal, { tofind: 5, address: 0, closePopup: 1 });
     }
   };
   var taptext_default = Taptext;
@@ -11001,7 +11509,7 @@
       }
     };
   }
-  function create_fragment12(ctx) {
+  function create_fragment14(ctx) {
     let div;
     let current_block_type_index;
     let if_block;
@@ -11068,7 +11576,7 @@
       }
     };
   }
-  function instance13($$self, $$props, $$invalidate) {
+  function instance15($$self, $$props, $$invalidate) {
     let $activebookid;
     component_subscribe($$self, activebookid, ($$value) => $$invalidate(6, $activebookid = $$value));
     let ptk;
@@ -11079,7 +11587,7 @@
       await openPtk("dc_sanskrit");
       $$invalidate(1, loaded = true);
     });
-    let showdict2 = false, address = "", tofind = "", showmainmenu2 = true;
+    let showdict2 = false, address = "", tofind = "", showmainmenu2 = false;
     const closePopup = () => {
       $$invalidate(2, showdict2 = false);
       $$invalidate(5, showmainmenu2 = false);
@@ -11111,7 +11619,7 @@
   var App = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance13, create_fragment12, safe_not_equal, {});
+      init(this, options, instance15, create_fragment14, safe_not_equal, {});
     }
   };
   var app_default = App;

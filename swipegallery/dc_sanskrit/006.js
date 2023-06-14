@@ -1,5 +1,5 @@
-jsonp(6,{"name":"dc_sanskrit","start":1677},`idheading
- +.!
+jsonp(6,{"name":"dc_sanskrit","start":1698},`idheading
+  ./!
 titleThe convocation of the AssemblySubhuti makes a requestThe Vow of a BodhisattvaThe Practice of the Perfections Buddhahood and the thirty-two MarkThe Dharmabody as the body of teachingsThe Dharmabody as the result of Gnosis The Dharmabody as the result of MeritThe four Great SaintsThe Bodhisattva's thought of enlightenmentThe merit derived from Perfect WisdomThe merit derived from Perfect Wisdom 2The first endingSelfless patience and perfect inner freedomThe merit acquired The presuppositions of meritThe BodhisattvasThe Buddha's Five EyesThe Buddha's Merit is no MeritThe Buddha's physical bodyThe Buddha's teachingThe Buddha's DharmaThe Buddha's Dharma 2Once more about the Buddha's Merit (The Buddha as a saviour, and the nature of emancipationThe true nature of a Buddha The effectiveness of meritorious deedsThe effectiveness of meritorious deeds 2The effectiveness of meritorious deeds 3The material worldViews and attitudesThe key to supreme knowledge
 0	1	2	3	4	5	6	7	8	9	10	11	12	13	14	15	16	17	18	19	20	21	22	23	24	25	26	27	28	29	30	31	32
 `)
