@@ -8182,6 +8182,8 @@
           },
           500
         );
+      } else {
+        updateFolioText();
       }
     };
     const videoFrame = () => {
