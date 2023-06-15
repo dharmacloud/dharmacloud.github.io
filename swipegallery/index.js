@@ -7743,7 +7743,7 @@
         if (!src_url_equal(source.src, source_src_value = /*src*/
         ctx[0]))
           attr(source, "src", source_src_value);
-        attr(source, "type", "video/mov");
+        attr(source, "type", "video/mp4");
       },
       m(target, anchor) {
         insert(target, source, anchor);
@@ -11300,7 +11300,7 @@
         src: (
           /*$activebookid*/
           ctx[6] + /*$isIOS*/
-          (ctx[7] ? ".mov" : ".webm")
+          (ctx[7] ? ".mp4" : ".webm")
         ),
         ptk: (
           /*ptk*/
@@ -11369,7 +11369,7 @@
         192)
           swipevideo_changes.src = /*$activebookid*/
           ctx2[6] + /*$isIOS*/
-          (ctx2[7] ? ".mov" : ".webm");
+          (ctx2[7] ? ".mp4" : ".webm");
         if (dirty & /*ptk*/
         1)
           swipevideo_changes.ptk = /*ptk*/
