@@ -7198,7 +7198,7 @@
     let ntag = 0;
     const chars = splitUTF32Char(text2);
     let pos = 0, i = 0, tagstart = 0;
-    if (ntag < tags.length)
+    if (ntag < tags.length && pos > tags[ntag].choff)
       tagstart = tags[ntag].start;
     while (nth && i < chars.length) {
       const r = CJKRangeName(chars[i]);
@@ -7210,7 +7210,7 @@
         }
       }
       pos += chars[i].codePointAt(0) >= 131072 ? 2 : 1;
-      if (ntag < tags.length && tags[ntag].choff > pos) {
+      if (ntag < tags.length && pos > tags[ntag].choff) {
         ntag++;
         if (ntag < tags.length)
           tagstart = tags[ntag].start;
@@ -7257,13 +7257,15 @@
     let s = out.join("");
     out.length = 0;
     let at = s.lastIndexOf("^ck");
-    if (at == -1) {
+    if (~at)
+      s = s.slice(at);
+    else {
       while (startline > 0) {
         startline--;
         await ptk.loadLines([startline]);
         const line = ptk.getLine(startline);
         out.unshift(line);
-        if (out.length > 5)
+        if (out.length > 100)
           break;
         if (~line.indexOf("^ck"))
           break;
@@ -7271,8 +7273,6 @@
       const at2 = out[0].indexOf("^ck");
       out[0] = out[0].slice(at2);
       s = out.join("	") + "	" + s;
-    } else {
-      s = s.slice(at);
     }
     const lines = s.split("	");
     const m4 = lines[0].match(/\^ck#?([a-z\d\-_]+)/);
