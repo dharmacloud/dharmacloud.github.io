@@ -7643,7 +7643,7 @@
   var activefolio = writable(0);
   var autoplay = writable(0);
   var maxfolio = writable(0);
-  var isIOS = writable(false);
+  var isAndroid = writable(false);
 
   // src/swipeshapes.js
   var swipestart = '<svg width="150px" height="150px" viewBox="0 0 1024 1024" fill="#1f1f1f"><path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="#1f1f1f"></path><rect x="113" y="68" width="78" height="900"></svg>';
@@ -7656,7 +7656,7 @@
   var down2 = down1;
 
   // src/swipevideo.svelte
-  function create_if_block_2(ctx) {
+  function create_if_block_1(ctx) {
     let div;
     return {
       c() {
@@ -7673,7 +7673,7 @@
       }
     };
   }
-  function create_if_block_1(ctx) {
+  function create_if_block(ctx) {
     let span;
     let raw_value = (
       /*swipeshapes*/
@@ -7707,83 +7707,27 @@
       }
     };
   }
-  function create_else_block(ctx) {
-    let source;
-    let source_src_value;
-    return {
-      c() {
-        source = element("source");
-        if (!src_url_equal(source.src, source_src_value = /*src*/
-        ctx[0]))
-          attr(source, "src", source_src_value);
-        attr(source, "type", "video/webm");
-      },
-      m(target, anchor) {
-        insert(target, source, anchor);
-      },
-      p(ctx2, dirty) {
-        if (dirty[0] & /*src*/
-        1 && !src_url_equal(source.src, source_src_value = /*src*/
-        ctx2[0])) {
-          attr(source, "src", source_src_value);
-        }
-      },
-      d(detaching) {
-        if (detaching)
-          detach(source);
-      }
-    };
-  }
-  function create_if_block(ctx) {
-    let source;
-    let source_src_value;
-    return {
-      c() {
-        source = element("source");
-        if (!src_url_equal(source.src, source_src_value = /*src*/
-        ctx[0]))
-          attr(source, "src", source_src_value);
-        attr(source, "type", "video/mp4");
-      },
-      m(target, anchor) {
-        insert(target, source, anchor);
-      },
-      p(ctx2, dirty) {
-        if (dirty[0] & /*src*/
-        1 && !src_url_equal(source.src, source_src_value = /*src*/
-        ctx2[0])) {
-          attr(source, "src", source_src_value);
-        }
-      },
-      d(detaching) {
-        if (detaching)
-          detach(source);
-      }
-    };
-  }
   function create_key_block_1(ctx) {
     let video;
+    let source;
+    let source_src_value;
+    let source_type_value;
     let mounted;
     let dispose;
-    function select_block_type(ctx2, dirty) {
-      if (
-        /*$isIOS*/
-        ctx2[7]
-      )
-        return create_if_block;
-      return create_else_block;
-    }
-    let current_block_type = select_block_type(ctx, [-1, -1]);
-    let if_block = current_block_type(ctx);
     return {
       c() {
         video = element("video");
-        if_block.c();
+        source = element("source");
+        if (!src_url_equal(source.src, source_src_value = /*src*/
+        ctx[0]))
+          attr(source, "src", source_src_value);
+        attr(source, "type", source_type_value = "video/" + /*$isAndroid*/
+        (ctx[7] ? "webm" : "mp4"));
         attr(video, "class", "svelte-1lz6db3");
       },
       m(target, anchor) {
         insert(target, video, anchor);
-        if_block.m(video, null);
+        append(video, source);
         ctx[20](video);
         if (!mounted) {
           dispose = listen(
@@ -7796,21 +7740,20 @@
         }
       },
       p(ctx2, dirty) {
-        if (current_block_type === (current_block_type = select_block_type(ctx2, dirty)) && if_block) {
-          if_block.p(ctx2, dirty);
-        } else {
-          if_block.d(1);
-          if_block = current_block_type(ctx2);
-          if (if_block) {
-            if_block.c();
-            if_block.m(video, null);
-          }
+        if (dirty[0] & /*src*/
+        1 && !src_url_equal(source.src, source_src_value = /*src*/
+        ctx2[0])) {
+          attr(source, "src", source_src_value);
+        }
+        if (dirty[0] & /*$isAndroid*/
+        128 && source_type_value !== (source_type_value = "video/" + /*$isAndroid*/
+        (ctx2[7] ? "webm" : "mp4"))) {
+          attr(source, "type", source_type_value);
         }
       },
       d(detaching) {
         if (detaching)
           detach(video);
-        if_block.d();
         ctx[20](null);
         mounted = false;
         dispose();
@@ -7904,12 +7847,12 @@
     let dispose;
     let if_block0 = (
       /*mp4player*/
-      ctx[3]?.currentTime < 1 && create_if_block_2(ctx)
+      ctx[3]?.currentTime < 1 && create_if_block_1(ctx)
     );
     let if_block1 = (
       /*touching*/
       ctx[4] > -1 && /*direction*/
-      ctx[5] && create_if_block_1(ctx)
+      ctx[5] && create_if_block(ctx)
     );
     let key_block0 = create_key_block_1(ctx);
     let key_block1 = create_key_block(ctx);
@@ -7992,7 +7935,7 @@
         ) {
           if (if_block0) {
           } else {
-            if_block0 = create_if_block_2(ctx2);
+            if_block0 = create_if_block_1(ctx2);
             if_block0.c();
             if_block0.m(t0.parentNode, t0);
           }
@@ -8008,7 +7951,7 @@
           if (if_block1) {
             if_block1.p(ctx2, dirty);
           } else {
-            if_block1 = create_if_block_1(ctx2);
+            if_block1 = create_if_block(ctx2);
             if_block1.c();
             if_block1.m(div, t1);
           }
@@ -8077,12 +8020,12 @@
     let $activefolio;
     let $activebookid;
     let $activePtk;
-    let $isIOS;
+    let $isAndroid;
     component_subscribe($$self, autoplay, ($$value) => $$invalidate(29, $autoplay = $$value));
     component_subscribe($$self, activefolio, ($$value) => $$invalidate(18, $activefolio = $$value));
     component_subscribe($$self, activebookid, ($$value) => $$invalidate(19, $activebookid = $$value));
     component_subscribe($$self, activePtk, ($$value) => $$invalidate(30, $activePtk = $$value));
-    component_subscribe($$self, isIOS, ($$value) => $$invalidate(7, $isIOS = $$value));
+    component_subscribe($$self, isAndroid, ($$value) => $$invalidate(7, $isAndroid = $$value));
     let { src } = $$props;
     let mp4player;
     let touching = -1;
@@ -8279,7 +8222,7 @@
       touching,
       direction,
       puncs,
-      $isIOS,
+      $isAndroid,
       swipeshapes,
       ontouchstart,
       ontouchmove,
@@ -9527,7 +9470,7 @@
   }
 
   // src/dictpopup.svelte
-  function create_else_block2(ctx) {
+  function create_else_block(ctx) {
     let span0;
     let t0_value = (
       /*e*/
@@ -9638,7 +9581,7 @@
         ctx2[3]
       )
         return create_if_block3;
-      return create_else_block2;
+      return create_else_block;
     }
     let current_block_type = select_block_type(ctx, -1);
     let if_block = current_block_type(ctx);
@@ -11269,7 +11212,7 @@
   var taptext_default = Taptext;
 
   // src/app.svelte
-  function create_else_block3(ctx) {
+  function create_else_block2(ctx) {
     let t;
     return {
       c() {
@@ -11299,8 +11242,8 @@
       props: {
         src: (
           /*$activebookid*/
-          ctx[6] + /*$isIOS*/
-          (ctx[7] ? ".mp4" : ".webm")
+          ctx[7] + /*$isAndroid*/
+          (ctx[6] ? ".webm" : ".mp4")
         ),
         ptk: (
           /*ptk*/
@@ -11321,7 +11264,7 @@
       (ctx[2] || /*showmainmenu*/
       ctx[5]) && create_if_block_3(ctx)
     );
-    const if_block_creators = [create_if_block_13, create_if_block_22];
+    const if_block_creators = [create_if_block_13, create_if_block_2];
     const if_blocks = [];
     function select_block_type_1(ctx2, dirty) {
       if (
@@ -11365,11 +11308,11 @@
       },
       p(ctx2, dirty) {
         const swipevideo_changes = {};
-        if (dirty & /*$activebookid, $isIOS*/
+        if (dirty & /*$activebookid, $isAndroid*/
         192)
           swipevideo_changes.src = /*$activebookid*/
-          ctx2[6] + /*$isIOS*/
-          (ctx2[7] ? ".mp4" : ".webm");
+          ctx2[7] + /*$isAndroid*/
+          (ctx2[6] ? ".webm" : ".mp4");
         if (dirty & /*ptk*/
         1)
           swipevideo_changes.ptk = /*ptk*/
@@ -11479,7 +11422,7 @@
       }
     };
   }
-  function create_if_block_22(ctx) {
+  function create_if_block_2(ctx) {
     let mainmenu;
     let current;
     mainmenu = new mainmenu_default({
@@ -11584,7 +11527,7 @@
     let current_block_type_index;
     let if_block;
     let current;
-    const if_block_creators = [create_if_block5, create_else_block3];
+    const if_block_creators = [create_if_block5, create_else_block2];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -11647,13 +11590,14 @@
     };
   }
   function instance15($$self, $$props, $$invalidate) {
+    let $isAndroid;
     let $activebookid;
-    let $isIOS;
-    component_subscribe($$self, activebookid, ($$value) => $$invalidate(6, $activebookid = $$value));
-    component_subscribe($$self, isIOS, ($$value) => $$invalidate(7, $isIOS = $$value));
+    component_subscribe($$self, isAndroid, ($$value) => $$invalidate(6, $isAndroid = $$value));
+    component_subscribe($$self, activebookid, ($$value) => $$invalidate(7, $activebookid = $$value));
     let ptk;
     registerServiceWorker();
-    isIOS.set(!!navigator.userAgent.match(/iPad|iPhone/));
+    isAndroid.set(!!navigator.userAgent.match(/Android/i));
+    console.log($isAndroid);
     let loaded = false;
     onMount(async () => {
       $$invalidate(0, ptk = await openPtk("dc"));
@@ -11683,8 +11627,8 @@
       address,
       tofind,
       showmainmenu2,
+      $isAndroid,
       $activebookid,
-      $isIOS,
       closePopup,
       onMainmenu,
       onTapText

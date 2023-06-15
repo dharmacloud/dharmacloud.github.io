@@ -6,6 +6,7 @@
   <title>永樂北藏</title>
 </head>
 <body>
+<span id="OS">unknown</span>
 video
 <video width="100%" height="100%" controls="true">
 <source  src="vcpp_kumarajiva.mp4" type="video/mp4"/>
@@ -14,5 +15,8 @@ video2
 <video loop autoplay controls="true" width='100%' height='100%'  src="vcpp_kumarajiva.mp4" type="video/mp4"></video>
 
 </body>
-
+<script>
+  const android=!!navigator.userAgent.match(/Android/)
+  document.getElementById("OS").innerHTML=android?"Android":"NOT Android"
+</script>
 </html>
