@@ -8187,6 +8187,7 @@
         },
         1e3
       );
+      $$invalidate(3, mp4player.autoplay = false, mp4player);
     });
     onDestroy(() => {
       clearInterval(timer);
