@@ -8147,8 +8147,12 @@
       [foliotext, foliofrom] = await fetchFolioText(ptk, $activebookid, 1 + Math.floor(mp4player?.currentTime || 0));
       $$invalidate(6, puncs = extractPuncPos(foliotext, folioLines));
       activefolio.set(Math.floor(mp4player.currentTime));
+      if (!mp4player.paused)
+        mp4player.pause();
     };
     const gotoFolio = async (t) => {
+      if (!mp4player.paused)
+        mp4player.pause();
       if (Math.floor(t) !== Math.floor(mp4player?.currentTime)) {
         setTimeout(
           () => {
