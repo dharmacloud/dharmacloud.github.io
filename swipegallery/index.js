@@ -7723,6 +7723,8 @@
           attr(source, "src", source_src_value);
         attr(source, "type", source_type_value = "video/" + /*$isAndroid*/
         (ctx[7] ? "webm" : "mp4"));
+        video.loop = true;
+        video.autoplay = true;
         attr(video, "class", "svelte-1lz6db3");
       },
       m(target, anchor) {
@@ -9070,7 +9072,7 @@
     let t;
     return {
       c() {
-        t = text("IOS");
+        t = text("IOS2");
       },
       m(target, anchor) {
         insert(target, t, anchor);
@@ -9085,7 +9087,7 @@
     let t;
     return {
       c() {
-        t = text("Android");
+        t = text("Android2");
       },
       m(target, anchor) {
         insert(target, t, anchor);
@@ -9116,11 +9118,11 @@
     let video;
     let current;
     function slider0_value_binding(value) {
-      ctx[6](value);
+      ctx[7](value);
     }
     let slider0_props = { max: (
       /*$maxfolio*/
-      ctx[2]
+      ctx[3]
     ), min: 0 };
     if (
       /*folio*/
@@ -9134,14 +9136,14 @@
     slider0.$on(
       "input",
       /*setFolio*/
-      ctx[5]
+      ctx[6]
     );
     let if_block0 = (
       /*value*/
       ctx[0][0] && create_if_block_12(ctx)
     );
     function slider1_value_binding(value) {
-      ctx[7](value);
+      ctx[8](value);
     }
     let slider1_props = { max: 10, min: 0 };
     if (
@@ -9156,12 +9158,12 @@
     slider1.$on(
       "input",
       /*setValue*/
-      ctx[4]
+      ctx[5]
     );
     function select_block_type(ctx2, dirty) {
       if (
         /*$isAndroid*/
-        ctx2[3]
+        ctx2[4]
       )
         return create_if_block2;
       return create_else_block;
@@ -9186,9 +9188,8 @@
         video = element("video");
         video.innerHTML = `<source src="vcpp_kumarajiva.mp4" type="${"video/mp4"}"/>`;
         video.autoplay = true;
-        video.controls = "true";
-        attr(video, "height", "100%");
         attr(video, "width", "100%");
+        attr(video, "height", "100%");
         attr(div, "class", "toctext");
       },
       m(target, anchor) {
@@ -9206,6 +9207,7 @@
         if_block1.m(div, null);
         append(div, t5);
         append(div, video);
+        ctx[9](video);
         current = true;
       },
       p(ctx2, [dirty]) {
@@ -9215,9 +9217,9 @@
           set_data(t1, t1_value);
         const slider0_changes = {};
         if (dirty & /*$maxfolio*/
-        4)
+        8)
           slider0_changes.max = /*$maxfolio*/
-          ctx2[2];
+          ctx2[3];
         if (!updating_value && dirty & /*folio*/
         2) {
           updating_value = true;
@@ -9279,6 +9281,7 @@
           if_block0.d();
         destroy_component(slider1);
         if_block1.d();
+        ctx[9](null);
       }
     };
   }
@@ -9287,12 +9290,13 @@
     let $activefolio;
     let $maxfolio;
     let $isAndroid;
-    component_subscribe($$self, autoplay, ($$value) => $$invalidate(8, $autoplay = $$value));
-    component_subscribe($$self, activefolio, ($$value) => $$invalidate(9, $activefolio = $$value));
-    component_subscribe($$self, maxfolio, ($$value) => $$invalidate(2, $maxfolio = $$value));
-    component_subscribe($$self, isAndroid, ($$value) => $$invalidate(3, $isAndroid = $$value));
+    component_subscribe($$self, autoplay, ($$value) => $$invalidate(10, $autoplay = $$value));
+    component_subscribe($$self, activefolio, ($$value) => $$invalidate(11, $activefolio = $$value));
+    component_subscribe($$self, maxfolio, ($$value) => $$invalidate(3, $maxfolio = $$value));
+    component_subscribe($$self, isAndroid, ($$value) => $$invalidate(4, $isAndroid = $$value));
     let value = [$autoplay, 0];
     let folio = [$activefolio];
+    let mp4player;
     const setValue = (e) => {
       const v = e.detail[0];
       if (v != $autoplay)
@@ -9310,15 +9314,23 @@
       value = value$1;
       $$invalidate(0, value);
     }
+    function video_binding($$value) {
+      binding_callbacks[$$value ? "unshift" : "push"](() => {
+        mp4player = $$value;
+        $$invalidate(2, mp4player);
+      });
+    }
     return [
       value,
       folio,
+      mp4player,
       $maxfolio,
       $isAndroid,
       setValue,
       setFolio,
       slider0_value_binding,
-      slider1_value_binding
+      slider1_value_binding,
+      video_binding
     ];
   }
   var Setting = class extends SvelteComponent {
