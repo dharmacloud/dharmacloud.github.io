@@ -9038,7 +9038,7 @@
   var rangeslider_default = Rangeslider;
 
   // src/setting.svelte
-  function create_if_block_12(ctx) {
+  function create_if_block2(ctx) {
     let t0_value = (
       /*value*/
       ctx[0][0] + ""
@@ -9068,36 +9068,6 @@
       }
     };
   }
-  function create_else_block(ctx) {
-    let t;
-    return {
-      c() {
-        t = text("IOS2");
-      },
-      m(target, anchor) {
-        insert(target, t, anchor);
-      },
-      d(detaching) {
-        if (detaching)
-          detach(t);
-      }
-    };
-  }
-  function create_if_block2(ctx) {
-    let t;
-    return {
-      c() {
-        t = text("Android2");
-      },
-      m(target, anchor) {
-        insert(target, t, anchor);
-      },
-      d(detaching) {
-        if (detaching)
-          detach(t);
-      }
-    };
-  }
   function create_fragment6(ctx) {
     let div;
     let t0;
@@ -9110,19 +9080,16 @@
     let slider0;
     let updating_value;
     let t3;
-    let if_block0_anchor;
+    let if_block_anchor;
     let slider1;
     let updating_value_1;
-    let t4;
-    let t5;
-    let video;
     let current;
     function slider0_value_binding(value) {
-      ctx[7](value);
+      ctx[5](value);
     }
     let slider0_props = { max: (
       /*$maxfolio*/
-      ctx[3]
+      ctx[2]
     ), min: 0 };
     if (
       /*folio*/
@@ -9136,14 +9103,14 @@
     slider0.$on(
       "input",
       /*setFolio*/
-      ctx[6]
+      ctx[4]
     );
-    let if_block0 = (
+    let if_block = (
       /*value*/
-      ctx[0][0] && create_if_block_12(ctx)
+      ctx[0][0] && create_if_block2(ctx)
     );
     function slider1_value_binding(value) {
-      ctx[8](value);
+      ctx[6](value);
     }
     let slider1_props = { max: 10, min: 0 };
     if (
@@ -9158,18 +9125,8 @@
     slider1.$on(
       "input",
       /*setValue*/
-      ctx[5]
+      ctx[3]
     );
-    function select_block_type(ctx2, dirty) {
-      if (
-        /*$isAndroid*/
-        ctx2[4]
-      )
-        return create_if_block2;
-      return create_else_block;
-    }
-    let current_block_type = select_block_type(ctx, -1);
-    let if_block1 = current_block_type(ctx);
     return {
       c() {
         div = element("div");
@@ -9177,19 +9134,11 @@
         t1 = text(t1_value);
         t2 = text("\u9801 ");
         create_component(slider0.$$.fragment);
-        t3 = text("\n\n\u81EA\u52D5\u7FFB\u9801 ");
-        if (if_block0)
-          if_block0.c();
-        if_block0_anchor = empty();
+        t3 = text("\n\u81EA\u52D5\u7FFB\u9801 ");
+        if (if_block)
+          if_block.c();
+        if_block_anchor = empty();
         create_component(slider1.$$.fragment);
-        t4 = space();
-        if_block1.c();
-        t5 = space();
-        video = element("video");
-        video.innerHTML = `<source src="vcpp_kumarajiva.mp4" type="${"video/mp4"}"/>`;
-        video.autoplay = true;
-        attr(video, "width", "100%");
-        attr(video, "height", "100%");
         attr(div, "class", "toctext");
       },
       m(target, anchor) {
@@ -9199,15 +9148,10 @@
         append(div, t2);
         mount_component(slider0, div, null);
         append(div, t3);
-        if (if_block0)
-          if_block0.m(div, null);
-        append(div, if_block0_anchor);
+        if (if_block)
+          if_block.m(div, null);
+        append(div, if_block_anchor);
         mount_component(slider1, div, null);
-        append(div, t4);
-        if_block1.m(div, null);
-        append(div, t5);
-        append(div, video);
-        ctx[9](video);
         current = true;
       },
       p(ctx2, [dirty]) {
@@ -9217,9 +9161,9 @@
           set_data(t1, t1_value);
         const slider0_changes = {};
         if (dirty & /*$maxfolio*/
-        8)
+        4)
           slider0_changes.max = /*$maxfolio*/
-          ctx2[3];
+          ctx2[2];
         if (!updating_value && dirty & /*folio*/
         2) {
           updating_value = true;
@@ -9232,16 +9176,16 @@
           /*value*/
           ctx2[0][0]
         ) {
-          if (if_block0) {
-            if_block0.p(ctx2, dirty);
+          if (if_block) {
+            if_block.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_12(ctx2);
-            if_block0.c();
-            if_block0.m(div, if_block0_anchor);
+            if_block = create_if_block2(ctx2);
+            if_block.c();
+            if_block.m(div, if_block_anchor);
           }
-        } else if (if_block0) {
-          if_block0.d(1);
-          if_block0 = null;
+        } else if (if_block) {
+          if_block.d(1);
+          if_block = null;
         }
         const slider1_changes = {};
         if (!updating_value_1 && dirty & /*value*/
@@ -9252,14 +9196,6 @@
           add_flush_callback(() => updating_value_1 = false);
         }
         slider1.$set(slider1_changes);
-        if (current_block_type !== (current_block_type = select_block_type(ctx2, dirty))) {
-          if_block1.d(1);
-          if_block1 = current_block_type(ctx2);
-          if (if_block1) {
-            if_block1.c();
-            if_block1.m(div, t5);
-          }
-        }
       },
       i(local) {
         if (current)
@@ -9277,11 +9213,9 @@
         if (detaching)
           detach(div);
         destroy_component(slider0);
-        if (if_block0)
-          if_block0.d();
+        if (if_block)
+          if_block.d();
         destroy_component(slider1);
-        if_block1.d();
-        ctx[9](null);
       }
     };
   }
@@ -9289,11 +9223,9 @@
     let $autoplay;
     let $activefolio;
     let $maxfolio;
-    let $isAndroid;
-    component_subscribe($$self, autoplay, ($$value) => $$invalidate(10, $autoplay = $$value));
-    component_subscribe($$self, activefolio, ($$value) => $$invalidate(11, $activefolio = $$value));
-    component_subscribe($$self, maxfolio, ($$value) => $$invalidate(3, $maxfolio = $$value));
-    component_subscribe($$self, isAndroid, ($$value) => $$invalidate(4, $isAndroid = $$value));
+    component_subscribe($$self, autoplay, ($$value) => $$invalidate(7, $autoplay = $$value));
+    component_subscribe($$self, activefolio, ($$value) => $$invalidate(8, $activefolio = $$value));
+    component_subscribe($$self, maxfolio, ($$value) => $$invalidate(2, $maxfolio = $$value));
     let value = [$autoplay, 0];
     let folio = [$activefolio];
     let mp4player;
@@ -9314,23 +9246,14 @@
       value = value$1;
       $$invalidate(0, value);
     }
-    function video_binding($$value) {
-      binding_callbacks[$$value ? "unshift" : "push"](() => {
-        mp4player = $$value;
-        $$invalidate(2, mp4player);
-      });
-    }
     return [
       value,
       folio,
-      mp4player,
       $maxfolio,
-      $isAndroid,
       setValue,
       setFolio,
       slider0_value_binding,
-      slider1_value_binding,
-      video_binding
+      slider1_value_binding
     ];
   }
   var Setting = class extends SvelteComponent {
@@ -9550,7 +9473,7 @@
   }
 
   // src/dictpopup.svelte
-  function create_else_block2(ctx) {
+  function create_else_block(ctx) {
     let span0;
     let t0_value = (
       /*e*/
@@ -9661,7 +9584,7 @@
         ctx2[3]
       )
         return create_if_block3;
-      return create_else_block2;
+      return create_else_block;
     }
     let current_block_type = select_block_type(ctx, -1);
     let if_block = current_block_type(ctx);
@@ -10717,7 +10640,7 @@
   var toc_default = Toc;
 
   // src/taptext.svelte
-  function create_if_block_13(ctx) {
+  function create_if_block_12(ctx) {
     let span;
     let mounted;
     let dispose;
@@ -10858,7 +10781,7 @@
     let dispose;
     let if_block0 = (
       /*def*/
-      ctx[3] && create_if_block_13(ctx)
+      ctx[3] && create_if_block_12(ctx)
     );
     toc = new toc_default({
       props: {
@@ -11079,7 +11002,7 @@
           if (if_block0) {
             if_block0.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_13(ctx2);
+            if_block0 = create_if_block_12(ctx2);
             if_block0.c();
             if_block0.m(div0, null);
           }
@@ -11292,7 +11215,7 @@
   var taptext_default = Taptext;
 
   // src/app.svelte
-  function create_else_block3(ctx) {
+  function create_else_block2(ctx) {
     let t;
     return {
       c() {
@@ -11344,7 +11267,7 @@
       (ctx[2] || /*showmainmenu*/
       ctx[5]) && create_if_block_3(ctx)
     );
-    const if_block_creators = [create_if_block_14, create_if_block_2];
+    const if_block_creators = [create_if_block_13, create_if_block_2];
     const if_blocks = [];
     function select_block_type_1(ctx2, dirty) {
       if (
@@ -11548,7 +11471,7 @@
       }
     };
   }
-  function create_if_block_14(ctx) {
+  function create_if_block_13(ctx) {
     let taptext;
     let current;
     taptext = new taptext_default({
@@ -11607,7 +11530,7 @@
     let current_block_type_index;
     let if_block;
     let current;
-    const if_block_creators = [create_if_block5, create_else_block3];
+    const if_block_creators = [create_if_block5, create_else_block2];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
