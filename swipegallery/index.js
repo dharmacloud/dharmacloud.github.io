@@ -8159,7 +8159,7 @@
       if (Math.floor(t) !== Math.floor(mp4player?.currentTime)) {
         setTimeout(
           () => {
-            $$invalidate(3, mp4player.currentTime = (t || 0) + 1e-3, mp4player);
+            $$invalidate(3, mp4player.currentTime = Math.floor(t || 0) + 0.01, mp4player);
             updateFolioText();
           },
           500
@@ -8181,6 +8181,7 @@
       gotoFolio($activefolio);
       maxfolio.set(mp4player.duration);
       $$invalidate(3, mp4player.autoplay = false, mp4player);
+      mp4player.pause();
     };
     let timer;
     let seconds = 0;
