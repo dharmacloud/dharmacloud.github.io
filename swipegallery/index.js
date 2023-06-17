@@ -7712,6 +7712,7 @@
     let source;
     let source_src_value;
     let source_type_value;
+    let setHandle_action;
     let mounted;
     let dispose;
     return {
@@ -7730,14 +7731,17 @@
       m(target, anchor) {
         insert(target, video, anchor);
         append(video, source);
-        ctx[20](video);
         if (!mounted) {
-          dispose = listen(
-            video,
-            "loadeddata",
-            /*videoloaded*/
-            ctx[15]
-          );
+          dispose = [
+            listen(
+              video,
+              "loadeddata",
+              /*videoloaded*/
+              ctx[15]
+            ),
+            action_destroyer(setHandle_action = /*setHandle*/
+            ctx[16].call(null, video))
+          ];
           mounted = true;
         }
       },
@@ -7756,9 +7760,8 @@
       d(detaching) {
         if (detaching)
           detach(video);
-        ctx[20](null);
         mounted = false;
-        dispose();
+        run_all(dispose);
       }
     };
   }
@@ -8024,8 +8027,8 @@
     let $activePtk;
     let $isAndroid;
     component_subscribe($$self, autoplay, ($$value) => $$invalidate(29, $autoplay = $$value));
-    component_subscribe($$self, activefolio, ($$value) => $$invalidate(18, $activefolio = $$value));
-    component_subscribe($$self, activebookid, ($$value) => $$invalidate(19, $activebookid = $$value));
+    component_subscribe($$self, activefolio, ($$value) => $$invalidate(19, $activefolio = $$value));
+    component_subscribe($$self, activebookid, ($$value) => $$invalidate(20, $activebookid = $$value));
     component_subscribe($$self, activePtk, ($$value) => $$invalidate(30, $activePtk = $$value));
     component_subscribe($$self, isAndroid, ($$value) => $$invalidate(7, $isAndroid = $$value));
     let { src } = $$props;
@@ -8147,12 +8150,12 @@
       [foliotext, foliofrom] = await fetchFolioText(ptk, $activebookid, 1 + Math.floor(mp4player?.currentTime || 0));
       $$invalidate(6, puncs = extractPuncPos(foliotext, folioLines));
       activefolio.set(Math.floor(mp4player.currentTime));
-      if (!mp4player.paused)
-        mp4player.pause();
+      if (!mp4player?.paused)
+        mp4player?.pause();
     };
     const gotoFolio = async (t) => {
-      if (!mp4player.paused)
-        mp4player.pause();
+      if (!mp4player?.paused)
+        mp4player?.pause();
       if (Math.floor(t) !== Math.floor(mp4player?.currentTime)) {
         setTimeout(
           () => {
@@ -8177,6 +8180,7 @@
     const videoloaded = () => {
       gotoFolio($activefolio);
       maxfolio.set(mp4player.duration);
+      $$invalidate(3, mp4player.autoplay = false, mp4player);
     };
     let timer;
     let seconds = 0;
@@ -8191,17 +8195,13 @@
         },
         1e3
       );
-      $$invalidate(3, mp4player.autoplay = false, mp4player);
     });
     onDestroy(() => {
       clearInterval(timer);
     });
-    function video_binding($$value) {
-      binding_callbacks[$$value ? "unshift" : "push"](() => {
-        mp4player = $$value;
-        $$invalidate(3, mp4player);
-      });
-    }
+    const setHandle = (node) => {
+      $$invalidate(3, mp4player = node);
+    };
     $$self.$$set = ($$props2) => {
       if ("src" in $$props2)
         $$invalidate(0, src = $$props2.src);
@@ -8210,13 +8210,13 @@
       if ("folioLines" in $$props2)
         $$invalidate(2, folioLines = $$props2.folioLines);
       if ("onTapText" in $$props2)
-        $$invalidate(16, onTapText = $$props2.onTapText);
+        $$invalidate(17, onTapText = $$props2.onTapText);
       if ("onMainmenu" in $$props2)
-        $$invalidate(17, onMainmenu = $$props2.onMainmenu);
+        $$invalidate(18, onMainmenu = $$props2.onMainmenu);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty[0] & /*$activefolio, $activebookid*/
-      786432) {
+      1572864) {
         $:
           gotoFolio($activefolio, $activebookid);
       }
@@ -8238,11 +8238,11 @@
       ontouchend,
       videoFrame,
       videoloaded,
+      setHandle,
       onTapText,
       onMainmenu,
       $activefolio,
-      $activebookid,
-      video_binding
+      $activebookid
     ];
   }
   var Swipevideo = class extends SvelteComponent {
@@ -8258,8 +8258,8 @@
           src: 0,
           folioChars: 1,
           folioLines: 2,
-          onTapText: 16,
-          onMainmenu: 17
+          onTapText: 17,
+          onMainmenu: 18
         },
         null,
         [-1, -1]
