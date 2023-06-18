@@ -7595,6 +7595,16 @@
   };
   var punclayer_default = Punclayer;
 
+  // src/swipeshapes.js
+  var swipestart = '<svg width="150px" height="150px" viewBox="0 0 1024 1024" fill="#1f1f1f"><path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="#1f1f1f"></path><rect x="113" y="68" width="78" height="900"></svg>';
+  var swipeend = '<svg width="150px" height="150px" viewBox="0 0 1024 1024" fill="#1f1f1f" ><path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"></path><rect x="853" y="68" width="78" height="900"></svg>';
+  var turnleft = '<svg width="150px" height="150px" viewBox="0 0 24 24"  stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" color="#000000"><path d="M4.71493213,9 L8.06176471,9 C14.65507,9 20,13.0983574 20,19.3875"/> <polyline points="9 14 4 9 9 4 9 4"/></svg>';
+  var turnright = '<svg width="150px" height="150px" viewBox="0 0 24 24" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" color="#000000"><path d="M3.71493213,19.3875 C3.71493213,13.0983574 9.05986213,9 15.6531674,9 L19,9"/><polyline points="15 4 20 9 15 14 15 14"/></svg>';
+  var up1 = '<svg fill="#000000" width="150px" height="150px" viewBox="0 0 32 32"><path d="M0.844 6.050c-0.256-0.256-0.381-0.581-0.381-0.975s0.125-0.719 0.381-0.975 0.581-0.381 0.975-0.381h28.512c0.394 0 0.719 0.125 0.975 0.381s0.381 0.581 0.381 0.975-0.125 0.719-0.381 0.975-0.581 0.381-0.975 0.381h-28.512c-0.394 0-0.719-0.125-0.975-0.381zM31.306 14.963c0.256 0.256 0.381 0.581 0.381 0.975s-0.125 0.719-0.381 0.975-0.581 0.381-0.975 0.381h-28.512c-0.394 0-0.719-0.125-0.975-0.381s-0.381-0.581-0.381-0.975 0.125-0.719 0.381-0.975 0.581-0.381 0.975-0.381h28.512c0.394 0 0.719 0.125 0.975 0.381zM31.306 25.819c0.256 0.256 0.381 0.581 0.381 0.975s-0.125 0.719-0.381 0.975-0.581 0.381-0.975 0.381h-28.512c-0.394 0-0.719-0.125-0.975-0.381s-0.381-0.581-0.381-0.975 0.125-0.719 0.381-0.975 0.581-0.381 0.975-0.381h28.512c0.394 0 0.719 0.131 0.975 0.381z"></path></svg>';
+  var up2 = up1;
+  var down1 = "";
+  var down2 = down1;
+
   // node_modules/svelte/store/index.mjs
   var subscriber_queue = [];
   function writable(value, start = noop) {
@@ -7648,16 +7658,6 @@
   var maxfolio = writable(0);
   var isAndroid = writable(false);
 
-  // src/swipeshapes.js
-  var swipestart = '<svg width="150px" height="150px" viewBox="0 0 1024 1024" fill="#1f1f1f"><path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="#1f1f1f"></path><rect x="113" y="68" width="78" height="900"></svg>';
-  var swipeend = '<svg width="150px" height="150px" viewBox="0 0 1024 1024" fill="#1f1f1f" ><path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"></path><rect x="853" y="68" width="78" height="900"></svg>';
-  var turnleft = '<svg width="150px" height="150px" viewBox="0 0 24 24"  stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" color="#000000"><path d="M4.71493213,9 L8.06176471,9 C14.65507,9 20,13.0983574 20,19.3875"/> <polyline points="9 14 4 9 9 4 9 4"/></svg>';
-  var turnright = '<svg width="150px" height="150px" viewBox="0 0 24 24" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" color="#000000"><path d="M3.71493213,19.3875 C3.71493213,13.0983574 9.05986213,9 15.6531674,9 L19,9"/><polyline points="15 4 20 9 15 14 15 14"/></svg>';
-  var up1 = '<svg fill="#000000" width="150px" height="150px" viewBox="0 0 32 32"><path d="M0.844 6.050c-0.256-0.256-0.381-0.581-0.381-0.975s0.125-0.719 0.381-0.975 0.581-0.381 0.975-0.381h28.512c0.394 0 0.719 0.125 0.975 0.381s0.381 0.581 0.381 0.975-0.125 0.719-0.381 0.975-0.581 0.381-0.975 0.381h-28.512c-0.394 0-0.719-0.125-0.975-0.381zM31.306 14.963c0.256 0.256 0.381 0.581 0.381 0.975s-0.125 0.719-0.381 0.975-0.581 0.381-0.975 0.381h-28.512c-0.394 0-0.719-0.125-0.975-0.381s-0.381-0.581-0.381-0.975 0.125-0.719 0.381-0.975 0.581-0.381 0.975-0.381h28.512c0.394 0 0.719 0.125 0.975 0.381zM31.306 25.819c0.256 0.256 0.381 0.581 0.381 0.975s-0.125 0.719-0.381 0.975-0.581 0.381-0.975 0.381h-28.512c-0.394 0-0.719-0.125-0.975-0.381s-0.381-0.581-0.381-0.975 0.125-0.719 0.381-0.975 0.581-0.381 0.975-0.381h28.512c0.394 0 0.719 0.131 0.975 0.381z"></path></svg>';
-  var up2 = up1;
-  var down1 = "";
-  var down2 = down1;
-
   // src/swipevideo.svelte
   function create_if_block_1(ctx) {
     let div;
@@ -7680,7 +7680,7 @@
     let span;
     let raw_value = (
       /*swipeshapes*/
-      ctx[8][
+      ctx[7][
         /*direction*/
         ctx[5] + 4
       ] + ""
@@ -7697,7 +7697,7 @@
       p(ctx2, dirty) {
         if (dirty[0] & /*direction*/
         32 && raw_value !== (raw_value = /*swipeshapes*/
-        ctx2[8][
+        ctx2[7][
           /*direction*/
           ctx2[5] + 4
         ] + ""))
@@ -7725,8 +7725,7 @@
         if (!src_url_equal(source.src, source_src_value = /*src*/
         ctx[0]))
           attr(source, "src", source_src_value);
-        attr(source, "type", source_type_value = "video/" + /*$isAndroid*/
-        (ctx[7] ? "webm" : "mp4"));
+        attr(source, "type", source_type_value = "video/mp4");
         video.loop = true;
         video.autoplay = true;
         attr(video, "class", "svelte-1lz6db3");
@@ -7740,10 +7739,10 @@
               video,
               "loadeddata",
               /*videoloaded*/
-              ctx[15]
+              ctx[14]
             ),
             action_destroyer(setHandle_action = /*setHandle*/
-            ctx[16].call(null, video))
+            ctx[15].call(null, video))
           ];
           mounted = true;
         }
@@ -7753,11 +7752,6 @@
         1 && !src_url_equal(source.src, source_src_value = /*src*/
         ctx2[0])) {
           attr(source, "src", source_src_value);
-        }
-        if (dirty[0] & /*$isAndroid*/
-        128 && source_type_value !== (source_type_value = "video/" + /*$isAndroid*/
-        (ctx2[7] ? "webm" : "mp4"))) {
-          attr(source, "type", source_type_value);
         }
       },
       d(detaching) {
@@ -7775,7 +7769,7 @@
       props: {
         frame: (
           /*videoFrame*/
-          ctx[14]()
+          ctx[13]()
         ),
         folioChars: (
           /*folioChars*/
@@ -7903,34 +7897,34 @@
               div,
               "touchstart",
               /*ontouchstart*/
-              ctx[9],
+              ctx[8],
               { passive: true }
             ),
             listen(
               div,
               "touchmove",
               /*ontouchmove*/
-              ctx[10],
+              ctx[9],
               { passive: true }
             ),
             listen(
               div,
               "touchend",
               /*ontouchend*/
-              ctx[13],
+              ctx[12],
               { passive: true }
             ),
             listen(
               div,
               "click",
               /*onclick*/
-              ctx[12]
+              ctx[11]
             ),
             listen(
               div,
               "wheel",
               /*mousewheel*/
-              ctx[11]
+              ctx[10]
             )
           ];
           mounted = true;
@@ -8028,12 +8022,10 @@
     let $activefolio;
     let $activebookid;
     let $activePtk;
-    let $isAndroid;
-    component_subscribe($$self, autoplay, ($$value) => $$invalidate(29, $autoplay = $$value));
-    component_subscribe($$self, activefolio, ($$value) => $$invalidate(19, $activefolio = $$value));
-    component_subscribe($$self, activebookid, ($$value) => $$invalidate(20, $activebookid = $$value));
-    component_subscribe($$self, activePtk, ($$value) => $$invalidate(30, $activePtk = $$value));
-    component_subscribe($$self, isAndroid, ($$value) => $$invalidate(7, $isAndroid = $$value));
+    component_subscribe($$self, autoplay, ($$value) => $$invalidate(28, $autoplay = $$value));
+    component_subscribe($$self, activefolio, ($$value) => $$invalidate(18, $activefolio = $$value));
+    component_subscribe($$self, activebookid, ($$value) => $$invalidate(19, $activebookid = $$value));
+    component_subscribe($$self, activePtk, ($$value) => $$invalidate(29, $activePtk = $$value));
     let { src } = $$props;
     let mp4player;
     let touching = -1;
@@ -8214,13 +8206,13 @@
       if ("folioLines" in $$props2)
         $$invalidate(2, folioLines = $$props2.folioLines);
       if ("onTapText" in $$props2)
-        $$invalidate(17, onTapText = $$props2.onTapText);
+        $$invalidate(16, onTapText = $$props2.onTapText);
       if ("onMainmenu" in $$props2)
-        $$invalidate(18, onMainmenu = $$props2.onMainmenu);
+        $$invalidate(17, onMainmenu = $$props2.onMainmenu);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty[0] & /*$activefolio, $activebookid*/
-      1572864) {
+      786432) {
         $:
           gotoFolio($activefolio, $activebookid);
       }
@@ -8233,7 +8225,6 @@
       touching,
       direction,
       puncs,
-      $isAndroid,
       swipeshapes,
       ontouchstart,
       ontouchmove,
@@ -8262,8 +8253,8 @@
           src: 0,
           folioChars: 1,
           folioLines: 2,
-          onTapText: 17,
-          onMainmenu: 18
+          onTapText: 16,
+          onMainmenu: 17
         },
         null,
         [-1, -1]
@@ -11254,8 +11245,7 @@
       props: {
         src: (
           /*$activebookid*/
-          ctx[7] + /*$isAndroid*/
-          (ctx[6] ? ".webm" : ".mp4")
+          ctx[6] + ".mp4"
         ),
         ptk: (
           /*ptk*/
@@ -11263,11 +11253,11 @@
         ),
         onTapText: (
           /*onTapText*/
-          ctx[10]
+          ctx[9]
         ),
         onMainmenu: (
           /*onMainmenu*/
-          ctx[9]
+          ctx[8]
         )
       }
     });
@@ -11320,11 +11310,10 @@
       },
       p(ctx2, dirty) {
         const swipevideo_changes = {};
-        if (dirty & /*$activebookid, $isAndroid*/
-        192)
+        if (dirty & /*$activebookid*/
+        64)
           swipevideo_changes.src = /*$activebookid*/
-          ctx2[7] + /*$isAndroid*/
-          (ctx2[6] ? ".webm" : ".mp4");
+          ctx2[6] + ".mp4";
         if (dirty & /*ptk*/
         1)
           swipevideo_changes.ptk = /*ptk*/
@@ -11420,7 +11409,7 @@
             span,
             "click",
             /*closePopup*/
-            ctx[8]
+            ctx[7]
           );
           mounted = true;
         }
@@ -11445,7 +11434,7 @@
         ),
         onclose: (
           /*closePopup*/
-          ctx[8]
+          ctx[7]
         )
       }
     });
@@ -11495,7 +11484,7 @@
         ),
         closePopup: (
           /*closePopup*/
-          ctx[8]
+          ctx[7]
         )
       }
     });
@@ -11602,14 +11591,11 @@
     };
   }
   function instance15($$self, $$props, $$invalidate) {
-    let $isAndroid;
     let $activebookid;
-    component_subscribe($$self, isAndroid, ($$value) => $$invalidate(6, $isAndroid = $$value));
-    component_subscribe($$self, activebookid, ($$value) => $$invalidate(7, $activebookid = $$value));
+    component_subscribe($$self, activebookid, ($$value) => $$invalidate(6, $activebookid = $$value));
     let ptk;
     registerServiceWorker();
     isAndroid.set(!!navigator.userAgent.match(/Android/i));
-    console.log($isAndroid);
     let loaded = false;
     onMount(async () => {
       $$invalidate(0, ptk = await openPtk("dc"));
@@ -11639,7 +11625,6 @@
       address,
       tofind,
       showmainmenu2,
-      $isAndroid,
       $activebookid,
       closePopup,
       onMainmenu,
