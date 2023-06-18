@@ -7175,6 +7175,7 @@
   };
 
   // ../ptk/basket/folio.ts
+  var VALIDPUNCS = "\u300C\u300D\u300E\u300F\u3002\uFF0C\uFF1B\uFF1A\u3001\uFF01\uFF1F";
   var fetchFolioText = async (ptk, bk, pb) => {
     const [from, to] = ptk.rangeOfAddress("bk#" + bk + ".pb#" + pb);
     if (from == to)
@@ -7195,6 +7196,10 @@
   var getConreatePos = (linetext, nth, nextline) => {
     let [text2, tags] = parseOfftext(linetext);
     const isgatha = !!tags.filter((it) => it.name == "gatha").length;
+    if (isgatha) {
+      text2 = text2.replace(/．/g, "\u3000");
+    }
+    ;
     let ntag = 0;
     const chars = splitUTF32Char(text2);
     let pos = 0, i = 0, tagstart = 0;
@@ -7202,12 +7207,8 @@
       tagstart = tags[ntag].start;
     while (nth && i < chars.length) {
       const r = CJKRangeName(chars[i]);
-      if (r) {
+      if (r || chars[i] == "\u3000") {
         nth--;
-      } else {
-        if (isgatha && ~"\uFF0C\u3001\uFF0E\uFF1B\u3002".indexOf(chars[i])) {
-          nth--;
-        }
       }
       pos += chars[i].codePointAt(0) >= 131072 ? 2 : 1;
       if (ntag < tags.length && pos > tags[ntag].choff) {
@@ -7246,6 +7247,8 @@
   };
   var folio2ChunkLine = async (ptk, foliotext, from, cx, pos) => {
     const out = [];
+    if (!foliotext.length)
+      return "";
     for (let i = 0; i <= cx; i++) {
       if (i == cx) {
         out.push(foliotext[i].slice(0, pos));
@@ -7282,14 +7285,18 @@
     const lineoff = lines.length - 1;
     return "ck#" + ck + (lineoff ? ":" + lineoff : "");
   };
-  var extractPuncPos = (foliotext, foliolines = 5, validpuncs = "\u300C\u300D\u300E\u300F\u3002\uFF0C\uFF1B\uFF1A\u3001\uFF01\uFF1F") => {
+  var extractPuncPos = (foliotext, foliolines = 5, validpuncs = VALIDPUNCS) => {
     const puncs = [];
     for (let i = 0; i < foliotext.length; i++) {
       let ch = 0, ntag = 0, textsum = 0;
-      const [text2, tags] = parseOfftext(foliotext[i]);
+      let [text2, tags] = parseOfftext(foliotext[i]);
       const isgatha = !!tags.filter((it) => it.name == "gatha").length;
       if (i >= foliolines)
         break;
+      if (isgatha) {
+        text2 = text2.replace(/．/g, "\u3000");
+      }
+      ;
       const chars = splitUTF32Char(text2);
       for (let j2 = 0; j2 < chars.length; j2++) {
         while (ntag < tags.length && textsum > tags[ntag].choff) {
@@ -7304,12 +7311,8 @@
           puncs.push({ line: i, ch, text: text3 });
         }
         const r = CJKRangeName(chars[j2]);
-        if (r) {
+        if (r || chars[j2] == "\u3000") {
           ch++;
-        } else {
-          if (isgatha && ~validpuncs.indexOf(chars[i])) {
-            ch++;
-          }
         }
       }
     }
