@@ -79,10 +79,10 @@
 }
 
 /* fakecss:D:/2023/swipegallery/src/swipezipimage.esbuild-svelte-fake-css */
-img.svelte-1wrvpnb {
+img.svelte-8fltpo {
   height: 100%;
 }
-.pagenumber.svelte-1wrvpnb {
+.pagenumber.svelte-8fltpo {
   position: absolute;
   bottom: 1%;
   font-size: 200%;
@@ -90,18 +90,23 @@ img.svelte-1wrvpnb {
   z-index: 999;
   color: brown;
 }
-.swipe.svelte-1wrvpnb {
+.message.svelte-8fltpo {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.swipe-holder.svelte-1wrvpnb {
+.swipe-holder.svelte-8fltpo {
   height: 100%;
   width: 100%;
-  background-color: rgb(243, 208, 160);
 }
-.sponsor.svelte-1wrvpnb {
+.swipe.svelte-8fltpo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.sponsor.svelte-8fltpo {
   user-select: none;
   pointer-events: none;
   font-size: 4vh;
@@ -187,11 +192,12 @@ input.svelte-3gztlv {
 }
 
 /* fakecss:D:/2023/swipegallery/src/app.esbuild-svelte-fake-css */
-.app.svelte-1nttugc {
+.app.svelte-nm2ph0 {
   height: 99.5vh;
   top: 0px;
+  background-color: rgb(243, 208, 160);
 }
-.closepopup.svelte-1nttugc {
+.closepopup.svelte-nm2ph0 {
   z-index: 999;
   font-size: 200%;
   position: absolute;
