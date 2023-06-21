@@ -7875,7 +7875,6 @@
     component_subscribe($$self, playing, ($$value) => $$invalidate(2, $playing = $$value));
     component_subscribe($$self, activefolio, ($$value) => $$invalidate(3, $activefolio = $$value));
     let { frame = {}, totalpages } = $$props;
-    console.log(frame);
     const strips = new Array($folioLines);
     const timers = [];
     onDestroy(() => {
@@ -9652,7 +9651,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const updateFolioText = async () => {
       $$invalidate(3, hidepunc = false);
       [foliotext, foliofrom] = await fetchFolioText(ptk, $activebookid, 1 + Math.floor($activefolio));
-      $$invalidate(1, puncs = extractPuncPos(foliotext, $folioLines));
+      setTimeout(
+        () => {
+          $$invalidate(1, puncs = extractPuncPos(foliotext, $folioLines));
+        },
+        200
+      );
     };
     const mousewheel = (e) => {
       if (e.ctrlKey)
