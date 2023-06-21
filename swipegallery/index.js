@@ -7422,6 +7422,7 @@
     if (!foliotext.length)
       return "";
     for (let i = 0; i <= cx; i++) {
+      foliotext[i] = foliotext[i] || "";
       if (i == cx) {
         out.push(foliotext[i].slice(0, pos));
       } else {
@@ -7660,19 +7661,19 @@
       arr[i] += arr[i - 1];
     }
   };
-  var venxinding = [425, 0, 5, 10, 9, 9, 9, 9, 9, 9, 8, 8, 8, 8, 8, 8, 8, 7, 8, 8, 8, 9, 7, 7, 8, 7, 8, 7, 7, 8, 7, 8, 7, 7, 8, 7, 7, 7, 8, 7, 7, 7, 7, 7, 7, 7, 7, 8, 7, 6, 7, 8, 6, 7, 7, 7, 8, 7, 6, 7, 7, 7, 7, 7, 6, 7, 6, 7, 6, 7, 6, 6, 7, 6, 7, 7, 6, 6, 6, 6, 7, 6, 6, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 8, 6, 6, 6, 5, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 5, 6, 6, 5, 6, 7, 5, 6, 5, 6, 5, 8, 6, 5, 6, 5, 6, 6, 5, 6, 5, 6, 5, 6, 5, 6, 5, 6, 5, 5, 5, 6, 5, 5, 6, 5, 6, 5, 6, 5, 5, 5, 6, 5, 5, 6, 5, 6, 5, 5, 5, 5, 5, 6, 5, 5, 5, 5, 6, 5, 5, 5, 5, 6, 5, 5, 5, 5, 5, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 5, 5, 5, 5, 5, 4, 5, 5, 5, 4, 5, 5, 5, 5, 4, 5, 5, 4, 5, 5, 5, 4, 5, 6, 5, 4, 5, 3, 4, 2, 4, 5, 5, 5, 4, 5, 5, 4, 5, 5, 4, 5, 5, 5, 4, 5, 5, 5, 4, 5, 5, 5, 4, 5, 5, 4, 5, 4, 5, 4, 5, 4, 5, 5, 4, 1, 4, 2, 4, 5, 8];
+  var venxinding = [425, 0, 5, 10, 9, 9, 9, 9, 9, 9, 8, 8, 8, 8, 8, 8, 8, 7, 8, 8, 8, 9, 7, 7, 8, 7, 8, 7, 7, 8, 7, 8, 7, 7, 8, 7, 7, 7, 8, 7, 7, 7, 7, 7, 7, 7, 7, 8, 7, 6, 7, 8, 6, 7, 7, 7, 8, 7, 6, 7, 7, 7, 7, 7, 6, 7, 6, 7, 6, 7, 6, 6, 7, 6, 7, 7, 6, 6, 6, 6, 7, 6, 6, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 8, 6, 6, 6, 5, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 5, 6, 6, 5, 6, 7, 5, 6, 5, 6, 5, 8, 6, 5, 6, 5, 6, 6, 5, 6, 5, 6, 5, 6, 5, 6, 5, 6, 5, 5, 5, 6, 5, 5, 6, 5, 6, 5, 6, 5, 5, 5, 6, 5, 5, 6, 5, 6, 5, 5, 5, 5, 5, 6, 5, 5, 5, 5, 6, 5, 5, 5, 5, 6, 5, 5, 5, 5, 5, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 5, 5, 5, 5, 5, 4, 5, 5, 5, 4, 5, 5, 5, 5, 4, 5, 5, 4, 5, 5, 5, 4, 5, 6, 5, 4, 5, 3, 4, 2, 4, 5, 5, 5, 4, 5, 5, 4, 5, 5, 4, 5, 5, 5, 4, 5, 5, 5, 4, 5, 5, 5, 4, 5, 5, 4, 5, 4, 5, 4, 5, 4, 5, 5, 4, 1, 4, 2, 4, 5, 8, 3, 0];
   var stamps = [venxinding];
   stamps.forEach(unpack);
   var mediaurls = [
-    { youtube: "", author: "-\u975C\u9ED8-" },
-    { youtube: "5C4INS3hK40", author: "\u990A\u5FB7\u5BFA" },
-    { youtube: "RquHJ4jzXKs", author: "\u6CD5\u9F13\u5C71" },
-    { youtube: "m9ZmMrY88qE", author: "\u5FC3\u5B9A\u6CD5\u5E2B", start: 425, end: 2178, timestamp: venxinding },
-    { youtube: "z-IpOREVDHo", author: "\u898B\u8F1D\u6CD5\u5E2B" },
-    { youtube: "ZK_W_Qy2C3k", author: "\u8523\u52F3" },
+    { youtube: "-", author: "-\u975C\u9ED8-" },
+    { youtube: "5C4INS3hK40", author: "\u990A\u5FB7\u5BFA", bookid: "vcpp_kumarajiva" },
+    { youtube: "RquHJ4jzXKs", author: "\u6CD5\u9F13\u5C71", bookid: "vcpp_kumarajiva" },
+    { youtube: "m9ZmMrY88qE", author: "\u5FC3\u5B9A\u6CD5\u5E2B", start: 425, end: 2178, timestamp: venxinding, bookid: "vcpp_kumarajiva" },
+    { youtube: "z-IpOREVDHo", author: "\u898B\u8F1D\u6CD5\u5E2B", bookid: "vcpp_kumarajiva" },
+    { youtube: "ZK_W_Qy2C3k", author: "\u8523\u52F3", bookid: "vcpp_kumarajiva" },
     // {youtube:'xyPmW3TeTNk',author:'黃慧音'},
     // {youtube:'1dVZ_bFWmgM',author:'黃慧音2'}, //cannot embed
-    { youtube: "edV5PJyUzdc", author: "\u738B\u83F2" }
+    { youtube: "edV5PJyUzdc", author: "\u738B\u83F2", bookid: "vcpp_kumarajiva" }
   ];
 
   // src/transcriptlayer.svelte
@@ -7818,7 +7819,10 @@
     let if_block_anchor;
     let if_block = (
       /*$playing*/
-      ctx[2] && create_if_block(ctx)
+      ctx[2] && mediaurls[
+        /*$mediaid*/
+        ctx[1]
+      ].timestamp && create_if_block(ctx)
     );
     return {
       c() {
@@ -7834,7 +7838,10 @@
       p(ctx2, [dirty]) {
         if (
           /*$playing*/
-          ctx2[2]
+          ctx2[2] && mediaurls[
+            /*$mediaid*/
+            ctx2[1]
+          ].timestamp
         ) {
           if (if_block) {
             if_block.p(ctx2, dirty);
@@ -7868,6 +7875,7 @@
     component_subscribe($$self, playing, ($$value) => $$invalidate(2, $playing = $$value));
     component_subscribe($$self, activefolio, ($$value) => $$invalidate(3, $activefolio = $$value));
     let { frame = {}, totalpages } = $$props;
+    console.log(frame);
     const strips = new Array($folioLines);
     const timers = [];
     onDestroy(() => {
@@ -7880,15 +7888,20 @@
       const w = frame.width / get_store_value(folioLines);
       let out = [];
       out.push("position:absolute");
-      out.push("left:" + Math.floor((get_store_value(folioLines) - i - 1) * w + frame.left) + "px");
-      out.push("top:" + Math.floor(frame.top) + "px");
+      out.push("left:" + Math.floor((get_store_value(folioLines) - i - 1) * w) + "px");
+      out.push("top:0px");
       out.push("width:" + Math.floor(w) + "px");
       out.push("height:0px");
       const { timestamp } = mediaurls[$mediaid];
-      if (!timestamp)
+      if (!timestamp) {
         return out.join(";");
+      }
       const smalldelay = 30;
       const line = get_store_value(activefolio) * get_store_value(folioLines);
+      if (!timestamp[line] && i == 0) {
+        continueplay.set(false);
+        activefolio.set(0);
+      }
       const delay = smalldelay + (timestamp[line + i] - timestamp[line]) * 1e3;
       const fire = function() {
         if (this.folio !== get_store_value(activefolio))
@@ -7911,10 +7924,8 @@
                 () => {
                   continueplay.set(false);
                 },
-                10
+                100
               );
-            } else {
-              activefolio.set(0);
             }
           },
           smalldelay + (timestamp[line + i + 1] - timestamp[line]) * 1e3
@@ -10137,8 +10148,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   // src/audio.svelte
   function get_each_context6(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[4] = list[i];
-    child_ctx[6] = i;
+    child_ctx[5] = list[i];
+    child_ctx[7] = i;
     return child_ctx;
   }
   function create_else_block3(ctx) {
@@ -10200,7 +10211,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             select,
             "change",
             /*selectmedia*/
-            ctx[2]
+            ctx[3]
           );
           mounted = true;
         }
@@ -10213,8 +10224,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ].youtube)) {
           attr(a, "href", a_href_value);
         }
-        if (dirty & /*$mediaid, mediaurls*/
-        2) {
+        if (dirty & /*$mediaid, mediaurls, $activebookid*/
+        6) {
           each_value = mediaurls;
           let i;
           for (i = 0; i < each_value.length; i += 1) {
@@ -10285,11 +10296,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_each_block6(ctx) {
+  function create_if_block_22(ctx) {
     let option;
     let t_value = (
-      /*url*/
-      ctx[4].author + ""
+      /*media*/
+      ctx[5].author + ""
     );
     let t;
     let option_value_value;
@@ -10300,10 +10311,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t = text(t_value);
         attr(option, "class", "option");
         option.__value = option_value_value = /*idx*/
-        ctx[6];
+        ctx[7];
         option.value = option.__value;
         option.selected = option_selected_value = /*idx*/
-        ctx[6] == /*$mediaid*/
+        ctx[7] == /*$mediaid*/
         ctx[1];
       },
       m(target, anchor) {
@@ -10313,7 +10324,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         if (dirty & /*$mediaid*/
         2 && option_selected_value !== (option_selected_value = /*idx*/
-        ctx2[6] == /*$mediaid*/
+        ctx2[7] == /*$mediaid*/
         ctx2[1])) {
           option.selected = option_selected_value;
         }
@@ -10324,12 +10335,58 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
+  function create_each_block6(ctx) {
+    let if_block_anchor;
+    let if_block = (
+      /*media*/
+      (ctx[5].bookid == /*$activebookid*/
+      ctx[2] || /*idx*/
+      ctx[7] == 0) && create_if_block_22(ctx)
+    );
+    return {
+      c() {
+        if (if_block)
+          if_block.c();
+        if_block_anchor = empty();
+      },
+      m(target, anchor) {
+        if (if_block)
+          if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
+      },
+      p(ctx2, dirty) {
+        if (
+          /*media*/
+          ctx2[5].bookid == /*$activebookid*/
+          ctx2[2] || /*idx*/
+          ctx2[7] == 0
+        ) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+          } else {
+            if_block = create_if_block_22(ctx2);
+            if_block.c();
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        } else if (if_block) {
+          if_block.d(1);
+          if_block = null;
+        }
+      },
+      d(detaching) {
+        if (if_block)
+          if_block.d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
+      }
+    };
+  }
   function create_if_block_12(ctx) {
     let br;
     let t0;
     let t1_value = (
       /*humanDuration*/
-      ctx[3](mediaurls[
+      ctx[4](mediaurls[
         /*$mediaid*/
         ctx[1]
       ].end - mediaurls[
@@ -10352,7 +10409,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         if (dirty & /*$mediaid*/
         2 && t1_value !== (t1_value = /*humanDuration*/
-        ctx2[3](mediaurls[
+        ctx2[4](mediaurls[
           /*$mediaid*/
           ctx2[1]
         ].end - mediaurls[
@@ -10415,8 +10472,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   function instance9($$self, $$props, $$invalidate) {
     let $player;
     let $mediaid;
+    let $activebookid;
     component_subscribe($$self, player, ($$value) => $$invalidate(0, $player = $$value));
     component_subscribe($$self, mediaid, ($$value) => $$invalidate(1, $mediaid = $$value));
+    component_subscribe($$self, activebookid, ($$value) => $$invalidate(2, $activebookid = $$value));
     const selectmedia = (e) => {
       mediaid.set(parseInt(e.target.selectedOptions[0].attributes.value.nodeValue) || 0);
     };
@@ -10427,7 +10486,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const seconds = t - minutes * 60;
       return `${minutes}:${seconds}`;
     };
-    return [$player, $mediaid, selectmedia, humanDuration];
+    return [$player, $mediaid, $activebookid, selectmedia, humanDuration];
   }
   var Audio = class extends SvelteComponent {
     constructor(options) {
@@ -11182,7 +11241,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         const lines = ptk.slice(from, to + 1);
         if (lines[lines.length - 1].indexOf("^ck"))
           lines.pop();
-        lines[0] = '<div class="sourcetext">' + lines[0].replace(/\^r(\d+):/g, (m4, m1) => styledNumber(m1)) + "</div>";
+        if (lines.length) {
+          lines[0] = '<div class="sourcetext">' + lines[0].replace(/\^r(\d+):/g, (m4, m1) => styledNumber(m1)) + "</div>";
+        }
         $$invalidate(2, text2 = lines.join("<br/>"));
       }
     };
@@ -12129,7 +12190,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var toc_default = Toc;
 
   // src/taptext.svelte
-  function create_if_block_22(ctx) {
+  function create_if_block_23(ctx) {
     let span0;
     let t1;
     let span1;
@@ -12364,7 +12425,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current;
     let mounted;
     let dispose;
-    let if_block0 = show_if && create_if_block_22(ctx);
+    let if_block0 = show_if && create_if_block_23(ctx);
     let if_block1 = (
       /*def*/
       ctx[3] && create_if_block_13(ctx)
@@ -12657,7 +12718,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block0) {
             if_block0.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_22(ctx2);
+            if_block0 = create_if_block_23(ctx2);
             if_block0.c();
             if_block0.m(div0, t4);
           }
@@ -12882,7 +12943,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let { tofind = "" } = $$props;
     let { address = "" } = $$props;
     let { closePopup } = $$props;
-    let thetab = "audio";
+    let thetab = "toc";
     let def = "", ptk;
     const onDict = async (t) => {
       const entry = guessEntry(t, ptk.defines.e.fields.id.values);
@@ -12984,12 +13045,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let $activefolio;
     let $player;
     let $folioLines;
+    let $activebookid;
     let $continueplay;
     component_subscribe($$self, mediaid, ($$value) => $$invalidate(0, $mediaid = $$value));
     component_subscribe($$self, activefolio, ($$value) => $$invalidate(1, $activefolio = $$value));
     component_subscribe($$self, player, ($$value) => $$invalidate(2, $player = $$value));
     component_subscribe($$self, folioLines, ($$value) => $$invalidate(3, $folioLines = $$value));
-    component_subscribe($$self, continueplay, ($$value) => $$invalidate(4, $continueplay = $$value));
+    component_subscribe($$self, activebookid, ($$value) => $$invalidate(4, $activebookid = $$value));
+    component_subscribe($$self, continueplay, ($$value) => $$invalidate(5, $continueplay = $$value));
     let plyr;
     setTimeout(
       () => {
@@ -13018,27 +13081,41 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       1e3
     );
     function onPlayerStateChange(e) {
-      playing.set(false);
-      if (e.data == 1) {
-        playing.set(true);
+      const { bookid } = mediaurls[$mediaid];
+      if (bookid !== $activebookid) {
+        stopVideo();
+        return;
       }
+      playing.set(e.data == 1);
     }
+    const stopVideo = () => {
+      mediaid.set(0);
+      $player?.stopVideo();
+      playing.set(false);
+    };
     function onPlayerReady(e) {
       player.set(pylr);
       pylr.playVideo();
     }
     const loadVideo = (mediaid2) => {
-      const { youtube, start } = mediaurls[mediaid2];
-      $player?.loadVideoById({
-        "videoId": youtube,
-        suggestedQuality: "low",
-        startSeconds: start
-      });
+      const { youtube, start, bookid } = mediaurls[mediaid2];
+      if (bookid !== $activebookid) {
+        stopVideo();
+      } else {
+        $player?.loadVideoById({
+          "videoId": youtube,
+          suggestedQuality: "low",
+          startSeconds: start
+        });
+      }
     };
     const seekToFolio = (folio, mediaid2) => {
       if (!mediaid2 || $continueplay)
         return;
-      const { timestamp } = mediaurls[mediaid2];
+      const { timestamp, bookid } = mediaurls[mediaid2];
+      if (bookid !== $activebookid) {
+        stopVideo();
+      }
       if (!timestamp)
         return;
       const line = parseInt(folio) * $folioLines;
@@ -13104,7 +13181,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let key_block = create_key_block4(ctx);
     let if_block0 = (
       /*showdict*/
-      ctx[2] && create_if_block_23(ctx)
+      ctx[2] && create_if_block_24(ctx)
     );
     let if_block1 = (
       /*showdict*/
@@ -13157,7 +13234,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block0) {
             if_block0.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_23(ctx2);
+            if_block0 = create_if_block_24(ctx2);
             if_block0.c();
             if_block0.m(t2.parentNode, t2);
           }
@@ -13279,7 +13356,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_23(ctx) {
+  function create_if_block_24(ctx) {
     let span;
     let mounted;
     let dispose;
