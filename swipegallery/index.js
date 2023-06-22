@@ -9306,11 +9306,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ),
         folioChars: (
           /*$folioChars*/
-          ctx[7]
+          ctx[6]
         ),
         folioLines: (
           /*$folioLines*/
-          ctx[6]
+          ctx[7]
         ),
         puncs: (
           /*puncs*/
@@ -9330,7 +9330,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ),
         folioLines: (
           /*$folioLines*/
-          ctx[6]
+          ctx[7]
         ),
         swiper: (
           /*swiper*/
@@ -9353,13 +9353,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         const punclayer_changes = {};
         if (dirty[0] & /*$folioChars*/
-        128)
-          punclayer_changes.folioChars = /*$folioChars*/
-          ctx2[7];
-        if (dirty[0] & /*$folioLines*/
         64)
-          punclayer_changes.folioLines = /*$folioLines*/
+          punclayer_changes.folioChars = /*$folioChars*/
           ctx2[6];
+        if (dirty[0] & /*$folioLines*/
+        128)
+          punclayer_changes.folioLines = /*$folioLines*/
+          ctx2[7];
         if (dirty[0] & /*puncs*/
         2)
           punclayer_changes.puncs = /*puncs*/
@@ -9371,9 +9371,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           transcriptlayer_changes.totalpages = /*totalpages*/
           ctx2[0];
         if (dirty[0] & /*$folioLines*/
-        64)
+        128)
           transcriptlayer_changes.folioLines = /*$folioLines*/
-          ctx2[6];
+          ctx2[7];
         if (dirty[0] & /*swiper*/
         16)
           transcriptlayer_changes.swiper = /*swiper*/
@@ -9579,14 +9579,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   function instance6($$self, $$props, $$invalidate) {
     let $activefolio;
     let $activebookid;
+    let $folioChars;
     let $folioLines;
     let $activePtk;
-    let $folioChars;
     component_subscribe($$self, activefolio, ($$value) => $$invalidate(17, $activefolio = $$value));
     component_subscribe($$self, activebookid, ($$value) => $$invalidate(22, $activebookid = $$value));
-    component_subscribe($$self, folioLines, ($$value) => $$invalidate(6, $folioLines = $$value));
+    component_subscribe($$self, folioChars, ($$value) => $$invalidate(6, $folioChars = $$value));
+    component_subscribe($$self, folioLines, ($$value) => $$invalidate(7, $folioLines = $$value));
     component_subscribe($$self, activePtk, ($$value) => $$invalidate(23, $activePtk = $$value));
-    component_subscribe($$self, folioChars, ($$value) => $$invalidate(7, $folioChars = $$value));
     let { src } = $$props;
     let ptk = usePtk($activePtk);
     let foliotext = "", foliofrom = 0, puncs = [], ready, images = [], hidepunc = false;
@@ -9675,7 +9675,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       x -= left;
       y -= top;
       const cx = $folioLines - Math.floor(x / width * $folioLines) - 1;
-      const cy = Math.floor(y / height * folioChars);
+      const cy = Math.floor(y / height * $folioChars);
       return [cx, cy];
     };
     const onclick = async (e) => {
@@ -9729,8 +9729,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       hidepunc,
       swiper,
       defaultIndex,
-      $folioLines,
       $folioChars,
+      $folioLines,
       images,
       imageFrame,
       swipeConfig,
@@ -10509,7 +10509,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         div = element("div");
         div.innerHTML = `\u8CC7\u6599\u4F86\u6E90
 <br/>\u6C38\u6A02\u5317\u85CF\u5716\u6A94\uFF08\u5C71\u6771\u5716\u66F8\u9928\u85CF\uFF09\u3001\u91D1\u525B\u7D93\u96C6\u8A3B\uFF08\u660E\u6210\u7956\u6731\u68E3\uFF09\u3001\u68B5\u6587\u5E95\u672C\uFF1AConze \u6821\u52D8\u672C
-<br/>\u81EA\u7531\u8EDF\u4EF6\uFF0C\u514D\u8CBB\u5206\u4EAB \u7248\u672C\uFF1A2023.6.21
+<br/>\u81EA\u7531\u8EDF\u4EF6\uFF0C\u514D\u8CBB\u5206\u4EAB \u7248\u672C\uFF1A2023.6.22
 <br/><a href="https://dharmacloud.github.io">dharmacloud.github.io</a>`;
         attr(div, "class", "toctext");
       },
