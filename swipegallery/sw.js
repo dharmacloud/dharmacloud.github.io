@@ -13,7 +13,7 @@ self.addEventListener('install', (e) => {
 
 });
 
-
+/*
 self.addEventListener('fetch', (e) => {
   if (e.request.headers.has('range')) {//cache doesnot support partial
     return; 
@@ -29,3 +29,4 @@ self.addEventListener('fetch', (e) => {
     return response;
   })());
 });
+*/
