@@ -7691,14 +7691,14 @@
   stamps.forEach(unpack);
   var mediaurls = [
     { youtube: "-", author: "-\u975C\u9ED8-" },
-    { youtube: "5C4INS3hK40", author: "\u990A\u5FB7\u5BFA", bookid: "vcpp_kumarajiva" },
+    // {youtube:'5C4INS3hK40',author:'養德寺',bookid:'vcpp_kumarajiva'},
     { youtube: "RquHJ4jzXKs", author: "\u6CD5\u9F13\u5C71", timestamp: dharmadrum, bookid: "vcpp_kumarajiva" },
     { youtube: "m9ZmMrY88qE", author: "\u5FC3\u5B9A\u6CD5\u5E2B", timestamp: venxinding, bookid: "vcpp_kumarajiva" },
     { youtube: "z-IpOREVDHo", author: "\u898B\u8F1D\u6CD5\u5E2B", bookid: "vcpp_kumarajiva", timestamp: venjianhui },
-    { youtube: "wjvwySjCVoQ", author: "\u8523\u52F3", bookid: "vcpp_kumarajiva", timestamp: jiangxun },
+    { youtube: "wjvwySjCVoQ", author: "\u8523\u52F3", bookid: "vcpp_kumarajiva", timestamp: jiangxun }
     // {youtube:'xyPmW3TeTNk',author:'黃慧音'},
     // {youtube:'1dVZ_bFWmgM',author:'黃慧音2'}, //cannot embed
-    { youtube: "edV5PJyUzdc", author: "\u738B\u83F2", bookid: "vcpp_kumarajiva" }
+    // {youtube:'edV5PJyUzdc',author:'王菲',bookid:'vcpp_kumarajiva'},
   ];
 
   // src/transcriptlayer.svelte
