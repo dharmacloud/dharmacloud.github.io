@@ -10574,7 +10574,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
 <br/>\u6C38\u6A02\u5317\u85CF\u5716\u6A94\uFF08\u5C71\u6771\u5716\u66F8\u9928\u85CF\uFF09\u3001\u91D1\u525B\u7D93\u96C6\u8A3B\uFF08\u660E\u6210\u7956\u6731\u68E3\uFF09\u3001\u68B5\u6587\u5E95\u672C\uFF1AConze \u6821\u52D8\u672C
 <br/>\u6578\u64DA\u6388\u6B0A<a href="https://creativecommons.org/publicdomain/zero/1.0/deed.zh">CC0</a> 
 <br/>\u958B\u6E90\u8EDF\u4EF6\uFF082023.6.23\uFF09
-<br/><a href="https://dharmacloud.github.io">dharmacloud.github.io</a>`;
+<br/><a href="https://lin.ee/1tmTKXi">\u8ACB\u52A0\u5165LINE\u5B98\u65B9\u5E33\u865F</a>\u6216\u641C\u5C0BLINE ID @dharmacloud`;
         attr(div, "class", "toctext");
       },
       m(target, anchor) {
