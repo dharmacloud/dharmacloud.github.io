@@ -13504,7 +13504,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         stopVideo();
       } else {
         activefolio.set(0);
-        const start = timestamp[0] || 0;
+        const start = timestamp && timestamp[0] || 0;
         $player?.loadVideoById({
           "videoId": youtube,
           suggestedQuality: "low",
