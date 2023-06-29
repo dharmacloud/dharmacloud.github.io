@@ -10,9 +10,8 @@ self.addEventListener('install', (e) => {
       // cache.put(response.url,response.clone());
        cache.put(response.url.replace('index.html',''),response.clone());
     })());
-
 });
-
+/*
 self.addEventListener('fetch', (e) => {
   // console.log('fetch',e.request.url)
   if (e.request.headers.has('range')) {//cache doesnot support partial
@@ -31,3 +30,4 @@ self.addEventListener('fetch', (e) => {
     return response;
   })());
 });
+*/
