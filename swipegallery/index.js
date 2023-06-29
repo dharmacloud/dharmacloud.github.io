@@ -15647,7 +15647,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       c() {
         span = element("span");
         span.textContent = "\u5982\u679C\u505C\u5728\u6B64\u756B\u9762\uFF0C\u8868\u793A\u624B\u6A5F\u700F\u89BD\u5668\u592A\u820A\uFF0C\u4E0D\u652F\u6301 ES2015 \u3002";
-        attr(span, "class", "loading svelte-1c9gk8j");
+        attr(span, "class", "loading");
       },
       m(target, anchor) {
         insert(target, span, anchor);
@@ -15859,7 +15859,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       c() {
         span = element("span");
         span.textContent = "\u2573";
-        attr(span, "class", "closepopup svelte-1c9gk8j");
+        attr(span, "class", "closepopup");
       },
       m(target, anchor) {
         insert(target, span, anchor);
@@ -15957,7 +15957,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       c() {
         div = element("div");
         if_block.c();
-        attr(div, "class", "app svelte-1c9gk8j");
+        attr(div, "class", "app");
       },
       m(target, anchor) {
         insert(target, div, anchor);

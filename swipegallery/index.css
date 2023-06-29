@@ -306,22 +306,3 @@ input.svelte-1nnnvg0 {
   right: -1px;
   height: 1px;
 }
-
-/* fakecss:D:/2023/swipegallery/src/app.esbuild-svelte-fake-css */
-.loading.svelte-1c9gk8j {
-  font-size: 4vh;
-}
-.app.svelte-1c9gk8j {
-  height: 99.5vh;
-  top: 0px;
-  background-color: rgb(243, 208, 160);
-}
-.closepopup.svelte-1c9gk8j {
-  z-index: 999;
-  font-size: 200%;
-  position: absolute;
-  right: 0.5em;
-  top: 0.5em;
-  color: black;
-  font-weight: bold;
-}
