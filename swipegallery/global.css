@@ -4,12 +4,18 @@ body {
   margin: 0px;
 }
 
-.popup {position:absolute;top:3%;left:3%;width:94%;height:90%;background:#dfdfdf;overflow:hidden;z-index: 99}
+:root{
+  --pinmark : rgba(247, 4, 4, 0.4);
+  --selected-color:rgb(255, 173, 42);
+}
+.popup { position:absolute;top:3%;left:3%;width:94%;height:90%;
+  border-radius: 5px;
+  background:rgba(255, 235, 164, 0.9);overflow:hidden;z-index: 99}
 .tabs {--webkit-user-select: none;overflow:hidden  ; font-size:3.5vh;
-  user-select: none;padding-left: 0.05em; background:silver}
+  user-select: none;padding-left: 0.05em; background:rgb(143, 81, 0);color:gold}
 
 select {font-size:4vh}
-.selected {background: gray;border-radius: 0.25em}
+.selected {background: rgb(255, 173, 42);border-radius: 0.25em;color:white}
 .tab-content {
   position: absolute;
   height:90vh;
@@ -30,13 +36,13 @@ select {font-size:4vh}
 
 .book {font-size:4vh}
 .refer {text-decoration: underline;}
-.clickable {border-bottom: blue solid 1px}
+.clickable {border-bottom: rgb(255, 230, 0) solid 1px}
 
 .author {border:gray solid 1px ;border-radius: 0.25em;}
-.selecteditem {background:silver}
+.selecteditem {background:rgb(255, 173, 42)}
 .hr {height: 1px ;background:black}
-.paralleltext {font-size:4vh;}
-.toctext {font-size:4vh;}
+.paralleltext {font-size:3vh;}
+.toctext {font-size:3vh;}
 .tocitem{margin-left: 0.5em;}
 .dicttext {font-size:4vh}
 .dictentry {font-size:6vh}
@@ -50,9 +56,59 @@ select {font-size:4vh}
 }
 
 .puncs {z-index:9;position:absolute;user-select: none;overflow:hidden;pointer-events: none;user-select: none;}
-.punc {z-index:9;position:absolute;color:rgba(255, 0, 0,0.6);font-family: bolder;animation: fadeIn 1s}
+.punc {z-index:9;position:absolute;color:rgba(255, 14, 1,0.8);font-family: bolder;animation: fadeIn 1s}
 .transcript {z-index:9;position:absolute;user-select: none;overflow:hidden;pointer-events: none;user-select: none;}
 
 .sponsor {user-select:none;pointer-events:none;font-size:4vh;font-weight: bold; animation:fadeIn 2s;
   position:absolute; color:red;opacity: 0.75; right:1.1em;top:50vh;writing-mode: vertical-lr}
 .strip {background:rgba(212, 194, 0, 0.4)}
+
+
+
+
+
+.track {
+  margin: 2vh 2vh;
+  position: relative;
+  height: 2vh;
+  width: calc(100% - 4vh);
+  border-radius: 100vh;
+  background: var(--track-bg, #fffdf6);
+}
+
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 100vh;
+  background: var(--progress-bg, #fef1a6);
+}
+
+.thumb {
+  width: 3vh;
+  height: 3vh;
+  border-radius: 100vh;
+  background: var(--thumb-bg, #d27700);
+}
+.subtitle{
+  font-size:4vh;
+}
+.pagenumber {position:absolute ; bottom:1%;font-size: 200%;left:0.1em;z-index: 999;color:brown}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+
+.remainrollback {
+  animation: blinker 2s linear infinite;
+  position:absolute; bottom:1%;font-size: 200%;right:0.1em;z-index: 999;color:red
+}
+
+.bracket {
+  font-size:80%;color:brown;
+}

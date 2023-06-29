@@ -2,7 +2,7 @@ const cacheName = 'cache';
 self.addEventListener('install', (e) => {
     console.log('[Service Worker] Install');
     e.waitUntil((async () => {
-    //   console.log('[Service Worker] Caching all: app shell and content');
+       console.log('[Service Worker] Caching all: app shell and content');
         //required by PWA  
        const cache = await caches.open(cacheName);  
        const response = await fetch('index.html');
@@ -13,11 +13,13 @@ self.addEventListener('install', (e) => {
 
 });
 
-/*
 self.addEventListener('fetch', (e) => {
+  // console.log('fetch',e.request.url)
   if (e.request.headers.has('range')) {//cache doesnot support partial
     return; 
   }
+  if (!e.request.url.endsWith('.zip')) return; //only cache zip
+  // console.log('cache',e.request.url)
   e.respondWith((async () => {
     const r = await caches.match(e.request);
   //   console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
@@ -29,4 +31,3 @@ self.addEventListener('fetch', (e) => {
     return response;
   })());
 });
-*/

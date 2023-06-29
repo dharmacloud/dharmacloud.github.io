@@ -1,7 +1,7 @@
 {
-    "name": "永樂北藏",
-    "short_name": "YongleBeizang",
-    "description": "永樂北藏",
+    "name": "永樂藏",
+    "short_name": "YongLeZang",
+    "description": "永樂藏",
     "icons": [
         {
             "src": "logo128.png",
