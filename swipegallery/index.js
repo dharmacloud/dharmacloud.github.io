@@ -13033,7 +13033,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t5 = text("\u9019\u662F");
         a1 = element("a");
         a1.textContent = "\u958B\u6E90";
-        t7 = text("\u8EDF\u4EF6(2023.6.29)\uFF0C\u53EF\u4EE5\u4E0D\u53D7\u4EFB\u4F55\u9650\u5236\uFF0C\u4EE5\u4EFB\u4F55\u5F62\u614B\u6563\u4F48\u672C\u8EDF\u4EF6\u3002");
+        t7 = text("\u8EDF\u4EF6(2023.6.30)\uFF0C\u53EF\u4EE5\u4E0D\u53D7\u4EFB\u4F55\u9650\u5236\uFF0C\u4EE5\u4EFB\u4F55\u5F62\u614B\u6563\u4F48\u672C\u8EDF\u4EF6\u3002");
         attr(a0, "href", "https://creativecommons.org/publicdomain/zero/1.0/deed.zh");
         attr(a1, "href", "https://github.com/dharmacloud");
         attr(a1, "target", "_new");
