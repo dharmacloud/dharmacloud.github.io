@@ -113,6 +113,13 @@ select {font-size:4vh}
   position:absolute; bottom:4vh;font-size: 200%;right:0.5em;z-index: 99;color:red
 }
 
+.idletime {
+  animation: blinker 5s linear infinite;
+  position:absolute; bottom:4vh;font-size: 100%;right:1em;z-index: 99;color:black
+}
+
+
+
 .bracket {
   font-size:80%;color:brown;
 }
