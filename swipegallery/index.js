@@ -9227,7 +9227,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     child_ctx[37] = i;
     return child_ctx;
   }
-  function create_else_block_1(ctx) {
+  function create_else_block(ctx) {
     let div;
     return {
       c() {
@@ -9247,7 +9247,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_3(ctx) {
+  function create_if_block_4(ctx) {
     let div;
     let swipe;
     let current;
@@ -9488,10 +9488,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_else_block(ctx) {
+  function create_if_block_3(ctx) {
     let span;
-    let t_value = idletime - /*$idlecount*/
-    ctx[13] + "";
+    let t_value = (
+      /*$idlecount*/
+      (ctx[13] >= idletime - 30 ? idletime - /*$idlecount*/
+      ctx[13] : "") + ""
+    );
     let t;
     return {
       c() {
@@ -9505,8 +9508,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, dirty) {
         if (dirty[0] & /*$idlecount*/
-        8192 && t_value !== (t_value = idletime - /*$idlecount*/
-        ctx2[13] + ""))
+        8192 && t_value !== (t_value = /*$idlecount*/
+        (ctx2[13] >= idletime - 30 ? idletime - /*$idlecount*/
+        ctx2[13] : "") + ""))
           set_data(t, t_value);
       },
       d(detaching) {
@@ -9878,7 +9882,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     );
     let key_block1_anchor;
     let current;
-    const if_block_creators = [create_if_block_3, create_else_block_1];
+    const if_block_creators = [create_if_block_4, create_else_block];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -9896,10 +9900,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ctx2[11]
       )
         return create_if_block_2;
-      return create_else_block;
+      if (!/*$showpaiji*/
+      ctx2[10])
+        return create_if_block_3;
     }
     let current_block_type = select_block_type_1(ctx, [-1, -1]);
-    let if_block1 = current_block_type(ctx);
+    let if_block1 = current_block_type && current_block_type(ctx);
     let key_block0 = create_key_block_1(ctx);
     let key_block1 = create_key_block2(ctx);
     return {
@@ -9909,7 +9915,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         span = element("span");
         t1 = text(t1_value);
         t2 = space();
-        if_block1.c();
+        if (if_block1)
+          if_block1.c();
         t3 = space();
         key_block0.c();
         t4 = space();
@@ -9923,7 +9930,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         insert(target, span, anchor);
         append(span, t1);
         insert(target, t2, anchor);
-        if_block1.m(target, anchor);
+        if (if_block1)
+          if_block1.m(target, anchor);
         insert(target, t3, anchor);
         key_block0.m(target, anchor);
         insert(target, t4, anchor);
@@ -9960,8 +9968,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (current_block_type === (current_block_type = select_block_type_1(ctx2, dirty)) && if_block1) {
           if_block1.p(ctx2, dirty);
         } else {
-          if_block1.d(1);
-          if_block1 = current_block_type(ctx2);
+          if (if_block1)
+            if_block1.d(1);
+          if_block1 = current_block_type && current_block_type(ctx2);
           if (if_block1) {
             if_block1.c();
             if_block1.m(t3.parentNode, t3);
@@ -10017,7 +10026,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           detach(span);
         if (detaching)
           detach(t2);
-        if_block1.d(detaching);
+        if (if_block1) {
+          if_block1.d(detaching);
+        }
         if (detaching)
           detach(t3);
         key_block0.d(detaching);
@@ -11253,8 +11264,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       )
         return create_if_block_32;
       if (videohost == "youtube")
-        return create_if_block_4;
-      return create_else_block_12;
+        return create_if_block_42;
+      return create_else_block_1;
     }
     let current_block_type = select_block_type_1(ctx, -1);
     let if_block0 = current_block_type(ctx);
@@ -11428,7 +11439,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_else_block_12(ctx) {
+  function create_else_block_1(ctx) {
     let t0;
     let a;
     let t1;
@@ -11467,7 +11478,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_4(ctx) {
+  function create_if_block_42(ctx) {
     let t0;
     let a;
     let t1;
@@ -16211,7 +16222,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_42(ctx) {
+  function create_if_block_43(ctx) {
     let paiji;
     let current;
     paiji = new paiji_default({});
@@ -16247,7 +16258,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ctx[7] && !/*$playing*/
       ctx[8] && !/*showdict*/
       ctx[2] && !/*shownewbie*/
-      ctx[3] && create_if_block_42(ctx)
+      ctx[3] && create_if_block_43(ctx)
     );
     swipezipimage = new swipezipimage_default({
       props: {
@@ -16297,7 +16308,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block_42(ctx2);
+            if_block = create_if_block_43(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(t.parentNode, t);
@@ -16553,8 +16564,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $$invalidate(1, loaded = true);
       timer = setInterval(
         () => {
-          showpaiji.set($idlecount > idletime);
-          if (!$advancemode && !shownewbie && !showdict2) {
+          showpaiji.set($idlecount >= idletime);
+          if ($advancemode !== "on" && !shownewbie && !showdict2) {
             idlecount.set($idlecount + idleinterval);
           }
         },
