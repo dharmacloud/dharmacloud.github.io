@@ -625,7 +625,7 @@
     }
     component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
   }
-  function init(component, options, instance23, create_fragment22, not_equal, props, append_styles, dirty = [-1]) {
+  function init(component, options, instance24, create_fragment24, not_equal, props, append_styles, dirty = [-1]) {
     const parent_component = current_component;
     set_current_component(component);
     const $$ = component.$$ = {
@@ -651,7 +651,7 @@
     };
     append_styles && append_styles($$.root);
     let ready = false;
-    $$.ctx = instance23 ? instance23(component, options.props || {}, (i, ret, ...rest) => {
+    $$.ctx = instance24 ? instance24(component, options.props || {}, (i, ret, ...rest) => {
       const value = rest.length ? rest[0] : ret;
       if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
         if (!$$.skip_bound && $$.bound[i])
@@ -664,7 +664,7 @@
     $$.update();
     ready = true;
     run_all($$.before_update);
-    $$.fragment = create_fragment22 ? create_fragment22($$.ctx) : false;
+    $$.fragment = create_fragment24 ? create_fragment24($$.ctx) : false;
     if (options.target) {
       if (options.hydrate) {
         start_hydrating();
@@ -7371,7 +7371,7 @@
   // ../ptk/basket/folio.ts
   var VALIDPUNCS = "\u300C\u300D\u300E\u300F\u3002\uFF0C\uFF1B\uFF1A\u3001\uFF01\uFF1F";
   var fetchFolioText = async (ptk, bk, pb) => {
-    const [from, to] = ptk.rangeOfAddress("folio#" + bk + ".pb#" + pb);
+    const [from, to] = ptk.rangeOfAddress("folio#" + bk + (pb ? ".pb#" + pb : ""));
     if (from == to)
       return ["", from, to];
     await ptk.loadLines([from, to]);
@@ -7691,7 +7691,9 @@
   var loadSettings = () => {
     const activebookid2 = localStorage.getItem(AppPrefix + "activebookid") || "pphs";
     const advancemode2 = localStorage.getItem(AppPrefix + "advancemode");
-    return { activebookid: activebookid2, advancemode: advancemode2 };
+    const videohost2 = localStorage.getItem(AppPrefix + "videohost") || "youtube";
+    const newbie2 = localStorage.getItem(AppPrefix + "newbie") || "on";
+    return { activebookid: activebookid2, advancemode: advancemode2, videohost: videohost2, newbie: newbie2 };
   };
   var saveSettings = () => {
     for (let key in settingsToBeSave) {
@@ -7783,16 +7785,22 @@
   var maxfolio = writable(0);
   var isAndroid = writable(false);
   var player = writable(null);
-  var youtubeid = writable("");
+  var videoid = writable("");
   var folioLines = writable(5);
   var folioChars = writable(17);
+  var videohost = writable(settings.videohost);
   var playing = writable(false);
   var continueplay = writable(false);
   var tapmark = writable(0);
   var remainrollback = writable(-1);
+  var newbie = writable(settings.newbie);
+  var idlecount = writable(0);
+  var showpaiji = writable(false);
   activebookid.subscribe((activebookid2) => updateSettings({ activebookid: activebookid2 }));
   advancemode.subscribe((advancemode2) => updateSettings({ advancemode: advancemode2 }));
-  var findByYoutube = (id, column = "timestamp") => {
+  videohost.subscribe((videohost2) => updateSettings({ videohost: videohost2 }));
+  newbie.subscribe((newbie2) => updateSettings({ newbie: newbie2 }));
+  var findByVideoId = (id, column = "timestamp") => {
     const ptk = usePtk("dc");
     if (!ptk.columns[column])
       return null;
@@ -7800,10 +7808,13 @@
     return { youtube: id, ...ts };
   };
   var stopVideo = () => {
-    get_store_value(player)?.stopVideo();
+    const plyr = get_store_value(player);
     playing.set(false);
-    youtubeid.set("");
+    videoid.set("");
     remainrollback.set(-1);
+    if (!plyr)
+      return;
+    plyr.stopVideo ? plyr.stopVideo() : plyr.pause();
   };
 
   // src/transcriptlayer.svelte
@@ -7946,8 +7957,8 @@
   function create_fragment(ctx) {
     let show_if = (
       /*$playing*/
-      ctx[2] && findByYoutube(
-        /*$youtubeid*/
+      ctx[2] && findByVideoId(
+        /*$videoid*/
         ctx[1]
       )
     );
@@ -7965,11 +7976,11 @@
         insert(target, if_block_anchor, anchor);
       },
       p(ctx2, [dirty]) {
-        if (dirty & /*$playing, $youtubeid*/
+        if (dirty & /*$playing, $videoid*/
         6)
           show_if = /*$playing*/
-          ctx2[2] && findByYoutube(
-            /*$youtubeid*/
+          ctx2[2] && findByVideoId(
+            /*$videoid*/
             ctx2[1]
           );
         if (show_if) {
@@ -7996,11 +8007,11 @@
     };
   }
   function instance2($$self, $$props, $$invalidate) {
-    let $youtubeid;
+    let $videoid;
     let $folioLines;
     let $playing;
     let $activefolio;
-    component_subscribe($$self, youtubeid, ($$value) => $$invalidate(1, $youtubeid = $$value));
+    component_subscribe($$self, videoid, ($$value) => $$invalidate(1, $videoid = $$value));
     component_subscribe($$self, folioLines, ($$value) => $$invalidate(9, $folioLines = $$value));
     component_subscribe($$self, playing, ($$value) => $$invalidate(2, $playing = $$value));
     component_subscribe($$self, activefolio, ($$value) => $$invalidate(3, $activefolio = $$value));
@@ -8037,7 +8048,7 @@
       out.push("top:0px");
       out.push("width:" + Math.floor(w) + "px");
       out.push("height:0px");
-      const { timestamp } = findByYoutube($youtubeid);
+      const { timestamp } = findByVideoId($videoid);
       if (!timestamp) {
         return out.join(";");
       }
@@ -8103,7 +8114,7 @@
     };
     return [
       frame,
-      $youtubeid,
+      $videoid,
       $playing,
       $activefolio,
       strips,
@@ -9211,8 +9222,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   // src/swipezipimage.svelte
   function get_each_context4(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[32] = list[i];
-    child_ctx[34] = i;
+    child_ctx[34] = list[i];
+    child_ctx[36] = i;
     return child_ctx;
   }
   function create_else_block(ctx) {
@@ -9220,7 +9231,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         div = element("div");
-        attr(div, "class", "message svelte-13veyed");
+        attr(div, "class", "message svelte-1bsw8ig");
       },
       m(target, anchor) {
         insert(target, div, anchor);
@@ -9236,19 +9247,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function create_if_block_3(ctx) {
-    let t;
     let div;
     let swipe;
     let current;
     let mounted;
     let dispose;
-    let if_block = (
-      /*defaultIndex*/
-      ctx[7] == /*totalpages*/
-      ctx[0] - 1 && !/*hidepunc*/
-      ctx[5] && /*$activebookid*/
-      ctx[8] == "pphs" && create_if_block_4(ctx)
-    );
     const swipe_spread_levels = [
       /*swipeConfig*/
       ctx[16],
@@ -9283,17 +9286,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     );
     return {
       c() {
-        if (if_block)
-          if_block.c();
-        t = space();
         div = element("div");
         create_component(swipe.$$.fragment);
-        attr(div, "class", "swipe-holder svelte-13veyed");
+        attr(div, "class", "swipe-holder svelte-1bsw8ig");
       },
       m(target, anchor) {
-        if (if_block)
-          if_block.m(target, anchor);
-        insert(target, t, anchor);
         insert(target, div, anchor);
         mount_component(swipe, div, null);
         current = true;
@@ -9308,23 +9305,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
       },
       p(ctx2, dirty) {
-        if (
-          /*defaultIndex*/
-          ctx2[7] == /*totalpages*/
-          ctx2[0] - 1 && !/*hidepunc*/
-          ctx2[5] && /*$activebookid*/
-          ctx2[8] == "pphs"
-        ) {
-          if (if_block) {
-          } else {
-            if_block = create_if_block_4(ctx2);
-            if_block.c();
-            if_block.m(t.parentNode, t);
-          }
-        } else if (if_block) {
-          if_block.d(1);
-          if_block = null;
-        }
         const swipe_changes = dirty[0] & /*swipeConfig, defaultIndex*/
         65664 ? get_spread_update(swipe_spread_levels, [
           dirty[0] & /*swipeConfig*/
@@ -9339,7 +9319,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           ) }
         ]) : {};
         if (dirty[1] & /*$$scope*/
-        16) {
+        64) {
           swipe_changes.$$scope = { dirty, ctx: ctx2 };
         }
         swipe.$set(swipe_changes);
@@ -9355,33 +9335,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         current = false;
       },
       d(detaching) {
-        if (if_block)
-          if_block.d(detaching);
-        if (detaching)
-          detach(t);
         if (detaching)
           detach(div);
         ctx[23](null);
         destroy_component(swipe);
         mounted = false;
         dispose();
-      }
-    };
-  }
-  function create_if_block_4(ctx) {
-    let div;
-    return {
-      c() {
-        div = element("div");
-        div.textContent = "\u4E2D\u90E8\u5168\u570B\u4F9B\u4F5B\u9F4B\u50E7\u5927\u6703";
-        attr(div, "class", "sponsor svelte-13veyed");
-      },
-      m(target, anchor) {
-        insert(target, div, anchor);
-      },
-      d(detaching) {
-        if (detaching)
-          detach(div);
       }
     };
   }
@@ -9392,12 +9351,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       c() {
         img = element("img");
         attr(img, "alt", "no");
-        attr(img, "class", "swipe svelte-13veyed");
+        attr(img, "class", "swipe svelte-1bsw8ig");
         if (!src_url_equal(img.src, img_src_value = /*images*/
         ctx[14][
           /*images*/
           ctx[14].length - /*idx*/
-          ctx[34] - 1
+          ctx[36] - 1
         ]))
           attr(img, "src", img_src_value);
       },
@@ -9431,7 +9390,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         const swipeitem_changes = {};
         if (dirty[1] & /*$$scope*/
-        16) {
+        64) {
           swipeitem_changes.$$scope = { dirty, ctx: ctx2 };
         }
         swipeitem.$set(swipeitem_changes);
@@ -9578,11 +9537,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ),
         folioChars: (
           /*$folioChars*/
-          ctx[9]
+          ctx[8]
         ),
         folioLines: (
           /*$folioLines*/
-          ctx[10]
+          ctx[9]
         ),
         frame: (
           /*imageFrame*/
@@ -9609,13 +9568,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           tapmark_1_changes.activefolio = /*$activefolio*/
           ctx2[1];
         if (dirty[0] & /*$folioChars*/
-        512)
+        256)
           tapmark_1_changes.folioChars = /*$folioChars*/
-          ctx2[9];
+          ctx2[8];
         if (dirty[0] & /*$folioLines*/
-        1024)
+        512)
           tapmark_1_changes.folioLines = /*$folioLines*/
-          ctx2[10];
+          ctx2[9];
         tapmark_1.$set(tapmark_1_changes);
       },
       i(local) {
@@ -9637,7 +9596,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let if_block_anchor;
     let current;
     let if_block = !/*hidepunc*/
-    ctx[5] && create_if_block_1(ctx);
+    ctx[5] && !/*$showpaiji*/
+    ctx[10] && create_if_block_1(ctx);
     return {
       c() {
         if (if_block)
@@ -9652,11 +9612,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, dirty) {
         if (!/*hidepunc*/
-        ctx2[5]) {
+        ctx2[5] && !/*$showpaiji*/
+        ctx2[10]) {
           if (if_block) {
             if_block.p(ctx2, dirty);
-            if (dirty[0] & /*hidepunc*/
-            32) {
+            if (dirty[0] & /*hidepunc, $showpaiji*/
+            1056) {
               transition_in(if_block, 1);
             }
           } else {
@@ -9704,11 +9665,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ),
         folioChars: (
           /*$folioChars*/
-          ctx[9]
+          ctx[8]
         ),
         folioLines: (
           /*$folioLines*/
-          ctx[10]
+          ctx[9]
         ),
         puncs: (
           /*puncs*/
@@ -9728,7 +9689,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ),
         folioLines: (
           /*$folioLines*/
-          ctx[10]
+          ctx[9]
         ),
         swiper: (
           /*swiper*/
@@ -9755,13 +9716,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         const punclayer_changes = {};
         if (dirty[0] & /*$folioChars*/
-        512)
+        256)
           punclayer_changes.folioChars = /*$folioChars*/
-          ctx2[9];
+          ctx2[8];
         if (dirty[0] & /*$folioLines*/
-        1024)
+        512)
           punclayer_changes.folioLines = /*$folioLines*/
-          ctx2[10];
+          ctx2[9];
         if (dirty[0] & /*puncs*/
         8)
           punclayer_changes.puncs = /*puncs*/
@@ -9773,9 +9734,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           transcriptlayer_changes.totalpages = /*totalpages*/
           ctx2[0];
         if (dirty[0] & /*$folioLines*/
-        1024)
+        512)
           transcriptlayer_changes.folioLines = /*$folioLines*/
-          ctx2[10];
+          ctx2[9];
         if (dirty[0] & /*swiper*/
         64)
           transcriptlayer_changes.swiper = /*swiper*/
@@ -10047,15 +10008,17 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let $activebookid;
     let $folioChars;
     let $folioLines;
+    let $showpaiji;
     let $activePtk;
     let $playing;
     let $remainrollback;
     let $tapmark;
     component_subscribe($$self, activefolio, ($$value) => $$invalidate(1, $activefolio = $$value));
-    component_subscribe($$self, activebookid, ($$value) => $$invalidate(8, $activebookid = $$value));
-    component_subscribe($$self, folioChars, ($$value) => $$invalidate(9, $folioChars = $$value));
-    component_subscribe($$self, folioLines, ($$value) => $$invalidate(10, $folioLines = $$value));
-    component_subscribe($$self, activePtk, ($$value) => $$invalidate(26, $activePtk = $$value));
+    component_subscribe($$self, activebookid, ($$value) => $$invalidate(26, $activebookid = $$value));
+    component_subscribe($$self, folioChars, ($$value) => $$invalidate(8, $folioChars = $$value));
+    component_subscribe($$self, folioLines, ($$value) => $$invalidate(9, $folioLines = $$value));
+    component_subscribe($$self, showpaiji, ($$value) => $$invalidate(10, $showpaiji = $$value));
+    component_subscribe($$self, activePtk, ($$value) => $$invalidate(27, $activePtk = $$value));
     component_subscribe($$self, playing, ($$value) => $$invalidate(11, $playing = $$value));
     component_subscribe($$self, remainrollback, ($$value) => $$invalidate(12, $remainrollback = $$value));
     component_subscribe($$self, tapmark, ($$value) => $$invalidate(13, $tapmark = $$value));
@@ -10116,10 +10079,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $$invalidate(5, hidepunc = true);
     };
     const swipeChanged = (obj) => {
-      const { swipe_direction, active_item } = obj.detail;
+      const { active_item } = obj.detail;
       $$invalidate(7, defaultIndex = active_item);
       activefolio.set(totalpages - defaultIndex - 1);
       updateFolioText();
+      useractive();
     };
     const updateFolioText = async () => {
       $$invalidate(5, hidepunc = true);
@@ -10132,6 +10096,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         200
       );
     };
+    const useractive = () => {
+      showpaiji.set(false);
+      idlecount.set(0);
+      $$invalidate(5, hidepunc = false);
+    };
     const mousewheel = (e) => {
       if (e.ctrlKey)
         return;
@@ -10141,6 +10110,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       } else {
         swiper.nextItem();
       }
+      useractive();
       e.preventDefault();
     };
     const getCharXY = (x, y) => {
@@ -10152,6 +10122,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       return [cx, cy];
     };
     const onclick = async (e) => {
+      if ($showpaiji) {
+        useractive();
+        return;
+      }
       $$invalidate(5, hidepunc = false);
       const { x, y } = e.detail;
       const [cx, cy] = getCharXY(x, y);
@@ -10206,9 +10180,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       hidepunc,
       swiper,
       defaultIndex,
-      $activebookid,
       $folioChars,
       $folioLines,
+      $showpaiji,
       $playing,
       $remainrollback,
       $tapmark,
@@ -11231,7 +11205,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   // src/audio.svelte
   function get_each_context6(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[24] = list[i];
+    child_ctx[25] = list[i];
     return child_ctx;
   }
   function create_else_block3(ctx) {
@@ -11245,10 +11219,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let dispose;
     function select_block_type_1(ctx2, dirty) {
       if (
-        /*$youtubeid*/
+        /*$videoid*/
         ctx2[0] == ""
       )
         return create_if_block_32;
+      if (videohost == "youtube")
+        return create_if_block_4;
       return create_else_block_1;
     }
     let current_block_type = select_block_type_1(ctx, -1);
@@ -11262,7 +11238,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       each_blocks[i] = create_each_block6(get_each_context6(ctx, each_value, i));
     }
     let if_block1 = (
-      /*$youtubeid*/
+      /*$videoid*/
       ctx[0] && create_if_block_12(ctx)
     );
     return {
@@ -11299,7 +11275,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             select,
             "change",
             /*selectmedia*/
-            ctx[6]
+            ctx[7]
           );
           mounted = true;
         }
@@ -11315,7 +11291,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             if_block0.m(t0.parentNode, t0);
           }
         }
-        if (dirty & /*mediaurls, $youtubeid*/
+        if (dirty & /*mediaurls, $videoid*/
         17) {
           each_value = /*mediaurls*/
           ctx2[4];
@@ -11336,12 +11312,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           each_blocks.length = each_value.length;
         }
         if (
-          /*$youtubeid*/
+          /*$videoid*/
           ctx2[0]
         ) {
           if (if_block1) {
             if_block1.p(ctx2, dirty);
-            if (dirty & /*$youtubeid*/
+            if (dirty & /*$videoid*/
             1) {
               transition_in(if_block1, 1);
             }
@@ -11390,20 +11366,36 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function create_if_block5(ctx) {
-    let t;
+    let t0;
+    let t1;
     return {
       c() {
-        t = text("Youtube \u64AD\u653E\u5668\u8F09\u5165\u4E2D");
+        t0 = text(
+          /*$videohost*/
+          ctx[5]
+        );
+        t1 = text(" \u64AD\u653E\u5668\u8F09\u5165\u4E2D");
       },
       m(target, anchor) {
-        insert(target, t, anchor);
+        insert(target, t0, anchor);
+        insert(target, t1, anchor);
       },
-      p: noop,
+      p(ctx2, dirty) {
+        if (dirty & /*$videohost*/
+        32)
+          set_data(
+            t0,
+            /*$videohost*/
+            ctx2[5]
+          );
+      },
       i: noop,
       o: noop,
       d(detaching) {
         if (detaching)
-          detach(t);
+          detach(t0);
+        if (detaching)
+          detach(t1);
       }
     };
   }
@@ -11420,7 +11412,46 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t1 = text("\u539F\u59CB\u5F71\u7247");
         t2 = text("\u3002");
         attr(a, "target", "_new");
-        attr(a, "href", a_href_value = "https://www.youtube.com/watch?v=" + /*$youtubeid*/
+        attr(a, "href", a_href_value = "https://v.qq.com/x/page/" + /*$videoid*/
+        ctx[0] + ".html");
+      },
+      m(target, anchor) {
+        insert(target, t0, anchor);
+        insert(target, a, anchor);
+        append(a, t1);
+        insert(target, t2, anchor);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*$videoid*/
+        1 && a_href_value !== (a_href_value = "https://v.qq.com/x/page/" + /*$videoid*/
+        ctx2[0] + ".html")) {
+          attr(a, "href", a_href_value);
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t0);
+        if (detaching)
+          detach(a);
+        if (detaching)
+          detach(t2);
+      }
+    };
+  }
+  function create_if_block_4(ctx) {
+    let t0;
+    let a;
+    let t1;
+    let a_href_value;
+    let t2;
+    return {
+      c() {
+        t0 = text("\u89C0\u770B");
+        a = element("a");
+        t1 = text("\u539F\u59CB\u5F71\u7247");
+        t2 = text("\u3002");
+        attr(a, "target", "_new");
+        attr(a, "href", a_href_value = "https://www.youtube.com/watch?v=" + /*$videoid*/
         ctx[0]);
       },
       m(target, anchor) {
@@ -11430,8 +11461,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         insert(target, t2, anchor);
       },
       p(ctx2, dirty) {
-        if (dirty & /*$youtubeid*/
-        1 && a_href_value !== (a_href_value = "https://www.youtube.com/watch?v=" + /*$youtubeid*/
+        if (dirty & /*$videoid*/
+        1 && a_href_value !== (a_href_value = "https://www.youtube.com/watch?v=" + /*$videoid*/
         ctx2[0])) {
           attr(a, "href", a_href_value);
         }
@@ -11450,18 +11481,35 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t0;
     let br;
     let t1;
+    let t2;
+    let t3;
     return {
       c() {
-        t0 = text("\u6309\u300C--\u975C\u9ED8--\u300D\u9078\u64C7\u5531\u980C\uFF0C\u518D\u6309\u53F3\u4E0A\u89D2 \u2573\u3002\n");
+        t0 = text("\u6309\u300C--\u975C\u9ED8--\u300D\u9078\u64C7\u5531\u980C\uFF0C\u518D\u6309\u53F3\u4E0A\u89D2 \u2573\u3002\u958B\u982D\u53EF\u80FD\u6709\u5EE3\u544A\u8072\u3002\n");
         br = element("br");
-        t1 = text("\u8072\u97F3\u76F4\u63A5\u62BD\u53D6\u81EAYoutube\u516C\u958B\u5F71\u7247\uFF0C\u82E5\u8A72\u5F71\u7247\u5DF2\u4E0B\u67B6\uFF0C\u6216\u8005\u7981\u6B62\u5D4C\u7528\u5247\u7121\u6CD5\u65BC\u6B64\u64AD\u653E\u3002");
+        t1 = text("\u8072\u97F3\u76F4\u63A5\u62BD\u53D6\u81EA");
+        t2 = text(
+          /*$videohost*/
+          ctx[5]
+        );
+        t3 = text("\u516C\u958B\u5F71\u7247\uFF0C\u82E5\u8A72\u5F71\u7247\u5DF2\u4E0B\u67B6\uFF0C\u6216\u8005\u7981\u6B62\u5D4C\u7528\u5247\u7121\u6CD5\u65BC\u6B64\u64AD\u653E\u3002");
       },
       m(target, anchor) {
         insert(target, t0, anchor);
         insert(target, br, anchor);
         insert(target, t1, anchor);
+        insert(target, t2, anchor);
+        insert(target, t3, anchor);
       },
-      p: noop,
+      p(ctx2, dirty) {
+        if (dirty & /*$videohost*/
+        32)
+          set_data(
+            t2,
+            /*$videohost*/
+            ctx2[5]
+          );
+      },
       d(detaching) {
         if (detaching)
           detach(t0);
@@ -11469,6 +11517,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           detach(br);
         if (detaching)
           detach(t1);
+        if (detaching)
+          detach(t2);
+        if (detaching)
+          detach(t3);
       }
     };
   }
@@ -11476,7 +11528,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let option;
     let t_value = (
       /*media*/
-      ctx[24].performer + ""
+      ctx[25].performer + ""
     );
     let t;
     let option_value_value;
@@ -11487,10 +11539,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t = text(t_value);
         attr(option, "class", "option");
         option.__value = option_value_value = /*media*/
-        ctx[24].youtube;
+        ctx[25].vid;
         option.value = option.__value;
         option.selected = option_selected_value = /*media*/
-        ctx[24].youtube == /*$youtubeid*/
+        ctx[25].vid == /*$videoid*/
         ctx[0];
       },
       m(target, anchor) {
@@ -11500,17 +11552,17 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         if (dirty & /*mediaurls*/
         16 && t_value !== (t_value = /*media*/
-        ctx2[24].performer + ""))
+        ctx2[25].performer + ""))
           set_data(t, t_value);
         if (dirty & /*mediaurls*/
         16 && option_value_value !== (option_value_value = /*media*/
-        ctx2[24].youtube)) {
+        ctx2[25].vid)) {
           option.__value = option_value_value;
           option.value = option.__value;
         }
-        if (dirty & /*mediaurls, $youtubeid*/
+        if (dirty & /*mediaurls, $videoid*/
         17 && option_selected_value !== (option_selected_value = /*media*/
-        ctx2[24].youtube == /*$youtubeid*/
+        ctx2[25].vid == /*$videoid*/
         ctx2[0])) {
           option.selected = option_selected_value;
         }
@@ -11526,10 +11578,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t0;
     let t1_value = (
       /*humanDuration*/
-      ctx[7](
+      ctx[8](
         /*getDuration*/
-        ctx[8](
-          /*$youtubeid*/
+        ctx[9](
+          /*$videoid*/
           ctx[0]
         )
       ) + ""
@@ -11553,7 +11605,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let div0;
     let raw0_value = (
       /*htmltext*/
-      ctx[9](
+      ctx[10](
         /*subtitle2*/
         ctx[3]
       ) + ""
@@ -11562,7 +11614,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let div1;
     let raw1_value = (
       /*htmltext*/
-      ctx[9](
+      ctx[10](
         /*subtitle*/
         ctx[2]
       ) + ""
@@ -11573,7 +11625,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ctx[1][0] > 0 && create_if_block_22(ctx)
     );
     function slider_value_binding(value) {
-      ctx[14](value);
+      ctx[15](value);
     }
     let slider_props = { min: "0", max: "10" };
     if (
@@ -11588,7 +11640,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     slider.$on(
       "input",
       /*setRemain*/
-      ctx[10]
+      ctx[11]
     );
     return {
       c() {
@@ -11637,12 +11689,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         current = true;
       },
       p(ctx2, dirty) {
-        if ((!current || dirty & /*$youtubeid*/
+        if ((!current || dirty & /*$videoid*/
         1) && t1_value !== (t1_value = /*humanDuration*/
-        ctx2[7](
+        ctx2[8](
           /*getDuration*/
-          ctx2[8](
-            /*$youtubeid*/
+          ctx2[9](
+            /*$videoid*/
             ctx2[0]
           )
         ) + ""))
@@ -11677,7 +11729,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         slider.$set(slider_changes);
         if ((!current || dirty & /*subtitle2*/
         8) && raw0_value !== (raw0_value = /*htmltext*/
-        ctx2[9](
+        ctx2[10](
           /*subtitle2*/
           ctx2[3]
         ) + ""))
@@ -11685,7 +11737,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ;
         if ((!current || dirty & /*subtitle*/
         4) && raw1_value !== (raw1_value = /*htmltext*/
-        ctx2[9](
+        ctx2[10](
           /*subtitle*/
           ctx2[2]
         ) + ""))
@@ -11742,11 +11794,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   function create_if_block_22(ctx) {
     let t_value = (
       /*humanStoptime*/
-      ctx[11](
+      ctx[12](
         /*value*/
         ctx[1][0] * /*getDuration*/
-        ctx[8](
-          /*$youtubeid*/
+        ctx[9](
+          /*$videoid*/
           ctx[0]
         )
       ) + ""
@@ -11760,13 +11812,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         insert(target, t, anchor);
       },
       p(ctx2, dirty) {
-        if (dirty & /*value, $youtubeid*/
+        if (dirty & /*value, $videoid*/
         3 && t_value !== (t_value = /*humanStoptime*/
-        ctx2[11](
+        ctx2[12](
           /*value*/
           ctx2[1][0] * /*getDuration*/
-          ctx2[8](
-            /*$youtubeid*/
+          ctx2[9](
+            /*$videoid*/
             ctx2[0]
           )
         ) + ""))
@@ -11787,7 +11839,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (!/*$player*/
-      ctx2[5])
+      ctx2[6])
         return 0;
       return 1;
     }
@@ -11845,13 +11897,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   }
   function instance12($$self, $$props, $$invalidate) {
     let $activebookid;
-    let $youtubeid;
+    let $videoid;
+    let $videohost;
     let $remainrollback;
     let $player;
-    component_subscribe($$self, activebookid, ($$value) => $$invalidate(13, $activebookid = $$value));
-    component_subscribe($$self, youtubeid, ($$value) => $$invalidate(0, $youtubeid = $$value));
-    component_subscribe($$self, remainrollback, ($$value) => $$invalidate(20, $remainrollback = $$value));
-    component_subscribe($$self, player, ($$value) => $$invalidate(5, $player = $$value));
+    component_subscribe($$self, activebookid, ($$value) => $$invalidate(14, $activebookid = $$value));
+    component_subscribe($$self, videoid, ($$value) => $$invalidate(0, $videoid = $$value));
+    component_subscribe($$self, videohost, ($$value) => $$invalidate(5, $videohost = $$value));
+    component_subscribe($$self, remainrollback, ($$value) => $$invalidate(21, $remainrollback = $$value));
+    component_subscribe($$self, player, ($$value) => $$invalidate(6, $player = $$value));
     let { ptk } = $$props;
     let value = [$remainrollback, 0];
     let subtitles = [], subtitles2 = [], subtitle = "", subtitle2 = "", subtitletimer, nsub = 0;
@@ -11861,9 +11915,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const selectmedia = (e) => {
       if (get_store_value(remainrollback) == 0)
         remainrollback.set(-1);
-      youtubeid.set(e.target.selectedOptions[0].attributes.value.nodeValue || "");
+      videoid.set(e.target.selectedOptions[0].attributes.value.nodeValue || "");
     };
-    const silence = { youtube: "", performer: "-\u975C\u9ED8-" };
+    const silence = { vid: "", performer: "-\u975C\u9ED8-" };
     let mediaurls = [silence];
     const humanDuration = (t) => {
       if (!t)
@@ -11873,7 +11927,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       return `${minutes}:${seconds}`;
     };
     const getDuration = (id) => {
-      const timestamps = findByYoutube(id)?.timestamp;
+      const timestamps = findByVideoId(id)?.timestamp;
       if (!timestamps)
         return 0;
       return timestamps[timestamps.length - 1] - timestamps[0];
@@ -11881,12 +11935,16 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const updateAudioList = (activeid) => {
       const ts = ptk.columns.timestamp;
       $$invalidate(4, mediaurls = [silence]);
+      const vhost = $videohost;
       for (let i = 0; i < ts.keys.len(); i++) {
-        const youtube = ts.keys.get(i);
+        const vid = ts.keys.get(i);
+        const vh = ts.videohost[i];
         const performer = ts.performer[i];
         const timestamp2 = ts.timestamp[i];
         const bookid = ts.bookid[i];
-        activeid == bookid && mediaurls.push({ youtube, performer, bookid, timestamp: timestamp2 });
+        if (vh == vhost) {
+          activeid == bookid && mediaurls.push({ vid, performer, bookid, timestamp: timestamp2 });
+        }
       }
     };
     let timestamp = [];
@@ -11910,7 +11968,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       subtitles2 = [], subtitles = [];
       if (!id)
         return;
-      timestamp = findByYoutube(id, "timestamp_sanskrit")?.timestamp || [];
+      timestamp = findByVideoId(id, "timestamp_sanskrit")?.timestamp || [];
       if (!timestamp?.length)
         return;
       const skptk = usePtk("dc_sanskrit");
@@ -11942,26 +12000,27 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     }
     $$self.$$set = ($$props2) => {
       if ("ptk" in $$props2)
-        $$invalidate(12, ptk = $$props2.ptk);
+        $$invalidate(13, ptk = $$props2.ptk);
     };
     $$self.$$.update = () => {
-      if ($$self.$$.dirty & /*$youtubeid*/
+      if ($$self.$$.dirty & /*$videoid*/
       1) {
         $:
-          loadSubtitle($youtubeid);
+          loadSubtitle($videoid);
       }
       if ($$self.$$.dirty & /*$activebookid*/
-      8192) {
+      16384) {
         $:
           updateAudioList($activebookid);
       }
     };
     return [
-      $youtubeid,
+      $videoid,
       value,
       subtitle,
       subtitle2,
       mediaurls,
+      $videohost,
       $player,
       selectmedia,
       humanDuration,
@@ -11977,7 +12036,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Audio = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance12, create_fragment11, safe_not_equal, { ptk: 12 });
+      init(this, options, instance12, create_fragment11, safe_not_equal, { ptk: 13 });
     }
   };
   var audio_default = Audio;
@@ -12466,14 +12525,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return child_ctx;
   }
   function create_else_block4(ctx) {
-    let div2;
-    let div1;
-    let div0;
+    let span2;
+    let span1;
+    let span0;
     let t0;
-    let div0_id_value;
+    let span0_id_value;
     let t1;
-    let div1_aria_labelledby_value;
-    let div1_id_value;
+    let span1_aria_labelledby_value;
+    let span1_id_value;
     let each_value = (
       /*options*/
       ctx[3]
@@ -12484,9 +12543,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     }
     return {
       c() {
-        div2 = element("div");
-        div1 = element("div");
-        div0 = element("div");
+        span2 = element("span");
+        span1 = element("span");
+        span0 = element("span");
         t0 = text(
           /*label*/
           ctx[1]
@@ -12495,32 +12554,32 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         for (let i = 0; i < each_blocks.length; i += 1) {
           each_blocks[i].c();
         }
-        attr(div0, "class", "legend");
-        attr(div0, "id", div0_id_value = `label-${/*uniqueID*/
+        attr(span0, "class", "legend");
+        attr(span0, "id", span0_id_value = `label-${/*uniqueID*/
         ctx[6]}`);
-        attr(div1, "role", "radiogroup");
-        attr(div1, "class", "group-container svelte-1fzgm72");
-        attr(div1, "aria-labelledby", div1_aria_labelledby_value = `label-${/*uniqueID*/
+        attr(span1, "role", "radiogroup");
+        attr(span1, "class", "group-container svelte-1fzgm72");
+        attr(span1, "aria-labelledby", span1_aria_labelledby_value = `label-${/*uniqueID*/
         ctx[6]}`);
         set_style(
-          div1,
+          span1,
           "font-size",
           /*fontSize*/
           ctx[4] + "px"
         );
-        attr(div1, "id", div1_id_value = `group-${/*uniqueID*/
+        attr(span1, "id", span1_id_value = `group-${/*uniqueID*/
         ctx[6]}`);
-        attr(div2, "class", "s s--multi svelte-1fzgm72");
+        attr(span2, "class", "s s--multi svelte-1fzgm72");
       },
       m(target, anchor) {
-        insert(target, div2, anchor);
-        append(div2, div1);
-        append(div1, div0);
-        append(div0, t0);
-        append(div1, t1);
+        insert(target, span2, anchor);
+        append(span2, span1);
+        append(span1, span0);
+        append(span0, t0);
+        append(span1, t1);
         for (let i = 0; i < each_blocks.length; i += 1) {
           if (each_blocks[i]) {
-            each_blocks[i].m(div1, null);
+            each_blocks[i].m(span1, null);
           }
         }
       },
@@ -12544,7 +12603,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             } else {
               each_blocks[i] = create_each_block7(child_ctx);
               each_blocks[i].c();
-              each_blocks[i].m(div1, null);
+              each_blocks[i].m(span1, null);
             }
           }
           for (; i < each_blocks.length; i += 1) {
@@ -12555,7 +12614,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (dirty & /*fontSize*/
         16) {
           set_style(
-            div1,
+            span1,
             "font-size",
             /*fontSize*/
             ctx2[4] + "px"
@@ -12564,16 +12623,16 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       d(detaching) {
         if (detaching)
-          detach(div2);
+          detach(span2);
         destroy_each(each_blocks, detaching);
       }
     };
   }
   function create_if_block_13(ctx) {
-    let div;
-    let span;
+    let span1;
+    let span0;
     let t0;
-    let span_id_value;
+    let span0_id_value;
     let t1;
     let button;
     let button_aria_labelledby_value;
@@ -12581,15 +12640,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let dispose;
     return {
       c() {
-        div = element("div");
-        span = element("span");
+        span1 = element("span");
+        span0 = element("span");
         t0 = text(
           /*label*/
           ctx[1]
         );
         t1 = space();
         button = element("button");
-        attr(span, "id", span_id_value = `switch-${/*uniqueID*/
+        attr(span0, "id", span0_id_value = `switch-${/*uniqueID*/
         ctx[6]}`);
         attr(button, "role", "switch");
         attr(
@@ -12601,20 +12660,20 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         attr(button, "aria-labelledby", button_aria_labelledby_value = `switch-${/*uniqueID*/
         ctx[6]}`);
         attr(button, "class", "svelte-1fzgm72");
-        attr(div, "class", "s s--slider svelte-1fzgm72");
+        attr(span1, "class", "s s--slider svelte-1fzgm72");
         set_style(
-          div,
+          span1,
           "font-size",
           /*fontSize*/
           ctx[4] + "px"
         );
       },
       m(target, anchor) {
-        insert(target, div, anchor);
-        append(div, span);
-        append(span, t0);
-        append(div, t1);
-        append(div, button);
+        insert(target, span1, anchor);
+        append(span1, span0);
+        append(span0, t0);
+        append(span1, t1);
+        append(span1, button);
         if (!mounted) {
           dispose = listen(
             button,
@@ -12645,7 +12704,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (dirty & /*fontSize*/
         16) {
           set_style(
-            div,
+            span1,
             "font-size",
             /*fontSize*/
             ctx2[4] + "px"
@@ -12654,7 +12713,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       d(detaching) {
         if (detaching)
-          detach(div);
+          detach(span1);
         mounted = false;
         dispose();
       }
@@ -12968,16 +13027,16 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let a1;
     return {
       c() {
-        t0 = text("\u5230 LINE \u641C\u5C0BID @dharmacloud\uFF0C\u4EE5\u7372\u5F97\u66F4\u65B0\u8A0A\u606F\uFF0C\u6216\u9EDE\u64CA\u52A0\u5165\u6211\u5011\u7684");
+        t0 = text("\u5230 LINE \u641C\u5C0BID @dharmacloud\uFF0C\u6216\u9EDE\u64CA\u52A0\u5165");
         a0 = element("a");
-        a0.textContent = "LINE\u5B98\u65B9\u5E33\u865F";
-        t2 = space();
+        a0.textContent = "\u5B98\u65B9\u5E33\u865F";
+        t2 = text("\uFF0C\u4EE5\u7372\u5F97\u66F4\u65B0\u8A0A\u606F\n");
         div = element("div");
         t3 = text("\n\u514D\u8CBB\u7D50\u7DE3\u7DB2\u5740");
         a1 = element("a");
         a1.textContent = "dharmacloud.github.io";
         attr(a0, "href", "https://lin.ee/1tmTKXi");
-        attr(div, "class", "qrcode svelte-1bgf7s0");
+        attr(div, "class", "center");
         attr(a1, "target", "_new");
         attr(a1, "href", "https://dharmacloud.github.io/");
       },
@@ -13033,7 +13092,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t5 = text("\u9019\u662F");
         a1 = element("a");
         a1.textContent = "\u958B\u6E90";
-        t7 = text("\u8EDF\u4EF6(2023.6.30)\uFF0C\u53EF\u4EE5\u4E0D\u53D7\u4EFB\u4F55\u9650\u5236\uFF0C\u4EE5\u4EFB\u4F55\u5F62\u614B\u6563\u4F48\u672C\u8EDF\u4EF6\u3002");
+        t7 = text("\u8EDF\u4EF6(2023.7.1)\uFF0C\u53EF\u4EE5\u4E0D\u53D7\u4EFB\u4F55\u9650\u5236\uFF0C\u4EE5\u4EFB\u4F55\u5F62\u614B\u6563\u4F48\u672C\u8EDF\u4EF6\u3002");
         attr(a0, "href", "https://creativecommons.org/publicdomain/zero/1.0/deed.zh");
         attr(a1, "href", "https://github.com/dharmacloud");
         attr(a1, "target", "_new");
@@ -13080,29 +13139,47 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   }
   function create_fragment13(ctx) {
     let div;
-    let br;
+    let br0;
     let t0;
-    let switch_1;
+    let switch0;
     let updating_value;
     let t1;
+    let switch1;
+    let updating_value_1;
+    let t2;
+    let br1;
+    let t3;
     let current;
-    function switch_1_value_binding(value) {
-      ctx[1](value);
+    function switch0_value_binding(value) {
+      ctx[2](value);
     }
-    let switch_1_props = {
-      label: "\u9032\u968E\u6A21\u5F0F",
-      design: "slider",
-      fontSize: "4vh"
-    };
+    let switch0_props = { label: "\u9032\u968E\u6A21\u5F0F", design: "slider" };
     if (
       /*$advancemode*/
       ctx[0] !== void 0
     ) {
-      switch_1_props.value = /*$advancemode*/
+      switch0_props.value = /*$advancemode*/
       ctx[0];
     }
-    switch_1 = new switch_default({ props: switch_1_props });
-    binding_callbacks.push(() => bind(switch_1, "value", switch_1_value_binding));
+    switch0 = new switch_default({ props: switch0_props });
+    binding_callbacks.push(() => bind(switch0, "value", switch0_value_binding));
+    function switch1_value_binding(value) {
+      ctx[3](value);
+    }
+    let switch1_props = {
+      label: "\u8996\u983B\u4F86\u6E90",
+      options: ["tencent", "youtube"],
+      design: "multi"
+    };
+    if (
+      /*$videohost*/
+      ctx[1] !== void 0
+    ) {
+      switch1_props.value = /*$videohost*/
+      ctx[1];
+    }
+    switch1 = new switch_default({ props: switch1_props });
+    binding_callbacks.push(() => bind(switch1, "value", switch1_value_binding));
     function select_block_type(ctx2, dirty) {
       if (
         /*$advancemode*/
@@ -13116,32 +13193,49 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         div = element("div");
-        br = element("br");
+        br0 = element("br");
         t0 = space();
-        create_component(switch_1.$$.fragment);
+        create_component(switch0.$$.fragment);
         t1 = space();
+        create_component(switch1.$$.fragment);
+        t2 = space();
+        br1 = element("br");
+        t3 = space();
         if_block.c();
         attr(div, "class", "toctext");
       },
       m(target, anchor) {
         insert(target, div, anchor);
-        append(div, br);
+        append(div, br0);
         append(div, t0);
-        mount_component(switch_1, div, null);
+        mount_component(switch0, div, null);
         append(div, t1);
+        mount_component(switch1, div, null);
+        append(div, t2);
+        append(div, br1);
+        append(div, t3);
         if_block.m(div, null);
         current = true;
       },
       p(ctx2, [dirty]) {
-        const switch_1_changes = {};
+        const switch0_changes = {};
         if (!updating_value && dirty & /*$advancemode*/
         1) {
           updating_value = true;
-          switch_1_changes.value = /*$advancemode*/
+          switch0_changes.value = /*$advancemode*/
           ctx2[0];
           add_flush_callback(() => updating_value = false);
         }
-        switch_1.$set(switch_1_changes);
+        switch0.$set(switch0_changes);
+        const switch1_changes = {};
+        if (!updating_value_1 && dirty & /*$videohost*/
+        2) {
+          updating_value_1 = true;
+          switch1_changes.value = /*$videohost*/
+          ctx2[1];
+          add_flush_callback(() => updating_value_1 = false);
+        }
+        switch1.$set(switch1_changes);
         if (current_block_type === (current_block_type = select_block_type(ctx2, dirty)) && if_block) {
           if_block.p(ctx2, dirty);
         } else {
@@ -13156,29 +13250,38 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       i(local) {
         if (current)
           return;
-        transition_in(switch_1.$$.fragment, local);
+        transition_in(switch0.$$.fragment, local);
+        transition_in(switch1.$$.fragment, local);
         current = true;
       },
       o(local) {
-        transition_out(switch_1.$$.fragment, local);
+        transition_out(switch0.$$.fragment, local);
+        transition_out(switch1.$$.fragment, local);
         current = false;
       },
       d(detaching) {
         if (detaching)
           detach(div);
-        destroy_component(switch_1);
+        destroy_component(switch0);
+        destroy_component(switch1);
         if_block.d();
       }
     };
   }
   function instance14($$self, $$props, $$invalidate) {
     let $advancemode;
+    let $videohost;
     component_subscribe($$self, advancemode, ($$value) => $$invalidate(0, $advancemode = $$value));
-    function switch_1_value_binding(value) {
+    component_subscribe($$self, videohost, ($$value) => $$invalidate(1, $videohost = $$value));
+    function switch0_value_binding(value) {
       $advancemode = value;
       advancemode.set($advancemode);
     }
-    return [$advancemode, switch_1_value_binding];
+    function switch1_value_binding(value) {
+      $videohost = value;
+      videohost.set($videohost);
+    }
+    return [$advancemode, $videohost, switch0_value_binding, switch1_value_binding];
   }
   var About = class extends SvelteComponent {
     constructor(options) {
@@ -15509,7 +15612,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   };
   var taptext_default = Taptext;
 
-  // src/youtubeplayer.svelte
+  // src/player.svelte
   function create_fragment20(ctx) {
     let div;
     return {
@@ -15531,49 +15634,76 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function instance21($$self, $$props, $$invalidate) {
-    let $youtubeid;
+    let $videoid;
     let $activefolio;
     let $player;
     let $folioLines;
     let $activebookid;
     let $playing;
     let $continueplay;
-    component_subscribe($$self, youtubeid, ($$value) => $$invalidate(0, $youtubeid = $$value));
+    let $videohost;
+    component_subscribe($$self, videoid, ($$value) => $$invalidate(0, $videoid = $$value));
     component_subscribe($$self, activefolio, ($$value) => $$invalidate(1, $activefolio = $$value));
-    component_subscribe($$self, player, ($$value) => $$invalidate(2, $player = $$value));
-    component_subscribe($$self, folioLines, ($$value) => $$invalidate(3, $folioLines = $$value));
-    component_subscribe($$self, activebookid, ($$value) => $$invalidate(4, $activebookid = $$value));
-    component_subscribe($$self, playing, ($$value) => $$invalidate(5, $playing = $$value));
-    component_subscribe($$self, continueplay, ($$value) => $$invalidate(6, $continueplay = $$value));
-    let plyr;
-    setTimeout(
-      () => {
-        pylr = new YT.Player(
-          "player",
-          {
-            height: "1px",
-            // console.log('create youtube player',pylr)
-            // 高度預設值為390，css會調成responsive
-            // width: '640', // 寬度預設值為640，css會調成responsive
-            videoId: "",
-            host: "https://www.youtube.com",
-            playerVars: {
-              controls: 0,
-              disablekb: 1,
-              rel: 0,
-              origin: document.location.origin
-            },
-            events: {
-              "onReady": onPlayerReady,
-              "onStateChange": onPlayerStateChange
-            }
+    component_subscribe($$self, player, ($$value) => $$invalidate(4, $player = $$value));
+    component_subscribe($$self, folioLines, ($$value) => $$invalidate(5, $folioLines = $$value));
+    component_subscribe($$self, activebookid, ($$value) => $$invalidate(6, $activebookid = $$value));
+    component_subscribe($$self, playing, ($$value) => $$invalidate(7, $playing = $$value));
+    component_subscribe($$self, continueplay, ($$value) => $$invalidate(8, $continueplay = $$value));
+    component_subscribe($$self, videohost, ($$value) => $$invalidate(9, $videohost = $$value));
+    let plyr, timer;
+    const createYoutubePlayer = () => {
+      plyr = new YT.Player(
+        "player",
+        {
+          height: "1px",
+          // 高度預設值為390，css會調成responsive
+          // width: '640', // 寬度預設值為640，css會調成responsive
+          videoId: "",
+          host: "https://www.youtube.com",
+          playerVars: {
+            controls: 0,
+            disablekb: 1,
+            rel: 0,
+            origin: document.location.origin
+          },
+          events: {
+            "onReady": onPlayerReady,
+            "onStateChange": onPlayerStateChange
           }
-        );
-      },
-      2e3
-    );
+        }
+      );
+      player.set(plyr);
+    };
+    const createTencentPlayer = () => {
+      plyr = new Txplayer({
+        containerId: "player",
+        vid: "",
+        //make it invalid, otherwise might play ads,
+        width: "1px",
+        height: "1px",
+        autoplay: false
+      });
+      plyr.on("ready", onPlayerReady);
+      plyr.on("playStateChange", onPlayerStateChange);
+      player.set(plyr);
+    };
+    onMount(() => {
+      timer = setInterval(
+        () => {
+          if (typeof Txplayer !== "undefined") {
+            clearInterval(timer);
+            createTencentPlayer();
+          }
+          if (typeof YT !== "undefined") {
+            clearInterval(timer);
+            createYoutubePlayer();
+          }
+        },
+        1500
+      );
+    });
     function onPlayerStateChange(e) {
-      const obj = findByYoutube($youtubeid);
+      const obj = findByVideoId($videoid);
       if (!obj)
         return;
       const { bookid } = obj;
@@ -15581,33 +15711,42 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         stopVideo();
         return;
       }
-      playing.set(e.data == 1);
+      playing.set(e.data == 1 || e.state == 1);
     }
     function onPlayerReady(e) {
-      player.set(pylr);
-      pylr.playVideo();
+      plyr.playVideo ? plyr.playVideo() : plyr.play();
     }
     const loadVideo = () => {
-      const obj = findByYoutube($youtubeid);
-      if (!obj)
+      const obj = findByVideoId($videoid);
+      if (!obj) {
+        stopVideo();
         return;
+      }
       const { timestamp, bookid } = obj;
       if (bookid !== $activebookid) {
         stopVideo();
       } else {
         activefolio.set(0);
         const start = timestamp && timestamp[0] || 0;
-        $player?.loadVideoById({
-          "videoId": $youtubeid,
-          suggestedQuality: "low",
-          startSeconds: start
-        });
+        if ($videohost == "youtube") {
+          $player?.loadVideoById({
+            "videoId": $videoid,
+            suggestedQuality: "low",
+            startSeconds: start
+          });
+        } else {
+          $player?.play({
+            vid: $videoid,
+            autoplay: true,
+            playStartTime: start
+          });
+        }
       }
     };
-    const seekToFolio = (folio, youtubeid2) => {
-      if (!youtubeid2 || $continueplay || !$playing)
+    const seekToFolio = (folio, videoid2) => {
+      if (!videoid2 || $continueplay || !$playing)
         return;
-      const { timestamp, bookid } = findByYoutube(youtubeid2);
+      const { timestamp, bookid } = findByVideoId(videoid2);
       if (bookid !== $activebookid) {
         stopVideo();
       }
@@ -15618,27 +15757,235 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $player?.seekTo(t);
     };
     $$self.$$.update = () => {
-      if ($$self.$$.dirty & /*$activefolio, $youtubeid*/
+      if ($$self.$$.dirty & /*$activefolio, $videoid*/
       3) {
         $:
-          seekToFolio($activefolio, $youtubeid);
+          seekToFolio($activefolio, $videoid);
       }
-      if ($$self.$$.dirty & /*$youtubeid*/
+      if ($$self.$$.dirty & /*$videoid*/
       1) {
         $:
           if (document.location.protocol !== "file:")
-            loadVideo($youtubeid);
+            loadVideo($videoid);
       }
     };
-    return [$youtubeid, $activefolio];
+    return [$videoid, $activefolio];
   }
-  var Youtubeplayer = class extends SvelteComponent {
+  var Player = class extends SvelteComponent {
     constructor(options) {
       super();
       init(this, options, instance21, create_fragment20, safe_not_equal, {});
     }
   };
-  var youtubeplayer_default = Youtubeplayer;
+  var player_default = Player;
+
+  // src/newbie.svelte
+  function create_fragment21(ctx) {
+    let div2;
+    let div1;
+    let span;
+    let t1;
+    let br0;
+    let t2;
+    let br1;
+    let t3;
+    let br2;
+    let t4;
+    let br3;
+    let t5;
+    let div0;
+    let t8;
+    let switch_1;
+    let updating_value;
+    let t9;
+    let br5;
+    let t10;
+    let br6;
+    let t11;
+    let br7;
+    let button;
+    let current;
+    let mounted;
+    let dispose;
+    function switch_1_value_binding(value) {
+      ctx[2](value);
+    }
+    let switch_1_props = {
+      label: "\u555F\u52D5\u6642\u986F\u793A\u6B64\u756B\u9762",
+      design: "slider",
+      fontSize: "4vh"
+    };
+    if (
+      /*value*/
+      ctx[1] !== void 0
+    ) {
+      switch_1_props.value = /*value*/
+      ctx[1];
+    }
+    switch_1 = new switch_default({ props: switch_1_props });
+    binding_callbacks.push(() => bind(switch_1, "value", switch_1_value_binding));
+    return {
+      c() {
+        div2 = element("div");
+        div1 = element("div");
+        span = element("span");
+        span.textContent = "\u6B61\u8FCE";
+        t1 = space();
+        br0 = element("br");
+        t2 = text("\u8ACB\u5B89\u88DD\u5230\u624B\u6A5F\u684C\u9762\u4EE5\u53D6\u5F97\u6700\u4F73\u986F\u793A\u6548\u679C\n");
+        br1 = element("br");
+        t3 = text("Android:\u5FC5\u9808\u4F7F\u7528Chrome\u700F\u89BD\u5668\uFF0C\u6309\u53F3\u4E0A\u89D2\u529F\u80FD\u8868\u300C\u5B89\u88DD\u61C9\u7528\u7A0B\u5E8F\u300D\n");
+        br2 = element("br");
+        t4 = text("iOS:\u6309\u300C\u5206\u4EAB\u300D\u300C\u52A0\u5230\u4E3B\u756B\u9762\u300D\n");
+        br3 = element("br");
+        t5 = text("\u9EDE\u756B\u9762\u4EFB\u4F55\u4E00\u8655\uFF0C\u8ABF\u51FA\u529F\u80FD\u8868\n");
+        div0 = element("div");
+        div0.innerHTML = `\u2699\uFE0F\u8A2D\u5B9A\u{1F4D6}\u7D93\u5377\u{1F4D1}\u7AE0\u7BC0\u{1F50A}\u8AA6\u7D93\u{1F50E}\u8A5E\u5178
+<br/>\u9032\u968E\u6A21\u5F0F\uFF1A\u{1F4DC}\u539F\u6587  \u{1F500}\u7570\u8B6F  \u{1F4DA}\u96C6\u8A3B`;
+        t8 = space();
+        create_component(switch_1.$$.fragment);
+        t9 = text("\n\u7121\u6CD5\u66F4\u65B0\u7A0B\u5E8F\uFF0C\u8ACB\u5148\u6E05\u9664\u700F\u89BD\u5668\u5FEB\u53D6\n");
+        br5 = element("br");
+        t10 = text("\u7121\u6CD5\u8A2A\u554FYoutube\uFF0C\u8ACB\u8A2D\u5B9A\u8996\u983B\u4F86\u6E90\u70BATencent\n");
+        br6 = element("br");
+        t11 = text("\u9019\u662F\u958B\u6E90\u8EDF\u4EF6\uFF0C\u4E0D\u6703\u81EA\u52D5\u6536\u96C6\u500B\u4EBA\u4FE1\u606F\u3002\u6211\u5011\u76E1\u91CF\u4FDD\u8B49\u7A0B\u5E8F\u7684\u6B63\u5E38\u904B\u4F5C\u4EE5\u53CA\u5167\u5BB9\u7684\u6E96\u78BA\u6027\u3002\u4F46\u842C\u4E00\u9020\u6210\u7528\u6236\u4EFB\u4F55\u640D\u5931\uFF0C\u65E2\u4E0D\u8CA0\u8CAC\u3002\n");
+        br7 = element("br");
+        button = element("button");
+        button.textContent = "\u540C\u610F\u4E26\u958B\u59CB\u4F7F\u7528";
+        attr(span, "class", "welcome");
+        set_style(div0, "color", "white");
+        set_style(div0, "background", "var(--menubar-color)");
+        set_style(button, "font-size", "150%");
+        attr(button, "class", "center");
+        attr(div1, "class", "toctext");
+        attr(div2, "class", "popup");
+      },
+      m(target, anchor) {
+        insert(target, div2, anchor);
+        append(div2, div1);
+        append(div1, span);
+        append(div1, t1);
+        append(div1, br0);
+        append(div1, t2);
+        append(div1, br1);
+        append(div1, t3);
+        append(div1, br2);
+        append(div1, t4);
+        append(div1, br3);
+        append(div1, t5);
+        append(div1, div0);
+        append(div1, t8);
+        mount_component(switch_1, div1, null);
+        append(div1, t9);
+        append(div1, br5);
+        append(div1, t10);
+        append(div1, br6);
+        append(div1, t11);
+        append(div1, br7);
+        append(div1, button);
+        current = true;
+        if (!mounted) {
+          dispose = listen(button, "click", function() {
+            if (is_function(
+              /*closePopup*/
+              ctx[0]
+            ))
+              ctx[0].apply(this, arguments);
+          });
+          mounted = true;
+        }
+      },
+      p(new_ctx, [dirty]) {
+        ctx = new_ctx;
+        const switch_1_changes = {};
+        if (!updating_value && dirty & /*value*/
+        2) {
+          updating_value = true;
+          switch_1_changes.value = /*value*/
+          ctx[1];
+          add_flush_callback(() => updating_value = false);
+        }
+        switch_1.$set(switch_1_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(switch_1.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(switch_1.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        if (detaching)
+          detach(div2);
+        destroy_component(switch_1);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function instance22($$self, $$props, $$invalidate) {
+    let $newbie;
+    component_subscribe($$self, newbie, ($$value) => $$invalidate(3, $newbie = $$value));
+    let value = $newbie;
+    let { closePopup } = $$props;
+    onDestroy(() => {
+      console.log("newbie", value);
+      newbie.set(value);
+    });
+    function switch_1_value_binding(value$1) {
+      value = value$1;
+      $$invalidate(1, value);
+    }
+    $$self.$$set = ($$props2) => {
+      if ("closePopup" in $$props2)
+        $$invalidate(0, closePopup = $$props2.closePopup);
+    };
+    return [closePopup, value, switch_1_value_binding];
+  }
+  var Newbie = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance22, create_fragment21, safe_not_equal, { closePopup: 0 });
+    }
+  };
+  var newbie_default = Newbie;
+
+  // src/paiji.svelte
+  function create_fragment22(ctx) {
+    let div3;
+    return {
+      c() {
+        div3 = element("div");
+        div3.innerHTML = `<img alt="frame" src="frames/red.jpg" class="svelte-1f7k46b"/> 
+<div class="sponsor">\u4E2D\u90E8\u5168\u570B\u4F9B\u4F5B\u9F4B\u50E7\u5927\u6703</div> 
+
+<div class="paijitextcontainer"><div class="paijitext"><br/>\u3000\u8AF8\u4F9B\u990A\u4E2D\u3000\u6CD5\u4F9B\u990A\u6700
+<br/>\u9858\u4EE5\u6B64\u529F\u5FB7\u3000\u666E\u53CA\u65BC\u4E00\u5207
+<br/>\u6211\u7B49\u8207\u773E\u751F\u3000\u7686\u5171\u6210\u4F5B\u9053</div></div>`;
+        attr(div3, "class", "paiji");
+      },
+      m(target, anchor) {
+        insert(target, div3, anchor);
+      },
+      p: noop,
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(div3);
+      }
+    };
+  }
+  var Paiji = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, null, create_fragment22, safe_not_equal, {});
+    }
+  };
+  var paiji_default = Paiji;
 
   // src/app.svelte
   function create_else_block6(ctx) {
@@ -15662,29 +16009,35 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function create_if_block9(ctx) {
-    let youtubeplayer;
+    let player2;
     let t0;
     let previous_key = (
       /*$activebookid*/
-      ctx[5]
+      ctx[6]
     );
     let t1;
     let t2;
-    let if_block1_anchor;
+    let t3;
+    let if_block2_anchor;
     let current;
-    youtubeplayer = new youtubeplayer_default({});
+    player2 = new player_default({});
     let key_block = create_key_block4(ctx);
     let if_block0 = (
-      /*showdict*/
-      ctx[2] && create_if_block_24(ctx)
+      /*shownewbie*/
+      (ctx[3] || /*showdict*/
+      ctx[2]) && create_if_block_34(ctx)
     );
     let if_block1 = (
       /*showdict*/
-      ctx[2] && create_if_block_15(ctx)
+      ctx[2] && create_if_block_24(ctx)
+    );
+    let if_block2 = (
+      /*shownewbie*/
+      ctx[3] && create_if_block_15(ctx)
     );
     return {
       c() {
-        create_component(youtubeplayer.$$.fragment);
+        create_component(player2.$$.fragment);
         t0 = space();
         key_block.c();
         t1 = space();
@@ -15693,10 +16046,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t2 = space();
         if (if_block1)
           if_block1.c();
-        if_block1_anchor = empty();
+        t3 = space();
+        if (if_block2)
+          if_block2.c();
+        if_block2_anchor = empty();
       },
       m(target, anchor) {
-        mount_component(youtubeplayer, target, anchor);
+        mount_component(player2, target, anchor);
         insert(target, t0, anchor);
         key_block.m(target, anchor);
         insert(target, t1, anchor);
@@ -15705,13 +16061,16 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         insert(target, t2, anchor);
         if (if_block1)
           if_block1.m(target, anchor);
-        insert(target, if_block1_anchor, anchor);
+        insert(target, t3, anchor);
+        if (if_block2)
+          if_block2.m(target, anchor);
+        insert(target, if_block2_anchor, anchor);
         current = true;
       },
       p(ctx2, dirty) {
         if (dirty & /*$activebookid*/
-        32 && safe_not_equal(previous_key, previous_key = /*$activebookid*/
-        ctx2[5])) {
+        64 && safe_not_equal(previous_key, previous_key = /*$activebookid*/
+        ctx2[6])) {
           group_outros();
           transition_out(key_block, 1, 1, noop);
           check_outros();
@@ -15723,13 +16082,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           key_block.p(ctx2, dirty);
         }
         if (
-          /*showdict*/
+          /*shownewbie*/
+          ctx2[3] || /*showdict*/
           ctx2[2]
         ) {
           if (if_block0) {
             if_block0.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_24(ctx2);
+            if_block0 = create_if_block_34(ctx2);
             if_block0.c();
             if_block0.m(t2.parentNode, t2);
           }
@@ -15748,10 +16108,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block_15(ctx2);
+            if_block1 = create_if_block_24(ctx2);
             if_block1.c();
             transition_in(if_block1, 1);
-            if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+            if_block1.m(t3.parentNode, t3);
           }
         } else if (if_block1) {
           group_outros();
@@ -15760,23 +16120,48 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           });
           check_outros();
         }
+        if (
+          /*shownewbie*/
+          ctx2[3]
+        ) {
+          if (if_block2) {
+            if_block2.p(ctx2, dirty);
+            if (dirty & /*shownewbie*/
+            8) {
+              transition_in(if_block2, 1);
+            }
+          } else {
+            if_block2 = create_if_block_15(ctx2);
+            if_block2.c();
+            transition_in(if_block2, 1);
+            if_block2.m(if_block2_anchor.parentNode, if_block2_anchor);
+          }
+        } else if (if_block2) {
+          group_outros();
+          transition_out(if_block2, 1, 1, () => {
+            if_block2 = null;
+          });
+          check_outros();
+        }
       },
       i(local) {
         if (current)
           return;
-        transition_in(youtubeplayer.$$.fragment, local);
+        transition_in(player2.$$.fragment, local);
         transition_in(key_block);
         transition_in(if_block1);
+        transition_in(if_block2);
         current = true;
       },
       o(local) {
-        transition_out(youtubeplayer.$$.fragment, local);
+        transition_out(player2.$$.fragment, local);
         transition_out(key_block);
         transition_out(if_block1);
+        transition_out(if_block2);
         current = false;
       },
       d(detaching) {
-        destroy_component(youtubeplayer, detaching);
+        destroy_component(player2, detaching);
         if (detaching)
           detach(t0);
         key_block.d(detaching);
@@ -15789,18 +16174,57 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (if_block1)
           if_block1.d(detaching);
         if (detaching)
-          detach(if_block1_anchor);
+          detach(t3);
+        if (if_block2)
+          if_block2.d(detaching);
+        if (detaching)
+          detach(if_block2_anchor);
+      }
+    };
+  }
+  function create_if_block_42(ctx) {
+    let paiji;
+    let current;
+    paiji = new paiji_default({});
+    return {
+      c() {
+        create_component(paiji.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(paiji, target, anchor);
+        current = true;
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(paiji.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(paiji.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(paiji, detaching);
       }
     };
   }
   function create_key_block4(ctx) {
+    let t;
     let swipezipimage;
     let current;
+    let if_block = (
+      /*$showpaiji*/
+      ctx[7] && !/*$playing*/
+      ctx[8] && !/*showdict*/
+      ctx[2] && !/*shownewbie*/
+      ctx[3] && create_if_block_42(ctx)
+    );
     swipezipimage = new swipezipimage_default({
       props: {
         src: (
           /*$activebookid*/
-          ctx[5] + ".zip"
+          ctx[6] + ".zip"
         ),
         ptk: (
           /*ptk*/
@@ -15808,28 +16232,59 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ),
         onTapText: (
           /*onTapText*/
-          ctx[8]
+          ctx[11]
         ),
         onMainmenu: (
           /*onMainmenu*/
-          ctx[7]
+          ctx[10]
         )
       }
     });
     return {
       c() {
+        if (if_block)
+          if_block.c();
+        t = space();
         create_component(swipezipimage.$$.fragment);
       },
       m(target, anchor) {
+        if (if_block)
+          if_block.m(target, anchor);
+        insert(target, t, anchor);
         mount_component(swipezipimage, target, anchor);
         current = true;
       },
       p(ctx2, dirty) {
+        if (
+          /*$showpaiji*/
+          ctx2[7] && !/*$playing*/
+          ctx2[8] && !/*showdict*/
+          ctx2[2] && !/*shownewbie*/
+          ctx2[3]
+        ) {
+          if (if_block) {
+            if (dirty & /*$showpaiji, $playing, showdict, shownewbie*/
+            396) {
+              transition_in(if_block, 1);
+            }
+          } else {
+            if_block = create_if_block_42(ctx2);
+            if_block.c();
+            transition_in(if_block, 1);
+            if_block.m(t.parentNode, t);
+          }
+        } else if (if_block) {
+          group_outros();
+          transition_out(if_block, 1, 1, () => {
+            if_block = null;
+          });
+          check_outros();
+        }
         const swipezipimage_changes = {};
         if (dirty & /*$activebookid*/
-        32)
+        64)
           swipezipimage_changes.src = /*$activebookid*/
-          ctx2[5] + ".zip";
+          ctx2[6] + ".zip";
         if (dirty & /*ptk*/
         1)
           swipezipimage_changes.ptk = /*ptk*/
@@ -15839,26 +16294,32 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       i(local) {
         if (current)
           return;
+        transition_in(if_block);
         transition_in(swipezipimage.$$.fragment, local);
         current = true;
       },
       o(local) {
+        transition_out(if_block);
         transition_out(swipezipimage.$$.fragment, local);
         current = false;
       },
       d(detaching) {
+        if (if_block)
+          if_block.d(detaching);
+        if (detaching)
+          detach(t);
         destroy_component(swipezipimage, detaching);
       }
     };
   }
-  function create_if_block_24(ctx) {
+  function create_if_block_34(ctx) {
     let span;
     let mounted;
     let dispose;
     return {
       c() {
         span = element("span");
-        span.textContent = "\u2573";
+        span.textContent = "\u2716\uFE0F";
         attr(span, "class", "closepopup");
       },
       m(target, anchor) {
@@ -15868,7 +16329,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             span,
             "click",
             /*closePopup*/
-            ctx[6]
+            ctx[9]
           );
           mounted = true;
         }
@@ -15882,22 +16343,22 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_15(ctx) {
+  function create_if_block_24(ctx) {
     let taptext;
     let current;
     taptext = new taptext_default({
       props: {
         address: (
           /*address*/
-          ctx[3]
+          ctx[4]
         ),
         tofind: (
           /*tofind*/
-          ctx[4]
+          ctx[5]
         ),
         closePopup: (
           /*closePopup*/
-          ctx[6]
+          ctx[9]
         )
       }
     });
@@ -15912,13 +16373,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         const taptext_changes = {};
         if (dirty & /*address*/
-        8)
-          taptext_changes.address = /*address*/
-          ctx2[3];
-        if (dirty & /*tofind*/
         16)
-          taptext_changes.tofind = /*tofind*/
+          taptext_changes.address = /*address*/
           ctx2[4];
+        if (dirty & /*tofind*/
+        32)
+          taptext_changes.tofind = /*tofind*/
+          ctx2[5];
         taptext.$set(taptext_changes);
       },
       i(local) {
@@ -15936,7 +16397,40 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment21(ctx) {
+  function create_if_block_15(ctx) {
+    let newbie_1;
+    let current;
+    newbie_1 = new newbie_default({
+      props: { closePopup: (
+        /*closePopup*/
+        ctx[9]
+      ) }
+    });
+    return {
+      c() {
+        create_component(newbie_1.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(newbie_1, target, anchor);
+        current = true;
+      },
+      p: noop,
+      i(local) {
+        if (current)
+          return;
+        transition_in(newbie_1.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(newbie_1.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(newbie_1, detaching);
+      }
+    };
+  }
+  function create_fragment23(ctx) {
     let div;
     let current_block_type_index;
     let if_block;
@@ -16003,9 +16497,22 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function instance22($$self, $$props, $$invalidate) {
+  var idleinterval = 5;
+  function instance23($$self, $$props, $$invalidate) {
+    let $videohost;
+    let $newbie;
+    let $idlecount;
+    let $advancemode;
     let $activebookid;
-    component_subscribe($$self, activebookid, ($$value) => $$invalidate(5, $activebookid = $$value));
+    let $showpaiji;
+    let $playing;
+    component_subscribe($$self, videohost, ($$value) => $$invalidate(12, $videohost = $$value));
+    component_subscribe($$self, newbie, ($$value) => $$invalidate(13, $newbie = $$value));
+    component_subscribe($$self, idlecount, ($$value) => $$invalidate(14, $idlecount = $$value));
+    component_subscribe($$self, advancemode, ($$value) => $$invalidate(15, $advancemode = $$value));
+    component_subscribe($$self, activebookid, ($$value) => $$invalidate(6, $activebookid = $$value));
+    component_subscribe($$self, showpaiji, ($$value) => $$invalidate(7, $showpaiji = $$value));
+    component_subscribe($$self, playing, ($$value) => $$invalidate(8, $playing = $$value));
     let ptk;
     registerServiceWorker();
     isAndroid.set(!!navigator.userAgent.match(/Android/i));
@@ -16014,36 +16521,65 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $$invalidate(0, ptk = await openPtk("dc"));
       await openPtk("dc_sanskrit");
       $$invalidate(1, loaded = true);
+      setInterval(
+        () => {
+          showpaiji.set($idlecount > 60);
+          if (!$advancemode)
+            idlecount.set($idlecount + idleinterval);
+        },
+        idleinterval * 1e3
+      );
     });
-    let showdict2 = false, address = "", tofind = "";
+    const loadPlayer = async () => {
+      if ($videohost == "youtube") {
+        console.log("load youtube player");
+        await loadScript("https://www.youtube.com/iframe_api");
+      } else if ($videohost == "tencent") {
+        console.log("load tencent player");
+        await loadScript("http://vm.gtimg.cn/tencentvideo/txp/js/txplayer.js");
+      }
+    };
+    let showdict2 = false, shownewbie = $newbie == "on", address = "", tofind = "";
     const closePopup = () => {
       $$invalidate(2, showdict2 = false);
+      $$invalidate(3, shownewbie = false);
     };
     const onMainmenu = () => {
       $$invalidate(2, showdict2 = false);
     };
     const onTapText = (t, _address, ptkname) => {
       $$invalidate(2, showdict2 = true);
-      $$invalidate(4, tofind = t);
-      $$invalidate(3, address = _address);
+      $$invalidate(5, tofind = t);
+      $$invalidate(4, address = _address);
       $$invalidate(0, ptk = usePtk(ptkname));
+    };
+    $$self.$$.update = () => {
+      if ($$self.$$.dirty & /*$videohost*/
+      4096) {
+        $:
+          loadPlayer($videohost);
+      }
     };
     return [
       ptk,
       loaded,
       showdict2,
+      shownewbie,
       address,
       tofind,
       $activebookid,
+      $showpaiji,
+      $playing,
       closePopup,
       onMainmenu,
-      onTapText
+      onTapText,
+      $videohost
     ];
   }
   var App = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance22, create_fragment21, safe_not_equal, {});
+      init(this, options, instance23, create_fragment23, safe_not_equal, {});
     }
   };
   var app_default = App;

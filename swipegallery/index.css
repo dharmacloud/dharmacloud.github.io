@@ -63,37 +63,24 @@
 }
 
 /* fakecss:D:/2023/swipegallery/src/swipezipimage.esbuild-svelte-fake-css */
-img.svelte-13veyed {
+img.svelte-1bsw8ig {
   height: 100%;
 }
-.message.svelte-13veyed {
+.message.svelte-1bsw8ig {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.swipe-holder.svelte-13veyed {
+.swipe-holder.svelte-1bsw8ig {
   height: 100%;
   width: 100%;
 }
-.swipe.svelte-13veyed {
+.swipe.svelte-1bsw8ig {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-.sponsor.svelte-13veyed {
-  user-select: none;
-  pointer-events: none;
-  font-size: 4vh;
-  font-weight: bold;
-  z-index: 10;
-  position: absolute;
-  color: red;
-  opacity: 0.75;
-  right: 1.1em;
-  top: 50vh;
-  writing-mode: vertical-lr;
 }
 
 /* fakecss:D:/2023/swipegallery/src/dictpopup.esbuild-svelte-fake-css */
@@ -277,14 +264,6 @@ input.svelte-1nnnvg0 {
   border-radius: 1.5em;
 }
 
-/* fakecss:D:/2023/swipegallery/src/about.esbuild-svelte-fake-css */
-.qrcode.svelte-1bgf7s0 {
-  width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
 /* fakecss:D:/2023/swipegallery/src/sentencenav.esbuild-svelte-fake-css */
 .nav.svelte-82p8iw {
   width: 100%;
@@ -300,9 +279,17 @@ input.svelte-1nnnvg0 {
   height: 80vh;
 }
 
-/* fakecss:D:/2023/swipegallery/src/youtubeplayer.esbuild-svelte-fake-css */
+/* fakecss:D:/2023/swipegallery/src/player.esbuild-svelte-fake-css */
 #player.svelte-1pgr23t {
   position: absolute;
   right: -1px;
   height: 1px;
+}
+
+/* fakecss:D:/2023/swipegallery/src/paiji.esbuild-svelte-fake-css */
+img.svelte-1f7k46b {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  position: absolute;
 }
