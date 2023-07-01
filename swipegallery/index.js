@@ -7735,6 +7735,11 @@
 
   // node_modules/svelte/store/index.mjs
   var subscriber_queue = [];
+  function readable(value, start) {
+    return {
+      subscribe: writable(value, start).subscribe
+    };
+  }
   function writable(value, start = noop) {
     let stop;
     const subscribers = /* @__PURE__ */ new Set();
@@ -7776,8 +7781,49 @@
     }
     return { set, update: update2, subscribe: subscribe2 };
   }
+  function derived(stores, fn, initial_value) {
+    const single = !Array.isArray(stores);
+    const stores_array = single ? [stores] : stores;
+    const auto = fn.length < 2;
+    return readable(initial_value, (set) => {
+      let started = false;
+      const values = [];
+      let pending = 0;
+      let cleanup = noop;
+      const sync = () => {
+        if (pending) {
+          return;
+        }
+        cleanup();
+        const result = fn(single ? values[0] : values, set);
+        if (auto) {
+          set(result);
+        } else {
+          cleanup = is_function(result) ? result : noop;
+        }
+      };
+      const unsubscribers = stores_array.map((store, i) => subscribe(store, (value) => {
+        values[i] = value;
+        pending &= ~(1 << i);
+        if (started) {
+          sync();
+        }
+      }, () => {
+        pending |= 1 << i;
+      }));
+      started = true;
+      sync();
+      return function stop() {
+        run_all(unsubscribers);
+        cleanup();
+        started = false;
+      };
+    });
+  }
 
   // src/store.js
+  var nanzangbooks = ["sdpdrk1"];
+  var vlinesOfBook = (bkid) => ~nanzangbooks.indexOf(bkid) ? 6 : 5;
   var activePtk = writable("dc");
   var activebookid = writable(settings.activebookid);
   var advancemode = writable(settings.advancemode);
@@ -7786,7 +7832,7 @@
   var isAndroid = writable(false);
   var player = writable(null);
   var videoid = writable("");
-  var folioLines = writable(5);
+  var folioLines = derived(activebookid, (bid) => vlinesOfBook(bid));
   var folioChars = writable(17);
   var videohost = writable(settings.videohost);
   var playing = writable(false);
@@ -7814,7 +7860,7 @@
     remainrollback.set(-1);
     if (!plyr)
       return;
-    plyr.stopVideo ? plyr.stopVideo() : plyr.pause();
+    plyr.stopVideo ? plyr.stopVideo() : plyr.pause ? plyr.pause() : null;
   };
   var idletime = 60;
 
@@ -10619,7 +10665,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const selectbook = (nbk) => {
       const bk = ptk.defines.bk;
       stopVideo();
-      activebookid.set(bk.fields.id.values[nbk]);
+      const bkid = bk.fields.id.values[nbk];
+      activebookid.set(bkid);
       activefolio.set(0);
       closePopup();
     };
@@ -15731,10 +15778,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       timer = setInterval(
         () => {
           if (typeof Txplayer !== "undefined") {
+            console.log("load tencent");
             clearInterval(timer);
             createTencentPlayer();
           }
           if (typeof YT !== "undefined") {
+            console.log("load youtube");
             clearInterval(timer);
             createYoutubePlayer();
           }

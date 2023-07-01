@@ -39,7 +39,7 @@ select {font-size:4vh}
   position:relative
 }
 
-.book {font-size:4vh}
+.book {font-size:4vh;cursor:pointer}
 .refer {text-decoration: underline;}
 .clickable {border-bottom: rgb(255, 230, 0) solid 1px;cursor:pointer;}
 
