@@ -9538,7 +9538,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let span;
     let t_value = (
       /*$idlecount*/
-      (ctx[13] >= idletime - 30 ? idletime - /*$idlecount*/
+      (ctx[13] >= idletime - 15 ? idletime - /*$idlecount*/
       ctx[13] : "") + ""
     );
     let t;
@@ -9555,7 +9555,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         if (dirty[0] & /*$idlecount*/
         8192 && t_value !== (t_value = /*$idlecount*/
-        (ctx2[13] >= idletime - 30 ? idletime - /*$idlecount*/
+        (ctx2[13] >= idletime - 15 ? idletime - /*$idlecount*/
         ctx2[13] : "") + ""))
           set_data(t, t_value);
       },
@@ -11572,7 +11572,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t3;
     return {
       c() {
-        t0 = text("\u6309\u300C--\u975C\u9ED8--\u300D\u9078\u64C7\u5531\u980C\uFF0C\u518D\u6309\u53F3\u4E0A\u89D2 \u2573\u3002\u958B\u982D\u53EF\u80FD\u6709\u5EE3\u544A\u8072\u3002\n");
+        t0 = text("\u6309\u300C--\u975C\u9ED8--\u300D\u9078\u64C7\u5531\u980C\uFF0C\u518D\u6309\u53F3\u4E0A\u89D2\u2716\uFE0F\u3002\u958B\u982D\u53EF\u80FD\u6709\u5EE3\u544A\u8072\u3002\n");
         br = element("br");
         t1 = text("\u8072\u97F3\u76F4\u63A5\u62BD\u53D6\u81EA");
         t2 = text(
@@ -15923,7 +15923,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         br0 = element("br");
         t2 = text("\u5B89\u88DD\u5230\u684C\u9762\u4EE5\u53D6\u5F97\u6700\u4F73\u986F\u793A\u6548\u679C\n");
         br1 = element("br");
-        t3 = text("Android:\u4F7F\u7528Chrome\u700F\u89BD\u5668\uFF0C\u6309\u53F3\u4E0A\u89D2\u529F\u80FD\u8868\u2192\u300C\u5B89\u88DD\u61C9\u7528\u7A0B\u5E8F\u300D\n");
+        t3 = text("Android:\u4F7F\u7528Chrome\u700F\u89BD\u5668\uFF0C\u6309\u53F3\u4E0A\u89D2\u529F\u80FD\u8868\u2192\u300C\u5B89\u88DD\u61C9\u7528\u7A0B\u5F0F\u300D\n");
         br2 = element("br");
         t4 = text("iOS:\u6309\u300C\u5206\u4EAB\u300D\u2192\u300C\u52A0\u5230\u4E3B\u756B\u9762\u300D\n");
         br3 = element("br");
@@ -15934,7 +15934,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
 <br/>\u9032\u968E:\u{1F4DC}\u539F\u6587\u{1F500}\u7570\u8B6F\u{1F4DA}\u96C6\u8A3B`;
         t9 = space();
         create_component(switch_1.$$.fragment);
-        t10 = text("\n\u66F4\u65B0\u7A0B\u5E8F\u524D\uFF0C\u5148\u6E05\u9664\u700F\u89BD\u5668\u5FEB\u53D6\n");
+        t10 = text("\n\u66F4\u65B0\u7A0B\u5F0F\u524D\uFF0C\u5148\u6E05\u9664\u700F\u89BD\u5668\u5FEB\u53D6\n");
         br6 = element("br");
         t11 = text("\u7121\u6CD5\u8A2A\u554FYoutube\uFF0C\u8ACB\u8A2D\u5B9A\u8996\u983B\u4F86\u6E90\u70BATencent\n");
         br7 = element("br");
@@ -16586,7 +16586,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  var idleinterval = 5;
+  var idleinterval = 2;
   function instance23($$self, $$props, $$invalidate) {
     let $videohost;
     let $newbie;

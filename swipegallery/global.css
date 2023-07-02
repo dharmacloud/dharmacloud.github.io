@@ -147,14 +147,14 @@ select {font-size:4vh}
   top:0;left:0;z-index: 999;
 }
 
-.paijitextcontainer{width:100%;justify-content: center;display:flex;padding-top:70vh}
+.paijitextcontainer{width:100%;justify-content: center;display:flex;padding-top:75vh}
 .paijitext{
   pointer-events: none;
-  font-size:26px;
+  font-size:5vw;
   color:yellow;
   z-index: 1999;
 }
-.sponsor {user-select:none;pointer-events:none;font-size:40px;font-weight: bold; 
+.sponsor {user-select:none;pointer-events:none;font-size:5vh;font-weight: bold; 
   line-height: 1.1em;
-  position:absolute; color:yellow; width:1em; padding-left:45vw;top:1em}
+  position:absolute; color:yellow; width:1em; padding-left:46vw; padding-top:15vh}
 
