@@ -12038,7 +12038,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     onMount(() => {
       subtitletimer = setInterval(
         () => {
-          const playertime = get_store_value(player)?.getCurrentTime();
+          const plyr = get_store_value(player);
+          if (!plyr)
+            return;
+          const playertime = plyr.getCurrentTime && plyr.getCurrentTime();
           while (playertime >= timestamp[nsub] && nsub < timestamp.length) {
             $$invalidate(2, subtitle = subtitles[nsub] || subtitle || "");
             $$invalidate(3, subtitle2 = subtitles2[nsub] || subtitle2 || "");
@@ -15803,7 +15806,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       playing.set(e.data == 1 || e.state == 1);
     }
     function onPlayerReady(e) {
-      plyr.playVideo ? plyr.playVideo() : plyr.play();
+      plyr.playVideo ? plyr.playVideo() : plyr.play && plyrplay();
     }
     const loadVideo = () => {
       const obj = findByVideoId($videoid);
