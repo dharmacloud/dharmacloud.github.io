@@ -14380,26 +14380,51 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   // src/toc.svelte
   function get_each_context10(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[17] = list[i];
+    child_ctx[18] = list[i];
     return child_ctx;
+  }
+  function get_each_context_1(ctx, list, i) {
+    const child_ctx = ctx.slice();
+    child_ctx[21] = list[i];
+    return child_ctx;
+  }
+  function create_each_block_1(ctx) {
+    let t_value = (
+      /*juan*/
+      ctx[21] + ""
+    );
+    let t;
+    return {
+      c() {
+        t = text(t_value);
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      p: noop,
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
   }
   function create_each_block10(ctx) {
     let div;
     let t_value = styledNumber(
       /*item*/
-      ctx[17].id,
+      ctx[18].id,
       "\u2460"
     ) + /*item*/
-    ctx[17].caption + "";
+    ctx[18].caption + "";
     let t;
     let mounted;
     let dispose;
     function click_handler() {
       return (
         /*click_handler*/
-        ctx[10](
+        ctx[11](
           /*item*/
-          ctx[17]
+          ctx[18]
         )
       );
     }
@@ -14413,7 +14438,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           "selecteditem",
           /*cknow*/
           ctx[2] == /*item*/
-          ctx[17].id
+          ctx[18].id
         );
       },
       m(target, anchor) {
@@ -14429,10 +14454,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (dirty & /*tocitems*/
         2 && t_value !== (t_value = styledNumber(
           /*item*/
-          ctx[17].id,
+          ctx[18].id,
           "\u2460"
         ) + /*item*/
-        ctx[17].caption + ""))
+        ctx[18].caption + ""))
           set_data(t, t_value);
         if (dirty & /*cknow, tocitems*/
         6) {
@@ -14441,7 +14466,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             "selecteditem",
             /*cknow*/
             ctx[2] == /*item*/
-            ctx[17].id
+            ctx[18].id
           );
         }
       },
@@ -14454,24 +14479,33 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function create_fragment18(ctx) {
-    let div3;
-    let div0;
+    let div2;
     let t0;
-    let t1_value = (
+    let span;
+    let t1;
+    let t2_value = (
       /*folio*/
       (ctx[0][0] || 0) + 1 + ""
     );
-    let t1;
     let t2;
+    let t3;
     let slider;
     let updating_value;
-    let t3;
-    let div2;
     let t4;
     let div1;
+    let t5;
+    let div0;
     let current;
+    let each_value_1 = (
+      /*juans*/
+      ctx[4]
+    );
+    let each_blocks_1 = [];
+    for (let i = 0; i < each_value_1.length; i += 1) {
+      each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+    }
     function slider_value_binding(value) {
-      ctx[9](value);
+      ctx[10](value);
     }
     let slider_props = { max: (
       /*$maxfolio*/
@@ -14488,7 +14522,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     binding_callbacks.push(() => bind(slider, "value", slider_value_binding));
     slider.$on("input", debounce(
       /*setFolio*/
-      ctx[4],
+      ctx[5],
       500
     ));
     let each_value = (
@@ -14501,48 +14535,78 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     }
     return {
       c() {
-        div3 = element("div");
-        div0 = element("div");
-        t0 = text("\u8DF3\u5230\u7B2C");
-        t1 = text(t1_value);
-        t2 = text("\u9801 ");
-        create_component(slider.$$.fragment);
-        t3 = space();
         div2 = element("div");
+        for (let i = 0; i < each_blocks_1.length; i += 1) {
+          each_blocks_1[i].c();
+        }
+        t0 = space();
+        span = element("span");
+        t1 = text("\u8DF3\u5230\u7B2C");
+        t2 = text(t2_value);
+        t3 = text("\u9801 \n");
+        create_component(slider.$$.fragment);
+        t4 = space();
+        div1 = element("div");
         for (let i = 0; i < each_blocks.length; i += 1) {
           each_blocks[i].c();
         }
-        t4 = space();
-        div1 = element("div");
-        div1.textContent = "\u203B\u203B\u203B";
-        attr(div0, "class", "jumper svelte-1wwnshb");
-        attr(div1, "class", "endmarker");
-        attr(div2, "class", "toc svelte-1wwnshb");
-        attr(div3, "class", "toctext");
+        t5 = space();
+        div0 = element("div");
+        div0.textContent = "\u203B\u203B\u203B";
+        attr(span, "class", "jumper svelte-1wwnshb");
+        attr(div0, "class", "endmarker");
+        attr(div1, "class", "toc svelte-1wwnshb");
+        attr(div2, "class", "toctext");
       },
       m(target, anchor) {
-        insert(target, div3, anchor);
-        append(div3, div0);
-        append(div0, t0);
-        append(div0, t1);
-        append(div0, t2);
-        mount_component(slider, div0, null);
-        append(div3, t3);
-        append(div3, div2);
-        for (let i = 0; i < each_blocks.length; i += 1) {
-          if (each_blocks[i]) {
-            each_blocks[i].m(div2, null);
+        insert(target, div2, anchor);
+        for (let i = 0; i < each_blocks_1.length; i += 1) {
+          if (each_blocks_1[i]) {
+            each_blocks_1[i].m(div2, null);
           }
         }
+        append(div2, t0);
+        append(div2, span);
+        append(span, t1);
+        append(span, t2);
+        append(span, t3);
+        mount_component(slider, span, null);
         append(div2, t4);
         append(div2, div1);
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          if (each_blocks[i]) {
+            each_blocks[i].m(div1, null);
+          }
+        }
+        append(div1, t5);
+        append(div1, div0);
         current = true;
       },
       p(ctx2, [dirty]) {
+        if (dirty & /*juans*/
+        16) {
+          each_value_1 = /*juans*/
+          ctx2[4];
+          let i;
+          for (i = 0; i < each_value_1.length; i += 1) {
+            const child_ctx = get_each_context_1(ctx2, each_value_1, i);
+            if (each_blocks_1[i]) {
+              each_blocks_1[i].p(child_ctx, dirty);
+            } else {
+              each_blocks_1[i] = create_each_block_1(child_ctx);
+              each_blocks_1[i].c();
+              each_blocks_1[i].m(div2, t0);
+            }
+          }
+          for (; i < each_blocks_1.length; i += 1) {
+            each_blocks_1[i].d(1);
+          }
+          each_blocks_1.length = each_value_1.length;
+        }
         if ((!current || dirty & /*folio*/
-        1) && t1_value !== (t1_value = /*folio*/
+        1) && t2_value !== (t2_value = /*folio*/
         (ctx2[0][0] || 0) + 1 + ""))
-          set_data(t1, t1_value);
+          set_data(t2, t2_value);
         const slider_changes = {};
         if (dirty & /*$maxfolio*/
         8)
@@ -14557,7 +14621,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
         slider.$set(slider_changes);
         if (dirty & /*cknow, tocitems, gofolio, styledNumber*/
-        38) {
+        70) {
           each_value = /*tocitems*/
           ctx2[1];
           let i;
@@ -14568,7 +14632,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             } else {
               each_blocks[i] = create_each_block10(child_ctx);
               each_blocks[i].c();
-              each_blocks[i].m(div2, t4);
+              each_blocks[i].m(div1, t5);
             }
           }
           for (; i < each_blocks.length; i += 1) {
@@ -14589,7 +14653,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       d(detaching) {
         if (detaching)
-          detach(div3);
+          detach(div2);
+        destroy_each(each_blocks_1, detaching);
         destroy_component(slider);
         destroy_each(each_blocks, detaching);
       }
@@ -14601,19 +14666,20 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let $activebookid;
     let $activefolio;
     let $maxfolio;
-    component_subscribe($$self, folioChars, ($$value) => $$invalidate(11, $folioChars = $$value));
-    component_subscribe($$self, folioLines, ($$value) => $$invalidate(12, $folioLines = $$value));
-    component_subscribe($$self, activebookid, ($$value) => $$invalidate(13, $activebookid = $$value));
-    component_subscribe($$self, activefolio, ($$value) => $$invalidate(14, $activefolio = $$value));
+    component_subscribe($$self, folioChars, ($$value) => $$invalidate(12, $folioChars = $$value));
+    component_subscribe($$self, folioLines, ($$value) => $$invalidate(13, $folioLines = $$value));
+    component_subscribe($$self, activebookid, ($$value) => $$invalidate(14, $activebookid = $$value));
+    component_subscribe($$self, activefolio, ($$value) => $$invalidate(15, $activefolio = $$value));
     component_subscribe($$self, maxfolio, ($$value) => $$invalidate(3, $maxfolio = $$value));
     let folio = [$activefolio];
     let { ptk } = $$props;
     let { address } = $$props;
     let { closePopup } = $$props;
+    let juans = [];
     const setFolio = async (e) => {
       const v = e.detail[0];
       activefolio.set(parseInt(v));
-      $$invalidate(6, address = "bk#" + $activebookid + ".ck#" + chunkOfFolio(ptk, $activebookid, v));
+      $$invalidate(7, address = "bk#" + $activebookid + ".ck#" + chunkOfFolio(ptk, $activebookid, v));
     };
     let tocitems = [], cknow;
     const getTocItems = (address2) => {
@@ -14664,20 +14730,20 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const click_handler = (item) => gofolio(item.at);
     $$self.$$set = ($$props2) => {
       if ("ptk" in $$props2)
-        $$invalidate(7, ptk = $$props2.ptk);
+        $$invalidate(8, ptk = $$props2.ptk);
       if ("address" in $$props2)
-        $$invalidate(6, address = $$props2.address);
+        $$invalidate(7, address = $$props2.address);
       if ("closePopup" in $$props2)
-        $$invalidate(8, closePopup = $$props2.closePopup);
+        $$invalidate(9, closePopup = $$props2.closePopup);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*address*/
-      64) {
+      128) {
         $:
           $$invalidate(1, tocitems = getTocItems(address));
       }
       if ($$self.$$.dirty & /*address*/
-      64) {
+      128) {
         $:
           $$invalidate(2, cknow = getCk(address));
       }
@@ -14687,6 +14753,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       tocitems,
       cknow,
       $maxfolio,
+      juans,
       setFolio,
       gofolio,
       address,
@@ -14699,7 +14766,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Toc = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance19, create_fragment18, safe_not_equal, { ptk: 7, address: 6, closePopup: 8 });
+      init(this, options, instance19, create_fragment18, safe_not_equal, { ptk: 8, address: 7, closePopup: 9 });
     }
   };
   var toc_default = Toc;
