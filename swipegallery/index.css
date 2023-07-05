@@ -84,12 +84,17 @@ img.svelte-1bsw8ig {
 }
 
 /* fakecss:D:/2023/swipegallery/src/dictpopup.esbuild-svelte-fake-css */
-.dictpopup.svelte-jp8tgd {
-  height: 90%;
-}
-.iframe.svelte-jp8tgd {
-  width: 100%;
+.dictpopup.svelte-q5fwfc {
   height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-flow: column;
+}
+.iframe.svelte-q5fwfc {
+  flex: 1 1 auto;
+}
+.header.svelte-q5fwfc {
+  flex: 0 1 auto;
 }
 
 /* fakecss:D:/2023/swipegallery/src/3rd/thumb.esbuild-svelte-fake-css */
@@ -268,6 +273,18 @@ input.svelte-1nnnvg0 {
 .nav.svelte-82p8iw {
   width: 100%;
   text-align: center;
+}
+
+/* fakecss:D:/2023/swipegallery/src/comps/inputnumber.esbuild-svelte-fake-css */
+.numinput.svelte-5fv0ws {
+  user-select: none;
+}
+.stepper.svelte-5fv0ws {
+  cursor: pointer;
+}
+.disabled.svelte-5fv0ws {
+  color: var(--button-unselected);
+  cursor: default;
 }
 
 /* fakecss:D:/2023/swipegallery/src/toc.esbuild-svelte-fake-css */
