@@ -10405,9 +10405,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   function create_if_block_12(ctx) {
     let t0;
     let t1;
-    let a;
+    let a0;
     let t2;
-    let a_href_value;
+    let a0_href_value;
+    let t3;
+    let a1;
+    let t4;
+    let a1_href_value;
     let if_block0 = (
       /*fgdzd*/
       (ctx[1] || /*dfb*/
@@ -10425,11 +10429,21 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (if_block1)
           if_block1.c();
         t1 = space();
-        a = element("a");
+        a0 = element("a");
         t2 = text("Google");
-        attr(a, "target", "_new");
-        attr(a, "href", a_href_value = "https://www.google.com/search?q=" + /*entry*/
-        ctx[13]);
+        t3 = space();
+        a1 = element("a");
+        t4 = text("\u767E\u5EA6");
+        attr(a0, "target", "_new");
+        attr(a0, "href", a0_href_value = "https://www.google.com/search?q=" + encodeURI(
+          /*entry*/
+          ctx[13]
+        ));
+        attr(a1, "target", "_new");
+        attr(a1, "href", a1_href_value = "https://www.baidu.com/s?wd=" + encodeURI(
+          /*entry*/
+          ctx[13]
+        ));
       },
       m(target, anchor) {
         if (if_block0)
@@ -10438,8 +10452,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (if_block1)
           if_block1.m(target, anchor);
         insert(target, t1, anchor);
-        insert(target, a, anchor);
-        append(a, t2);
+        insert(target, a0, anchor);
+        append(a0, t2);
+        insert(target, t3, anchor);
+        insert(target, a1, anchor);
+        append(a1, t4);
       },
       p(ctx2, dirty) {
         if (
@@ -10474,9 +10491,18 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if_block1 = null;
         }
         if (dirty & /*entries*/
-        8 && a_href_value !== (a_href_value = "https://www.google.com/search?q=" + /*entry*/
-        ctx2[13])) {
-          attr(a, "href", a_href_value);
+        8 && a0_href_value !== (a0_href_value = "https://www.google.com/search?q=" + encodeURI(
+          /*entry*/
+          ctx2[13]
+        ))) {
+          attr(a0, "href", a0_href_value);
+        }
+        if (dirty & /*entries*/
+        8 && a1_href_value !== (a1_href_value = "https://www.baidu.com/s?wd=" + encodeURI(
+          /*entry*/
+          ctx2[13]
+        ))) {
+          attr(a1, "href", a1_href_value);
         }
       },
       d(detaching) {
@@ -10489,7 +10515,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (detaching)
           detach(t1);
         if (detaching)
-          detach(a);
+          detach(a0);
+        if (detaching)
+          detach(t3);
+        if (detaching)
+          detach(a1);
       }
     };
   }
@@ -10740,7 +10770,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if_block.m(div, null);
       },
       p(ctx2, [dirty]) {
-        if (dirty & /*nentry, entries, setWikipedia, wikipedia, setOneline, fgdzd, dfb*/
+        if (dirty & /*nentry, encodeURI, entries, setWikipedia, wikipedia, setOneline, fgdzd, dfb*/
         223) {
           each_value = /*entries*/
           ctx2[3];
@@ -10797,7 +10827,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
     const setOneline = () => {
       const entry = entries[nentry][1];
-      $$invalidate(5, src = "http://buddhaspace.org/dict/index.php?keyword=" + entry);
+      $$invalidate(5, src = "https://buddhaspace.org/dict/index.php?keyword=" + entry);
     };
     const availableDict = (n) => {
       const at = entries[n][2];
@@ -12481,7 +12511,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
 
   // src/urlqrcode.js
   var urlqrcode = `<?xml version="1.0" encoding="utf-8"?>
-<svg xml:space="preserve" width="240" height="240" viewBox="0 0 888 888"><g fill="#000000">
+<svg xml:space="preserve" width="400" height="400" viewBox="0 0 888 888"><g fill="#000000">
 <g transform="translate(264,48) scale(4.12)"><rect width="6" height="6"/></g>
 <g transform="translate(288,48) scale(4.12)"><rect width="6" height="6"/></g>
 <g transform="translate(312,48) scale(4.12)"><rect width="6" height="6"/></g>
@@ -12996,12 +13026,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         attr(span0, "id", span0_id_value = `label-${/*uniqueID*/
         ctx[5]}`);
         attr(span1, "role", "radiogroup");
-        attr(span1, "class", "group-container svelte-1fzgm72");
+        attr(span1, "class", "group-container svelte-jwpg1d");
         attr(span1, "aria-labelledby", span1_aria_labelledby_value = `label-${/*uniqueID*/
         ctx[5]}`);
         attr(span1, "id", span1_id_value = `group-${/*uniqueID*/
         ctx[5]}`);
-        attr(span2, "class", "s s--multi svelte-1fzgm72");
+        attr(span2, "class", "s s--multi svelte-jwpg1d");
       },
       m(target, anchor) {
         insert(target, span2, anchor);
@@ -13082,8 +13112,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         );
         attr(button, "aria-labelledby", button_aria_labelledby_value = `switch-${/*uniqueID*/
         ctx[5]}`);
-        attr(button, "class", "svelte-1fzgm72");
-        attr(span1, "class", "s s--slider svelte-1fzgm72");
+        attr(button, "class", "svelte-jwpg1d");
+        attr(span1, "class", "s s--slider svelte-jwpg1d");
       },
       m(target, anchor) {
         insert(target, span1, anchor);
@@ -13157,9 +13187,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         span2.textContent = "off";
         attr(span0, "id", span0_id_value = `switch-${/*uniqueID*/
         ctx[5]}`);
-        attr(span0, "class", "svelte-1fzgm72");
-        attr(span1, "class", "svelte-1fzgm72");
-        attr(span2, "class", "svelte-1fzgm72");
+        attr(span0, "class", "svelte-jwpg1d");
+        attr(span1, "class", "svelte-jwpg1d");
+        attr(span2, "class", "svelte-jwpg1d");
         attr(button, "role", "switch");
         attr(
           button,
@@ -13169,8 +13199,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         );
         attr(button, "aria-labelledby", button_aria_labelledby_value = `switch-${/*uniqueID*/
         ctx[5]}`);
-        attr(button, "class", "svelte-1fzgm72");
-        attr(div, "class", "s s--inner svelte-1fzgm72");
+        attr(button, "class", "svelte-jwpg1d");
+        attr(div, "class", "s s--inner svelte-jwpg1d");
       },
       m(target, anchor) {
         insert(target, div, anchor);
@@ -13252,11 +13282,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         input.__value = input_value_value = /*option*/
         ctx[9];
         input.value = input.__value;
-        attr(input, "class", "svelte-1fzgm72");
+        attr(input, "class", "svelte-jwpg1d");
         attr(label_1, "for", label_1_for_value = `${/*option*/
         ctx[9]}-${/*uniqueID*/
         ctx[5]}`);
-        attr(label_1, "class", "svelte-1fzgm72");
+        attr(label_1, "class", "svelte-jwpg1d");
         binding_group.p(input);
       },
       m(target, anchor) {
@@ -13422,50 +13452,104 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
 
   // src/about.svelte
   function create_else_block4(ctx) {
+    let switch_1;
+    let updating_value;
     let t0;
+    let br;
+    let t1;
     let a0;
-    let t2;
-    let div;
     let t3;
     let a1;
+    let t5;
+    let div;
+    let current;
+    function switch_1_value_binding_1(value) {
+      ctx[3](value);
+    }
+    let switch_1_props = {
+      label: "\u8996\u983B\u4F86\u6E90",
+      options: ["qq", "youtube"],
+      design: "multi"
+    };
+    if (
+      /*$videohost*/
+      ctx[1] !== void 0
+    ) {
+      switch_1_props.value = /*$videohost*/
+      ctx[1];
+    }
+    switch_1 = new switch_default({ props: switch_1_props });
+    binding_callbacks.push(() => bind(switch_1, "value", switch_1_value_binding_1));
     return {
       c() {
-        t0 = text("\u5230 LINE \u641C\u5C0BID @dharmacloud\uFF0C\u6216\u9EDE\u64CA\u52A0\u5165");
+        create_component(switch_1.$$.fragment);
+        t0 = space();
+        br = element("br");
+        t1 = text("\u5230LINE\u641C\u5C0BID @dharmacloud\uFF0C\u6216\u52A0\u5165");
         a0 = element("a");
         a0.textContent = "\u5B98\u65B9\u5E33\u865F";
-        t2 = text("\uFF0C\u4EE5\u7372\u5F97\u66F4\u65B0\u8A0A\u606F\n");
-        div = element("div");
-        t3 = text("\n\u514D\u8CBB\u7D50\u7DE3\u7DB2\u5740");
+        t3 = text("\uFF0C\u7372\u5F97\u66F4\u65B0\u8A0A\u606F\u3002\n\u7D50\u7DE3\u54C1");
         a1 = element("a");
         a1.textContent = "dharmacloud.github.io";
+        t5 = space();
+        div = element("div");
         attr(a0, "href", "https://lin.ee/1tmTKXi");
-        attr(div, "class", "center");
         attr(a1, "target", "_new");
         attr(a1, "href", "https://dharmacloud.github.io/");
+        attr(div, "class", "center");
       },
       m(target, anchor) {
+        mount_component(switch_1, target, anchor);
         insert(target, t0, anchor);
+        insert(target, br, anchor);
+        insert(target, t1, anchor);
         insert(target, a0, anchor);
-        insert(target, t2, anchor);
-        insert(target, div, anchor);
-        div.innerHTML = urlqrcode;
         insert(target, t3, anchor);
         insert(target, a1, anchor);
+        insert(target, t5, anchor);
+        insert(target, div, anchor);
+        div.innerHTML = urlqrcode;
+        current = true;
       },
-      p: noop,
+      p(ctx2, dirty) {
+        const switch_1_changes = {};
+        if (!updating_value && dirty & /*$videohost*/
+        2) {
+          updating_value = true;
+          switch_1_changes.value = /*$videohost*/
+          ctx2[1];
+          add_flush_callback(() => updating_value = false);
+        }
+        switch_1.$set(switch_1_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(switch_1.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(switch_1.$$.fragment, local);
+        current = false;
+      },
       d(detaching) {
+        destroy_component(switch_1, detaching);
         if (detaching)
           detach(t0);
         if (detaching)
+          detach(br);
+        if (detaching)
+          detach(t1);
+        if (detaching)
           detach(a0);
-        if (detaching)
-          detach(t2);
-        if (detaching)
-          detach(div);
         if (detaching)
           detach(t3);
         if (detaching)
           detach(a1);
+        if (detaching)
+          detach(t5);
+        if (detaching)
+          detach(div);
       }
     };
   }
@@ -13483,21 +13567,21 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t7;
     return {
       c() {
-        t0 = text("\u672C\u6578\u64DA\u5EAB\u57FA\u65BC\u4EE5\u4E0B\u516C\u958B\u7D20\u6750\uFF1A\n\u6C38\u6A02\u5317\u85CF(\u5C71\u6771\u7701\u5716\u66F8\u9928)\u3001\u91D1\u525B\u7D93\u96C6\u8A3B(\u6731\u68E3)\u3001\u68B5\u6587\u6821\u52D8\u672C(Edward Conze, ancient-buddhist-texts.net)\u3001\u7D93\u6587\u65B0\u5F0F\u6A19\u9EDE(CBETA)\u3001\n\u3002\n");
+        t0 = text("\u672C\u6578\u64DA\u5EAB\u57FA\u65BC\u4EE5\u4E0B\u516C\u958B\u7D20\u6750\uFF1A\n\u6C38\u6A02\u5317\u85CF(\u5C71\u6771\u7701\u5716\u66F8\u9928)\u3001\u91D1\u525B\u7D93\u96C6\u8A3B(\u6731\u68E3)\u3001\u68B5\u6587\u6821\u52D8\u672C(Edward Conze, ancient-buddhist-texts.net)\u3001\n\u7D93\u6587\u65B0\u5F0F\u6A19\u9EDE(CBETA)\u3002\n");
         br0 = element("br");
         t1 = text("\u4E26\u4EE5");
         a0 = element("a");
         a0.textContent = "Creative Common Zero";
         t3 = text("\u5206\u4EAB\u3002\n");
         br1 = element("br");
-        t4 = space();
+        t4 = text("\u66F4\u65B0\u7A0B\u5F0F\u524D\uFF0C\u5148\u6E05\u9664\u700F\u89BD\u5668\u5FEB\u53D6\u3002\n");
         br2 = element("br");
         t5 = text("\u9019\u662F");
         a1 = element("a");
         a1.textContent = "\u958B\u6E90";
-        t7 = text("\u8EDF\u4EF6(2023.7.5)\uFF0C\u53EF\u4EE5\u4E0D\u53D7\u4EFB\u4F55\u9650\u5236\uFF0C\u4EE5\u4EFB\u4F55\u5F62\u614B\u6563\u4F48\u672C\u8EDF\u4EF6\u3002");
+        t7 = text("\u8EDF\u4EF6(2023.7.6)\uFF0C\n\u5141\u8A31\u4EE5\u4EFB\u4F55\u5F62\u614B\u6563\u4F48\u672C\u8EDF\u4EF6\u3002");
         attr(a0, "href", "https://creativecommons.org/publicdomain/zero/1.0/deed.zh");
-        attr(a1, "href", "https://github.com/dharmacloud");
+        attr(a1, "href", "https://github.com/dharmacloud/");
         attr(a1, "target", "_new");
       },
       m(target, anchor) {
@@ -13514,6 +13598,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         insert(target, t7, anchor);
       },
       p: noop,
+      i: noop,
+      o: noop,
       d(detaching) {
         if (detaching)
           detach(t0);
@@ -13542,132 +13628,106 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   }
   function create_fragment13(ctx) {
     let div;
-    let br0;
+    let br;
     let t0;
-    let switch0;
+    let switch_1;
     let updating_value;
     let t1;
-    let switch1;
-    let updating_value_1;
-    let t2;
-    let br1;
-    let t3;
+    let current_block_type_index;
+    let if_block;
     let current;
-    function switch0_value_binding(value) {
+    function switch_1_value_binding(value) {
       ctx[2](value);
     }
-    let switch0_props = { label: "\u9032\u968E\u6A21\u5F0F", design: "slider" };
+    let switch_1_props = { label: "\u9032\u968E\u6A21\u5F0F", design: "slider" };
     if (
       /*$advancemode*/
       ctx[0] !== void 0
     ) {
-      switch0_props.value = /*$advancemode*/
+      switch_1_props.value = /*$advancemode*/
       ctx[0];
     }
-    switch0 = new switch_default({ props: switch0_props });
-    binding_callbacks.push(() => bind(switch0, "value", switch0_value_binding));
-    function switch1_value_binding(value) {
-      ctx[3](value);
-    }
-    let switch1_props = {
-      label: "\u8996\u983B\u4F86\u6E90",
-      options: ["tencent", "youtube"],
-      design: "multi"
-    };
-    if (
-      /*$videohost*/
-      ctx[1] !== void 0
-    ) {
-      switch1_props.value = /*$videohost*/
-      ctx[1];
-    }
-    switch1 = new switch_default({ props: switch1_props });
-    binding_callbacks.push(() => bind(switch1, "value", switch1_value_binding));
+    switch_1 = new switch_default({ props: switch_1_props });
+    binding_callbacks.push(() => bind(switch_1, "value", switch_1_value_binding));
+    const if_block_creators = [create_if_block7, create_else_block4];
+    const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
         /*$advancemode*/
         ctx2[0] == "on"
       )
-        return create_if_block7;
-      return create_else_block4;
+        return 0;
+      return 1;
     }
-    let current_block_type = select_block_type(ctx, -1);
-    let if_block = current_block_type(ctx);
+    current_block_type_index = select_block_type(ctx, -1);
+    if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
     return {
       c() {
         div = element("div");
-        br0 = element("br");
+        br = element("br");
         t0 = space();
-        create_component(switch0.$$.fragment);
+        create_component(switch_1.$$.fragment);
         t1 = space();
-        create_component(switch1.$$.fragment);
-        t2 = space();
-        br1 = element("br");
-        t3 = space();
         if_block.c();
         attr(div, "class", "toctext");
       },
       m(target, anchor) {
         insert(target, div, anchor);
-        append(div, br0);
+        append(div, br);
         append(div, t0);
-        mount_component(switch0, div, null);
+        mount_component(switch_1, div, null);
         append(div, t1);
-        mount_component(switch1, div, null);
-        append(div, t2);
-        append(div, br1);
-        append(div, t3);
-        if_block.m(div, null);
+        if_blocks[current_block_type_index].m(div, null);
         current = true;
       },
       p(ctx2, [dirty]) {
-        const switch0_changes = {};
+        const switch_1_changes = {};
         if (!updating_value && dirty & /*$advancemode*/
         1) {
           updating_value = true;
-          switch0_changes.value = /*$advancemode*/
+          switch_1_changes.value = /*$advancemode*/
           ctx2[0];
           add_flush_callback(() => updating_value = false);
         }
-        switch0.$set(switch0_changes);
-        const switch1_changes = {};
-        if (!updating_value_1 && dirty & /*$videohost*/
-        2) {
-          updating_value_1 = true;
-          switch1_changes.value = /*$videohost*/
-          ctx2[1];
-          add_flush_callback(() => updating_value_1 = false);
-        }
-        switch1.$set(switch1_changes);
-        if (current_block_type === (current_block_type = select_block_type(ctx2, dirty)) && if_block) {
-          if_block.p(ctx2, dirty);
+        switch_1.$set(switch_1_changes);
+        let previous_block_index = current_block_type_index;
+        current_block_type_index = select_block_type(ctx2, dirty);
+        if (current_block_type_index === previous_block_index) {
+          if_blocks[current_block_type_index].p(ctx2, dirty);
         } else {
-          if_block.d(1);
-          if_block = current_block_type(ctx2);
-          if (if_block) {
+          group_outros();
+          transition_out(if_blocks[previous_block_index], 1, 1, () => {
+            if_blocks[previous_block_index] = null;
+          });
+          check_outros();
+          if_block = if_blocks[current_block_type_index];
+          if (!if_block) {
+            if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
             if_block.c();
-            if_block.m(div, null);
+          } else {
+            if_block.p(ctx2, dirty);
           }
+          transition_in(if_block, 1);
+          if_block.m(div, null);
         }
       },
       i(local) {
         if (current)
           return;
-        transition_in(switch0.$$.fragment, local);
-        transition_in(switch1.$$.fragment, local);
+        transition_in(switch_1.$$.fragment, local);
+        transition_in(if_block);
         current = true;
       },
       o(local) {
-        transition_out(switch0.$$.fragment, local);
-        transition_out(switch1.$$.fragment, local);
+        transition_out(switch_1.$$.fragment, local);
+        transition_out(if_block);
         current = false;
       },
       d(detaching) {
         if (detaching)
           detach(div);
-        destroy_component(switch0);
-        destroy_component(switch1);
-        if_block.d();
+        destroy_component(switch_1);
+        if_blocks[current_block_type_index].d();
       }
     };
   }
@@ -13676,15 +13736,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let $videohost;
     component_subscribe($$self, advancemode, ($$value) => $$invalidate(0, $advancemode = $$value));
     component_subscribe($$self, videohost, ($$value) => $$invalidate(1, $videohost = $$value));
-    function switch0_value_binding(value) {
+    function switch_1_value_binding(value) {
       $advancemode = value;
       advancemode.set($advancemode);
     }
-    function switch1_value_binding(value) {
+    function switch_1_value_binding_1(value) {
       $videohost = value;
       videohost.set($videohost);
     }
-    return [$advancemode, $videohost, switch0_value_binding, switch1_value_binding];
+    return [$advancemode, $videohost, switch_1_value_binding, switch_1_value_binding_1];
   }
   var About = class extends SvelteComponent {
     constructor(options) {
@@ -17325,12 +17385,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let br6;
     let t10;
     let br7;
-    let t11;
+    let button;
+    let t12;
     let switch_1;
     let updating_value;
-    let t12;
-    let br8;
-    let button;
     let current;
     let mounted;
     let dispose;
@@ -17338,7 +17396,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ctx[2](value);
     }
     let switch_1_props = {
-      label: "\u4E0B\u6B21\u555F\u52D5\u6642\u518D\u5EA6\u986F\u793A\u6B64\u756B\u9762",
+      label: "\u555F\u52D5\u6642\u986F\u793A\u6B64\u756B\u9762",
       design: "slider",
       fontSize: "24"
     };
@@ -17359,27 +17417,25 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         span.textContent = "\u6B61\u8FCE";
         t1 = space();
         br0 = element("br");
-        t2 = text("\u5B89\u88DD\u5230\u684C\u9762\u4EE5\u53D6\u5F97\u6700\u4F73\u986F\u793A\u6548\u679C\n");
+        t2 = text("\u5B89\u88DD\u5230\u684C\u9762\u5F8C\u53EF\u4EE5\u5168\u87A2\u5E55\u986F\u793A\uFF0C\u6B65\u9A5F\uFF1A\n");
         br1 = element("br");
-        t3 = text("Android:\u4F7F\u7528Chrome\u700F\u89BD\u5668\uFF0C\u6309\u53F3\u4E0A\u89D2\u529F\u80FD\u8868\u2192\u300C\u5B89\u88DD\u61C9\u7528\u7A0B\u5F0F\u300D\n");
+        t3 = text("Android:\u4F7F\u7528Chrome\uFF0C\u53F3\u4E0A\u89D2\u529F\u80FD\u8868\u2192\u5B89\u88DD\u61C9\u7528\u7A0B\u5F0F\n");
         br2 = element("br");
-        t4 = text("iOS:\u6309\u300C\u5206\u4EAB\u300D\u2192\u300C\u52A0\u5230\u4E3B\u756B\u9762\u300D\n");
+        t4 = text("iOS:\u4F7F\u7528Safari\uFF0C\u5206\u4EAB\u2192\u52A0\u5230\u4E3B\u756B\u9762\n");
         br3 = element("br");
-        t5 = text("\u9EDE\u756B\u9762\u4EFB\u4F55\u4E00\u8655\uFF0C\u8ABF\u51FA\u529F\u80FD\u8868\n");
+        t5 = text("\u5DE6\u53F3\u6ED1\u52D5\u7FFB\u9801\uFF0C\u9EDE\u756B\u9762\u4EFB\u4F55\u4E00\u8655\uFF0C\u8ABF\u51FA\u529F\u80FD\u8868\u3002\n");
         div0 = element("div");
-        div0.innerHTML = `\u2699\uFE0F\u8A2D\u7F6E\u{1F4D3}\u7D93\u5377\u{1F9ED}\u8DF3\u8F49
+        div0.innerHTML = `\u2699\uFE0F\u8A2D\u7F6E\u{1F4D3}\u7D93\u5377\u{1F9ED}\u5C0E\u5F15
 <br/>\u2764\uFE0F\u66F8\u7C64\u{1F3B5}\u8AA6\u7D93\u{1F50E}\u8A5E\u5178
 <br/>\u9032\u968E:\u{1F4DC}\u539F\u6587\u{1F500}\u7570\u8B6F\u{1F4DA}\u96C6\u8A3B`;
-        t9 = text("\n\u66F4\u65B0\u7A0B\u5F0F\u524D\uFF0C\u5148\u6E05\u9664\u700F\u89BD\u5668\u5FEB\u53D6\n");
+        t9 = space();
         br6 = element("br");
-        t10 = text("\u7121\u6CD5\u8A2A\u554FYoutube\uFF0C\u8ACB\u8A2D\u5B9A\u8996\u983B\u4F86\u6E90\u70BATencent\n");
+        t10 = text("\u4E0D\u6703\u4E3B\u52D5\u6536\u96C6\u500B\u4EBA\u8CC7\u8A0A\u3002\u82E5\u9020\u6210\u7528\u6236\u4EFB\u4F55\u640D\u5931\uFF0C\u65E2\u4E0D\u8CA0\u8CAC\u3002\n");
         br7 = element("br");
-        t11 = text("\u672C\u8EDF\u4EF6\u4E0D\u6703\u81EA\u52D5\u6536\u96C6\u500B\u4EBA\u4FE1\u606F\uFF0C\u6211\u5011\u76E1\u91CF\u4FDD\u8B49\u7A0B\u5E8F\u7684\u6B63\u5E38\u904B\u4F5C\u4EE5\u53CA\u5167\u5BB9\u7684\u6E96\u78BA\u6027\u3002\u82E5\u9020\u6210\u7528\u6236\u4EFB\u4F55\u640D\u5931\uFF0C\u65E2\u4E0D\u8CA0\u8CAC\u3002\n");
-        create_component(switch_1.$$.fragment);
-        t12 = space();
-        br8 = element("br");
         button = element("button");
         button.textContent = "\u540C\u610F";
+        t12 = space();
+        create_component(switch_1.$$.fragment);
         attr(span, "class", "welcome");
         set_style(div0, "color", "white");
         set_style(div0, "background", "var(--menubar-color)");
@@ -17406,11 +17462,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         append(div1, br6);
         append(div1, t10);
         append(div1, br7);
-        append(div1, t11);
-        mount_component(switch_1, div1, null);
-        append(div1, t12);
-        append(div1, br8);
         append(div1, button);
+        append(div1, t12);
+        mount_component(switch_1, div1, null);
         current = true;
         if (!mounted) {
           dispose = listen(button, "click", function() {
