@@ -10891,52 +10891,149 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   // src/foliolist.svelte
   function get_each_context6(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[8] = list[i][0];
-    child_ctx[9] = list[i][1];
+    child_ctx[11] = list[i][0];
+    child_ctx[12] = list[i][1];
+    child_ctx[13] = list[i][2];
     return child_ctx;
   }
-  function create_each_block6(ctx) {
-    let div;
+  function get_each_context_1(ctx, list, i) {
+    const child_ctx = ctx.slice();
+    child_ctx[16] = list[i];
+    return child_ctx;
+  }
+  function create_each_block_1(ctx) {
     let span;
     let t_value = (
       /*getBookName*/
       ctx[3](
-        /*nbk*/
-        ctx[8]
+        /*par*/
+        ctx[16]
       ) + ""
     );
     let t;
     let mounted;
     let dispose;
-    function click_handler() {
+    function click_handler_1() {
       return (
-        /*click_handler*/
-        ctx[6](
-          /*nbk*/
-          ctx[8]
+        /*click_handler_1*/
+        ctx[8](
+          /*par*/
+          ctx[16]
         )
       );
     }
     return {
       c() {
-        div = element("div");
         span = element("span");
         t = text(t_value);
+        attr(span, "class", "parallelbook");
+        toggle_class(
+          span,
+          "selecteditem",
+          /*$activebookid*/
+          ctx[0] == /*getBookId*/
+          ctx[4](
+            /*par*/
+            ctx[16]
+          )
+        );
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        append(span, t);
+        if (!mounted) {
+          dispose = listen(span, "click", click_handler_1);
+          mounted = true;
+        }
+      },
+      p(new_ctx, dirty) {
+        ctx = new_ctx;
+        if (dirty & /*$activebookid, getBookId, books*/
+        19) {
+          toggle_class(
+            span,
+            "selecteditem",
+            /*$activebookid*/
+            ctx[0] == /*getBookId*/
+            ctx[4](
+              /*par*/
+              ctx[16]
+            )
+          );
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(span);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_each_block6(ctx) {
+    let div;
+    let span;
+    let t0_value = (
+      /*getBookName*/
+      ctx[3](
+        /*nbk*/
+        ctx[11]
+      ) + ""
+    );
+    let t0;
+    let t1;
+    let t2;
+    let mounted;
+    let dispose;
+    function click_handler() {
+      return (
+        /*click_handler*/
+        ctx[7](
+          /*nbk*/
+          ctx[11]
+        )
+      );
+    }
+    let each_value_1 = (
+      /*pars*/
+      ctx[13]
+    );
+    let each_blocks = [];
+    for (let i = 0; i < each_value_1.length; i += 1) {
+      each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+    }
+    return {
+      c() {
+        div = element("div");
+        span = element("span");
+        t0 = text(t0_value);
+        t1 = space();
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          each_blocks[i].c();
+        }
+        t2 = space();
         toggle_class(
           span,
           "selecteditem",
           /*$activebookid*/
           ctx[0] == /*bkid*/
-          ctx[9]
+          ctx[12]
         );
         attr(div, "class", "book");
       },
       m(target, anchor) {
         insert(target, div, anchor);
         append(div, span);
-        append(span, t);
+        append(span, t0);
+        append(div, t1);
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          if (each_blocks[i]) {
+            each_blocks[i].m(div, null);
+          }
+        }
+        append(div, t2);
         if (!mounted) {
-          dispose = listen(div, "click", click_handler);
+          dispose = listen(span, "click", click_handler);
           mounted = true;
         }
       },
@@ -10949,13 +11046,34 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             "selecteditem",
             /*$activebookid*/
             ctx[0] == /*bkid*/
-            ctx[9]
+            ctx[12]
           );
+        }
+        if (dirty & /*$activebookid, getBookId, books, selectbook, getBookName*/
+        31) {
+          each_value_1 = /*pars*/
+          ctx[13];
+          let i;
+          for (i = 0; i < each_value_1.length; i += 1) {
+            const child_ctx = get_each_context_1(ctx, each_value_1, i);
+            if (each_blocks[i]) {
+              each_blocks[i].p(child_ctx, dirty);
+            } else {
+              each_blocks[i] = create_each_block_1(child_ctx);
+              each_blocks[i].c();
+              each_blocks[i].m(div, t2);
+            }
+          }
+          for (; i < each_blocks.length; i += 1) {
+            each_blocks[i].d(1);
+          }
+          each_blocks.length = each_value_1.length;
         }
       },
       d(detaching) {
         if (detaching)
           detach(div);
+        destroy_each(each_blocks, detaching);
         mounted = false;
         dispose();
       }
@@ -10987,8 +11105,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         insert(target, each_1_anchor, anchor);
       },
       p(ctx2, [dirty]) {
-        if (dirty & /*selectbook, books, $activebookid, getBookName*/
-        15) {
+        if (dirty & /*books, $activebookid, getBookId, selectbook, getBookName*/
+        31) {
           each_value = /*books*/
           ctx2[1];
           let i;
@@ -11023,6 +11141,18 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let { ptk } = $$props;
     let { closePopup = function() {
     } } = $$props;
+    const parallelBooks = (bkid) => {
+      const bk = ptk.defines.bk;
+      const at = bkid.indexOf("_");
+      const prefix = ~at ? bkid.slice(0, at) : bkid;
+      const out = [], idarr = bk.fields.id.values;
+      for (let i = 0; i < idarr.length; i++) {
+        if (idarr[i].startsWith(prefix + "_") && idarr[i] !== bkid) {
+          out.push(i);
+        }
+      }
+      return out;
+    };
     const getBookList = () => {
       const folio = ptk.defines.folio;
       const bk = ptk.defines.bk;
@@ -11031,7 +11161,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         const id = folio.fields.id.values[i];
         const at = bk.fields.id.values.indexOf(id);
         if (~at && !bk.fields.hidden?.values[at]) {
-          out.push([at, id]);
+          out.push([at, id, parallelBooks(id)]);
         }
       }
       return out;
@@ -11050,19 +11180,34 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const bookname = bk.innertext.get(nbk);
       return bk.fields.heading.values[nbk] || bookname;
     };
+    const getBookId = (nbk) => {
+      const bk = ptk.defines.bk;
+      return bk.fields.id.values[nbk];
+    };
     const click_handler = (nbk) => selectbook(nbk);
+    const click_handler_1 = (par) => selectbook(par);
     $$self.$$set = ($$props2) => {
       if ("ptk" in $$props2)
-        $$invalidate(4, ptk = $$props2.ptk);
+        $$invalidate(5, ptk = $$props2.ptk);
       if ("closePopup" in $$props2)
-        $$invalidate(5, closePopup = $$props2.closePopup);
+        $$invalidate(6, closePopup = $$props2.closePopup);
     };
-    return [$activebookid, books, selectbook, getBookName, ptk, closePopup, click_handler];
+    return [
+      $activebookid,
+      books,
+      selectbook,
+      getBookName,
+      getBookId,
+      ptk,
+      closePopup,
+      click_handler,
+      click_handler_1
+    ];
   }
   var Foliolist = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance9, create_fragment8, safe_not_equal, { ptk: 4, closePopup: 5 });
+      init(this, options, instance9, create_fragment8, safe_not_equal, { ptk: 5, closePopup: 6 });
     }
   };
   var foliolist_default = Foliolist;
@@ -13579,7 +13724,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t5 = text("\u9019\u662F");
         a1 = element("a");
         a1.textContent = "\u958B\u6E90";
-        t7 = text("\u8EDF\u4EF6(2023.7.6)\uFF0C\n\u5141\u8A31\u4EE5\u4EFB\u4F55\u5F62\u614B\u6563\u4F48\u672C\u8EDF\u4EF6\u3002");
+        t7 = text("\u8EDF\u4EF6(2023.7.9)\uFF0C\n\u5141\u8A31\u4EE5\u4EFB\u4F55\u5F62\u614B\u6563\u4F48\u672C\u8EDF\u4EF6\u3002");
         attr(a0, "href", "https://creativecommons.org/publicdomain/zero/1.0/deed.zh");
         attr(a1, "href", "https://github.com/dharmacloud/");
         attr(a1, "target", "_new");
@@ -14801,12 +14946,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     child_ctx[13] = list[i][1];
     return child_ctx;
   }
-  function get_each_context_1(ctx, list, i) {
+  function get_each_context_12(ctx, list, i) {
     const child_ctx = ctx.slice();
     child_ctx[16] = list[i];
     return child_ctx;
   }
-  function create_each_block_1(ctx) {
+  function create_each_block_12(ctx) {
     let span;
     let t_value = (
       /*item*/
@@ -14927,7 +15072,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     );
     let each_blocks_1 = [];
     for (let i = 0; i < each_value_1.length; i += 1) {
-      each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+      each_blocks_1[i] = create_each_block_12(get_each_context_12(ctx, each_value_1, i));
     }
     let each_value = (
       /*others*/
@@ -14979,11 +15124,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           ctx2[1];
           let i;
           for (i = 0; i < each_value_1.length; i += 1) {
-            const child_ctx = get_each_context_1(ctx2, each_value_1, i);
+            const child_ctx = get_each_context_12(ctx2, each_value_1, i);
             if (each_blocks_1[i]) {
               each_blocks_1[i].p(child_ctx, dirty);
             } else {
-              each_blocks_1[i] = create_each_block_1(child_ctx);
+              each_blocks_1[i] = create_each_block_12(child_ctx);
               each_blocks_1[i].c();
               each_blocks_1[i].m(div0, t1);
             }
