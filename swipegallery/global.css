@@ -164,4 +164,4 @@ button {font-size:2.8vh}
 
 a{color:#563100}
 
-.parallelbook {font-size:90% ; padding-left:0.1em;padding-right:0.1em}
+.parallelbook {font-size:90% ; padding-left:0.1em;padding-right:0.1em;border-radius: 5px;border:#d27700 1px dotted}

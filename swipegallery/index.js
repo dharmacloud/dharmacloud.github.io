@@ -7400,8 +7400,13 @@
     let m4 = firstline.match(/(\^pb\d+)/);
     lines[0] = firstline.slice(m4.index + m4[1].length);
     m4 = lastline.match(/(\^pb\d+)/);
-    const remain = lines[lines.length - 1].slice(m4.index);
-    lines[lines.length - 1] = lastline.slice(0, m4.index);
+    let till = m4?.index || 0;
+    let remain = "";
+    if (m4) {
+      till = m4.index;
+      remain = lines[lines.length - 1].slice(m4.index);
+    }
+    lines[lines.length - 1] = lastline.slice(0, till);
     const text2 = lines.join("	").replace(/\^ck(\d+)【([^】]+?)】/g, "^ck$1<caption=$2>").split("^lb");
     text2.push(remain);
     return [text2, from, to];
@@ -7919,6 +7924,13 @@
     return bk.innertext.get(at);
   };
   var idletime = 60;
+  var hasVariorum = (bkid) => {
+    const ptk2 = usePtk("dc");
+    const at = bkid.indexOf("_");
+    if (~at)
+      bkid = bkid.slice(0, at);
+    return ~ptk2.defines.bk.fields.id.values.indexOf(bkid + "_variorum");
+  };
 
   // src/transcriptlayer.svelte
   function get_each_context(ctx, list, i) {
@@ -10875,6 +10887,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $$invalidate(0, wikipedia = flag & 1);
       $$invalidate(1, fgdzd = flag & 2);
       $$invalidate(2, dfb = flag & 4);
+      if (fgdzd || dfb)
+        setOneline();
+      else if (wikipedia)
+        setWikipedia();
     };
     const $$binding_groups = [[]];
     function input_change_handler() {
@@ -13702,7 +13718,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
 
   // src/about.svelte
   function create_else_block4(ctx) {
-    let br;
     let t0;
     let a0;
     let t2;
@@ -13711,7 +13726,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let div;
     return {
       c() {
-        br = element("br");
         t0 = text("\u5230LINE\u641C\u5C0BID @dharmacloud\uFF0C\u6216\u52A0\u5165");
         a0 = element("a");
         a0.textContent = "\u5B98\u65B9\u5E33\u865F";
@@ -13726,7 +13740,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         attr(div, "class", "center");
       },
       m(target, anchor) {
-        insert(target, br, anchor);
         insert(target, t0, anchor);
         insert(target, a0, anchor);
         insert(target, t2, anchor);
@@ -13737,8 +13750,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p: noop,
       d(detaching) {
-        if (detaching)
-          detach(br);
         if (detaching)
           detach(t0);
         if (detaching)
@@ -13756,78 +13767,90 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   }
   function create_if_block7(ctx) {
     let t0;
-    let br0;
-    let t1;
     let a0;
+    let t2;
+    let br0;
     let t3;
-    let br1;
-    let t4;
-    let br2;
-    let t5;
     let a1;
+    let t5;
+    let br1;
+    let t6;
+    let br2;
     let t7;
+    let a2;
+    let t9;
     return {
       c() {
-        t0 = text("\u672C\u6578\u64DA\u5EAB\u57FA\u65BC\u4EE5\u4E0B\u516C\u958B\u7D20\u6750\uFF1A\n\u6C38\u6A02\u5317\u85CF(\u5C71\u6771\u7701\u5716\u66F8\u9928)\u3001\u91D1\u525B\u7D93\u96C6\u8A3B(\u6731\u68E3)\u3001\u68B5\u6587\u6821\u52D8\u672C(Edward Conze, ancient-buddhist-texts.net)\u3001\n\u7D93\u6587\u65B0\u5F0F\u6A19\u9EDE(CBETA)\u3002\n");
-        br0 = element("br");
-        t1 = text("\u4E26\u4EE5");
+        t0 = text("\u672C\u6578\u64DA\u5EAB\u57FA\u65BC\u4EE5\u4E0B\u516C\u958B\u7D20\u6750\uFF1A\n\u6C38\u6A02\u5357\u5317\u85CF(\u5C71\u6771\u7701\u5716\u66F8\u9928)\u3001\u91D1\u525B\u7D93\u96C6\u8A3B(\u6731\u68E3)\u3001\u68B5\u6587\u6821\u52D8\u672C(Edward Conze, ");
         a0 = element("a");
-        a0.textContent = "Creative Common Zero";
-        t3 = text("\u5206\u4EAB\u3002\n");
-        br1 = element("br");
-        t4 = text("\u66F4\u65B0\u7A0B\u5F0F\u524D\uFF0C\u5148\u6E05\u9664\u700F\u89BD\u5668\u5FEB\u53D6\u3002\n");
-        br2 = element("br");
-        t5 = text("\u9019\u662F");
+        a0.textContent = "Ancient Buddhist Texts";
+        t2 = text(")\u3001\n\u7D93\u6587\u65B0\u5F0F\u6A19\u9EDE(CBETA)\u3002\n");
+        br0 = element("br");
+        t3 = text("\u6388\u6B0A\u65B9\u5F0F\uFF1A");
         a1 = element("a");
-        a1.textContent = "\u958B\u6E90";
-        t7 = text("\u8EDF\u4EF6\uFF0C\n\u5141\u8A31\u4EE5\u4EFB\u4F55\u5F62\u614B\u6563\u4F48\u672C\u8EDF\u4EF6\u3002");
-        attr(a0, "href", "https://creativecommons.org/publicdomain/zero/1.0/deed.zh");
-        attr(a1, "href", "https://github.com/dharmacloud/");
-        attr(a1, "target", "_new");
+        a1.textContent = "Creative Common Zero";
+        t5 = text("\u3002\n");
+        br1 = element("br");
+        t6 = text("\u66F4\u65B0\u7A0B\u5F0F\u524D\uFF0C\u5148\u6E05\u9664\u700F\u89BD\u5668\u5FEB\u53D6\u3002\n");
+        br2 = element("br");
+        t7 = text("\u9019\u662F");
+        a2 = element("a");
+        a2.textContent = "\u958B\u6E90";
+        t9 = text("\u8EDF\u4EF6\uFF0C\n\u5141\u8A31\u4EE5\u4EFB\u4F55\u5F62\u614B\u6563\u4F48\u672C\u8EDF\u4EF6\u3002");
+        attr(a0, "target", "_new");
+        attr(a0, "href", "https://ancient-buddhist-texts.net");
+        attr(a1, "href", "https://creativecommons.org/publicdomain/zero/1.0/deed.zh");
+        attr(a2, "href", "https://github.com/dharmacloud/");
+        attr(a2, "target", "_new");
       },
       m(target, anchor) {
         insert(target, t0, anchor);
-        insert(target, br0, anchor);
-        insert(target, t1, anchor);
         insert(target, a0, anchor);
+        insert(target, t2, anchor);
+        insert(target, br0, anchor);
         insert(target, t3, anchor);
-        insert(target, br1, anchor);
-        insert(target, t4, anchor);
-        insert(target, br2, anchor);
-        insert(target, t5, anchor);
         insert(target, a1, anchor);
+        insert(target, t5, anchor);
+        insert(target, br1, anchor);
+        insert(target, t6, anchor);
+        insert(target, br2, anchor);
         insert(target, t7, anchor);
+        insert(target, a2, anchor);
+        insert(target, t9, anchor);
       },
       p: noop,
       d(detaching) {
         if (detaching)
           detach(t0);
         if (detaching)
-          detach(br0);
-        if (detaching)
-          detach(t1);
-        if (detaching)
           detach(a0);
+        if (detaching)
+          detach(t2);
+        if (detaching)
+          detach(br0);
         if (detaching)
           detach(t3);
         if (detaching)
-          detach(br1);
-        if (detaching)
-          detach(t4);
-        if (detaching)
-          detach(br2);
+          detach(a1);
         if (detaching)
           detach(t5);
         if (detaching)
-          detach(a1);
+          detach(br1);
+        if (detaching)
+          detach(t6);
+        if (detaching)
+          detach(br2);
         if (detaching)
           detach(t7);
+        if (detaching)
+          detach(a2);
+        if (detaching)
+          detach(t9);
       }
     };
   }
   function create_fragment13(ctx) {
     let div;
-    let br;
     let t0;
     let switch_1;
     let updating_value;
@@ -13859,8 +13882,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         div = element("div");
-        br = element("br");
-        t0 = text("\n\u7248\u672C\uFF1A2023.7.9 ");
+        t0 = text("\u7248\u672C\uFF1A2023.7.9 ");
         create_component(switch_1.$$.fragment);
         t1 = space();
         if_block.c();
@@ -13868,7 +13890,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       m(target, anchor) {
         insert(target, div, anchor);
-        append(div, br);
         append(div, t0);
         mount_component(switch_1, div, null);
         append(div, t1);
@@ -14964,7 +14985,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         const at2 = foliotext[i].indexOf("^ck" + ck);
         if (~at2) {
           const r = newfolio * fl * fc + i * fc + concreateLength(foliotext[i].slice(0, at2));
-          console.log(r);
           tapmark.set(r);
           break;
         }
@@ -16291,9 +16311,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t1;
     let span1;
     let t3;
-    let span2;
+    let show_if = hasVariorum(
+      /*$activebookid*/
+      ctx[6]
+    );
+    let if_block_anchor;
     let mounted;
     let dispose;
+    let if_block = show_if && create_if_block_43(ctx);
     return {
       c() {
         span0 = element("span");
@@ -16302,8 +16327,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         span1 = element("span");
         span1.textContent = "\u{1F500}";
         t3 = space();
-        span2 = element("span");
-        span2.textContent = "\u{1F4DA}";
+        if (if_block)
+          if_block.c();
+        if_block_anchor = empty();
         attr(span0, "class", "clickable");
         toggle_class(
           span0,
@@ -16318,38 +16344,27 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           /*thetab*/
           ctx[2] == "translations"
         );
-        attr(span2, "class", "clickable");
-        toggle_class(
-          span2,
-          "selected",
-          /*thetab*/
-          ctx[2] == "variorum"
-        );
       },
       m(target, anchor) {
         insert(target, span0, anchor);
         insert(target, t1, anchor);
         insert(target, span1, anchor);
         insert(target, t3, anchor);
-        insert(target, span2, anchor);
+        if (if_block)
+          if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
         if (!mounted) {
           dispose = [
             listen(
               span0,
               "click",
               /*click_handler_4*/
-              ctx[12]
+              ctx[13]
             ),
             listen(
               span1,
               "click",
               /*click_handler_5*/
-              ctx[13]
-            ),
-            listen(
-              span2,
-              "click",
-              /*click_handler_6*/
               ctx[14]
             )
           ];
@@ -16375,14 +16390,23 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             ctx2[2] == "translations"
           );
         }
-        if (dirty & /*thetab*/
-        4) {
-          toggle_class(
-            span2,
-            "selected",
-            /*thetab*/
-            ctx2[2] == "variorum"
+        if (dirty & /*$activebookid*/
+        64)
+          show_if = hasVariorum(
+            /*$activebookid*/
+            ctx2[6]
           );
+        if (show_if) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+          } else {
+            if_block = create_if_block_43(ctx2);
+            if_block.c();
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        } else if (if_block) {
+          if_block.d(1);
+          if_block = null;
         }
       },
       d(detaching) {
@@ -16394,10 +16418,59 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           detach(span1);
         if (detaching)
           detach(t3);
+        if (if_block)
+          if_block.d(detaching);
         if (detaching)
-          detach(span2);
+          detach(if_block_anchor);
         mounted = false;
         run_all(dispose);
+      }
+    };
+  }
+  function create_if_block_43(ctx) {
+    let span;
+    let mounted;
+    let dispose;
+    return {
+      c() {
+        span = element("span");
+        span.textContent = "\u{1F4DA}";
+        attr(span, "class", "clickable");
+        toggle_class(
+          span,
+          "selected",
+          /*thetab*/
+          ctx[2] == "variorum"
+        );
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        if (!mounted) {
+          dispose = listen(
+            span,
+            "click",
+            /*click_handler_6*/
+            ctx[15]
+          );
+          mounted = true;
+        }
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*thetab*/
+        4) {
+          toggle_class(
+            span,
+            "selected",
+            /*thetab*/
+            ctx2[2] == "variorum"
+          );
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(span);
+        mounted = false;
+        dispose();
       }
     };
   }
@@ -16424,7 +16497,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             span,
             "click",
             /*click_handler_7*/
-            ctx[15]
+            ctx[16]
           );
           mounted = true;
         }
@@ -16471,7 +16544,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             span,
             "click",
             /*click_handler_8*/
-            ctx[16]
+            ctx[17]
           );
           mounted = true;
         }
@@ -16667,7 +16740,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     });
     function sourcetext_address_binding(value) {
-      ctx[17](value);
+      ctx[18](value);
     }
     let sourcetext_props = {
       closePopup: (
@@ -16689,7 +16762,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     sourcetext = new sourcetext_default({ props: sourcetext_props });
     binding_callbacks.push(() => bind(sourcetext, "address", sourcetext_address_binding));
     function translations_address_binding(value) {
-      ctx[18](value);
+      ctx[19](value);
     }
     let translations_props = {
       closePopup: (
@@ -16711,7 +16784,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     translations = new translations_default({ props: translations_props });
     binding_callbacks.push(() => bind(translations, "address", translations_address_binding));
     function variorum_address_binding(value) {
-      ctx[19](value);
+      ctx[20](value);
     }
     let variorum_props = {
       closePopup: (
@@ -16932,25 +17005,25 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               span0,
               "click",
               /*click_handler*/
-              ctx[8]
+              ctx[9]
             ),
             listen(
               span1,
               "click",
               /*click_handler_1*/
-              ctx[9]
+              ctx[10]
             ),
             listen(
               span2,
               "click",
               /*click_handler_2*/
-              ctx[10]
+              ctx[11]
             ),
             listen(
               span3,
               "click",
               /*click_handler_3*/
-              ctx[11]
+              ctx[12]
             )
           ];
           mounted = true;
@@ -17284,8 +17357,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   function instance23($$self, $$props, $$invalidate) {
     let $activePtk;
     let $advancemode;
-    component_subscribe($$self, activePtk, ($$value) => $$invalidate(7, $activePtk = $$value));
+    let $activebookid;
+    component_subscribe($$self, activePtk, ($$value) => $$invalidate(8, $activePtk = $$value));
     component_subscribe($$self, advancemode, ($$value) => $$invalidate(5, $advancemode = $$value));
+    component_subscribe($$self, activebookid, ($$value) => $$invalidate(6, $activebookid = $$value));
     let { tofind = "" } = $$props;
     let { address = "" } = $$props;
     let { closePopup } = $$props;
@@ -17326,7 +17401,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     }
     $$self.$$set = ($$props2) => {
       if ("tofind" in $$props2)
-        $$invalidate(6, tofind = $$props2.tofind);
+        $$invalidate(7, tofind = $$props2.tofind);
       if ("address" in $$props2)
         $$invalidate(0, address = $$props2.address);
       if ("closePopup" in $$props2)
@@ -17334,12 +17409,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*$activePtk*/
-      128) {
+      256) {
         $:
           $$invalidate(3, ptk2 = usePtk($activePtk));
       }
       if ($$self.$$.dirty & /*tofind*/
-      64) {
+      128) {
         $:
           onDict(tofind);
       }
@@ -17351,6 +17426,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ptk2,
       entries,
       $advancemode,
+      $activebookid,
       tofind,
       $activePtk,
       click_handler,
@@ -17370,7 +17446,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Taptext = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance23, create_fragment22, safe_not_equal, { tofind: 6, address: 0, closePopup: 1 });
+      init(this, options, instance23, create_fragment22, safe_not_equal, { tofind: 7, address: 0, closePopup: 1 });
     }
   };
   var taptext_default = Taptext;
@@ -17962,7 +18038,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_43(ctx) {
+  function create_if_block_44(ctx) {
     let paiji;
     let current;
     paiji = new paiji_default({});
@@ -17998,7 +18074,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ctx[7] && !/*$playing*/
       ctx[8] && !/*showdict*/
       ctx[2] && !/*shownewbie*/
-      ctx[3] && create_if_block_43(ctx)
+      ctx[3] && create_if_block_44(ctx)
     );
     swipezipimage = new swipezipimage_default({
       props: {
@@ -18048,7 +18124,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block_43(ctx2);
+            if_block = create_if_block_44(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(t.parentNode, t);
