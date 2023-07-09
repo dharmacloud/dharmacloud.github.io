@@ -4979,14 +4979,14 @@
     }
     return out;
   };
-  var poolParallelPitakas = (ptk) => {
-    let align = ptk.attributes?.align;
+  var poolParallelPitakas = (ptk2) => {
+    let align = ptk2.attributes?.align;
     if (!align)
-      align = ptk.name.replace(/\-[^-]+$/, "");
+      align = ptk2.name.replace(/\-[^-]+$/, "");
     const out = [];
     for (const n in _pool) {
       if (_pool[n].attributes.align == align || n.replace(/\-[^-]+$/, "") == align) {
-        if (ptk.name !== _pool[n].name)
+        if (ptk2.name !== _pool[n].name)
           out.push(n);
       }
     }
@@ -5041,8 +5041,8 @@
     }
   }
   var jsonp = (page, header, _payload) => {
-    const ptk = poolGet(header.name);
-    ptk.setPage(page, header, _payload);
+    const ptk2 = poolGet(header.name);
+    ptk2.setPage(page, header, _payload);
   };
   function isLoaded(page) {
     return page == 0 ? this.pagestarts.length : this._pages[page - 1];
@@ -5426,17 +5426,17 @@
     };
   };
   function rangeOfElementId(eleidarr) {
-    const out = [], ptk = this;
-    let from = 0, to = ptk.header.eot;
+    const out = [], ptk2 = this;
+    let from = 0, to = ptk2.header.eot;
     for (let i = 0; i < eleidarr.length; i++) {
       const [ele, id] = eleidarr[i];
-      if (ptk.defines[ele]) {
-        const idtype = ptk.defines[ele].fields?.id;
+      if (ptk2.defines[ele]) {
+        const idtype = ptk2.defines[ele].fields?.id;
         const _id = idtype?.type == "number" ? parseInt(id) : id;
-        const startfrom = bsearchNumber(ptk.defines[ele].linepos, from);
+        const startfrom = bsearchNumber(ptk2.defines[ele].linepos, from);
         const at = idtype.values.indexOf(_id, startfrom);
-        const first = ptk.defines[ele].linepos[at] || ptk.defines[ele].linepos[0];
-        const last = ptk.defines[ele].linepos[at + 1] || ptk.header.eot;
+        const first = ptk2.defines[ele].linepos[at] || ptk2.defines[ele].linepos[0];
+        const last = ptk2.defines[ele].linepos[at + 1] || ptk2.header.eot;
         if (first >= from && last <= to) {
           from = first;
           to = last;
@@ -5445,13 +5445,13 @@
           out.push([0, 0]);
         }
       } else {
-        const at = ptk.defines.bk?.fields.id.values.indexOf(ele);
-        const at2 = at == -1 ? ptk.defines.ak?.fields.id.values.indexOf(ele) : -1;
+        const at = ptk2.defines.bk?.fields.id.values.indexOf(ele);
+        const at2 = at == -1 ? ptk2.defines.ak?.fields.id.values.indexOf(ele) : -1;
         if (i == 0 && (~at || ~at2)) {
-          const first = ptk.defines.bk.linepos[at] || ptk.defines.ak.linepos[at2];
-          let last = ptk.defines.bk.linepos[at + 1] || ptk.defines.ak.linepos[at2 + 1];
+          const first = ptk2.defines.bk.linepos[at] || ptk2.defines.ak.linepos[at2];
+          let last = ptk2.defines.bk.linepos[at + 1] || ptk2.defines.ak.linepos[at2 + 1];
           if (!last)
-            last = ptk.header.eot;
+            last = ptk2.header.eot;
           out.push([first, last]);
           from = first;
         }
@@ -5576,7 +5576,7 @@
       section.push(JSON.stringify(attrs));
       return section;
     }
-    deserialize(section, ptk) {
+    deserialize(section, ptk2) {
       const attrs = JSON.parse(section.pop());
       const valuelen = attrs["*"];
       let offset = 0;
@@ -5589,7 +5589,7 @@
           const targettagname = section[valuelen + offset + 1];
           const chunks = new StringArray(section[valuelen + offset + 2], { sep: LEMMA_DELIMITER });
           const idxarr = unpackInt2d(section[valuelen + offset + 3]);
-          ptk.addBacklinks(this.name, db, bk, targettagname, chunks, idxarr);
+          ptk2.addBacklinks(this.name, db, bk, targettagname, chunks, idxarr);
           offset += 4;
         }
       }
@@ -5949,7 +5949,7 @@
       const newtag = this.validateFields(tag, line, onError);
       return newtag;
     }
-    deserialize(section, ptk) {
+    deserialize(section, ptk2) {
       const attrline = section.shift();
       const attrs = attrline ? attrline.split(LEMMA_DELIMITER) : [];
       if (section.length > attrs.length) {
@@ -5973,7 +5973,7 @@
         } else if (V?.type === "text") {
           V.values = section.length ? section.shift().split("	") : [];
         } else if (V?.deserialize) {
-          V.values = V.deserialize(section, ptk);
+          V.values = V.deserialize(section, ptk2);
         }
       }
       if (section.length) {
@@ -6690,13 +6690,13 @@
     return [outphrases, postings];
   }
   async function scanText(tofind, opts) {
-    const ptk = this;
-    const [phrases, postings] = await ptk.parseQuery(tofind, opts);
-    if (!postings.length || !ptk.inverted)
+    const ptk2 = this;
+    const [phrases, postings] = await ptk2.parseQuery(tofind, opts);
+    if (!postings.length || !ptk2.inverted)
       return [];
     const tagname = opts?.groupby || "ak";
-    const groupby = ptk.defines[tagname];
-    const tlp = [], TLP = ptk.inverted.tokenlinepos;
+    const groupby = ptk2.defines[tagname];
+    const tlp = [], TLP = ptk2.inverted.tokenlinepos;
     if (groupby) {
       for (let i = 0; i < groupby.linepos.length; i++) {
         const nextstart = TLP[groupby.linepos[i + 1]] || TLP[TLP.length - 1];
@@ -6717,38 +6717,38 @@
   }
 
   // ../ptk/basket/footnote.ts
-  function findFootmarkInBook(ptk, id, line) {
-    const ck = ptk.nearestChunk(line);
-    const fntag = ptk.defines.fn;
-    const closestfn = ptk.findClosestTag(fntag, "id", id, line);
+  function findFootmarkInBook(ptk2, id, line) {
+    const ck = ptk2.nearestChunk(line);
+    const fntag = ptk2.defines.fn;
+    const closestfn = ptk2.findClosestTag(fntag, "id", id, line);
     if (~closestfn) {
-      return ptk.name + ":bk#" + ck.bk.id + ".fm" + id;
+      return ptk2.name + ":bk#" + ck.bk.id + ".fm" + id;
     }
   }
   function footNoteAddress(id, line) {
-    const ptk = this;
-    const fnaddr = findFootmarkInBook(ptk, id, line);
+    const ptk2 = this;
+    const fnaddr = findFootmarkInBook(ptk2, id, line);
     if (fnaddr)
       return fnaddr;
-    const ck = ptk.nearestChunk(line);
-    const chunktag = ptk.defines.ck;
-    const bktag = ptk.defines.bk;
+    const ck = ptk2.nearestChunk(line);
+    const chunktag = ptk2.defines.ck;
+    const bktag = ptk2.defines.bk;
     const footbk = "fn_" + ck.bkid;
     const at = bktag.fields.id.values.indexOf(footbk);
     if (at == -1)
-      return ptk.name + ":" + ck.bk.id + ".fm" + id;
+      return ptk2.name + ":" + ck.bk.id + ".fm" + id;
     const booknotebkline = bktag.linepos[at];
-    const closestchunk = ptk.findClosestTag(chunktag, "id", ck.id, booknotebkline);
+    const closestchunk = ptk2.findClosestTag(chunktag, "id", ck.id, booknotebkline);
     const chunk = chunktag.fields.id.values[closestchunk];
-    const address = ptk.name + ":" + footbk + ".ck" + (parseInt(chunk) ? chunk : "#" + chunk) + ".fn" + id;
+    const address = ptk2.name + ":" + footbk + ".ck" + (parseInt(chunk) ? chunk : "#" + chunk) + ".fn" + id;
     return address;
   }
   function footNoteByAddress(id, line) {
-    const ptk = this;
-    const ck = ptk.nearestChunk(line);
-    const chunktag = ptk.defines.ck;
-    const bktag = ptk.defines.ck;
-    const footnotetag = ptk.defines.f;
+    const ptk2 = this;
+    const ck = ptk2.nearestChunk(line);
+    const chunktag = ptk2.defines.ck;
+    const bktag = ptk2.defines.ck;
+    const footnotetag = ptk2.defines.f;
     let footbk = ck.bkid.replace("_fn", "");
     const at = bktag.fields.id.values.indexOf(footbk);
     if (at == 0)
@@ -6756,9 +6756,9 @@
     else
       footbk += ".";
     const booknotebkline = bktag.linepos[at];
-    const closestchunk = ptk.findClosestTag(chunktag, "id", ck.id, booknotebkline);
+    const closestchunk = ptk2.findClosestTag(chunktag, "id", ck.id, booknotebkline);
     const chunk = chunktag.fields.id.values[closestchunk];
-    const footnoteat = ptk.findClosestTag(footnotetag, "id", parseInt(id), chunktag.linepos[closestchunk]);
+    const footnoteat = ptk2.findClosestTag(footnotetag, "id", parseInt(id), chunktag.linepos[closestchunk]);
     const footnoteline = footnotetag.linepos[footnoteat];
     const highlightline = footnoteline - chunktag.linepos[closestchunk];
     const address = footbk + "ck" + chunk + (highlightline ? ":" + highlightline : "");
@@ -6958,9 +6958,9 @@
       innertext: innertext2
     };
   }
-  var resetBy = (ptk, tagname) => {
-    for (let t in ptk.defines) {
-      const tag = ptk.defines[t];
+  var resetBy = (ptk2, tagname) => {
+    for (let t in ptk2.defines) {
+      const tag = ptk2.defines[t];
       if (tag.attrs.reset?.split(",").indexOf(tagname) > -1) {
         return t;
       }
@@ -7025,13 +7025,13 @@
     return -1;
   }
   function neighborChunks(at) {
-    const ptk = this;
+    const ptk2 = this;
     const resettag = this.defines[resetBy(this, "ck")];
     const nearest = resettag ? this.nearestTag(at, resettag) - 1 : 0;
     const start = resettag ? resettag.linepos[nearest] : 0;
-    const end = resettag ? resettag.linepos[nearest + 1] || ptk.header.eot : ptk.header.eot;
+    const end = resettag ? resettag.linepos[nearest + 1] || ptk2.header.eot : ptk2.header.eot;
     const ancestors = ancestorChunks.call(this, at, start);
-    const out = ancestors.map((it) => ptk.getChunk.call(ptk, it));
+    const out = ancestors.map((it) => ptk2.getChunk.call(ptk2, it));
     const prev = prevsiblingChunk.call(this, at);
     if (prev > -1 && (!ancestors.length || ancestors[ancestors.length - 1] < prev)) {
       out.push(this.getChunk(prev));
@@ -7365,20 +7365,20 @@
 
   // ../ptk/basket/openptk.ts
   var openPtk = async (name2) => {
-    let ptk = usePtk(name2);
-    if (ptk)
-      return ptk;
+    let ptk2 = usePtk(name2);
+    if (ptk2)
+      return ptk2;
     if (!name2)
       return null;
-    ptk = new Pitaka({ name: name2 });
-    poolAdd(name2, ptk);
-    if (await ptk.isReady()) {
-      await ptk.init();
+    ptk2 = new Pitaka({ name: name2 });
+    poolAdd(name2, ptk2);
+    if (await ptk2.isReady()) {
+      await ptk2.init();
       const poolptk = poolGetAll();
       for (let i = 0; i < poolptk.length; i++) {
-        poolptk[i].addForeignLinks(ptk);
+        poolptk[i].addForeignLinks(ptk2);
       }
-      return ptk;
+      return ptk2;
     } else {
       poolDel(name2);
     }
@@ -7389,12 +7389,12 @@
 
   // ../ptk/basket/folio.ts
   var VALIDPUNCS = "\u300C\u300D\u300E\u300F\u3002\uFF0C\uFF1B\uFF1A\u3001\uFF01\uFF1F";
-  var fetchFolioText = async (ptk, bk, pb) => {
-    const [from, to] = ptk.rangeOfAddress("folio#" + bk + (pb ? ".pb#" + pb : ""));
+  var fetchFolioText = async (ptk2, bk, pb) => {
+    const [from, to] = ptk2.rangeOfAddress("folio#" + bk + (pb ? ".pb#" + pb : ""));
     if (from == to)
       return ["", from, to];
-    await ptk.loadLines([from, to]);
-    const lines = ptk.slice(from, to + 1);
+    await ptk2.loadLines([from, to]);
+    const lines = ptk2.slice(from, to + 1);
     let firstline = lines[0];
     let lastline = lines[lines.length - 1];
     let m4 = firstline.match(/(\^pb\d+)/);
@@ -7476,22 +7476,22 @@
     }
     return [textbefore + s, pos + tagstart];
   };
-  var chunkOfFolio = (ptk, _bk, _pb) => {
-    const pb = ptk.defines.pb;
-    const bk = ptk.defines.bk;
-    const ck = ptk.defines.ck;
+  var chunkOfFolio = (ptk2, _bk, _pb) => {
+    const pb = ptk2.defines.pb;
+    const bk = ptk2.defines.bk;
+    const ck = ptk2.defines.ck;
     if (!pb)
       return -1;
     if (typeof _pb == "number")
       _pb = _pb.toString();
-    const [start, end] = ptk.rangeOfAddress("bk#" + _bk);
+    const [start, end] = ptk2.rangeOfAddress("bk#" + _bk);
     const from = bsearchNumber(pb.linepos, start);
     const pbat = pb.fields.id.values.indexOf(_pb, from);
     const line = pb.linepos[pbat];
     const at = bsearchNumber(ck.linepos, line + 1);
     return ck.fields.id.values[at];
   };
-  var folio2ChunkLine = async (ptk, foliotext2, from, cx, pos) => {
+  var folio2ChunkLine = async (ptk2, foliotext2, from, cx, pos) => {
     const out = [];
     if (!foliotext2.length)
       return "";
@@ -7512,8 +7512,8 @@
     else {
       while (startline > 0) {
         startline--;
-        await ptk.loadLines([startline]);
-        const line = ptk.getLine(startline);
+        await ptk2.loadLines([startline]);
+        const line = ptk2.getLine(startline);
         out.unshift(line);
         if (out.length > 100)
           break;
@@ -7569,8 +7569,8 @@
     }
     return puncs;
   };
-  var folioPosFromLine = async (ptk, pb, line, bookid, fl, fc) => {
-    const [text2, start] = await fetchFolioText(ptk, bookid, pb);
+  var folioPosFromLine = async (ptk2, pb, line, bookid, fl, fc) => {
+    const [text2, start] = await fetchFolioText(ptk2, bookid, pb);
     if (!text2)
       return;
     const str = text2.join("\n");
@@ -7598,46 +7598,46 @@
   };
 
   // ../ptk/align/parallels.ts
-  var parallelWithDiff = (ptk, line, includeself = false, local = true, remote = false) => {
+  var parallelWithDiff = (ptk2, line, includeself = false, local = true, remote = false) => {
     const out = [];
-    if (!ptk)
+    if (!ptk2)
       return out;
-    const bkat = ptk.nearestTag(line + 1, "bk") - 1;
-    const bookstart = ptk.defines.bk.linepos[bkat];
+    const bkat = ptk2.nearestTag(line + 1, "bk") - 1;
+    const bookstart = ptk2.defines.bk.linepos[bkat];
     if (includeself) {
-      out.push([ptk, bookstart, line]);
+      out.push([ptk2, bookstart, line]);
     }
     const lineoff = line - bookstart;
-    const bkid = ptk.defines.bk.fields.id.values[bkat];
-    const books = ptk.getParallelBook(bkid);
-    const [bkstart, bkend] = ptk.rangeOfAddress("bk#" + bkid);
+    const bkid = ptk2.defines.bk.fields.id.values[bkat];
+    const books = ptk2.getParallelBook(bkid);
+    const [bkstart, bkend] = ptk2.rangeOfAddress("bk#" + bkid);
     if (local) {
       for (let i = 0; i < books.length; i++) {
-        const [start, end] = ptk.rangeOfAddress("bk#" + books[i]);
+        const [start, end] = ptk2.rangeOfAddress("bk#" + books[i]);
         if (lineoff <= end - start) {
-          out.push([ptk, start - bookstart, start + lineoff]);
+          out.push([ptk2, start - bookstart, start + lineoff]);
         }
       }
     }
     if (remote) {
-      const parallelPitakas = poolParallelPitakas(ptk);
+      const parallelPitakas = poolParallelPitakas(ptk2);
       for (let i = 0; i < parallelPitakas.length; i++) {
         const pptk = usePtk(parallelPitakas[i]);
-        const lines = pptk.getParallelLine(ptk, line, true);
+        const lines = pptk.getParallelLine(ptk2, line, true);
         lines.forEach((it) => out.push([...it]));
       }
     }
     return out;
   };
-  var getParallelLines = async (ptk, line, _out, opts = {}) => {
-    const lines = parallelWithDiff(ptk, line, true, opts.local, opts.remote);
+  var getParallelLines = async (ptk2, line, _out, opts = {}) => {
+    const lines = parallelWithDiff(ptk2, line, true, opts.local, opts.remote);
     const out = [];
     for (let i = 0; i < lines.length; i++) {
-      const [ptk2, bookstart, line2] = lines[i];
-      await ptk2.loadLines([line2]);
-      const linetext = ptk2.getLine(line2);
-      const heading = ptk2.getHeading(line2);
-      out.push({ ptk: ptk2, heading, linetext, line: line2 });
+      const [ptk3, bookstart, line2] = lines[i];
+      await ptk3.loadLines([line2]);
+      const linetext = ptk3.getLine(line2);
+      const heading = ptk3.getHeading(line2);
+      out.push({ ptk: ptk3, heading, linetext, line: line2 });
     }
     if (_out)
       _out.push(...out);
@@ -7690,7 +7690,7 @@
   var loadSettings = () => {
     const activebookid2 = localStorage.getItem(AppPrefix + "activebookid") || "pphs";
     const advancemode2 = localStorage.getItem(AppPrefix + "advancemode");
-    const videohost2 = localStorage.getItem(AppPrefix + "videohost") || "youtube";
+    const videohost = localStorage.getItem(AppPrefix + "videohost") || "youtube";
     const newbie2 = localStorage.getItem(AppPrefix + "newbie") || "on";
     let _favorites = localStorage.getItem(AppPrefix + "favorites") || "{}";
     let favorites2 = {};
@@ -7700,7 +7700,7 @@
       console.log(e);
       favorites2 = {};
     }
-    return { activebookid: activebookid2, advancemode: advancemode2, videohost: videohost2, newbie: newbie2, favorites: favorites2 };
+    return { activebookid: activebookid2, advancemode: advancemode2, videohost, newbie: newbie2, favorites: favorites2 };
   };
   var saveSettings = () => {
     for (let key in settingsToBeSave) {
@@ -7828,6 +7828,43 @@
     });
   }
 
+  // src/mediaurls.js
+  var silence = { vid: "", performer: "-\u975C\u9ED8-" };
+  var ptk;
+  var setTimestampPtk = (_ptk) => {
+    ptk = _ptk;
+  };
+  var mediabyid = (_vid) => {
+    if (!ptk || !_vid)
+      return;
+    const ts = ptk.columns.timestamp;
+    for (let i = 0; i < ts.keys.len(); i++) {
+      const vid = ts.keys.get(i);
+      const videohost = ts.videohost[i];
+      const performer = ts.performer[i];
+      const timestamp = ts.timestamp[i];
+      const bookid = ts.bookid[i];
+      if (vid == _vid)
+        return { videohost, vid, performer, timestamp, bookid };
+    }
+  };
+  var getAudioList = (activeid) => {
+    const ts = ptk.columns.timestamp;
+    const out = [silence];
+    if (!ptk)
+      return out;
+    for (let i = 0; i < ts.keys.len(); i++) {
+      const vid = ts.keys.get(i);
+      const videohost = ts.videohost[i];
+      const performer = ts.performer[i];
+      const timestamp = ts.timestamp[i];
+      const bookid = ts.bookid[i];
+      activeid == bookid && out.push({ vid, performer, bookid, timestamp, videohost });
+    }
+    out.sort((a, b) => a.performer == b.performer ? 0 : a.performer < b.performer ? -1 : 1);
+    return out;
+  };
+
   // src/store.js
   var nanzangbooks = ["sdpdrk1", "sdpdrk2", "sdpdrk3", "sdpdrk4", "sdpdrk5", "sdpdrk6", "sdpdrk7"];
   var vlinesOfBook = (bkid) => ~nanzangbooks.indexOf(bkid) ? 6 : 5;
@@ -7839,11 +7876,15 @@
   var maxfolio = writable(0);
   var favorites = writable(settings.favorites);
   var isAndroid = writable(false);
-  var player = writable(null);
+  var mediaurls = writable([silence]);
+  var ytplayer = writable(null);
+  var qqplayer = writable(null);
+  var player = function(vid) {
+    return mediabyid(vid || get_store_value(videoid))?.videohost == "youtube" ? get_store_value(ytplayer) : get_store_value(qqplayer);
+  };
   var videoid = writable("");
   var folioLines = derived(activebookid, (bid) => vlinesOfBook(bid));
   var folioChars = writable(17);
-  var videohost = writable(settings.videohost);
   var playing = writable(false);
   var continueplay = writable(false);
   var tapmark = writable(0);
@@ -7853,28 +7894,27 @@
   var showpaiji = writable(false);
   activebookid.subscribe((activebookid2) => updateSettings({ activebookid: activebookid2 }));
   advancemode.subscribe((advancemode2) => updateSettings({ advancemode: advancemode2 }));
-  videohost.subscribe((videohost2) => updateSettings({ videohost: videohost2 }));
   newbie.subscribe((newbie2) => updateSettings({ newbie: newbie2 }));
   favorites.subscribe((favorites2) => updateSettings({ favorites: favorites2 }));
   var findByVideoId = (id, column = "timestamp") => {
-    const ptk = usePtk("dc");
-    if (!ptk.columns[column])
+    const ptk2 = usePtk("dc");
+    if (!ptk2.columns[column])
       return null;
-    const ts = ptk.columns[column].fieldsByKey(id);
-    return { youtube: id, ...ts };
+    const ts = ptk2.columns[column].fieldsByKey(id);
+    return { id, ...ts };
   };
   var stopVideo = () => {
-    const plyr = get_store_value(player);
+    pauseVideo();
     playing.set(false);
-    videoid.set("");
     remainrollback.set(-1);
-    if (!plyr)
-      return;
-    plyr.stopVideo ? plyr.stopVideo() : plyr.pause ? plyr.pause() : null;
+  };
+  var pauseVideo = () => {
+    get_store_value(qqplayer)?.pause && get_store_value(qqplayer).pause();
+    get_store_value(ytplayer)?.stopVideo && get_store_value(ytplayer).stopVideo();
   };
   var booknameOf = (bkid) => {
-    const ptk = usePtk("dc");
-    const bk = ptk.defines.bk;
+    const ptk2 = usePtk("dc");
+    const bk = ptk2.defines.bk;
     const at = bk.fields.id.values.indexOf(bkid);
     return bk.innertext.get(at);
   };
@@ -8119,7 +8159,7 @@
       if (!timestamp[line] && i == 0) {
         rollback();
       }
-      const playertime = get_store_value(player).getCurrentTime();
+      const playertime = player($videoid)?.getCurrentTime();
       let timedelta = playertime - timestamp[line];
       if (Math.abs(timedelta) > 3) {
         timedelta = 0.02;
@@ -10181,7 +10221,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     component_subscribe($$self, idlecount, ($$value) => $$invalidate(15, $idlecount = $$value));
     component_subscribe($$self, tapmark, ($$value) => $$invalidate(16, $tapmark = $$value));
     let { src } = $$props;
-    let ptk = usePtk($activePtk);
+    let ptk2 = usePtk($activePtk);
     let foliotext2 = "", foliofrom2 = 0, puncs = [], ready, images = [], hidepunc = false;
     let { totalpages = 0 } = $$props;
     let { onTapText = function() {
@@ -10247,7 +10287,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
     const updateFolioText = async () => {
       $$invalidate(5, hidepunc = true);
-      $$invalidate(2, [foliotext2, foliofrom2] = await fetchFolioText(ptk, $activebookid, 1 + Math.floor($activefolio)), foliotext2);
+      $$invalidate(2, [foliotext2, foliofrom2] = await fetchFolioText(ptk2, $activebookid, 1 + Math.floor($activefolio)), foliotext2);
       setTimeout(
         () => {
           $$invalidate(5, hidepunc = false);
@@ -10292,14 +10332,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const tappos = $folioLines * $folioChars * $activefolio + cx * $folioChars + cy;
       tapmark.set(tappos);
       let [t, pos] = getConcreatePos(foliotext2[cx], cy, foliotext2[cx + 1]);
-      const ck = await folio2ChunkLine(ptk, foliotext2, foliofrom2, cx, pos);
+      const ck = await folio2ChunkLine(ptk2, foliotext2, foliofrom2, cx, pos);
       ;
       const address = "bk#" + $activebookid + (ck ? "." + ck : "");
       t = t.replace(/([。！？：、．；，「『（ ])/g, "\u3000");
       while (t.charAt(0) == "\u3000")
         t = t.slice(1);
       t = t.replace(/　.+/, "");
-      await onTapText(t, address, ptk.name);
+      await onTapText(t, address, ptk2.name);
     };
     const gotofolio = (folio) => {
       if (!totalpages || !swiper)
@@ -10818,7 +10858,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function instance8($$self, $$props, $$invalidate) {
-    let { entries = [], ptk, wikipedia, fgdzd, dfb } = $$props;
+    let { entries = [], ptk: ptk2, wikipedia, fgdzd, dfb } = $$props;
     let nentry = 0;
     let src = "";
     const setWikipedia = () => {
@@ -10831,7 +10871,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
     const availableDict = (n) => {
       const at = entries[n][2];
-      const flag = ptk.columns.entries.dict[at];
+      const flag = ptk2.columns.entries.dict[at];
       $$invalidate(0, wikipedia = flag & 1);
       $$invalidate(1, fgdzd = flag & 2);
       $$invalidate(2, dfb = flag & 4);
@@ -10845,7 +10885,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ("entries" in $$props2)
         $$invalidate(3, entries = $$props2.entries);
       if ("ptk" in $$props2)
-        $$invalidate(8, ptk = $$props2.ptk);
+        $$invalidate(8, ptk2 = $$props2.ptk);
       if ("wikipedia" in $$props2)
         $$invalidate(0, wikipedia = $$props2.wikipedia);
       if ("fgdzd" in $$props2)
@@ -10869,7 +10909,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       src,
       setWikipedia,
       setOneline,
-      ptk,
+      ptk2,
       input_change_handler,
       $$binding_groups
     ];
@@ -11138,11 +11178,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   function instance9($$self, $$props, $$invalidate) {
     let $activebookid;
     component_subscribe($$self, activebookid, ($$value) => $$invalidate(0, $activebookid = $$value));
-    let { ptk } = $$props;
+    let { ptk: ptk2 } = $$props;
     let { closePopup = function() {
     } } = $$props;
     const parallelBooks = (bkid) => {
-      const bk = ptk.defines.bk;
+      const bk = ptk2.defines.bk;
       const at = bkid.indexOf("_");
       const prefix = ~at ? bkid.slice(0, at) : bkid;
       const out = [], idarr = bk.fields.id.values;
@@ -11154,8 +11194,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       return out;
     };
     const getBookList = () => {
-      const folio = ptk.defines.folio;
-      const bk = ptk.defines.bk;
+      const folio = ptk2.defines.folio;
+      const bk = ptk2.defines.bk;
       const out = [];
       for (let i = 0; i < folio.linepos.length; i++) {
         const id = folio.fields.id.values[i];
@@ -11168,7 +11208,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
     const books = getBookList();
     const selectbook = (nbk) => {
-      const bk = ptk.defines.bk;
+      const bk = ptk2.defines.bk;
       stopVideo();
       const bkid = bk.fields.id.values[nbk];
       activebookid.set(bkid);
@@ -11176,19 +11216,19 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       closePopup();
     };
     const getBookName = (nbk) => {
-      const bk = ptk.defines.bk;
+      const bk = ptk2.defines.bk;
       const bookname = bk.innertext.get(nbk);
       return bk.fields.heading.values[nbk] || bookname;
     };
     const getBookId = (nbk) => {
-      const bk = ptk.defines.bk;
+      const bk = ptk2.defines.bk;
       return bk.fields.id.values[nbk];
     };
     const click_handler = (nbk) => selectbook(nbk);
     const click_handler_1 = (par) => selectbook(par);
     $$self.$$set = ($$props2) => {
       if ("ptk" in $$props2)
-        $$invalidate(5, ptk = $$props2.ptk);
+        $$invalidate(5, ptk2 = $$props2.ptk);
       if ("closePopup" in $$props2)
         $$invalidate(6, closePopup = $$props2.closePopup);
     };
@@ -11198,7 +11238,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       selectbook,
       getBookName,
       getBookId,
-      ptk,
+      ptk2,
       closePopup,
       click_handler,
       click_handler_1
@@ -11809,10 +11849,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   };
   var rangeslider_default = Rangeslider;
 
+  // src/icons.js
+  var youtubeicon = `<svg style="margin-bottom:-0.2em" height="4vh" width="4vh" viewBox="0 0 461.001 461.001"><g><path style="fill:#F61C0D;" d="M365.257,67.393H95.744C42.866,67.393,0,110.259,0,163.137v134.728c0,52.878,42.866,95.744,95.744,95.744h269.513c52.878,0,95.744-42.866,95.744-95.744V163.137C461.001,110.259,418.135,67.393,365.257,67.393z M300.506,237.056l-126.06,60.123c-3.359,1.602-7.239-0.847-7.239-4.568V168.607c0-3.774,3.982-6.22,7.348-4.514l126.06,63.881C304.363,229.873,304.298,235.248,300.506,237.056z"/></g></svg>`;
+  var vqqicon = `<svg xmlns="http://www.w3.org/2000/svg" height="4vh" width="5vh" viewBox="-76 -50 250 151"><linearGradient gradientTransform="matrix(1 0 0 -1 -10.798 152.703)" y2="31.982" x2="87.691" y1="152.685" x1="87.691" gradientUnits="userSpaceOnUse" id="a"><stop offset="0" stop-color="#53c4fe"/><stop offset="1" stop-color="#0d84f4"/></linearGradient><path d="M127.402 72.303c8.6-9 7.6-17.3-.1-24.4-11.3-10.6-24.7-19.2-38.7-27.3-13.6-7.9-28-14.4-42.8-19.7-8.4-2.9-17.5 1.4-20.5 9.8-.3.8-.5 1.6-.6 2.4-5.8 31.2-5.8 63.2-.1 94.4 1.6 8.7 10 14.5 18.7 12.9.8-.2 1.7-.4 2.5-.7 15.1-5.4 29.6-12.2 43.4-20.3 13.8-7.9 27.5-16 38.2-27.1z" fill="url(#a)"/><linearGradient gradientTransform="matrix(1 0 0 -1 -10.798 152.703)" y2="44.752" x2="23.486" y1="139.715" x1="23.486" gradientUnits="userSpaceOnUse" id="b"><stop offset="0" stop-color="#f9b93b"/><stop offset="1" stop-color="#fa7535"/></linearGradient><path d="M24.602 14.203c-.4-.1-.8-.2-1.2-.4-8.5-2.6-16 .4-19.4 9.6-4.2 11.5-4 24.4-4 37 0 12.6-.1 25.3 3.9 36.8 3.7 10.6 10.9 12.2 19.4 9.6.4-.1 1.5-.6 1.8-.7-2.7-14.9-4.8-29.9-4.8-45.6.2-15.5 1.5-31 4.3-46.3z" fill="url(#b)"/><linearGradient gradientTransform="matrix(1 0 0 -1 -10.798 152.703)" y2="46.056" x2="73.193" y1="138.631" x1="73.193" gradientUnits="userSpaceOnUse" id="c"><stop offset="0" stop-color="#aef922"/><stop offset="1" stop-color="#62bb0d"/></linearGradient><path d="M24.502 14.103c-5.5 30.6-5.6 62-.1 92.6 13.4-4.1 26.5-9.3 39.1-15.6 12.7-6.3 24.9-13 35.3-21.3 7.8-6.2 7-13.4-.1-19.2-10.5-8.5-22.9-15.1-35.9-21.4-12.2-6.1-25.1-11.1-38.3-15.1z" fill="url(#c)"/><linearGradient gradientTransform="matrix(1 0 0 -1 -10.798 152.703)" y2="70.704" x2="69.642" y1="113.993" x1="69.642" gradientUnits="userSpaceOnUse" id="d"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#fff"/><stop offset="1" stop-color="#e5f6d2"/></linearGradient><path d="M38.202 41.203s-1.3 1.9-1.3 19.1c0 17.2 1.3 19.3 1.3 19.3.4 2.1 1.4 2.8 3.7 2.3 0 0 3.9-.6 19.4-8.4 15.5-7.8 18.1-10.8 18.1-10.8 1.7-1.7 2.1-2.8 0-4.6 0 0-4.2-3.9-18.1-11-13.7-7-19.4-8.2-19.4-8.2-2-.6-3.2 0-3.7 2.3z" fill="url(#d)"/></svg>`;
+
   // src/audio.svelte
   function get_each_context7(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[25] = list[i];
+    child_ctx[23] = list[i];
     return child_ctx;
   }
   function create_else_block2(ctx) {
@@ -11822,14 +11866,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let if_block_anchor;
     let current;
     let each_value = (
-      /*mediaurls*/
-      ctx[4]
+      /*$mediaurls*/
+      ctx[6]
     );
     let each_blocks = [];
     for (let i = 0; i < each_value.length; i += 1) {
       each_blocks[i] = create_each_block7(get_each_context7(ctx, each_value, i));
     }
-    const if_block_creators = [create_if_block_13, create_else_block_1];
+    const if_block_creators = [create_if_block_33, create_else_block_1];
     const if_blocks = [];
     function select_block_type_2(ctx2, dirty) {
       if (
@@ -11862,10 +11906,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         current = true;
       },
       p(ctx2, dirty) {
-        if (dirty & /*humanDuration, getDuration, $videoid, videohost, mediaurls, selectmedia*/
-        913) {
-          each_value = /*mediaurls*/
-          ctx2[4];
+        if (dirty & /*$videoid, youtubeicon, $mediaurls, vqqicon, humanDuration, getDuration, selectmedia*/
+        961) {
+          each_value = /*$mediaurls*/
+          ctx2[6];
           let i;
           for (i = 0; i < each_value.length; i += 1) {
             const child_ctx = get_each_context7(ctx2, each_value, i);
@@ -11924,42 +11968,71 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function create_if_block5(ctx) {
-    let t0;
-    let t1;
+    let t;
+    let if_block1_anchor;
+    let if_block0 = !/*$qqplayer*/
+    ctx[4] && create_if_block_23(ctx);
+    let if_block1 = !/*$ytplayer*/
+    ctx[5] && create_if_block_13(ctx);
     return {
       c() {
-        t0 = text(
-          /*$videohost*/
-          ctx[5]
-        );
-        t1 = text(" \u64AD\u653E\u5668\u8F09\u5165\u4E2D");
+        if (if_block0)
+          if_block0.c();
+        t = space();
+        if (if_block1)
+          if_block1.c();
+        if_block1_anchor = empty();
       },
       m(target, anchor) {
-        insert(target, t0, anchor);
-        insert(target, t1, anchor);
+        if (if_block0)
+          if_block0.m(target, anchor);
+        insert(target, t, anchor);
+        if (if_block1)
+          if_block1.m(target, anchor);
+        insert(target, if_block1_anchor, anchor);
       },
       p(ctx2, dirty) {
-        if (dirty & /*$videohost*/
-        32)
-          set_data(
-            t0,
-            /*$videohost*/
-            ctx2[5]
-          );
+        if (!/*$qqplayer*/
+        ctx2[4]) {
+          if (if_block0) {
+          } else {
+            if_block0 = create_if_block_23(ctx2);
+            if_block0.c();
+            if_block0.m(t.parentNode, t);
+          }
+        } else if (if_block0) {
+          if_block0.d(1);
+          if_block0 = null;
+        }
+        if (!/*$ytplayer*/
+        ctx2[5]) {
+          if (if_block1) {
+          } else {
+            if_block1 = create_if_block_13(ctx2);
+            if_block1.c();
+            if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+          }
+        } else if (if_block1) {
+          if_block1.d(1);
+          if_block1 = null;
+        }
       },
       i: noop,
       o: noop,
       d(detaching) {
+        if (if_block0)
+          if_block0.d(detaching);
         if (detaching)
-          detach(t0);
+          detach(t);
+        if (if_block1)
+          if_block1.d(detaching);
         if (detaching)
-          detach(t1);
+          detach(if_block1_anchor);
       }
     };
   }
-  function create_if_block_33(ctx) {
-    let t0;
-    let t1_value = (
+  function create_if_block_5(ctx) {
+    let t0_value = (
       /*humanDuration*/
       ctx[8](
         /*getDuration*/
@@ -11969,29 +12042,41 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         )
       ) + ""
     );
+    let t0;
     let t1;
+    let if_block_anchor;
     function select_block_type_1(ctx2, dirty) {
-      if (videohost == "youtube")
-        return create_if_block_42;
-      return create_else_block_2;
+      if (
+        /*media*/
+        ctx2[23].videohost == "youtube"
+      )
+        return create_if_block_6;
+      if (
+        /*media*/
+        ctx2[23].videohost == "qq"
+      )
+        return create_if_block_7;
     }
     let current_block_type = select_block_type_1(ctx, -1);
-    let if_block = current_block_type(ctx);
+    let if_block = current_block_type && current_block_type(ctx);
     return {
       c() {
-        if_block.c();
-        t0 = space();
-        t1 = text(t1_value);
+        t0 = text(t0_value);
+        t1 = space();
+        if (if_block)
+          if_block.c();
+        if_block_anchor = empty();
       },
       m(target, anchor) {
-        if_block.m(target, anchor);
         insert(target, t0, anchor);
         insert(target, t1, anchor);
+        if (if_block)
+          if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
       },
       p(ctx2, dirty) {
-        if_block.p(ctx2, dirty);
         if (dirty & /*$videoid*/
-        1 && t1_value !== (t1_value = /*humanDuration*/
+        1 && t0_value !== (t0_value = /*humanDuration*/
         ctx2[8](
           /*getDuration*/
           ctx2[9](
@@ -11999,32 +12084,45 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             ctx2[0]
           )
         ) + ""))
-          set_data(t1, t1_value);
+          set_data(t0, t0_value);
+        if (current_block_type === (current_block_type = select_block_type_1(ctx2, dirty)) && if_block) {
+          if_block.p(ctx2, dirty);
+        } else {
+          if (if_block)
+            if_block.d(1);
+          if_block = current_block_type && current_block_type(ctx2);
+          if (if_block) {
+            if_block.c();
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        }
       },
       d(detaching) {
-        if_block.d(detaching);
         if (detaching)
           detach(t0);
         if (detaching)
           detach(t1);
+        if (if_block) {
+          if_block.d(detaching);
+        }
+        if (detaching)
+          detach(if_block_anchor);
       }
     };
   }
-  function create_else_block_2(ctx) {
+  function create_if_block_7(ctx) {
     let a;
-    let t;
     let a_href_value;
     return {
       c() {
         a = element("a");
-        t = text("\u539F\u59CB\u5F71\u7247");
         attr(a, "target", "_new");
         attr(a, "href", a_href_value = "https://v.qq.com/x/page/" + /*$videoid*/
         ctx[0] + ".html");
       },
       m(target, anchor) {
         insert(target, a, anchor);
-        append(a, t);
+        a.innerHTML = vqqicon;
       },
       p(ctx2, dirty) {
         if (dirty & /*$videoid*/
@@ -12039,21 +12137,19 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_42(ctx) {
+  function create_if_block_6(ctx) {
     let a;
-    let t;
     let a_href_value;
     return {
       c() {
         a = element("a");
-        t = text("\u539F\u59CB\u5F71\u7247");
         attr(a, "target", "_new");
         attr(a, "href", a_href_value = "https://www.youtube.com/watch?v=" + /*$videoid*/
         ctx[0]);
       },
       m(target, anchor) {
         insert(target, a, anchor);
-        append(a, t);
+        a.innerHTML = youtubeicon;
       },
       p(ctx2, dirty) {
         if (dirty & /*$videoid*/
@@ -12072,7 +12168,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let span;
     let t0_value = (
       /*media*/
-      ctx[25].performer + ""
+      ctx[23].performer + ""
     );
     let t0;
     let t1;
@@ -12083,8 +12179,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let if_block = (
       /*$videoid*/
       ctx[0] == /*media*/
-      ctx[25].vid && /*$videoid*/
-      ctx[0] && create_if_block_33(ctx)
+      ctx[23].vid && /*$videoid*/
+      ctx[0] && create_if_block_5(ctx)
     );
     return {
       c() {
@@ -12100,7 +12196,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           span,
           "selected",
           /*media*/
-          ctx[25].vid == /*$videoid*/
+          ctx[23].vid == /*$videoid*/
           ctx[0]
         );
       },
@@ -12118,12 +12214,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               /*selectmedia*/
               ctx[7](
                 /*media*/
-                ctx[25].vid
+                ctx[23].vid
               )
             ))
               ctx[7](
                 /*media*/
-                ctx[25].vid
+                ctx[23].vid
               ).apply(this, arguments);
           });
           mounted = true;
@@ -12131,30 +12227,30 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(new_ctx, dirty) {
         ctx = new_ctx;
-        if (dirty & /*mediaurls*/
-        16 && t0_value !== (t0_value = /*media*/
-        ctx[25].performer + ""))
+        if (dirty & /*$mediaurls*/
+        64 && t0_value !== (t0_value = /*media*/
+        ctx[23].performer + ""))
           set_data(t0, t0_value);
-        if (dirty & /*mediaurls, $videoid*/
-        17) {
+        if (dirty & /*$mediaurls, $videoid*/
+        65) {
           toggle_class(
             span,
             "selected",
             /*media*/
-            ctx[25].vid == /*$videoid*/
+            ctx[23].vid == /*$videoid*/
             ctx[0]
           );
         }
         if (
           /*$videoid*/
           ctx[0] == /*media*/
-          ctx[25].vid && /*$videoid*/
+          ctx[23].vid && /*$videoid*/
           ctx[0]
         ) {
           if (if_block) {
             if_block.p(ctx, dirty);
           } else {
-            if_block = create_if_block_33(ctx);
+            if_block = create_if_block_5(ctx);
             if_block.c();
             if_block.m(t2.parentNode, t2);
           }
@@ -12214,7 +12310,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current;
     let if_block = (
       /*value*/
-      ctx[1][0] > 0 && create_if_block_23(ctx)
+      ctx[1][0] > 0 && create_if_block_42(ctx)
     );
     function slider_value_binding(value) {
       ctx[15](value);
@@ -12284,7 +12380,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block) {
             if_block.p(ctx2, dirty);
           } else {
-            if_block = create_if_block_23(ctx2);
+            if_block = create_if_block_42(ctx2);
             if_block.c();
             if_block.m(t3.parentNode, t3);
           }
@@ -12357,51 +12453,40 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_13(ctx) {
-    let br;
+  function create_if_block_33(ctx) {
+    let br0;
     let t0;
+    let br1;
     let t1;
-    let t2;
     return {
       c() {
-        br = element("br");
-        t0 = text("\u8072\u97F3\u76F4\u63A5\u62BD\u53D6\u81EA");
-        t1 = text(
-          /*$videohost*/
-          ctx[5]
-        );
-        t2 = text("\u516C\u958B\u5F71\u7247\uFF0C\u82E5\u8A72\u5F71\u7247\u5DF2\u4E0B\u67B6\uFF0C\u6216\u8005\u7981\u6B62\u5D4C\u7528\u5247\u7121\u6CD5\u65BC\u6B64\u64AD\u653E\u3002");
+        br0 = element("br");
+        t0 = text("\u8072\u97F3\u76F4\u63A5\u62BD\u53D6\u81EAYoutube/Tencent\u516C\u958B\u5F71\u7247\uFF0C\u82E5\u8A72\u5F71\u7247\u5DF2\u4E0B\u67B6\uFF0C\u6216\u8005\u7981\u6B62\u5D4C\u7528\u5247\u7121\u6CD5\u5728\u6B64\u64AD\u653E\u3002\n");
+        br1 = element("br");
+        t1 = text("\u6309\u6F14\u51FA\u8005\u7684\u90E8\u9996\uFF0B\u7B46\u5283\u6392\u5E8F\u3002");
       },
       m(target, anchor) {
-        insert(target, br, anchor);
+        insert(target, br0, anchor);
         insert(target, t0, anchor);
+        insert(target, br1, anchor);
         insert(target, t1, anchor);
-        insert(target, t2, anchor);
       },
-      p(ctx2, dirty) {
-        if (dirty & /*$videohost*/
-        32)
-          set_data(
-            t1,
-            /*$videohost*/
-            ctx2[5]
-          );
-      },
+      p: noop,
       i: noop,
       o: noop,
       d(detaching) {
         if (detaching)
-          detach(br);
+          detach(br0);
         if (detaching)
           detach(t0);
         if (detaching)
-          detach(t1);
+          detach(br1);
         if (detaching)
-          detach(t2);
+          detach(t1);
       }
     };
   }
-  function create_if_block_23(ctx) {
+  function create_if_block_42(ctx) {
     let t_value = (
       /*humanStoptime*/
       ctx[12](
@@ -12440,6 +12525,36 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
+  function create_if_block_23(ctx) {
+    let t;
+    return {
+      c() {
+        t = text("QQ\u64AD\u653E\u5668\u8F09\u5165\u4E2D");
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_if_block_13(ctx) {
+    let t;
+    return {
+      c() {
+        t = text("Youtube\u64AD\u653E\u5668\u8F09\u5165\u4E2D");
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
   function create_fragment11(ctx) {
     let div;
     let current_block_type_index;
@@ -12448,8 +12563,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const if_block_creators = [create_if_block5, create_else_block2];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
-      if (!/*$player*/
-      ctx2[6])
+      if (!/*$qqplayer*/
+      ctx2[4] && !/*$ytplayer*/
+      ctx2[5])
         return 0;
       return 1;
     }
@@ -12506,17 +12622,19 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function instance12($$self, $$props, $$invalidate) {
-    let $activebookid;
     let $videoid;
-    let $videohost;
+    let $activebookid;
     let $remainrollback;
-    let $player;
-    component_subscribe($$self, activebookid, ($$value) => $$invalidate(14, $activebookid = $$value));
+    let $qqplayer;
+    let $ytplayer;
+    let $mediaurls;
     component_subscribe($$self, videoid, ($$value) => $$invalidate(0, $videoid = $$value));
-    component_subscribe($$self, videohost, ($$value) => $$invalidate(5, $videohost = $$value));
+    component_subscribe($$self, activebookid, ($$value) => $$invalidate(14, $activebookid = $$value));
     component_subscribe($$self, remainrollback, ($$value) => $$invalidate(21, $remainrollback = $$value));
-    component_subscribe($$self, player, ($$value) => $$invalidate(6, $player = $$value));
-    let { ptk } = $$props;
+    component_subscribe($$self, qqplayer, ($$value) => $$invalidate(4, $qqplayer = $$value));
+    component_subscribe($$self, ytplayer, ($$value) => $$invalidate(5, $ytplayer = $$value));
+    component_subscribe($$self, mediaurls, ($$value) => $$invalidate(6, $mediaurls = $$value));
+    let { ptk: ptk2 } = $$props;
     let value = [$remainrollback, 0];
     let subtitles = [], subtitles2 = [], subtitle = "", subtitle2 = "", subtitletimer, nsub = 0;
     onDestroy(() => {
@@ -12525,10 +12643,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const selectmedia = (vid) => {
       if (get_store_value(remainrollback) == 0)
         remainrollback.set(-1);
+      if (!vid)
+        stopVideo();
       videoid.set(vid || "");
     };
-    const silence = { vid: "", performer: "-\u975C\u9ED8-" };
-    let mediaurls = [silence];
     const humanDuration = (t) => {
       if (!t)
         return "";
@@ -12542,26 +12660,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         return 0;
       return timestamps[timestamps.length - 1] - timestamps[0];
     };
-    const updateAudioList = (activeid) => {
-      const ts = ptk.columns.timestamp;
-      $$invalidate(4, mediaurls = [silence]);
-      const vhost = $videohost;
-      for (let i = 0; i < ts.keys.len(); i++) {
-        const vid = ts.keys.get(i);
-        const vh = ts.videohost[i];
-        const performer = ts.performer[i];
-        const timestamp2 = ts.timestamp[i];
-        const bookid = ts.bookid[i];
-        if (vh == vhost) {
-          activeid == bookid && mediaurls.push({ vid, performer, bookid, timestamp: timestamp2 });
-        }
-      }
-    };
     let timestamp = [];
     onMount(() => {
       subtitletimer = setInterval(
         () => {
-          const plyr = get_store_value(player);
+          if (!$videoid)
+            return;
+          const plyr = player($videoid);
           if (!plyr)
             return;
           const playertime = plyr.getCurrentTime && plyr.getCurrentTime();
@@ -12586,7 +12691,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         return;
       const skptk = usePtk("dc_sanskrit");
       subtitles2 = await skptk.fetchAddress("bk#" + $activebookid);
-      subtitles = await ptk.fetchAddress("bk#" + $activebookid);
+      subtitles = await ptk2.fetchAddress("bk#" + $activebookid);
       nsub = 0;
     };
     const htmltext = (s) => {
@@ -12613,7 +12718,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     }
     $$self.$$set = ($$props2) => {
       if ("ptk" in $$props2)
-        $$invalidate(13, ptk = $$props2.ptk);
+        $$invalidate(13, ptk2 = $$props2.ptk);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*$videoid*/
@@ -12624,7 +12729,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ($$self.$$.dirty & /*$activebookid*/
       16384) {
         $:
-          updateAudioList($activebookid);
+          mediaurls.set(getAudioList($activebookid));
+      }
+      if ($$self.$$.dirty & /*$videoid*/
+      1) {
+        $:
+          console.log("change ", $videoid);
       }
     };
     return [
@@ -12632,16 +12742,16 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       value,
       subtitle,
       subtitle2,
-      mediaurls,
-      $videohost,
-      $player,
+      $qqplayer,
+      $ytplayer,
+      $mediaurls,
       selectmedia,
       humanDuration,
       getDuration,
       htmltext,
       setRemain,
       humanStoptime,
-      ptk,
+      ptk2,
       $activebookid,
       slider_value_binding
     ];
@@ -13597,46 +13707,23 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
 
   // src/about.svelte
   function create_else_block4(ctx) {
-    let switch_1;
-    let updating_value;
-    let t0;
     let br;
-    let t1;
+    let t0;
     let a0;
-    let t3;
+    let t2;
     let a1;
-    let t5;
+    let t4;
     let div;
-    let current;
-    function switch_1_value_binding_1(value) {
-      ctx[3](value);
-    }
-    let switch_1_props = {
-      label: "\u8996\u983B\u4F86\u6E90",
-      options: ["qq", "youtube"],
-      design: "multi"
-    };
-    if (
-      /*$videohost*/
-      ctx[1] !== void 0
-    ) {
-      switch_1_props.value = /*$videohost*/
-      ctx[1];
-    }
-    switch_1 = new switch_default({ props: switch_1_props });
-    binding_callbacks.push(() => bind(switch_1, "value", switch_1_value_binding_1));
     return {
       c() {
-        create_component(switch_1.$$.fragment);
-        t0 = space();
         br = element("br");
-        t1 = text("\u5230LINE\u641C\u5C0BID @dharmacloud\uFF0C\u6216\u52A0\u5165");
+        t0 = text("\u5230LINE\u641C\u5C0BID @dharmacloud\uFF0C\u6216\u52A0\u5165");
         a0 = element("a");
         a0.textContent = "\u5B98\u65B9\u5E33\u865F";
-        t3 = text("\uFF0C\u7372\u5F97\u66F4\u65B0\u8A0A\u606F\u3002\n\u7D50\u7DE3\u54C1");
+        t2 = text("\uFF0C\u7372\u5F97\u66F4\u65B0\u8A0A\u606F\u3002\n\u7D50\u7DE3\u54C1");
         a1 = element("a");
         a1.textContent = "dharmacloud.github.io";
-        t5 = space();
+        t4 = space();
         div = element("div");
         attr(a0, "href", "https://lin.ee/1tmTKXi");
         attr(a1, "target", "_new");
@@ -13644,55 +13731,29 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         attr(div, "class", "center");
       },
       m(target, anchor) {
-        mount_component(switch_1, target, anchor);
-        insert(target, t0, anchor);
         insert(target, br, anchor);
-        insert(target, t1, anchor);
+        insert(target, t0, anchor);
         insert(target, a0, anchor);
-        insert(target, t3, anchor);
+        insert(target, t2, anchor);
         insert(target, a1, anchor);
-        insert(target, t5, anchor);
+        insert(target, t4, anchor);
         insert(target, div, anchor);
         div.innerHTML = urlqrcode;
-        current = true;
       },
-      p(ctx2, dirty) {
-        const switch_1_changes = {};
-        if (!updating_value && dirty & /*$videohost*/
-        2) {
-          updating_value = true;
-          switch_1_changes.value = /*$videohost*/
-          ctx2[1];
-          add_flush_callback(() => updating_value = false);
-        }
-        switch_1.$set(switch_1_changes);
-      },
-      i(local) {
-        if (current)
-          return;
-        transition_in(switch_1.$$.fragment, local);
-        current = true;
-      },
-      o(local) {
-        transition_out(switch_1.$$.fragment, local);
-        current = false;
-      },
+      p: noop,
       d(detaching) {
-        destroy_component(switch_1, detaching);
-        if (detaching)
-          detach(t0);
         if (detaching)
           detach(br);
         if (detaching)
-          detach(t1);
+          detach(t0);
         if (detaching)
           detach(a0);
         if (detaching)
-          detach(t3);
+          detach(t2);
         if (detaching)
           detach(a1);
         if (detaching)
-          detach(t5);
+          detach(t4);
         if (detaching)
           detach(div);
       }
@@ -13724,7 +13785,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t5 = text("\u9019\u662F");
         a1 = element("a");
         a1.textContent = "\u958B\u6E90";
-        t7 = text("\u8EDF\u4EF6(2023.7.9)\uFF0C\n\u5141\u8A31\u4EE5\u4EFB\u4F55\u5F62\u614B\u6563\u4F48\u672C\u8EDF\u4EF6\u3002");
+        t7 = text("\u8EDF\u4EF6\uFF0C\n\u5141\u8A31\u4EE5\u4EFB\u4F55\u5F62\u614B\u6563\u4F48\u672C\u8EDF\u4EF6\u3002");
         attr(a0, "href", "https://creativecommons.org/publicdomain/zero/1.0/deed.zh");
         attr(a1, "href", "https://github.com/dharmacloud/");
         attr(a1, "target", "_new");
@@ -13743,8 +13804,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         insert(target, t7, anchor);
       },
       p: noop,
-      i: noop,
-      o: noop,
       d(detaching) {
         if (detaching)
           detach(t0);
@@ -13778,11 +13837,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let switch_1;
     let updating_value;
     let t1;
-    let current_block_type_index;
-    let if_block;
     let current;
     function switch_1_value_binding(value) {
-      ctx[2](value);
+      ctx[1](value);
     }
     let switch_1_props = { label: "\u9032\u968E\u6A21\u5F0F", design: "slider" };
     if (
@@ -13794,23 +13851,21 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     }
     switch_1 = new switch_default({ props: switch_1_props });
     binding_callbacks.push(() => bind(switch_1, "value", switch_1_value_binding));
-    const if_block_creators = [create_if_block7, create_else_block4];
-    const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
         /*$advancemode*/
         ctx2[0] == "on"
       )
-        return 0;
-      return 1;
+        return create_if_block7;
+      return create_else_block4;
     }
-    current_block_type_index = select_block_type(ctx, -1);
-    if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    let current_block_type = select_block_type(ctx, -1);
+    let if_block = current_block_type(ctx);
     return {
       c() {
         div = element("div");
         br = element("br");
-        t0 = space();
+        t0 = text("\n\u7248\u672C\uFF1A2023.7.9 ");
         create_component(switch_1.$$.fragment);
         t1 = space();
         if_block.c();
@@ -13822,7 +13877,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         append(div, t0);
         mount_component(switch_1, div, null);
         append(div, t1);
-        if_blocks[current_block_type_index].m(div, null);
+        if_block.m(div, null);
         current = true;
       },
       p(ctx2, [dirty]) {
@@ -13835,61 +13890,43 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           add_flush_callback(() => updating_value = false);
         }
         switch_1.$set(switch_1_changes);
-        let previous_block_index = current_block_type_index;
-        current_block_type_index = select_block_type(ctx2, dirty);
-        if (current_block_type_index === previous_block_index) {
-          if_blocks[current_block_type_index].p(ctx2, dirty);
+        if (current_block_type === (current_block_type = select_block_type(ctx2, dirty)) && if_block) {
+          if_block.p(ctx2, dirty);
         } else {
-          group_outros();
-          transition_out(if_blocks[previous_block_index], 1, 1, () => {
-            if_blocks[previous_block_index] = null;
-          });
-          check_outros();
-          if_block = if_blocks[current_block_type_index];
-          if (!if_block) {
-            if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
+          if_block.d(1);
+          if_block = current_block_type(ctx2);
+          if (if_block) {
             if_block.c();
-          } else {
-            if_block.p(ctx2, dirty);
+            if_block.m(div, null);
           }
-          transition_in(if_block, 1);
-          if_block.m(div, null);
         }
       },
       i(local) {
         if (current)
           return;
         transition_in(switch_1.$$.fragment, local);
-        transition_in(if_block);
         current = true;
       },
       o(local) {
         transition_out(switch_1.$$.fragment, local);
-        transition_out(if_block);
         current = false;
       },
       d(detaching) {
         if (detaching)
           detach(div);
         destroy_component(switch_1);
-        if_blocks[current_block_type_index].d();
+        if_block.d();
       }
     };
   }
   function instance14($$self, $$props, $$invalidate) {
     let $advancemode;
-    let $videohost;
     component_subscribe($$self, advancemode, ($$value) => $$invalidate(0, $advancemode = $$value));
-    component_subscribe($$self, videohost, ($$value) => $$invalidate(1, $videohost = $$value));
     function switch_1_value_binding(value) {
       $advancemode = value;
       advancemode.set($advancemode);
     }
-    function switch_1_value_binding_1(value) {
-      $videohost = value;
-      videohost.set($videohost);
-    }
-    return [$advancemode, $videohost, switch_1_value_binding, switch_1_value_binding_1];
+    return [$advancemode, switch_1_value_binding];
   }
   var About = class extends SvelteComponent {
     constructor(options) {
@@ -14022,7 +14059,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function instance15($$self, $$props, $$invalidate) {
-    let { ptk } = $$props;
+    let { ptk: ptk2 } = $$props;
     let { address } = $$props;
     let humanaddr = "", chunklines, ckid;
     let maxchunk = 0;
@@ -14030,8 +14067,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const addr = parseAddress(address2);
       const hl = addr.highlightline;
       const act = parseAction(addr.action);
-      const ckrange = ptk.rangeOfAddress(act[0].join("#"));
-      const range = ptk.rangeOfAddress(address2);
+      const ckrange = ptk2.rangeOfAddress(act[0].join("#"));
+      const range = ptk2.rangeOfAddress(address2);
       return {
         addr,
         act,
@@ -14043,12 +14080,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
     const getHumanAddress = async (address2) => {
       const { action, act, ckrange, hl } = actionOfAddress(address2);
-      const ck = ptk.defines.ck;
+      const ck = ptk2.defines.ck;
       const at = bsearchNumber(ck.linepos, ckrange[1]) - 1;
       maxchunk = parseInt(ck.fields.id.values[at]);
       ckid = parseInt(act[act.length - 1][1]);
       $$invalidate(0, humanaddr = styledNumber(ckid) + (hl ? hl : ""));
-      chunklines = await ptk.fetchAddress(action);
+      chunklines = await ptk2.fetchAddress(action);
     };
     const nextSentence = () => {
       let { addr, act, hl } = actionOfAddress(address);
@@ -14070,7 +14107,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       } else {
         if (ckid > 1) {
           action = act[0].join("#") + ".ck#" + (ckid - 1);
-          chunklines = await ptk.fetchAddress(action);
+          chunklines = await ptk2.fetchAddress(action);
           hl = chunklines.length - 1;
         }
       }
@@ -14078,13 +14115,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
     const gotofolio = () => {
       const { act, hl, range } = actionOfAddress(address);
-      const pb = ptk.defines.pb;
+      const pb = ptk2.defines.pb;
       const at = bsearchNumber(pb.linepos, range[0] - 1 + hl) - 1;
       activefolio.set(pb.fields.id.values[at]);
     };
     $$self.$$set = ($$props2) => {
       if ("ptk" in $$props2)
-        $$invalidate(5, ptk = $$props2.ptk);
+        $$invalidate(5, ptk2 = $$props2.ptk);
       if ("address" in $$props2)
         $$invalidate(4, address = $$props2.address);
     };
@@ -14095,7 +14132,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           getHumanAddress(address);
       }
     };
-    return [humanaddr, nextSentence, prevSentence, gotofolio, address, ptk];
+    return [humanaddr, nextSentence, prevSentence, gotofolio, address, ptk2];
   }
   var Sentencenav = class extends SvelteComponent {
     constructor(options) {
@@ -14265,11 +14302,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let _from;
     let _till;
     let lineoff;
-    let { start, ptk } = $$props;
+    let { start, ptk: ptk2 } = $$props;
     let sourcetexts = [];
     let { address } = $$props;
     const updateTranslation = async (address2) => {
-      $$invalidate(2, sourcetexts = await getParallelLines(ptk, start + lineoff, null, { remote: true, local: false }));
+      $$invalidate(2, sourcetexts = await getParallelLines(ptk2, start + lineoff, null, { remote: true, local: false }));
     };
     const puretext = (_text) => {
       const [text2] = parseOfftext(_text);
@@ -14283,7 +14320,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ("start" in $$props2)
         $$invalidate(4, start = $$props2.start);
       if ("ptk" in $$props2)
-        $$invalidate(1, ptk = $$props2.ptk);
+        $$invalidate(1, ptk2 = $$props2.ptk);
       if ("address" in $$props2)
         $$invalidate(0, address = $$props2.address);
     };
@@ -14291,7 +14328,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ($$self.$$.dirty & /*ptk, address*/
       3) {
         $:
-          $$invalidate(4, [start, end, _from, _till, lineoff] = ptk.rangeOfAddress(address), start);
+          $$invalidate(4, [start, end, _from, _till, lineoff] = ptk2.rangeOfAddress(address), start);
       }
       if ($$self.$$.dirty & /*address*/
       1) {
@@ -14299,7 +14336,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           updateTranslation(address);
       }
     };
-    return [address, ptk, sourcetexts, puretext, start, sentencenav_address_binding];
+    return [address, ptk2, sourcetexts, puretext, start, sentencenav_address_binding];
   }
   var Sourcetext = class extends SvelteComponent {
     constructor(options) {
@@ -14610,29 +14647,29 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let { closePopup = function() {
     } } = $$props;
     let { address } = $$props;
-    let { ptk } = $$props;
+    let { ptk: ptk2 } = $$props;
     let translations = [];
-    const getBookTitle = (ptk2, nbk) => {
-      const bk = ptk2.defines.bk;
+    const getBookTitle = (ptk3, nbk) => {
+      const bk = ptk3.defines.bk;
       const heading = bk.fields.heading.values[nbk];
       return heading;
     };
     const marktap = async (pb, line) => {
-      const pos = await folioPosFromLine(ptk, pb, line, $activebookid, $folioLines, $folioChars);
+      const pos = await folioPosFromLine(ptk2, pb, line, $activebookid, $folioLines, $folioChars);
       tapmark.set(pos);
     };
-    const goFolioByLine = (ptk2, line) => {
-      const pb = ptk2.defines.pb;
-      const folio = ptk2.defines.folio;
+    const goFolioByLine = (ptk3, line) => {
+      const pb = ptk3.defines.pb;
+      const folio = ptk3.defines.folio;
       if (!pb)
         return;
       const oldbook = $activebookid;
-      const pbat = ptk2.nearestTag(line, "pb") - 1;
-      const folioat = ptk2.nearestTag(line, "folio") - 1;
+      const pbat = ptk3.nearestTag(line, "pb") - 1;
+      const folioat = ptk3.nearestTag(line, "folio") - 1;
       const pbid = pb.fields.id.values[pbat];
       const newbook = folio.fields.id.values[folioat];
       activebookid.set(newbook);
-      activePtk.set(ptk2.name);
+      activePtk.set(ptk3.name);
       setTimeout(
         () => {
           activefolio.set(parseInt(pbid) - 1);
@@ -14642,8 +14679,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       );
       closePopup();
     };
-    const hasfolio = (ptk2, line) => {
-      const folioat = ptk2.nearestTag(line + 1, "folio");
+    const hasfolio = (ptk3, line) => {
+      const folioat = ptk3.nearestTag(line + 1, "folio");
       return folioat > -1;
     };
     const puretext = (_text) => {
@@ -14651,7 +14688,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       return text2;
     };
     const updateTranslation = async (address2) => {
-      $$invalidate(2, translations = await getParallelLines(ptk, start + lineoff, null, { local: true, remote: false }));
+      $$invalidate(2, translations = await getParallelLines(ptk2, start + lineoff, null, { local: true, remote: false }));
     };
     function sentencenav0_address_binding(value) {
       address = value;
@@ -14668,13 +14705,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ("address" in $$props2)
         $$invalidate(0, address = $$props2.address);
       if ("ptk" in $$props2)
-        $$invalidate(1, ptk = $$props2.ptk);
+        $$invalidate(1, ptk2 = $$props2.ptk);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*ptk, address*/
       3) {
         $:
-          [start, end, _from, _till, lineoff] = ptk.rangeOfAddress(address);
+          [start, end, _from, _till, lineoff] = ptk2.rangeOfAddress(address);
       }
       if ($$self.$$.dirty & /*address*/
       1) {
@@ -14684,7 +14721,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
     return [
       address,
-      ptk,
+      ptk2,
       translations,
       $activebookid,
       getBookTitle,
@@ -14835,11 +14872,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function instance18($$self, $$props, $$invalidate) {
-    let { ptk } = $$props;
+    let { ptk: ptk2 } = $$props;
     let { address } = $$props;
     let text2 = "";
     const updateVariorum = async (address2) => {
-      const r = ptk.defines.r;
+      const r = ptk2.defines.r;
       if (!r)
         return;
       const addr = parseAddress(address2);
@@ -14854,8 +14891,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           at++;
           to = r.linepos[at];
         }
-        await ptk.loadLines([[from, to + 1]]);
-        const lines = ptk.slice(from, to + 1);
+        await ptk2.loadLines([[from, to + 1]]);
+        const lines = ptk2.slice(from, to + 1);
         if (lines[lines.length - 1].indexOf("^ck"))
           lines.pop();
         if (lines.length) {
@@ -14874,7 +14911,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     }
     $$self.$$set = ($$props2) => {
       if ("ptk" in $$props2)
-        $$invalidate(1, ptk = $$props2.ptk);
+        $$invalidate(1, ptk2 = $$props2.ptk);
       if ("address" in $$props2)
         $$invalidate(0, address = $$props2.address);
     };
@@ -14885,7 +14922,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           updateVariorum(address);
       }
     };
-    return [address, ptk, text2, sentencenav0_address_binding, sentencenav1_address_binding];
+    return [address, ptk2, text2, sentencenav0_address_binding, sentencenav1_address_binding];
   }
   var Variorum = class extends SvelteComponent {
     constructor(options) {
@@ -14896,13 +14933,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var variorum_default = Variorum;
 
   // src/nav.js
-  var gofolioAt = async (ptk, at) => {
-    const ck = ptk.defines.ck;
-    const pb = ptk.defines.pb;
+  var gofolioAt = async (ptk2, at) => {
+    const ck = ptk2.defines.ck;
+    const pb = ptk2.defines.pb;
     const ckline = ck.linepos[at];
-    const pbtag = ptk.nearestTag(ckline + 1, "pb") - 1;
+    const pbtag = ptk2.nearestTag(ckline + 1, "pb") - 1;
     const pbid = pb.fields.id.values[pbtag];
-    await gofolio(ptk, pbid, ck.fields.id.values[at]);
+    await gofolio(ptk2, pbid, ck.fields.id.values[at]);
   };
   var loadBook = (bk, func) => {
     let timer = 0;
@@ -14921,11 +14958,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }, 500);
     }
   };
-  var gofolio = async (ptk, pbid, ck) => {
+  var gofolio = async (ptk2, pbid, ck) => {
     const newfolio = parseInt(pbid) - 1;
     activefolio.set(newfolio);
     if (ck) {
-      [foliotext, foliofrom] = await fetchFolioText(ptk, get_store_value(activebookid), newfolio + 1);
+      [foliotext, foliofrom] = await fetchFolioText(ptk2, get_store_value(activebookid), newfolio + 1);
       const fc = get_store_value(folioChars);
       const fl = get_store_value(folioLines);
       for (let i = 0; i < foliotext.length; i++) {
@@ -15179,7 +15216,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     component_subscribe($$self, favorites, ($$value) => $$invalidate(6, $favorites = $$value));
     component_subscribe($$self, activebookid, ($$value) => $$invalidate(9, $activebookid = $$value));
     let items = [], others = [];
-    let { ptk } = $$props;
+    let { ptk: ptk2 } = $$props;
     let { closePopup } = $$props;
     const loadfavorites = () => {
       const _favorites = $favorites;
@@ -15199,7 +15236,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $$invalidate(0, others = fromObj(_others, (a, b) => [a, b]));
     };
     const gofavorite = (pb) => {
-      gofolio(ptk, pb);
+      gofolio(ptk2, pb);
       closePopup();
     };
     const firstfavorite = (bk) => {
@@ -15213,14 +15250,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       closePopup();
       loadBook(bk, () => {
         const first = firstfavorite(bk);
-        gofolio(ptk, first + 1);
+        gofolio(ptk2, first + 1);
       });
     };
     const click_handler = (item) => gofavorite(item + 1);
     const click_handler_1 = (bk) => gootherfavorite(bk);
     $$self.$$set = ($$props2) => {
       if ("ptk" in $$props2)
-        $$invalidate(4, ptk = $$props2.ptk);
+        $$invalidate(4, ptk2 = $$props2.ptk);
       if ("closePopup" in $$props2)
         $$invalidate(5, closePopup = $$props2.closePopup);
     };
@@ -15236,7 +15273,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       items,
       gofavorite,
       gootherfavorite,
-      ptk,
+      ptk2,
       closePopup,
       $favorites,
       click_handler,
@@ -15840,7 +15877,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let $activebookid;
     component_subscribe($$self, activebookid, ($$value) => $$invalidate(6, $activebookid = $$value));
     let { closePopup } = $$props;
-    let { ptk } = $$props;
+    let { ptk: ptk2 } = $$props;
     let juans = [];
     let thejuan = [0, 0], currentjuan = "1";
     const loadJuan = () => {
@@ -15851,7 +15888,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         return;
       $$invalidate(1, currentjuan = m4[2]);
       thejuan[0] = parseInt(currentjuan);
-      const arrbkid = ptk.defines.bk.fields.id.values;
+      const arrbkid = ptk2.defines.bk.fields.id.values;
       for (let i = 0; i < arrbkid.length; i++) {
         if (arrbkid[i].startsWith(m4[1])) {
           juans.push(arrbkid[i].slice(m4[1].length));
@@ -15862,7 +15899,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const bkid = $activebookid;
       const m4 = bkid.match(/([a-z]+)(\d+$)/);
       loadBook(m4[1] + juan, function() {
-        gofolio(ptk, "1");
+        gofolio(ptk2, "1");
         closePopup();
       });
     };
@@ -15883,7 +15920,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ("closePopup" in $$props2)
         $$invalidate(4, closePopup = $$props2.closePopup);
       if ("ptk" in $$props2)
-        $$invalidate(5, ptk = $$props2.ptk);
+        $$invalidate(5, ptk2 = $$props2.ptk);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*$activebookid*/
@@ -15898,7 +15935,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       gojuan,
       gojuan2,
       closePopup,
-      ptk,
+      ptk2,
       $activebookid,
       func,
       click_handler
@@ -16169,13 +16206,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     component_subscribe($$self, activefolio, ($$value) => $$invalidate(12, $activefolio = $$value));
     component_subscribe($$self, maxfolio, ($$value) => $$invalidate(5, $maxfolio = $$value));
     let folio = [$activefolio];
-    let { ptk } = $$props;
+    let { ptk: ptk2 } = $$props;
     let { address } = $$props;
     let { closePopup } = $$props;
     const setFolio = async (e) => {
       const v = e.detail[0];
       activefolio.set(parseInt(v));
-      $$invalidate(8, address = "bk#" + $activebookid + ".ck#" + chunkOfFolio(ptk, $activebookid, v));
+      $$invalidate(8, address = "bk#" + $activebookid + ".ck#" + chunkOfFolio(ptk2, $activebookid, v));
     };
     let tocitems = [], cknow;
     const getTocItems = (address2) => {
@@ -16183,8 +16220,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if (!address2)
         return out;
       const m4 = address2.match(/(bk#?[a-z_\d]+)/);
-      const [from, to] = ptk.rangeOfAddress(m4[1]);
-      const ck = ptk.defines.ck;
+      const [from, to] = ptk2.rangeOfAddress(m4[1]);
+      const ck = ptk2.defines.ck;
       const at = bsearchNumber(ck.linepos, from);
       const at2 = bsearchNumber(ck.linepos, to);
       for (let i = at; i < at2; i++) {
@@ -16201,18 +16238,18 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if (m4)
         return m4[1];
     };
-    const gofolio2 = (ptk2, at) => {
-      gofolioAt(ptk2, at);
+    const gofolio2 = (ptk3, at) => {
+      gofolioAt(ptk3, at);
       closePopup();
     };
     function slider_value_binding(value) {
       folio = value;
       $$invalidate(2, folio);
     }
-    const click_handler = (item) => gofolio2(ptk, item.at);
+    const click_handler = (item) => gofolio2(ptk2, item.at);
     $$self.$$set = ($$props2) => {
       if ("ptk" in $$props2)
-        $$invalidate(0, ptk = $$props2.ptk);
+        $$invalidate(0, ptk2 = $$props2.ptk);
       if ("address" in $$props2)
         $$invalidate(8, address = $$props2.address);
       if ("closePopup" in $$props2)
@@ -16231,7 +16268,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
     return [
-      ptk,
+      ptk2,
       closePopup,
       folio,
       tocitems,
@@ -17257,10 +17294,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let { address = "" } = $$props;
     let { closePopup } = $$props;
     let thetab = "toc";
-    let ptk, entries = [];
+    let ptk2, entries = [];
     const onDict = async (t) => {
       const tap_at = t.indexOf("^");
-      $$invalidate(4, entries = ptk.columns.entries.keys.findMatches(t.replace("^", "")).map((it) => [Math.abs(it[0] - tap_at - 1), it[1], it[2]]));
+      $$invalidate(4, entries = ptk2.columns.entries.keys.findMatches(t.replace("^", "")).map((it) => [Math.abs(it[0] - tap_at - 1), it[1], it[2]]));
       entries.sort((a, b) => a[0] - b[0]);
       if (entries.length) {
         showdict = true;
@@ -17303,7 +17340,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ($$self.$$.dirty & /*$activePtk*/
       128) {
         $:
-          $$invalidate(3, ptk = usePtk($activePtk));
+          $$invalidate(3, ptk2 = usePtk($activePtk));
       }
       if ($$self.$$.dirty & /*tofind*/
       64) {
@@ -17315,7 +17352,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       address,
       closePopup,
       thetab,
-      ptk,
+      ptk2,
       entries,
       $advancemode,
       tofind,
@@ -17344,46 +17381,58 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
 
   // src/player.svelte
   function create_fragment23(ctx) {
-    let div;
+    let div0;
+    let t;
+    let div1;
     return {
       c() {
-        div = element("div");
-        attr(div, "id", "player");
-        attr(div, "class", "svelte-1pgr23t");
+        div0 = element("div");
+        t = space();
+        div1 = element("div");
+        attr(div0, "id", "ytplayer");
+        attr(div0, "class", "svelte-1g4z516");
+        attr(div1, "id", "qqplayer");
+        attr(div1, "class", "svelte-1g4z516");
       },
       m(target, anchor) {
-        insert(target, div, anchor);
+        insert(target, div0, anchor);
+        insert(target, t, anchor);
+        insert(target, div1, anchor);
       },
       p: noop,
       i: noop,
       o: noop,
       d(detaching) {
         if (detaching)
-          detach(div);
+          detach(div0);
+        if (detaching)
+          detach(t);
+        if (detaching)
+          detach(div1);
       }
     };
   }
   function instance24($$self, $$props, $$invalidate) {
     let $videoid;
     let $activefolio;
-    let $player;
     let $folioLines;
     let $activebookid;
     let $playing;
     let $continueplay;
-    let $videohost;
+    let $qqplayer;
+    let $ytplayer;
     component_subscribe($$self, videoid, ($$value) => $$invalidate(0, $videoid = $$value));
     component_subscribe($$self, activefolio, ($$value) => $$invalidate(1, $activefolio = $$value));
-    component_subscribe($$self, player, ($$value) => $$invalidate(4, $player = $$value));
-    component_subscribe($$self, folioLines, ($$value) => $$invalidate(5, $folioLines = $$value));
-    component_subscribe($$self, activebookid, ($$value) => $$invalidate(6, $activebookid = $$value));
-    component_subscribe($$self, playing, ($$value) => $$invalidate(7, $playing = $$value));
-    component_subscribe($$self, continueplay, ($$value) => $$invalidate(8, $continueplay = $$value));
-    component_subscribe($$self, videohost, ($$value) => $$invalidate(9, $videohost = $$value));
-    let plyr, timer;
+    component_subscribe($$self, folioLines, ($$value) => $$invalidate(3, $folioLines = $$value));
+    component_subscribe($$self, activebookid, ($$value) => $$invalidate(4, $activebookid = $$value));
+    component_subscribe($$self, playing, ($$value) => $$invalidate(5, $playing = $$value));
+    component_subscribe($$self, continueplay, ($$value) => $$invalidate(6, $continueplay = $$value));
+    component_subscribe($$self, qqplayer, ($$value) => $$invalidate(7, $qqplayer = $$value));
+    component_subscribe($$self, ytplayer, ($$value) => $$invalidate(8, $ytplayer = $$value));
+    let timer;
     const createYoutubePlayer = () => {
-      plyr = new YT.Player(
-        "player",
+      const plyr = new YT.Player(
+        "ytplayer",
         {
           height: "1px",
           // 高度預設值為390，css會調成responsive
@@ -17402,11 +17451,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           }
         }
       );
-      player.set(plyr);
+      ytplayer.set(plyr);
     };
     const createTencentPlayer = () => {
-      plyr = new Txplayer({
-        containerId: "player",
+      const plyr = new Txplayer({
+        containerId: "qqplayer",
         vid: "",
         //make it invalid, otherwise might play ads,
         width: "1px",
@@ -17415,18 +17464,18 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       });
       plyr.on("ready", onPlayerReady);
       plyr.on("playStateChange", onPlayerStateChange);
-      player.set(plyr);
+      qqplayer.set(plyr);
     };
     onMount(() => {
       timer = setInterval(
         () => {
           if (typeof Txplayer !== "undefined") {
-            console.log("load tencent");
+            console.log("qq player ok");
             clearInterval(timer);
             createTencentPlayer();
           }
           if (typeof YT !== "undefined") {
-            console.log("load youtube");
+            console.log("youtube player ok");
             clearInterval(timer);
             createYoutubePlayer();
           }
@@ -17435,6 +17484,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       );
     });
     function onPlayerStateChange(e) {
+      console.log("player state change");
+      if (e.data == -1 || e.data == 5)
+        return;
       const obj = findByVideoId($videoid);
       if (!obj)
         return;
@@ -17446,29 +17498,35 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       playing.set(e.data == 1 || e.state == 1);
     }
     function onPlayerReady(e) {
-      plyr.playVideo ? plyr.playVideo() : plyr.play && plyr.play();
+      console.log("player ready");
+      const plyr = player();
+      plyr?.playVideo ? plyr.playVideo() : plyr?.play && plyr.play();
     }
     const loadVideo = () => {
-      const obj = findByVideoId($videoid);
-      if (!obj) {
-        stopVideo();
+      const vid = $videoid;
+      const obj = findByVideoId(vid);
+      stopVideo();
+      if (!obj || !vid)
         return;
-      }
       const { timestamp, bookid } = obj;
       if (bookid !== $activebookid) {
         stopVideo();
       } else {
+        console.log("load", vid);
         activefolio.set(0);
         const start = timestamp && timestamp[0] || 0;
-        if ($videohost == "youtube") {
-          $player?.loadVideoById({
-            "videoId": $videoid,
+        const host = mediabyid(vid)?.videohost;
+        console.log(host, player(vid));
+        if (host == "youtube") {
+          $ytplayer.loadVideoById({
+            "videoId": vid,
             suggestedQuality: "low",
+            autoplay: true,
             startSeconds: start
           });
         } else {
-          $player?.play({
-            vid: $videoid,
+          $qqplayer.play({
+            vid,
             autoplay: true,
             playStartTime: start
           });
@@ -17486,7 +17544,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         return;
       const line = parseInt(folio) * $folioLines;
       const t = timestamp[line];
-      $player?.seekTo(t);
+      player(videoid2)?.seekTo(t);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*$activefolio, $videoid*/
@@ -18225,27 +18283,26 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   }
   var idleinterval = 2;
   function instance26($$self, $$props, $$invalidate) {
-    let $videohost;
     let $newbie;
     let $idlecount;
     let $advancemode;
     let $activebookid;
     let $showpaiji;
     let $playing;
-    component_subscribe($$self, videohost, ($$value) => $$invalidate(12, $videohost = $$value));
-    component_subscribe($$self, newbie, ($$value) => $$invalidate(14, $newbie = $$value));
-    component_subscribe($$self, idlecount, ($$value) => $$invalidate(15, $idlecount = $$value));
-    component_subscribe($$self, advancemode, ($$value) => $$invalidate(16, $advancemode = $$value));
+    component_subscribe($$self, newbie, ($$value) => $$invalidate(13, $newbie = $$value));
+    component_subscribe($$self, idlecount, ($$value) => $$invalidate(14, $idlecount = $$value));
+    component_subscribe($$self, advancemode, ($$value) => $$invalidate(15, $advancemode = $$value));
     component_subscribe($$self, activebookid, ($$value) => $$invalidate(6, $activebookid = $$value));
     component_subscribe($$self, showpaiji, ($$value) => $$invalidate(7, $showpaiji = $$value));
     component_subscribe($$self, playing, ($$value) => $$invalidate(8, $playing = $$value));
-    let ptk;
+    let ptk2;
     registerServiceWorker();
     isAndroid.set(!!navigator.userAgent.match(/Android/i));
     let loaded = false, timer;
     onDestroy(() => clearInterval(timer));
     onMount(async () => {
-      $$invalidate(0, ptk = await openPtk("dc"));
+      $$invalidate(0, ptk2 = await openPtk("dc"));
+      setTimestampPtk(ptk2);
       await openPtk("dc_sanskrit");
       $$invalidate(1, loaded = true);
       timer = setInterval(
@@ -18258,12 +18315,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         idleinterval * 1e3
       );
     });
-    const loadPlayer = async () => {
-      if ($videohost == "youtube") {
-        await loadScript("https://www.youtube.com/iframe_api");
-      } else if ($videohost == "tencent") {
-        await loadScript("http://vm.gtimg.cn/tencentvideo/txp/js/txplayer.js");
-      }
+    const loadPlayer = () => {
+      loadScript("http://vm.gtimg.cn/tencentvideo/txp/js/txplayer.js");
+      loadScript("https://www.youtube.com/iframe_api");
     };
     let showdict2 = false, shownewbie = $newbie == "on", address = "", tofind = "";
     const closePopup = () => {
@@ -18277,17 +18331,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $$invalidate(2, showdict2 = true);
       $$invalidate(5, tofind = t);
       $$invalidate(4, address = _address);
-      $$invalidate(0, ptk = usePtk(ptkname));
+      $$invalidate(0, ptk2 = usePtk(ptkname));
     };
-    $$self.$$.update = () => {
-      if ($$self.$$.dirty & /*$videohost*/
-      4096) {
-        $:
-          loadPlayer($videohost);
-      }
-    };
+    $:
+      loadPlayer();
     return [
-      ptk,
+      ptk2,
       loaded,
       showdict2,
       shownewbie,
@@ -18298,8 +18347,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $playing,
       closePopup,
       onMainmenu,
-      onTapText,
-      $videohost
+      onTapText
     ];
   }
   var App = class extends SvelteComponent {

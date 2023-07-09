@@ -297,7 +297,12 @@ input.svelte-1nnnvg0 {
 }
 
 /* fakecss:D:/2023/swipegallery/src/player.esbuild-svelte-fake-css */
-#player.svelte-1pgr23t {
+#ytplayer.svelte-1g4z516 {
+  position: absolute;
+  right: -1px;
+  height: 1px;
+}
+#qqplayer.svelte-1g4z516 {
   position: absolute;
   right: -1px;
   height: 1px;
