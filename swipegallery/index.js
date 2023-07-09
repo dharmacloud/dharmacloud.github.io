@@ -12622,14 +12622,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function instance12($$self, $$props, $$invalidate) {
-    let $videoid;
     let $activebookid;
+    let $videoid;
     let $remainrollback;
     let $qqplayer;
     let $ytplayer;
     let $mediaurls;
-    component_subscribe($$self, videoid, ($$value) => $$invalidate(0, $videoid = $$value));
     component_subscribe($$self, activebookid, ($$value) => $$invalidate(14, $activebookid = $$value));
+    component_subscribe($$self, videoid, ($$value) => $$invalidate(0, $videoid = $$value));
     component_subscribe($$self, remainrollback, ($$value) => $$invalidate(21, $remainrollback = $$value));
     component_subscribe($$self, qqplayer, ($$value) => $$invalidate(4, $qqplayer = $$value));
     component_subscribe($$self, ytplayer, ($$value) => $$invalidate(5, $ytplayer = $$value));
@@ -12730,11 +12730,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       16384) {
         $:
           mediaurls.set(getAudioList($activebookid));
-      }
-      if ($$self.$$.dirty & /*$videoid*/
-      1) {
-        $:
-          console.log("change ", $videoid);
       }
     };
     return [
@@ -14969,6 +14964,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         const at2 = foliotext[i].indexOf("^ck" + ck);
         if (~at2) {
           const r = newfolio * fl * fc + i * fc + concreateLength(foliotext[i].slice(0, at2));
+          console.log(r);
           tapmark.set(r);
           break;
         }
