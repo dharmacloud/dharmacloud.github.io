@@ -7391,8 +7391,12 @@
 
   // ../ptk/basket/folio.ts
   var VALIDPUNCS = "\u300C\u300D\u300E\u300F\u3002\uFF0C\uFF1B\uFF1A\u3001\uFF01\uFF1F";
-  var fetchFolioText = async (ptk2, bk, pb) => {
-    const [from, to] = ptk2.rangeOfAddress("bk#" + bk + (pb ? ".pb#" + pb : ""));
+  var fetchFolioText = async (ptk2, bkfolio, pb) => {
+    let bk = "", folio = bkfolio;
+    if (bkfolio.match(/\d$/)) {
+      bk = bkfolio.replace(/\d+$/g, "");
+    }
+    const [from, to] = ptk2.rangeOfAddress((bk ? "bk#" + bk + "." : "") + ("folio#" + folio) + (pb ? ".pb#" + pb : ""));
     if (from == to)
       return ["", from, to];
     await ptk2.loadLines([from, to + 1]);
@@ -7825,7 +7829,6 @@
       activeid == bookid && out.push({ vid, performer, bookid, timestamp, videohost });
     }
     out.sort((a, b) => a.performer == b.performer ? 0 : a.performer < b.performer ? -1 : 1);
-    console.log(activeid, out);
     return out;
   };
 
@@ -9339,1982 +9342,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
 </svg>
 `;
 
-  // src/swipezipimage.svelte
-  function get_each_context4(ctx, list, i) {
-    const child_ctx = ctx.slice();
-    child_ctx[39] = list[i];
-    child_ctx[41] = i;
-    return child_ctx;
-  }
-  function create_else_block(ctx) {
-    let div;
-    return {
-      c() {
-        div = element("div");
-        attr(div, "class", "message svelte-1bsw8ig");
-      },
-      m(target, anchor) {
-        insert(target, div, anchor);
-        div.innerHTML = rotatingwheel;
-      },
-      p: noop,
-      i: noop,
-      o: noop,
-      d(detaching) {
-        if (detaching)
-          detach(div);
-      }
-    };
-  }
-  function create_if_block_5(ctx) {
-    let div;
-    let swipe;
-    let current;
-    let mounted;
-    let dispose;
-    const swipe_spread_levels = [
-      /*swipeConfig*/
-      ctx[20],
-      { defaultIndex: (
-        /*defaultIndex*/
-        ctx[7]
-      ) }
-    ];
-    let swipe_props = {
-      $$slots: { default: [create_default_slot] },
-      $$scope: { ctx }
-    };
-    for (let i = 0; i < swipe_spread_levels.length; i += 1) {
-      swipe_props = assign(swipe_props, swipe_spread_levels[i]);
-    }
-    swipe = new swipe_default({ props: swipe_props });
-    ctx[29](swipe);
-    swipe.$on(
-      "click",
-      /*onclick*/
-      ctx[24]
-    );
-    swipe.$on(
-      "start",
-      /*swipeStart*/
-      ctx[21]
-    );
-    swipe.$on(
-      "change",
-      /*swipeChanged*/
-      ctx[22]
-    );
-    return {
-      c() {
-        div = element("div");
-        create_component(swipe.$$.fragment);
-        attr(div, "class", "swipe-holder svelte-1bsw8ig");
-      },
-      m(target, anchor) {
-        insert(target, div, anchor);
-        mount_component(swipe, div, null);
-        current = true;
-        if (!mounted) {
-          dispose = listen(
-            div,
-            "wheel",
-            /*mousewheel*/
-            ctx[23]
-          );
-          mounted = true;
-        }
-      },
-      p(ctx2, dirty) {
-        const swipe_changes = dirty[0] & /*swipeConfig, defaultIndex*/
-        1048704 ? get_spread_update(swipe_spread_levels, [
-          dirty[0] & /*swipeConfig*/
-          1048576 && get_spread_object(
-            /*swipeConfig*/
-            ctx2[20]
-          ),
-          dirty[0] & /*defaultIndex*/
-          128 && { defaultIndex: (
-            /*defaultIndex*/
-            ctx2[7]
-          ) }
-        ]) : {};
-        if (dirty[1] & /*$$scope*/
-        2048) {
-          swipe_changes.$$scope = { dirty, ctx: ctx2 };
-        }
-        swipe.$set(swipe_changes);
-      },
-      i(local) {
-        if (current)
-          return;
-        transition_in(swipe.$$.fragment, local);
-        current = true;
-      },
-      o(local) {
-        transition_out(swipe.$$.fragment, local);
-        current = false;
-      },
-      d(detaching) {
-        if (detaching)
-          detach(div);
-        ctx[29](null);
-        destroy_component(swipe);
-        mounted = false;
-        dispose();
-      }
-    };
-  }
-  function create_default_slot_1(ctx) {
-    let img;
-    let img_src_value;
-    return {
-      c() {
-        img = element("img");
-        attr(img, "alt", "no");
-        attr(img, "class", "swipe svelte-1bsw8ig");
-        if (!src_url_equal(img.src, img_src_value = /*images*/
-        ctx[18][
-          /*images*/
-          ctx[18].length - /*idx*/
-          ctx[41] - 1
-        ]))
-          attr(img, "src", img_src_value);
-      },
-      m(target, anchor) {
-        insert(target, img, anchor);
-      },
-      p: noop,
-      d(detaching) {
-        if (detaching)
-          detach(img);
-      }
-    };
-  }
-  function create_each_block4(ctx) {
-    let swipeitem;
-    let current;
-    swipeitem = new swipeitem_default({
-      props: {
-        $$slots: { default: [create_default_slot_1] },
-        $$scope: { ctx }
-      }
-    });
-    return {
-      c() {
-        create_component(swipeitem.$$.fragment);
-      },
-      m(target, anchor) {
-        mount_component(swipeitem, target, anchor);
-        current = true;
-      },
-      p(ctx2, dirty) {
-        const swipeitem_changes = {};
-        if (dirty[1] & /*$$scope*/
-        2048) {
-          swipeitem_changes.$$scope = { dirty, ctx: ctx2 };
-        }
-        swipeitem.$set(swipeitem_changes);
-      },
-      i(local) {
-        if (current)
-          return;
-        transition_in(swipeitem.$$.fragment, local);
-        current = true;
-      },
-      o(local) {
-        transition_out(swipeitem.$$.fragment, local);
-        current = false;
-      },
-      d(detaching) {
-        destroy_component(swipeitem, detaching);
-      }
-    };
-  }
-  function create_default_slot(ctx) {
-    let each_1_anchor;
-    let current;
-    let each_value = (
-      /*images*/
-      ctx[18]
-    );
-    let each_blocks = [];
-    for (let i = 0; i < each_value.length; i += 1) {
-      each_blocks[i] = create_each_block4(get_each_context4(ctx, each_value, i));
-    }
-    const out = (i) => transition_out(each_blocks[i], 1, 1, () => {
-      each_blocks[i] = null;
-    });
-    return {
-      c() {
-        for (let i = 0; i < each_blocks.length; i += 1) {
-          each_blocks[i].c();
-        }
-        each_1_anchor = empty();
-      },
-      m(target, anchor) {
-        for (let i = 0; i < each_blocks.length; i += 1) {
-          if (each_blocks[i]) {
-            each_blocks[i].m(target, anchor);
-          }
-        }
-        insert(target, each_1_anchor, anchor);
-        current = true;
-      },
-      p(ctx2, dirty) {
-        if (dirty[0] & /*images*/
-        262144) {
-          each_value = /*images*/
-          ctx2[18];
-          let i;
-          for (i = 0; i < each_value.length; i += 1) {
-            const child_ctx = get_each_context4(ctx2, each_value, i);
-            if (each_blocks[i]) {
-              each_blocks[i].p(child_ctx, dirty);
-              transition_in(each_blocks[i], 1);
-            } else {
-              each_blocks[i] = create_each_block4(child_ctx);
-              each_blocks[i].c();
-              transition_in(each_blocks[i], 1);
-              each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
-            }
-          }
-          group_outros();
-          for (i = each_value.length; i < each_blocks.length; i += 1) {
-            out(i);
-          }
-          check_outros();
-        }
-      },
-      i(local) {
-        if (current)
-          return;
-        for (let i = 0; i < each_value.length; i += 1) {
-          transition_in(each_blocks[i]);
-        }
-        current = true;
-      },
-      o(local) {
-        each_blocks = each_blocks.filter(Boolean);
-        for (let i = 0; i < each_blocks.length; i += 1) {
-          transition_out(each_blocks[i]);
-        }
-        current = false;
-      },
-      d(detaching) {
-        destroy_each(each_blocks, detaching);
-        if (detaching)
-          detach(each_1_anchor);
-      }
-    };
-  }
-  function create_if_block_4(ctx) {
-    let span;
-    let t_value = (
-      /*$videoid*/
-      ctx[13] ? "\u23F9" : "\u23F5"
-    );
-    let t;
-    let mounted;
-    let dispose;
-    return {
-      c() {
-        span = element("span");
-        t = text(t_value);
-        attr(span, "class", "playbtn");
-      },
-      m(target, anchor) {
-        insert(target, span, anchor);
-        append(span, t);
-        if (!mounted) {
-          dispose = listen(
-            span,
-            "click",
-            /*toggleplaybtn*/
-            ctx[26]
-          );
-          mounted = true;
-        }
-      },
-      p(ctx2, dirty) {
-        if (dirty[0] & /*$videoid*/
-        8192 && t_value !== (t_value = /*$videoid*/
-        ctx2[13] ? "\u23F9" : "\u23F5"))
-          set_data(t, t_value);
-      },
-      d(detaching) {
-        if (detaching)
-          detach(span);
-        mounted = false;
-        dispose();
-      }
-    };
-  }
-  function create_if_block_3(ctx) {
-    let span;
-    let t_value = (
-      /*$idlecount*/
-      (ctx[16] >= idletime - 15 ? idletime - /*$idlecount*/
-      ctx[16] : "") + ""
-    );
-    let t;
-    return {
-      c() {
-        span = element("span");
-        t = text(t_value);
-        attr(span, "class", "idletime");
-      },
-      m(target, anchor) {
-        insert(target, span, anchor);
-        append(span, t);
-      },
-      p(ctx2, dirty) {
-        if (dirty[0] & /*$idlecount*/
-        65536 && t_value !== (t_value = /*$idlecount*/
-        (ctx2[16] >= idletime - 15 ? idletime - /*$idlecount*/
-        ctx2[16] : "") + ""))
-          set_data(t, t_value);
-      },
-      d(detaching) {
-        if (detaching)
-          detach(span);
-      }
-    };
-  }
-  function create_if_block_2(ctx) {
-    let span;
-    let t_value = (
-      /*$remainrollback*/
-      (ctx[15] > 0 ? (
-        /*$remainrollback*/
-        ctx[15]
-      ) : "") + ""
-    );
-    let t;
-    return {
-      c() {
-        span = element("span");
-        t = text(t_value);
-        attr(span, "class", "remainrollback");
-      },
-      m(target, anchor) {
-        insert(target, span, anchor);
-        append(span, t);
-      },
-      p(ctx2, dirty) {
-        if (dirty[0] & /*$remainrollback*/
-        32768 && t_value !== (t_value = /*$remainrollback*/
-        (ctx2[15] > 0 ? (
-          /*$remainrollback*/
-          ctx2[15]
-        ) : "") + ""))
-          set_data(t, t_value);
-      },
-      d(detaching) {
-        if (detaching)
-          detach(span);
-      }
-    };
-  }
-  function create_if_block_1(ctx) {
-    let tapmark_1;
-    let current;
-    tapmark_1 = new tapmark_default({
-      props: {
-        mark: (
-          /*$tapmark*/
-          ctx[17]
-        ),
-        pb: (
-          /*$activepb*/
-          ctx[1]
-        ),
-        folioChars: (
-          /*$folioChars*/
-          ctx[10]
-        ),
-        folioLines: folioLines(),
-        frame: (
-          /*imageFrame*/
-          ctx[19]()
-        )
-      }
-    });
-    return {
-      c() {
-        create_component(tapmark_1.$$.fragment);
-      },
-      m(target, anchor) {
-        mount_component(tapmark_1, target, anchor);
-        current = true;
-      },
-      p(ctx2, dirty) {
-        const tapmark_1_changes = {};
-        if (dirty[0] & /*$tapmark*/
-        131072)
-          tapmark_1_changes.mark = /*$tapmark*/
-          ctx2[17];
-        if (dirty[0] & /*$activepb*/
-        2)
-          tapmark_1_changes.pb = /*$activepb*/
-          ctx2[1];
-        if (dirty[0] & /*$folioChars*/
-        1024)
-          tapmark_1_changes.folioChars = /*$folioChars*/
-          ctx2[10];
-        tapmark_1.$set(tapmark_1_changes);
-      },
-      i(local) {
-        if (current)
-          return;
-        transition_in(tapmark_1.$$.fragment, local);
-        current = true;
-      },
-      o(local) {
-        transition_out(tapmark_1.$$.fragment, local);
-        current = false;
-      },
-      d(detaching) {
-        destroy_component(tapmark_1, detaching);
-      }
-    };
-  }
-  function create_key_block_1(ctx) {
-    let if_block_anchor;
-    let current;
-    let if_block = !/*hidepunc*/
-    ctx[5] && !/*$showpaiji*/
-    ctx[11] && create_if_block_1(ctx);
-    return {
-      c() {
-        if (if_block)
-          if_block.c();
-        if_block_anchor = empty();
-      },
-      m(target, anchor) {
-        if (if_block)
-          if_block.m(target, anchor);
-        insert(target, if_block_anchor, anchor);
-        current = true;
-      },
-      p(ctx2, dirty) {
-        if (!/*hidepunc*/
-        ctx2[5] && !/*$showpaiji*/
-        ctx2[11]) {
-          if (if_block) {
-            if_block.p(ctx2, dirty);
-            if (dirty[0] & /*hidepunc, $showpaiji*/
-            2080) {
-              transition_in(if_block, 1);
-            }
-          } else {
-            if_block = create_if_block_1(ctx2);
-            if_block.c();
-            transition_in(if_block, 1);
-            if_block.m(if_block_anchor.parentNode, if_block_anchor);
-          }
-        } else if (if_block) {
-          group_outros();
-          transition_out(if_block, 1, 1, () => {
-            if_block = null;
-          });
-          check_outros();
-        }
-      },
-      i(local) {
-        if (current)
-          return;
-        transition_in(if_block);
-        current = true;
-      },
-      o(local) {
-        transition_out(if_block);
-        current = false;
-      },
-      d(detaching) {
-        if (if_block)
-          if_block.d(detaching);
-        if (detaching)
-          detach(if_block_anchor);
-      }
-    };
-  }
-  function create_if_block3(ctx) {
-    let punclayer;
-    let t;
-    let transcriptlayer;
-    let current;
-    punclayer = new punclayer_default({
-      props: {
-        frame: (
-          /*imageFrame*/
-          ctx[19]()
-        ),
-        folioChars: (
-          /*$folioChars*/
-          ctx[10]
-        ),
-        folioLines: folioLines(),
-        puncs: (
-          /*puncs*/
-          ctx[3]
-        )
-      }
-    });
-    transcriptlayer = new transcriptlayer_default({
-      props: {
-        frame: (
-          /*imageFrame*/
-          ctx[19]()
-        ),
-        totalpages: (
-          /*totalpages*/
-          ctx[0]
-        ),
-        folioLines: folioLines(),
-        swiper: (
-          /*swiper*/
-          ctx[6]
-        ),
-        foliotext: (
-          /*foliotext*/
-          ctx[2]
-        )
-      }
-    });
-    return {
-      c() {
-        create_component(punclayer.$$.fragment);
-        t = space();
-        create_component(transcriptlayer.$$.fragment);
-      },
-      m(target, anchor) {
-        mount_component(punclayer, target, anchor);
-        insert(target, t, anchor);
-        mount_component(transcriptlayer, target, anchor);
-        current = true;
-      },
-      p(ctx2, dirty) {
-        const punclayer_changes = {};
-        if (dirty[0] & /*$folioChars*/
-        1024)
-          punclayer_changes.folioChars = /*$folioChars*/
-          ctx2[10];
-        if (dirty[0] & /*puncs*/
-        8)
-          punclayer_changes.puncs = /*puncs*/
-          ctx2[3];
-        punclayer.$set(punclayer_changes);
-        const transcriptlayer_changes = {};
-        if (dirty[0] & /*totalpages*/
-        1)
-          transcriptlayer_changes.totalpages = /*totalpages*/
-          ctx2[0];
-        if (dirty[0] & /*swiper*/
-        64)
-          transcriptlayer_changes.swiper = /*swiper*/
-          ctx2[6];
-        if (dirty[0] & /*foliotext*/
-        4)
-          transcriptlayer_changes.foliotext = /*foliotext*/
-          ctx2[2];
-        transcriptlayer.$set(transcriptlayer_changes);
-      },
-      i(local) {
-        if (current)
-          return;
-        transition_in(punclayer.$$.fragment, local);
-        transition_in(transcriptlayer.$$.fragment, local);
-        current = true;
-      },
-      o(local) {
-        transition_out(punclayer.$$.fragment, local);
-        transition_out(transcriptlayer.$$.fragment, local);
-        current = false;
-      },
-      d(detaching) {
-        destroy_component(punclayer, detaching);
-        if (detaching)
-          detach(t);
-        destroy_component(transcriptlayer, detaching);
-      }
-    };
-  }
-  function create_key_block2(ctx) {
-    let if_block_anchor;
-    let current;
-    let if_block = !/*hidepunc*/
-    ctx[5] && create_if_block3(ctx);
-    return {
-      c() {
-        if (if_block)
-          if_block.c();
-        if_block_anchor = empty();
-      },
-      m(target, anchor) {
-        if (if_block)
-          if_block.m(target, anchor);
-        insert(target, if_block_anchor, anchor);
-        current = true;
-      },
-      p(ctx2, dirty) {
-        if (!/*hidepunc*/
-        ctx2[5]) {
-          if (if_block) {
-            if_block.p(ctx2, dirty);
-            if (dirty[0] & /*hidepunc*/
-            32) {
-              transition_in(if_block, 1);
-            }
-          } else {
-            if_block = create_if_block3(ctx2);
-            if_block.c();
-            transition_in(if_block, 1);
-            if_block.m(if_block_anchor.parentNode, if_block_anchor);
-          }
-        } else if (if_block) {
-          group_outros();
-          transition_out(if_block, 1, 1, () => {
-            if_block = null;
-          });
-          check_outros();
-        }
-      },
-      i(local) {
-        if (current)
-          return;
-        transition_in(if_block);
-        current = true;
-      },
-      o(local) {
-        transition_out(if_block);
-        current = false;
-      },
-      d(detaching) {
-        if (if_block)
-          if_block.d(detaching);
-        if (detaching)
-          detach(if_block_anchor);
-      }
-    };
-  }
-  function create_fragment6(ctx) {
-    let current_block_type_index;
-    let if_block0;
-    let t0;
-    let span0;
-    let t1_value = (
-      /*$favorites*/
-      ctx[9][
-        /*$activefolioid*/
-        ctx[8]
-      ]?.[
-        /*$activepb*/
-        ctx[1]
-      ] ? "\u2665" : "\u2661"
-    );
-    let t1;
-    let t2;
-    let t3;
-    let span1;
-    let t4_value = (
-      /*totalpages*/
-      ctx[0] - /*defaultIndex*/
-      ctx[7] + ""
-    );
-    let t4;
-    let t5;
-    let t6;
-    let previous_key = (
-      /*$tapmark*/
-      ctx[17] + /*$activepb*/
-      ctx[1]
-    );
-    let t7;
-    let previous_key_1 = (
-      /*puncs*/
-      ctx[3]
-    );
-    let key_block1_anchor;
-    let current;
-    let mounted;
-    let dispose;
-    const if_block_creators = [create_if_block_5, create_else_block];
-    const if_blocks = [];
-    function select_block_type(ctx2, dirty) {
-      if (
-        /*ready*/
-        ctx2[4]
-      )
-        return 0;
-      return 1;
-    }
-    current_block_type_index = select_block_type(ctx, [-1, -1]);
-    if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-    let if_block1 = (
-      /*$ytplayer*/
-      ctx[12] && create_if_block_4(ctx)
-    );
-    function select_block_type_1(ctx2, dirty) {
-      if (
-        /*$playing*/
-        ctx2[14]
-      )
-        return create_if_block_2;
-      if (!/*$showpaiji*/
-      ctx2[11])
-        return create_if_block_3;
-    }
-    let current_block_type = select_block_type_1(ctx, [-1, -1]);
-    let if_block2 = current_block_type && current_block_type(ctx);
-    let key_block0 = create_key_block_1(ctx);
-    let key_block1 = create_key_block2(ctx);
-    return {
-      c() {
-        if_block0.c();
-        t0 = space();
-        span0 = element("span");
-        t1 = text(t1_value);
-        t2 = space();
-        if (if_block1)
-          if_block1.c();
-        t3 = space();
-        span1 = element("span");
-        t4 = text(t4_value);
-        t5 = space();
-        if (if_block2)
-          if_block2.c();
-        t6 = space();
-        key_block0.c();
-        t7 = space();
-        key_block1.c();
-        key_block1_anchor = empty();
-        attr(span0, "class", "favoritebtn");
-        attr(span1, "class", "pagenumber");
-      },
-      m(target, anchor) {
-        if_blocks[current_block_type_index].m(target, anchor);
-        insert(target, t0, anchor);
-        insert(target, span0, anchor);
-        append(span0, t1);
-        insert(target, t2, anchor);
-        if (if_block1)
-          if_block1.m(target, anchor);
-        insert(target, t3, anchor);
-        insert(target, span1, anchor);
-        append(span1, t4);
-        insert(target, t5, anchor);
-        if (if_block2)
-          if_block2.m(target, anchor);
-        insert(target, t6, anchor);
-        key_block0.m(target, anchor);
-        insert(target, t7, anchor);
-        key_block1.m(target, anchor);
-        insert(target, key_block1_anchor, anchor);
-        current = true;
-        if (!mounted) {
-          dispose = listen(
-            span0,
-            "click",
-            /*togglefavoritebtn*/
-            ctx[25]
-          );
-          mounted = true;
-        }
-      },
-      p(ctx2, dirty) {
-        let previous_block_index = current_block_type_index;
-        current_block_type_index = select_block_type(ctx2, dirty);
-        if (current_block_type_index === previous_block_index) {
-          if_blocks[current_block_type_index].p(ctx2, dirty);
-        } else {
-          group_outros();
-          transition_out(if_blocks[previous_block_index], 1, 1, () => {
-            if_blocks[previous_block_index] = null;
-          });
-          check_outros();
-          if_block0 = if_blocks[current_block_type_index];
-          if (!if_block0) {
-            if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
-            if_block0.c();
-          } else {
-            if_block0.p(ctx2, dirty);
-          }
-          transition_in(if_block0, 1);
-          if_block0.m(t0.parentNode, t0);
-        }
-        if ((!current || dirty[0] & /*$favorites, $activefolioid, $activepb*/
-        770) && t1_value !== (t1_value = /*$favorites*/
-        ctx2[9][
-          /*$activefolioid*/
-          ctx2[8]
-        ]?.[
-          /*$activepb*/
-          ctx2[1]
-        ] ? "\u2665" : "\u2661"))
-          set_data(t1, t1_value);
-        if (
-          /*$ytplayer*/
-          ctx2[12]
-        ) {
-          if (if_block1) {
-            if_block1.p(ctx2, dirty);
-          } else {
-            if_block1 = create_if_block_4(ctx2);
-            if_block1.c();
-            if_block1.m(t3.parentNode, t3);
-          }
-        } else if (if_block1) {
-          if_block1.d(1);
-          if_block1 = null;
-        }
-        if ((!current || dirty[0] & /*totalpages, defaultIndex*/
-        129) && t4_value !== (t4_value = /*totalpages*/
-        ctx2[0] - /*defaultIndex*/
-        ctx2[7] + ""))
-          set_data(t4, t4_value);
-        if (current_block_type === (current_block_type = select_block_type_1(ctx2, dirty)) && if_block2) {
-          if_block2.p(ctx2, dirty);
-        } else {
-          if (if_block2)
-            if_block2.d(1);
-          if_block2 = current_block_type && current_block_type(ctx2);
-          if (if_block2) {
-            if_block2.c();
-            if_block2.m(t6.parentNode, t6);
-          }
-        }
-        if (dirty[0] & /*$tapmark, $activepb*/
-        131074 && safe_not_equal(previous_key, previous_key = /*$tapmark*/
-        ctx2[17] + /*$activepb*/
-        ctx2[1])) {
-          group_outros();
-          transition_out(key_block0, 1, 1, noop);
-          check_outros();
-          key_block0 = create_key_block_1(ctx2);
-          key_block0.c();
-          transition_in(key_block0, 1);
-          key_block0.m(t7.parentNode, t7);
-        } else {
-          key_block0.p(ctx2, dirty);
-        }
-        if (dirty[0] & /*puncs*/
-        8 && safe_not_equal(previous_key_1, previous_key_1 = /*puncs*/
-        ctx2[3])) {
-          group_outros();
-          transition_out(key_block1, 1, 1, noop);
-          check_outros();
-          key_block1 = create_key_block2(ctx2);
-          key_block1.c();
-          transition_in(key_block1, 1);
-          key_block1.m(key_block1_anchor.parentNode, key_block1_anchor);
-        } else {
-          key_block1.p(ctx2, dirty);
-        }
-      },
-      i(local) {
-        if (current)
-          return;
-        transition_in(if_block0);
-        transition_in(key_block0);
-        transition_in(key_block1);
-        current = true;
-      },
-      o(local) {
-        transition_out(if_block0);
-        transition_out(key_block0);
-        transition_out(key_block1);
-        current = false;
-      },
-      d(detaching) {
-        if_blocks[current_block_type_index].d(detaching);
-        if (detaching)
-          detach(t0);
-        if (detaching)
-          detach(span0);
-        if (detaching)
-          detach(t2);
-        if (if_block1)
-          if_block1.d(detaching);
-        if (detaching)
-          detach(t3);
-        if (detaching)
-          detach(span1);
-        if (detaching)
-          detach(t5);
-        if (if_block2) {
-          if_block2.d(detaching);
-        }
-        if (detaching)
-          detach(t6);
-        key_block0.d(detaching);
-        if (detaching)
-          detach(t7);
-        if (detaching)
-          detach(key_block1_anchor);
-        key_block1.d(detaching);
-        mounted = false;
-        dispose();
-      }
-    };
-  }
-  function instance7($$self, $$props, $$invalidate) {
-    let $activepb;
-    let $activefolioid;
-    let $favorites;
-    let $activePtk;
-    let $folioChars;
-    let $showpaiji;
-    let $ytplayer;
-    let $videoid;
-    let $playing;
-    let $remainrollback;
-    let $idlecount;
-    let $tapmark;
-    component_subscribe($$self, activepb, ($$value) => $$invalidate(1, $activepb = $$value));
-    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(8, $activefolioid = $$value));
-    component_subscribe($$self, favorites, ($$value) => $$invalidate(9, $favorites = $$value));
-    component_subscribe($$self, activePtk, ($$value) => $$invalidate(32, $activePtk = $$value));
-    component_subscribe($$self, folioChars, ($$value) => $$invalidate(10, $folioChars = $$value));
-    component_subscribe($$self, showpaiji, ($$value) => $$invalidate(11, $showpaiji = $$value));
-    component_subscribe($$self, ytplayer, ($$value) => $$invalidate(12, $ytplayer = $$value));
-    component_subscribe($$self, videoid, ($$value) => $$invalidate(13, $videoid = $$value));
-    component_subscribe($$self, playing, ($$value) => $$invalidate(14, $playing = $$value));
-    component_subscribe($$self, remainrollback, ($$value) => $$invalidate(15, $remainrollback = $$value));
-    component_subscribe($$self, idlecount, ($$value) => $$invalidate(16, $idlecount = $$value));
-    component_subscribe($$self, tapmark, ($$value) => $$invalidate(17, $tapmark = $$value));
-    let { src } = $$props;
-    let ptk2 = usePtk($activePtk);
-    let foliotext2 = "", foliofrom2 = 0, puncs = [], ready, images = [], hidepunc = false;
-    let { totalpages = 0 } = $$props;
-    let { onTapText = function() {
-    } } = $$props;
-    let swiper;
-    let defaultIndex = 0;
-    let stableleft = 0;
-    const imageFrame = () => {
-      const img = document.getElementsByClassName("swipe")[defaultIndex];
-      if (!img || !img.clientHeight)
-        return [0, 0, 0, 0];
-      const r = img.clientHeight / img.naturalHeight;
-      const rect = img.getBoundingClientRect();
-      if (rect.left < 0) {
-        rect.left = stableleft;
-      } else {
-        stableleft = rect.left;
-      }
-      const w = img.naturalWidth * r;
-      const left = Math.floor((img.clientWidth - w) / 2) + rect.x;
-      return {
-        left,
-        top: rect.y,
-        width: w,
-        height: img.clientHeight
-      };
-    };
-    const swipeConfig = {
-      autoplay: false,
-      delay: 0,
-      showIndicators: false,
-      transitionDuration: 250
-    };
-    const loadZip = async () => {
-      loadingbook.set(true);
-      const res = await fetch("folio/" + src);
-      const buf = await res.arrayBuffer();
-      const zip = new ZipStore(buf);
-      for (let i = 0; i < zip.files.length; i++) {
-        const blob = new Blob([zip.files[i].content]);
-        images.push(URL.createObjectURL(blob));
-      }
-      $$invalidate(7, defaultIndex = zip.files.length - 1);
-      $$invalidate(0, totalpages = zip.files.length);
-      maxfolio.set(totalpages - 1);
-      setTimeout(
-        () => {
-          loadingbook.set(false);
-          $$invalidate(4, ready = true);
-        },
-        300
-      );
-    };
-    const swipeStart = (obj) => {
-      $$invalidate(5, hidepunc = true);
-    };
-    const swipeChanged = (obj) => {
-      const { active_item } = obj.detail;
-      $$invalidate(7, defaultIndex = active_item);
-      activepb.set(totalpages - defaultIndex - 1);
-      updateFolioText();
-      useractive();
-    };
-    const updateFolioText = async () => {
-      $$invalidate(5, hidepunc = true);
-      const fl = folioLines();
-      $$invalidate(2, [foliotext2, foliofrom2] = await fetchFolioText(ptk2, $activefolioid, 1 + Math.floor($activepb)), foliotext2);
-      setTimeout(
-        () => {
-          $$invalidate(5, hidepunc = false);
-          $$invalidate(3, puncs = extractPuncPos(foliotext2, fl));
-        },
-        200
-      );
-    };
-    const useractive = () => {
-      showpaiji.set(false);
-      idlecount.set(0);
-      $$invalidate(5, hidepunc = false);
-    };
-    const mousewheel = (e) => {
-      if (e.ctrlKey)
-        return;
-      $$invalidate(5, hidepunc = true);
-      if (e.deltaY > 0) {
-        swiper.prevItem();
-      } else {
-        swiper.nextItem();
-      }
-      useractive();
-      e.preventDefault();
-    };
-    const getCharXY = (x, y) => {
-      const { left, top, width, height } = imageFrame();
-      x -= left;
-      y -= top;
-      const cx = folioLines() - Math.floor(x / width * folioLines()) - 1;
-      const cy = Math.floor(y / height * $folioChars);
-      return [cx, cy];
-    };
-    const onclick = async (e) => {
-      if ($showpaiji) {
-        useractive();
-        return;
-      }
-      $$invalidate(5, hidepunc = false);
-      const { x, y } = e.detail;
-      const [cx, cy] = getCharXY(x, y);
-      const tappos = folioLines() * $folioChars * $activepb + cx * $folioChars + cy;
-      tapmark.set(tappos);
-      let [t, pos] = getConcreatePos(foliotext2[cx], cy, foliotext2[cx + 1]);
-      const ck = await folio2ChunkLine(ptk2, foliotext2, foliofrom2, cx, pos);
-      ;
-      const address = "bk#" + $activefolioid + (ck ? "." + ck : "");
-      t = t.replace(/([。！？：、．；，「『（ ])/g, "\u3000");
-      while (t.charAt(0) == "\u3000")
-        t = t.slice(1);
-      t = t.replace(/　.+/, "");
-      await onTapText(t, address, ptk2.name);
-    };
-    const gotoPb = (pb) => {
-      if (!totalpages || !swiper)
-        return;
-      const go = totalpages - pb - 1;
-      if (go !== defaultIndex) {
-        swiper.goTo(go);
-      }
-    };
-    const togglefavoritebtn = () => {
-      if ($activePtk !== "dc")
-        return;
-      const bookfavor = Object.assign({}, $favorites);
-      if (!bookfavor[$activefolioid]) {
-        bookfavor[$activefolioid] = {};
-      }
-      bookfavor[$activefolioid][$activepb] = 1 - (bookfavor[$activefolioid][$activepb] ? 1 : 0);
-      favorites.set(Object.assign({}, bookfavor));
-    };
-    const toggleplaybtn = () => {
-      if (!get_store_value(videoid)) {
-        const audiolist = getAudioList($activefolioid);
-        const pick = Math.floor(Math.random() * audiolist.length);
-        selectmedia(audiolist[pick].vid);
-      } else {
-        selectmedia("");
-      }
-    };
-    function swipe_binding($$value) {
-      binding_callbacks[$$value ? "unshift" : "push"](() => {
-        swiper = $$value;
-        $$invalidate(6, swiper);
-      });
-    }
-    $$self.$$set = ($$props2) => {
-      if ("src" in $$props2)
-        $$invalidate(27, src = $$props2.src);
-      if ("totalpages" in $$props2)
-        $$invalidate(0, totalpages = $$props2.totalpages);
-      if ("onTapText" in $$props2)
-        $$invalidate(28, onTapText = $$props2.onTapText);
-    };
-    $$self.$$.update = () => {
-      if ($$self.$$.dirty[0] & /*src*/
-      134217728) {
-        $:
-          loadZip(src);
-      }
-      if ($$self.$$.dirty[0] & /*$activepb*/
-      2) {
-        $:
-          gotoPb($activepb);
-      }
-    };
-    return [
-      totalpages,
-      $activepb,
-      foliotext2,
-      puncs,
-      ready,
-      hidepunc,
-      swiper,
-      defaultIndex,
-      $activefolioid,
-      $favorites,
-      $folioChars,
-      $showpaiji,
-      $ytplayer,
-      $videoid,
-      $playing,
-      $remainrollback,
-      $idlecount,
-      $tapmark,
-      images,
-      imageFrame,
-      swipeConfig,
-      swipeStart,
-      swipeChanged,
-      mousewheel,
-      onclick,
-      togglefavoritebtn,
-      toggleplaybtn,
-      src,
-      onTapText,
-      swipe_binding
-    ];
-  }
-  var Swipezipimage = class extends SvelteComponent {
-    constructor(options) {
-      super();
-      init(this, options, instance7, create_fragment6, safe_not_equal, { src: 27, totalpages: 0, onTapText: 28 }, null, [-1, -1]);
-    }
-  };
-  var swipezipimage_default = Swipezipimage;
-
-  // ../ptk/platform/pwa.js
-  function registerServiceWorker(swfn = "./sw.js") {
-    const p = document.location.protocol;
-    const h = document.location.hostname;
-    const localhost = p == "http:" && (h == "127.0.0.1" || h == "localhost");
-    if ("serviceWorker" in navigator && (localhost || p == "https:")) {
-      navigator.serviceWorker.register(swfn);
-    }
-  }
-
-  // src/dictpopup.svelte
-  function get_each_context5(ctx, list, i) {
-    const child_ctx = ctx.slice();
-    child_ctx[12] = list[i][0];
-    child_ctx[13] = list[i][1];
-    child_ctx[15] = i;
-    return child_ctx;
-  }
-  function create_if_block_12(ctx) {
-    let t0;
-    let t1;
-    let a0;
-    let t2;
-    let a0_href_value;
-    let t3;
-    let a1;
-    let t4;
-    let a1_href_value;
-    let if_block0 = (
-      /*fgdzd*/
-      (ctx[1] || /*dfb*/
-      ctx[2]) && create_if_block_32(ctx)
-    );
-    let if_block1 = (
-      /*wikipedia*/
-      ctx[0] && create_if_block_22(ctx)
-    );
-    return {
-      c() {
-        if (if_block0)
-          if_block0.c();
-        t0 = space();
-        if (if_block1)
-          if_block1.c();
-        t1 = space();
-        a0 = element("a");
-        t2 = text("Google");
-        t3 = space();
-        a1 = element("a");
-        t4 = text("\u767E\u5EA6");
-        attr(a0, "target", "_new");
-        attr(a0, "href", a0_href_value = "https://www.google.com/search?q=" + encodeURI(
-          /*entry*/
-          ctx[13]
-        ));
-        attr(a1, "target", "_new");
-        attr(a1, "href", a1_href_value = "https://www.baidu.com/s?wd=" + encodeURI(
-          /*entry*/
-          ctx[13]
-        ));
-      },
-      m(target, anchor) {
-        if (if_block0)
-          if_block0.m(target, anchor);
-        insert(target, t0, anchor);
-        if (if_block1)
-          if_block1.m(target, anchor);
-        insert(target, t1, anchor);
-        insert(target, a0, anchor);
-        append(a0, t2);
-        insert(target, t3, anchor);
-        insert(target, a1, anchor);
-        append(a1, t4);
-      },
-      p(ctx2, dirty) {
-        if (
-          /*fgdzd*/
-          ctx2[1] || /*dfb*/
-          ctx2[2]
-        ) {
-          if (if_block0) {
-            if_block0.p(ctx2, dirty);
-          } else {
-            if_block0 = create_if_block_32(ctx2);
-            if_block0.c();
-            if_block0.m(t0.parentNode, t0);
-          }
-        } else if (if_block0) {
-          if_block0.d(1);
-          if_block0 = null;
-        }
-        if (
-          /*wikipedia*/
-          ctx2[0]
-        ) {
-          if (if_block1) {
-            if_block1.p(ctx2, dirty);
-          } else {
-            if_block1 = create_if_block_22(ctx2);
-            if_block1.c();
-            if_block1.m(t1.parentNode, t1);
-          }
-        } else if (if_block1) {
-          if_block1.d(1);
-          if_block1 = null;
-        }
-        if (dirty & /*entries*/
-        8 && a0_href_value !== (a0_href_value = "https://www.google.com/search?q=" + encodeURI(
-          /*entry*/
-          ctx2[13]
-        ))) {
-          attr(a0, "href", a0_href_value);
-        }
-        if (dirty & /*entries*/
-        8 && a1_href_value !== (a1_href_value = "https://www.baidu.com/s?wd=" + encodeURI(
-          /*entry*/
-          ctx2[13]
-        ))) {
-          attr(a1, "href", a1_href_value);
-        }
-      },
-      d(detaching) {
-        if (if_block0)
-          if_block0.d(detaching);
-        if (detaching)
-          detach(t0);
-        if (if_block1)
-          if_block1.d(detaching);
-        if (detaching)
-          detach(t1);
-        if (detaching)
-          detach(a0);
-        if (detaching)
-          detach(t3);
-        if (detaching)
-          detach(a1);
-      }
-    };
-  }
-  function create_if_block_32(ctx) {
-    let button;
-    let mounted;
-    let dispose;
-    return {
-      c() {
-        button = element("button");
-        button.textContent = "\u4E00\u884C";
-      },
-      m(target, anchor) {
-        insert(target, button, anchor);
-        if (!mounted) {
-          dispose = listen(
-            button,
-            "click",
-            /*setOneline*/
-            ctx[7]
-          );
-          mounted = true;
-        }
-      },
-      p: noop,
-      d(detaching) {
-        if (detaching)
-          detach(button);
-        mounted = false;
-        dispose();
-      }
-    };
-  }
-  function create_if_block_22(ctx) {
-    let button;
-    let mounted;
-    let dispose;
-    return {
-      c() {
-        button = element("button");
-        button.textContent = "Wiki";
-      },
-      m(target, anchor) {
-        insert(target, button, anchor);
-        if (!mounted) {
-          dispose = listen(
-            button,
-            "click",
-            /*setWikipedia*/
-            ctx[6]
-          );
-          mounted = true;
-        }
-      },
-      p: noop,
-      d(detaching) {
-        if (detaching)
-          detach(button);
-        mounted = false;
-        dispose();
-      }
-    };
-  }
-  function create_each_block5(ctx) {
-    let span;
-    let label;
-    let input;
-    let input_value_value;
-    let t0_value = (
-      /*entry*/
-      ctx[13] + ""
-    );
-    let t0;
-    let t1;
-    let t2;
-    let binding_group;
-    let mounted;
-    let dispose;
-    let if_block = (
-      /*idx*/
-      ctx[15] == /*nentry*/
-      ctx[4] && create_if_block_12(ctx)
-    );
-    binding_group = init_binding_group(
-      /*$$binding_groups*/
-      ctx[10][0]
-    );
-    return {
-      c() {
-        span = element("span");
-        label = element("label");
-        input = element("input");
-        t0 = text(t0_value);
-        t1 = space();
-        if (if_block)
-          if_block.c();
-        t2 = space();
-        attr(input, "type", "radio");
-        attr(input, "name", "dict");
-        input.__value = input_value_value = /*idx*/
-        ctx[15];
-        input.value = input.__value;
-        toggle_class(
-          span,
-          "dictgroup",
-          /*idx*/
-          ctx[15] == /*nentry*/
-          ctx[4]
-        );
-        binding_group.p(input);
-      },
-      m(target, anchor) {
-        insert(target, span, anchor);
-        append(span, label);
-        append(label, input);
-        input.checked = input.__value === /*nentry*/
-        ctx[4];
-        append(label, t0);
-        append(span, t1);
-        if (if_block)
-          if_block.m(span, null);
-        append(span, t2);
-        if (!mounted) {
-          dispose = listen(
-            input,
-            "change",
-            /*input_change_handler*/
-            ctx[9]
-          );
-          mounted = true;
-        }
-      },
-      p(ctx2, dirty) {
-        if (dirty & /*nentry, entries*/
-        24) {
-          input.checked = input.__value === /*nentry*/
-          ctx2[4];
-        }
-        if (dirty & /*entries*/
-        8 && t0_value !== (t0_value = /*entry*/
-        ctx2[13] + ""))
-          set_data(t0, t0_value);
-        if (
-          /*idx*/
-          ctx2[15] == /*nentry*/
-          ctx2[4]
-        ) {
-          if (if_block) {
-            if_block.p(ctx2, dirty);
-          } else {
-            if_block = create_if_block_12(ctx2);
-            if_block.c();
-            if_block.m(span, t2);
-          }
-        } else if (if_block) {
-          if_block.d(1);
-          if_block = null;
-        }
-        if (dirty & /*nentry*/
-        16) {
-          toggle_class(
-            span,
-            "dictgroup",
-            /*idx*/
-            ctx2[15] == /*nentry*/
-            ctx2[4]
-          );
-        }
-      },
-      d(detaching) {
-        if (detaching)
-          detach(span);
-        if (if_block)
-          if_block.d();
-        binding_group.r();
-        mounted = false;
-        dispose();
-      }
-    };
-  }
-  function create_if_block4(ctx) {
-    let iframe;
-    let iframe_src_value;
-    return {
-      c() {
-        iframe = element("iframe");
-        attr(iframe, "class", "iframe svelte-q5fwfc");
-        attr(iframe, "title", "wiki");
-        if (!src_url_equal(iframe.src, iframe_src_value = /*src*/
-        ctx[5]))
-          attr(iframe, "src", iframe_src_value);
-      },
-      m(target, anchor) {
-        insert(target, iframe, anchor);
-      },
-      p(ctx2, dirty) {
-        if (dirty & /*src*/
-        32 && !src_url_equal(iframe.src, iframe_src_value = /*src*/
-        ctx2[5])) {
-          attr(iframe, "src", iframe_src_value);
-        }
-      },
-      d(detaching) {
-        if (detaching)
-          detach(iframe);
-      }
-    };
-  }
-  function create_fragment7(ctx) {
-    let div;
-    let span;
-    let t;
-    let each_value = (
-      /*entries*/
-      ctx[3]
-    );
-    let each_blocks = [];
-    for (let i = 0; i < each_value.length; i += 1) {
-      each_blocks[i] = create_each_block5(get_each_context5(ctx, each_value, i));
-    }
-    let if_block = (
-      /*src*/
-      ctx[5] && create_if_block4(ctx)
-    );
-    return {
-      c() {
-        div = element("div");
-        span = element("span");
-        for (let i = 0; i < each_blocks.length; i += 1) {
-          each_blocks[i].c();
-        }
-        t = space();
-        if (if_block)
-          if_block.c();
-        attr(span, "class", "header svelte-q5fwfc");
-        attr(div, "class", "dictpopup toctext svelte-q5fwfc");
-      },
-      m(target, anchor) {
-        insert(target, div, anchor);
-        append(div, span);
-        for (let i = 0; i < each_blocks.length; i += 1) {
-          if (each_blocks[i]) {
-            each_blocks[i].m(span, null);
-          }
-        }
-        append(div, t);
-        if (if_block)
-          if_block.m(div, null);
-      },
-      p(ctx2, [dirty]) {
-        if (dirty & /*nentry, encodeURI, entries, setWikipedia, wikipedia, setOneline, fgdzd, dfb*/
-        223) {
-          each_value = /*entries*/
-          ctx2[3];
-          let i;
-          for (i = 0; i < each_value.length; i += 1) {
-            const child_ctx = get_each_context5(ctx2, each_value, i);
-            if (each_blocks[i]) {
-              each_blocks[i].p(child_ctx, dirty);
-            } else {
-              each_blocks[i] = create_each_block5(child_ctx);
-              each_blocks[i].c();
-              each_blocks[i].m(span, null);
-            }
-          }
-          for (; i < each_blocks.length; i += 1) {
-            each_blocks[i].d(1);
-          }
-          each_blocks.length = each_value.length;
-        }
-        if (
-          /*src*/
-          ctx2[5]
-        ) {
-          if (if_block) {
-            if_block.p(ctx2, dirty);
-          } else {
-            if_block = create_if_block4(ctx2);
-            if_block.c();
-            if_block.m(div, null);
-          }
-        } else if (if_block) {
-          if_block.d(1);
-          if_block = null;
-        }
-      },
-      i: noop,
-      o: noop,
-      d(detaching) {
-        if (detaching)
-          detach(div);
-        destroy_each(each_blocks, detaching);
-        if (if_block)
-          if_block.d();
-      }
-    };
-  }
-  function instance8($$self, $$props, $$invalidate) {
-    let { entries = [], ptk: ptk2, wikipedia, fgdzd, dfb } = $$props;
-    let nentry = 0;
-    let src = "";
-    const setWikipedia = () => {
-      const entry = entries[nentry][1];
-      $$invalidate(5, src = "https://zh.wikipedia.org/wiki/" + entry);
-    };
-    const setOneline = () => {
-      const entry = entries[nentry][1];
-      $$invalidate(5, src = "https://buddhaspace.org/dict/index.php?keyword=" + entry);
-    };
-    const availableDict = (n) => {
-      const at = entries[n][2];
-      const flag = ptk2.columns.entries.dict[at];
-      $$invalidate(0, wikipedia = flag & 1);
-      $$invalidate(1, fgdzd = flag & 2);
-      $$invalidate(2, dfb = flag & 4);
-      if (fgdzd || dfb)
-        setOneline();
-      else if (wikipedia)
-        setWikipedia();
-    };
-    const $$binding_groups = [[]];
-    function input_change_handler() {
-      nentry = this.__value;
-      $$invalidate(4, nentry);
-    }
-    $$self.$$set = ($$props2) => {
-      if ("entries" in $$props2)
-        $$invalidate(3, entries = $$props2.entries);
-      if ("ptk" in $$props2)
-        $$invalidate(8, ptk2 = $$props2.ptk);
-      if ("wikipedia" in $$props2)
-        $$invalidate(0, wikipedia = $$props2.wikipedia);
-      if ("fgdzd" in $$props2)
-        $$invalidate(1, fgdzd = $$props2.fgdzd);
-      if ("dfb" in $$props2)
-        $$invalidate(2, dfb = $$props2.dfb);
-    };
-    $$self.$$.update = () => {
-      if ($$self.$$.dirty & /*nentry*/
-      16) {
-        $:
-          availableDict(nentry);
-      }
-    };
-    return [
-      wikipedia,
-      fgdzd,
-      dfb,
-      entries,
-      nentry,
-      src,
-      setWikipedia,
-      setOneline,
-      ptk2,
-      input_change_handler,
-      $$binding_groups
-    ];
-  }
-  var Dictpopup = class extends SvelteComponent {
-    constructor(options) {
-      super();
-      init(this, options, instance8, create_fragment7, safe_not_equal, {
-        entries: 3,
-        ptk: 8,
-        wikipedia: 0,
-        fgdzd: 1,
-        dfb: 2
-      });
-    }
-  };
-  var dictpopup_default = Dictpopup;
-
-  // src/foliolist.svelte
-  function get_each_context6(ctx, list, i) {
-    const child_ctx = ctx.slice();
-    child_ctx[10] = list[i][0];
-    child_ctx[11] = list[i][1];
-    child_ctx[12] = list[i][2];
-    return child_ctx;
-  }
-  function get_each_context_1(ctx, list, i) {
-    const child_ctx = ctx.slice();
-    child_ctx[15] = list[i];
-    return child_ctx;
-  }
-  function create_each_block_1(ctx) {
-    let span;
-    let t_value = (
-      /*getFolioName*/
-      ctx[3](
-        /*par*/
-        ctx[15]
-      ) + ""
-    );
-    let t;
-    let mounted;
-    let dispose;
-    function click_handler_1() {
-      return (
-        /*click_handler_1*/
-        ctx[8](
-          /*par*/
-          ctx[15]
-        )
-      );
-    }
-    return {
-      c() {
-        span = element("span");
-        t = text(t_value);
-        attr(span, "class", "parallelfolio");
-        toggle_class(
-          span,
-          "selecteditem",
-          /*$activefolioid*/
-          ctx[0] == /*getFolioId*/
-          ctx[4](
-            /*par*/
-            ctx[15]
-          )
-        );
-      },
-      m(target, anchor) {
-        insert(target, span, anchor);
-        append(span, t);
-        if (!mounted) {
-          dispose = listen(span, "click", click_handler_1);
-          mounted = true;
-        }
-      },
-      p(new_ctx, dirty) {
-        ctx = new_ctx;
-        if (dirty & /*$activefolioid, getFolioId, folios*/
-        19) {
-          toggle_class(
-            span,
-            "selecteditem",
-            /*$activefolioid*/
-            ctx[0] == /*getFolioId*/
-            ctx[4](
-              /*par*/
-              ctx[15]
-            )
-          );
-        }
-      },
-      d(detaching) {
-        if (detaching)
-          detach(span);
-        mounted = false;
-        dispose();
-      }
-    };
-  }
-  function create_each_block6(ctx) {
-    let div;
-    let span;
-    let t0_value = (
-      /*getFolioName*/
-      ctx[3](
-        /*nfolio*/
-        ctx[10]
-      ) + ""
-    );
-    let t0;
-    let t1;
-    let t2;
-    let mounted;
-    let dispose;
-    function click_handler() {
-      return (
-        /*click_handler*/
-        ctx[7](
-          /*nfolio*/
-          ctx[10]
-        )
-      );
-    }
-    let each_value_1 = (
-      /*pars*/
-      ctx[12]
-    );
-    let each_blocks = [];
-    for (let i = 0; i < each_value_1.length; i += 1) {
-      each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
-    }
-    return {
-      c() {
-        div = element("div");
-        span = element("span");
-        t0 = text(t0_value);
-        t1 = space();
-        for (let i = 0; i < each_blocks.length; i += 1) {
-          each_blocks[i].c();
-        }
-        t2 = space();
-        toggle_class(
-          span,
-          "selecteditem",
-          /*$activefolioid*/
-          ctx[0] == /*folioid*/
-          ctx[11]
-        );
-        attr(div, "class", "book");
-      },
-      m(target, anchor) {
-        insert(target, div, anchor);
-        append(div, span);
-        append(span, t0);
-        append(div, t1);
-        for (let i = 0; i < each_blocks.length; i += 1) {
-          if (each_blocks[i]) {
-            each_blocks[i].m(div, null);
-          }
-        }
-        append(div, t2);
-        if (!mounted) {
-          dispose = listen(span, "click", click_handler);
-          mounted = true;
-        }
-      },
-      p(new_ctx, dirty) {
-        ctx = new_ctx;
-        if (dirty & /*$activefolioid, folios*/
-        3) {
-          toggle_class(
-            span,
-            "selecteditem",
-            /*$activefolioid*/
-            ctx[0] == /*folioid*/
-            ctx[11]
-          );
-        }
-        if (dirty & /*$activefolioid, getFolioId, folios, selectfolio, getFolioName*/
-        31) {
-          each_value_1 = /*pars*/
-          ctx[12];
-          let i;
-          for (i = 0; i < each_value_1.length; i += 1) {
-            const child_ctx = get_each_context_1(ctx, each_value_1, i);
-            if (each_blocks[i]) {
-              each_blocks[i].p(child_ctx, dirty);
-            } else {
-              each_blocks[i] = create_each_block_1(child_ctx);
-              each_blocks[i].c();
-              each_blocks[i].m(div, t2);
-            }
-          }
-          for (; i < each_blocks.length; i += 1) {
-            each_blocks[i].d(1);
-          }
-          each_blocks.length = each_value_1.length;
-        }
-      },
-      d(detaching) {
-        if (detaching)
-          detach(div);
-        destroy_each(each_blocks, detaching);
-        mounted = false;
-        dispose();
-      }
-    };
-  }
-  function create_fragment8(ctx) {
-    let each_1_anchor;
-    let each_value = (
-      /*folios*/
-      ctx[1]
-    );
-    let each_blocks = [];
-    for (let i = 0; i < each_value.length; i += 1) {
-      each_blocks[i] = create_each_block6(get_each_context6(ctx, each_value, i));
-    }
-    return {
-      c() {
-        for (let i = 0; i < each_blocks.length; i += 1) {
-          each_blocks[i].c();
-        }
-        each_1_anchor = empty();
-      },
-      m(target, anchor) {
-        for (let i = 0; i < each_blocks.length; i += 1) {
-          if (each_blocks[i]) {
-            each_blocks[i].m(target, anchor);
-          }
-        }
-        insert(target, each_1_anchor, anchor);
-      },
-      p(ctx2, [dirty]) {
-        if (dirty & /*folios, $activefolioid, getFolioId, selectfolio, getFolioName*/
-        31) {
-          each_value = /*folios*/
-          ctx2[1];
-          let i;
-          for (i = 0; i < each_value.length; i += 1) {
-            const child_ctx = get_each_context6(ctx2, each_value, i);
-            if (each_blocks[i]) {
-              each_blocks[i].p(child_ctx, dirty);
-            } else {
-              each_blocks[i] = create_each_block6(child_ctx);
-              each_blocks[i].c();
-              each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
-            }
-          }
-          for (; i < each_blocks.length; i += 1) {
-            each_blocks[i].d(1);
-          }
-          each_blocks.length = each_value.length;
-        }
-      },
-      i: noop,
-      o: noop,
-      d(detaching) {
-        destroy_each(each_blocks, detaching);
-        if (detaching)
-          detach(each_1_anchor);
-      }
-    };
-  }
-  function instance9($$self, $$props, $$invalidate) {
-    let $activefolioid;
-    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(0, $activefolioid = $$value));
-    let { ptk: ptk2 } = $$props;
-    let { closePopup = function() {
-    } } = $$props;
-    const getFolioList = () => {
-      const folio = ptk2.defines.folio;
-      const out = [];
-      for (let i = 0; i < folio.linepos.length; i++) {
-        const id = folio.fields.id.values[i];
-        if (!~id.indexOf("_") && !id.match(/[23456789]$/)) {
-          out.push([i, id, parallelFolios(id)]);
-        }
-      }
-      return out;
-    };
-    const folios = getFolioList();
-    const selectfolio = (nfolio) => {
-      const folio = ptk2.defines.folio;
-      stopVideo();
-      const folioid = folio.fields.id.values[nfolio];
-      activefolioid.set(folioid);
-      activepb.set(0);
-      closePopup();
-    };
-    const getFolioName = (nfolio) => {
-      const folio = ptk2.defines.folio;
-      return folio.innertext.get(nfolio);
-    };
-    const getFolioId = (nfolio) => {
-      const folio = ptk2.defines.folio;
-      return folio.fields.id.values[nfolio];
-    };
-    const click_handler = (nfolio) => selectfolio(nfolio);
-    const click_handler_1 = (par) => selectfolio(par);
-    $$self.$$set = ($$props2) => {
-      if ("ptk" in $$props2)
-        $$invalidate(5, ptk2 = $$props2.ptk);
-      if ("closePopup" in $$props2)
-        $$invalidate(6, closePopup = $$props2.closePopup);
-    };
-    return [
-      $activefolioid,
-      folios,
-      selectfolio,
-      getFolioName,
-      getFolioId,
-      ptk2,
-      closePopup,
-      click_handler,
-      click_handler_1
-    ];
-  }
-  var Foliolist = class extends SvelteComponent {
-    constructor(options) {
-      super();
-      init(this, options, instance9, create_fragment8, safe_not_equal, { ptk: 5, closePopup: 6 });
-    }
-  };
-  var foliolist_default = Foliolist;
-
   // src/3rd/slider.js
   function handle(node) {
     const onDown = getOnDown(node);
@@ -11356,7 +9383,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   }
 
   // src/3rd/thumb.svelte
-  function create_fragment9(ctx) {
+  function create_fragment6(ctx) {
     let div1;
     let div0;
     let div1_style_value;
@@ -11483,7 +9510,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function instance10($$self, $$props, $$invalidate) {
+  function instance7($$self, $$props, $$invalidate) {
     let { $$slots: slots = {}, $$scope } = $$props;
     const dispatch = createEventDispatcher();
     let active;
@@ -11511,7 +9538,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Thumb = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance10, create_fragment9, safe_not_equal, { pos: 0 });
+      init(this, options, instance7, create_fragment6, safe_not_equal, { pos: 0 });
     }
   };
   var thumb_default = Thumb;
@@ -11602,7 +9629,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_default_slot2(ctx) {
+  function create_default_slot(ctx) {
     let current;
     const left_slot_template = (
       /*#slots*/
@@ -11673,7 +9700,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment10(ctx) {
+  function create_fragment7(ctx) {
     let input;
     let input_value_value;
     let input_name_value;
@@ -11688,7 +9715,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ctx[11](value);
     }
     let thumb_props = {
-      $$slots: { default: [create_default_slot2] },
+      $$slots: { default: [create_default_slot] },
       $$scope: { ctx }
     };
     if (
@@ -11795,7 +9822,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   function checkPos(pos) {
     return [Math.min(...pos), Math.max(...pos)];
   }
-  function instance11($$self, $$props, $$invalidate) {
+  function instance8($$self, $$props, $$invalidate) {
     let progress;
     let { $$slots: slots = {}, $$scope } = $$props;
     const dispatch = createEventDispatcher();
@@ -11899,7 +9926,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Rangeslider = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance11, create_fragment10, safe_not_equal, {
+      init(this, options, instance8, create_fragment7, safe_not_equal, {
         name: 1,
         range: 5,
         min: 6,
@@ -11917,12 +9944,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var vqqicon = `<svg xmlns="http://www.w3.org/2000/svg" height="4vh" width="5vh" viewBox="-76 -50 250 151"><linearGradient gradientTransform="matrix(1 0 0 -1 -10.798 152.703)" y2="31.982" x2="87.691" y1="152.685" x1="87.691" gradientUnits="userSpaceOnUse" id="a"><stop offset="0" stop-color="#53c4fe"/><stop offset="1" stop-color="#0d84f4"/></linearGradient><path d="M127.402 72.303c8.6-9 7.6-17.3-.1-24.4-11.3-10.6-24.7-19.2-38.7-27.3-13.6-7.9-28-14.4-42.8-19.7-8.4-2.9-17.5 1.4-20.5 9.8-.3.8-.5 1.6-.6 2.4-5.8 31.2-5.8 63.2-.1 94.4 1.6 8.7 10 14.5 18.7 12.9.8-.2 1.7-.4 2.5-.7 15.1-5.4 29.6-12.2 43.4-20.3 13.8-7.9 27.5-16 38.2-27.1z" fill="url(#a)"/><linearGradient gradientTransform="matrix(1 0 0 -1 -10.798 152.703)" y2="44.752" x2="23.486" y1="139.715" x1="23.486" gradientUnits="userSpaceOnUse" id="b"><stop offset="0" stop-color="#f9b93b"/><stop offset="1" stop-color="#fa7535"/></linearGradient><path d="M24.602 14.203c-.4-.1-.8-.2-1.2-.4-8.5-2.6-16 .4-19.4 9.6-4.2 11.5-4 24.4-4 37 0 12.6-.1 25.3 3.9 36.8 3.7 10.6 10.9 12.2 19.4 9.6.4-.1 1.5-.6 1.8-.7-2.7-14.9-4.8-29.9-4.8-45.6.2-15.5 1.5-31 4.3-46.3z" fill="url(#b)"/><linearGradient gradientTransform="matrix(1 0 0 -1 -10.798 152.703)" y2="46.056" x2="73.193" y1="138.631" x1="73.193" gradientUnits="userSpaceOnUse" id="c"><stop offset="0" stop-color="#aef922"/><stop offset="1" stop-color="#62bb0d"/></linearGradient><path d="M24.502 14.103c-5.5 30.6-5.6 62-.1 92.6 13.4-4.1 26.5-9.3 39.1-15.6 12.7-6.3 24.9-13 35.3-21.3 7.8-6.2 7-13.4-.1-19.2-10.5-8.5-22.9-15.1-35.9-21.4-12.2-6.1-25.1-11.1-38.3-15.1z" fill="url(#c)"/><linearGradient gradientTransform="matrix(1 0 0 -1 -10.798 152.703)" y2="70.704" x2="69.642" y1="113.993" x1="69.642" gradientUnits="userSpaceOnUse" id="d"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#fff"/><stop offset="1" stop-color="#e5f6d2"/></linearGradient><path d="M38.202 41.203s-1.3 1.9-1.3 19.1c0 17.2 1.3 19.3 1.3 19.3.4 2.1 1.4 2.8 3.7 2.3 0 0 3.9-.6 19.4-8.4 15.5-7.8 18.1-10.8 18.1-10.8 1.7-1.7 2.1-2.8 0-4.6 0 0-4.2-3.9-18.1-11-13.7-7-19.4-8.2-19.4-8.2-2-.6-3.2 0-3.7 2.3z" fill="url(#d)"/></svg>`;
 
   // src/audio.svelte
-  function get_each_context7(ctx, list, i) {
+  function get_each_context4(ctx, list, i) {
     const child_ctx = ctx.slice();
     child_ctx[22] = list[i];
     return child_ctx;
   }
-  function create_else_block2(ctx) {
+  function create_else_block(ctx) {
     let t;
     let current_block_type_index;
     let if_block;
@@ -11934,9 +9961,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     );
     let each_blocks = [];
     for (let i = 0; i < each_value.length; i += 1) {
-      each_blocks[i] = create_each_block7(get_each_context7(ctx, each_value, i));
+      each_blocks[i] = create_each_block4(get_each_context4(ctx, each_value, i));
     }
-    const if_block_creators = [create_if_block_33, create_else_block_1];
+    const if_block_creators = [create_if_block_3, create_else_block_1];
     const if_blocks = [];
     function select_block_type_2(ctx2, dirty) {
       if (
@@ -11975,11 +10002,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           ctx2[6];
           let i;
           for (i = 0; i < each_value.length; i += 1) {
-            const child_ctx = get_each_context7(ctx2, each_value, i);
+            const child_ctx = get_each_context4(ctx2, each_value, i);
             if (each_blocks[i]) {
               each_blocks[i].p(child_ctx, dirty);
             } else {
-              each_blocks[i] = create_each_block7(child_ctx);
+              each_blocks[i] = create_each_block4(child_ctx);
               each_blocks[i].c();
               each_blocks[i].m(t.parentNode, t);
             }
@@ -12030,13 +10057,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block5(ctx) {
+  function create_if_block3(ctx) {
     let t;
     let if_block1_anchor;
     let if_block0 = !/*$qqplayer*/
-    ctx[4] && create_if_block_23(ctx);
+    ctx[4] && create_if_block_2(ctx);
     let if_block1 = !/*$ytplayer*/
-    ctx[5] && create_if_block_13(ctx);
+    ctx[5] && create_if_block_1(ctx);
     return {
       c() {
         if (if_block0)
@@ -12059,7 +10086,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ctx2[4]) {
           if (if_block0) {
           } else {
-            if_block0 = create_if_block_23(ctx2);
+            if_block0 = create_if_block_2(ctx2);
             if_block0.c();
             if_block0.m(t.parentNode, t);
           }
@@ -12071,7 +10098,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ctx2[5]) {
           if (if_block1) {
           } else {
-            if_block1 = create_if_block_13(ctx2);
+            if_block1 = create_if_block_1(ctx2);
             if_block1.c();
             if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
           }
@@ -12094,7 +10121,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_52(ctx) {
+  function create_if_block_5(ctx) {
     let t0_value = (
       /*humanDuration*/
       ctx[7](
@@ -12227,7 +10254,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_each_block7(ctx) {
+  function create_each_block4(ctx) {
     let span;
     let t0_value = (
       /*media*/
@@ -12243,7 +10270,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       /*$videoid*/
       ctx[0] == /*media*/
       ctx[22].vid && /*$videoid*/
-      ctx[0] && create_if_block_52(ctx)
+      ctx[0] && create_if_block_5(ctx)
     );
     return {
       c() {
@@ -12310,7 +10337,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block) {
             if_block.p(ctx, dirty);
           } else {
-            if_block = create_if_block_52(ctx);
+            if_block = create_if_block_5(ctx);
             if_block.c();
             if_block.m(t2.parentNode, t2);
           }
@@ -12370,7 +10397,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current;
     let if_block = (
       /*value*/
-      ctx[1][0] > 0 && create_if_block_42(ctx)
+      ctx[1][0] > 0 && create_if_block_4(ctx)
     );
     function slider_value_binding(value) {
       ctx[14](value);
@@ -12440,7 +10467,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block) {
             if_block.p(ctx2, dirty);
           } else {
-            if_block = create_if_block_42(ctx2);
+            if_block = create_if_block_4(ctx2);
             if_block.c();
             if_block.m(t3.parentNode, t3);
           }
@@ -12513,7 +10540,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_33(ctx) {
+  function create_if_block_3(ctx) {
     let br0;
     let t0;
     let br1;
@@ -12546,7 +10573,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_42(ctx) {
+  function create_if_block_4(ctx) {
     let t_value = (
       /*humanStoptime*/
       ctx[11](
@@ -12585,7 +10612,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_23(ctx) {
+  function create_if_block_2(ctx) {
     let t;
     return {
       c() {
@@ -12600,7 +10627,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_13(ctx) {
+  function create_if_block_1(ctx) {
     let t;
     return {
       c() {
@@ -12615,12 +10642,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment11(ctx) {
+  function create_fragment8(ctx) {
     let div;
     let current_block_type_index;
     let if_block;
     let current;
-    const if_block_creators = [create_if_block5, create_else_block2];
+    const if_block_creators = [create_if_block3, create_else_block];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (!/*$qqplayer*/
@@ -12681,7 +10708,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function instance12($$self, $$props, $$invalidate) {
+  function instance9($$self, $$props, $$invalidate) {
     let $activefolioid;
     let $videoid;
     let $remainrollback;
@@ -12806,10 +10833,1997 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Audio = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance12, create_fragment11, safe_not_equal, { ptk: 12 });
+      init(this, options, instance9, create_fragment8, safe_not_equal, { ptk: 12 });
     }
   };
   var audio_default = Audio;
+
+  // src/swipezipimage.svelte
+  function get_each_context5(ctx, list, i) {
+    const child_ctx = ctx.slice();
+    child_ctx[40] = list[i];
+    child_ctx[42] = i;
+    return child_ctx;
+  }
+  function create_else_block2(ctx) {
+    let div;
+    return {
+      c() {
+        div = element("div");
+        attr(div, "class", "message svelte-1bsw8ig");
+      },
+      m(target, anchor) {
+        insert(target, div, anchor);
+        div.innerHTML = rotatingwheel;
+      },
+      p: noop,
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(div);
+      }
+    };
+  }
+  function create_if_block_52(ctx) {
+    let div;
+    let swipe;
+    let current;
+    let mounted;
+    let dispose;
+    const swipe_spread_levels = [
+      /*swipeConfig*/
+      ctx[21],
+      { defaultIndex: (
+        /*defaultIndex*/
+        ctx[8]
+      ) }
+    ];
+    let swipe_props = {
+      $$slots: { default: [create_default_slot2] },
+      $$scope: { ctx }
+    };
+    for (let i = 0; i < swipe_spread_levels.length; i += 1) {
+      swipe_props = assign(swipe_props, swipe_spread_levels[i]);
+    }
+    swipe = new swipe_default({ props: swipe_props });
+    ctx[30](swipe);
+    swipe.$on(
+      "click",
+      /*onclick*/
+      ctx[25]
+    );
+    swipe.$on(
+      "start",
+      /*swipeStart*/
+      ctx[22]
+    );
+    swipe.$on(
+      "change",
+      /*swipeChanged*/
+      ctx[23]
+    );
+    return {
+      c() {
+        div = element("div");
+        create_component(swipe.$$.fragment);
+        attr(div, "class", "swipe-holder svelte-1bsw8ig");
+      },
+      m(target, anchor) {
+        insert(target, div, anchor);
+        mount_component(swipe, div, null);
+        current = true;
+        if (!mounted) {
+          dispose = listen(
+            div,
+            "wheel",
+            /*mousewheel*/
+            ctx[24]
+          );
+          mounted = true;
+        }
+      },
+      p(ctx2, dirty) {
+        const swipe_changes = dirty[0] & /*swipeConfig, defaultIndex*/
+        2097408 ? get_spread_update(swipe_spread_levels, [
+          dirty[0] & /*swipeConfig*/
+          2097152 && get_spread_object(
+            /*swipeConfig*/
+            ctx2[21]
+          ),
+          dirty[0] & /*defaultIndex*/
+          256 && { defaultIndex: (
+            /*defaultIndex*/
+            ctx2[8]
+          ) }
+        ]) : {};
+        if (dirty[1] & /*$$scope*/
+        4096) {
+          swipe_changes.$$scope = { dirty, ctx: ctx2 };
+        }
+        swipe.$set(swipe_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(swipe.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(swipe.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        if (detaching)
+          detach(div);
+        ctx[30](null);
+        destroy_component(swipe);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_default_slot_1(ctx) {
+    let img;
+    let img_src_value;
+    return {
+      c() {
+        img = element("img");
+        attr(img, "alt", "no");
+        attr(img, "class", "swipe svelte-1bsw8ig");
+        if (!src_url_equal(img.src, img_src_value = /*images*/
+        ctx[19][
+          /*images*/
+          ctx[19].length - /*idx*/
+          ctx[42] - 1
+        ]))
+          attr(img, "src", img_src_value);
+      },
+      m(target, anchor) {
+        insert(target, img, anchor);
+      },
+      p: noop,
+      d(detaching) {
+        if (detaching)
+          detach(img);
+      }
+    };
+  }
+  function create_each_block5(ctx) {
+    let swipeitem;
+    let current;
+    swipeitem = new swipeitem_default({
+      props: {
+        $$slots: { default: [create_default_slot_1] },
+        $$scope: { ctx }
+      }
+    });
+    return {
+      c() {
+        create_component(swipeitem.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(swipeitem, target, anchor);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        const swipeitem_changes = {};
+        if (dirty[1] & /*$$scope*/
+        4096) {
+          swipeitem_changes.$$scope = { dirty, ctx: ctx2 };
+        }
+        swipeitem.$set(swipeitem_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(swipeitem.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(swipeitem.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(swipeitem, detaching);
+      }
+    };
+  }
+  function create_default_slot2(ctx) {
+    let each_1_anchor;
+    let current;
+    let each_value = (
+      /*images*/
+      ctx[19]
+    );
+    let each_blocks = [];
+    for (let i = 0; i < each_value.length; i += 1) {
+      each_blocks[i] = create_each_block5(get_each_context5(ctx, each_value, i));
+    }
+    const out = (i) => transition_out(each_blocks[i], 1, 1, () => {
+      each_blocks[i] = null;
+    });
+    return {
+      c() {
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          each_blocks[i].c();
+        }
+        each_1_anchor = empty();
+      },
+      m(target, anchor) {
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          if (each_blocks[i]) {
+            each_blocks[i].m(target, anchor);
+          }
+        }
+        insert(target, each_1_anchor, anchor);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        if (dirty[0] & /*images*/
+        524288) {
+          each_value = /*images*/
+          ctx2[19];
+          let i;
+          for (i = 0; i < each_value.length; i += 1) {
+            const child_ctx = get_each_context5(ctx2, each_value, i);
+            if (each_blocks[i]) {
+              each_blocks[i].p(child_ctx, dirty);
+              transition_in(each_blocks[i], 1);
+            } else {
+              each_blocks[i] = create_each_block5(child_ctx);
+              each_blocks[i].c();
+              transition_in(each_blocks[i], 1);
+              each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+            }
+          }
+          group_outros();
+          for (i = each_value.length; i < each_blocks.length; i += 1) {
+            out(i);
+          }
+          check_outros();
+        }
+      },
+      i(local) {
+        if (current)
+          return;
+        for (let i = 0; i < each_value.length; i += 1) {
+          transition_in(each_blocks[i]);
+        }
+        current = true;
+      },
+      o(local) {
+        each_blocks = each_blocks.filter(Boolean);
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          transition_out(each_blocks[i]);
+        }
+        current = false;
+      },
+      d(detaching) {
+        destroy_each(each_blocks, detaching);
+        if (detaching)
+          detach(each_1_anchor);
+      }
+    };
+  }
+  function create_if_block_42(ctx) {
+    let span;
+    let t_value = (
+      /*$videoid*/
+      ctx[14] ? "\u23F9" : "\u23F5"
+    );
+    let t;
+    let mounted;
+    let dispose;
+    return {
+      c() {
+        span = element("span");
+        t = text(t_value);
+        attr(span, "class", "playbtn");
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        append(span, t);
+        if (!mounted) {
+          dispose = listen(
+            span,
+            "click",
+            /*toggleplaybtn*/
+            ctx[27]
+          );
+          mounted = true;
+        }
+      },
+      p(ctx2, dirty) {
+        if (dirty[0] & /*$videoid*/
+        16384 && t_value !== (t_value = /*$videoid*/
+        ctx2[14] ? "\u23F9" : "\u23F5"))
+          set_data(t, t_value);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(span);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_if_block_32(ctx) {
+    let span;
+    let t_value = (
+      /*$idlecount*/
+      (ctx[17] >= idletime - 15 ? idletime - /*$idlecount*/
+      ctx[17] : "") + ""
+    );
+    let t;
+    return {
+      c() {
+        span = element("span");
+        t = text(t_value);
+        attr(span, "class", "idletime");
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        append(span, t);
+      },
+      p(ctx2, dirty) {
+        if (dirty[0] & /*$idlecount*/
+        131072 && t_value !== (t_value = /*$idlecount*/
+        (ctx2[17] >= idletime - 15 ? idletime - /*$idlecount*/
+        ctx2[17] : "") + ""))
+          set_data(t, t_value);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(span);
+      }
+    };
+  }
+  function create_if_block_22(ctx) {
+    let span;
+    let t_value = (
+      /*$remainrollback*/
+      (ctx[16] > 0 ? (
+        /*$remainrollback*/
+        ctx[16]
+      ) : "") + ""
+    );
+    let t;
+    return {
+      c() {
+        span = element("span");
+        t = text(t_value);
+        attr(span, "class", "remainrollback");
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        append(span, t);
+      },
+      p(ctx2, dirty) {
+        if (dirty[0] & /*$remainrollback*/
+        65536 && t_value !== (t_value = /*$remainrollback*/
+        (ctx2[16] > 0 ? (
+          /*$remainrollback*/
+          ctx2[16]
+        ) : "") + ""))
+          set_data(t, t_value);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(span);
+      }
+    };
+  }
+  function create_if_block_12(ctx) {
+    let tapmark_1;
+    let current;
+    tapmark_1 = new tapmark_default({
+      props: {
+        mark: (
+          /*$tapmark*/
+          ctx[18]
+        ),
+        pb: (
+          /*$activepb*/
+          ctx[2]
+        ),
+        folioChars: (
+          /*$folioChars*/
+          ctx[11]
+        ),
+        folioLines: folioLines(),
+        frame: (
+          /*imageFrame*/
+          ctx[20]()
+        )
+      }
+    });
+    return {
+      c() {
+        create_component(tapmark_1.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(tapmark_1, target, anchor);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        const tapmark_1_changes = {};
+        if (dirty[0] & /*$tapmark*/
+        262144)
+          tapmark_1_changes.mark = /*$tapmark*/
+          ctx2[18];
+        if (dirty[0] & /*$activepb*/
+        4)
+          tapmark_1_changes.pb = /*$activepb*/
+          ctx2[2];
+        if (dirty[0] & /*$folioChars*/
+        2048)
+          tapmark_1_changes.folioChars = /*$folioChars*/
+          ctx2[11];
+        tapmark_1.$set(tapmark_1_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(tapmark_1.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(tapmark_1.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(tapmark_1, detaching);
+      }
+    };
+  }
+  function create_key_block_1(ctx) {
+    let if_block_anchor;
+    let current;
+    let if_block = !/*hidepunc*/
+    ctx[6] && !/*$showpaiji*/
+    ctx[12] && create_if_block_12(ctx);
+    return {
+      c() {
+        if (if_block)
+          if_block.c();
+        if_block_anchor = empty();
+      },
+      m(target, anchor) {
+        if (if_block)
+          if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        if (!/*hidepunc*/
+        ctx2[6] && !/*$showpaiji*/
+        ctx2[12]) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+            if (dirty[0] & /*hidepunc, $showpaiji*/
+            4160) {
+              transition_in(if_block, 1);
+            }
+          } else {
+            if_block = create_if_block_12(ctx2);
+            if_block.c();
+            transition_in(if_block, 1);
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        } else if (if_block) {
+          group_outros();
+          transition_out(if_block, 1, 1, () => {
+            if_block = null;
+          });
+          check_outros();
+        }
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(if_block);
+        current = true;
+      },
+      o(local) {
+        transition_out(if_block);
+        current = false;
+      },
+      d(detaching) {
+        if (if_block)
+          if_block.d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
+      }
+    };
+  }
+  function create_if_block4(ctx) {
+    let punclayer;
+    let t;
+    let transcriptlayer;
+    let current;
+    punclayer = new punclayer_default({
+      props: {
+        frame: (
+          /*imageFrame*/
+          ctx[20]()
+        ),
+        folioChars: (
+          /*$folioChars*/
+          ctx[11]
+        ),
+        folioLines: folioLines(),
+        puncs: (
+          /*puncs*/
+          ctx[4]
+        )
+      }
+    });
+    transcriptlayer = new transcriptlayer_default({
+      props: {
+        frame: (
+          /*imageFrame*/
+          ctx[20]()
+        ),
+        totalpages: (
+          /*totalpages*/
+          ctx[0]
+        ),
+        folioLines: folioLines(),
+        swiper: (
+          /*swiper*/
+          ctx[7]
+        ),
+        foliotext: (
+          /*foliotext*/
+          ctx[3]
+        )
+      }
+    });
+    return {
+      c() {
+        create_component(punclayer.$$.fragment);
+        t = space();
+        create_component(transcriptlayer.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(punclayer, target, anchor);
+        insert(target, t, anchor);
+        mount_component(transcriptlayer, target, anchor);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        const punclayer_changes = {};
+        if (dirty[0] & /*$folioChars*/
+        2048)
+          punclayer_changes.folioChars = /*$folioChars*/
+          ctx2[11];
+        if (dirty[0] & /*puncs*/
+        16)
+          punclayer_changes.puncs = /*puncs*/
+          ctx2[4];
+        punclayer.$set(punclayer_changes);
+        const transcriptlayer_changes = {};
+        if (dirty[0] & /*totalpages*/
+        1)
+          transcriptlayer_changes.totalpages = /*totalpages*/
+          ctx2[0];
+        if (dirty[0] & /*swiper*/
+        128)
+          transcriptlayer_changes.swiper = /*swiper*/
+          ctx2[7];
+        if (dirty[0] & /*foliotext*/
+        8)
+          transcriptlayer_changes.foliotext = /*foliotext*/
+          ctx2[3];
+        transcriptlayer.$set(transcriptlayer_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(punclayer.$$.fragment, local);
+        transition_in(transcriptlayer.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(punclayer.$$.fragment, local);
+        transition_out(transcriptlayer.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(punclayer, detaching);
+        if (detaching)
+          detach(t);
+        destroy_component(transcriptlayer, detaching);
+      }
+    };
+  }
+  function create_key_block2(ctx) {
+    let if_block_anchor;
+    let current;
+    let if_block = !/*hidepunc*/
+    ctx[6] && create_if_block4(ctx);
+    return {
+      c() {
+        if (if_block)
+          if_block.c();
+        if_block_anchor = empty();
+      },
+      m(target, anchor) {
+        if (if_block)
+          if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        if (!/*hidepunc*/
+        ctx2[6]) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+            if (dirty[0] & /*hidepunc*/
+            64) {
+              transition_in(if_block, 1);
+            }
+          } else {
+            if_block = create_if_block4(ctx2);
+            if_block.c();
+            transition_in(if_block, 1);
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        } else if (if_block) {
+          group_outros();
+          transition_out(if_block, 1, 1, () => {
+            if_block = null;
+          });
+          check_outros();
+        }
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(if_block);
+        current = true;
+      },
+      o(local) {
+        transition_out(if_block);
+        current = false;
+      },
+      d(detaching) {
+        if (if_block)
+          if_block.d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
+      }
+    };
+  }
+  function create_fragment9(ctx) {
+    let current_block_type_index;
+    let if_block0;
+    let t0;
+    let span0;
+    let t1_value = (
+      /*$favorites*/
+      ctx[10][
+        /*$activefolioid*/
+        ctx[1]
+      ]?.[
+        /*$activepb*/
+        ctx[2]
+      ] ? "\u2665" : "\u2661"
+    );
+    let t1;
+    let t2;
+    let t3;
+    let span1;
+    let t4_value = (
+      /*totalpages*/
+      ctx[0] - /*defaultIndex*/
+      ctx[8] + ""
+    );
+    let t4;
+    let t5;
+    let t6;
+    let previous_key = (
+      /*$tapmark*/
+      ctx[18] + /*$activepb*/
+      ctx[2]
+    );
+    let t7;
+    let previous_key_1 = (
+      /*puncs*/
+      ctx[4]
+    );
+    let key_block1_anchor;
+    let current;
+    let mounted;
+    let dispose;
+    const if_block_creators = [create_if_block_52, create_else_block2];
+    const if_blocks = [];
+    function select_block_type(ctx2, dirty) {
+      if (
+        /*ready*/
+        ctx2[5]
+      )
+        return 0;
+      return 1;
+    }
+    current_block_type_index = select_block_type(ctx, [-1, -1]);
+    if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    let if_block1 = (
+      /*$ytplayer*/
+      ctx[13] && /*audiolist*/
+      ctx[9].length > 1 && create_if_block_42(ctx)
+    );
+    function select_block_type_1(ctx2, dirty) {
+      if (
+        /*$playing*/
+        ctx2[15]
+      )
+        return create_if_block_22;
+      if (!/*$showpaiji*/
+      ctx2[12])
+        return create_if_block_32;
+    }
+    let current_block_type = select_block_type_1(ctx, [-1, -1]);
+    let if_block2 = current_block_type && current_block_type(ctx);
+    let key_block0 = create_key_block_1(ctx);
+    let key_block1 = create_key_block2(ctx);
+    return {
+      c() {
+        if_block0.c();
+        t0 = space();
+        span0 = element("span");
+        t1 = text(t1_value);
+        t2 = space();
+        if (if_block1)
+          if_block1.c();
+        t3 = space();
+        span1 = element("span");
+        t4 = text(t4_value);
+        t5 = space();
+        if (if_block2)
+          if_block2.c();
+        t6 = space();
+        key_block0.c();
+        t7 = space();
+        key_block1.c();
+        key_block1_anchor = empty();
+        attr(span0, "class", "favoritebtn");
+        attr(span1, "class", "pagenumber");
+      },
+      m(target, anchor) {
+        if_blocks[current_block_type_index].m(target, anchor);
+        insert(target, t0, anchor);
+        insert(target, span0, anchor);
+        append(span0, t1);
+        insert(target, t2, anchor);
+        if (if_block1)
+          if_block1.m(target, anchor);
+        insert(target, t3, anchor);
+        insert(target, span1, anchor);
+        append(span1, t4);
+        insert(target, t5, anchor);
+        if (if_block2)
+          if_block2.m(target, anchor);
+        insert(target, t6, anchor);
+        key_block0.m(target, anchor);
+        insert(target, t7, anchor);
+        key_block1.m(target, anchor);
+        insert(target, key_block1_anchor, anchor);
+        current = true;
+        if (!mounted) {
+          dispose = listen(
+            span0,
+            "click",
+            /*togglefavoritebtn*/
+            ctx[26]
+          );
+          mounted = true;
+        }
+      },
+      p(ctx2, dirty) {
+        let previous_block_index = current_block_type_index;
+        current_block_type_index = select_block_type(ctx2, dirty);
+        if (current_block_type_index === previous_block_index) {
+          if_blocks[current_block_type_index].p(ctx2, dirty);
+        } else {
+          group_outros();
+          transition_out(if_blocks[previous_block_index], 1, 1, () => {
+            if_blocks[previous_block_index] = null;
+          });
+          check_outros();
+          if_block0 = if_blocks[current_block_type_index];
+          if (!if_block0) {
+            if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
+            if_block0.c();
+          } else {
+            if_block0.p(ctx2, dirty);
+          }
+          transition_in(if_block0, 1);
+          if_block0.m(t0.parentNode, t0);
+        }
+        if ((!current || dirty[0] & /*$favorites, $activefolioid, $activepb*/
+        1030) && t1_value !== (t1_value = /*$favorites*/
+        ctx2[10][
+          /*$activefolioid*/
+          ctx2[1]
+        ]?.[
+          /*$activepb*/
+          ctx2[2]
+        ] ? "\u2665" : "\u2661"))
+          set_data(t1, t1_value);
+        if (
+          /*$ytplayer*/
+          ctx2[13] && /*audiolist*/
+          ctx2[9].length > 1
+        ) {
+          if (if_block1) {
+            if_block1.p(ctx2, dirty);
+          } else {
+            if_block1 = create_if_block_42(ctx2);
+            if_block1.c();
+            if_block1.m(t3.parentNode, t3);
+          }
+        } else if (if_block1) {
+          if_block1.d(1);
+          if_block1 = null;
+        }
+        if ((!current || dirty[0] & /*totalpages, defaultIndex*/
+        257) && t4_value !== (t4_value = /*totalpages*/
+        ctx2[0] - /*defaultIndex*/
+        ctx2[8] + ""))
+          set_data(t4, t4_value);
+        if (current_block_type === (current_block_type = select_block_type_1(ctx2, dirty)) && if_block2) {
+          if_block2.p(ctx2, dirty);
+        } else {
+          if (if_block2)
+            if_block2.d(1);
+          if_block2 = current_block_type && current_block_type(ctx2);
+          if (if_block2) {
+            if_block2.c();
+            if_block2.m(t6.parentNode, t6);
+          }
+        }
+        if (dirty[0] & /*$tapmark, $activepb*/
+        262148 && safe_not_equal(previous_key, previous_key = /*$tapmark*/
+        ctx2[18] + /*$activepb*/
+        ctx2[2])) {
+          group_outros();
+          transition_out(key_block0, 1, 1, noop);
+          check_outros();
+          key_block0 = create_key_block_1(ctx2);
+          key_block0.c();
+          transition_in(key_block0, 1);
+          key_block0.m(t7.parentNode, t7);
+        } else {
+          key_block0.p(ctx2, dirty);
+        }
+        if (dirty[0] & /*puncs*/
+        16 && safe_not_equal(previous_key_1, previous_key_1 = /*puncs*/
+        ctx2[4])) {
+          group_outros();
+          transition_out(key_block1, 1, 1, noop);
+          check_outros();
+          key_block1 = create_key_block2(ctx2);
+          key_block1.c();
+          transition_in(key_block1, 1);
+          key_block1.m(key_block1_anchor.parentNode, key_block1_anchor);
+        } else {
+          key_block1.p(ctx2, dirty);
+        }
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(if_block0);
+        transition_in(key_block0);
+        transition_in(key_block1);
+        current = true;
+      },
+      o(local) {
+        transition_out(if_block0);
+        transition_out(key_block0);
+        transition_out(key_block1);
+        current = false;
+      },
+      d(detaching) {
+        if_blocks[current_block_type_index].d(detaching);
+        if (detaching)
+          detach(t0);
+        if (detaching)
+          detach(span0);
+        if (detaching)
+          detach(t2);
+        if (if_block1)
+          if_block1.d(detaching);
+        if (detaching)
+          detach(t3);
+        if (detaching)
+          detach(span1);
+        if (detaching)
+          detach(t5);
+        if (if_block2) {
+          if_block2.d(detaching);
+        }
+        if (detaching)
+          detach(t6);
+        key_block0.d(detaching);
+        if (detaching)
+          detach(t7);
+        if (detaching)
+          detach(key_block1_anchor);
+        key_block1.d(detaching);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function instance10($$self, $$props, $$invalidate) {
+    let audiolist;
+    let $activefolioid;
+    let $activepb;
+    let $favorites;
+    let $activePtk;
+    let $folioChars;
+    let $showpaiji;
+    let $ytplayer;
+    let $videoid;
+    let $playing;
+    let $remainrollback;
+    let $idlecount;
+    let $tapmark;
+    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(1, $activefolioid = $$value));
+    component_subscribe($$self, activepb, ($$value) => $$invalidate(2, $activepb = $$value));
+    component_subscribe($$self, favorites, ($$value) => $$invalidate(10, $favorites = $$value));
+    component_subscribe($$self, activePtk, ($$value) => $$invalidate(33, $activePtk = $$value));
+    component_subscribe($$self, folioChars, ($$value) => $$invalidate(11, $folioChars = $$value));
+    component_subscribe($$self, showpaiji, ($$value) => $$invalidate(12, $showpaiji = $$value));
+    component_subscribe($$self, ytplayer, ($$value) => $$invalidate(13, $ytplayer = $$value));
+    component_subscribe($$self, videoid, ($$value) => $$invalidate(14, $videoid = $$value));
+    component_subscribe($$self, playing, ($$value) => $$invalidate(15, $playing = $$value));
+    component_subscribe($$self, remainrollback, ($$value) => $$invalidate(16, $remainrollback = $$value));
+    component_subscribe($$self, idlecount, ($$value) => $$invalidate(17, $idlecount = $$value));
+    component_subscribe($$self, tapmark, ($$value) => $$invalidate(18, $tapmark = $$value));
+    let { src } = $$props;
+    let ptk2 = usePtk($activePtk);
+    let foliotext2 = "", foliofrom2 = 0, puncs = [], ready, images = [], hidepunc = false;
+    let { totalpages = 0 } = $$props;
+    let { onTapText = function() {
+    } } = $$props;
+    let swiper;
+    let defaultIndex = 0;
+    let stableleft = 0;
+    const imageFrame = () => {
+      const img = document.getElementsByClassName("swipe")[defaultIndex];
+      if (!img || !img.clientHeight)
+        return [0, 0, 0, 0];
+      const r = img.clientHeight / img.naturalHeight;
+      const rect = img.getBoundingClientRect();
+      if (rect.left < 0) {
+        rect.left = stableleft;
+      } else {
+        stableleft = rect.left;
+      }
+      const w = img.naturalWidth * r;
+      const left = Math.floor((img.clientWidth - w) / 2) + rect.x;
+      return {
+        left,
+        top: rect.y,
+        width: w,
+        height: img.clientHeight
+      };
+    };
+    const swipeConfig = {
+      autoplay: false,
+      delay: 0,
+      showIndicators: false,
+      transitionDuration: 250
+    };
+    const loadZip = async () => {
+      loadingbook.set(true);
+      const res = await fetch("folio/" + src);
+      const buf = await res.arrayBuffer();
+      const zip = new ZipStore(buf);
+      for (let i = 0; i < zip.files.length; i++) {
+        const blob = new Blob([zip.files[i].content]);
+        images.push(URL.createObjectURL(blob));
+      }
+      $$invalidate(8, defaultIndex = zip.files.length - 1);
+      $$invalidate(0, totalpages = zip.files.length);
+      maxfolio.set(totalpages - 1);
+      setTimeout(
+        () => {
+          loadingbook.set(false);
+          $$invalidate(5, ready = true);
+        },
+        300
+      );
+    };
+    const swipeStart = (obj) => {
+      $$invalidate(6, hidepunc = true);
+    };
+    const swipeChanged = (obj) => {
+      const { active_item } = obj.detail;
+      $$invalidate(8, defaultIndex = active_item);
+      activepb.set(totalpages - defaultIndex - 1);
+      updateFolioText();
+      useractive();
+    };
+    const updateFolioText = async () => {
+      $$invalidate(6, hidepunc = true);
+      const fl = folioLines();
+      $$invalidate(3, [foliotext2, foliofrom2] = await fetchFolioText(ptk2, $activefolioid, 1 + Math.floor($activepb)), foliotext2);
+      console.log(foliotext2);
+      setTimeout(
+        () => {
+          $$invalidate(6, hidepunc = false);
+          $$invalidate(4, puncs = extractPuncPos(foliotext2, fl));
+        },
+        200
+      );
+    };
+    const useractive = () => {
+      showpaiji.set(false);
+      idlecount.set(0);
+      $$invalidate(6, hidepunc = false);
+    };
+    const mousewheel = (e) => {
+      if (e.ctrlKey)
+        return;
+      $$invalidate(6, hidepunc = true);
+      if (e.deltaY > 0) {
+        swiper.prevItem();
+      } else {
+        swiper.nextItem();
+      }
+      useractive();
+      e.preventDefault();
+    };
+    const getCharXY = (x, y) => {
+      const { left, top, width, height } = imageFrame();
+      x -= left;
+      y -= top;
+      const cx = folioLines() - Math.floor(x / width * folioLines()) - 1;
+      const cy = Math.floor(y / height * $folioChars);
+      return [cx, cy];
+    };
+    const onclick = async (e) => {
+      if ($showpaiji) {
+        useractive();
+        return;
+      }
+      $$invalidate(6, hidepunc = false);
+      const { x, y } = e.detail;
+      const [cx, cy] = getCharXY(x, y);
+      const tappos = folioLines() * $folioChars * $activepb + cx * $folioChars + cy;
+      tapmark.set(tappos);
+      let [t, pos] = getConcreatePos(foliotext2[cx], cy, foliotext2[cx + 1]);
+      const ck = await folio2ChunkLine(ptk2, foliotext2, foliofrom2, cx, pos);
+      ;
+      const address = "bk#" + $activefolioid + (ck ? "." + ck : "");
+      t = t.replace(/([。！？：、．；，「『（ ])/g, "\u3000");
+      while (t.charAt(0) == "\u3000")
+        t = t.slice(1);
+      t = t.replace(/　.+/, "");
+      await onTapText(t, address, ptk2.name);
+    };
+    const gotoPb = (pb) => {
+      if (!totalpages || !swiper)
+        return;
+      const go = totalpages - pb - 1;
+      if (go !== defaultIndex) {
+        swiper.goTo(go);
+      }
+    };
+    const togglefavoritebtn = () => {
+      if ($activePtk !== "dc")
+        return;
+      const bookfavor = Object.assign({}, $favorites);
+      if (!bookfavor[$activefolioid]) {
+        bookfavor[$activefolioid] = {};
+      }
+      bookfavor[$activefolioid][$activepb] = 1 - (bookfavor[$activefolioid][$activepb] ? 1 : 0);
+      favorites.set(Object.assign({}, bookfavor));
+    };
+    const toggleplaybtn = () => {
+      if (!get_store_value(videoid)) {
+        if (audiolist.length < 2)
+          return;
+        const pick = Math.floor(Math.random() * (audiolist.length - 1)) + 1;
+        selectmedia(audiolist[pick]?.vid);
+      } else {
+        selectmedia("");
+      }
+    };
+    function swipe_binding($$value) {
+      binding_callbacks[$$value ? "unshift" : "push"](() => {
+        swiper = $$value;
+        $$invalidate(7, swiper);
+      });
+    }
+    $$self.$$set = ($$props2) => {
+      if ("src" in $$props2)
+        $$invalidate(28, src = $$props2.src);
+      if ("totalpages" in $$props2)
+        $$invalidate(0, totalpages = $$props2.totalpages);
+      if ("onTapText" in $$props2)
+        $$invalidate(29, onTapText = $$props2.onTapText);
+    };
+    $$self.$$.update = () => {
+      if ($$self.$$.dirty[0] & /*src*/
+      268435456) {
+        $:
+          loadZip(src);
+      }
+      if ($$self.$$.dirty[0] & /*$activepb*/
+      4) {
+        $:
+          gotoPb($activepb);
+      }
+      if ($$self.$$.dirty[0] & /*$activefolioid*/
+      2) {
+        $:
+          $$invalidate(9, audiolist = getAudioList($activefolioid));
+      }
+    };
+    return [
+      totalpages,
+      $activefolioid,
+      $activepb,
+      foliotext2,
+      puncs,
+      ready,
+      hidepunc,
+      swiper,
+      defaultIndex,
+      audiolist,
+      $favorites,
+      $folioChars,
+      $showpaiji,
+      $ytplayer,
+      $videoid,
+      $playing,
+      $remainrollback,
+      $idlecount,
+      $tapmark,
+      images,
+      imageFrame,
+      swipeConfig,
+      swipeStart,
+      swipeChanged,
+      mousewheel,
+      onclick,
+      togglefavoritebtn,
+      toggleplaybtn,
+      src,
+      onTapText,
+      swipe_binding
+    ];
+  }
+  var Swipezipimage = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance10, create_fragment9, safe_not_equal, { src: 28, totalpages: 0, onTapText: 29 }, null, [-1, -1]);
+    }
+  };
+  var swipezipimage_default = Swipezipimage;
+
+  // ../ptk/platform/pwa.js
+  function registerServiceWorker(swfn = "./sw.js") {
+    const p = document.location.protocol;
+    const h = document.location.hostname;
+    const localhost = p == "http:" && (h == "127.0.0.1" || h == "localhost");
+    if ("serviceWorker" in navigator && (localhost || p == "https:")) {
+      navigator.serviceWorker.register(swfn);
+    }
+  }
+
+  // src/dictpopup.svelte
+  function get_each_context6(ctx, list, i) {
+    const child_ctx = ctx.slice();
+    child_ctx[12] = list[i][0];
+    child_ctx[13] = list[i][1];
+    child_ctx[15] = i;
+    return child_ctx;
+  }
+  function create_if_block_13(ctx) {
+    let t0;
+    let t1;
+    let a0;
+    let t2;
+    let a0_href_value;
+    let t3;
+    let a1;
+    let t4;
+    let a1_href_value;
+    let if_block0 = (
+      /*fgdzd*/
+      (ctx[1] || /*dfb*/
+      ctx[2]) && create_if_block_33(ctx)
+    );
+    let if_block1 = (
+      /*wikipedia*/
+      ctx[0] && create_if_block_23(ctx)
+    );
+    return {
+      c() {
+        if (if_block0)
+          if_block0.c();
+        t0 = space();
+        if (if_block1)
+          if_block1.c();
+        t1 = space();
+        a0 = element("a");
+        t2 = text("Google");
+        t3 = space();
+        a1 = element("a");
+        t4 = text("\u767E\u5EA6");
+        attr(a0, "target", "_new");
+        attr(a0, "href", a0_href_value = "https://www.google.com/search?q=" + encodeURI(
+          /*entry*/
+          ctx[13]
+        ));
+        attr(a1, "target", "_new");
+        attr(a1, "href", a1_href_value = "https://www.baidu.com/s?wd=" + encodeURI(
+          /*entry*/
+          ctx[13]
+        ));
+      },
+      m(target, anchor) {
+        if (if_block0)
+          if_block0.m(target, anchor);
+        insert(target, t0, anchor);
+        if (if_block1)
+          if_block1.m(target, anchor);
+        insert(target, t1, anchor);
+        insert(target, a0, anchor);
+        append(a0, t2);
+        insert(target, t3, anchor);
+        insert(target, a1, anchor);
+        append(a1, t4);
+      },
+      p(ctx2, dirty) {
+        if (
+          /*fgdzd*/
+          ctx2[1] || /*dfb*/
+          ctx2[2]
+        ) {
+          if (if_block0) {
+            if_block0.p(ctx2, dirty);
+          } else {
+            if_block0 = create_if_block_33(ctx2);
+            if_block0.c();
+            if_block0.m(t0.parentNode, t0);
+          }
+        } else if (if_block0) {
+          if_block0.d(1);
+          if_block0 = null;
+        }
+        if (
+          /*wikipedia*/
+          ctx2[0]
+        ) {
+          if (if_block1) {
+            if_block1.p(ctx2, dirty);
+          } else {
+            if_block1 = create_if_block_23(ctx2);
+            if_block1.c();
+            if_block1.m(t1.parentNode, t1);
+          }
+        } else if (if_block1) {
+          if_block1.d(1);
+          if_block1 = null;
+        }
+        if (dirty & /*entries*/
+        8 && a0_href_value !== (a0_href_value = "https://www.google.com/search?q=" + encodeURI(
+          /*entry*/
+          ctx2[13]
+        ))) {
+          attr(a0, "href", a0_href_value);
+        }
+        if (dirty & /*entries*/
+        8 && a1_href_value !== (a1_href_value = "https://www.baidu.com/s?wd=" + encodeURI(
+          /*entry*/
+          ctx2[13]
+        ))) {
+          attr(a1, "href", a1_href_value);
+        }
+      },
+      d(detaching) {
+        if (if_block0)
+          if_block0.d(detaching);
+        if (detaching)
+          detach(t0);
+        if (if_block1)
+          if_block1.d(detaching);
+        if (detaching)
+          detach(t1);
+        if (detaching)
+          detach(a0);
+        if (detaching)
+          detach(t3);
+        if (detaching)
+          detach(a1);
+      }
+    };
+  }
+  function create_if_block_33(ctx) {
+    let button;
+    let mounted;
+    let dispose;
+    return {
+      c() {
+        button = element("button");
+        button.textContent = "\u4E00\u884C";
+      },
+      m(target, anchor) {
+        insert(target, button, anchor);
+        if (!mounted) {
+          dispose = listen(
+            button,
+            "click",
+            /*setOneline*/
+            ctx[7]
+          );
+          mounted = true;
+        }
+      },
+      p: noop,
+      d(detaching) {
+        if (detaching)
+          detach(button);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_if_block_23(ctx) {
+    let button;
+    let mounted;
+    let dispose;
+    return {
+      c() {
+        button = element("button");
+        button.textContent = "Wiki";
+      },
+      m(target, anchor) {
+        insert(target, button, anchor);
+        if (!mounted) {
+          dispose = listen(
+            button,
+            "click",
+            /*setWikipedia*/
+            ctx[6]
+          );
+          mounted = true;
+        }
+      },
+      p: noop,
+      d(detaching) {
+        if (detaching)
+          detach(button);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_each_block6(ctx) {
+    let span;
+    let label;
+    let input;
+    let input_value_value;
+    let t0_value = (
+      /*entry*/
+      ctx[13] + ""
+    );
+    let t0;
+    let t1;
+    let t2;
+    let binding_group;
+    let mounted;
+    let dispose;
+    let if_block = (
+      /*idx*/
+      ctx[15] == /*nentry*/
+      ctx[4] && create_if_block_13(ctx)
+    );
+    binding_group = init_binding_group(
+      /*$$binding_groups*/
+      ctx[10][0]
+    );
+    return {
+      c() {
+        span = element("span");
+        label = element("label");
+        input = element("input");
+        t0 = text(t0_value);
+        t1 = space();
+        if (if_block)
+          if_block.c();
+        t2 = space();
+        attr(input, "type", "radio");
+        attr(input, "name", "dict");
+        input.__value = input_value_value = /*idx*/
+        ctx[15];
+        input.value = input.__value;
+        toggle_class(
+          span,
+          "dictgroup",
+          /*idx*/
+          ctx[15] == /*nentry*/
+          ctx[4]
+        );
+        binding_group.p(input);
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        append(span, label);
+        append(label, input);
+        input.checked = input.__value === /*nentry*/
+        ctx[4];
+        append(label, t0);
+        append(span, t1);
+        if (if_block)
+          if_block.m(span, null);
+        append(span, t2);
+        if (!mounted) {
+          dispose = listen(
+            input,
+            "change",
+            /*input_change_handler*/
+            ctx[9]
+          );
+          mounted = true;
+        }
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*nentry, entries*/
+        24) {
+          input.checked = input.__value === /*nentry*/
+          ctx2[4];
+        }
+        if (dirty & /*entries*/
+        8 && t0_value !== (t0_value = /*entry*/
+        ctx2[13] + ""))
+          set_data(t0, t0_value);
+        if (
+          /*idx*/
+          ctx2[15] == /*nentry*/
+          ctx2[4]
+        ) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+          } else {
+            if_block = create_if_block_13(ctx2);
+            if_block.c();
+            if_block.m(span, t2);
+          }
+        } else if (if_block) {
+          if_block.d(1);
+          if_block = null;
+        }
+        if (dirty & /*nentry*/
+        16) {
+          toggle_class(
+            span,
+            "dictgroup",
+            /*idx*/
+            ctx2[15] == /*nentry*/
+            ctx2[4]
+          );
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(span);
+        if (if_block)
+          if_block.d();
+        binding_group.r();
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_if_block5(ctx) {
+    let iframe;
+    let iframe_src_value;
+    return {
+      c() {
+        iframe = element("iframe");
+        attr(iframe, "class", "iframe svelte-q5fwfc");
+        attr(iframe, "title", "wiki");
+        if (!src_url_equal(iframe.src, iframe_src_value = /*src*/
+        ctx[5]))
+          attr(iframe, "src", iframe_src_value);
+      },
+      m(target, anchor) {
+        insert(target, iframe, anchor);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*src*/
+        32 && !src_url_equal(iframe.src, iframe_src_value = /*src*/
+        ctx2[5])) {
+          attr(iframe, "src", iframe_src_value);
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(iframe);
+      }
+    };
+  }
+  function create_fragment10(ctx) {
+    let div;
+    let span;
+    let t;
+    let each_value = (
+      /*entries*/
+      ctx[3]
+    );
+    let each_blocks = [];
+    for (let i = 0; i < each_value.length; i += 1) {
+      each_blocks[i] = create_each_block6(get_each_context6(ctx, each_value, i));
+    }
+    let if_block = (
+      /*src*/
+      ctx[5] && create_if_block5(ctx)
+    );
+    return {
+      c() {
+        div = element("div");
+        span = element("span");
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          each_blocks[i].c();
+        }
+        t = space();
+        if (if_block)
+          if_block.c();
+        attr(span, "class", "header svelte-q5fwfc");
+        attr(div, "class", "dictpopup toctext svelte-q5fwfc");
+      },
+      m(target, anchor) {
+        insert(target, div, anchor);
+        append(div, span);
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          if (each_blocks[i]) {
+            each_blocks[i].m(span, null);
+          }
+        }
+        append(div, t);
+        if (if_block)
+          if_block.m(div, null);
+      },
+      p(ctx2, [dirty]) {
+        if (dirty & /*nentry, encodeURI, entries, setWikipedia, wikipedia, setOneline, fgdzd, dfb*/
+        223) {
+          each_value = /*entries*/
+          ctx2[3];
+          let i;
+          for (i = 0; i < each_value.length; i += 1) {
+            const child_ctx = get_each_context6(ctx2, each_value, i);
+            if (each_blocks[i]) {
+              each_blocks[i].p(child_ctx, dirty);
+            } else {
+              each_blocks[i] = create_each_block6(child_ctx);
+              each_blocks[i].c();
+              each_blocks[i].m(span, null);
+            }
+          }
+          for (; i < each_blocks.length; i += 1) {
+            each_blocks[i].d(1);
+          }
+          each_blocks.length = each_value.length;
+        }
+        if (
+          /*src*/
+          ctx2[5]
+        ) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+          } else {
+            if_block = create_if_block5(ctx2);
+            if_block.c();
+            if_block.m(div, null);
+          }
+        } else if (if_block) {
+          if_block.d(1);
+          if_block = null;
+        }
+      },
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(div);
+        destroy_each(each_blocks, detaching);
+        if (if_block)
+          if_block.d();
+      }
+    };
+  }
+  function instance11($$self, $$props, $$invalidate) {
+    let { entries = [], ptk: ptk2, wikipedia, fgdzd, dfb } = $$props;
+    let nentry = 0;
+    let src = "";
+    const setWikipedia = () => {
+      const entry = entries[nentry][1];
+      $$invalidate(5, src = "https://zh.wikipedia.org/wiki/" + entry);
+    };
+    const setOneline = () => {
+      const entry = entries[nentry][1];
+      $$invalidate(5, src = "https://buddhaspace.org/dict/index.php?keyword=" + entry);
+    };
+    const availableDict = (n) => {
+      const at = entries[n][2];
+      const flag = ptk2.columns.entries.dict[at];
+      $$invalidate(0, wikipedia = flag & 1);
+      $$invalidate(1, fgdzd = flag & 2);
+      $$invalidate(2, dfb = flag & 4);
+      if (fgdzd || dfb)
+        setOneline();
+      else if (wikipedia)
+        setWikipedia();
+    };
+    const $$binding_groups = [[]];
+    function input_change_handler() {
+      nentry = this.__value;
+      $$invalidate(4, nentry);
+    }
+    $$self.$$set = ($$props2) => {
+      if ("entries" in $$props2)
+        $$invalidate(3, entries = $$props2.entries);
+      if ("ptk" in $$props2)
+        $$invalidate(8, ptk2 = $$props2.ptk);
+      if ("wikipedia" in $$props2)
+        $$invalidate(0, wikipedia = $$props2.wikipedia);
+      if ("fgdzd" in $$props2)
+        $$invalidate(1, fgdzd = $$props2.fgdzd);
+      if ("dfb" in $$props2)
+        $$invalidate(2, dfb = $$props2.dfb);
+    };
+    $$self.$$.update = () => {
+      if ($$self.$$.dirty & /*nentry*/
+      16) {
+        $:
+          availableDict(nentry);
+      }
+    };
+    return [
+      wikipedia,
+      fgdzd,
+      dfb,
+      entries,
+      nentry,
+      src,
+      setWikipedia,
+      setOneline,
+      ptk2,
+      input_change_handler,
+      $$binding_groups
+    ];
+  }
+  var Dictpopup = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance11, create_fragment10, safe_not_equal, {
+        entries: 3,
+        ptk: 8,
+        wikipedia: 0,
+        fgdzd: 1,
+        dfb: 2
+      });
+    }
+  };
+  var dictpopup_default = Dictpopup;
+
+  // src/foliolist.svelte
+  function get_each_context7(ctx, list, i) {
+    const child_ctx = ctx.slice();
+    child_ctx[10] = list[i][0];
+    child_ctx[11] = list[i][1];
+    child_ctx[12] = list[i][2];
+    return child_ctx;
+  }
+  function get_each_context_1(ctx, list, i) {
+    const child_ctx = ctx.slice();
+    child_ctx[15] = list[i];
+    return child_ctx;
+  }
+  function create_each_block_1(ctx) {
+    let span;
+    let t_value = (
+      /*getFolioName*/
+      ctx[3](
+        /*par*/
+        ctx[15]
+      ) + ""
+    );
+    let t;
+    let mounted;
+    let dispose;
+    function click_handler_1() {
+      return (
+        /*click_handler_1*/
+        ctx[8](
+          /*par*/
+          ctx[15]
+        )
+      );
+    }
+    return {
+      c() {
+        span = element("span");
+        t = text(t_value);
+        attr(span, "class", "parallelfolio");
+        toggle_class(
+          span,
+          "selecteditem",
+          /*$activefolioid*/
+          ctx[0] == /*getFolioId*/
+          ctx[4](
+            /*par*/
+            ctx[15]
+          )
+        );
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        append(span, t);
+        if (!mounted) {
+          dispose = listen(span, "click", click_handler_1);
+          mounted = true;
+        }
+      },
+      p(new_ctx, dirty) {
+        ctx = new_ctx;
+        if (dirty & /*$activefolioid, getFolioId, folios*/
+        19) {
+          toggle_class(
+            span,
+            "selecteditem",
+            /*$activefolioid*/
+            ctx[0] == /*getFolioId*/
+            ctx[4](
+              /*par*/
+              ctx[15]
+            )
+          );
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(span);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_each_block7(ctx) {
+    let div;
+    let span;
+    let t0_value = (
+      /*getFolioName*/
+      ctx[3](
+        /*nfolio*/
+        ctx[10]
+      ) + ""
+    );
+    let t0;
+    let t1;
+    let t2;
+    let mounted;
+    let dispose;
+    function click_handler() {
+      return (
+        /*click_handler*/
+        ctx[7](
+          /*nfolio*/
+          ctx[10]
+        )
+      );
+    }
+    let each_value_1 = (
+      /*pars*/
+      ctx[12]
+    );
+    let each_blocks = [];
+    for (let i = 0; i < each_value_1.length; i += 1) {
+      each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+    }
+    return {
+      c() {
+        div = element("div");
+        span = element("span");
+        t0 = text(t0_value);
+        t1 = space();
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          each_blocks[i].c();
+        }
+        t2 = space();
+        toggle_class(
+          span,
+          "selecteditem",
+          /*$activefolioid*/
+          ctx[0] == /*folioid*/
+          ctx[11]
+        );
+        attr(div, "class", "book");
+      },
+      m(target, anchor) {
+        insert(target, div, anchor);
+        append(div, span);
+        append(span, t0);
+        append(div, t1);
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          if (each_blocks[i]) {
+            each_blocks[i].m(div, null);
+          }
+        }
+        append(div, t2);
+        if (!mounted) {
+          dispose = listen(span, "click", click_handler);
+          mounted = true;
+        }
+      },
+      p(new_ctx, dirty) {
+        ctx = new_ctx;
+        if (dirty & /*$activefolioid, folios*/
+        3) {
+          toggle_class(
+            span,
+            "selecteditem",
+            /*$activefolioid*/
+            ctx[0] == /*folioid*/
+            ctx[11]
+          );
+        }
+        if (dirty & /*$activefolioid, getFolioId, folios, selectfolio, getFolioName*/
+        31) {
+          each_value_1 = /*pars*/
+          ctx[12];
+          let i;
+          for (i = 0; i < each_value_1.length; i += 1) {
+            const child_ctx = get_each_context_1(ctx, each_value_1, i);
+            if (each_blocks[i]) {
+              each_blocks[i].p(child_ctx, dirty);
+            } else {
+              each_blocks[i] = create_each_block_1(child_ctx);
+              each_blocks[i].c();
+              each_blocks[i].m(div, t2);
+            }
+          }
+          for (; i < each_blocks.length; i += 1) {
+            each_blocks[i].d(1);
+          }
+          each_blocks.length = each_value_1.length;
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(div);
+        destroy_each(each_blocks, detaching);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_fragment11(ctx) {
+    let each_1_anchor;
+    let each_value = (
+      /*folios*/
+      ctx[1]
+    );
+    let each_blocks = [];
+    for (let i = 0; i < each_value.length; i += 1) {
+      each_blocks[i] = create_each_block7(get_each_context7(ctx, each_value, i));
+    }
+    return {
+      c() {
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          each_blocks[i].c();
+        }
+        each_1_anchor = empty();
+      },
+      m(target, anchor) {
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          if (each_blocks[i]) {
+            each_blocks[i].m(target, anchor);
+          }
+        }
+        insert(target, each_1_anchor, anchor);
+      },
+      p(ctx2, [dirty]) {
+        if (dirty & /*folios, $activefolioid, getFolioId, selectfolio, getFolioName*/
+        31) {
+          each_value = /*folios*/
+          ctx2[1];
+          let i;
+          for (i = 0; i < each_value.length; i += 1) {
+            const child_ctx = get_each_context7(ctx2, each_value, i);
+            if (each_blocks[i]) {
+              each_blocks[i].p(child_ctx, dirty);
+            } else {
+              each_blocks[i] = create_each_block7(child_ctx);
+              each_blocks[i].c();
+              each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+            }
+          }
+          for (; i < each_blocks.length; i += 1) {
+            each_blocks[i].d(1);
+          }
+          each_blocks.length = each_value.length;
+        }
+      },
+      i: noop,
+      o: noop,
+      d(detaching) {
+        destroy_each(each_blocks, detaching);
+        if (detaching)
+          detach(each_1_anchor);
+      }
+    };
+  }
+  function instance12($$self, $$props, $$invalidate) {
+    let $activefolioid;
+    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(0, $activefolioid = $$value));
+    let { ptk: ptk2 } = $$props;
+    let { closePopup = function() {
+    } } = $$props;
+    const getFolioList = () => {
+      const folio = ptk2.defines.folio;
+      const out = [];
+      for (let i = 0; i < folio.linepos.length; i++) {
+        const id = folio.fields.id.values[i];
+        if (!~id.indexOf("_") && !id.match(/[23456789]$/)) {
+          out.push([i, id, parallelFolios(id)]);
+        }
+      }
+      return out;
+    };
+    const folios = getFolioList();
+    const selectfolio = (nfolio) => {
+      const folio = ptk2.defines.folio;
+      stopVideo();
+      const folioid = folio.fields.id.values[nfolio];
+      activefolioid.set(folioid);
+      activepb.set(0);
+      closePopup();
+    };
+    const getFolioName = (nfolio) => {
+      const folio = ptk2.defines.folio;
+      return folio.innertext.get(nfolio);
+    };
+    const getFolioId = (nfolio) => {
+      const folio = ptk2.defines.folio;
+      return folio.fields.id.values[nfolio];
+    };
+    const click_handler = (nfolio) => selectfolio(nfolio);
+    const click_handler_1 = (par) => selectfolio(par);
+    $$self.$$set = ($$props2) => {
+      if ("ptk" in $$props2)
+        $$invalidate(5, ptk2 = $$props2.ptk);
+      if ("closePopup" in $$props2)
+        $$invalidate(6, closePopup = $$props2.closePopup);
+    };
+    return [
+      $activefolioid,
+      folios,
+      selectfolio,
+      getFolioName,
+      getFolioId,
+      ptk2,
+      closePopup,
+      click_handler,
+      click_handler_1
+    ];
+  }
+  var Foliolist = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance12, create_fragment11, safe_not_equal, { ptk: 5, closePopup: 6 });
+    }
+  };
+  var foliolist_default = Foliolist;
 
   // src/urlqrcode.js
   var urlqrcode = `<?xml version="1.0" encoding="utf-8"?>
@@ -13918,7 +13932,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         div = element("div");
-        t0 = text("\u7248\u672C\uFF1A2023.7.12 ");
+        t0 = text("\u7248\u672C\uFF1A2023.7.13 ");
         create_component(switch_1.$$.fragment);
         t1 = space();
         if_block.c();
@@ -17689,7 +17703,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     function onPlayerReady(e) {
       console.log("player ready");
       const plyr = player();
-      plyr?.playVideo ? plyr.playVideo() : plyr?.play && plyr.play();
+      if ($videoid) {
+        plyr?.playVideo ? plyr.playVideo() : plyr?.play && plyr.play();
+      }
     }
     const loadVideo = () => {
       const vid = $videoid;

@@ -149,10 +149,10 @@ select {font-size:4vh}
   top:0;left:0;z-index: 999;
 }
 
-.paijitextcontainer{width:100%;justify-content: center;display:flex;padding-top:75vh}
+.paijitextcontainer{width:100%;justify-content: center;display:flex;padding-top:70vh}
 .paijitext{
   pointer-events: none;
-  font-size:5vw;
+  font-size:4vw;
   color:yellow;
   z-index: 1999;
 }
