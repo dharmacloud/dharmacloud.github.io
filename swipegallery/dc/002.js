@@ -357,7 +357,7 @@ jsonp(2,{"name":"dc","start":887},`【李文會曰】即不名菩薩者。二乘
 【川禪師云】三十年後。莫教忘却老僧。不知誰是知恩者。呵呵。將謂無人。
 頌曰。飢得食。渴得漿。病得差。熱得涼。貧人遇寶。嬰子見娘。飄舟到岸。孤客還鄉。旱逢甘雨。國有忠良。四夷拱手。八表來降。頭頭總是。物物全彰。古今凡聖。地獄天堂。東西南北。不用思量。剎塵沙界諸群品。盡入金剛大道塲。
 ^r32:7
-^pb1^ak#amtb^folio#amtb^bk#amtb<heading=阿彌陀經>【佛說阿彌陀經】^lb^au【．．．姚秦龜茲三藏．鳩摩羅什．譯】
+^pb1^ak#amtb^folio#amtb<lines=6>【阿彌陀經】^bk#amtb【佛說阿彌陀經】^lb^au【．．．姚秦龜茲三藏．鳩摩羅什．譯】
 ^lb^ck1【序分】
 ^lb如是我聞：
 一時，佛在舍衛國祇樹給孤獨園，
@@ -514,7 +514,7 @@ jsonp(2,{"name":"dc","start":887},`【李文會曰】即不名菩薩者。二乘
 舍利弗及諸比丘，
 一切世間天、^lb人、阿修羅等，聞佛所說，歡喜信受，作禮而去。
 ^pb21
-^pb1^lb^lb^lb^lb^folio#amtb_xuanzang^bk#amtb_xuanzang<heading=玄奘 hidden=1>【稱讚淨土佛攝受經】^pb2^au【．．．．．大唐三藏法師玄奘奉．詔譯】
+^pb1^lb^lb^lb^lb^folio#amtb_xuanzang<lines=6>【玄奘】^bk#amtb_xuanzang【稱讚淨土佛攝受經】^pb2^au【．．．．．大唐三藏法師玄奘奉．詔譯】
 ^lb^ck1【序分】
 如是我聞：
 一時，薄伽梵在室羅筏住誓多林^lb給孤獨園，
@@ -672,7 +672,7 @@ jsonp(2,{"name":"dc","start":887},`【李文會曰】即不名菩薩者。二乘
 尊者舍利子等諸大聲聞，
 ^lb及諸菩薩摩訶薩眾，無量天、人、阿素洛等，一^lb切大眾聞佛所說皆大歡喜信受奉行。
 ^lb稱讚淨土佛攝受經^pb45
-^pb1^folio#bhaisajya^bk#bhaisajya<heading=藥師經>【藥師瑠璃光如來本願功德經】^ck0【序】^lb^gatha^au【．．．唐三藏法師．玄奘．奉詔】
+^pb1^folio#bhaisajya【藥師經】^bk#bhaisajya【藥師瑠璃光如來本願功德經】^ck0【序】^lb^gatha^au【．．．唐三藏法師．玄奘．奉詔】
 ^ck1【敘事證信】
 ^lb如是我聞：
 一時，薄伽梵遊化諸國，
@@ -1154,7 +1154,7 @@ jsonp(2,{"name":"dc","start":887},`【李文會曰】即不名菩薩者。二乘
 國王、大臣、婆羅門、居士，
 天、龍、^lb藥叉、揵達縛、阿素洛、揭路荼、緊捺洛、莫呼洛^pb60伽、人、非人等，一切大眾，聞佛所說，皆大歡喜，^lb信受奉行。
 ^lb^lb^lb藥師．琉璃光．如來本願功德經^pb61
-^pb1^folio#bhaisajya_gupta^bk#bhaisajya_gupta<heading=笈多 hidden=1>佛說藥師如來本願經】^ck0【序】^lb^gatha^au【．．．隋．天竺三藏．達摩笈多．譯】
+^pb1^folio#bhaisajya_gupta【笈多】^bk#bhaisajya_gupta【佛說藥師如來本願經】^ck0【序】^lb^gatha^au【．．．隋．天竺三藏．達摩笈多．譯】
 ^ck1【敘事證信】
 ^lb如是我聞：
 一時婆伽婆遊行人間
@@ -1636,7 +1636,7 @@ jsonp(2,{"name":"dc","start":887},`【李文會曰】即不名菩薩者。二乘
 國王、大臣、婆羅門、居士，
 及一切大眾阿^pb055修羅、揵達婆等，聞佛所說，歡喜奉行。
 ^lb^lb^lb佛說藥師如來本願經
-^pb1^folio#bhaisajya_srimitra^bk#bhaisajya_srimitra<heading=尸梨蜜多 hidden=1>佛說灌頂拔除過罪生死得度經卷第十二^ck0【序】^lb^gatha^au【東晉天竺三藏帛尸梨蜜多羅譯】
+^pb1^folio#bhaisajya_srimitra【尸梨蜜多】^bk#bhaisajya_srimitra佛說灌頂拔除過罪生死得度經卷第十二^ck0【序】^lb^gatha^au【東晉天竺三藏帛尸梨蜜多羅譯】
 ^ck1【敘事證信】^lb灌頂章句拔除過罪生死得度經第十
 ^lb聞如是：
 一時，佛遊
@@ -2119,7 +2119,7 @@ jsonp(2,{"name":"dc","start":887},`【李文會曰】即不名菩薩者。二乘
 人民作禮奉行。
 ^lb佛說灌頂經卷第十二
 ^lb^lb
-^pb1^folio#ksitigarbha1^bk#ksitigarbha1<heading=地藏經>【地藏菩薩本願經】卷上^lb^au【唐于闐國三藏沙門實叉難陀譯】
+^pb1^folio#ksitigarbha1【地藏經】^bk#ksitigarbha【地藏菩薩本願經】卷上^lb^au【唐于闐國三藏沙門實叉難陀譯】
 ^lb^ck1〔忉利天宮神通品第一〕
 ^lb如是我聞：
 一時，佛在忉利天，為母說法。
@@ -2282,4 +2282,6 @@ jsonp(2,{"name":"dc","start":887},`【李文會曰】即不名菩薩者。二乘
 摩耶夫人重白菩薩：「且願聞^lb於閻浮罪報，所感惡趣。」
 地藏答言：「聖母！唯願^lb聽受，我麁說之。」佛母白言：「願聖者說。」
 爾時，地^lb藏菩薩白聖母言：「南閻浮提罪報，名號如是：
-^lb若有眾生，不孝父母，或至殺害，當墮無間地^pb38獄，千萬億劫，求出無期。`)
+^lb若有眾生，不孝父母，或至殺害，當墮無間地^pb38獄，千萬億劫，求出無期。
+若有眾生，出佛身血，^lb毀謗三寶，不敬尊經，亦當墮於無間地獄，千^lb萬億劫，求出無期。
+若有眾生，侵損常住，點污^lb僧尼，或伽藍內，恣行淫欲，或殺或害，`)

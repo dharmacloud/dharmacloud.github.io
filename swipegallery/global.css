@@ -100,7 +100,8 @@ select {font-size:4vh}
   font-size:4vh;
 }
 .pagenumber {position:absolute ; bottom:4vh;font-size: 200%;left:0.5em;z-index: 99;color:brown}
-.favoritebtn {cursor:pointer; position:absolute ; top:2vh;font-size: 200%;left:0.5em;z-index: 99;color:brown}
+.playbtn {cursor:pointer; position:absolute ; top:2vh;font-size: 200%;left:0.5em;z-index: 99;color:brown}
+.favoritebtn {cursor:pointer; position:absolute ; top:2vh;font-size: 200%;right:0.5em;z-index: 99;color:brown}
 .favoriteitem {cursor:pointer;padding-right:0.3em;padding-left:0.3em}
 @keyframes blinker {
   50% {
@@ -164,4 +165,4 @@ button {font-size:2.8vh}
 
 a{color:#563100}
 
-.parallelbook {font-size:90% ; padding-left:0.1em;padding-right:0.1em;border-radius: 5px;border:#d27700 1px dotted}
+.parallelfolio {font-size:90% ; padding-left:0.1em;padding-right:0.1em;border-radius: 5px;border:#d27700 1px dotted}

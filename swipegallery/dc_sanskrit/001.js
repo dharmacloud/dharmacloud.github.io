@@ -1,4 +1,161 @@
-jsonp(1,{"name":"dc_sanskrit","start":0},`^bk#bhaisajya<heading=Sansrkit>【Bhaiṣajya-guru-vaiḍūrya-prabha-rāja-sūtram】^ck0【prolog】
+jsonp(1,{"name":"dc_sanskrit","start":0},`^bk#amtb【Sukhāvatīvyūho Sūtra】
+^ck1 
+evaṁ mayā śrutaṁ 
+ekasmin samaye bhagavāñ śrāvastyāṁ viharati sma jetavane ‘nāthapiṁḍadasyārāme 
+mahatā bhikṣusaṁghena sārdham ardhatrayodaśabhir bhikṣuśatair abhijñānābhijñātaiḥ sthavirair  mahāśrāvakaiḥ sarvair arhadbhiḥ.
+tadyathā sthavireṇa ca śāriputreṇa mahāmaudgalyāyanena ca mahākāśyapena ca mahākapphiṇena ca mahākātyāyanena ca mahākauṣṭhilena ca revatena ca śuddhipaṁthakena ca naṁdena cānaṁdena ca rāhulena ca gavāṁpatinā ca bharadvājena ca kālodayinā ca vakkulena cāniruddhena ca .
+etaiś cānyaiś ca saṁbahulair mahāśrāvakaiḥ saṁbahulaiś ca bodhisattvair mahāsattvaiḥ .
+tadyathā maṁjuśriyā ca kumārabhūtenājitena ca bodhisattvena gaṁdhahastinā ca bodhisattvena nityodyuktena ca bodhisattvenānikṣiptadhureṇa ca bodhisattvena 
+etaiś cānyaiś ca saṁbahulair bodhisattvair mahāsattvaiḥ . 
+śakreṇa ca devānām iṁdreṇa brahmaṇā ca sahāṁpatinā . 
+etaiś cānyaiś ca saṁbahulair devaputranayutaśatasahasraiḥ ..1..
+^ck2
+tatra khalu bhagavān āyuṣmaṁtaṁ śāriputram āmaṁtrayati sma . 
+asti  śāriputra paścime digbhāga ito buddhakṣetraṁ koṭiśatasahasraṁ buddhakṣetrāṇām atikramya sukhāvatī nāma lokadhātuḥ . 
+tatrāmitāyurnāma tathāgato ‘rhan samyaksaṁbuddha etarhi tiṣṭhati dhriyate yāpayati dharmaṁ ca deśayati .
+ tat kiṁ manyase śāriputra kena kāraṇena sā lokadhātuḥ sukhāvatīty ucyate . 
+tatra khalu punaḥ śāriputra sukhāvatyāṁ lokadhātau nāsti sattvānāṁ kāyaduḥkhaṁ na cittaduḥkhaṁ apramāṇāny eva sukhakāraṇāni . tena kāraṇena sā lokadhātuḥ sukhāvatīty ucyate ..2..
+^ck3
+punar aparaṁ śāriputra sukhāvatī lokadhātuḥ saptabhir vedikābhiḥ saptabhis tālapaṁktibhiḥ kiṁkiṇījālaiś ca samalaṁkṛtā samaṁtato ‘nuparikṣiptā citrā darśanīyā caturṇāṁ ratnānāṁ . 
+tadyathā suvarṇasya  rūpyasya vaiḍūryasya sphaṭikasya . 
+evaṁrūpaiḥ śāriputra buddhakṣetraguṇavyūhaiḥ samalaṁkṛtaṁ tadbuddhakṣetraṁ ..3..
+^ck4
+punar aparaṁ śāriputra sukhāvatyāṁ lokadhātau saptaratnamayyaḥ puṣkariṇyaḥ . 
+tadyathā suvarṇasya rūpyasya vaiḍūryasya sphaṭikasya lohita-muktasyāśmagarbhasya musāragalvasya saptamasya ratnasya . 
+aṣṭāṁgopetavāri-paripūrṇāḥ samatīrthakāḥ kākapeyā  suvarṇavālukāsaṁstṛtāḥ . 
+
+
+tāsu ca puṣkariṇīṣu samaṁtāc caturdiśaṁ catvāri sopānāni citrāṇi darśanīyāni caturṇāṁ ratnānāṁ . 
+tadyathā suvarṇasya rūpyasya vaiḍūryasya sphaṭikasya . 
+tāsāṁ ca puṣkariṇīnāṁ samaṁtād ratnavṛkṣā jātāś citrā darśanīyā saptānāṁ ratnānāṁ .
+tadyathā suvarṇasya rūpyasya vaiḍūryasya sphaṭikasya lohitamuktasyāśmagarbhasya musāragalvasya saptamasya ratnasya . 
+tāsu ca puṣkariṇīṣu saṁti padmāni jātāni nīlāni nīlavarṇāni nīlanirbhāsāni nīlanidarśanāni .
+ pītāni pītavarṇāni pītanirbhāsāni pītanidarśanāni . 
+lohitāni lohitavarṇāni lohitanirbhāsāni lohitanidarśanāni . 
+avadātāny avadātavarṇāny avadātanirbhāsāny avadātanidarśanāni . 
+citrāṇi citravarṇāni citranirbhāsāni citranidarśanāni śakaṭacakra-pramāṇapariṇāhāni . 
+evaṁrūpaiḥ śāriputra buddhakṣetraguṇavyūhaiḥ samalaṁkṛtaṁ tadbuddhakṣetraṁ ..4..
+^ck5
+punar aparaṁ śāriputra tatra buddhakṣetre nityapravāditāni divyāni tūryāṇi suvarṇavarṇā ca mahāpṛthivī ramaṇīyā . 
+
+
+
+
+tatra ca buddhakṣetre triṣkṛtvo rātrau triṣkṛtvo divasasya puṣpavarṣaṁ pravarṣati divyānāṁ māṁdāravapuṣpāṇāṁ . 
+tatra ye sattvā upapannās ta ekena purobhaktena koṭiśatasahasraṁ buddhānāṁ vaṁdaṁty anyāṁl lokadhātūn gatvā . 
+ekaikaṁ ca tathāgataṁ koṭiśatasahasrābhiḥ puṣpavṛṣṭibhir abhyavakīrya punar api tām eva lokadhātum āgacchaṁti divāvihārāya . 
+evaṁrūpaiḥ śāriputra buddhakṣetraguṇavyūhaiḥ samalaṁkṛtaṁ tadbuddhakṣetraṁ ..5..
+^ck6
+punar aparaṁ śāriputra tatra buddhakṣetre saṁti haṁsāḥ kraiṁcā mayūrāś ca . 
+te triṣkṛtvo rātrau triṣkṛtvo divasasya saṁnipatya saṁgītiṁ kurvaṁti sma svakasvakāni ca rutāni pravyāharaṁti . 
+teṣāṁ pravyāharatām iṁdriyabalabodhyaṁgaśabdo niścarati .
+tatra teṣāṁ manuṣyāṇāṁ taṁ śabdaṁ śrutvā buddhamanasikāra utpadyate dharmamanasikāra utpadyate saṁghamanasikāra utpadyate ..
+tat kiṁ manyase śāriputra tiryagyonigatās te sattvāḥ . 
+na punar evaṁ draṣṭavyaṁ . tat kasmād dhetoḥ . 
+nāmāpi śāriputra tatra buddhakṣetre nirayāṇāṁ nāsti tiryagyonīnāṁ yamalokasya nāsti . 
+te punaḥ pakṣisaṁghās tenāmitāyuṣā tathāgatena nirmitā dharmaśabdaṁ niścārayaṁti . 
+evaṁrūpaiḥ śāriputra buddhakṣetraguṇavyūhaiḥ samalaṁkṛtaṁ tadbuddhakṣetraṁ ..6..
+^ck7
+punar aparaṁ śāriputra tatra buddhakṣetre tāsāṁ ca tālapaṁktīnāṁ teṣāṁ ca kiṁkiṇījālānāṁ vāteritānāṁ valgur manojñaḥ śabdo niścarati . 
+tadyathāpi nāma śāriputra koṭiśatasahasrāṁgikasya divyasya tūryasya cāryaiḥ saṁpravāditasya valgur manojñaḥ śabdo niścarati 
+evam eva śāriputra tāsāṁ ca tālapaṁktīnāṁ teṣāṁ ca kiṁkiṇījālānāṁ vāteritānāṁ valgur manojñaḥ śabdo niścarati .
+tatra teṣāṁ manuṣyāṇāṁ taṁ śabdaṁ śrutvā buddhānusmṛtiḥ kāye saṁtiṣṭhati dharmānusmṛtiḥ kāye saṁtiṣṭhati saṁghānusmṛtiḥ kāye saṁtiṣṭhati . 
+evaṁrūpaiḥ śāriputra buddhakṣetraguṇavyūhaiḥ samalaṁkṛtaṁ tadbuddhakṣetraṁ ..7..
+
+
+^ck8
+
+
+^ck9
+tat kiṁ manyase śāriputra kena kāraṇena sa tathāgato ‘mitāyur nāmocyate . 
+tasya khalu punaḥ śāriputra tathāgatasya teṣāṁ ca manuṣyāṇām aparimitam āyuḥpramāṇaṁ . 
+tena kāraṇena sa tathāgato ‘mitāyur nāmocyate . 
+tasya ca śāriputra tathāgatasya daśa kalpā anuttarāṁ samyaksaṁbodhim abhisaṁbuddhasya ..8..
+^ck10
+tat kiṁ manyase śāriputra kena kāraṇena sa tathāgato ‘mitābho nāmocyate . 
+tasya khalu punaḥ śāriputra tathāgatasyābhāpratihatā sarvabuddhakṣetreṣu . 
+tena kāraṇena sa tathāgato ‘mitābho nāmocyate .
+tasya ca śāriputra tathāgatasyāprameyaḥ śrāvakasaṁgho yeṣāṁ na sukaraṁ pramāṇam ākhyātuṁ śuddhānām arhatāṁ . 
+
+evaṁrūpaiḥ śāriputra buddhakṣetraguṇavyūhaiḥ samalaṁkṛtaṁ tadbuddhakṣetraṁ ..9..
+^ck11
+punar aparaṁ śāriputra ye ‘mitāyuṣas tathāgatasya buddhakṣetre sattvā upapannāḥ śuddhā bodhisattvā avinivartanīyā ekajātipratibaddhās 
+teṣāṁ śāriputra bodhisattvānāṁ na sukaraṁ pramāṇam ākhyātum anyatrāprameyāsaṁkhyeyā iti saṁkhyāṁ gacchaṁti .
+
+
+
+ tatra khalu punaḥ śāriputra buddhakṣetre sattvaiḥ praṇidhānaṁ kartavyaṁ . 
+tat kasmād dhetoḥ . yatra hi nāma tathārūpaiḥ satpuruṣaiḥ saha samavadhānaṁ bhavati . 
+^ck12
+nāvaramātrakeṇa śāriputra kuśalamūlenāmitāyuṣas tathāgatasya buddhakṣetre sattvā upapadyaṁte .
+yaḥ kaścic chāriputra kulaputro vā kuladuhitā vā tasya bhagavato ‘mitāyuṣas tathāgatasya nāmadheyaṁ śroṣyati śrutvā ca manasikariṣyati ekarātraṁ vā dvirātraṁ vā trirātraṁ vā catūrātraṁ vā paṁcarātraṁ vā ṣaḍrātraṁ vā saptarātraṁ vāvikṣiptacitto manasikariṣyati 
+yadā sa kulaputro vā kuladuhitā vā kālaṁ kariṣyati tasya kālaṁ kurvataḥ so ‘mitāyus tathāgataḥ śrāvakasaṁghaparivṛto bodhisattvagaṇapuraskṛtaḥ purataḥ sthāsyati so ‘viparyastacittaḥ kālaṁ kariṣyati ca . 
+sa kālaṁ krtvā tasyaivāmitāyuṣas tathāgatasya buddhakṣetre sukhāvatyāṁ lokadhātāv upapatsyate . 
+tasmāt tarhi śāriputra idam arthavaśam saṁpaśyamāna evaṁ vadāmi 
+satkṛtya kulaputreṇa vā kuladuhitrā vā tatra buddhakṣetre cittapraṇidhānaṁ kartavyaṁ ..10..
+^ck13
+tadyathāpi nāma śāriputra aham etarhi tāṁ parikīrtayāmi 
+evam eva śāriputra pūrvasyāṁ diśy akṣobhyo nāma tathāgato merudhvajo nāma tathāgato mahāmerur nāma tathāgato meruprabhāso nāma tathāgato maṁjudhvajo nāma tathāgata 
+evaṁpramukhāḥ śāriputra pūrvasyāṁ diśi gaṁgānadīvālukopamā buddhā bhagavaṁtaḥ svakasvakāni buddhakṣetrāṇi jihveṁdriyeṇa saṁcchādayitvā nirveṭhanaṁ kurvaṁti . 
+pratīyatha yūyam idam aciṁtyaguṇa-parikīrtanaṁ sarvabuddhaparigrahaṁ nāma dharmaparyāyaṁ ..11..
+^ck14
+ evaṁ dakṣiṇasyāṁ diśi caṁdrasūryapradīpo nāma tathāgato yaśaḥprabho nāma tathāgato mahārciskaṁdho nāma tathāgato merupradīpo nāma tathāgato ‘naṁtavīryo nāma tathāgata 
+evaṁpramukhāḥ śāriputra dakṣiṇasyāṁ diśi gaṁgānadīvālukopamā buddhā bhagavaṁtaḥ svakasvakāni buddhakṣetrāṇi jihveṁdriyeṇa saṁcchādayitvā nirveṭhanaṁ kurvaṁti . 
+pratīyatha yūyam idam aciṁtyaguṇaparikīrtanaṁ sarvabuddhaparigrahaṁ nāma dharmaparyāyaṁ ..12..
+^ck15
+ evaṁ paścimāyāṁ diśy amitāyur nāma tathāgato ‘mitaskaṁdho nāma tathāgato ‘mitadhvajo nāma tathāgato mahāprabho nāma tathāgato mahāratnaketur nāma tathāgataḥ śuddharaśmiprabho nāma tathāgata 
+evaṁpramukhāḥ śāriputra paścimāyāṁ diśi gaṁgānadīvālukopamā buddhā bhagavaṁtaḥ svakasvakāni buddhakṣetrāṇi jihveṁdriyeṇa saṁcchādayitvā nirveṭhanaṁ kurvaṁti . 
+pratīyatha yūyam idam aciṁtyaguṇaparikīrtanaṁ sarvabuddhaparigrahaṁ nāma dharmaparyāyaṁ ..13..
+^ck16
+evam uttarāyāṁ diśi mahārciskaṁdho nāma tathāgato vaiśvānaranirghoṣo nāma tathāgato duṁdubhisvaranirghoṣo nāma tathāgato duṣpradharṣo nāma tathāgata ādityasaṁbhavo nāma tathāgato jaleniprabho nāma tathāgataḥ prabhākaro nāma tathāgata
+ evaṁpramukhā śāriputrottarāyāṁ diśi gaṁgānadīvālukopamā buddhā bhagavaṁtaḥ svakasvakāni buddhakṣetrāṇi jihveṁdriyeṇa saṁcchādayitvā nirveṭhanaṁ kurvaṁti . 
+pratīyatha yūyam idam aciṁtyaguṇaparikīrtanaṁ sarvabuddhaparigrahaṁ nāma dharmaparyāyaṁ ..14..
+^ck17
+evam adhastāyāṁ diśi siṁho nāma tathāgato yaśo nāma tathāgato yaśaḥprabhāso nāma tathāgato dharmo nāma tathāgato dharmadharo nāma tathāgato dharmadhvajo nāma tathāgata 
+evaṁpramukhāḥ śāriputrādhastāyāṁ diśi gaṁgānadīvālukopamā buddhā bhagavaṁtaḥ svakasvakāni buddhakṣetrāṇi jihveṁdriyeṇa saṁcchādayitvā nirveṭhanaṁ kurvaṁti . 
+pratīyatha yūyam idam aciṁtyaguṇaparikīrtanaṁ sarvabuddhaparigrahaṁ nāma dharmaparyāyaṁ ..15..
+^ck18
+evam upariṣṭhāyāṁ diśi brahmaghoṣo nāma tathāgato nakṣatrarājo nāma tathāgata iṁdraketudhvajarājo nāma tathāgato gaṁdhottamo nāma tathāgato gaṁdhaprabhāso nāma tathāgato mahārciskaṁdho nāma tathāgato ratnakusumasaṁpuṣpitagātro nāma tathāgataḥ sāleṁdrarājo nāma tathāgato ratnotpalaśrīr nāma tathāgataḥ sarvārthadarśo nāma tathāgataḥ sumerukalpo nāma tathāgata 
+evaṁpramukhāḥ śāriputropariṣṭhāyāṁ diśi gaṁgānadīvālukopamā buddhā bhagavaṁtaḥ svakasvakāni buddhakṣetrāṇi jihveṁdriyeṇa saṁcchādayitvā nirveṭhanaṁ kurvaṁti . 
+pratīyatha yūyam idam aciṁtyaguṇaparikīrtanaṁ sarvabuddhaparigrahaṁ nāma dharmaparyāyaṁ ..16..
+^ck19
+
+
+
+^ck20
+
+
+
+^ck21
+
+
+
+^ck22
+
+
+
+^ck23
+tat kiṁ manyase śāriputra kena kāraṇenāyaṁ dharmaparyāyaḥ sarvabuddhaparigraho nāmocyate . 
+ye kecic chāriputra kulaputrā vā kuladuhitaro vāsya dharmaparyāyasya nāmadheyaṁ śroṣyaṁti teṣāṁ ca buddhānāṁ bhagavatāṁ nāmadheyaṁ dhārayiṣyaṁti 
+sarve te buddhaparigṛhītā bhaviṣyaṁty avinivartanīyāś ca bhaviṣyaṁty anuttarāyāṁ samyaksaṁbodhau . 
+tasmāt tarhi śāriputra śraddadhādhvaṁ pratīyatha mākāṁkṣayatha mama ca teṣāṁ ca buddhānāṁ bhagavatāṁ . 
+^ck24
+ye kecic chāriputra kulaputrā vā kuladuhitaro vā tasya bhagavato ‘mitāyuṣas tathāgatasya buddhakṣetre cittapraṇidhānaṁ 
+kariṣyaṁti kṛtaṁ vā kurvaṁti vā sarve te ‘vinivartanīyā bhaviṣyaṁty anuttarāyāṁ samyaksaṁbodhau tatra ca buddhakṣetra upapatsyaṁty upapannā vopapadyaṁti vā . 
+tasmāt tarhi śāriputra śrāddhaiḥ kulaputraiḥ kuladuhitṛbhiś ca tatra buddhakṣetre cittapraṇidhir utpādayitavyaḥ ..17..
+^ck25
+tadyathāpi nāma śāriputrāham etarhi teṣāṁ buddhānāṁ bhagavatām evamaciṁtyaguṇān parikīrtayāmi evam eva śāriputra mamāpi te buddhā  bhagavaṁta evamaciṁtyaguṇān parikīrtayaṁti .
+ suduṣkaraṁ bhagavatā śākyamuninā śākyādhirājena kṛtaṁ . 
+sahāyāṁ lokadhātāv anuttarāṁ samyaksaṁbodhim abhisaṁbudhya sarvalokavipratyayanīyo dharmo deśitaḥ kalpakaṣāye sattvakaṣāye dṛṣṭikaṣāya āyuṣkaṣāye kleśakaṣāye ..18..
+
+^ck26
+tan mamāpi śāriputra paramaduṣkaraṁ yan mayā sahāyāṁ lokadhātāv anuttarāṁ samyaksaṁbodhim abhisaṁbudhya 
+sarvalokavipratyayanīyo dharmo deśitaḥ sattvakaṣāye dṛṣṭikaṣāye kleśakaṣāya āyuṣkaṣāye kalpakaṣāye ..19..
+^ck27
+idam avocad bhagavān āttamanāḥ. 
+āyuṣmāñ śāriputras te ca bhikṣavas
+te ca bodhisattvāḥ sadevamānuṣāsuragaṁdharvaś ca loko bhagavato bhāsitam abhyanaṁdan ..20..
+^bk#bhaisajya<heading=Sansrkit>【Bhaiṣajya-guru-vaiḍūrya-prabha-rāja-sūtram】^ck0【prolog】
 ^ck1
 evaṃ mayā śrutam 
 ekasmin samaye bhagavān jana-pada-caryāṃ caramāṇo ’nu-pūrveṇa, 
@@ -551,307 +708,100 @@ tad-yathā:
 gate gate pāragate pārasaṃgate bodhi svāhā||
 ^ck4【epilog】iti prajñāpāramitāhṛdayasūtraṃ samāptam.
 
-^ak#vcpp^bk#vcpp<heading=Sanskrit>【vajracchedikā prajñāpāramitā】^ck0【title】
-^ck1【The convocation of the Assembly】
- evaṃ mayā śrutam
- ekasmin samaye |
-Bhagavāñ Śrāvastyāṃ viharati sma Jetavane 'nāthapiṇḍadasya-ārāme
- mahatā bhikṣu-saṁghena sārdham ardhatrayodaśabhir bhikṣu-śataiḥ sambahulaiś ca bodhisattvair mahāsattvaiḥ |
- atha khalu Bhagavān pūrvāhṇa-kāla-samaye nivāsya pātracīvaram ādāya
- Śrāvastīṃ mahā-nagarīṃ piṇḍāya prāvikṣat |
-atha khalu Bhagavāñ Śrāvastīṃ mahā-nagarīṃ piṇḍāya caritvā
- kṛta-bhakta-kṛtyaḥ
- paścādbhakta-piṇḍapāta-pratikrāntaḥ pātra-cīvaraṃ pratiśāmya pādau prakṣalya
- nyaṣīdat prajñapta eva-āsane paryaṅkam ābhujya ṛjuṃ kāyaṃ praṇidhāya pratimukhīṃ smṛtim upasthāpya |
-atha khalu sambahulā bhikṣavo yena Bhagavāṃs tenopasaṃkraman upa saṃkramya Bhagavataḥ pādau śirobhir abhivandya Bhagavantaṃ triṣpr adakṣiṇīkṛtya ekānte nyaṣīdan||1||
-^ck2【Subhuti makes a request】
- tena khalu punaḥ samayena āyuṣmān subhūtis tasyām eva parṣadi saṃnipatito 'bhūt saṃniṣaṇṇaḥ |
-
- atha khalv āyuṣmān subhūtir utthāya-āsanād ekāṃsam uttarāsaṅgaṃ kṛtvā dakṣiṇaṃ jānu-maṇḍalaṃ pṛthivyāṃ pratiṣṭhāpya yena bhagavāṃs tena añjaliṃ praṇamya bhagavantam etad avocat |
- āścaryaṃ bhagavan parama-āścaryaṃ sugata
- yāvadeva tathāgatena-arhatā samyaksaṃbuddhena bodhisattvā mahāsattvā anuparigṛhītāḥ parameṇa anugraheṇa |
- āścaryaṃ bhagavan yāvadeva tathāgatenārhatā samyaksaṃbuddhena bodhisattvā mahāsattvāḥ parīnditāḥ paramayā parīndanayā |
- tat kathaṃ bhagavan bodhisattvayāna saṃprasthitena kulaputreṇa vā kuladuhitrā vā sthātavyaṃ |
- kathaṃ pratipattavyaṃ | kathaṃ cittaṃ pragrahītavyam |
- evam ukte bhagavān āyuṣmantaṃ subhūtim etad avocat | sādhu sādhu subhūte evam etad yathā vadasi |
- anuparigṛhītās tathāgatena bodhisattvā mahāsattvāḥ parameṇa anugraheṇa| 
-parīnditās tathāgatena bodhisattvā mahasattvāḥ paramayā parīndanayā |
- tena hi subhūte śṛṇu sādhu ca suṣṭhu ca manasikuru | 
-bhāṣiṣye 'haṃ te |
-yathā bodhisattva-yāna-saṃprasthitena sthātavyaṃ | yathā pratipattavyaṃ |yathā cittaṃ pragrahītavyam |
- evaṃ bhagavan ity āyuṣmān subhūtir bhagavataḥ pratyaśrauṣīt ||2||
-^ck3【The Vow of a Bodhisattva】
- bhagavān etad avocat | iha subhūte bodhisattva-yāna-saṃprasthitena evaṃ cittam utpādayitavyaṃ |
- yāvantaḥ subhūte sattvāḥ sattvadhātau sattva-saṃgraheṇa saṃgṛhītā
- aṇḍajā vā jarāyujā vā saṃsvedajā vā aupapādukā vā
- rūpiṇo vā arūpiṇo vā saṃjñino vā asaṃjñino vā naiva aṃjñino nāsaṃjñino vā
- yāvān kaścit sattvadhātuḥ prajñapya-mānaḥ prajñapyate te ca mayā sarve 'nupadhiśeṣe nirvāṇadhātau parinirvāpayitavyāḥ |
- evam aparimāṇān api sattvān parinirvāpya na kaścit sattvaḥ parinirvāpito bhavati |
- tat kasya hetoḥ | sacet subhūte bodhisattvasya sattva-saṃjñā pravarteta na sa bodhisattva iti vaktavyaḥ | 
- tat kasya hetoḥ | na sa subhūte bodhisattvo vaktavyo yasya ātma-saṃjñā pravarteta sattva-saṃjñā vā jīva-saṃjñā vā pudgala-saṃjñā vā pravarteta||3||
-^ck4【The Practice of the Perfections 】
- api tu khalu punaḥ subhūte
- na bodhisattvena vastupratiṣṭhitena dānaṃ dātavyaṃ | na kvacit pratiṣṭhitena dānaṃ dātavyaṃ |
- na rūpa-pratiṣṭhitena dānaṃ dātavyaṃ | na śabda-gandha-rasa-spraṣṭavya-dharmeṣu pratiṣṭhitena dānaṃ dātavyam |
- evaṃ hi subhūte bodhisattvena mahāsattvena dānaṃ dātavyaṃ | yathā na nimitta-saṃjñāyām api pratitiṣṭhet |
- tat kasya hetoḥ | yaḥ subhūte bodhisattvo 'pratiṣṭhito dānaṃ dadāti tasya subhūte puṇya-skandhasya na sukaraṃ pramāṇam udgrahītum |
- tat kiṃ manyase subhūte sukaraṃ pūrvasyāṃ diśy ākāśasya pramāṇamudgrahītum |
- subhūtir āha | no hīdaṃ bhagavan |
- bhagavān āha |evaṃ dakṣiṇa-paścima-uttarāsvadha-ūrdhvaṃ digvidikṣu samantād daśasu dikṣu sukaram ākāśasya pramāṇam udgrahītum |
- subhūtir āha | no hīdaṃ bhagavan |
- bhagavān āha | evam eva subhūte yo bodhisattvo 'pratiṣṭhito dānaṃ dadāti tasya subhūte puṇyaskandhasya na sukaraṃ pramāṇam udgrahītum |
- evaṃ hi subhūte bodhisattva-yāna-saṃprasthitena dānaṃ dātavyaṃ yathā na nimitta-saṃjñāyām api pratitiṣṭhet ||4||
-^ck5【Buddhahood and the thirty-two Mark】
- tat kiṃ manyase subhūte lakṣaṇa-sampadā tathāgato draṣṭavyaḥ |
- subhūtir āha | no hīdaṃ bhagavan na lakṣaṇa-saṃpadā tathāgato draṣṭavyaḥ |
- tat kasya hetoḥ | yā sā bhagavan lakṣaṇa-saṃpat tathāgatena bhāṣitā saiva alakṣaṇa-saṃpat |
- evam ukte bhagavān āyuṣmantaṃ subhūtim etad avocat |
- yāvat subhūte lakṣaṇa-saṃpat tāvan mṛṣā | yāvad alakṣaṇa-saṃpat tāvan na mṛṣeti | hi lakṣaṇa-alakṣaṇatas tathāgato draṣṭavyaḥ ||5||
-^ck6【The Dharmabody as the body of teachings】
- evam ukta āyuṣmān subhūtir bhagavantam etad avocat |
- asti bhagavan kecit sattvā bhaviṣyanty anāgate 'dhvani paścime kāle paścime samaye paścimāyāṃ pañca-śatyāṃ saddharma-vipralopa-kāle vartamāne ya imeṣv evaṃrūpeṣu sūtrānta-padeṣu bhāṣyamāṇeṣu bhūta-saṃjñām utpādayiṣyanti |
-bhagavān āha | mā subhūte tvam evaṃ vocaḥ | asti kecit sattvā bhaviṣy antyanāgate
- 'dhvani paścime kāle paścime samaye paścimāyāṃ pañcaśatyāṃ saddharma-vipralope vartamāne ya imeṣv evaṃrūpeṣu sūtrāntapadeṣu bhāṣyamāṇeṣu bhūta-saṃjñām utpādayiṣyanti |
-api tu khalu punaḥ subhūte bhaviṣyanty anāgate 'dhvani bodhisattvā mahāsattvāḥ paścime kāle paścime samaye paścimāyāṃ pañca-śatyāṃ saddharma-vipralope vartamāne guṇavantaḥ śīlavantaḥ prajñāvantaś ca bhaviṣyanti
-ya imeṣv evaṃrūpeṣu sūtrānta-padeṣu bhāṣyamāṇeṣu bhūtasaṃjñām utpādayiṣyanti |
- na khalu punas te subhūte bodhisattvā mahāsattvā eka-buddha-paryupāsitā bhaviṣyanti | na eka-buddha-avaropita-kuśala-mūlā bhaviṣyanti |
- api tu khalu punaḥ subhūte aneka-buddha-śatasahasra-paryupāsitā aneka-buddha-śatasahasra-avaropita-kuśala-mūlās te bodhisattvā mahāsattvā bhaviṣyanti |
- ya imeṣv evaṃrūpeṣu sūtrānta-padeṣu bhāṣyamāṇeṣv ekacitta-prasādam api pratilapsyante |
- jñātās te subhūte tathāgatena buddha-jñānena dṛṣṭās te subhūte tathāgatena buddha-cakṣuṣā buddhās te subhūte tathāgatena | sarve te subhūte'prameyam asaṃkhyeyaṃ puṇyaskandhaṃ prasaviṣyanti pratigrahīṣyanti |
- tat kasya hetoḥ | na hi subhūte teṣāṃ bodhisattvānāṃ mahāsattvānām ātmasaṃjñā pravartate na sattvasaṃjñā na jīvasaṃjñā na pudgalasaṃjñā pravartate |
- nāpi teṣāṃ subhūte bodhisattvānāṃ mahāsattvānāṃ dharmasaṃjñā pravartate | evaṃ nādharmasaṃjñā | nāpi teṣāṃ subhūte saṃjñā nāsaṃjñā pravartate |
- tatkasya hetoḥ | sacet subhūte teṣāṃ bodhisattvānāṃ mahāsattvānāṃ dharmasaṃjñā pravarteta sa eva teṣām ātmagrāho bhavet sattvagrāho jīvagrāhaḥ pudgalagrāho bhavet |
- saced adharmasaṃjñā pravarteta sa eva teṣām ātmagrāho bhavet sattvagrāho jīvagrāhaḥ pudgalagrāha iti |
- tatkasya hetoḥ | na khalu punaḥ subhūte bodhisattvena mahāsattvena dharma udgrahītavyo nādharmaḥ |
- tasmād iyaṃ tathāgatena saṃdhāya vāg bhāṣitā | kolopamaṃ dharma-paryāyam ājānadbhir dharmā eva prahātavyāḥ prāg evādharmā iti ||6||
-^ck7【The Dharmabody as the result of Gnosis 】
- punar aparaṃ bhagavān āyuṣmantaṃ subhūtim etad avocat |
- tat kiṃ manyase subhūte asti sa kaścid dharmo yas tathāgatena anuttarā samyaksaṃbodhir ity abhisaṃbuddhaḥ kaścid vā dharmas tathāgatena deśitaḥ |
- evam ukta āyuṣmān subhūtir bhagavantam etad avocat |
- yathā ahaṃ bhagavan bhagavato bhāṣitasya artham ājānāmi nāsti sa kaścid dharmo yas tathāgatena anuttarā samyaksaṃbodhir ity abhisaṃbuddhaḥ nāsti dharmo yas tathāgatena deśitaḥ |
- tat kasya hetoḥ | yo 'sau tathāgatena dharmo 'bhisaṃbuddho deśito vā agrāhyaḥ so 'nabhilapyaḥ | na sa dharmo nādharmaḥ |
-tatkasya hetoḥ |asaṃskṛta-prabhāvitā hy āryapudgalāḥ ||7||
-^ck8【The Dharmabody as the result of Merit】
- bhagavān āha | tat kiṃ manyase subhūte yaḥ kaścit kulaputro vā kuladuhitā vemaṃ trisāhasramahāsāhasraṃ lokadhātuṃ sapta-ratnaparipūrṇaṃ kṛtvā tathāgatebhyo 'rhadbhyaḥ samyaksaṃbuddhebhyo dānaṃ dadyāt api nu sa kulaputro vā kuladuhitā vā tato nidānaṃ bahutaraṃ puṇya-skandhaṃ prasunuyāt |
- subhūtir āha | bahu bhagavan bahu sugata sa kulaputro vā kuladuhitā vā tato nidānaṃ puṇya-skandhaṃ prasunuyāt |
- tat kasya hetoḥ | yo 'sau bhagavan puṇya-skandhas tathāgatena bhāṣito'skandhaḥ sa tathāgatena bhāṣitaḥ | tasmāt tathāgato bhāṣate puṇya-skandhaḥ puṇya-skandha iti |
- bhagavān āha | yaś ca khalu punaḥ subhūte kulaputro vā kuladuhitā vemaṃ trisāhasramahāsāhasraṃ lokadhātuṃ sapta-ratna-paripūrṇaṃ kṛtvā tathāgatebhyo 'rhadbhyaḥ samyaksaṃbuddhebhyo dānaṃ dadyāt |
- yaśceto dharm-aparyāyād antaśaś catuṣpādikām api gāthām udgṛhya parebhyo vistareṇa deśayet saṃprakāśayed ayam eva tato nidānaṃ bahutaraṃ puṇya-skandhaṃ prasunuyād aprameyam asaṃkhyeyam |
- tat kasya hetoḥ | ato nirjātā hi subhūte tathāgatānām arhatāṃ samyaksaṃbuddhānām anuttarā samyaksaṃbodhir | ato nirjātāś ca buddhā bhagavantaḥ |
- tat kasya hetoḥ | buddhadharmā buddhadharmā iti subhūte'buddhadharmāś caiva te tathāgatena bhāṣitāḥ | tenocyante buddhadharmā iti ||8||
-^ck9【The four Great Saints】
- tat kiṃ manyase subhūte api nu srotāpannasyaivaṃ bhavati mayā srotāpatti-phalaṃ prāptam iti |
- subhūtir āha | no hīdaṃ bhagavan | na srotāpannasyaivaṃ bhavati mayā srotāpatti-phalaṃ prāptam iti | tat kasya hetoḥ | na hi sa bhagavan kaṃcid dharmam āpannaḥ | tenocyate srotāpanna iti |
- na rūpam āpanno na śabdān na gandhān na rasān na spraṣṭavyān dharmān āpannaḥ | tenocyate srotāpanna iti |
- saced bhagavan srotāpannasyaivaṃ bhaven mayā srotāpatti-phalaṃ prāptam iti sa eva tasya ātmagrāho bhavet sattvagrāho jīvagrāhaḥ pudgalagrāho bhaved iti |
- bhagavān āha | tatkiṃ manyase subhūte api nu sakṛdāgāmina evaṃ bhavati mayā sakṛdāgāmiphalaṃ prāptam iti |
- subhūtirāha | no hīdaṃ bhagavan na sakṛdāgāmina evaṃ bhavati mayā sakṛdāgāmiphalaṃ prāptam iti | tatkasya hetoḥ | na hi sa kaścid dharmo yaḥ sakṛdāgāmitvam āpannaḥ | tenocyate sakṛdāgāmīti |
- bhagavān āha | tat kiṃ manyase subhūte api nv anāgāmina evaṃ bhavati mayā anāgāmiphalaṃ prāptam iti |
- subhūtir āha | no hīdaṃ bhagavan na anāgāmina evaṃ bhavati mayā anāgāmi-phalaṃ prāptamiti | tatkasya hetoḥ | na hi sa bhagavan kaścid dharmo yo 'nāgāmitvam āpannaḥ | tenocyate 'nāgāmīti |
- bhagavān āha | tat kiṃ manyase subhūte api nvarhata evaṃ bhavati mayā arhattvaṃ prāptam iti |
- subhūtir āha | no hīdaṃ bhagavan na arhata evaṃ bhavati mayā arhattvaṃ prāptam iti | tatkasya hetoḥ | na hi sa bhagavan kaścid dharmo yo 'rhan nāma | tenocyate 'rhann iti |
- saced bhagavann arhata evaṃ bhaven mayā arhattvaṃ prāptam iti sa eva tasya ātmagrāho bhavet sattvagrāho jīvagrāhaḥ pudgalagrāho bhavet |
- tat kasya hetoḥ | aham asmi bhagavaṃs tathāgatena arhatā samyaksaṃbuddhena araṇā-vihāriṇām agryo nirdiṣṭaḥ | aham asmi bhagavann arhan vītarāgaḥ | na ca me bhagavann evaṃ bhavati arhann asmy ahaṃ vītarāga iti |
- sacen mama bhagavann evaṃ bhaven mayā arhattvaṃ prāptam iti na māṃ tathāgato vyākariṣyad araṇā-vihāriṇām agryaḥ subhūtiḥ kulaputro na kvacid viharati tenocyate 'raṇā-vihāry araṇā-vihārīti ||9||
-^ck10【The Bodhisattva's thought of enlightenment】
- bhagavān āha | tat kiṃ manyase subhūte asti sa kaścid dharmo yas tathāgatena dīpaṃkarasya tathāgatasya arhataḥ samyaksaṃbuddhasya antikād udgṛhītaḥ |
- subhūtir āha | no hīdaṃ bhagavan nāsti sa kaścid dharmo yas tathāgatena dīpaṃkarasya tathāgatasya arhataḥ samyaksaṃbuddhasya antikād udgṛhītaḥ |
- bhagavān āha | yaḥ kaścit subhūte bodhisattva evaṃ vaded ahaṃ kṣetra-vyūhān niṣpādayiṣyāmi iti sa vitathaṃ vadet |
-tatkasya hetoḥ | kṣetra-vyūhāḥ kṣetra-vyūhā iti subhūte 'vyūhās te tathāgatena bhāṣitāḥ | tenocyante kṣetra-vyūhā iti |
-tasmāt tarhi subhūte bodhisattvena mahāsattvenaivam apratiṣṭhitaṃ cittam utpādayitavyaṃ yanna kvacit pratiṣṭhitaṃ cittam utpādayitavyaṃ na rūpa-pratiṣṭhitaṃ cittam utpādayitavyaṃ naśabda-gandha-rasa-spraṣṭavya-dharma-pratiṣṭhitaṃ cittam utpādayitavyam |
-tad yathāpi nāma subhūte puruṣo bhaved upeta-kāyo mahā-kāyo yat tasyaivaṃrūpa ātma-bhāvaḥ syāt tad yathāpi nāma sumeruḥ parvata-rājaḥ tat kiṃ manyase subhūte api nu mahān sa ātmabhāvo bhavet |
- subhūtir āha | mahān sa bhagavan mahān sugata sa ātmabhāvo bhavet |tatkasya hetoḥ | ātmabhāva ātmabhāva iti bhagavann abhāvaḥ sa tathāgatena bhāṣitaḥ |tenocyata ātmabhāva iti | na hi bhagavan sa bhāvo nābhāvaḥ | tenocyata ātmabhāva iti |
-^ck11【The merit derived from Perfect Wisdom】
- bhagavān āha | tat kiṃ manyase subhūte yāvatyo gaṅgāyāṃ mahānadyāṃ vālukās tāvatya eva gaṅgā-nadyo bhaveyuḥ tāsu yā vālukā api nu tā bahvyo bhaveyuḥ |
- subhūtir āha | tā eva tāvad bhagavan bahvyo gaṅgā-nadyo bhaveyuḥ prāg eva yās tāsu gaṅgā-nadīṣu vālukāḥ |
- bhagavān āha | ārocayāmi te subhūte prativedayāmi yāvatyas tāsu gaṅgā-nadīṣu vālukā bhaveyus tāvato lokadhātūn kaścid eva strī vā puruṣo vā sapta-ratna-paripūrṇaṃ kṛtvā tathāgatebhyo 'rhadbhyaḥ samyaksaṃbuddhebhyo dānaṃ dadyāt tatkiṃ manyase subhūte api nu sā strī vā puruṣo vā tato nidānaṃ bahu puṇya-skandhaṃ prasunuyāt |
- subhūtir āha | bahu bhagavan bahu sugata strī vā puruṣo vā tato nidānaṃ puṇya-skandhaṃ prasunuyād aprameyam asaṃkhyeyam |
- bhagavān āha |yaś ca khalu punaḥ subhūte strī vā puruṣo vā tāvato loka-dhātūn sapta-ratna-paripūrṇaṃ kṛtvā tathāgatebhyo 'rhadbhyaḥ samyaksaṃbuddhebhyo dānaṃ dadyāt yaś ca kulaputro vā kuladuhitā veto dharm-aparyāyād antaśaś catuṣpādikām api gāthām udgṛhya parebhyo deśayet saṃprakāśayed ayam eva tato nidānaṃ bahutaraṃ puṇya-skandhaṃ prasunuyād aprameyam asaṃkhyeyam ||11||
-^ck12【The merit derived from Perfect Wisdom 2】
-api tu khalu punaḥ subhūte yasmin pṛthivī-pradeśa ito dharma-paryāyād antaśaś catuṣpādikām api gāthām udgṛhya bhāṣyeta vā saṃprakāśyeta vā sa pṛthivī-pradeśaś caitya-bhūto bhavet sadeva mānuṣa-asurasya lokasya
- kaḥ punar vādo ya imaṃ dharmaparyāyaṃ sakala-samāptaṃ dhārayiṣyanti vācayiṣyanti paryavāpsyanti parebhyaś ca vistareṇa saṃprakāśayiṣyanti |
- parameṇa te subhūte āścaryeṇa samanvāgatā bhaviṣyanti | tasmiṃś ca subhūte pṛthivī-pradeśe śāstā viharaty anyatara-anyataro vā vijñaguru-sthānīyaḥ ||12||
-^ck13【The first ending】
- evam ukta āyuṣmān subhūtir bhagavantam etad avocat |
- ko nāma ayaṃ bhagavan dharmaparyāyaḥ kathaṃ cainaṃ dhārayāmi |
- evam ukte bhagavān āyuṣmantaṃ subhūtim etad avocat |
- prajñāpāramitā nāma ayaṃ subhūte dharmaparyāyaḥ |
- evaṃ cainaṃ dhāraya |
- tatkasya hetoḥ | yaiva subhūte prajñāpāramitā tathāgatena bhāṣitā saiva-a-pāramitā tathāgatena bhāṣitā | tenocyate prajñāpāramiteti |
- tatkiṃ manyase subhūte api nvasti sa kaścid dharmo yastathāgatena bhāṣitaḥ|
- subhūtir āha | no hīdaṃ bhagavan nāsti sa kaścid dharmo yas tathāgatena bhāṣitaḥ |
- bhagavān āha | tatkiṃ manyase subhūte yāvat trisāhasramahāsāhasre lokadhātau pṛthivīrajaḥ kaccit tad bahu bhavet |
- subhūtir āha | bahu bhagavan bahu sugata pṛthivīrajo bhavet |
- tatkasya hetoḥ | yat tad bhagavan pṛthivīrajas tathāgatena bhāṣitam a-rajas tad bhagavaṃs tathāgatena bhāṣitam | tenocyate pṛthivīraja iti | yo'py asau lokadhātus tathāgatena bhāṣito 'dhātuḥ sa tathāgatena bhāṣitaḥ |tenocyate lokadhātur iti |
- bhagavān āha | tatkiṃ manyase subhūte dvātriṃśan mahāpuruṣa-lakṣaṇais tathāgato 'rhan samyaksaṃbuddho draṣṭavyaḥ |
- subhūtir āha | no hīdaṃ bhagavan na dvātriṃśan-mahāpuruṣa-lakṣaṇais tathāgato 'rhan samyaksaṃbuddho draṣṭavyaḥ |
- tatkasya hetoḥ | yāni hi tāni bhagavan dvātriṃśan mahāpuruṣa-lakṣaṇāni tathāgatena bhāṣitāny a-lakṣaṇāni tāni bhagavaṃs tathāgatena bhāṣitāni | tenocyante dvātriṃśan-mahāpuruṣa-lakṣaṇānīti |
- bhagavān āha | yaś ca khalu punaḥ subhūte strī vā puruṣo vā dine dine gaṅgā-nadī-vālukā-samān ātma-bhāvān parityajet evaṃ parityajangaṅgā-nadī-vālukā-samān kalpāṃs tān ātma-bhāvān parityajet
- yaś ceto dharmaparyāyād antaśaś catuṣpādikām api gāthām udgṛhya parebhyo deśayet saṃprakāśayed ayam eva tato nidānaṃ bahutaraṃ puṇya-skandhaṃ prasunuyād aprameyam asaṃkhyeyam |
-^ck14【Selfless patience and perfect inner freedom】
- atha khalv āyuṣmān subhūtir dharma-vegena-aśrūṇi prāmuñcat so 'śrūṇi pramṛjya bhagavantam etad avocat |
-āścaryaṃ bhagavan parama-aścaryaṃ sugata yāvad ayaṃ dharm-aparyāyas tathāgatena bhāṣito 'grayāna-saṃprasthitānāṃ sattvānām arthāya śreṣṭha-yāna-saṃprasthitānāṃ sattvānām-arthāya yato me bhagavañ jñānam utpannam |
- na mayā bhagavañ jātv evaṃrūpo dharmaparyāyaḥ śruta-pūrvaḥ |
-parameṇa te bhagavann āścaryeṇa samanvāgatā bodhisattvā bhaviṣyanti ya iha sūtre bhāṣyamāṇe śrutvā bhūta-saṃjñām utpādayiṣyanti |
- tatkasya hetoḥ | yā caiṣā bhagavan bhūta-saṃjñā saiva-abhūta-saṃjñā |tasmāt tathāgato bhāṣate bhūta-saṃjñā bhūta-saṃjñeti |
-na mama bhagavann āścaryaṃ yad aham imaṃ dharmaparyāyaṃ bhāṣyamāṇam avakalpayāmyadhimucye |
- ye 'pi te bhagavan sattvā bhaviṣyanty anāgate 'dhvani paścime kāle paścime samaye paścimāyāṃ pañca-śatyāṃ saddharma-vipralope vartamāne ya imaṃ bhagavan dharm-aparyāyam udgrahīṣyanti dhārayiṣyanti vācayiṣyanti paryavāpsyanti parebhyaś ca vistareṇa saṃprakāśayiṣyanti te parama-āścaryeṇa samanvāgatā bhaviṣyanti |
- api tu khalu punar bhagavan na teṣām ātmasaṃjñā pravartiṣyate na sattva-saṃjñā na jīva-saṃjñā na pudgala-saṃjñā pravartiṣyate nāpi teṣāṃ kācit saṃjñā nāsaṃjñā pravartate |
- tatkasya hetoḥ | yā sā bhagavann ātma-saṃjñā saiva-a-saṃjñā | yā sattva-saṃjñā jīva-saṃjñā pudgala-saṃjñā saivāsaṃjñā |
- tatkasya hetoḥ | sarva-saṃjñā-apagatā hi buddhā bhagavantaḥ |
- evam ukte bhagavān āyuṣmantaṃ subhūtim etad avocat |
- evam etat subhūte evam etat |
- parama-āścarya-samanvāgatās te sattvā bhaviṣyanti ya iha subhūte sūtre bhāṣyamāṇe nottrasiṣyanti na saṃtrasiṣyanti na saṃtrāsam āpatsyante |
- tatkasya hetoḥ | paramapāramiteyaṃ subhūte tathāgatena bhāṣitā yaduta-a-pāramitā | yāṃ ca subhūte tathāgataḥ parama-pāramitāṃ bhāṣate tām aparimāṇā api buddhā bhagavanto bhāṣante | tenocyate parama-pāramiteti |
-api tu khalu punaḥ subhūte yā tathāgatasya kṣānti-pāramitā saivāpāramitā |
-tatkasya hetoḥ | yadā me subhūte kaliṅgarājā-aṅga-pratyaṅga-māṃsānyacchaitsīt nāsīn-me tasmin samaya ātma-saṃjñā vā sattva-saṃjñā vā jīva-saṃjñā vā pudgala-saṃjñā vā nāpi me kācit saṃjñā vā asaṃjñā vā babhūva |
-tatkasya hetoḥ | sacen me subhūte tasmin samaya ātma-saṃjñā-abhaviṣyad vyāpāda-saṃjñā api me tasmin samaye'bhaviṣyat | sacet sattva-saṃjñā jīva-saṃjñā pudgala-saṃjñā-abhaviṣyad vyāpāda-saṃjñā api me tasmin samaye 'bhaviṣyat |
-tatkasya hetoḥ | abhijānāmy ahaṃ subhūte 'tīte 'dhvani pañca jāti-śatāni yad ahaṃ kṣāntivādī ṛṣir abhūvam | tatra api me nātma-saṃjñā babhūvana sattva-saṃjñā na jīva-saṃjñā na pudgala-saṃjñā babhūva |
-tasmāt tarhi subhūte bodhisattvena mahāsattvena sarva-saṃjñā vivarjayitvā anuttarāyāṃ samyaksaṃbodhau cittam utpādayitavyam |
- na rūpa-pratiṣṭhitaṃ cittam utpādayitavyaṃ na śabda-gandha-rasa-spraṣṭavya-dharma-pratiṣṭhitaṃ cittam utpādayitavyaṃ na dharma-pratiṣṭhitaṃ cittam utpādayitavyaṃ na adharma-pratiṣṭhitaṃ cittam  utpādayitavyaṃ na kvacit pratiṣṭhitaṃ cittam  utpādayitavyam |
-tatkasya hetoḥ | yat pratiṣṭhitaṃ tadeva apratiṣṭhitam |
- tasmādeva tathāgato bhāṣate apratiṣṭhitena bodhisattvena dānaṃ dātavyam | na rūpa-śabda-gandha-rasa-spraṣṭavya-dharma-pratiṣṭhitena dānaṃ dātavyam |
-api tu khalu punaḥ subhūte bodhisattvenaivaṃrūpo dānaparityāgaḥ kartavyaḥ sarva-sattvānām arthāya | 
-tatkasya hetoḥ | yā caiṣā subhūte sattva-saṃjñā saivāsaṃjñā |
- ya evaṃ te sarva-sattvās tathāgatena bhāṣitās ta evāsattvāḥ |
-tatkasya hetoḥ | bhūta-vādī subhūte tathāgataḥ satyavādī tathāvādyan anyathāvādī tathāgataḥ | na vitatha-vādī tathāgataḥ |
-api tu khalu punaḥ subhūte yas tathāgatena dharmo 'bhisaṃbuddho deśitonidhyāto na tatra satyaṃ na mṛśā |
-tadyathāpi nāma subhūte puruṣo 'ndhakāra-praviṣṭo na kiṃcid api paśyetevaṃ vastupatito bodhisattvo draṣṭavyo yo vastupatito dānaṃ parityajati |
-tadyathāpi nāma subhūte cakṣuṣmān puruṣaḥ prabhātāyāṃ rātrau sūrye'bhyudgate nānāvidhāni rūpaṇi paśyet evam avastupatito bodhisattvodraṣṭavyo yo 'vastupatito dānaṃ parityajati |
-api tu khalu punaḥ subhūte ye kulaputrā vā kuladuhitaro vemaṃ dharmaparyāyam udgrahīṣyanti dhārayiṣyanti vācayiṣyanti paryavāpsyanti parebhyaś ca vistareṇa saṃprakāśayiṣyanti jñātās te subhūte tathāgatena buddha-jñānena dṛṣṭās te subhūte tathāgatena buddha-cakṣuṣā buddhās te tathāgatena | sarve te subhūte sattvāaprameyam asaṃkhyeyaṃ puṇya-skandhaṃ prasaviṣyanti pratigrahīṣyanti ||14||
-^ck15【The merit acquired 】
-yaś ca khalu punaḥ subhūte strī vā puruṣo vā pūrv-āhṇa-kāla-samayegaṅgā-nadī-vālukā-samān ātmabhāvān parityajed |
- evaṃ madhyā-āhṇa-kāla-samaye gaṅgā-nadī-vālukā-samān ātmabhāvānparityajet |
- sāya-āhṇa-kāla-samaye gaṅgā-nadī-vālukā-samān ātmabhāvān parityajet
- anena paryāyeṇa bahūni kalpa-koṭi-niyuta-śatasahasrāṇy ātmabhāvān parityajet |
- yaś cemaṃ dharmaparyāyaṃ śrutvā na pratikṣipet ayam eva tato nidānaṃ bahutaraṃ puṇya-skandhaṃ prasunuyād aprameyam asaṃkhyeyam | kaḥ punar vādo yo likhitvodgṛhṇīyād dhārayed vācayet paryavāpnuyāt parebhyaś ca vistareṇa saṃprakāśayet |
-api tu khalu punaḥ subhūte 'cintyo 'tulyo 'yaṃ dharmaparyāyaḥ |
-ayaṃ ca subhūte dharmaparyāyas tathāgatena bhāṣito'gra-yāna-saṃprasthitānāṃ sattvānām arthāyaśreṣṭha-yāna-saṃprasthitānāṃ sattvānām arthāya |
-ya imaṃ dharm-aparyāyam udgrahīṣyanti dhārayiṣyanti vācayiṣyanti paryavāpsyanti parebhyaśca vistareṇa saṃprakāśayiṣyanti jñātās te subhūte tathāgatena buddha-jñānena dṛṣṭās te subhūte tathāgatenabuddha-cakṣuṣā buddhās te tathāgatena |
-sarve te subhūte sattvā aprameyeṇa puṇya-skandhena samanvāgatā bhaviṣyanti | acintyena atulyena amāpyena aparimāṇena puṇya-skandhena samanvāgatā bhaviṣyanti |
- sarve te subhūte sattvāḥ samāṃśena bodhiṃ dhārayiṣyanti |
-tatkasya hetoḥ | na hi śakyaṃ subhūte 'yaṃ dharmaparyāyo hīna-adhimuktikaiḥ sattvaiḥ śrotuṃ
- na ātma-dṛṣṭikair na sattvadṛṣṭikair na jīva-dṛṣṭikair na pudgala-dṛṣṭikaiḥ |
- na abodhisattva-pratijñaiḥ sattvaiḥ śakyam ayaṃ dharmaparyāyaḥ śrotuṃ vodgrahītuṃ vā dhārayituṃ vā vācayituṃ vā paryavāptuṃ vā | nedaṃ sthānaṃ vidyate | 
-api tu khalu punaḥ subhūte yatra pṛthivīpradeśa idaṃ sūtraṃ prakāśayiṣyate pūjanīyaḥ sa pṛthivīpradeśo bhaviṣyati sadeva-mānuṣa-asurasya lokasya vandanīyaḥ pradakṣiṇīyaś ca sa pṛthivīpradeśo bhaviṣyati caityabhūtaḥ sa pṛthivīpradeśo bhaviṣyati ||15||
-^ck16【The presuppositions of merit】
-api tu ye te subhūte kulaputrā vā kuladuhitaro vemān evaṃrūpān sūtrāntān udgrahīṣyanti dhārayiṣyanti vācayiṣyanti paryavāpsyanti yoniśaśca manasikariṣyanti parebhyaś ca vistareṇa saṃprakāśayiṣyanti teparibhūtā bhaviṣyanti suparibhūtāś ca bhaviṣyanti |
-tatkasya hetoḥ | yāni ca teṣāṃ subhūte sattvānāṃ paurva-janmikāny-aśubhāni karmāṇi kṛtāny apāya-saṃvartanīyāni dṛṣṭa eva dharme paribhūtatayā tāni paurvajanmikāny aśubhāni karmāṇi kṣapayiṣyanti buddhabodhiṃ ca anuprāpsyanti | 
-tat kasya hetoḥ | abhijānāmy ahaṃ subhūte atīte 'dhvany asaṃkhyeyaiḥ kalpair asaṃkhyeyatarair dīpaṃkarasya tathāgatasya arhataḥ samyaksaṃbuddhasya pareṇa paratareṇa catur-aśīti-buddha-koṭi-niyuta-śatasahasrāṇy abhūvan ye mayā ārāgitā ārāgya na virāgitāḥ | yac ca mayā subhūte te buddhā bhagavanta ārāgitā ārāgya na virāgitā
- yac ca paścime kāle paścime samaye paścimāyāṃ pañcaśatyāṃ saddharma-vipralopa-kāle vartamāne imān evaṃrūpān sūtrāntān udgrahīṣyanti dhārayiṣyanti vācayiṣyanti paryavāpsyanti parebhyaś ca vistareṇa saṃprakāśayiṣyanty
- asya khalu punaḥ subhūte puṇyaskandhasya antikād asau paurvakaḥ puṇya-skandhaḥ śatatamīm api kalāṃ nopaiti sahasratamīm api śatasahasratamīm api koṭitamīm api koṭi-śatatamīm api koṭi-śatasahasratamīm api koṭi-niyuta-śatasahasratamīm api saṃkhyām api kalāmapi gaṇanām apyupamām apy upaniṣadam api yāvad aupamyam api na kṣamate |
-sacet punaḥ subhūte teṣāṃ kulaputrāṇāṃ kuladuhitfṇāṃ vā ahaṃ puṇyaskandhaṃ bhāṣeyaṃ yāvat te kulaputrā vā kuladuhitaro vā tasmin samaye puṇyaskandhaṃ prasaviṣyanti pratigrahīṣyanty unmādaṃ sattvā anuprāpnuyuś citta-vikṣepaṃ vā gaccheyuḥ |
-api tu khalu punaḥ subhūte 'cintyo 'tulyo 'yaṃ dharma-paryāyas tathāgatena bhāṣitaḥ | asya acintya eva vipākaḥ pratikāṅkṣitavyaḥ ||16||
-^ck17【The Bodhisattvas】
-atha khalvāyuṣmān subhūtir bhagavantam etad avocat | kathaṃ bhagavan bodhisattva-yāna-saṃprasthitena sthātavyaṃ kathaṃ pratipattavyaṃ kathaṃ cittaṃ pragrahītavyam | 
-bhagavān āha | iha subhūte bodhisattva-yāna-saṃprasthitena evaṃ cittam utpādayitavyaṃ
- sarve sattvā mayā anupadhiśeṣe nirvāṇadhātau parinirvāpayitavyāḥ |
- evaṃ ca sattvān parinirvāpya na kaścit sattvaḥ parinirvāpito bhavati |
-tatkasya hetoḥ | sacet subhūte bodhisattvasya sattva-saṃjñā pravarteta na sa bodhisattva iti vaktavyaḥ | jīvasaṃjñā vā yāvat pudgalasaṃjñā vā pravarteta na sa bodhisattva iti vaktavyaḥ |
-tat kasya hetoḥ | nāsti subhūte sa kaścid dharmo yo bodhisattva-yāna-saṃprasthito nāma |
-tat kiṃ manyase subhūte asti sa kaścid dharmo yas tathāgatena dīpaṃkarasya tathāgatasya antikād anuttarāṃ samyaksaṃbodhim abhisaṃbuddhaḥ |
-evam ukte āyuṣmān subhūtir bhagavantam etad avocat |yathā ahaṃ bhagavan bhagavato bhāṣitasya artham ājānāmi nāsti sabhagavan kaścid dharmo yas tathāgatena dīpaṃkarasya tathāgatasya arhataḥ samyaksaṃbuddhasya antikād anuttarāṃ samyaksaṃbodhim abhisaṃbuddhaḥ |
-evam ukte bhagavān āyuṣmantaṃ subhūtim etad avocat | evam etat subhūte evam etan
- nāsti subhūte sa kaścid dharmo yas tathāgatena dīpaṃkarasya tathāgatasya arhataḥ samyaksaṃbuddhasya antikād anuttarāṃ samyaksaṃbodhim abhisaṃbuddhaḥ |
-sacet punaḥ subhūte kaścid dharmas tathāgatena abhisaṃbuddho'bhaviṣyanna māṃ dīpaṃkaras tathāgato vyākariṣyad bhaviṣyasi tvaṃ māṇava-anāgate 'dhvani śākyamunir nāma tathāgato 'rhan samyaksaṃbuddha iti |
-yasmāt tarhi subhūte tathāgatena arhatā samyaksaṃbuddhena nāsti sa kaścid dharmo yo 'nuttarāṃ samyaksaṃbodhim abhisaṃbuddhas tasmād ahaṃ dīpaṃkareṇa tathāgatena vyākṛto bhaviṣyasi tvaṃ māṇava-anāgate'dhvani śākyamunir nāma tathāgato 'rhan samyaksaṃbuddhaḥ |
-tatkasya hetoḥ | tathāgata iti subhūte | bhūta-tathatāyā etad adhivacanam |
-tathāgata iti subhūte | anutpāda dharmatāyā etad adhivacanam |
- tathāgataiti subhūte | dharmo cchedasya etad adhivacanam |
- tathāgata iti subhūte |atyanta anutpannasya etad adhivacanam |
- tat kasya hetoḥ | eṣa subhūte'nutpādo yaḥ paramārthaḥ |
- yaḥ kaścit subhūte evaṃ vadet tathāgatena arhatā samyak-saṃbuddhena anuttarā samyaksaṃbodhir abhisaṃbuddheti sa vitathaṃ vaded abhyācakṣīta māṃ sa subhūte asatodgṛhītena |tat kasya hetoḥ |nāsti subhūte sa kaścid dharmo yas tathāgatena anuttarāṃ samyaksaṃbodhim abhisaṃbuddhaḥ |
-yaś ca subhūte tathāgatena dharmo 'bhisaṃbuddho deśito vā tatra nan satyaṃ na mṛṣā |
- tasmāttathāgato bhāṣate sarvadharmā buddhadharmā iti|
-tat kasya hetoḥ | sarva-dharmā iti subhūte a-dharmās tathāgatena bhāṣitāḥ | tasmād ucyante sarvadharmā buddha-dharmā iti |
-tadyathāpi nāma subhūte puruṣo bhaved upetakāyo mahākāyaḥ |
-āyuṣmān subhūtir āha | yo 'sau bhagavaṃs tathāgatena puruṣo bhāṣita upetakāyo mahākāya ity akāyaḥ sa bhagavaṃs tathāgatena bhāṣitaḥ |tenocyata upetakāyo mahākāya iti |
-bhagavān āha | evam etat subhūte | yo bodhisattva evaṃ vaded ahaṃ sattvān parinirvāpayiṣyāmīti na sa bodhisattva iti vaktavyaḥ |
-tatkasya hetoḥ | asti subhūte sa kaścid dharmo yo bodhisattvo nāma |
-subhūtir āha | no hīdaṃ bhagavan nāsti sa kaścid dharmo yo bodhisattvonāma |
-bhagavān āha | sattvāḥ sattvā iti subhūte asattvās te tathāgatena bhāṣitās tenocyate sattvā iti |
-tasmāt tathāgato bhāṣate nirātmānaḥ sarvadharmā nirjīvā niṣpoṣāniṣpudgalāḥ sarvadharmā iti |
-yaḥ subhūte bodhisattva evaṃ vaded ahaṃ kṣetra-vyūhān niṣpādayiṣyāmīti sa vitathaṃ vadet | so 'pi tathaiva vaktavyaḥ|
-tatkasya hetoḥ | kṣetra-vyūhāḥ kṣetra-vyūhā iti subhūte 'vyūhās te tathāgatena bhāṣitāḥ | tenocyante kṣetra-vyūhā iti |
-yaḥ subhūte bodhisattvo nirātmāno dharmā nirātmāno dharmā ity adhimucyate sa tathāgatena arhatā samyaksaṃbuddhena bodhisattvo mahāsattva ity ākhyātaḥ ||17||
-^ck18【The Buddha's Five Eyes】
-bhagavān āha | tatkiṃ manyase subhūte saṃvidyate tathāgatasya māṃsa-cakṣuḥ |
-subhūtir āha | evam etad bhagavan saṃvidyate tathāgatasya māṃsa-cakṣuḥ|
-bhagavān āha | tatkiṃ manyase subhūte saṃvidyate tathāgatasya divyaṃ cakṣuḥ |
-subhūtir āha | evam etad bhagavan saṃvidyate tathāgatasya divyaṃ cakṣuḥ|
-bhagavān āha | tatkiṃ manyase subhūte saṃvidyate tathāgatasyaprajñā-cakṣuḥ |
-subhūtir āha | evam etad bhagavan saṃvidyate tathāgatasya prajñā-cakṣuḥ|
-bhagavān āha | tatkiṃ manyase subhūte saṃvidyate tathāgatasya dharma-cakṣuḥ |
-subhūtir āha | evam etad bhagavan saṃvidyate tathāgatasya dharma-cakṣuḥ |
-bhagavānāha | tatkiṃ manyase subhūte saṃvidyate tathāgatasya buddha-cakṣuḥ | 
-subhūtir āha | evam etad bhagavan saṃvidyate tathāgatasya buddha-cakṣuḥ |
-bhagavān āha | tatkiṃ manyase subhūte yāvatyo gaṅgāyāṃ mahā-nadyāṃ vālukā api nu tā vālukās tathāgatena bhāṣitāḥ |
-subhūtir āha | evam etad bhagavan evam etat sugata bhāṣitās tathāgatena vālukāḥ |
-bhagavān āha | tatkiṃ manyase subhūte yāvatyo gaṅgāyāṃ mahānadyāṃ vālukās tāvatya eva gaṅgānadyo bhaveyuḥ tāsu yā vālukās tāvantaś ca lokadhātavo bhaveyuḥ kaccid bahavas te lokadhātavo bhaveyuḥ |
-subhūtir āha | evam etad bhagavann evam etat sugata bahavas te lokadhātavo bhaveyuḥ |
-bhagavān āha | yāvantaḥ subhūte teṣu lokadhāteṣu sattvās teṣām ahaṃ nānābhāvāṃ cittadhārāṃ prajānāmi |
-tatkasya hetoḥ | citta-dhārā citta-dhāreti subhūte adhāraiṣā tathāgatena bhāṣitā | tenocyate citta-dhāreti |
-tatkasya hetoḥ | atītaṃ subhūte cittaṃ nopalabhyate | anāgataṃ cittaṃ nopalabhyate | pratyutpannaṃ cittaṃ nopalabhyate ||18||
-^ck19【The Buddha's Merit is no Merit】
-tatkiṃ manyase subhūte yaḥ kaścit kulaputro vā kuladuhitā vevaṃ trisāhasramahāsāhasraṃ lokadhātuṃ sapta-ratna-paripūrṇaṃ kṛtvā tathāgatebhyo 'rhadbhyaḥ samyaksaṃbuddhebhyo dānaṃ dadyād api nu sa kulaputro vā kuladuhitā vā tato nidānaṃ bahu puṇya-skandhaṃ prasunuyāt |
-subhūtir āha | bahu bhagavan bahu sugata |
- bhagavān āha | evam etat subhūte evam etad bahu sa kulaputro vā kuladuhitā vā tato nidānaṃ bahu puṇya-skandhaṃ prasunuyād |
-tatkasya hetoḥ | puṇya-skandhaḥ puṇya-skandha iti subhūte a-skandhaḥ sa tathāgatena bhāṣitaḥ | tenocyate puṇya-skandha iti | sacet punaḥ subhūte puṇya-skandho 'bhaviṣyan na tathāgato 'bhāṣiṣyat puṇya-skandhaḥ puṇya-skandha iti ||19||
-^ck20【The Buddha's physical body】
-tat kiṃ manyase subhūte rūpa-kāya-pariniṣpattyā tathāgato draṣṭavyaḥ |
-subhūtir āha | no hīdaṃ bhagavan na rūpa-kāya-pariniṣpattyā tathāgato draṣṭavyaḥ |
-tatkasya hetoḥ | rūpa-kāya-pariniṣpattī rūpakāya-pariniṣpattir iti bhagavan apariniṣpattir eṣā tathāgatena bhāṣitā | tenocyate rūpakāya-pariniṣpattir iti|
-bhagavān āha | tatkiṃ manyase subhūte lakṣaṇa-saṃpadā tathāgato draṣṭavyaḥ |
-subhūtir āha | no hīdaṃ bhagavan na lakṣaṇa-saṃpadā tathāgato draṣṭavyaḥ |
-tatkasya hetoḥ | yaiṣā bhagavaṃl lakṣaṇa-saṃpat tathāgatena bhāṣitā alakṣana-saṃpad eṣā tathāgatena bhāṣitā | tenocyate lakṣaṇa-saṃpad iti||20||
-^ck21【The Buddha's teaching】
-bhagavān āha | tatkiṃ manyase subhūte api nu tathāgatasyaivaṃ bhavati mayā dharmo deśita iti |
-subhūtir āha | no hīdaṃ bhagavan tathāgatasyaivaṃ bhavati mayā dharmo deśita iti |
-bhagavān āha | yaḥ subhūte evaṃ vadet tathāgatena dharmo deśita iti sa vitathaṃ vaded abhyācakṣīta māṃ sa subhūte 'satodgṛhītena |
-tatkasya hetoḥ | dharma-deśanā dharma-deśaneti subhūte nāsti sa kaścid dharmo yo dharma-deśanā nāmopalabhyate |
-evam ukta āyuṣmān subhūtir bhagavantam etad avocat |
- asti bhagavan kecit sattvā bhaviṣyanty anāgate 'dhvani paścime kāle paścime samaye paścimāyāṃ pañcaśatyāṃ saddharma-vipralope vartamāne ya imān evaṃrūpān dharmāñ śrutvā abhiśraddhāsyanti |
-bhagavān āha | na te subhūte sattvā nāsattvāḥ |
-tatkasya hetoḥ | sattvāḥ sattvā iti subhūte sarve te subhūte asattvās tathāgatena bhāṣitāḥ | tenocyante sattvā iti ||21||
-^ck22【The Buddha's Dharma】
-tatkiṃ manyase subhūte api nv asti sa kaścid dharmo yas tathāgatena anuttarāṃ samyaksaṃbodhim abhisaṃbuddhaḥ |
- āyuṣmān subhūtir āha |
- no hīdaṃ bhagavan nāsti sa bhagavan kaścid dharmo yas tathāgatena anuttarāṃ samyaksaṃbodhim abhisaṃbuddhaḥ |
-bhagavān āha | evam etat subhūte evam etad aṇur api tatra dharmo na saṃvidyate nopalabhyate | tenocyate 'nuttarā samyaksaṃbodhir iti ||22||
-^ck23【The Buddha's Dharma 2】
-api tu khalu punaḥ subhūte samaḥ sa dharmo na tatra kaścid viṣamaḥ |tenocyate 'nuttarā samyaksaṃbodhir iti |
-nirātmatvena niḥsattvatvena nirjīvatvena niṣpudgalatvena
- samāsānuttarā samyaksaṃbodhiḥ sarvaiḥ kuśalair dharmair abhisaṃbudhyate |
-tat kasya hetoḥ | kuśalā dharmāḥ kuśalā dharmā iti subhūte adharmāś caiva te tathāgatena bhāṣitāḥ | tenocyante kuśalā dharmā iti ||23||
-^ck24【Once more about the Buddha's Merit (】
-yaśca khalu punaḥ subhūte strī vā puruṣo vā yāvantas trisāhasramahāsāhasre lokadhātau sumeravaḥ parvata-rājānas tāvato rāśīn saptānāṃ ratnānām abhisaṃhṛtya tathāgatebhyo 'rhadbhyaḥ samyaksaṃbuddhebhyo dānaṃ dadyāt|
-yaś ca kulaputro vā kuladuhitā vetaḥ prajñāpāramitāyā dharma-paryāyād antaśaś catuṣpādikām api gāthām udgṛhya parebhyo deśayed asya subhūte puṇyaskandhasya asau paurvakaḥ puṇya-skandhaḥ śatatamīm api kalāṃ nopaiti yāvad upaniṣadam api na kṣamate ||24||
-^ck25【The Buddha as a saviour, and the nature of emancipation】
-tatkiṃ manyase subhūte api nu tathāgatasyaivaṃ bhavati mayā sattvāḥ parimocitā iti | na khalu punaḥ subhūta evaṃ draṣṭavyam |
-tatkasya hetoḥ | nāsti subhūte kaścit sattvo yas tathāgatena parimocitaḥ |
-yadi punaḥ subhūte kaścit sattvo 'bhaviṣyad yas tathāgatena parimocitaḥ syāt sa eva tathāgatasya ātmagrāho 'bhaviṣyat sattva-grāho jīva-grāhaḥ pudgala-grāho 'bhaviṣyat |
-ātma-grāha iti subhūte agrāha eṣa tathāgatena bhāṣitaḥ | sa ca bālapṛthagjanair udgṛhītaḥ |
-bālapṛthag-janā iti subhūte a-janā eva te tathāgatena bhāṣitāḥ |tenocyante bālapṛthagjanā iti ||25||
-^ck26【The true nature of a Buddha 】
-tatkiṃ manyase subhūte lakṣaṇa-saṃpadā tathāgato draṣṭavyaḥ |
-subhūtir āha | no hīdaṃ bhagavan | yathā ahaṃ bhagavato bhāṣitasya artham ājānāmi na lakṣaṇa-saṃpadā tathāgato draṣṭavyaḥ |
-bhagavān āha | sādhu sādhu subhūte evam etat subhūte evam etad yathā vadasi | na lakṣaṇa-saṃpadā tathāgato draṣṭavyaḥ | tatkasya hetoḥ | sacet punaḥ subhūte lakṣaṇa-saṃpadā tathāgato draṣṭavyo 'bhaviṣyad rājā-api cakravartī tathāgato 'bhaviṣyat | tasmānna lakṣaṇasaṃpadā tathāgato draṣṭavyaḥ |
-āyuṣmān subhūtir bhagavantametadavocat | yathāhaṃ bhagavato bhāṣitasya artham ājānāmi na lakṣaṇa-saṃpadā tathāgato draṣṭavyaḥ |
-atha khalu bhagavāṃs tasyāṃ velāyām ime gāthe abhāṣata |
- ye māṃ rūpeṇa cādrākṣur ye māṃ ghoṣeṇa cānvaguḥ |mithyā-prahāṇa-prasṛtā na māṃ drakṣyanti te janāḥ ||1||
-dharmato buddho draṣṭavyo dharmakāyā hi nāyakāḥ |dharmatā ca na vijñeyā na sā śakyā vijānitum ||2||
-^ck27【The effectiveness of meritorious deeds】
-tatkiṃ manyase subhūte lakṣaṇa-saṃpadā tathāgatena anuttarā samyaksaṃbodhir abhisaṃbuddhā |
-na khalu punas te subhūte evaṃ draṣṭavyam |
- tatkasya hetoḥ | na hi subhūtelakṣaṇa-saṃpadā tathāgatena anuttarā samyaksaṃbodhir abhisaṃbuddhā syāt |
- na khalu punas te subhūte kaścid evaṃ vadet bodhisattva-yāna-saṁprasthitaiḥ kasyacid dharmasya vināśaḥ prajñapta ucchedo veti na khalu punas te subhūte evaṃ draṣṭavyam |
- tatkasya hetoḥ |na bodhisattva-yāna-saṃprasthitaiḥ kasyacid dharmasya vināśaḥ prajñapto nocchedaḥ | 
-^ck28【The effectiveness of meritorious deeds 2】
- yaś ca khalu punaḥ subhūte kulaputro vā kuladuhitā vā gavgānadī-vālukā-samāṃl lokadhātūn sapta-ratna-paripūrṇāṃ kṛtvā tathāgatebhyo 'rhadbhyaḥ samyaksaṃbuddhebhyo dānaṃ dadyād
- yaś ca bodhisattvo nirātmakeṣv anutpattikeṣu dharmeṣu kṣāntiṃp ratilabhate ayam eva tato nidānaṃ bahutaraṃ puṇyaskandhaṃ prasaved aprameyam asaṃkhyeyam |
-na khalu punaḥ subhūte bodhisattvena mahāsattvena puṇyaskandhaḥ parigrahītavyaḥ |
-āyuṣmān subhūtir āha | nanu bhagavan bodhisattvena puṇyaskandhaḥ parigrahītavyaḥ |
- bhagavān āha | parigrahītavyaḥ subhūte nodgrahītavyaḥ | tenocyate parigrahītavya iti ||28||
-^ck29【The effectiveness of meritorious deeds 3】
-api tu khalu punaḥ subhūte yaḥ kaścid evaṃ vadet tathāgato gacchati vā āgacchati vā tiṣṭhati vā niṣīdati vā śayyāṃ vā kalpayati na me subhūte sa bhāṣitasya artham ājānāti |
-tatkasya hetoḥ | tathāgata iti subhūta ucyate na kvacidgato na kutaścid āgataḥ | tenocyate tathāgato 'rhan samyaksaṃbuddha iti ||29||`)
+sukhāvatīvyūhaḥ |
+[vistaramātṛkā]
+om namo ratnatrayāya | om namaḥ śrīsarvabuddhabodhisattvebhyaḥ | namo daśadiganantāparyantalokadhātupratiṣṭhitebhyaḥ sarvabuddhabodhisattvāryaśrāvakapratyekabuddhebhyo'tītānāgatapratyutpannebhyaḥ | namo'mitābhāya | namo'cintyaguṇāntarātmane ||
+evaṃ mayā śrutam | ekasmin samaye bhagavān rājagṛhe viharati sma gṛdhrakūṭaparvate mahatā bhikṣusaṃghena sārdhaṃ dvātriṃśatā bhikṣusahasraiḥ, sarvairarhadbhiḥ kṣīṇāsravairniḥkleśairuṣitavadbhiḥ samyagājñāsuvimuktacittaiḥ parīkṣacittaiḥ parikṣīṇabhavasaṃyojanairanuprāptasvakārthairvijitavadbhiruttamadamathaprāptaiḥ suvimuktacittaiḥ suvimuktaprajñairmahānāgaiḥ ṣaḍabhijñairvaśībhūtairaṣṭavimokṣadhyāyibhirbalaprāptairabhijñātābhijñaiḥ sthavirairmahāśrāvakaiḥ | tadyathā-ājñātakauṇḍinyena ca, aśvajitā ca, bāṣpeṇa ca, mahānāmnā ca, bhadrajitā ca, yaśodevena ca, vimalena ca, subāhunā ca, pūrṇamaitrāyaṇīputreṇa ca, urubilvākāśyapena ca, nadīkāśyapena ca, gayākāśyapena ca, kumārakāśyapena ca, mahākāśyapena ca, śāriputreṇa ca, mahāmaudgalyāyanena ca, mahākauṣṭhilyena ca, mahākaphilena ca, mahācundena ca, aniruddhena ca, nandikena ca, kampilena ca, subhūtinā ca, revatena ca, khadiravanikena ca, vakulena ca, svāgatena ca, amogharājena ca, pārāyaṇikena ca, patkena ca, cullapatkena ca, nandena ca, rāhulena ca, āyuṣmatānandena ca, etaiścānyaiśca abhijñātābhijñaiḥ sthavirairmahāśrāvakairekaṃ pudgalaṃ sthāpayitvā śaikṣapratidyuttarikaraṇīyaṃ yadidamāyuṣmantamānandam | maitreyapūrvaṃgamaiśca saṃbahulairbodhisattvairmahāsattvaiḥ || 1 ||
+atha khalvāyuṣmānānda utthāyāsamādekāṃsamuttarāsaṅgaṃ kṛtvā dakṣiṇaṃ jānumaṇḍalaṃ pṛthivyāṃ pratiṣṭhāpya yena bhagavāṃstenāñjaliṃ praṇamya bhagavantametadavocat-viprasannāni tava bhagavata indriyāṇi, pariśuddhaśchavivarṇaḥ, paryavadāto mukhavarṇaḥ pītanirbhāsaḥ | tadyathāpi nāma śāradaṃ vanadaṃ pāṇḍupariśuddhaṃ paryavadātaṃ pītanirbhāsam, evameva bhagavato viprasannānīndriyāṇi, pariśuddho mukhavarṇaḥ, paryavadātaśchavivarṇaḥ pītanirbhāsaḥ | tadyathāpi nāma bhagavan jāmbūnadasuvarṇaniṣko dakṣeṇa karmāreṇa karmārāntevāsinā vā ulkāmukhena saṃpraveśya supariniṣṭhitaḥ pāṇḍukambala uparinikṣipto'tīva pariśuddho bhavati paryavadātaḥ pītanirbhāsaḥ, evameva bhagavato ciprasannānīndriyāṇi, pariśuddho mukhavarṇaḥ, paryavadātaśchavivarṇaḥ pītanirbhāsaḥ | na khalu punarahaṃ bhagavan abhijānāmi itaḥ pūrvataramevaṃ viprasannāni tathāgatasyendriyāṇi evaṃ poariśuddhaṃ mukhavarṇaṃ paryavadātaṃ chavivarṇaṃ pītanirbhāsam | tasya me bhagavan evaṃ bhavati-buddhavihāreṇa batādya tathāgato vihārati, jinavihāreṇa sarvajñatāvihāeṇa | mahānāgavihāreṇa batādya tathāgato viharati | atītānāgatapratyutpannān vā tathāgatānarhataḥ samyaksaṃbuddhān samanusmaratīti | evamukte bhagavānāyuṣmantamānandametadavocat-sādhu sādhvānanda | kiṃ punaste devatā etamarthamārocayanti, utāho buddhā bhagavntaḥ ? atha tena pratyutpannamīmāṃsājñānenaivaṃ prajānāsīti ? evamukte āyuṣmānānando bhagavantametadavocat-na me bhagavan devatā etamarthamārocayanti, nāpi buddhā bhagavantaḥ | atha tarhi me bhagavaṃstenaiva pratyātmamīmāṃsājñānenaivaṃ bhavati-buddhavihāreṇādya tathāgato viharati | jinavihāreṇa sarvajñatāvihāreṇa batādya tathāgato viharati | atītānāgatapratyutpannān vā buddhān bhagavataḥ samanusmaratīti |evamukte bhagavānāyuṣmantamānandametadavocat-sādhu sādhvānanda | udāraḥ khalu te unmiñjaḥ, bhadrikā mīmāṃsā, kalyāṇaṃ pratibhānam | bahujanahitāya tvamānanda pratipanno bahujanasukhāya lokānukampāyai mahato janakāyayārthāya hitāya sukhāya devānāṃ ca manuṣyāṇāṃ ca, yastvaṃ tathāgatamarthaṃ paripraṣṭavyaṃ manyase | evameva bhagavatsu ānandastathāgateṣvarhatsu samyaksaṃbuddheṣu aprameyeṣu asaṃkhyeyeṣu jñānadarśanamupasaṃharet, na tathāgatasya jñānamupahanyeta | tatkasya hetoḥ ? apratihatahetujñānadarśano hyānanda tathāgataḥ | jñānamākāṅkṣannānanda tathāgataḥ ekapiṇḍapātena kalpaṃ vā tiṣṭhet kalpaśataṃ vā kalpaśatasahasraṃ vā yāvatkalpakoṭīniyutaśatasahasraṃ vā, tato vottari tiṣṭhet, na ca tathāgatasyendriyāṇyupanaśyeyuḥ, na mukhavarṇasyānyathātvaṃ bhavet, nāpi cchavivarṇa upahanyeta | tatkasya hetoḥ ? tathā hi ānanda tathāgataḥ samādhimukhapāramitāprāptaḥ | samyaksaṃbuddhānāmānanda loke sudurlabhaḥ prādurbhāvaḥ | tadyathā audumbarapuṣpāṇāṃ loke prādurbhāvaḥ sudurlabho bhavati, evameva ānanda tathāgatānāmarthakāmānāṃ hitaiṣīṇāmanukampakānāṃ mahākaruṇāpratipannānāṃ sudurlabhaḥ prādurbhāvaḥ | api tu khalvānanda tathāgatasyaiva so'nubhāvo yastvaṃ sarvalokācāryāṇāṃ sattvānāṃ loke prādurbhāvāya bodhisattvānāṃ mahāsattvānāmarthāya tathāgatametamarthaṃ paripraṣṭavyaṃ manyase | tena hyānanda śṛṇu, sādhu ca suṣṭhu ca manasikuru | bhāṣiṣye'haṃ te | evaṃ bhagavan ityāyuṣmānānando bhagavataḥ pratyaśrauṣīt || 2 ||
+bhagavānānandametadavocat-bhūtapūrvamānanda atīte'dhvani ito'saṃkhyeye kalpe'saṃkhyeyatare vipule'prameye'cintye yadāsīt | tena kālena tena samayena dīpaṃkaro nāma tathāgato'rhan samyaksaṃbuddho loka udapādi | dīpaṃkarasyānanda pareṇa parataraṃ pratāpavānnāma tathāgato'bhūt | tasya pareṇa parataraṃ prabhākaro nāma tathāgato'bhūt | tasya pareṇa parataraṃ candanagandho nāma tathāgato'bhūt | tasya pareṇa parataraṃ sumerukalpo nāma tathāgato'bhūt | evaṃ candano nāma, vimalānano nāma, anupalipto nāma, vimalaprabho nāma, nāgābhibhūrnāma, sūryodano nāma, girirājaghoṣo nāma, merukūṭo nāma, suvarṇaprabho nāma, jyotiṣprabho nāma, vaiḍūryanirbhāso nāma, brahmaghoṣo nāma, candrābhibhūrnāma, tūryaghoṣo nāma, muktakusumapratimaṇḍitaprabho nāma, śrīkūṭo nāma, sāgaravarabuddhivikrīḍitābhijño nāma, varaprabho nāma, mahāgandharājanirbhāso nāma, vyapagatakhilamalapratighoṣo nāma, śūrakūṭo nāma, raṇaṃjaho nāma, mahāguṇadharabuddhiprāptābhijño nāma, candrasūryajihmīkaraṇo nāma, uttaptavaiḍūryanirbhāso nāma, cittadhārābuddhisaṃkusumitābhyudgato nāma, puṣpāvatīvanarājasaṃkusumitābhijño nāma, puṣpākaro nāma, udakacandro nāma, avidyāndhakāravidhvaṃśanakaro nāma, lokendro nāma, muktacchtrapravātasadṛśo nāma, tiṣyo nāma, dharmamativinanditarājo nāma, siṃhasāgarajūūṭavinanditarājo nāma, sāgaramerucandro nāma, bramhasvaranādābhinandito nāma, kusumasaṃbhavo nāma prāptaseno nāma, candrabhānurnāma, candraprabho nāma, vimalanetro nāma, girirājaghoṣośvaro nāma, kusumaprabho nāma, kusumavṛṣṭyabhiprakīrṇo nāma, ratnacandro nāma, padmabimbyupaśobhito nāma, candanagandho nāma, ratnābhibhāso nāma nimirnāma, mahāvyūho nāma, vyapagatakhiladoṣo nāma, bramhaghoṣo nāma, saptaratnābhivṛṣṭo nāma, mahāguṇadharo nāma, mahātamālapatracandanakardamo nāma, kusukābhijño nāma, ajñānavidhvaṃsano nāma, kesarī nāma, muktacchatro nāma, suvarṇagarbho nāma, vaiḍūryagarbho nāma, mahāketurnāma, dharmaketurnāma, ratnaketurnāma, ratnaśrīrnāma, kolendro nāma, narendro nāma, kāruṇiko nāma, lokasundaro nāma, bramhaketurnāma, dharmaketurnāma, siṃho nāmasiṃhamatirnāma | siṃhamaterānanda pareṇa parataraṃ lokeśvararājo nāma tathāgato'rhan samyaksaṃbuddho loka udapādi vidyācaraṇasaṃpannaḥ sugato lokavidanuttaraḥ puruṣadamyasārathiḥ śāstā devānāṃ ca manuṣyāṇāṃ ca buddho bhagavān | tasya khalu punarānanda lokeśvararājasya tathāgata, syārhataḥ samyaksaṃbuddhasya pravacane dharmākaro nāma bhikṣubhūdadhimātraṃ smṛtimān matimān gatimān prajñāvan, adhimātraṃ vīryavān udārādhimuktikaḥ || 3 ||
+atha khalvānanda sa dharmākaro bhikṣurutthāyāsanādekāṃsamuttarāsaṅgaṃ kṛtvā dakṣiṇajānumaṇḍalaṃ pṛthivyāṃ pratiṣṭhāpya yenāsau bhagavāllokeśvararājastathāgatastenāñjaliṃ praṇamya bhagavantaṃ namaskṛtya tasminneva samaye saṃmukhamābhirgāthābhirabhyaṣṭāvīt -
+amitaprabha anantatulyabuddhe
+na ca iha anya prabhā vibhāti kācit |
+sūryamaṇigirīśacandraābhā
+na tapita bhosiṣu ebhi sarvaloke || 1 ||
+rūpamapi anantu attvasāre
+tatha api buddhasvaro anantaghoṣaḥ |
+śīlamapi samādhiprajñavīryaiḥ
+sadṛśu na te'stiha loki kaścidanyaḥ || 2 ||
+gabhiru vipulu sūkṣmaprāptu dharmo-
+'cintitu buddhavaro yathā samudraḥ |
+tenonnamanā na cāsti śāstuḥ
+khiladoṣān jahyā ato'dhikālam || 3 ||
+atha buddhabalā anantatejā
+pratapati sarvadiśā narendrarājā |
+tatha ahu buddha bhavi dharmasvāmī
+jaramaraṇātprajāṃ pramocayeyam || 4 ||
+dānaśamathaśīlakṣāntivīrya
+dhyānasamādhitaścaiva agraśreṣṭhāṃ |
+ebhi ahu vratāṃ samādadāmi
+buddha bhaviṣyami sarvasattvatrātā || 5 ||
+buddhaśatasahasra koṭyanekā
+yathariva vālika gaṅgayā anantā |
+sarvata ahu pūjayiṣya nāthāṃ
+śivavarabodhigaveṣako atulyāṃ || 6 ||
+gaṅgārajasamānalokadhātūṃ
+tatra bhūyo'ntari ye anantakṣetrāḥ |
+sarvatra prabha muñcayiṣya tatrā
+iti etādṛśa vīryamārabhidhya || 7 ||
+kṣetra mama udāru agra śreṣṭho
+varamiha malī(?) saṃskṛte'smiṃ |
+asadṛśa nirvāṇadhātusaukhyaṃ
+taśca(cca ?) asattvatayā viśodhayiṣye || 8 ||
+daśadiśata samāgatāni sattvāḥ
+tatra gatā sukha me diśanti kṣipram |
+buddha mama pramāṇu atra śikṣī
+avitathavīryabalaṃ janemi chandam || 9 ||
+daśadiśalokavidasaṅgajñānī
+sada mama citta prajānayanti te'pi |
+avicigatu ahaṃ sadā vaseyaṃ
+praṇidhibalaṃ na punarvivartayiṣye || 10 ||
+atha khalvānanda sa dharmākaro bhikṣustaṃ bhagavantaṃ lokeśvararājaṃ tathāgataṃ saṃmukhamābhirgāthābhirabhiṣṭutya etadavocat-ahamasmi bhagavan uttarāṃ samyaksaṃbodhimabhisaṃboddhukāmaḥ | punaḥ punaranuttarāyāṃ samyaksaṃbodhau cittamutpādayāmi pariṇāmayāmi | tasya me bhagavān śāstā tathā dharmaṃ deśayatu, yathāhaṃ kṣipramanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam | asamasamastathāgato loke bhaveyam | tāṃśca bhagavānākārān parikīrtayatu yairahaṃ buddhakṣetrasya guṇavyūhasaṃpadaṃ parigṛhṇīyām | evamukte ānanda bhagavāllokeśvararājastathāgatastaṃ bhikṣumetadavocat-tena hi tvaṃ bhikṣo svayameva buddhakṣetraguṇālaṃkāravyūhasaṃpadaṃ parigṛhṇīṣva | so'vocat-nāhaṃ bhagavaṃstatsaheyam, api tu bhagavāneva | bhāṣasva anyeṣāṃ tathāgatānāṃ buddhakṣetraguṇavyūhālaṃkārasaṃpadam, yāṃ śrutvā vayaṃ sarvākāraṃ paripūrayiṣyāma iti | athānanda sa lokeśvararājastathāgato'rhan samyaksaṃbuddhastasya bhikṣurāśayaṃ jñātvā paripūrṇāṃ varṣakoṭīmekāśītibuddhakoṭīniyutaśatasahasrāṇāṃ buddhakṣetraguṇālaṃkāravyūhasaṃpadaṃ sākārāṃ soddeśāṃ sanirdeśāṃ saṃprakāśitavānarthakāmo hitaiṣī anukampako'nukampāmupādāya buddhakṣetrānupacchedāya sattveṣu mahākaruṇāṃ saṃjanayitvā | paripūrṇāścatvāriṃśatkalpāstasya bhagavatastathāgatasyāyuḥpramāṇam || 5 ||
+atha khalvānanda sa dharmākaro bhikṣuryāsteṣāmekāśītibuddhakoṭīniyutaśatasahasrāṇāṃ buddhakṣetraguṇālaṃkāravyūhasaṃpadaḥ, tāḥ sarvā eke buddhakṣetre parigṛhya bhagavato lokeśvararājasya tathāgatasya pādau śirasā vanditvā pradakṣiṇīkṛtya tasya bhagavato'ntikātprākrāmat | uttari ca pañca kalpān buddhakṣetraguṇālaṃkāravyūhasaṃpadamudāratarāṃ praṇītatarāṃ ca sarvaloke daśasu dikṣu apracaritapūrvāṃ parigṛhītavān, udārataraṃ ca praṇidhānamakārṣīt || 6 ||
+iti hyānanda yā tena bhagavatā lokeśvararājena tathāgatena teṣāmekāśītibuddhakṣetrakoṭīniyutaśatasahasrāṇāṃ saṃpattiḥ kathitā, tato bhikṣurekāśītyudārapraṇītāprameyatarāṃ buddhakṣetrasaṃpattiṃ parigṛhya yena sa tathāgatastenopasaṃkramya bhagavataḥ pādau śirasā vanditvā etadavocat-parigṛhītā me bhagavan buddhakṣetraguṇālaṃkāravyūhasaṃpaditi | evamukte ānanda sa lokeśvararājastathāgatastaṃ bhikṣumetadavocat-tena hi bhikṣo bhāṣasva, anumodate tathāgataḥ | ayaṃ kālo bhikṣo, pramodaya parṣadam, harṣaṃ janaya, siṃhanādaṃ nada, yaṃ śrutvā bodhisattvā mahāsattvā etarhyanāgate'dhvani evaṃrūpāṇi buddhakṣetraguṇasaṃpattipraṇidhisthānāni parigrahīṣyanti | athānanda sa dharmākaro bhikṣustasyāṃ velāyāṃ bhagavantametadavocat-tena hi śṛṇotu me bhagavān ye mama praṇidhānaviśeṣāḥ, yathā me'nuttarāṃ samyaksaṃbodhimabhisaṃbuddhasya acintyaguṇālaṃkāravyūhasamanvāgataṃ tad buddhakṣetraṃ bhaviṣyati || 7 ||
+1. sacenme bhagavaṃstasmin buddhakṣetre nirayo vā tiryagyonirvā pretaviṣayo vā āsuro vā kāyo bhavet, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+2. sacenme bhagavaṃstasya tatra buddhakṣetre ye sattvāḥ pratyājātā bhaveyuḥ, te punastataścyutvā nirayaṃ vā tiryagyoniṃ vā pretaviṣayaṃ vā āsuraṃ vā kāyaṃ prapateyuḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+3. sacenme bhagavaṃstatra buddhakṣetre ye sattvāḥ pratyājātāste ca sarve naikavarṇāḥ syuryadidaṃ suvarṇavarṇāḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+4. sacenme bhagavaṃstasmin buddhakṣetre devānāṃ ca manuṣyāṇāṃ ca nānātvaṃ prajñāyeta anyatra nāma saṃvṛtivyavahāramātrā devamanuṣyā iti saṃkhyāgaṇanātaḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+5. sacenme bhagavaṃtasmin buddhakṣetre ye sattvāḥ pratyājātāḥ, te ca sarve na ṛddhivaśitāparamapāramitāprāptā bhaveyuḥ, antaśa ekacittakṣaṇalavena buddhakṣetrakoṭīniyutaśatasahasrātikramaṇatayāpi, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+6. sacenme bhagavaṃstasmin buddhakṣetre ye sattvāḥ pratyājātā bhaveyuḥ, te ca sarve jātismarā na syuḥ, antaśaḥ kalpakoṭīniyutaśatasahasrānusmaraṇatayāpi, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+7. sacenme bhagavaṃstasmin buddhakṣetre ye sattvāḥ pratyājāyeran, te sarve na divyasya cakṣuṣo lābhino bhaveyuḥ, antaśo lokadhātukoṭīniyutaśatasahasradarśanatayāpi, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+8. sacenme bhagavaṃstasmin buddhakṣetre ye sattvāḥ pratyājāyeran, te sarve na divyasya śrotrasya lābhino bhaveyuḥ, antaśo buddhakṣetrakoṭīniyutaśatasahasrādapi yugapatsaddharmaśravaṇatayā, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+9. sacenme bhagavaṃstasmin buddhakṣetre ye sattvāḥ pratyājāyeran, te sarve na paracittajñānakovidā bhaveyuḥ, antaśo buddhakṣetrakoṭīniyutaśatasahasraparyāpannānāmapi sattvānāṃ cittacaritaparijñānatayā, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+10. sacenme bhagavaṃstasmin buddhakṣetre ye sattvāḥ pratyājāyeran, teṣāṃ kācitparigrahasaṃjñotpadyeta, antaśaḥ svaśarīre'pi, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+11. sacenme bhagavaṃstasmin buddhakṣetre ye sattvāḥ pratyājāyeran, te sarve na niyatāḥ syuryādidaṃ samyaktve yāvanmahāparinirvāṇe, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+12. sacenme bhagavaṃstasmin buddhakṣetre anuttarāṃ samyaksaṃbodhimabhisaṃbuddhasya kaścitsattvaḥ śrāvakāṇāṃ gaṇanāmadhigacchet, antaśastrisāhasramahāsāhasraparyāpannā api sarvasattvāḥ pratyekabuddhabhūtāḥ kalpakoṭīniyutaśatasahasramabhigaṇayantaḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+13. sacenme bhagavaṃstasmin buddhakṣetre anuttarāṃ samyaksaṃbodhimabhisaṃbuddhasya pramāṇikī me prabhā bhavet, antaśo buddhakṣetrakoṭīniyutaśatasahasrapramāṇenāpi, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+14. sacenme bhagavannanuttarāṃ samyaksaṃbodhimabhisaṃbuddhasya tasmin buddhakṣetre sattvānāṃ pramāṇīkṛtamāyuṣpramāṇaṃ bhavet, anyatra praṇidhānavaśena, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+15. sacenme bhagavan bodhiprāptasyāyuṣpramāṇaṃ paryantīkṛtaṃ bhavet, antaśaḥ kalpakoṭīniyutaśatasahasragaṇayāpi, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+16. sacenme bhagavan bodhiprāptasya tasmin buddhakṣetre sattvānāmakuśalasya nāmadheyamapi bhavet, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+17. sacenme bhagavan bodhiprāptasya nāpramayeṣu buddhakṣetreṣu aprameyāsaṃkhyeyā buddhā bhagavanto nāmadheyaṃ parikīrtayeyuḥ, na varṇaṃ bhāṣeran, na praśaṃsāmabhyudīrayeran, na samudīrayeyuḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+18. sacenme bhagavan bodhiprāptasya ye sattvā anyeṣu lokadhātuṣvanuttarāyāṃ samyaksaṃbodhau cittamutpādya mama nāmadheyaṃ śrutvā prasannacittā māmanusmareyuḥ, teṣāṃ cedahaṃ maraṇakālasamaye pratyupasthite bhikṣusaṃghaparivṛtaḥ puraskṛto na puratastiṣṭheyaṃ yadidaṃ cittāvikṣepatāyai, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+19. sacenme bhagavan bodhiprāptasya aprameyāsaṃkhyeyeṣu buddhakṣetreṣu ye sattvā mama nāmadheyaṃ śrutvā tatra buddhakṣetre cittaṃ prerayeyuḥ, upapattaye kuśalamūlāni ca pariṇāmayeyuḥ, te tatra buddhakṣetre nopapadyeran, antaśo daśabhiścittotpādaparivartaiḥ sthāpayitvā ānantaryakāriṇaḥ saddharmapratikṣepāvaraṇakṛtāṃśca sattvān, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+20. sacenme bhagavan bodhiprāptasya tatra buddhakṣetre ye sattvāḥ pratyājātā bhaveyuḥ, te sarve naikajātipratibaddhāḥ syuranuttarāyāṃ samyaksaṃbodhau sthāpayitvā praṇidhānaviśeṣān, teṣāmeva bodhisattvānāṃ mahāsattvānāṃ mahāsaṃnāhasaṃnaddhānāṃ sarvalokārthasaṃbuddhānāṃ sarvalokābhiyuktānāṃ sarvalokaparinirvāṇābhiyuktānāṃ sarvalokadhātuṣu bodhisattvacaryāṃ caritukāmānāṃ sarvabuddhānāṃ saṃvartukāmānāṃ gaṅgānadīvālukāsamān sattvān anuttarāyāṃ samyaksaṃbodhau pratiṣṭhāpakānāṃ bhūyaśca uttaracaryābhimukhānāṃ samantabhadracaryāniryātānām, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+21. sacenme bhagavan bodhiprāptasya tatra buddhakṣetre ye bodhisattvāḥ pratyājātā bhaveyuḥ, te sarve ekapurobhaktena anyāni buddhakṣetrāṇi gatvā bahūni buddhaśatāni bahūni buddhasahasrāṇi bahūni buddhaśatasahasrāṇi bahvīrbuddhakoṭīryāvadbahūni buddhakoṭīniyutaśatasahasrāṇi nopatiṣṭheran sarvasukhopadhānaiḥ tadidaṃ buddhānubhāvena, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+22. sacenme bhagavan bodhiprāptasta tatra buddhakṣetre bodhisattvā yathārūpairākārairākāṅkṣeyuḥ kuśalamūlānyavaropayituṃ yadidaṃ suvarṇena vā rajatena vā maṇimuktāvaiḍūryaśaṅkhaśilāpravālasphaṭikamusāragalvalohitamuktāśmagarbhādibhirvā anyatamānyatamaiḥ sarvai ratnairvā sarvagandhapuṣpamālyavilepanadhūpacūrṇacīvaracchatradhvajapatākāpradīpairvā sarvanṛtyagītavādhairvā, teṣāṃ ca tathārūpā āhārāḥ sahacittotpādānna prādurbhaveyuḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+23. sacenme bhagavan bodhiprāptasya tatra buddhakṣetre ye sattvāḥ pratyājātā bhaveyuḥ, te sarva na sarvajñatāsahagatāṃ dharmakathāṃ kathayeyuḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+24. sacenme bhagavan bodhiprāptasya tatra buddhakṣetre ye bodhisattvā evaṃ cittamutpādayeyuḥ-yadihaiva vayaṃ lokadhātau sthitvā aprameyāsaṃkhyeyeṣu buddhakṣetreṣu buddhān bhagavataḥ satkuryām gurukuryām mānayema pūjayema yadidaṃ cīvarapiṇḍapātraśayanāsanaglānapratyayabhaiṣajyapariṣkāraiḥ puṣpadhūpadīpagandhamālyavilepanacūrṇacīvaracchatradhvajapatākābhirnānāvidhanṛtyagītavādyai ratnavarṣairiti, teṣāṃ ca buddhā bhagavantaḥ sahacittotpādānna pratigṛhṇīyuryadidamanukampāmupādāya, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+25. sacenme bhagavan bodhiprāptasya tatra buddhakṣetre ye bodhisattvāḥ pratyājātā bhaveyuḥ, te sarve na nārāyaṇavajrasaṃhatātmabhāvasthāmapratilabdhā bhaveyuḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+26. sacenme bhagavan bodhiprāptasya tatra buddhakṣetre yaḥ kaścitsattvo'laṃkārasya varṇaparyantamudgṛhṇīyāt-antaśo divyenāpi cakṣuṣā evaṃvarṇamevaṃvibhūti idaṃ buddhakṣetramiti nānāvarṇatāṃ jānīyāt, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+27. sacenme bhagavan bodhiprāptasya tatra buddhakṣetre yaḥ sarvaparīttakuśalamūlo bodhisattvaḥ so'ntaśo yojanaśatotthitamudāravarṇaṃ bodhivṛkṣaṃ na saṃjānīyāt, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+28. sacenme bhagavan bodhiprāptasya tatra buddhakṣetre kasyacitsattvasyoddeśo vā svādhyāyo vā kartavyaḥ syāt, na te sarve pratisaṃvitprāptā bhaveyuḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+29. sacenme bhagavan bodhiprāptasya naivaṃ prabhāsvaraṃ tadbuddhakṣetraṃ bhavedyatra samantādaprameyāsaṃkhyeyācintyātulyāparimāṇāni buddhakṣetrāṇi saṃdṛśyeran tadyathāpi nāma parimṛṣṭe ādarśamaṇḍale mukhamaṇḍalam, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+30. sacenme bhagavan bodhiprāptasya tatra buddhakṣetre dharaṇītalamupādāya yāvadantarīkṣāddevamanuṣyaviṣayātikrāntasyābhijātasya dhūpasya tathāgatabodhisattvapūjāpratyarhasya sarvaratnamayāni nānāsurabhigandhaghaṭikāśatasahasrāṇi sadā nidhūpitānyava na syuḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+31. sacenme bhagavan bodhiprāptasya tatra buddhakṣetre na sadābhipravṛṣṭānyeva sugandhinānāratnapuṣpavarṣāṇi sadā pravāditāśca manojñasvarā vādyameghā na syuḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+32. sacenme bhagavan bodhiprāptasya ye sattvā aprameyāsaṃkhyeyācinyātulyeṣu lokadhātuṣvābhayā sphuṭā bhaveyuḥ, te sarve na devamanuṣyasamatikrāntena sukhena samanvāgatā bhaveyuḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+33. sacenme bhagavan bodhiprāptasya samantādaprameyācintyātulyāparimāṇeṣu buddhakṣetreṣu bodhisattvā mahāsattvā mama nāmadheyaṃ śrutvā tacchravaṇasahagatena kuśalena jātivyativṛttāḥ santo na dhāraṇīpratilabdhā bhaveyuryāvadbodhimaṇḍaparyantamiti, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+34. sacenme bhagavan bodhiprāptasya samantādaprameyāsaṃkhyeyācintyātulyāparimāṇeṣu buddhakṣetreṣu yāḥ striyo mama nāmadheyaṃ śrutvā pramādaṃ saṃjanayeyuḥ, bodhicittaṃ notpādayeyuḥ, strībhāvaṃ ca na vijugupseran, jātivyativṛttāḥ samānāḥ saceddvitīyaṃ strībhāvaṃ pratilabheran, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+35. sacenme bhagavan bodhiprāptasya samantāddaśasu dikṣu aprameyāsaṃkhyeyācintyātulyāparimāṇeṣu buddhakṣetreṣu ye bodhisattvā mama nāmadheyaṃ śrutvā praṇipatya pañcamaṇḍalanamaskāreṇa vandiṣyante te bodhisattvacaryāṃ caranto na sadevakena lokena satkriyeran, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+36. sacenme bhagavan bodhiprāptasya kasyacidbodhisattvasya cīvaradhāvanaśoṣaṇasīvanarañjanakarma kartavyaṃ bhavet, na tveva navābhijātacīvararatnaiḥ prāvṛtamevātmānaṃ saṃjānīyuḥ sahacittotpādāttathāgatānujñātaiḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+37. sacenme bhagavan bodhiprāptasya tatra buddhakṣetre sahotpannāḥ sattvā naivaṃvidhaṃ sukhaṃ pratilabheraṃstadyathāpi nāma niṣparidāhasyārhato bhikṣostṛtīyadhyānasamāpannasya, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+38. sacenme bhagavan bodhiprāptasya tatra buddhakṣetre ye bodhisattvāḥ pratyājātāḥ, te yathārūpaṃ buddhakṣetre guṇālaṃkāravyūhamākāṅkṣeyuḥ, tathārūpaṃ nānāratnavṛkṣebhyo na saṃjanayeyuḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+39. sacenme bhagavan bodhiprāptasya mama nāmadheyaṃ śrutvā anyabuddhakṣetropapannā bodhisattvā indriyabalavaikalyaṃ gaccheyuḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+40. sacenme bhagavan bodhiprāptasya tadanyabuddhakṣetrasthāne bodhisattvā mama nāmadheyasahaśravaṇānna suvibhaktavatīṃ nāma samādhiṃ pratilabheran, yatra samādhau sthitvā bodhisattvā ekakṣaṇavyatihāreṇa aprameyāsaṃkhyeyācintyātulyāparimāṇān buddhān bhagavataḥ paśyanti, sa caiṣāṃ samādhirantarā vipraṇaśyet, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+41. sacenme bhagavan bodhiprāptasya tadanyeṣu buddhakṣetreṣu mama nāmadheyaṃ śrutvā tacchravaṇasahagatena kuśalamūlena sattvā nābhijātakulopapattiṃ pratilabheran yāvadbodhiparyantam, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+42. sacenme bhagavan bodhiprāptasya tadanyeṣu buddhakṣetreṣu ye bodhisattvā mama nāmadheyaṃ śrutvā tacchravaṇakuśalamūlena yāvadbodhiparyantaṃ te sarve bodhisattvacaryāprītiprāmodyakuśalamūlasamavadhānagatā na bhaveyuḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+43. sacenme bhagavan bodhiprāptasya sahanāmadheyaśravaṇāttadanyeṣu lokadhātuṣu bodhisattvā na samantānugataṃ nāma samādhiṃ pratilabheran, yatra sthitvā bodhisattvā ekakṣaṇavyatihāreṇa aprameyāsaṃkhyeyācinyātulyāparimāṇān buddhān bhagavataḥ satkurvanti, sa caiṣāṃ samādhirantarā vipraṇaśyedyāvadbodhimaṇḍaparyantam, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+44. sacenme bhagavan bodhiprāptasya tatra buddhakṣetre ye sattvāḥ pratyājātā bhaveyuḥ te yathārūpāṃ dharmadeśanāmākāṅkṣeyuḥ śrotum, tathārūpāṃ sahacittotpādānna śṛṇuyuḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+45. sacenme bhagavan bodhiprāptasya tatra buddhakṣetre tadanyeṣu buddhakṣetreṣu ye ca bodhisattvā mama nāmadheyaṃ śṛṇuyuḥ, te sahanāmadheyaśravaṇānnāvaivartikā bhaveyuranuttarāyāḥ samyaksaṃbodheḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhisaṃbudhyeyam ||
+46. sacenme bhagavan bodhiprāptasya buddhaśāsturbuddhakṣetreṣu te bodhisattvā mama nāmadheyaṃ śṛṇuyuḥ, te sahanāmadheyaśravanātprathamadvitīyatṛtīyāḥ kṣāntīḥ pratilabheran nāvaivartikā bhaveyurbuddhadharmasaṃghebhyaḥ, mā tāvadahamanuttarāṃ samyaksaṃbodhimabhibudhyeyam ||8||
+atha khalvānanda sa dharmākaro bhikṣurimānevaṃrūpān praṇidhānaviśeṣānnirdiśya tasyāṃ velāyām buddhānubhāven imā gāthā abhāṣata—`)
