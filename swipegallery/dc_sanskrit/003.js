@@ -1,4 +1,8 @@
-jsonp(3,{"name":"dc_sanskrit","start":1135},` saced bhagavann arhata evaṃ bhaven mayā arhattvaṃ prāptam iti sa eva tasya ātmagrāho bhavet sattvagrāho jīvagrāhaḥ pudgalagrāho bhavet |
+jsonp(3,{"name":"dc_sanskrit","start":2447},` bhagavān āha | tat kiṃ manyase subhūte api nv anāgāmina evaṃ bhavati mayā anāgāmiphalaṃ prāptam iti |
+ subhūtir āha | no hīdaṃ bhagavan na anāgāmina evaṃ bhavati mayā anāgāmi-phalaṃ prāptamiti | tatkasya hetoḥ | na hi sa bhagavan kaścid dharmo yo 'nāgāmitvam āpannaḥ | tenocyate 'nāgāmīti |
+ bhagavān āha | tat kiṃ manyase subhūte api nvarhata evaṃ bhavati mayā arhattvaṃ prāptam iti |
+ subhūtir āha | no hīdaṃ bhagavan na arhata evaṃ bhavati mayā arhattvaṃ prāptam iti | tatkasya hetoḥ | na hi sa bhagavan kaścid dharmo yo 'rhan nāma | tenocyate 'rhann iti |
+ saced bhagavann arhata evaṃ bhaven mayā arhattvaṃ prāptam iti sa eva tasya ātmagrāho bhavet sattvagrāho jīvagrāhaḥ pudgalagrāho bhavet |
  tat kasya hetoḥ | aham asmi bhagavaṃs tathāgatena arhatā samyaksaṃbuddhena araṇā-vihāriṇām agryo nirdiṣṭaḥ | aham asmi bhagavann arhan vītarāgaḥ | na ca me bhagavann evaṃ bhavati arhann asmy ahaṃ vītarāga iti |
  sacen mama bhagavann evaṃ bhaven mayā arhattvaṃ prāptam iti na māṃ tathāgato vyākariṣyad araṇā-vihāriṇām agryaḥ subhūtiḥ kulaputro na kvacid viharati tenocyate 'raṇā-vihāry araṇā-vihārīti ||9||
 ^ck10【The Bodhisattva's thought of enlightenment】

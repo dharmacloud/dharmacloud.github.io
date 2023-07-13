@@ -48,6 +48,7 @@ select {font-size:4vh}
 .hr {height: 1px ;background:black}
 .paralleltext {font-size:3vh;}
 .toctext {font-size:3vh;}
+
 .tocitem{margin-left: 0.5em}
 .dicttext {font-size:4vh}
 .dictentry {font-size:6vh}
@@ -166,3 +167,6 @@ button {font-size:2.8vh}
 a{color:#563100}
 
 .parallelfolio {font-size:90% ; padding-left:0.1em;padding-right:0.1em;border-radius: 5px;border:#d27700 1px dotted}
+
+.nav {width:100%;text-align: center; user-select: none;}
+.navbutton {cursor:pointer;font-size:3vh}

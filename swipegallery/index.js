@@ -7395,8 +7395,13 @@
     let bk = "", folio = bkfolio;
     if (bkfolio.match(/\d$/)) {
       bk = bkfolio.replace(/\d+$/g, "");
+    } else {
+      folio = "";
+      bk = bkfolio;
     }
-    const [from, to] = ptk2.rangeOfAddress((bk ? "bk#" + bk + "." : "") + ("folio#" + folio) + (pb ? ".pb#" + pb : ""));
+    const address = (bk ? "bk#" + bk : "") + (folio ? "." : "") + (folio ? "folio#" + folio : "") + (pb ? ".pb#" + pb : "");
+    const [from, to] = ptk2.rangeOfAddress(address);
+    console.log(address, from, to);
     if (from == to)
       return ["", from, to];
     await ptk2.loadLines([from, to + 1]);
@@ -7852,7 +7857,7 @@
     const folio = dc.defines.folio;
     const bk = dc.defines.bk;
     const at = folio.fields.id.values.indexOf(fid);
-    if (~at)
+    if (!~at)
       return "";
     const line = folio.linepos[at] + 1;
     const at2 = bsearchNumber(bk.linepos, line) - 1;
@@ -7915,7 +7920,8 @@
     const at = bkid.indexOf("_");
     if (~at)
       bkid = bkid.slice(0, at);
-    return ~ptk2.defines.bk.fields.id.values.indexOf(bkid);
+    const at2 = ptk2.defines.bk.fields.id.values.indexOf(bkid);
+    return ~at2;
   };
   var parallelFolios = (folioid) => {
     const ptk2 = usePtk("dc");
@@ -11110,7 +11116,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let span;
     let t_value = (
       /*$videoid*/
-      ctx[14] ? "\u23F9" : "\u23F5"
+      ctx[14] ? "\u23F9" : "\u{1F3B5}"
     );
     let t;
     let mounted;
@@ -11137,7 +11143,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         if (dirty[0] & /*$videoid*/
         16384 && t_value !== (t_value = /*$videoid*/
-        ctx2[14] ? "\u23F9" : "\u23F5"))
+        ctx2[14] ? "\u23F9" : "\u{1F3B5}"))
           set_data(t, t_value);
       },
       d(detaching) {
@@ -11853,7 +11859,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $$invalidate(6, hidepunc = true);
       const fl = folioLines();
       $$invalidate(3, [foliotext2, foliofrom2] = await fetchFolioText(ptk2, $activefolioid, 1 + Math.floor($activepb)), foliotext2);
-      console.log(foliotext2);
       setTimeout(
         () => {
           $$invalidate(6, hidepunc = false);
@@ -11900,7 +11905,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       let [t, pos] = getConcreatePos(foliotext2[cx], cy, foliotext2[cx + 1]);
       const ck = await folio2ChunkLine(ptk2, foliotext2, foliofrom2, cx, pos);
       ;
-      const address = "bk#" + $activefolioid + (ck ? "." + ck : "");
+      const address = "folio#" + $activefolioid + (ck ? "." + ck : "");
       t = t.replace(/([。！？：、．；，「『（ ])/g, "\u3000");
       while (t.charAt(0) == "\u3000")
         t = t.slice(1);
@@ -14034,9 +14039,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t3 = space();
         span2 = element("span");
         span2.textContent = "\u2192";
-        attr(span0, "class", "toctext");
-        attr(span2, "class", "toctext");
-        attr(div, "class", "nav svelte-82p8iw");
+        attr(span0, "class", "navbutton");
+        attr(span1, "class", "navbutton");
+        attr(span2, "class", "navbutton");
+        attr(div, "class", "nav");
       },
       m(target, anchor) {
         insert(target, div, anchor);
@@ -14755,7 +14761,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const line = bk.linepos[nbk];
       const folio = ptk3.defines.folio;
       const at = bsearchNumber(folio.linepos, line + 1) - 1;
-      return ~at ? folio.innertext.get(at) : bk.innertext.get(nbk);
+      if (folio.linepos[at] !== line) {
+        return bk.innertext.get(nbk);
+      } else {
+        return ~at ? folio.innertext.get(at) : bk.innertext.get(nbk);
+      }
     };
     const marktap = async (pb, line) => {
       const pos = await folioPosFromLine(ptk2, pb, line, $activefolioid, folioLines(), $folioChars);
@@ -16322,7 +16332,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const out = [];
       if (!address2)
         return out;
-      const m4 = address2.match(/(bk#?[a-z_\d]+)/);
+      const m4 = address2.match(/(folio#?[a-z_\d]+)/);
       const [from, to] = ptk2.rangeOfAddress(m4[1]);
       const ck = ptk2.defines.ck;
       const at = bsearchNumber(ck.linepos, from);
@@ -17788,15 +17798,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t4;
     let br3;
     let t5;
-    let br4;
-    let t6;
     let div0;
+    let t9;
+    let br6;
     let t10;
     let br7;
-    let t11;
-    let br8;
     let button;
-    let t13;
+    let t12;
     let switch_1;
     let updating_value;
     let current;
@@ -17834,19 +17842,17 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t4 = text("iOS:\u4F7F\u7528Safari\uFF0C\u5206\u4EAB\u2192\u52A0\u5230\u4E3B\u756B\u9762\n");
         br3 = element("br");
         t5 = text("\u5DE6\u53F3\u6ED1\u52D5\u7FFB\u9801\uFF0C\u9EDE\u756B\u9762\u4EFB\u4F55\u4E00\u8655\uFF0C\u8ABF\u51FA\u529F\u80FD\u8868\u3002\n");
-        br4 = element("br");
-        t6 = text("\u23F5\u96A8\u6A5F\u64AD\u653E  \u2661\u52A0\u5230\u66F8\u7C64\n");
         div0 = element("div");
         div0.innerHTML = `\u2699\uFE0F\u8A2D\u7F6E\u{1F4D3}\u7D93\u5377\u{1F9ED}\u5C0E\u5F15
 <br/>\u2764\uFE0F\u66F8\u7C64\u{1F3B5}\u8AA6\u7D93\u{1F50E}\u8A5E\u5178
 <br/>\u9032\u968E:\u{1F4DC}\u539F\u6587\u{1F500}\u7570\u8B6F\u{1F4DA}\u96C6\u8A3B`;
-        t10 = space();
+        t9 = space();
+        br6 = element("br");
+        t10 = text("\u4E0D\u6703\u4E3B\u52D5\u6536\u96C6\u500B\u4EBA\u8CC7\u8A0A\u3002\u82E5\u9020\u6210\u7528\u6236\u4EFB\u4F55\u640D\u5931\uFF0C\u65E2\u4E0D\u8CA0\u8CAC\u3002\n");
         br7 = element("br");
-        t11 = text("\u4E0D\u6703\u4E3B\u52D5\u6536\u96C6\u500B\u4EBA\u8CC7\u8A0A\u3002\u82E5\u9020\u6210\u7528\u6236\u4EFB\u4F55\u640D\u5931\uFF0C\u65E2\u4E0D\u8CA0\u8CAC\u3002\n");
-        br8 = element("br");
         button = element("button");
         button.textContent = "\u540C\u610F";
-        t13 = space();
+        t12 = space();
         create_component(switch_1.$$.fragment);
         attr(span, "class", "welcome");
         set_style(div0, "color", "white");
@@ -17869,15 +17875,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         append(div1, t4);
         append(div1, br3);
         append(div1, t5);
-        append(div1, br4);
-        append(div1, t6);
         append(div1, div0);
+        append(div1, t9);
+        append(div1, br6);
         append(div1, t10);
         append(div1, br7);
-        append(div1, t11);
-        append(div1, br8);
         append(div1, button);
-        append(div1, t13);
+        append(div1, t12);
         mount_component(switch_1, div1, null);
         current = true;
         if (!mounted) {
