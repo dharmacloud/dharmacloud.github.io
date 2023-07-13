@@ -49,6 +49,9 @@
 .dc .pb 
 { 
 }
+.dc .r 
+{ 
+}
 .dc .folio 
 { 
 }
@@ -59,5 +62,11 @@
 { 
 }
 .dc .e 
+{ 
+}
+.dc .cb 
+{ 
+}
+.dc .missing 
 { 
 }

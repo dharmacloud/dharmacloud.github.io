@@ -13827,9 +13827,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   }
   function create_if_block7(ctx) {
     let t0;
-    let a0;
-    let t2;
     let br0;
+    let t1;
+    let a0;
     let t3;
     let a1;
     let t5;
@@ -13839,35 +13839,50 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t7;
     let a2;
     let t9;
+    let br3;
+    let t10;
+    let a3;
+    let t12;
+    let br4;
+    let t13;
     return {
       c() {
-        t0 = text("\u672C\u6578\u64DA\u5EAB\u57FA\u65BC\u4EE5\u4E0B\u516C\u958B\u7D20\u6750\uFF1A\n\u6C38\u6A02\u5357\u5317\u85CF(\u5C71\u6771\u7701\u5716\u66F8\u9928)\u3001\u91D1\u525B\u7D93\u96C6\u8A3B(\u6731\u68E3)\u3001\u68B5\u6587\u6821\u52D8\u672C(Edward Conze, ");
-        a0 = element("a");
-        a0.textContent = "Ancient Buddhist Texts";
-        t2 = text(")\u3001\n\u7D93\u6587\u65B0\u5F0F\u6A19\u9EDE(CBETA)\u3002\n");
+        t0 = text("\u672C\u5716\u6587\u5C0D\u7167\u6578\u64DA\u5EAB\u4E3B\u8981\u57FA\u65BC\u4EE5\u4E0B\u7D20\u6750\uFF1A\n");
         br0 = element("br");
-        t3 = text("\u6388\u6B0A\u65B9\u5F0F\uFF1A");
+        t1 = text("\u6C38\u6A02\u5357\u5317\u85CF(\u5C71\u6771\u7701\u5716\u66F8\u9928)\u3001\u91D1\u525B\u7D93\u96C6\u8A3B(\u6731\u68E3)\u3001\u68B5\u6587\u539F\u5178(");
+        a0 = element("a");
+        a0.textContent = "DSBC";
+        t3 = text(", ");
         a1 = element("a");
-        a1.textContent = "Creative Common Zero";
-        t5 = text("\u3002\n");
+        a1.textContent = "Ancient Buddhist Texts";
+        t5 = text(")\u3001\n\u7D93\u6587\u65B0\u5F0F\u6A19\u9EDE(CBETA)\u3001\u68B5\u6F22\u4F5B\u7D93\u5C0D\u52D8\u53E2\u66F8\uFF08\u793E\u6703\u79D1\u5B78\u51FA\u7248\u793E\uFF09\u3001\u7DAD\u57FA\u767E\u79D1\u53CA\u5404\u7A2E\u4F5B\u5B78\u8A5E\u5178\u4E4B\u8A5E\u689D\u3002\n");
         br1 = element("br");
-        t6 = text("\u66F4\u65B0\u7A0B\u5F0F\u524D\uFF0C\u5148\u6E05\u9664\u700F\u89BD\u5668\u5FEB\u53D6\u3002\n");
+        t6 = text("\u6578\u5B57\u52A0\u5DE5\uFF1A\u6309\u624B\u6A5F\u6BD4\u4F8B\u88C1\u5716\u53CA\u4FEE\u5716\u3001\u6587\u5B57\u8207\u5716\u7247\u9010\u884C\u5C0D\u9F4A\u3001\u539F\u6587\u53CA\u5404\u7A2E\u8B6F\u672C\u9010\u53E5\u5C0D\u9F4A\u3001\u8AA6\u7D93\u5F71\u7247\u6642\u9593\u8EF8\u3002\n");
         br2 = element("br");
-        t7 = text("\u9019\u662F");
+        t7 = text("\u6388\u6B0A\u65B9\u5F0F\uFF1A");
         a2 = element("a");
-        a2.textContent = "\u958B\u6E90";
-        t9 = text("\u8EDF\u4EF6\uFF0C\n\u5141\u8A31\u4EE5\u4EFB\u4F55\u5F62\u614B\u6563\u4F48\u672C\u8EDF\u4EF6\u3002");
+        a2.textContent = "Creative Common Zero";
+        t9 = text("\u3002\n");
+        br3 = element("br");
+        t10 = text("\u9019\u662F");
+        a3 = element("a");
+        a3.textContent = "\u958B\u6E90";
+        t12 = text("\u8EDF\u4EF6\uFF0C\u53EF\u4EE5\u4EFB\u4F55\u5F62\u614B\u6563\u4F48\u3002\n");
+        br4 = element("br");
+        t13 = text("\u66F4\u65B0\u7A0B\u5F0F\u524D\uFF0C\u5148\u6E05\u9664\u700F\u89BD\u5668\u5FEB\u53D6\u3002");
         attr(a0, "target", "_new");
-        attr(a0, "href", "https://ancient-buddhist-texts.net");
-        attr(a1, "href", "https://creativecommons.org/publicdomain/zero/1.0/deed.zh");
-        attr(a2, "href", "https://github.com/dharmacloud/");
-        attr(a2, "target", "_new");
+        attr(a0, "href", "https://www.dsbcproject.org/");
+        attr(a1, "target", "_new");
+        attr(a1, "href", "https://ancient-buddhist-texts.net");
+        attr(a2, "href", "https://creativecommons.org/publicdomain/zero/1.0/deed.zh");
+        attr(a3, "href", "https://github.com/dharmacloud/");
+        attr(a3, "target", "_new");
       },
       m(target, anchor) {
         insert(target, t0, anchor);
-        insert(target, a0, anchor);
-        insert(target, t2, anchor);
         insert(target, br0, anchor);
+        insert(target, t1, anchor);
+        insert(target, a0, anchor);
         insert(target, t3, anchor);
         insert(target, a1, anchor);
         insert(target, t5, anchor);
@@ -13877,17 +13892,23 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         insert(target, t7, anchor);
         insert(target, a2, anchor);
         insert(target, t9, anchor);
+        insert(target, br3, anchor);
+        insert(target, t10, anchor);
+        insert(target, a3, anchor);
+        insert(target, t12, anchor);
+        insert(target, br4, anchor);
+        insert(target, t13, anchor);
       },
       p: noop,
       d(detaching) {
         if (detaching)
           detach(t0);
         if (detaching)
-          detach(a0);
-        if (detaching)
-          detach(t2);
-        if (detaching)
           detach(br0);
+        if (detaching)
+          detach(t1);
+        if (detaching)
+          detach(a0);
         if (detaching)
           detach(t3);
         if (detaching)
@@ -13906,6 +13927,18 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           detach(a2);
         if (detaching)
           detach(t9);
+        if (detaching)
+          detach(br3);
+        if (detaching)
+          detach(t10);
+        if (detaching)
+          detach(a3);
+        if (detaching)
+          detach(t12);
+        if (detaching)
+          detach(br4);
+        if (detaching)
+          detach(t13);
       }
     };
   }
@@ -17853,7 +17886,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         br2 = element("br");
         t4 = text("iOS:\u4F7F\u7528Safari\uFF0C\u5206\u4EAB\u2192\u52A0\u5230\u4E3B\u756B\u9762\n");
         br3 = element("br");
-        t5 = text("\u5DE6\u53F3\u6ED1\u52D5\u7FFB\u9801\uFF0C\u9EDE\u756B\u9762\u4EFB\u4F55\u4E00\u8655\uFF0C\u8ABF\u51FA\u529F\u80FD\u8868\u3002\n");
+        t5 = text("\u5DE6\u53F3\u6ED1\u52D5\u7FFB\u9801\uFF0C\u9EDE\u756B\u9762\u4EFB\u4F55\u4E00\u8655\uFF0C\u5F48\u51FA\u529F\u80FD\u8868\u3002\n");
         div0 = element("div");
         div0.innerHTML = `\u2699\uFE0F\u8A2D\u7F6E\u{1F4D3}\u7D93\u5377\u{1F9ED}\u5C0E\u5F15
 <br/>\u2764\uFE0F\u66F8\u7C64\u{1F3B5}\u8AA6\u7D93\u{1F50E}\u8A5E\u5178

@@ -5659,11 +5659,11 @@
       highlightline: Math.abs(parseInt(highlightline)) || -1
     };
   };
-  function rangeOfElementId(eleid) {
+  function rangeOfElementId(eleidarr) {
     const out = [], ptk = this;
     let from = 0;
-    for (let i = 0; i < eleid.length; i++) {
-      const [ele, id] = eleid[i];
+    for (let i = 0; i < eleidarr.length; i++) {
+      const [ele, id] = eleidarr[i];
       if (ptk.defines[ele]) {
         const idtype = ptk.defines[ele].fields?.id;
         const _id = idtype?.type == "number" ? parseInt(id) : id;
@@ -7451,13 +7451,27 @@
       return -1;
     }
     async fetchAddress(address) {
-      const range = this.rangeOfAddress(address);
+      const range = this.rangeOfAddress.call(this, address);
       await this.loadLines([range]);
       const out = [];
       for (let i = range[0]; i < range[1]; i++) {
         out.push(this.getLine(i));
       }
       return out;
+    }
+    async fetchTag(ele, id) {
+      const range = rangeOfElementId.call(this, [[ele, id]]);
+      if (range.length) {
+        const [start, end] = range[0];
+        const line = await this.getLine(start);
+        const [text2, tags] = parseOfftext(line);
+        for (let i = 0; i < tags.length; i++) {
+          if (tags[i].name == ele && tags[i].attrs.id == id) {
+            return tags[i];
+          }
+        }
+      }
+      return null;
     }
   };
 
@@ -12226,22 +12240,15 @@
   };
   var paralleltexts_default = Paralleltexts;
 
+  // src/comps/icons.ts
+  var github = '<svg width="24" height="24" viewBox="0 0 98 96"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z" fill="#fff"/></svg>';
+  var swipeprev = '<svg width="100px" height="100px" viewBox="0 0 1024 1024" fill="#afafaf"><path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="#afafaf"></path></svg>';
+  var swipenext = '<svg width="100px" height="100px" viewBox="0 0 1024 1024" fill="#afafaf" ><path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"></path></svg>';
+  var swipestart = '<svg width="100px" height="100px" viewBox="0 0 1024 1024" fill="#afafaf"><path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="#afafaf"></path><rect x="113" y="68" width="78" height="900"></svg>';
+  var swipeend = '<svg width="100px" height="100px" viewBox="0 0 1024 1024" fill="#afafaf" ><path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"></path><rect x="853" y="68" width="78" height="900"></svg>';
+  var youtubelogo = '<svg width="24" height="24" viewBox="0 0 159 110"><path d="m154 17.5c-1.82-6.73-7.07-12-13.8-13.8-9.04-3.49-96.6-5.2-122 0.1-6.73 1.82-12 7.07-13.8 13.8-4.08 17.9-4.39 56.6 0.1 74.9 1.82 6.73 7.07 12 13.8 13.8 17.9 4.12 103 4.7 122 0 6.73-1.82 12-7.07 13.8-13.8 4.35-19.5 4.66-55.8-0.1-75z" fill="#f00"/><path d="m105 55-40.8-23.4v46.8z" fill="#fff"/></svg>';
+
   // src/lineview/mediaplayer.svelte
-  function create_default_slot3(ctx) {
-    let t;
-    return {
-      c() {
-        t = text("\u{1F3A5}");
-      },
-      m(target, anchor) {
-        insert(target, t, anchor);
-      },
-      d(detaching) {
-        if (detaching)
-          detach(t);
-      }
-    };
-  }
   function create_else_block(ctx) {
     let audio;
     let source;
@@ -12255,7 +12262,7 @@
         source = element("source");
         if (!src_url_equal(source.src, source_src_value = /*ptk*/
         ctx[0].name + "/" + /*filename*/
-        ctx[3]))
+        ctx[4]))
           attr(source, "src", source_src_value);
         attr(source, "type", "audio/mpeg");
         audio.autoplay = "true";
@@ -12265,7 +12272,7 @@
         append(audio, source);
         if (!mounted) {
           dispose = action_destroyer(setTimestamp_action = /*setTimestamp*/
-          ctx[4].call(null, audio));
+          ctx[6].call(null, audio));
           mounted = true;
         }
       },
@@ -12273,10 +12280,12 @@
         if (dirty & /*ptk*/
         1 && !src_url_equal(source.src, source_src_value = /*ptk*/
         ctx2[0].name + "/" + /*filename*/
-        ctx2[3])) {
+        ctx2[4])) {
           attr(source, "src", source_src_value);
         }
       },
+      i: noop,
+      o: noop,
       d(detaching) {
         if (detaching)
           detach(audio);
@@ -12285,7 +12294,9 @@
       }
     };
   }
-  function create_if_block3(ctx) {
+  function create_if_block_1(ctx) {
+    let button;
+    let t;
     let br;
     let video_1;
     let source;
@@ -12294,10 +12305,23 @@
     let track1;
     let track1_src_value;
     let setTimestamp_action;
+    let current;
     let mounted;
     let dispose;
+    button = new button_default({
+      props: {
+        onclick: (
+          /*playvideo*/
+          ctx[7]
+        ),
+        $$slots: { default: [create_default_slot3] },
+        $$scope: { ctx }
+      }
+    });
     return {
       c() {
+        create_component(button.$$.fragment);
+        t = space();
         br = element("br");
         video_1 = element("video");
         source = element("source");
@@ -12305,14 +12329,14 @@
         track1 = element("track");
         if (!src_url_equal(source.src, source_src_value = /*ptk*/
         ctx[0].name + "/" + /*filename*/
-        ctx[3]))
+        ctx[4]))
           attr(source, "src", source_src_value);
         attr(source, "type", "audio/mpeg");
         attr(track0, "kind", "captions");
         attr(track1, "kind", "subtitles");
         attr(track1, "srclang", "zh");
         if (!src_url_equal(track1.src, track1_src_value = /*subtitleurl*/
-        ctx[1]))
+        ctx[2]))
           attr(track1, "src", track1_src_value);
         track1.default = true;
         video_1.controls = true;
@@ -12320,95 +12344,37 @@
         video_1.autoplay = "true";
       },
       m(target, anchor) {
+        mount_component(button, target, anchor);
+        insert(target, t, anchor);
         insert(target, br, anchor);
         insert(target, video_1, anchor);
         append(video_1, source);
         append(video_1, track0);
         append(video_1, track1);
+        current = true;
         if (!mounted) {
           dispose = action_destroyer(setTimestamp_action = /*setTimestamp*/
-          ctx[4].call(null, video_1));
+          ctx[6].call(null, video_1));
           mounted = true;
         }
       },
       p(ctx2, dirty) {
-        if (dirty & /*ptk*/
-        1 && !src_url_equal(source.src, source_src_value = /*ptk*/
-        ctx2[0].name + "/" + /*filename*/
-        ctx2[3])) {
-          attr(source, "src", source_src_value);
-        }
-        if (dirty & /*subtitleurl*/
-        2 && !src_url_equal(track1.src, track1_src_value = /*subtitleurl*/
-        ctx2[1])) {
-          attr(track1, "src", track1_src_value);
-        }
-      },
-      d(detaching) {
-        if (detaching)
-          detach(br);
-        if (detaching)
-          detach(video_1);
-        mounted = false;
-        dispose();
-      }
-    };
-  }
-  function create_fragment9(ctx) {
-    let button;
-    let t;
-    let if_block_anchor;
-    let current;
-    button = new button_default({
-      props: {
-        onclick: (
-          /*playvideo*/
-          ctx[5]
-        ),
-        $$slots: { default: [create_default_slot3] },
-        $$scope: { ctx }
-      }
-    });
-    function select_block_type(ctx2, dirty) {
-      if (
-        /*video*/
-        ctx2[2]
-      )
-        return create_if_block3;
-      return create_else_block;
-    }
-    let current_block_type = select_block_type(ctx, -1);
-    let if_block = current_block_type(ctx);
-    return {
-      c() {
-        create_component(button.$$.fragment);
-        t = space();
-        if_block.c();
-        if_block_anchor = empty();
-      },
-      m(target, anchor) {
-        mount_component(button, target, anchor);
-        insert(target, t, anchor);
-        if_block.m(target, anchor);
-        insert(target, if_block_anchor, anchor);
-        current = true;
-      },
-      p(ctx2, [dirty]) {
         const button_changes = {};
         if (dirty & /*$$scope*/
-        16384) {
+        65536) {
           button_changes.$$scope = { dirty, ctx: ctx2 };
         }
         button.$set(button_changes);
-        if (current_block_type === (current_block_type = select_block_type(ctx2, dirty)) && if_block) {
-          if_block.p(ctx2, dirty);
-        } else {
-          if_block.d(1);
-          if_block = current_block_type(ctx2);
-          if (if_block) {
-            if_block.c();
-            if_block.m(if_block_anchor.parentNode, if_block_anchor);
-          }
+        if (!current || dirty & /*ptk*/
+        1 && !src_url_equal(source.src, source_src_value = /*ptk*/
+        ctx2[0].name + "/" + /*filename*/
+        ctx2[4])) {
+          attr(source, "src", source_src_value);
+        }
+        if (!current || dirty & /*subtitleurl*/
+        4 && !src_url_equal(track1.src, track1_src_value = /*subtitleurl*/
+        ctx2[2])) {
+          attr(track1, "src", track1_src_value);
         }
       },
       i(local) {
@@ -12425,7 +12391,131 @@
         destroy_component(button, detaching);
         if (detaching)
           detach(t);
-        if_block.d(detaching);
+        if (detaching)
+          detach(br);
+        if (detaching)
+          detach(video_1);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_if_block3(ctx) {
+    let a;
+    let a_href_value;
+    return {
+      c() {
+        a = element("a");
+        attr(a, "href", a_href_value = "https://youtube.com/watch?v=" + /*youtube*/
+        ctx[1] + "&t=" + Math.floor(
+          /*start*/
+          ctx[5]
+        ) + "s");
+        attr(a, "target", "_new");
+      },
+      m(target, anchor) {
+        insert(target, a, anchor);
+        a.innerHTML = youtubelogo;
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*youtube*/
+        2 && a_href_value !== (a_href_value = "https://youtube.com/watch?v=" + /*youtube*/
+        ctx2[1] + "&t=" + Math.floor(
+          /*start*/
+          ctx2[5]
+        ) + "s")) {
+          attr(a, "href", a_href_value);
+        }
+      },
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(a);
+      }
+    };
+  }
+  function create_default_slot3(ctx) {
+    let t;
+    return {
+      c() {
+        t = text("\u{1F3A5}");
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_fragment9(ctx) {
+    let current_block_type_index;
+    let if_block;
+    let if_block_anchor;
+    let current;
+    const if_block_creators = [create_if_block3, create_if_block_1, create_else_block];
+    const if_blocks = [];
+    function select_block_type(ctx2, dirty) {
+      if (
+        /*youtube*/
+        ctx2[1]
+      )
+        return 0;
+      if (
+        /*video*/
+        ctx2[3]
+      )
+        return 1;
+      return 2;
+    }
+    current_block_type_index = select_block_type(ctx, -1);
+    if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    return {
+      c() {
+        if_block.c();
+        if_block_anchor = empty();
+      },
+      m(target, anchor) {
+        if_blocks[current_block_type_index].m(target, anchor);
+        insert(target, if_block_anchor, anchor);
+        current = true;
+      },
+      p(ctx2, [dirty]) {
+        let previous_block_index = current_block_type_index;
+        current_block_type_index = select_block_type(ctx2, dirty);
+        if (current_block_type_index === previous_block_index) {
+          if_blocks[current_block_type_index].p(ctx2, dirty);
+        } else {
+          group_outros();
+          transition_out(if_blocks[previous_block_index], 1, 1, () => {
+            if_blocks[previous_block_index] = null;
+          });
+          check_outros();
+          if_block = if_blocks[current_block_type_index];
+          if (!if_block) {
+            if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
+            if_block.c();
+          } else {
+            if_block.p(ctx2, dirty);
+          }
+          transition_in(if_block, 1);
+          if_block.m(if_block_anchor.parentNode, if_block_anchor);
+        }
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(if_block);
+        current = true;
+      },
+      o(local) {
+        transition_out(if_block);
+        current = false;
+      },
+      d(detaching) {
+        if_blocks[current_block_type_index].d(detaching);
         if (detaching)
           detach(if_block_anchor);
       }
@@ -12435,7 +12525,8 @@
     let { ts } = $$props;
     let { ptk } = $$props;
     let { line } = $$props;
-    const { mpegfileOfID: mpegfileOfID2, parseTimeStamp: parseTimeStamp2, subtitleOfID: subtitleOfID2 } = ptk.template;
+    const { youtubeOfID: youtubeOfID2, mpegfileOfID: mpegfileOfID2, parseTimeStamp: parseTimeStamp2, subtitleOfID: subtitleOfID2 } = ptk.template;
+    let youtube = "";
     const id = ptk.nearestTag(line, "mpeg", "id");
     const filename = mpegfileOfID2(id);
     const [start, end] = parseTimeStamp2(ts);
@@ -12444,26 +12535,38 @@
       node.currentTime = start;
     };
     onMount(async () => {
-      $$invalidate(1, subtitleurl = await subtitleOfID2(ptk, id));
+      $$invalidate(2, subtitleurl = await subtitleOfID2(ptk, id));
+      $$invalidate(1, youtube = await youtubeOfID2(ptk, id));
     });
     let video = false;
     const playvideo = () => {
-      $$invalidate(2, video = !video);
+      $$invalidate(3, video = !video);
     };
     $$self.$$set = ($$props2) => {
       if ("ts" in $$props2)
-        $$invalidate(6, ts = $$props2.ts);
+        $$invalidate(8, ts = $$props2.ts);
       if ("ptk" in $$props2)
         $$invalidate(0, ptk = $$props2.ptk);
       if ("line" in $$props2)
-        $$invalidate(7, line = $$props2.line);
+        $$invalidate(9, line = $$props2.line);
     };
-    return [ptk, subtitleurl, video, filename, setTimestamp, playvideo, ts, line];
+    return [
+      ptk,
+      youtube,
+      subtitleurl,
+      video,
+      filename,
+      start,
+      setTimestamp,
+      playvideo,
+      ts,
+      line
+    ];
   }
   var Mediaplayer = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance10, create_fragment9, safe_not_equal, { ts: 6, ptk: 0, line: 7 });
+      init(this, options, instance10, create_fragment9, safe_not_equal, { ts: 8, ptk: 0, line: 9 });
     }
   };
   var mediaplayer_default = Mediaplayer;
@@ -12670,7 +12773,7 @@
       }
     };
   }
-  function create_if_block_1(ctx) {
+  function create_if_block_12(ctx) {
     let parallelmenu;
     let current;
     parallelmenu = new parallelmenu_default({
@@ -12939,7 +13042,7 @@
     );
     let if_block1 = (
       /*show*/
-      ctx[9] && create_if_block_1(ctx)
+      ctx[9] && create_if_block_12(ctx)
     );
     let key_block = create_key_block2(ctx);
     return {
@@ -13044,7 +13147,7 @@
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block_1(ctx2);
+            if_block1 = create_if_block_12(ctx2);
             if_block1.c();
             transition_in(if_block1, 1);
             if_block1.m(t3.parentNode, t3);
@@ -13312,7 +13415,7 @@
     });
     let if_block3 = (
       /*active*/
-      ctx[15] && create_if_block_12(ctx)
+      ctx[15] && create_if_block_13(ctx)
     );
     return {
       c() {
@@ -13450,7 +13553,7 @@
               transition_in(if_block3, 1);
             }
           } else {
-            if_block3 = create_if_block_12(ctx2);
+            if_block3 = create_if_block_13(ctx2);
             if_block3.c();
             transition_in(if_block3, 1);
             if_block3.m(if_block3_anchor.parentNode, if_block3_anchor);
@@ -13722,7 +13825,7 @@
       }
     };
   }
-  function create_if_block_12(ctx) {
+  function create_if_block_13(ctx) {
     let activelinemenu_1;
     let current;
     activelinemenu_1 = new activelinemenu_default({
@@ -14357,7 +14460,7 @@
   var chunkmenu_default = Chunkmenu;
 
   // src/lineview/lineviewmenu.svelte
-  function create_if_block_13(ctx) {
+  function create_if_block_14(ctx) {
     let show_if_3 = (
       /*LV*/
       ctx[5].canless(
@@ -15038,7 +15141,7 @@
     let if_block0 = (
       /*caption*/
       ctx[4] && !/*division*/
-      ctx[3]?.singleton && create_if_block_13(ctx)
+      ctx[3]?.singleton && create_if_block_14(ctx)
     );
     button = new button_default({
       props: {
@@ -15092,7 +15195,7 @@
               transition_in(if_block0, 1);
             }
           } else {
-            if_block0 = create_if_block_13(ctx2);
+            if_block0 = create_if_block_14(ctx2);
             if_block0.c();
             transition_in(if_block0, 1);
             if_block0.m(span, t0);
@@ -15235,13 +15338,6 @@
   };
   var lineviewmenu_default = Lineviewmenu;
 
-  // src/comps/icons.ts
-  var github = '<svg width="24" height="24" viewBox="0 0 98 96"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z" fill="#fff"/></svg>';
-  var swipeprev = '<svg width="100px" height="100px" viewBox="0 0 1024 1024" fill="#afafaf"><path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="#afafaf"></path></svg>';
-  var swipenext = '<svg width="100px" height="100px" viewBox="0 0 1024 1024" fill="#afafaf" ><path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"></path></svg>';
-  var swipestart = '<svg width="100px" height="100px" viewBox="0 0 1024 1024" fill="#afafaf"><path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="#afafaf"></path><rect x="113" y="68" width="78" height="900"></svg>';
-  var swipeend = '<svg width="100px" height="100px" viewBox="0 0 1024 1024" fill="#afafaf" ><path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"></path><rect x="853" y="68" width="78" height="900"></svg>';
-
   // src/lineview/lineview.svelte
   function get_each_context9(ctx, list, i) {
     const child_ctx = ctx.slice();
@@ -15282,7 +15378,7 @@
       /*touching*/
       ctx[3] == /*dividx*/
       ctx[24] && /*direction*/
-      ctx[4] && create_if_block_14(ctx)
+      ctx[4] && create_if_block_15(ctx)
     );
     return {
       c() {
@@ -15326,7 +15422,7 @@
           if (if_block) {
             if_block.p(ctx2, dirty);
           } else {
-            if_block = create_if_block_14(ctx2);
+            if_block = create_if_block_15(ctx2);
             if_block.c();
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
           }
@@ -15356,7 +15452,7 @@
       }
     };
   }
-  function create_if_block_14(ctx) {
+  function create_if_block_15(ctx) {
     let span;
     let raw_value = (
       /*swipeshapes*/
@@ -16464,7 +16560,7 @@
         $$scope: { ctx }
       }
     });
-    const if_block_creators = [create_if_block_15, create_else_block4];
+    const if_block_creators = [create_if_block_16, create_else_block4];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -16590,7 +16686,7 @@
       }
     };
   }
-  function create_if_block_15(ctx) {
+  function create_if_block_16(ctx) {
     let button;
     let current;
     function func_5() {
@@ -17974,7 +18070,7 @@
     let if_block1 = (
       /*showlink*/
       ctx[5] && /*links*/
-      ctx[6].length && create_if_block_16(ctx)
+      ctx[6].length && create_if_block_17(ctx)
     );
     return {
       c() {
@@ -18044,7 +18140,7 @@
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block_16(ctx2);
+            if_block1 = create_if_block_17(ctx2);
             if_block1.c();
             transition_in(if_block1, 1);
             if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
@@ -18136,7 +18232,7 @@
       }
     };
   }
-  function create_if_block_16(ctx) {
+  function create_if_block_17(ctx) {
     let span;
     let jump_target;
     let current;
@@ -18342,7 +18438,7 @@
     let if_block1 = (
       /*showlink*/
       ctx[5] && /*links*/
-      ctx[6].length && create_if_block_17(ctx)
+      ctx[6].length && create_if_block_18(ctx)
     );
     return {
       c() {
@@ -18412,7 +18508,7 @@
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block_17(ctx2);
+            if_block1 = create_if_block_18(ctx2);
             if_block1.c();
             transition_in(if_block1, 1);
             if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
@@ -18504,7 +18600,7 @@
       }
     };
   }
-  function create_if_block_17(ctx) {
+  function create_if_block_18(ctx) {
     let span;
     let jump_target;
     let current;
@@ -19541,7 +19637,7 @@
     child_ctx[14] = i;
     return child_ctx;
   }
-  function create_if_block_18(ctx) {
+  function create_if_block_19(ctx) {
     let span;
     let span_class_value;
     let current;
@@ -19789,7 +19885,7 @@
     let current;
     let if_block0 = (
       /*displayitems*/
-      ctx[6].length && create_if_block_18(ctx)
+      ctx[6].length && create_if_block_19(ctx)
     );
     let if_block1 = (
       /*showcount*/
@@ -19830,7 +19926,7 @@
               transition_in(if_block0, 1);
             }
           } else {
-            if_block0 = create_if_block_18(ctx2);
+            if_block0 = create_if_block_19(ctx2);
             if_block0.c();
             transition_in(if_block0, 1);
             if_block0.m(if_block0_anchor.parentNode, if_block0_anchor);
@@ -20320,7 +20416,7 @@
       }
     };
   }
-  function create_if_block_19(ctx) {
+  function create_if_block_110(ctx) {
     let switch_instance;
     let switch_instance_anchor;
     let current;
@@ -20428,7 +20524,7 @@
     let if_block;
     let if_block_anchor;
     let current;
-    const if_block_creators = [create_if_block_19, create_else_block6];
+    const if_block_creators = [create_if_block_110, create_else_block6];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -21508,7 +21604,7 @@
   var backreflist_default = Backreflist;
 
   // src/painters/backref.svelte
-  function create_if_block_110(ctx) {
+  function create_if_block_111(ctx) {
     let span;
     let span_aria_hidden_value;
     let mounted;
@@ -21725,7 +21821,7 @@
     let if_block0 = (
       /*togglebutton*/
       ctx[9] && /*backref*/
-      ctx[5] && create_if_block_110(ctx)
+      ctx[5] && create_if_block_111(ctx)
     );
     let if_block1 = (
       /*showing*/
@@ -21759,7 +21855,7 @@
           if (if_block0) {
             if_block0.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_110(ctx2);
+            if_block0 = create_if_block_111(ctx2);
             if_block0.c();
             if_block0.m(if_block0_anchor.parentNode, if_block0_anchor);
           }
@@ -22037,7 +22133,7 @@
       }
     };
   }
-  function create_if_block_111(ctx) {
+  function create_if_block_112(ctx) {
     let backref;
     let current;
     backref = new backref_default({
@@ -22182,7 +22278,7 @@
         )
       }
     });
-    const if_block_creators = [create_if_block_111, create_else_block7];
+    const if_block_creators = [create_if_block_112, create_else_block7];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (dirty & /*items*/
@@ -22820,7 +22916,7 @@
     });
     let if_block = (
       /*showing*/
-      ctx[1] && create_if_block_112(ctx)
+      ctx[1] && create_if_block_113(ctx)
     );
     return {
       c() {
@@ -22860,7 +22956,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block_112(ctx2);
+            if_block = create_if_block_113(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -22934,7 +23030,7 @@
       }
     };
   }
-  function create_if_block_112(ctx) {
+  function create_if_block_113(ctx) {
     let t0;
     let t1;
     let current;
@@ -23335,7 +23431,7 @@
       }
     });
     let if_block1 = !/*ab*/
-    ctx[15][2] && create_if_block_113(ctx);
+    ctx[15][2] && create_if_block_114(ctx);
     return {
       c() {
         if (if_block0)
@@ -23397,7 +23493,7 @@
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block_113(ctx);
+            if_block1 = create_if_block_114(ctx);
             if_block1.c();
             transition_in(if_block1, 1);
             if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
@@ -23528,7 +23624,7 @@
       }
     };
   }
-  function create_if_block_113(ctx) {
+  function create_if_block_114(ctx) {
     let button;
     let current;
     function func_2() {
@@ -24277,7 +24373,7 @@
       }
     };
   }
-  function create_if_block_114(ctx) {
+  function create_if_block_115(ctx) {
     let span;
     let t;
     return {
@@ -24435,7 +24531,7 @@
     );
     let if_block4 = (
       /*hitcount*/
-      ctx[6] && create_if_block_114(ctx)
+      ctx[6] && create_if_block_115(ctx)
     );
     let if_block5 = (
       /*chunk*/
@@ -24594,7 +24690,7 @@
           if (if_block4) {
             if_block4.p(ctx2, dirty);
           } else {
-            if_block4 = create_if_block_114(ctx2);
+            if_block4 = create_if_block_115(ctx2);
             if_block4.c();
             if_block4.m(span, null);
           }
@@ -26208,7 +26304,7 @@
   var fieldresult_default = Fieldresult;
 
   // src/ownerdraw/queryresult.svelte
-  function create_if_block_115(ctx) {
+  function create_if_block_116(ctx) {
     let span;
     let t_value = (
       /*ptk*/
@@ -26518,7 +26614,7 @@
     let current;
     let if_block0 = (
       /*$pitakas*/
-      ctx[16].length > 1 && create_if_block_115(ctx)
+      ctx[16].length > 1 && create_if_block_116(ctx)
     );
     const if_block_creators = [create_if_block33, create_else_block9];
     const if_blocks = [];
@@ -26556,7 +26652,7 @@
           if (if_block0) {
             if_block0.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_115(ctx2);
+            if_block0 = create_if_block_116(ctx2);
             if_block0.c();
             if_block0.m(t.parentNode, t);
           }
@@ -27970,7 +28066,7 @@
         create_component(versioninfo.$$.fragment);
         t3 = space();
         div1 = element("div");
-        div1.textContent = "Accelon2023.5.16";
+        div1.textContent = "Accelon2023.5.19";
         t5 = space();
         hr = element("hr");
         attr(div1, "class", "logo svelte-1yzj5q6");
@@ -28900,7 +28996,7 @@
         $$scope: { ctx }
       }
     });
-    let if_block = show_if && create_if_block_116(ctx);
+    let if_block = show_if && create_if_block_117(ctx);
     return {
       c() {
         create_component(button.$$.fragment);
@@ -28988,7 +29084,7 @@
       }
     };
   }
-  function create_if_block_116(ctx) {
+  function create_if_block_117(ctx) {
     let statebutton;
     let updating_selectedIndex;
     let t;
@@ -29894,7 +29990,7 @@
     let current;
     let if_block = (
       /*ptk*/
-      ctx[0].template.getMultiStateFilters && create_if_block_117(ctx)
+      ctx[0].template.getMultiStateFilters && create_if_block_118(ctx)
     );
     return {
       c() {
@@ -29920,7 +30016,7 @@
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block_117(ctx2);
+            if_block = create_if_block_118(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -30313,7 +30409,7 @@
       }
     };
   }
-  function create_if_block_117(ctx) {
+  function create_if_block_118(ctx) {
     let guidefilter;
     let current;
     guidefilter = new guidefilter_default({
@@ -31007,6 +31103,10 @@
     const blob = new Blob([genWebVTT(addr)], { type: "plain/text" });
     return URL.createObjectURL(blob);
   };
+  var youtubeOfID = async (ptk, id) => {
+    const tag = await ptk.fetchTag("mpeg", id);
+    return tag?.attrs.youtube;
+  };
   var formatSeconds = (sec) => {
     const hh = Math.floor(sec / 3600).toString();
     const mm = Math.floor((sec - hh * 3600) / 60).toString();
@@ -31025,7 +31125,7 @@
     }
     return out.join("\n");
   };
-  var meta_subtitle = { guidedrawer: "subtitle", genWebVTT, parseTimeStamp, mpegfileOfID, subtitleOfID };
+  var meta_subtitle = { guidedrawer: "subtitle", genWebVTT, parseTimeStamp, mpegfileOfID, subtitleOfID, youtubeOfID };
   addTemplate("subtitle", meta_subtitle);
 
   // src/ownerdraw/subtitle.svelte
@@ -35518,7 +35618,7 @@ aB
   addTemplate("cbeta", { TaishoMaxPage, guidedrawer: "cbeta" });
 
   // src/comps/inputnumber.svelte
-  function create_if_block_118(ctx) {
+  function create_if_block_119(ctx) {
     let span;
     let mounted;
     let dispose;
@@ -35626,7 +35726,7 @@ aB
     let dispose;
     let if_block0 = (
       /*stepper*/
-      ctx[1] && create_if_block_118(ctx)
+      ctx[1] && create_if_block_119(ctx)
     );
     let if_block1 = (
       /*stepper*/
@@ -35686,7 +35786,7 @@ aB
           if (if_block0) {
             if_block0.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_118(ctx2);
+            if_block0 = create_if_block_119(ctx2);
             if_block0.c();
             if_block0.m(span, input);
           }
@@ -36232,7 +36332,7 @@ aB
   var taishogoto_default = Taishogoto;
 
   // src/ownerdraw/cbeta.svelte
-  function create_if_block_119(ctx) {
+  function create_if_block_120(ctx) {
     let taishogoto;
     let current;
     taishogoto = new taishogoto_default({ props: { ptk: (
@@ -36291,7 +36391,7 @@ aB
     let current;
     let if_block0 = (
       /*ptk*/
-      ctx[0].name == "cb-t" && create_if_block_119(ctx)
+      ctx[0].name == "cb-t" && create_if_block_120(ctx)
     );
     let if_block1 = (
       /*ptk*/
@@ -36327,7 +36427,7 @@ aB
               transition_in(if_block0, 1);
             }
           } else {
-            if_block0 = create_if_block_119(ctx2);
+            if_block0 = create_if_block_120(ctx2);
             if_block0.c();
             transition_in(if_block0, 1);
             if_block0.m(t.parentNode, t);

@@ -1,1357 +1,233 @@
-jsonp(3,{"name":"dc_sanskrit","start":311},`;egF
-Mg
-NR
-W\`
-Z?
-\\Y
-aa
-d
-e)
-=:KT}>#;F
-f,
-gM
-g!
-gc
-g@
-g>
-gB
-g
->TgJ
-g\`
-@-
-A
-D)
-E*
-G
-J#
-
-;_
-;[
-;
-';
-;W
-=BG9
-\\^
-af<{;d;V;t;';'
-gE;U
-@1
-gU
-g)
-A=c;T
-aj
-ai
-D3
-G
-+
-@7
-E4YB
-d ?0
-gg
-L<6
->\\
->Y
-G
-Q1
-;i
-=5;m==c;T<?=\`<C<6;>Ca=2<m?[<{;d;V;t;';r;Q<;=;@; =3
-g\\
-=?
-L
-Mp
-O";0;4=,;/Fc?E?}
-;k<)fY;R
-Td%
-g.
-U@S
-^a
-DN2SI.-<BU#
-_L
-^<
-g'
-gK
-g
-;^
-g.
-gF
-gi
-_PAf
-Kr
-g@
-R(
-U'
-[2
-Y{
-gi
-\\T
-YC
-Wf
-;a
-Ui
-Cj
-gS
-gX
-g?
-g:
-aW
-Yd
-_
-co
-g
-g 
-J
-I^
-g"
-E
-IUC.
-Db?\`;IDx@H;d<+;C<C;'=AP
-\`<
-f
-@c(
-A
-YE
-@2KTRj@f
-BS
-X8
-FGA_;=^R_BB
-JB$Kc<P.-
-Aa
-<u
-<9
-]
-<p
-<7
-\\:
-[
-_-
-g
-_
-DK2<NS4G'
-UG
-]e.-<BU#
-NJ
-NL
-VY
-d
-^k
-A6;,KFOC(
-H^
-HI 
-HM
-SC
-D8
-YF
-T
->
-e_
-R_A
-QW
-FFA_
->;(;;W<2;'7=.;K;/;C;;=+;1;&;0.;q<@<6;g;+%,;Q;+1<;}8;x3A&;{<S;q9(;O'<=;?<;j
-FYA#;>A}O>\`
-Y<
-U}
-K
-V
-\\
-\\
-Zt
-I[6
-7
-Id
-Im
-I.
-J@$K!=@-
-I .;
-<3GyOQ;B<g
-Fg
-DfSdG;;#=
-Q_?=7
-Y
-=k
-A=c;T^i
-_T
-aA
-PF<H
-gY
-=o
-TS
-[
-FZA#;>A}O>\`
-[ 
-C"O
-g/
-gs
-E$
-IV
-In
-A1;=;@FMw=W@{;(
-gb
-N$Fa
-[b;DG.
-;"9;O~EzI+
-Fb
-g^
-YD
-_,
-c|
-[
-\\
-=e
-R@
-gc
-BE*
-W'
-g@
-gN
-<&; ;7=z;=c/DX$=&<WCk;].CJ
-FPA^>A}O>\`
-Nh$=*At;^
-<"
-QQ
-QB
-Zq
-[)
-=r
-T4
-g
-=_
-TU;9
-U/
-cA
-EeAm=O9
-EZ;MA^>A}O>\`
-g<!
-L7
-X:
-<+";:<s.;-;)>;V';}"/;; 4;r;k(;;-</;)/;$;W;'5#(DG;^=N;c(')(0<;I&.;";;9=:=*;}%;;5
-I=5<M@_;;>J{EP<&
-[@
-<$?Z>DX=;Eo;]Ci
-g*
-FpG)
-T
-=7
-DdSdG;;#A
-gp
-Qj
-f
-IW@p;4J3
-<\`;9<d.;H;<=8;R;A<<;;;~:<;;.<';*;';&=;D;g=;;H)'(;1:;T;g;-;/;-=@=!;~;5;9;x
-ba
-< gn
-;3
->!CZ";11 4 ;-M~Cm=\\
-G{>O>
-Gl<';
-Ca>Z<%<a<{<Y1!
-L\`
-L0QD
-A\`
-gv;g
-e
-^>
-B$
-B>-F+>#;?;E@5;g
-A5;,KO$
-^C3
-Tm%OP;Y>";&
-Z-
-;U
-3g-
-gX
-EL;CS
-W"
-KI
-L
-Py
-T
-FFf<6<RDJ;e
-\\,
-\`8
-Oo\\E
-g
-DeSdG;;#=
-O6
-F@@>$;#G>B? ?k?7$.
-FMJPN
-P<*X2
-@a=~EW?0JP<D;D*.;
-PW
-PP
-VJE<h
-G>QO_<<'?;h</
-e 
-=
-R?
-R<2
-AM59
-Br
-N
-;{
-AN5Jf>sB~
-B-
-N
-="9=%W.!;'I6(>7
->2GM&=b;
-;
->+YV
-<M
->f6?EA_Dz;$Qf
-V-
->?;E;.QXD7;>Ex>A
-W(
-\`u
-<5;?\\4;Im
-C1 &
-g]
-YT
-e2
-A!
-gA
-B;!2O</<T?G=+
-[
-FxSI
-F}
-g\\
-FoG);#A}
-CO<5
-g-
-g)@
-g;
-;<Y;J>h>Z;&=M>(;=<v<R;j>9;K#<4':$<=*>)@4;]<;S,;];M;%;:;% $
-Nl'
-N
-Z:
-F~\\.A/"
-R!>l
-g
-b'(
-aw(')
-W
-CO<5
-;0
-['
-FHA_;=^R_BB
-_"
-XH
-Q
-Xm>.
-\\;B
-ca
-=RHDgAc
-<Y;'Z(A^
-
-gG
-gK
-;?
-g|>T
-d<
-g
-EP;BA;(
-?5;.
-?[
-<
-?d
-gs
-g];@
-L<6
-fs
-fp
-g-BB
-FNA^>
-fC
-DS2
-EU;
-Vm
-FDA_>X;[A
-DAg=.>>r;A@U>e<nAq
-D
-gJ
-g^
-GL
-W:
-Xx
-Nj$=IAP;b
-N->d@^
-Ya
-QZN
-DQT<
-gW
-CD&
-g9(
-g[
-gb
-_
-Zy
-?gT
-DH2=l;;;_$?7AzA7 ,-;;;;M@"*;;#"-Ap
-D"VD<ASB*
-G\`
-\`
-g,
-gS
-A8;-K=$C~3Bu
-[
-O
-X^S
-Z
-N1??.<7;;S;W
-Nm
-cm
-cj
-P
-M=
-?b
-?e
-Pn
-b
-?H
-gT
-gb<y;
-@C;Ih#OR5?!$%) 
-gI
-WNX;(
-g9
-P72
-P$6
-V.
->h%;.#@;BA;(C ;D&Gb?1>D>T
-?QR 
->i';X
-^@
-J>$K!=#,-
-^d
-g=
-Zw
-Yl
-Yv
-CO<6
-gp;=;@
-B9
-Bs
-#
-;b
-<
-gN
-NX
-J-
-<%; ;0=z;=c/DX$=&<WCk;].;E=2(')(09;f<z;Q=C>(
-^$
-SSE<~=+9;\`=x=C>.
-;E
-;w>V>76=;v<%=9#*;K>A}<}<0A4A(9=5<l<G
-<^;s<C;C;>DX$?*>$A&.<{<(')(06;\`<v;R=@>(
- =!.<;#;<!<@?$1 4 .;;>>s<K@<"?P<x;a;'@=Z<y*!;e<f;;n
-g+
-AI77;(
-Qt
-ZR;WF(
-D&
-VL
-_7E?
-e\`;
-NW
-G
-Q6
-L<6
-gX
-\\?
->}FsD~;
-gd
-G[
-gk
-L-&>gAo!
-c7
-L(Q;1
-\\
-gJ
-X|
-Q[
-g
-g?x
-g
-B 
-g?
-FJA_;=^R_BB
-=
->'";F;~=&84;V&;9;:%;";>;;:;q;N=q;1;0<,;U,;;;;;D;(=\\;\`0<g-<;27;1;-=#;H;7;;8;#;g;i;l;a;;w;=#;;6;
-=<\\;U;I<o>;7;>;;=3?=O@kLV;>(;
-E'
-?R.;-A>;A;;<?F;IK?+;;";v==?y
-Yb
-gM
-Z'
-=JO<1Cl
-N,>d-A
-g>
-AH77;(
-[UF(
-Q5
-d!
-_{@@;
->3@#3<N;:)"#!1; ";;@;>>I Go;a9$;>2#30=~#;;:;4;'.';M;=W;;<(%+;9;d;
-M}
-=4Al2V;nH
-D
-Zo
-g/
-gV
-=a
-Qk
-CO<6
-g8
-g>
-B{O<6
-<
-U 
-Qs
->JO3;g;;?Jg
-gn
-Cc>Z<%
-C8TT
-c@
-OT
-T2
-X;
-[
-gb
-Q
-\\
-[oH
-Zr
-V/
->&";F;~=&<3;P;:%;"<aL=<@27C#
-g8(
-<KLfHPO
-DG*>;;;_$<g=#H^ ,- 1;U;Y@X;;#;>L;w
-=x&Au?sM<q?<@"@F
-N(E
-GK
-A3:\`
-ge
-;"9-=D=m7,<<sA[;%=D<_;r<\\;; ;;Q;}<#;4F>;&;></;+)"4;;;=4
-<O~
-\\b
-?C;L>Y;M<9;u;;~;q;$LB0CT
-V~
-gh
-Nf
-D
-X==C;,
-[u
-W8=k<4
-\\(
-<Q
-EC"%;AqQ2$0?>*;z=F
-<O
-EA"%;>;>Q2$0?>*;z=F
-W6=k<4
-\\'
-g-
-gv
-BG*
-gI
-gR
-J
-gt
->lFxE2
-S<
-;W>"!
-A:0/KCNF 
-e;
-;K
-KA
-;1
-<D;BA;(QFC">T
-;5
-Zs
-\\ Gq
-[
-JfPj!
-T&
-U%
-g
-@?'_@>y$%.;)
-P'#
-g#
-PN
-P^
-X]
-M;
-ORS}?m
-c>
-c\\
-PYS
-P
-EF;@XP
-LbZa
-g*
-N%
-Z3
-gf
-X
-<{
-2
-;!JiR"
-\`:
-\`+
-KX
-L)Q]
-P%#"
-a]
-;
-??ELR7
-K
-gp
-<6@U;
-C2
-CC&
-<C;?d
-g$
-g
-;j
-IvC
-ZY
-=
-?D;L>Y;M<9;C;;;~;q;$;3<|/;'H>j)'(()1;K;c;;;q<L;L<=
-g
-!=nCm";-1 4 .;BJD<.C}=\\
-<
-g,
-IiBS=#%,S
-ZF
-L<6DL
-gr;=;@
-gM
-gh
-AW
-=|
-N"FaR
-g>
-JO;eAf?4
-au
-T8
-^E3
-BI
-Bd
-Vr
-A
-@yYM
->"8((;,!6;;v;@;$;d<q;68;&;\`;9?<;;!;7<&';(!<!;c<;/;V =;7?:;;z;6-;[/;W%:0!+";);$;?;A;;;>
-Ee
-L/&
-c
-PrAO#!
-LN
-;#
-=q
-_p
-g/
-gL;K
-K*
-Vz
-Z
-EY%;7A$;>A}FH0Bw>\`
-?#;W
-I_
-Fc
-Fm
-gC
-a
->YY
-g
-gA
-a
-aR
-;
-X?=C;4
-gB
-a
-gD
-Ji
-a+
-g^
-?Q.;-A>;A;;<?F;IK=y;v;;";v==?y
-gU
-g<
-[pH
-d>V
-Se
-ER<';C>#;1;&Pa;{<S=j?9<
->
-_:
-g.
-^_
-HHYg
-I
-O1
-;c
-;C
-L
-CH
-D;_
-Hn
-Hs
-I3<[!=m$BM$A;I3;{;#H
-f}
-c\`
-W#
-C?J<
-g8
-=s
-CNJ
-Dh@.?FH];,;;T;i@X;N<K
-T9
--
-U,
-g\`
-=5;m==c;T?LJlI[;K<;=;@
-AL;2;(
-<,Ov;m;B6
-Sq
-<E;
-<8;L>"
-_<
-g3!
-[&
-N4??.;u<L;UP
-Y#
-FLA_>R_
-[%
-Zz
-g?
-g(
-gn
-gZ
->YY
-\`U
-> YX
->YX
-e\\
-e=
-eY
-F8A;(QFG#
-gu
-P|
-W&
-X
-X5
-PzB
-KOX
-X\`S
-N3??.<7<;W
-Z
-;H
-B=+
-D 
-\\O
-X9
-NUj
-<F;
-<x
-<D
-;x
-Q2
-Zm
-Z|
-[iH
-A>;.K
-U
-AjT7F)
-?]
-A99-KCLF'
-A=;/KCNF)
-;8
-W%
-W
-Q4
-G,";;C
-e1
-RFI?
-g@
-g6
-gG
-g1
-;:
-;$
-W
-E&
-Z5
-M|
-N
-NG
-<Z;'Z(
-D$
-gO
-;DgJ
-gT
-=z
-=}
-bB
-O)
-
-N{"]6
-g#BD
-B"
-cb
-g4
-Z)
-;B
-C!
-gr
-?=:.
-?J
-QG
-g
-C$O?,
-FXA#;>A}FiG
-E^$AeR
-Bu
-gQ
-C%O
-\\7
-Y}
-;<
-\\W
-XL
-Bw
-;M
-<V;'Z)
-?';W
-LY
-;@
-K!Dp
->mQc
-?3;.
-<
-=8
-T6
-gE
-gN
-d
-C4J
->R
->/%?jT
-Ry
-V|
-<#
-;L
-ZD
-D%Bv
-QC
-G-";+1; .;
-Ha
-;%
->NO2;h;;?Jf
-go
-Cs
-Cd>i<%
-C:TU
-D7DE?-@9
-B4d2)"
-;r=D=m;'<<sA[;%=D=~<\\;; ;;Q;}<#;0<EA2=m;&;>!;d<6;;;=4
-W
-K=;}%$&>@_;KB|C#
-?8@v$;A#;>A;K;><vC00>b
-@V5H
-g'
-C#S[K9>\`
-O~
-;A*
-T
-O$?7/
-T
-;=
-;
-Z*
-Wr
-?G
-Qx
-;
-<
-Mz :Z4
-Z&
-Z,
-Oy
-Om
-OS
-Ob
-Or
-g(
-?FsD~;
-G]
-g
-F6A;(QFC"
-EI
-g
-J
-;l
-D1;T
-EM;BA;(QF?1>D>T
-I2AK#Hc3I]
-I7
-KQ
-g
-g
-W
-g
->tFuD};Iu
-eZ
-GV
-W$
-gF
-=i
-J*R <{;d;V;t;';'
->1?s;-23;%,<9;;;(;G$,;A<_;l;&Dj=L ;;;F;4);;=:0+<7 ;;";<*,>!;*!8$"$.
-]z
-Ci>S<&_p;%
-IuE9
->)@KlAx;\\;]A2@N
-AA91KCLF)
-Z.R
-N!
-[q
-O =Y;U
-@b
-T)
-S8=Z
-N.
-H
-H
-H8
-H<
-?c
-N?>";@A'
-S\\
-T=1
-Tk
-$4@s;/K==]!=s;;EA
-Wx
-;s
-g2
-;
-;T
-gw
-@A
-gv
-_G
-UH
-]f.-;;UBU#
-DL2<NS4C&.>#'
-gG
-^OJ
-JA$K!=@-
-^s
-EN;BA;(QF?1>D>T
-<4GlOQ=V
-P+#
-Fh
-gE
-PvAO#!
-N0
-gr
-go
-YS
-EG;@A;(QFC"
-gt
-g
-S?<W;@%DJw
-_y%;P
-gH
->?\`O<6&>E
-fh
-=[;$)O4;f;;;_AFG4
-=Z
-=y
-Yn
-gm
-Cb>Z<%
-Ye(
-C6
->YX
-gk
-A4:K=;h@0=Q;0>H@Z,
-WX
->YX>
-Qe
-Q^?'=1
-Zl
-VHGh
-=YVLA|A<n
-VW
-VpCT
-E;PT{I
-gH
-5
-g7
-_I
-gf(
-gs
-g5
-g@!
-D
-=]
-=^
-R4
-=m
-SA;t%V&
->.%?PI+;.;\\%1;LAFMf!
-AP5Jf
-?%;W
-\\
-;Z
-;y
-;|
-f!
-@P_v?!$%.;)'
-@_!_b
-FOA^>ZS$
-XdS
-N7??.<6<
-[_
-N
-gP
-<N;+9=%W.!Mx
-]T
-Q]Ao
-gJ
-=c
-Sg
-Si
-Zv
-as?i
-F!Y7#
-F
-?:
-FP0CZ(>e
-E]$;8A#;>A;KFH0
-Y?
-e
-*
-;N
-EGJ?
-?FsD~;
-G_
-GP#
-G'";
-G*";
-gR
-Z
-NP
-<S;'Z*
-Le%$&>AWK[
-g\`>d<I
-C>>S
-<h*;;%#57$;0;;758+:$!6;;M;B;;;C;;;~9(2(;$;.;;%;;"/;';(=>&;;5;?)!$( %;Q1&;8-/27;0;2-;!,5' -!5#,%-1)'(()19#+;+0;;,;%605-:3%/*1!;H)"3;&&"7,;c;:8%
-g 
-<b>^>!E?*E#
-<;w<k.;-;6>;[<#;t;<;k;0;/<);.0;(;\`Ey;]=;;c(')(09;Y;H;;";;:==;(<V;k<
-H!
-;ug1
-J
-</D@Q;|=%<DL&9;WDL<
-?f
-?<;"
-g}
-KN
-Z\`
-gg
-=
-gC
-KJY<q
-@[Fr@mS&>x
-<f-g:
-gF
-6
-X&
-W 
-Z(
-R<2
-AJ;2;(
-Ar
-ZS;W
-VK
-K9!>]%
-U|
-Vu$C_H_
-KDzCh
-T<1%Aw
-NB
-DU.;~
-V
-g"
-F?QAh=eF,
-_w
-?6;.BF<%
-KF
-;v
-g<
-<J<.";F&;L*=&;k;;;;:%-1;S;;*;6;q;$ID=!<.27?{=l@;
-a3
-_
-g<
-^y$I)
-_
-J?$D$AP=#,->)'A\\
-f?=\\
-b5
-S~=+
-gx
-EK;BA;(QF?1>D
-<1
-<q>:<q;P;*;T;L=+;8$;;I=n/8;;U<n=)/;0;y0=n;d,-*;3*0,;$;#<;+;\`;7;;;=+#;8;e,"<''=3);.;
-Y0
-<@
-@B;?W>H@l#<D>5C3<l>Y/5?!$% <u2
-Ff
-VX
-CS4;m=a;;<+;N=q;1;0<,;U,;;;;;D;(=\\;\`=</<:;-=#;H;7;;8;#<};l;a;;w;=#;;6;
-H?E<|/;'L1)'(()1;K<*;;q<L;L<
-EX%;7A$;>A}FH0Bw>\`
-U)<(CSBj0
-=;B>{;&>C>Q<-<8>";0;H=;;R<$&;O;E;C?4;<Q>7;j</;r;)"?f
-f4
-A#
-;p1;B
-G>Q@+KB@T;h</
-KwOJ6
-GO#;+;;;8?a;2 >TGL=C;\`;7;<H.?W;;V$.;q;,
-;X
-Z^
-c[
-C_I\\K:
-C0JB5<
->O<+;@=c;T^;4
-@4
-J+
-g<
-
-g\\
-gf
-g";G
-EE;@XP
-OQS}
-;\`
-gC
->a=m;'Ey?P;r<\\;; <;}8<LF>?t
-Xo>.
-AY
-^D3
-@6
-L6Q+
-T
-Q
-PIDz
-g;
-L1)Q1
-LA
-@x
-c<
-La;,V)
-L+Q]
-g)
-U
-g<
-\`
-gr
-D
-?>:.
-R\`?.<7<;W
-FKA_;=^R_BB
-JC$Z%@
-A(>DXRw
-<_>^H[?*Du.
-\\8
-;Y
-\\Gt
-;O
-K?
-\`*
-gZ
-Ql
-K6Dg9
-]
-=SHD}
-AQ57J>
-<
-?_
-<
-<lg\\
-JdO>;V;'@CZ
-JmO*<=@@*;w<t
-gn
-a4
->4YV=j
->@
-Z4
-AF71KCNF'
-W&
->g
-Q@
-g=
-ED;@K[
-ZQ
-g"BD
-g=
-MO
-d.
-Z
-gE
-)Ip
-NI
-I]6
-J
-J!
-NN
-ge
-gi
-\\=
-g:(
-ACTa
-Am1KO"
-\\V
-[D
-[8
-FMB<??.;u;<;UP
-V]
-JlO5<2@
-UF
-g8
-A[
-Z
-gK
-JO
-^f
-Te%
-JxQ
-JhQ
-J|Q
-JuQ
-=f
-<P;a;,@R;;"#;A#"$#;;<q>'=6;<f;<-;O=?$.>f'>*;B;=D
-X_S
-Z
-N2??.<7<;W
-N*E
-VT
-D
-PtAO#!O
-L3;Py
-L*QA+
-LOQ,
-g0
-Ip
-Ie
-g
-AG77;(F>9;+;Y=6=*Hb
-[:
-R;=;
-gp
-Su
-T/
-O
-f
-K
-DI2@$?FAwAK,-<BU#<J
-My
-^S
-O5
->A
-KE>x@c
-<k6<H;W?SdG<(@;>
-g,
-K:!
-Qh
-Z%
-F)A[(=n3A3;1ArC{>',;];M1<-
-grBL
-FC
-?/@c=K<{O/<5;=-=AN
-Xq;B=?
-RD?D=i;;Jd
-;V;
-O|
-?|?U;P=D;H6%<?F;a<(,%@XBG;J
-ZX
-@ZF+@A;U;I<hGTG3
-=$9=%L$Ao>;!;'I6(>7
-PGDt
-LJ
-@{K+EGq
-<0
-g.
-gz?k
-=W\`U
-@sI0G0;a
-LZ
-L'Q;1
-=w
-S{
-;I
-;
-gZ
-gw
-?O%;$;\`>79;;_;0;"3!;l%$;V;+&;%<_ ;!;Fh=|(1;H(#+;J;>8;;/;!=+$=;\`;S;0
-Wt"!
-D!
-DgSdG;;#
-gi
-a_
-?I-
-GM#;+;
-GW
-Sj
-gM
-LV
-gm
-E(
-[5
-[6
-/
-;G
-<
->BGX@<d;l1?]Jw
-Kn
-KZ
-X5
-X"
-g&
-gj3
-C\`>Z<%[
-C3J'
-gP
-<a>^>!E?*E#
-;t;w>G>DX=1G=A6;:><V
-SZ
-<*Oc;@
-N>>";@
-(
-; 
->{Q-;
-GY
-Z
-Y]
-gh
-:
-BW
-[s
-XA=C
-[mH
-A@;.K
-U"
-g\`
-;]
-Q\`
-Yf
-Z
-Qv
-"
-RAI6
-QF
-^J3
-NH
-B!
-=
-?a
-;J
-U&`)
+jsonp(3,{"name":"dc_sanskrit","start":2447},` bhagavān āha | tat kiṃ manyase subhūte api nv anāgāmina evaṃ bhavati mayā anāgāmiphalaṃ prāptam iti |
+ subhūtir āha | no hīdaṃ bhagavan na anāgāmina evaṃ bhavati mayā anāgāmi-phalaṃ prāptamiti | tatkasya hetoḥ | na hi sa bhagavan kaścid dharmo yo 'nāgāmitvam āpannaḥ | tenocyate 'nāgāmīti |
+ bhagavān āha | tat kiṃ manyase subhūte api nvarhata evaṃ bhavati mayā arhattvaṃ prāptam iti |
+ subhūtir āha | no hīdaṃ bhagavan na arhata evaṃ bhavati mayā arhattvaṃ prāptam iti | tatkasya hetoḥ | na hi sa bhagavan kaścid dharmo yo 'rhan nāma | tenocyate 'rhann iti |
+ saced bhagavann arhata evaṃ bhaven mayā arhattvaṃ prāptam iti sa eva tasya ātmagrāho bhavet sattvagrāho jīvagrāhaḥ pudgalagrāho bhavet |
+ tat kasya hetoḥ | aham asmi bhagavaṃs tathāgatena arhatā samyaksaṃbuddhena araṇā-vihāriṇām agryo nirdiṣṭaḥ | aham asmi bhagavann arhan vītarāgaḥ | na ca me bhagavann evaṃ bhavati arhann asmy ahaṃ vītarāga iti |
+ sacen mama bhagavann evaṃ bhaven mayā arhattvaṃ prāptam iti na māṃ tathāgato vyākariṣyad araṇā-vihāriṇām agryaḥ subhūtiḥ kulaputro na kvacid viharati tenocyate 'raṇā-vihāry araṇā-vihārīti ||9||
+^ck10【The Bodhisattva's thought of enlightenment】
+ bhagavān āha | tat kiṃ manyase subhūte asti sa kaścid dharmo yas tathāgatena dīpaṃkarasya tathāgatasya arhataḥ samyaksaṃbuddhasya antikād udgṛhītaḥ |
+ subhūtir āha | no hīdaṃ bhagavan nāsti sa kaścid dharmo yas tathāgatena dīpaṃkarasya tathāgatasya arhataḥ samyaksaṃbuddhasya antikād udgṛhītaḥ |
+ bhagavān āha | yaḥ kaścit subhūte bodhisattva evaṃ vaded ahaṃ kṣetra-vyūhān niṣpādayiṣyāmi iti sa vitathaṃ vadet |
+tatkasya hetoḥ | kṣetra-vyūhāḥ kṣetra-vyūhā iti subhūte 'vyūhās te tathāgatena bhāṣitāḥ | tenocyante kṣetra-vyūhā iti |
+tasmāt tarhi subhūte bodhisattvena mahāsattvenaivam apratiṣṭhitaṃ cittam utpādayitavyaṃ yanna kvacit pratiṣṭhitaṃ cittam utpādayitavyaṃ na rūpa-pratiṣṭhitaṃ cittam utpādayitavyaṃ naśabda-gandha-rasa-spraṣṭavya-dharma-pratiṣṭhitaṃ cittam utpādayitavyam |
+tad yathāpi nāma subhūte puruṣo bhaved upeta-kāyo mahā-kāyo yat tasyaivaṃrūpa ātma-bhāvaḥ syāt tad yathāpi nāma sumeruḥ parvata-rājaḥ tat kiṃ manyase subhūte api nu mahān sa ātmabhāvo bhavet |
+ subhūtir āha | mahān sa bhagavan mahān sugata sa ātmabhāvo bhavet |tatkasya hetoḥ | ātmabhāva ātmabhāva iti bhagavann abhāvaḥ sa tathāgatena bhāṣitaḥ |tenocyata ātmabhāva iti | na hi bhagavan sa bhāvo nābhāvaḥ | tenocyata ātmabhāva iti |
+^ck11【The merit derived from Perfect Wisdom】
+ bhagavān āha | tat kiṃ manyase subhūte yāvatyo gaṅgāyāṃ mahānadyāṃ vālukās tāvatya eva gaṅgā-nadyo bhaveyuḥ tāsu yā vālukā api nu tā bahvyo bhaveyuḥ |
+ subhūtir āha | tā eva tāvad bhagavan bahvyo gaṅgā-nadyo bhaveyuḥ prāg eva yās tāsu gaṅgā-nadīṣu vālukāḥ |
+ bhagavān āha | ārocayāmi te subhūte prativedayāmi yāvatyas tāsu gaṅgā-nadīṣu vālukā bhaveyus tāvato lokadhātūn kaścid eva strī vā puruṣo vā sapta-ratna-paripūrṇaṃ kṛtvā tathāgatebhyo 'rhadbhyaḥ samyaksaṃbuddhebhyo dānaṃ dadyāt tatkiṃ manyase subhūte api nu sā strī vā puruṣo vā tato nidānaṃ bahu puṇya-skandhaṃ prasunuyāt |
+ subhūtir āha | bahu bhagavan bahu sugata strī vā puruṣo vā tato nidānaṃ puṇya-skandhaṃ prasunuyād aprameyam asaṃkhyeyam |
+ bhagavān āha |yaś ca khalu punaḥ subhūte strī vā puruṣo vā tāvato loka-dhātūn sapta-ratna-paripūrṇaṃ kṛtvā tathāgatebhyo 'rhadbhyaḥ samyaksaṃbuddhebhyo dānaṃ dadyāt yaś ca kulaputro vā kuladuhitā veto dharm-aparyāyād antaśaś catuṣpādikām api gāthām udgṛhya parebhyo deśayet saṃprakāśayed ayam eva tato nidānaṃ bahutaraṃ puṇya-skandhaṃ prasunuyād aprameyam asaṃkhyeyam ||11||
+^ck12【The merit derived from Perfect Wisdom 2】
+api tu khalu punaḥ subhūte yasmin pṛthivī-pradeśa ito dharma-paryāyād antaśaś catuṣpādikām api gāthām udgṛhya bhāṣyeta vā saṃprakāśyeta vā sa pṛthivī-pradeśaś caitya-bhūto bhavet sadeva mānuṣa-asurasya lokasya
+ kaḥ punar vādo ya imaṃ dharmaparyāyaṃ sakala-samāptaṃ dhārayiṣyanti vācayiṣyanti paryavāpsyanti parebhyaś ca vistareṇa saṃprakāśayiṣyanti |
+ parameṇa te subhūte āścaryeṇa samanvāgatā bhaviṣyanti | tasmiṃś ca subhūte pṛthivī-pradeśe śāstā viharaty anyatara-anyataro vā vijñaguru-sthānīyaḥ ||12||
+^ck13【The first ending】
+ evam ukta āyuṣmān subhūtir bhagavantam etad avocat |
+ ko nāma ayaṃ bhagavan dharmaparyāyaḥ kathaṃ cainaṃ dhārayāmi |
+ evam ukte bhagavān āyuṣmantaṃ subhūtim etad avocat |
+ prajñāpāramitā nāma ayaṃ subhūte dharmaparyāyaḥ |
+ evaṃ cainaṃ dhāraya |
+ tatkasya hetoḥ | yaiva subhūte prajñāpāramitā tathāgatena bhāṣitā saiva-a-pāramitā tathāgatena bhāṣitā | tenocyate prajñāpāramiteti |
+ tatkiṃ manyase subhūte api nvasti sa kaścid dharmo yastathāgatena bhāṣitaḥ|
+ subhūtir āha | no hīdaṃ bhagavan nāsti sa kaścid dharmo yas tathāgatena bhāṣitaḥ |
+ bhagavān āha | tatkiṃ manyase subhūte yāvat trisāhasramahāsāhasre lokadhātau pṛthivīrajaḥ kaccit tad bahu bhavet |
+ subhūtir āha | bahu bhagavan bahu sugata pṛthivīrajo bhavet |
+ tatkasya hetoḥ | yat tad bhagavan pṛthivīrajas tathāgatena bhāṣitam a-rajas tad bhagavaṃs tathāgatena bhāṣitam | tenocyate pṛthivīraja iti | yo'py asau lokadhātus tathāgatena bhāṣito 'dhātuḥ sa tathāgatena bhāṣitaḥ |tenocyate lokadhātur iti |
+ bhagavān āha | tatkiṃ manyase subhūte dvātriṃśan mahāpuruṣa-lakṣaṇais tathāgato 'rhan samyaksaṃbuddho draṣṭavyaḥ |
+ subhūtir āha | no hīdaṃ bhagavan na dvātriṃśan-mahāpuruṣa-lakṣaṇais tathāgato 'rhan samyaksaṃbuddho draṣṭavyaḥ |
+ tatkasya hetoḥ | yāni hi tāni bhagavan dvātriṃśan mahāpuruṣa-lakṣaṇāni tathāgatena bhāṣitāny a-lakṣaṇāni tāni bhagavaṃs tathāgatena bhāṣitāni | tenocyante dvātriṃśan-mahāpuruṣa-lakṣaṇānīti |
+ bhagavān āha | yaś ca khalu punaḥ subhūte strī vā puruṣo vā dine dine gaṅgā-nadī-vālukā-samān ātma-bhāvān parityajet evaṃ parityajangaṅgā-nadī-vālukā-samān kalpāṃs tān ātma-bhāvān parityajet
+ yaś ceto dharmaparyāyād antaśaś catuṣpādikām api gāthām udgṛhya parebhyo deśayet saṃprakāśayed ayam eva tato nidānaṃ bahutaraṃ puṇya-skandhaṃ prasunuyād aprameyam asaṃkhyeyam |
+^ck14【Selfless patience and perfect inner freedom】
+ atha khalv āyuṣmān subhūtir dharma-vegena-aśrūṇi prāmuñcat so 'śrūṇi pramṛjya bhagavantam etad avocat |
+āścaryaṃ bhagavan parama-aścaryaṃ sugata yāvad ayaṃ dharm-aparyāyas tathāgatena bhāṣito 'grayāna-saṃprasthitānāṃ sattvānām arthāya śreṣṭha-yāna-saṃprasthitānāṃ sattvānām-arthāya yato me bhagavañ jñānam utpannam |
+ na mayā bhagavañ jātv evaṃrūpo dharmaparyāyaḥ śruta-pūrvaḥ |
+parameṇa te bhagavann āścaryeṇa samanvāgatā bodhisattvā bhaviṣyanti ya iha sūtre bhāṣyamāṇe śrutvā bhūta-saṃjñām utpādayiṣyanti |
+ tatkasya hetoḥ | yā caiṣā bhagavan bhūta-saṃjñā saiva-abhūta-saṃjñā |tasmāt tathāgato bhāṣate bhūta-saṃjñā bhūta-saṃjñeti |
+na mama bhagavann āścaryaṃ yad aham imaṃ dharmaparyāyaṃ bhāṣyamāṇam avakalpayāmyadhimucye |
+ ye 'pi te bhagavan sattvā bhaviṣyanty anāgate 'dhvani paścime kāle paścime samaye paścimāyāṃ pañca-śatyāṃ saddharma-vipralope vartamāne ya imaṃ bhagavan dharm-aparyāyam udgrahīṣyanti dhārayiṣyanti vācayiṣyanti paryavāpsyanti parebhyaś ca vistareṇa saṃprakāśayiṣyanti te parama-āścaryeṇa samanvāgatā bhaviṣyanti |
+ api tu khalu punar bhagavan na teṣām ātmasaṃjñā pravartiṣyate na sattva-saṃjñā na jīva-saṃjñā na pudgala-saṃjñā pravartiṣyate nāpi teṣāṃ kācit saṃjñā nāsaṃjñā pravartate |
+ tatkasya hetoḥ | yā sā bhagavann ātma-saṃjñā saiva-a-saṃjñā | yā sattva-saṃjñā jīva-saṃjñā pudgala-saṃjñā saivāsaṃjñā |
+ tatkasya hetoḥ | sarva-saṃjñā-apagatā hi buddhā bhagavantaḥ |
+ evam ukte bhagavān āyuṣmantaṃ subhūtim etad avocat |
+ evam etat subhūte evam etat |
+ parama-āścarya-samanvāgatās te sattvā bhaviṣyanti ya iha subhūte sūtre bhāṣyamāṇe nottrasiṣyanti na saṃtrasiṣyanti na saṃtrāsam āpatsyante |
+ tatkasya hetoḥ | paramapāramiteyaṃ subhūte tathāgatena bhāṣitā yaduta-a-pāramitā | yāṃ ca subhūte tathāgataḥ parama-pāramitāṃ bhāṣate tām aparimāṇā api buddhā bhagavanto bhāṣante | tenocyate parama-pāramiteti |
+api tu khalu punaḥ subhūte yā tathāgatasya kṣānti-pāramitā saivāpāramitā |
+tatkasya hetoḥ | yadā me subhūte kaliṅgarājā-aṅga-pratyaṅga-māṃsānyacchaitsīt nāsīn-me tasmin samaya ātma-saṃjñā vā sattva-saṃjñā vā jīva-saṃjñā vā pudgala-saṃjñā vā nāpi me kācit saṃjñā vā asaṃjñā vā babhūva |
+tatkasya hetoḥ | sacen me subhūte tasmin samaya ātma-saṃjñā-abhaviṣyad vyāpāda-saṃjñā api me tasmin samaye'bhaviṣyat | sacet sattva-saṃjñā jīva-saṃjñā pudgala-saṃjñā-abhaviṣyad vyāpāda-saṃjñā api me tasmin samaye 'bhaviṣyat |
+tatkasya hetoḥ | abhijānāmy ahaṃ subhūte 'tīte 'dhvani pañca jāti-śatāni yad ahaṃ kṣāntivādī ṛṣir abhūvam | tatra api me nātma-saṃjñā babhūvana sattva-saṃjñā na jīva-saṃjñā na pudgala-saṃjñā babhūva |
+tasmāt tarhi subhūte bodhisattvena mahāsattvena sarva-saṃjñā vivarjayitvā anuttarāyāṃ samyaksaṃbodhau cittam utpādayitavyam |
+ na rūpa-pratiṣṭhitaṃ cittam utpādayitavyaṃ na śabda-gandha-rasa-spraṣṭavya-dharma-pratiṣṭhitaṃ cittam utpādayitavyaṃ na dharma-pratiṣṭhitaṃ cittam utpādayitavyaṃ na adharma-pratiṣṭhitaṃ cittam  utpādayitavyaṃ na kvacit pratiṣṭhitaṃ cittam  utpādayitavyam |
+tatkasya hetoḥ | yat pratiṣṭhitaṃ tadeva apratiṣṭhitam |
+ tasmādeva tathāgato bhāṣate apratiṣṭhitena bodhisattvena dānaṃ dātavyam | na rūpa-śabda-gandha-rasa-spraṣṭavya-dharma-pratiṣṭhitena dānaṃ dātavyam |
+api tu khalu punaḥ subhūte bodhisattvenaivaṃrūpo dānaparityāgaḥ kartavyaḥ sarva-sattvānām arthāya | 
+tatkasya hetoḥ | yā caiṣā subhūte sattva-saṃjñā saivāsaṃjñā |
+ ya evaṃ te sarva-sattvās tathāgatena bhāṣitās ta evāsattvāḥ |
+tatkasya hetoḥ | bhūta-vādī subhūte tathāgataḥ satyavādī tathāvādyan anyathāvādī tathāgataḥ | na vitatha-vādī tathāgataḥ |
+api tu khalu punaḥ subhūte yas tathāgatena dharmo 'bhisaṃbuddho deśitonidhyāto na tatra satyaṃ na mṛśā |
+tadyathāpi nāma subhūte puruṣo 'ndhakāra-praviṣṭo na kiṃcid api paśyetevaṃ vastupatito bodhisattvo draṣṭavyo yo vastupatito dānaṃ parityajati |
+tadyathāpi nāma subhūte cakṣuṣmān puruṣaḥ prabhātāyāṃ rātrau sūrye'bhyudgate nānāvidhāni rūpaṇi paśyet evam avastupatito bodhisattvodraṣṭavyo yo 'vastupatito dānaṃ parityajati |
+api tu khalu punaḥ subhūte ye kulaputrā vā kuladuhitaro vemaṃ dharmaparyāyam udgrahīṣyanti dhārayiṣyanti vācayiṣyanti paryavāpsyanti parebhyaś ca vistareṇa saṃprakāśayiṣyanti jñātās te subhūte tathāgatena buddha-jñānena dṛṣṭās te subhūte tathāgatena buddha-cakṣuṣā buddhās te tathāgatena | sarve te subhūte sattvāaprameyam asaṃkhyeyaṃ puṇya-skandhaṃ prasaviṣyanti pratigrahīṣyanti ||14||
+^ck15【The merit acquired 】
+yaś ca khalu punaḥ subhūte strī vā puruṣo vā pūrv-āhṇa-kāla-samayegaṅgā-nadī-vālukā-samān ātmabhāvān parityajed |
+ evaṃ madhyā-āhṇa-kāla-samaye gaṅgā-nadī-vālukā-samān ātmabhāvānparityajet |
+ sāya-āhṇa-kāla-samaye gaṅgā-nadī-vālukā-samān ātmabhāvān parityajet
+ anena paryāyeṇa bahūni kalpa-koṭi-niyuta-śatasahasrāṇy ātmabhāvān parityajet |
+ yaś cemaṃ dharmaparyāyaṃ śrutvā na pratikṣipet ayam eva tato nidānaṃ bahutaraṃ puṇya-skandhaṃ prasunuyād aprameyam asaṃkhyeyam | kaḥ punar vādo yo likhitvodgṛhṇīyād dhārayed vācayet paryavāpnuyāt parebhyaś ca vistareṇa saṃprakāśayet |
+api tu khalu punaḥ subhūte 'cintyo 'tulyo 'yaṃ dharmaparyāyaḥ |
+ayaṃ ca subhūte dharmaparyāyas tathāgatena bhāṣito'gra-yāna-saṃprasthitānāṃ sattvānām arthāyaśreṣṭha-yāna-saṃprasthitānāṃ sattvānām arthāya |
+ya imaṃ dharm-aparyāyam udgrahīṣyanti dhārayiṣyanti vācayiṣyanti paryavāpsyanti parebhyaśca vistareṇa saṃprakāśayiṣyanti jñātās te subhūte tathāgatena buddha-jñānena dṛṣṭās te subhūte tathāgatenabuddha-cakṣuṣā buddhās te tathāgatena |
+sarve te subhūte sattvā aprameyeṇa puṇya-skandhena samanvāgatā bhaviṣyanti | acintyena atulyena amāpyena aparimāṇena puṇya-skandhena samanvāgatā bhaviṣyanti |
+ sarve te subhūte sattvāḥ samāṃśena bodhiṃ dhārayiṣyanti |
+tatkasya hetoḥ | na hi śakyaṃ subhūte 'yaṃ dharmaparyāyo hīna-adhimuktikaiḥ sattvaiḥ śrotuṃ
+ na ātma-dṛṣṭikair na sattvadṛṣṭikair na jīva-dṛṣṭikair na pudgala-dṛṣṭikaiḥ |
+ na abodhisattva-pratijñaiḥ sattvaiḥ śakyam ayaṃ dharmaparyāyaḥ śrotuṃ vodgrahītuṃ vā dhārayituṃ vā vācayituṃ vā paryavāptuṃ vā | nedaṃ sthānaṃ vidyate | 
+api tu khalu punaḥ subhūte yatra pṛthivīpradeśa idaṃ sūtraṃ prakāśayiṣyate pūjanīyaḥ sa pṛthivīpradeśo bhaviṣyati sadeva-mānuṣa-asurasya lokasya vandanīyaḥ pradakṣiṇīyaś ca sa pṛthivīpradeśo bhaviṣyati caityabhūtaḥ sa pṛthivīpradeśo bhaviṣyati ||15||
+^ck16【The presuppositions of merit】
+api tu ye te subhūte kulaputrā vā kuladuhitaro vemān evaṃrūpān sūtrāntān udgrahīṣyanti dhārayiṣyanti vācayiṣyanti paryavāpsyanti yoniśaśca manasikariṣyanti parebhyaś ca vistareṇa saṃprakāśayiṣyanti teparibhūtā bhaviṣyanti suparibhūtāś ca bhaviṣyanti |
+tatkasya hetoḥ | yāni ca teṣāṃ subhūte sattvānāṃ paurva-janmikāny-aśubhāni karmāṇi kṛtāny apāya-saṃvartanīyāni dṛṣṭa eva dharme paribhūtatayā tāni paurvajanmikāny aśubhāni karmāṇi kṣapayiṣyanti buddhabodhiṃ ca anuprāpsyanti | 
+tat kasya hetoḥ | abhijānāmy ahaṃ subhūte atīte 'dhvany asaṃkhyeyaiḥ kalpair asaṃkhyeyatarair dīpaṃkarasya tathāgatasya arhataḥ samyaksaṃbuddhasya pareṇa paratareṇa catur-aśīti-buddha-koṭi-niyuta-śatasahasrāṇy abhūvan ye mayā ārāgitā ārāgya na virāgitāḥ | yac ca mayā subhūte te buddhā bhagavanta ārāgitā ārāgya na virāgitā
+ yac ca paścime kāle paścime samaye paścimāyāṃ pañcaśatyāṃ saddharma-vipralopa-kāle vartamāne imān evaṃrūpān sūtrāntān udgrahīṣyanti dhārayiṣyanti vācayiṣyanti paryavāpsyanti parebhyaś ca vistareṇa saṃprakāśayiṣyanty
+ asya khalu punaḥ subhūte puṇyaskandhasya antikād asau paurvakaḥ puṇya-skandhaḥ śatatamīm api kalāṃ nopaiti sahasratamīm api śatasahasratamīm api koṭitamīm api koṭi-śatatamīm api koṭi-śatasahasratamīm api koṭi-niyuta-śatasahasratamīm api saṃkhyām api kalāmapi gaṇanām apyupamām apy upaniṣadam api yāvad aupamyam api na kṣamate |
+sacet punaḥ subhūte teṣāṃ kulaputrāṇāṃ kuladuhitfṇāṃ vā ahaṃ puṇyaskandhaṃ bhāṣeyaṃ yāvat te kulaputrā vā kuladuhitaro vā tasmin samaye puṇyaskandhaṃ prasaviṣyanti pratigrahīṣyanty unmādaṃ sattvā anuprāpnuyuś citta-vikṣepaṃ vā gaccheyuḥ |
+api tu khalu punaḥ subhūte 'cintyo 'tulyo 'yaṃ dharma-paryāyas tathāgatena bhāṣitaḥ | asya acintya eva vipākaḥ pratikāṅkṣitavyaḥ ||16||
+^ck17【The Bodhisattvas】
+atha khalvāyuṣmān subhūtir bhagavantam etad avocat | kathaṃ bhagavan bodhisattva-yāna-saṃprasthitena sthātavyaṃ kathaṃ pratipattavyaṃ kathaṃ cittaṃ pragrahītavyam | 
+bhagavān āha | iha subhūte bodhisattva-yāna-saṃprasthitena evaṃ cittam utpādayitavyaṃ
+ sarve sattvā mayā anupadhiśeṣe nirvāṇadhātau parinirvāpayitavyāḥ |
+ evaṃ ca sattvān parinirvāpya na kaścit sattvaḥ parinirvāpito bhavati |
+tatkasya hetoḥ | sacet subhūte bodhisattvasya sattva-saṃjñā pravarteta na sa bodhisattva iti vaktavyaḥ | jīvasaṃjñā vā yāvat pudgalasaṃjñā vā pravarteta na sa bodhisattva iti vaktavyaḥ |
+tat kasya hetoḥ | nāsti subhūte sa kaścid dharmo yo bodhisattva-yāna-saṃprasthito nāma |
+tat kiṃ manyase subhūte asti sa kaścid dharmo yas tathāgatena dīpaṃkarasya tathāgatasya antikād anuttarāṃ samyaksaṃbodhim abhisaṃbuddhaḥ |
+evam ukte āyuṣmān subhūtir bhagavantam etad avocat |yathā ahaṃ bhagavan bhagavato bhāṣitasya artham ājānāmi nāsti sabhagavan kaścid dharmo yas tathāgatena dīpaṃkarasya tathāgatasya arhataḥ samyaksaṃbuddhasya antikād anuttarāṃ samyaksaṃbodhim abhisaṃbuddhaḥ |
+evam ukte bhagavān āyuṣmantaṃ subhūtim etad avocat | evam etat subhūte evam etan
+ nāsti subhūte sa kaścid dharmo yas tathāgatena dīpaṃkarasya tathāgatasya arhataḥ samyaksaṃbuddhasya antikād anuttarāṃ samyaksaṃbodhim abhisaṃbuddhaḥ |
+sacet punaḥ subhūte kaścid dharmas tathāgatena abhisaṃbuddho'bhaviṣyanna māṃ dīpaṃkaras tathāgato vyākariṣyad bhaviṣyasi tvaṃ māṇava-anāgate 'dhvani śākyamunir nāma tathāgato 'rhan samyaksaṃbuddha iti |
+yasmāt tarhi subhūte tathāgatena arhatā samyaksaṃbuddhena nāsti sa kaścid dharmo yo 'nuttarāṃ samyaksaṃbodhim abhisaṃbuddhas tasmād ahaṃ dīpaṃkareṇa tathāgatena vyākṛto bhaviṣyasi tvaṃ māṇava-anāgate'dhvani śākyamunir nāma tathāgato 'rhan samyaksaṃbuddhaḥ |
+tatkasya hetoḥ | tathāgata iti subhūte | bhūta-tathatāyā etad adhivacanam |
+tathāgata iti subhūte | anutpāda dharmatāyā etad adhivacanam |
+ tathāgataiti subhūte | dharmo cchedasya etad adhivacanam |
+ tathāgata iti subhūte |atyanta anutpannasya etad adhivacanam |
+ tat kasya hetoḥ | eṣa subhūte'nutpādo yaḥ paramārthaḥ |
+ yaḥ kaścit subhūte evaṃ vadet tathāgatena arhatā samyak-saṃbuddhena anuttarā samyaksaṃbodhir abhisaṃbuddheti sa vitathaṃ vaded abhyācakṣīta māṃ sa subhūte asatodgṛhītena |tat kasya hetoḥ |nāsti subhūte sa kaścid dharmo yas tathāgatena anuttarāṃ samyaksaṃbodhim abhisaṃbuddhaḥ |
+yaś ca subhūte tathāgatena dharmo 'bhisaṃbuddho deśito vā tatra nan satyaṃ na mṛṣā |
+ tasmāttathāgato bhāṣate sarvadharmā buddhadharmā iti|
+tat kasya hetoḥ | sarva-dharmā iti subhūte a-dharmās tathāgatena bhāṣitāḥ | tasmād ucyante sarvadharmā buddha-dharmā iti |
+tadyathāpi nāma subhūte puruṣo bhaved upetakāyo mahākāyaḥ |
+āyuṣmān subhūtir āha | yo 'sau bhagavaṃs tathāgatena puruṣo bhāṣita upetakāyo mahākāya ity akāyaḥ sa bhagavaṃs tathāgatena bhāṣitaḥ |tenocyata upetakāyo mahākāya iti |
+bhagavān āha | evam etat subhūte | yo bodhisattva evaṃ vaded ahaṃ sattvān parinirvāpayiṣyāmīti na sa bodhisattva iti vaktavyaḥ |
+tatkasya hetoḥ | asti subhūte sa kaścid dharmo yo bodhisattvo nāma |
+subhūtir āha | no hīdaṃ bhagavan nāsti sa kaścid dharmo yo bodhisattvonāma |
+bhagavān āha | sattvāḥ sattvā iti subhūte asattvās te tathāgatena bhāṣitās tenocyate sattvā iti |
+tasmāt tathāgato bhāṣate nirātmānaḥ sarvadharmā nirjīvā niṣpoṣāniṣpudgalāḥ sarvadharmā iti |
+yaḥ subhūte bodhisattva evaṃ vaded ahaṃ kṣetra-vyūhān niṣpādayiṣyāmīti sa vitathaṃ vadet | so 'pi tathaiva vaktavyaḥ|
+tatkasya hetoḥ | kṣetra-vyūhāḥ kṣetra-vyūhā iti subhūte 'vyūhās te tathāgatena bhāṣitāḥ | tenocyante kṣetra-vyūhā iti |
+yaḥ subhūte bodhisattvo nirātmāno dharmā nirātmāno dharmā ity adhimucyate sa tathāgatena arhatā samyaksaṃbuddhena bodhisattvo mahāsattva ity ākhyātaḥ ||17||
+^ck18【The Buddha's Five Eyes】
+bhagavān āha | tatkiṃ manyase subhūte saṃvidyate tathāgatasya māṃsa-cakṣuḥ |
+subhūtir āha | evam etad bhagavan saṃvidyate tathāgatasya māṃsa-cakṣuḥ|
+bhagavān āha | tatkiṃ manyase subhūte saṃvidyate tathāgatasya divyaṃ cakṣuḥ |
+subhūtir āha | evam etad bhagavan saṃvidyate tathāgatasya divyaṃ cakṣuḥ|
+bhagavān āha | tatkiṃ manyase subhūte saṃvidyate tathāgatasyaprajñā-cakṣuḥ |
+subhūtir āha | evam etad bhagavan saṃvidyate tathāgatasya prajñā-cakṣuḥ|
+bhagavān āha | tatkiṃ manyase subhūte saṃvidyate tathāgatasya dharma-cakṣuḥ |
+subhūtir āha | evam etad bhagavan saṃvidyate tathāgatasya dharma-cakṣuḥ |
+bhagavānāha | tatkiṃ manyase subhūte saṃvidyate tathāgatasya buddha-cakṣuḥ | 
+subhūtir āha | evam etad bhagavan saṃvidyate tathāgatasya buddha-cakṣuḥ |
+bhagavān āha | tatkiṃ manyase subhūte yāvatyo gaṅgāyāṃ mahā-nadyāṃ vālukā api nu tā vālukās tathāgatena bhāṣitāḥ |
+subhūtir āha | evam etad bhagavan evam etat sugata bhāṣitās tathāgatena vālukāḥ |
+bhagavān āha | tatkiṃ manyase subhūte yāvatyo gaṅgāyāṃ mahānadyāṃ vālukās tāvatya eva gaṅgānadyo bhaveyuḥ tāsu yā vālukās tāvantaś ca lokadhātavo bhaveyuḥ kaccid bahavas te lokadhātavo bhaveyuḥ |
+subhūtir āha | evam etad bhagavann evam etat sugata bahavas te lokadhātavo bhaveyuḥ |
+bhagavān āha | yāvantaḥ subhūte teṣu lokadhāteṣu sattvās teṣām ahaṃ nānābhāvāṃ cittadhārāṃ prajānāmi |
+tatkasya hetoḥ | citta-dhārā citta-dhāreti subhūte adhāraiṣā tathāgatena bhāṣitā | tenocyate citta-dhāreti |
+tatkasya hetoḥ | atītaṃ subhūte cittaṃ nopalabhyate | anāgataṃ cittaṃ nopalabhyate | pratyutpannaṃ cittaṃ nopalabhyate ||18||
+^ck19【The Buddha's Merit is no Merit】
+tatkiṃ manyase subhūte yaḥ kaścit kulaputro vā kuladuhitā vevaṃ trisāhasramahāsāhasraṃ lokadhātuṃ sapta-ratna-paripūrṇaṃ kṛtvā tathāgatebhyo 'rhadbhyaḥ samyaksaṃbuddhebhyo dānaṃ dadyād api nu sa kulaputro vā kuladuhitā vā tato nidānaṃ bahu puṇya-skandhaṃ prasunuyāt |
+subhūtir āha | bahu bhagavan bahu sugata |
+ bhagavān āha | evam etat subhūte evam etad bahu sa kulaputro vā kuladuhitā vā tato nidānaṃ bahu puṇya-skandhaṃ prasunuyād |
+tatkasya hetoḥ | puṇya-skandhaḥ puṇya-skandha iti subhūte a-skandhaḥ sa tathāgatena bhāṣitaḥ | tenocyate puṇya-skandha iti | sacet punaḥ subhūte puṇya-skandho 'bhaviṣyan na tathāgato 'bhāṣiṣyat puṇya-skandhaḥ puṇya-skandha iti ||19||
+^ck20【The Buddha's physical body】
+tat kiṃ manyase subhūte rūpa-kāya-pariniṣpattyā tathāgato draṣṭavyaḥ |
+subhūtir āha | no hīdaṃ bhagavan na rūpa-kāya-pariniṣpattyā tathāgato draṣṭavyaḥ |
+tatkasya hetoḥ | rūpa-kāya-pariniṣpattī rūpakāya-pariniṣpattir iti bhagavan apariniṣpattir eṣā tathāgatena bhāṣitā | tenocyate rūpakāya-pariniṣpattir iti|
+bhagavān āha | tatkiṃ manyase subhūte lakṣaṇa-saṃpadā tathāgato draṣṭavyaḥ |
+subhūtir āha | no hīdaṃ bhagavan na lakṣaṇa-saṃpadā tathāgato draṣṭavyaḥ |
+tatkasya hetoḥ | yaiṣā bhagavaṃl lakṣaṇa-saṃpat tathāgatena bhāṣitā alakṣana-saṃpad eṣā tathāgatena bhāṣitā | tenocyate lakṣaṇa-saṃpad iti||20||
+^ck21【The Buddha's teaching】
+bhagavān āha | tatkiṃ manyase subhūte api nu tathāgatasyaivaṃ bhavati mayā dharmo deśita iti |
+subhūtir āha | no hīdaṃ bhagavan tathāgatasyaivaṃ bhavati mayā dharmo deśita iti |
+bhagavān āha | yaḥ subhūte evaṃ vadet tathāgatena dharmo deśita iti sa vitathaṃ vaded abhyācakṣīta māṃ sa subhūte 'satodgṛhītena |
+tatkasya hetoḥ | dharma-deśanā dharma-deśaneti subhūte nāsti sa kaścid dharmo yo dharma-deśanā nāmopalabhyate |
+evam ukta āyuṣmān subhūtir bhagavantam etad avocat |
+ asti bhagavan kecit sattvā bhaviṣyanty anāgate 'dhvani paścime kāle paścime samaye paścimāyāṃ pañcaśatyāṃ saddharma-vipralope vartamāne ya imān evaṃrūpān dharmāñ śrutvā abhiśraddhāsyanti |
+bhagavān āha | na te subhūte sattvā nāsattvāḥ |
+tatkasya hetoḥ | sattvāḥ sattvā iti subhūte sarve te subhūte asattvās tathāgatena bhāṣitāḥ | tenocyante sattvā iti ||21||
+^ck22【The Buddha's Dharma】
+tatkiṃ manyase subhūte api nv asti sa kaścid dharmo yas tathāgatena anuttarāṃ samyaksaṃbodhim abhisaṃbuddhaḥ |
+ āyuṣmān subhūtir āha |
+ no hīdaṃ bhagavan nāsti sa bhagavan kaścid dharmo yas tathāgatena anuttarāṃ samyaksaṃbodhim abhisaṃbuddhaḥ |
+bhagavān āha | evam etat subhūte evam etad aṇur api tatra dharmo na saṃvidyate nopalabhyate | tenocyate 'nuttarā samyaksaṃbodhir iti ||22||
+^ck23【The Buddha's Dharma 2】
+api tu khalu punaḥ subhūte samaḥ sa dharmo na tatra kaścid viṣamaḥ |tenocyate 'nuttarā samyaksaṃbodhir iti |
+nirātmatvena niḥsattvatvena nirjīvatvena niṣpudgalatvena
+ samāsānuttarā samyaksaṃbodhiḥ sarvaiḥ kuśalair dharmair abhisaṃbudhyate |
+tat kasya hetoḥ | kuśalā dharmāḥ kuśalā dharmā iti subhūte adharmāś caiva te tathāgatena bhāṣitāḥ | tenocyante kuśalā dharmā iti ||23||
+^ck24【Once more about the Buddha's Merit (】
+yaśca khalu punaḥ subhūte strī vā puruṣo vā yāvantas trisāhasramahāsāhasre lokadhātau sumeravaḥ parvata-rājānas tāvato rāśīn saptānāṃ ratnānām abhisaṃhṛtya tathāgatebhyo 'rhadbhyaḥ samyaksaṃbuddhebhyo dānaṃ dadyāt|
+yaś ca kulaputro vā kuladuhitā vetaḥ prajñāpāramitāyā dharma-paryāyād antaśaś catuṣpādikām api gāthām udgṛhya parebhyo deśayed asya subhūte puṇyaskandhasya asau paurvakaḥ puṇya-skandhaḥ śatatamīm api kalāṃ nopaiti yāvad upaniṣadam api na kṣamate ||24||
+^ck25【The Buddha as a saviour, and the nature of emancipation】
+tatkiṃ manyase subhūte api nu tathāgatasyaivaṃ bhavati mayā sattvāḥ parimocitā iti | na khalu punaḥ subhūta evaṃ draṣṭavyam |
+tatkasya hetoḥ | nāsti subhūte kaścit sattvo yas tathāgatena parimocitaḥ |
+yadi punaḥ subhūte kaścit sattvo 'bhaviṣyad yas tathāgatena parimocitaḥ syāt sa eva tathāgatasya ātmagrāho 'bhaviṣyat sattva-grāho jīva-grāhaḥ pudgala-grāho 'bhaviṣyat |
+ātma-grāha iti subhūte agrāha eṣa tathāgatena bhāṣitaḥ | sa ca bālapṛthagjanair udgṛhītaḥ |
+bālapṛthag-janā iti subhūte a-janā eva te tathāgatena bhāṣitāḥ |tenocyante bālapṛthagjanā iti ||25||
+^ck26【The true nature of a Buddha 】
+tatkiṃ manyase subhūte lakṣaṇa-saṃpadā tathāgato draṣṭavyaḥ |
+subhūtir āha | no hīdaṃ bhagavan | yathā ahaṃ bhagavato bhāṣitasya artham ājānāmi na lakṣaṇa-saṃpadā tathāgato draṣṭavyaḥ |
+bhagavān āha | sādhu sādhu subhūte evam etat subhūte evam etad yathā vadasi | na lakṣaṇa-saṃpadā tathāgato draṣṭavyaḥ | tatkasya hetoḥ | sacet punaḥ subhūte lakṣaṇa-saṃpadā tathāgato draṣṭavyo 'bhaviṣyad rājā-api cakravartī tathāgato 'bhaviṣyat | tasmānna lakṣaṇasaṃpadā tathāgato draṣṭavyaḥ |
+āyuṣmān subhūtir bhagavantametadavocat | yathāhaṃ bhagavato bhāṣitasya artham ājānāmi na lakṣaṇa-saṃpadā tathāgato draṣṭavyaḥ |
+atha khalu bhagavāṃs tasyāṃ velāyām ime gāthe abhāṣata |
+ ye māṃ rūpeṇa cādrākṣur ye māṃ ghoṣeṇa cānvaguḥ |mithyā-prahāṇa-prasṛtā na māṃ drakṣyanti te janāḥ ||1||
+dharmato buddho draṣṭavyo dharmakāyā hi nāyakāḥ |dharmatā ca na vijñeyā na sā śakyā vijānitum ||2||
+^ck27【The effectiveness of meritorious deeds】
+tatkiṃ manyase subhūte lakṣaṇa-saṃpadā tathāgatena anuttarā samyaksaṃbodhir abhisaṃbuddhā |
+na khalu punas te subhūte evaṃ draṣṭavyam |
+ tatkasya hetoḥ | na hi subhūtelakṣaṇa-saṃpadā tathāgatena anuttarā samyaksaṃbodhir abhisaṃbuddhā syāt |
+ na khalu punas te subhūte kaścid evaṃ vadet bodhisattva-yāna-saṁprasthitaiḥ kasyacid dharmasya vināśaḥ prajñapta ucchedo veti na khalu punas te subhūte evaṃ draṣṭavyam |
+ tatkasya hetoḥ |na bodhisattva-yāna-saṃprasthitaiḥ kasyacid dharmasya vināśaḥ prajñapto nocchedaḥ | 
+^ck28【The effectiveness of meritorious deeds 2】
+ yaś ca khalu punaḥ subhūte kulaputro vā kuladuhitā vā gavgānadī-vālukā-samāṃl lokadhātūn sapta-ratna-paripūrṇāṃ kṛtvā tathāgatebhyo 'rhadbhyaḥ samyaksaṃbuddhebhyo dānaṃ dadyād
+ yaś ca bodhisattvo nirātmakeṣv anutpattikeṣu dharmeṣu kṣāntiṃp ratilabhate ayam eva tato nidānaṃ bahutaraṃ puṇyaskandhaṃ prasaved aprameyam asaṃkhyeyam |
+na khalu punaḥ subhūte bodhisattvena mahāsattvena puṇyaskandhaḥ parigrahītavyaḥ |
+āyuṣmān subhūtir āha | nanu bhagavan bodhisattvena puṇyaskandhaḥ parigrahītavyaḥ |
+ bhagavān āha | parigrahītavyaḥ subhūte nodgrahītavyaḥ | tenocyate parigrahītavya iti ||28||
+^ck29【The effectiveness of meritorious deeds 3】
+api tu khalu punaḥ subhūte yaḥ kaścid evaṃ vadet tathāgato gacchati vā āgacchati vā tiṣṭhati vā niṣīdati vā śayyāṃ vā kalpayati na me subhūte sa bhāṣitasya artham ājānāti |
+tatkasya hetoḥ | tathāgata iti subhūta ucyate na kvacidgato na kutaścid āgataḥ | tenocyate tathāgato 'rhan samyaksaṃbuddha iti ||29||
+^ck30【The material world】
+yaś ca khalu punaḥ subhūte kulaputro vā kuladuhitā vā yāvantas trisāhasra-mahāsāhasre lokadhātau pṛthivī-rajāṃsi tāvatāṃ lokadhātūnām evaṃrūpaṃ maṣiṃ kuryāt yāvadevam asaṃkhyeyena vīryeṇa tadyathāpi nāma paramāṇu-saṃcayaḥ tat kiṃ manyase subhūte api nu bahuḥ sa paramāṇu-saṃcayo bhavet |
+subhūtir āha | evam etad bhagavann evam etat sugata | bahuḥ sa paramāṇu-saṃcayo bhavet |
+tatkasya hetoḥ | saced bhagavan bahuḥ paramāṇu-saṃcayo 'bhaviṣyat na bhagavān avakṣyat paramāṇu-saṃcaya iti |
+tatkasya hetoḥ | yo 'sau bhagavan paramāṇu-saṃcayas tathāgatena bhāṣito'samcayaḥ sa tathāgatena bhāṣitaḥ | tenocyate paramāṇu-saṃcaya iti |
+yaś ca tathāgatena bhāṣitas trisāhasra-mahāsāhasro lokadhātur ity adhātuḥ sa tathāgatena bhāṣitaḥ | tenocyate trisāhasra-mahāsāhasro lokadhātur iti |
+tatkasya hetoḥ | saced bhagavan lokadhātur abhaviṣyat sa eva piṇḍagrāho 'bhaviṣyat 
+yaś caiva piṇḍagrāhas tathāgatena bhāṣito 'grāhaḥ sa tathāgatena bhāṣitaḥ | tenocyate piṇḍagrāha iti |
+bhagavān āha | piṇḍagrāhaś caiva subhūte 'vyavahāro 'nabhilapyaḥ | na sa dharmo na adharmaḥ |
+ sa ca bālapṛthagjanair udgṛhītaḥ |
+^ck31【Views and attitudes】
+tatkasya hetoḥ | yo hi kaścit subhūta evaṃ vaded ātmadṛṣṭis tathāgatena bhāṣitā sattvadṛṣṭir jīvadṛṣṭiḥ pudgaladṛṣṭis tathāgatena bhāṣitā api nu sa subhūte samyagvadamāno vadet |
+subhūtir āha | no hīdaṃ bhagavan no hīdaṃ sugata na samyagvadamāno vadet |
+tatkasya hetoḥ | yā sā bhagavann ātmadṛṣṭis tathāgatena bhāṣitā adṛṣṭiḥ sā tathāgatena bhāṣitā | tenocyata ātmadṛṣṭir iti |
+bhagavān āha | evaṃ hi subhūte bodhisattva-yāna-saṃprasthitena sarva-dharmā jñātavyā draṣṭavyā adhimoktavyāḥ | tathā ca jñātavyādraṣṭavyā adhimoktavyā yathā na dharma-saṃjñā pratyupasthāhe| yathā na dharma-saṃjñā-āpi pratyupatiṣṭhet.
+tatkasya hetoḥ | dharma-saṃjñā dharmasaṃjñeti subhūte asaṃjñaiṣā tathāgatena bhāṣitā | tenocyate dharmasaṃjñeti ||31||
+^ck32【The key to supreme knowledge】
+yaśca khalu punaḥ subhūte bodhisattvo mahāsattvo 'prameyān asaṃkhyeyāṃllokadhātūn saptaratna-paripūrṇaṃ kṛtvā tathāgatebhyo'rhadbhyaḥ samyaksaṃbuddhebhyo dānaṃ dadyād
+yaś ca kulaputro vā kuladuhitā vetaḥ prajñāpāramitāyā dharmaparyāyād antaśaś catuṣpādikām api gāthām udgṛhya dhārayed deśayed vācayet paryavāpnuyāt parebhyaś ca vistareṇa saṃprakāśayed ayam eva tato nidānaṃ bahutaraṃ puṇyaskandhaṃ prasunuyād aprameyam asaṃkhyeyam |
+kathaṃ ca saṃprakāśayet |
+ yathā na prakāśayet |tenocyate saṃprakāśayed iti |
+tārakā timiraṃ dīpo māyā-avaśyāya budbudaṃ |svapnaṃ ca vidyud abhraṃ ca evaṃ draṣṭavyaṃ saṃskṛtaṃ ||
+idam avocad bhagavān āttamanāḥ | sthavira subhūtis te ca bhikṣu-bhikṣuṇy-upāsakopāsikās te ca bodhisattvāḥ sadeva-mānuṣa-asura-gandharvaś ca loko bhagavato bhāṣitam abhyanandann iti |
+ārya-vajracchedikā bhagavatī prajñāpāramitā samāptā ||`)
