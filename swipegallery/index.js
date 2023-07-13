@@ -5438,10 +5438,13 @@
         const startfrom = bsearchNumber(ptk2.defines[ele].linepos, from);
         const at = idtype.values.indexOf(_id, startfrom);
         const first = ptk2.defines[ele].linepos[at] || ptk2.defines[ele].linepos[0];
-        const last = ptk2.defines[ele].linepos[at + 1] || ptk2.header.eot;
-        if (first >= from && last <= to) {
+        let last = ptk2.defines[ele].linepos[at + 1] || ptk2.header.eot;
+        if (first >= from) {
           from = first;
-          to = last;
+          if (last > to && to !== ptk2.header.eot)
+            last = to;
+          else
+            to = last;
           out.push([first, last]);
         } else {
           out.push([0, 0]);
@@ -7401,7 +7404,6 @@
     }
     const address = (bk ? "bk#" + bk : "") + (folio ? "." : "") + (folio ? "folio#" + folio : "") + (pb ? ".pb#" + pb : "");
     const [from, to] = ptk2.rangeOfAddress(address);
-    console.log(address, from, to);
     if (from == to)
       return ["", from, to];
     await ptk2.loadLines([from, to + 1]);
@@ -7409,7 +7411,10 @@
     let firstline = lines[0];
     let lastline = lines[lines.length - 1];
     let m4 = firstline.match(/(\^pb\d+)/);
-    lines[0] = firstline.slice(m4.index + m4[1].length);
+    if (m4)
+      lines[0] = firstline.slice(m4?.index + m4[1].length);
+    else
+      console.log("error page", pb);
     m4 = lastline.match(/(\^pb\d+)/);
     let till = m4?.index || 0;
     let remain = "";
@@ -16004,7 +16009,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const arrbkid = ptk2.defines.folio.fields.id.values;
       for (let i = 0; i < arrbkid.length; i++) {
         if (arrbkid[i].startsWith(m4[1])) {
-          juans.push(arrbkid[i].slice(m4[1].length));
+          const j2 = arrbkid[i].slice(m4[1].length);
+          if (parseInt(j2))
+            juans.push(j2);
         }
       }
     };
@@ -16332,8 +16339,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const out = [];
       if (!address2)
         return out;
-      const m4 = address2.match(/(folio#?[a-z_\d]+)/);
-      const [from, to] = ptk2.rangeOfAddress(m4[1]);
+      const m4 = address2.match(/folio#([a-z_]+)(\d*)/);
+      if (!m4)
+        return [];
+      const bk = m4[1];
+      const juan = m4[2] || "";
+      const addr = "bk#" + bk + ".folio#" + bk + juan;
+      const [from, to] = ptk2.rangeOfAddress(addr);
       const ck = ptk2.defines.ck;
       const at = bsearchNumber(ck.linepos, from);
       const at2 = bsearchNumber(ck.linepos, to);
