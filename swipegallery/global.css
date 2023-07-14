@@ -49,7 +49,7 @@ select {font-size:4vh}
 .paralleltext {font-size:3vh;}
 .toctext {font-size:3vh;}
 
-.tocitem{margin-left: 0.5em}
+.tocitem{margin-left: 0.5em;cursor: pointer;}
 .dicttext {font-size:4vh}
 .dictentry {font-size:6vh}
 .endmarker {width:100%;text-align: center;height: 3em;}

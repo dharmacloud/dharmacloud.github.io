@@ -7512,16 +7512,16 @@
     const at = bsearchNumber(ck.linepos, line + 1);
     return ck.fields.id.values[at];
   };
-  var folio2ChunkLine = async (ptk2, foliotext2, from, cx, pos) => {
+  var folio2ChunkLine = async (ptk2, foliotext, from, cx, pos) => {
     const out = [];
-    if (!foliotext2.length)
+    if (!foliotext.length)
       return "";
     for (let i = 0; i <= cx; i++) {
-      foliotext2[i] = foliotext2[i] || "";
+      foliotext[i] = foliotext[i] || "";
       if (i == cx) {
-        out.push(foliotext2[i].slice(0, pos));
+        out.push(foliotext[i].slice(0, pos));
       } else {
-        out.push(foliotext2[i]);
+        out.push(foliotext[i]);
       }
     }
     let startline = from;
@@ -7557,11 +7557,11 @@
       return "";
     }
   };
-  var extractPuncPos = (foliotext2, foliolines = 5, validpuncs = VALIDPUNCS) => {
+  var extractPuncPos = (foliotext, foliolines = 5, validpuncs = VALIDPUNCS) => {
     const puncs = [];
-    for (let i = 0; i < foliotext2.length; i++) {
+    for (let i = 0; i < foliotext.length; i++) {
       let ch = 0, ntag = 0, textsum = 0;
-      let [text2, tags] = parseOfftext(foliotext2[i]);
+      let [text2, tags] = parseOfftext(foliotext[i]);
       const isgatha = !!tags.filter((it) => it.name == "gatha").length;
       if (i >= foliolines)
         break;
@@ -8149,7 +8149,7 @@
     component_subscribe($$self, playing, ($$value) => $$invalidate(2, $playing = $$value));
     component_subscribe($$self, activepb, ($$value) => $$invalidate(3, $activepb = $$value));
     let { frame = {}, totalpages } = $$props;
-    let { foliotext: foliotext2 = [] } = $$props;
+    let { foliotext = [] } = $$props;
     const strips = new Array(folioLines());
     const timers = [];
     onDestroy(() => {
@@ -8222,7 +8222,7 @@
         const ele = document.getElementById("strip" + this.idx);
         if (!ele)
           return;
-        const chcount = concreateLength(foliotext2[i] || "");
+        const chcount = concreateLength(foliotext[i] || "");
         ele.style.height = Math.floor(chcount * (frame.height / fc)) + "px";
       }.bind({ idx: i, folio: get_store_value(activepb) });
       timers.push(setTimeout(fire, delay));
@@ -8243,7 +8243,7 @@
       if ("totalpages" in $$props2)
         $$invalidate(6, totalpages = $$props2.totalpages);
       if ("foliotext" in $$props2)
-        $$invalidate(7, foliotext2 = $$props2.foliotext);
+        $$invalidate(7, foliotext = $$props2.foliotext);
     };
     return [
       frame,
@@ -8253,7 +8253,7 @@
       strips,
       stripstyle,
       totalpages,
-      foliotext2
+      foliotext
     ];
   }
   var Transcriptlayer = class extends SvelteComponent {
@@ -11797,7 +11797,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     component_subscribe($$self, tapmark, ($$value) => $$invalidate(18, $tapmark = $$value));
     let { src } = $$props;
     let ptk2 = usePtk($activePtk);
-    let foliotext2 = "", foliofrom2 = 0, puncs = [], ready, images = [], hidepunc = false;
+    let foliotext = "", foliofrom = 0, puncs = [], ready, images = [], hidepunc = false;
     let { totalpages = 0 } = $$props;
     let { onTapText = function() {
     } } = $$props;
@@ -11863,11 +11863,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const updateFolioText = async () => {
       $$invalidate(6, hidepunc = true);
       const fl = folioLines();
-      $$invalidate(3, [foliotext2, foliofrom2] = await fetchFolioText(ptk2, $activefolioid, 1 + Math.floor($activepb)), foliotext2);
+      $$invalidate(3, [foliotext, foliofrom] = await fetchFolioText(ptk2, $activefolioid, 1 + Math.floor($activepb)), foliotext);
       setTimeout(
         () => {
           $$invalidate(6, hidepunc = false);
-          $$invalidate(4, puncs = extractPuncPos(foliotext2, fl));
+          $$invalidate(4, puncs = extractPuncPos(foliotext, fl));
         },
         200
       );
@@ -11907,8 +11907,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const [cx, cy] = getCharXY(x, y);
       const tappos = folioLines() * $folioChars * $activepb + cx * $folioChars + cy;
       tapmark.set(tappos);
-      let [t, pos] = getConcreatePos(foliotext2[cx], cy, foliotext2[cx + 1]);
-      const ck = await folio2ChunkLine(ptk2, foliotext2, foliofrom2, cx, pos);
+      let [t, pos] = getConcreatePos(foliotext[cx], cy, foliotext[cx + 1]);
+      const ck = await folio2ChunkLine(ptk2, foliotext, foliofrom, cx, pos);
       ;
       const address = "folio#" + $activefolioid + (ck ? "." + ck : "");
       t = t.replace(/([。！？：、．；，「『（ ])/g, "\u3000");
@@ -11980,7 +11980,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       totalpages,
       $activefolioid,
       $activepb,
-      foliotext2,
+      foliotext,
       puncs,
       ready,
       hidepunc,
@@ -13975,7 +13975,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         div = element("div");
-        t0 = text("\u7248\u672C\uFF1A2023.7.13 ");
+        t0 = text("\u7248\u672C\uFF1A2023.7.14 ");
         create_component(switch_1.$$.fragment);
         t1 = space();
         if_block.c();
@@ -15092,18 +15092,18 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const pbid = pb.fields.id.values[pbtag];
     await goPb(ptk2, pbid, ck.fields.id.values[at]);
   };
-  var loadBook = (bk, func) => {
+  var loadFolio = (folioid, func) => {
     let timer = 0;
-    if (bk == get_store_value(activefolioid))
-      func && func(bk);
+    if (folioid == get_store_value(activefolioid))
+      func && func(folioid);
     else {
       loadingbook.set(true);
-      activefolioid.set(bk);
+      activefolioid.set(folioid);
       timer = setInterval(() => {
         if (!get_store_value(loadingbook)) {
           clearInterval(timer);
           setTimeout(() => {
-            func && func(bk);
+            func && func(folioid);
           }, 300);
         }
       }, 500);
@@ -15113,13 +15113,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const newpb = parseInt(pbid) - 1;
     activepb.set(newpb);
     if (ck) {
-      [foliotext, foliofrom] = await fetchFolioText(ptk2, get_store_value(activefolioid), newfolio + 1);
+      console.log("gopb", ck);
+      const [foliotext] = await fetchFolioText(ptk2, get_store_value(activefolioid), newpb + 1);
       const fc = get_store_value(folioChars);
       const fl = folioLines();
       for (let i = 0; i < foliotext.length; i++) {
         const at2 = foliotext[i].indexOf("^ck" + ck);
         if (~at2) {
-          const r = newfolio * fl * fc + i * fc + concreateLength(foliotext[i].slice(0, at2));
+          const r = newpb * fl * fc + i * fc + concreateLength(foliotext[i].slice(0, at2));
           tapmark.set(r);
           break;
         }
@@ -15185,7 +15186,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   function create_each_block11(ctx) {
     let span;
     let t0_value = booknameOf(
-      /*bk*/
+      /*folioid*/
       ctx[12]
     ) + "";
     let t0;
@@ -15202,7 +15203,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       return (
         /*click_handler_1*/
         ctx[8](
-          /*bk*/
+          /*folioid*/
           ctx[12]
         )
       );
@@ -15230,7 +15231,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ctx = new_ctx;
         if (dirty & /*others*/
         1 && t0_value !== (t0_value = booknameOf(
-          /*bk*/
+          /*folioid*/
           ctx[12]
         ) + ""))
           set_data(t0, t0_value);
@@ -15390,22 +15391,22 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       goPb(ptk2, pb);
       closePopup();
     };
-    const firstfavorite = (bk) => {
-      const favors = $favorites[bk];
+    const firstfavorite = (folioid) => {
+      const favors = $favorites[folioid];
       for (let i = 0; i < favors.length; i++) {
         if (favors[i])
           return i;
       }
     };
-    const gootherfavorite = (bk) => {
+    const gootherfavorite = (folioid) => {
       closePopup();
-      loadBook(bk, () => {
-        const first = firstfavorite(bk);
+      loadFolio(folioid, () => {
+        const first = firstfavorite(folioid);
         goPb(ptk2, first + 1);
       });
     };
     const click_handler = (item) => gofavorite(item + 1);
-    const click_handler_1 = (bk) => gootherfavorite(bk);
+    const click_handler_1 = (folioid) => gootherfavorite(folioid);
     $$self.$$set = ($$props2) => {
       if ("ptk" in $$props2)
         $$invalidate(4, ptk2 = $$props2.ptk);
@@ -16051,7 +16052,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const gojuan = (juan) => {
       const bkid = $activefolioid;
       const m4 = bkid.match(/([a-z]+)(\d+$)/);
-      loadBook(m4[1] + juan, function() {
+      loadFolio(m4[1] + juan, function() {
         goPb(ptk2, "1");
         closePopup();
       });
@@ -16309,7 +16310,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           add_flush_callback(() => updating_value = false);
         }
         slider.$set(slider_changes);
-        if (dirty & /*cknow, tocitems, goPb, ptk, styledNumber*/
+        if (dirty & /*cknow, tocitems, goBookPb, ptk, styledNumber*/
         153) {
           each_value = /*tocitems*/
           ctx2[3];
@@ -16365,7 +16366,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const setFolio = async (e) => {
       const v = e.detail[0];
       activepb.set(parseInt(v));
-      $$invalidate(8, address = "bk#" + $activefolioid + ".ck#" + chunkOfFolio(ptk2, $activefolioid, v));
+      $$invalidate(8, address = "folio#" + $activefolioid + ".ck#" + chunkOfFolio(ptk2, $activefolioid, v));
     };
     let tocitems = [], cknow;
     const getTocItems = (address2) => {
@@ -16376,9 +16377,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if (!m4)
         return [];
       const bk = m4[1];
-      const juan = m4[2] || "";
-      const addr = "bk#" + bk + ".folio#" + bk + juan;
-      const [from, to] = ptk2.rangeOfAddress(addr);
+      const bookaddr = "bk#" + bk;
+      const [from, to] = ptk2.rangeOfAddress(bookaddr);
       const ck = ptk2.defines.ck;
       const at = bsearchNumber(ck.linepos, from);
       const at2 = bsearchNumber(ck.linepos, to);
@@ -16396,15 +16396,23 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if (m4)
         return m4[1];
     };
-    const goPb2 = (ptk3, at) => {
-      goPbAt(ptk3, at);
+    const goBookPb = (ptk3, at) => {
+      const ck = ptk3.defines.ck;
+      const folioid = ptk3.nearestTag(ck.linepos[at] + 1, "folio", "id");
+      if (folioid !== $activefolioid) {
+        loadFolio(folioid, () => {
+          goPbAt(ptk3, at);
+        });
+      } else {
+        goPbAt(ptk3, at);
+      }
       closePopup();
     };
     function slider_value_binding(value) {
       folio = value;
       $$invalidate(2, folio);
     }
-    const click_handler = (item) => goPb2(ptk2, item.at);
+    const click_handler = (item) => goBookPb(ptk2, item.at);
     $$self.$$set = ($$props2) => {
       if ("ptk" in $$props2)
         $$invalidate(0, ptk2 = $$props2.ptk);
@@ -16433,7 +16441,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       cknow,
       $maxfolio,
       setFolio,
-      goPb2,
+      goBookPb,
       address,
       slider_value_binding,
       click_handler
