@@ -10966,6 +10966,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         iframe = element("iframe");
+        set_style(iframe, "border", "none");
         attr(iframe, "class", "iframe svelte-q5fwfc");
         attr(iframe, "title", "wiki");
         if (!src_url_equal(iframe.src, iframe_src_value = /*src*/
@@ -11083,7 +11084,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let src = "";
     const setWikipedia = () => {
       const entry = entries[nentry][1];
-      $$invalidate(5, src = "https://zh.wikipedia.org/wiki/" + entry);
+      $$invalidate(5, src = "https://zh.wikipedia.org/w/index.php?action=render&title=" + entry);
     };
     const setOneline = () => {
       const entry = entries[nentry][1];
