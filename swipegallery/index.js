@@ -10657,9 +10657,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   // src/dictpopup.svelte
   function get_each_context5(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[12] = list[i][0];
-    child_ctx[13] = list[i][1];
-    child_ctx[15] = i;
+    child_ctx[13] = list[i][0];
+    child_ctx[14] = list[i][1];
+    child_ctx[16] = i;
     return child_ctx;
   }
   function create_if_block_12(ctx) {
@@ -10675,7 +10675,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let if_block0 = (
       /*fgdzd*/
       (ctx[1] || /*dfb*/
-      ctx[2]) && create_if_block_32(ctx)
+      ctx[2]) && create_if_block_42(ctx)
     );
     let if_block1 = (
       /*wikipedia*/
@@ -10697,12 +10697,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         attr(a0, "target", "_new");
         attr(a0, "href", a0_href_value = "https://www.google.com/search?q=" + encodeURI(
           /*entry*/
-          ctx[13]
+          ctx[14]
         ));
         attr(a1, "target", "_new");
         attr(a1, "href", a1_href_value = "https://www.baidu.com/s?wd=" + encodeURI(
           /*entry*/
-          ctx[13]
+          ctx[14]
         ));
       },
       m(target, anchor) {
@@ -10727,7 +10727,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block0) {
             if_block0.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_32(ctx2);
+            if_block0 = create_if_block_42(ctx2);
             if_block0.c();
             if_block0.m(t0.parentNode, t0);
           }
@@ -10753,14 +10753,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (dirty & /*entries*/
         8 && a0_href_value !== (a0_href_value = "https://www.google.com/search?q=" + encodeURI(
           /*entry*/
-          ctx2[13]
+          ctx2[14]
         ))) {
           attr(a0, "href", a0_href_value);
         }
         if (dirty & /*entries*/
         8 && a1_href_value !== (a1_href_value = "https://www.baidu.com/s?wd=" + encodeURI(
           /*entry*/
-          ctx2[13]
+          ctx2[14]
         ))) {
           attr(a1, "href", a1_href_value);
         }
@@ -10783,7 +10783,47 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_32(ctx) {
+  function create_if_block_42(ctx) {
+    let if_block_anchor;
+    function select_block_type(ctx2, dirty) {
+      if (
+        /*showing*/
+        ctx2[6] == "oneline"
+      )
+        return create_if_block_52;
+      return create_else_block_1;
+    }
+    let current_block_type = select_block_type(ctx, -1);
+    let if_block = current_block_type(ctx);
+    return {
+      c() {
+        if_block.c();
+        if_block_anchor = empty();
+      },
+      m(target, anchor) {
+        if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
+      },
+      p(ctx2, dirty) {
+        if (current_block_type === (current_block_type = select_block_type(ctx2, dirty)) && if_block) {
+          if_block.p(ctx2, dirty);
+        } else {
+          if_block.d(1);
+          if_block = current_block_type(ctx2);
+          if (if_block) {
+            if_block.c();
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        }
+      },
+      d(detaching) {
+        if_block.d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
+      }
+    };
+  }
+  function create_else_block_1(ctx) {
     let button;
     let mounted;
     let dispose;
@@ -10799,7 +10839,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             button,
             "click",
             /*setOneline*/
-            ctx[7]
+            ctx[8]
           );
           mounted = true;
         }
@@ -10813,7 +10853,76 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
+  function create_if_block_52(ctx) {
+    let a;
+    let t;
+    let a_href_value;
+    return {
+      c() {
+        a = element("a");
+        t = text("\u4E00\u884C");
+        attr(a, "target", "_new");
+        attr(a, "href", a_href_value = "https://buddhaspace.org/dict/index.php?keyword=" + /*entry*/
+        ctx[14]);
+      },
+      m(target, anchor) {
+        insert(target, a, anchor);
+        append(a, t);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*entries*/
+        8 && a_href_value !== (a_href_value = "https://buddhaspace.org/dict/index.php?keyword=" + /*entry*/
+        ctx2[14])) {
+          attr(a, "href", a_href_value);
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(a);
+      }
+    };
+  }
   function create_if_block_22(ctx) {
+    let if_block_anchor;
+    function select_block_type_1(ctx2, dirty) {
+      if (
+        /*showing*/
+        ctx2[6] == "wikipedia"
+      )
+        return create_if_block_32;
+      return create_else_block2;
+    }
+    let current_block_type = select_block_type_1(ctx, -1);
+    let if_block = current_block_type(ctx);
+    return {
+      c() {
+        if_block.c();
+        if_block_anchor = empty();
+      },
+      m(target, anchor) {
+        if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
+      },
+      p(ctx2, dirty) {
+        if (current_block_type === (current_block_type = select_block_type_1(ctx2, dirty)) && if_block) {
+          if_block.p(ctx2, dirty);
+        } else {
+          if_block.d(1);
+          if_block = current_block_type(ctx2);
+          if (if_block) {
+            if_block.c();
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        }
+      },
+      d(detaching) {
+        if_block.d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
+      }
+    };
+  }
+  function create_else_block2(ctx) {
     let button;
     let mounted;
     let dispose;
@@ -10829,7 +10938,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             button,
             "click",
             /*setWikipedia*/
-            ctx[6]
+            ctx[7]
           );
           mounted = true;
         }
@@ -10843,6 +10952,35 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
+  function create_if_block_32(ctx) {
+    let a;
+    let t;
+    let a_href_value;
+    return {
+      c() {
+        a = element("a");
+        t = text("Wiki");
+        attr(a, "target", "_new");
+        attr(a, "href", a_href_value = "https://zh.wikipedia.org/w/index.php?action=render&title=" + /*entry*/
+        ctx[14]);
+      },
+      m(target, anchor) {
+        insert(target, a, anchor);
+        append(a, t);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*entries*/
+        8 && a_href_value !== (a_href_value = "https://zh.wikipedia.org/w/index.php?action=render&title=" + /*entry*/
+        ctx2[14])) {
+          attr(a, "href", a_href_value);
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(a);
+      }
+    };
+  }
   function create_each_block5(ctx) {
     let span;
     let label;
@@ -10850,7 +10988,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let input_value_value;
     let t0_value = (
       /*entry*/
-      ctx[13] + ""
+      ctx[14] + ""
     );
     let t0;
     let t1;
@@ -10860,12 +10998,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let dispose;
     let if_block = (
       /*idx*/
-      ctx[15] == /*nentry*/
+      ctx[16] == /*nentry*/
       ctx[4] && create_if_block_12(ctx)
     );
     binding_group = init_binding_group(
       /*$$binding_groups*/
-      ctx[10][0]
+      ctx[11][0]
     );
     return {
       c() {
@@ -10880,13 +11018,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         attr(input, "type", "radio");
         attr(input, "name", "dict");
         input.__value = input_value_value = /*idx*/
-        ctx[15];
+        ctx[16];
         input.value = input.__value;
         toggle_class(
           span,
           "dictgroup",
           /*idx*/
-          ctx[15] == /*nentry*/
+          ctx[16] == /*nentry*/
           ctx[4]
         );
         binding_group.p(input);
@@ -10907,7 +11045,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             input,
             "change",
             /*input_change_handler*/
-            ctx[9]
+            ctx[10]
           );
           mounted = true;
         }
@@ -10920,11 +11058,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
         if (dirty & /*entries*/
         8 && t0_value !== (t0_value = /*entry*/
-        ctx2[13] + ""))
+        ctx2[14] + ""))
           set_data(t0, t0_value);
         if (
           /*idx*/
-          ctx2[15] == /*nentry*/
+          ctx2[16] == /*nentry*/
           ctx2[4]
         ) {
           if (if_block) {
@@ -10944,7 +11082,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             span,
             "dictgroup",
             /*idx*/
-            ctx2[15] == /*nentry*/
+            ctx2[16] == /*nentry*/
             ctx2[4]
           );
         }
@@ -11031,8 +11169,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if_block.m(div, null);
       },
       p(ctx2, [dirty]) {
-        if (dirty & /*nentry, encodeURI, entries, setWikipedia, wikipedia, setOneline, fgdzd, dfb*/
-        223) {
+        if (dirty & /*nentry, encodeURI, entries, showing, setWikipedia, wikipedia, setOneline, fgdzd, dfb*/
+        479) {
           each_value = /*entries*/
           ctx2[3];
           let i;
@@ -11081,13 +11219,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   function instance8($$self, $$props, $$invalidate) {
     let { entries = [], ptk: ptk2, wikipedia, fgdzd, dfb } = $$props;
     let nentry = 0;
-    let src = "";
+    let src = "", showing = "";
     const setWikipedia = () => {
       const entry = entries[nentry][1];
+      $$invalidate(6, showing = "wikipedia");
       $$invalidate(5, src = "https://zh.wikipedia.org/w/index.php?action=render&title=" + entry);
     };
     const setOneline = () => {
       const entry = entries[nentry][1];
+      $$invalidate(6, showing = "oneline");
       $$invalidate(5, src = "https://buddhaspace.org/dict/index.php?keyword=" + entry);
     };
     const availableDict = (n) => {
@@ -11110,7 +11250,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ("entries" in $$props2)
         $$invalidate(3, entries = $$props2.entries);
       if ("ptk" in $$props2)
-        $$invalidate(8, ptk2 = $$props2.ptk);
+        $$invalidate(9, ptk2 = $$props2.ptk);
       if ("wikipedia" in $$props2)
         $$invalidate(0, wikipedia = $$props2.wikipedia);
       if ("fgdzd" in $$props2)
@@ -11132,6 +11272,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       entries,
       nentry,
       src,
+      showing,
       setWikipedia,
       setOneline,
       ptk2,
@@ -11144,7 +11285,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       super();
       init(this, options, instance8, create_fragment7, safe_not_equal, {
         entries: 3,
-        ptk: 8,
+        ptk: 9,
         wikipedia: 0,
         fgdzd: 1,
         dfb: 2
@@ -12064,7 +12205,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     child_ctx[9] = list[i];
     return child_ctx;
   }
-  function create_else_block2(ctx) {
+  function create_else_block3(ctx) {
     let span2;
     let span1;
     let span0;
@@ -12435,7 +12576,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ctx2[2] == "slider"
       )
         return create_if_block_13;
-      return create_else_block2;
+      return create_else_block3;
     }
     let current_block_type = select_block_type(ctx, -1);
     let if_block = current_block_type(ctx);
@@ -12532,7 +12673,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     child_ctx[24] = list[i];
     return child_ctx;
   }
-  function create_else_block3(ctx) {
+  function create_else_block4(ctx) {
     let t;
     let current_block_type_index;
     let if_block;
@@ -12546,7 +12687,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     for (let i = 0; i < each_value.length; i += 1) {
       each_blocks[i] = create_each_block8(get_each_context8(ctx, each_value, i));
     }
-    const if_block_creators = [create_if_block_33, create_else_block_1];
+    const if_block_creators = [create_if_block_33, create_else_block_12];
     const if_blocks = [];
     function select_block_type_2(ctx2, dirty) {
       if (
@@ -12945,7 +13086,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_else_block_1(ctx) {
+  function create_else_block_12(ctx) {
     let br;
     let t0;
     let t1_value = (
@@ -12988,7 +13129,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current;
     let if_block0 = (
       /*value*/
-      ctx[2][0] > 0 && create_if_block_52(ctx)
+      ctx[2][0] > 0 && create_if_block_53(ctx)
     );
     function slider_value_binding(value) {
       ctx[15](value);
@@ -13008,7 +13149,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       /*setRemain*/
       ctx[12]
     );
-    let if_block1 = show_if && create_if_block_42(ctx);
+    let if_block1 = show_if && create_if_block_43(ctx);
     return {
       c() {
         br = element("br");
@@ -13065,7 +13206,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block0) {
             if_block0.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_52(ctx2);
+            if_block0 = create_if_block_53(ctx2);
             if_block0.c();
             if_block0.m(t3.parentNode, t3);
           }
@@ -13097,7 +13238,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block_42(ctx2);
+            if_block1 = create_if_block_43(ctx2);
             if_block1.c();
             transition_in(if_block1, 1);
             if_block1.m(t5.parentNode, t5);
@@ -13204,7 +13345,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_52(ctx) {
+  function create_if_block_53(ctx) {
     let t_value = (
       /*humanStoptime*/
       ctx[13](
@@ -13243,7 +13384,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_42(ctx) {
+  function create_if_block_43(ctx) {
     let switch_1;
     let updating_value;
     let current;
@@ -13333,7 +13474,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current_block_type_index;
     let if_block;
     let current;
-    const if_block_creators = [create_if_block6, create_else_block3];
+    const if_block_creators = [create_if_block6, create_else_block4];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (!/*$qqplayer*/
@@ -14010,7 +14151,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
 </g></svg>`;
 
   // src/about.svelte
-  function create_else_block4(ctx) {
+  function create_else_block5(ctx) {
     let t0;
     let a0;
     let t2;
@@ -14201,7 +14342,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ctx2[0] == "on"
       )
         return create_if_block7;
-      return create_else_block4;
+      return create_else_block5;
     }
     let current_block_type = select_block_type(ctx, -1);
     let if_block = current_block_type(ctx);
@@ -15323,7 +15464,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     child_ctx[16] = list[i];
     return child_ctx;
   }
-  function create_else_block5(ctx) {
+  function create_else_block6(ctx) {
     let t;
     return {
       c() {
@@ -15574,7 +15715,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ctx2[1].length
       )
         return create_if_block_15;
-      return create_else_block5;
+      return create_else_block6;
     }
     let current_block_type = select_block_type(ctx, -1);
     let if_block0 = current_block_type(ctx);
@@ -16031,7 +16172,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     child_ctx[12] = list[i];
     return child_ctx;
   }
-  function create_else_block6(ctx) {
+  function create_else_block7(ctx) {
     let t;
     let each_1_anchor;
     let each_value = (
@@ -16234,7 +16375,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let if_block;
     let if_block_anchor;
     let current;
-    const if_block_creators = [create_if_block11, create_if_block_17, create_else_block6];
+    const if_block_creators = [create_if_block11, create_if_block_17, create_else_block7];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -16739,8 +16880,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let if_block1_anchor;
     let mounted;
     let dispose;
-    let if_block0 = show_if_1 && create_if_block_53(ctx);
-    let if_block1 = show_if && create_if_block_43(ctx);
+    let if_block0 = show_if_1 && create_if_block_54(ctx);
+    let if_block1 = show_if && create_if_block_44(ctx);
     return {
       c() {
         if (if_block0)
@@ -16790,7 +16931,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block0) {
             if_block0.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_53(ctx2);
+            if_block0 = create_if_block_54(ctx2);
             if_block0.c();
             if_block0.m(t0.parentNode, t0);
           }
@@ -16817,7 +16958,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block1) {
             if_block1.p(ctx2, dirty);
           } else {
-            if_block1 = create_if_block_43(ctx2);
+            if_block1 = create_if_block_44(ctx2);
             if_block1.c();
             if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
           }
@@ -16844,7 +16985,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_53(ctx) {
+  function create_if_block_54(ctx) {
     let span;
     let mounted;
     let dispose;
@@ -16891,7 +17032,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_43(ctx) {
+  function create_if_block_44(ctx) {
     let span;
     let mounted;
     let dispose;
@@ -18308,7 +18449,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var paiji_default = Paiji;
 
   // src/app.svelte
-  function create_else_block7(ctx) {
+  function create_else_block8(ctx) {
     let span;
     return {
       c() {
@@ -18502,7 +18643,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_44(ctx) {
+  function create_if_block_45(ctx) {
     let paiji;
     let current;
     paiji = new paiji_default({});
@@ -18538,7 +18679,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ctx[7] && !/*$playing*/
       ctx[8] && !/*showdict*/
       ctx[2] && !/*shownewbie*/
-      ctx[3] && create_if_block_44(ctx)
+      ctx[3] && create_if_block_45(ctx)
     );
     swipezipimage = new swipezipimage_default({
       props: {
@@ -18588,7 +18729,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block_44(ctx2);
+            if_block = create_if_block_45(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(t.parentNode, t);
@@ -18755,7 +18896,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current_block_type_index;
     let if_block;
     let current;
-    const if_block_creators = [create_if_block13, create_else_block7];
+    const if_block_creators = [create_if_block13, create_else_block8];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (

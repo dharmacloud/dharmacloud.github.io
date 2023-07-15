@@ -101,8 +101,8 @@ select {font-size:4vh}
   font-size:4vh;
 }
 .pagenumber {position:absolute ; bottom:4vh;font-size: 5vh;left:0.5em;z-index: 99;color:brown}
-.playbtn {cursor:pointer; position:absolute ; top:2vh;font-size: 6vh;left:0.5em;z-index: 99;color:brown;opacity: 0.7;}
-.favoritebtn {cursor:pointer; position:absolute ; top:2vh;font-size: 6vh;right:0.5em;z-index: 99;color:brown;opacity: 0.7;}
+.playbtn {cursor:pointer; position:absolute ; top:1vh;font-size: 5vh;left:0.5em;z-index: 99;color:brown;opacity: 0.7;}
+.favoritebtn {cursor:pointer; position:absolute ; top:1vh;font-size: 5vh;right:0.5em;z-index: 99;color:brown;opacity: 0.7;}
 .favoriteitem {cursor:pointer;padding-right:0.3em;padding-left:0.3em}
 @keyframes blinker {
   50% {
