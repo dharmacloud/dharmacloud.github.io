@@ -10657,9 +10657,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   // src/dictpopup.svelte
   function get_each_context5(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[13] = list[i][0];
-    child_ctx[14] = list[i][1];
-    child_ctx[16] = i;
+    child_ctx[17] = list[i][0];
+    child_ctx[18] = list[i][1];
+    child_ctx[20] = i;
     return child_ctx;
   }
   function create_if_block_12(ctx) {
@@ -10695,14 +10695,16 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         a1 = element("a");
         t4 = text("\u767E\u5EA6");
         attr(a0, "target", "_new");
-        attr(a0, "href", a0_href_value = "https://www.google.com/search?q=" + encodeURI(
+        attr(a0, "href", a0_href_value = /*googlelink*/
+        ctx[9](
           /*entry*/
-          ctx[14]
+          ctx[18]
         ));
         attr(a1, "target", "_new");
-        attr(a1, "href", a1_href_value = "https://www.baidu.com/s?wd=" + encodeURI(
+        attr(a1, "href", a1_href_value = /*baidulink*/
+        ctx[10](
           /*entry*/
-          ctx[14]
+          ctx[18]
         ));
       },
       m(target, anchor) {
@@ -10751,16 +10753,18 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if_block1 = null;
         }
         if (dirty & /*entries*/
-        8 && a0_href_value !== (a0_href_value = "https://www.google.com/search?q=" + encodeURI(
+        8 && a0_href_value !== (a0_href_value = /*googlelink*/
+        ctx2[9](
           /*entry*/
-          ctx2[14]
+          ctx2[18]
         ))) {
           attr(a0, "href", a0_href_value);
         }
         if (dirty & /*entries*/
-        8 && a1_href_value !== (a1_href_value = "https://www.baidu.com/s?wd=" + encodeURI(
+        8 && a1_href_value !== (a1_href_value = /*baidulink*/
+        ctx2[10](
           /*entry*/
-          ctx2[14]
+          ctx2[18]
         ))) {
           attr(a1, "href", a1_href_value);
         }
@@ -10839,7 +10843,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             button,
             "click",
             /*setOneline*/
-            ctx[8]
+            ctx[12]
           );
           mounted = true;
         }
@@ -10862,8 +10866,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         a = element("a");
         t = text("\u4E00\u884C");
         attr(a, "target", "_new");
-        attr(a, "href", a_href_value = "https://buddhaspace.org/dict/index.php?keyword=" + /*entry*/
-        ctx[14]);
+        attr(a, "href", a_href_value = /*onelinelink*/
+        ctx[8](
+          /*entry*/
+          ctx[18]
+        ));
       },
       m(target, anchor) {
         insert(target, a, anchor);
@@ -10871,8 +10878,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, dirty) {
         if (dirty & /*entries*/
-        8 && a_href_value !== (a_href_value = "https://buddhaspace.org/dict/index.php?keyword=" + /*entry*/
-        ctx2[14])) {
+        8 && a_href_value !== (a_href_value = /*onelinelink*/
+        ctx2[8](
+          /*entry*/
+          ctx2[18]
+        ))) {
           attr(a, "href", a_href_value);
         }
       },
@@ -10938,7 +10948,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             button,
             "click",
             /*setWikipedia*/
-            ctx[7]
+            ctx[11]
           );
           mounted = true;
         }
@@ -10961,8 +10971,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         a = element("a");
         t = text("Wiki");
         attr(a, "target", "_new");
-        attr(a, "href", a_href_value = "https://zh.wikipedia.org/w/index.php?action=render&title=" + /*entry*/
-        ctx[14]);
+        attr(a, "href", a_href_value = /*wikilink*/
+        ctx[7](
+          /*entry*/
+          ctx[18]
+        ));
       },
       m(target, anchor) {
         insert(target, a, anchor);
@@ -10970,8 +10983,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, dirty) {
         if (dirty & /*entries*/
-        8 && a_href_value !== (a_href_value = "https://zh.wikipedia.org/w/index.php?action=render&title=" + /*entry*/
-        ctx2[14])) {
+        8 && a_href_value !== (a_href_value = /*wikilink*/
+        ctx2[7](
+          /*entry*/
+          ctx2[18]
+        ))) {
           attr(a, "href", a_href_value);
         }
       },
@@ -10988,7 +11004,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let input_value_value;
     let t0_value = (
       /*entry*/
-      ctx[14] + ""
+      ctx[18] + ""
     );
     let t0;
     let t1;
@@ -10998,12 +11014,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let dispose;
     let if_block = (
       /*idx*/
-      ctx[16] == /*nentry*/
+      ctx[20] == /*nentry*/
       ctx[4] && create_if_block_12(ctx)
     );
     binding_group = init_binding_group(
       /*$$binding_groups*/
-      ctx[11][0]
+      ctx[15][0]
     );
     return {
       c() {
@@ -11018,13 +11034,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         attr(input, "type", "radio");
         attr(input, "name", "dict");
         input.__value = input_value_value = /*idx*/
-        ctx[16];
+        ctx[20];
         input.value = input.__value;
         toggle_class(
           span,
           "dictgroup",
           /*idx*/
-          ctx[16] == /*nentry*/
+          ctx[20] == /*nentry*/
           ctx[4]
         );
         binding_group.p(input);
@@ -11045,7 +11061,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             input,
             "change",
             /*input_change_handler*/
-            ctx[10]
+            ctx[14]
           );
           mounted = true;
         }
@@ -11058,11 +11074,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
         if (dirty & /*entries*/
         8 && t0_value !== (t0_value = /*entry*/
-        ctx2[14] + ""))
+        ctx2[18] + ""))
           set_data(t0, t0_value);
         if (
           /*idx*/
-          ctx2[16] == /*nentry*/
+          ctx2[20] == /*nentry*/
           ctx2[4]
         ) {
           if (if_block) {
@@ -11082,7 +11098,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             span,
             "dictgroup",
             /*idx*/
-            ctx2[16] == /*nentry*/
+            ctx2[20] == /*nentry*/
             ctx2[4]
           );
         }
@@ -11169,8 +11185,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if_block.m(div, null);
       },
       p(ctx2, [dirty]) {
-        if (dirty & /*nentry, encodeURI, entries, showing, setWikipedia, wikipedia, setOneline, fgdzd, dfb*/
-        479) {
+        if (dirty & /*nentry, baidulink, entries, googlelink, wikilink, showing, setWikipedia, wikipedia, onelinelink, setOneline, fgdzd, dfb*/
+        8159) {
           each_value = /*entries*/
           ctx2[3];
           let i;
@@ -11220,15 +11236,19 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let { entries = [], ptk: ptk2, wikipedia, fgdzd, dfb } = $$props;
     let nentry = 0;
     let src = "", showing = "";
+    const wikilink = (entry) => "https://zh.wikipedia.org/w/index.php?action=render&title=" + encodeURIComponent(entry);
+    const onelinelink = (entry) => "https://buddhaspace.org/dict/index.php?keyword=" + encodeURIComponent(entry);
+    const googlelink = (entry) => "https://www.google.com/search?q=" + encodeURIComponent(entry);
+    const baidulink = (entry) => "https://www.baidu.com/s?wd=" + encodeURIComponent(entry);
     const setWikipedia = () => {
       const entry = entries[nentry][1];
       $$invalidate(6, showing = "wikipedia");
-      $$invalidate(5, src = "https://zh.wikipedia.org/w/index.php?action=render&title=" + entry);
+      $$invalidate(5, src = wikilink(entry));
     };
     const setOneline = () => {
       const entry = entries[nentry][1];
       $$invalidate(6, showing = "oneline");
-      $$invalidate(5, src = "https://buddhaspace.org/dict/index.php?keyword=" + entry);
+      $$invalidate(5, src = onelinelink(entry));
     };
     const availableDict = (n) => {
       const at = entries[n][2];
@@ -11250,7 +11270,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ("entries" in $$props2)
         $$invalidate(3, entries = $$props2.entries);
       if ("ptk" in $$props2)
-        $$invalidate(9, ptk2 = $$props2.ptk);
+        $$invalidate(13, ptk2 = $$props2.ptk);
       if ("wikipedia" in $$props2)
         $$invalidate(0, wikipedia = $$props2.wikipedia);
       if ("fgdzd" in $$props2)
@@ -11273,6 +11293,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       nentry,
       src,
       showing,
+      wikilink,
+      onelinelink,
+      googlelink,
+      baidulink,
       setWikipedia,
       setOneline,
       ptk2,
@@ -11285,7 +11309,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       super();
       init(this, options, instance8, create_fragment7, safe_not_equal, {
         entries: 3,
-        ptk: 9,
+        ptk: 13,
         wikipedia: 0,
         fgdzd: 1,
         dfb: 2
