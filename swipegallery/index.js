@@ -14305,19 +14305,21 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t0;
     let br0;
     let t1;
-    let a0;
-    let t3;
-    let a1;
-    let t5;
     let br1;
+    let t2;
+    let a0;
+    let t4;
+    let a1;
     let t6;
-    let a2;
-    let t8;
     let br2;
+    let t7;
+    let a2;
     let t9;
+    let br3;
+    let t10;
     let switch0;
     let updating_value;
-    let t10;
+    let t11;
     let switch1;
     let updating_value_1;
     let current;
@@ -14357,24 +14359,26 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     binding_callbacks.push(() => bind(switch1, "value", switch1_value_binding));
     return {
       c() {
-        t0 = text("\u672C\u5716\u6587\u5C0D\u7167\u6578\u64DA\u5EAB\u4E3B\u8981\u57FA\u65BC\u4EE5\u4E0B\u7D20\u6750\uFF1A\n");
+        t0 = text("\u{1F4DC}\u539F\u6587\u{1F500}\u7570\u8B6F\u{1F4DA}\u96C6\u8A3B\n");
         br0 = element("br");
-        t1 = text("\u6C38\u6A02\u5357\u5317\u85CF(\u5C71\u6771\u7701\u5716\u66F8\u9928)\u3001\u91D1\u525B\u7D93\u96C6\u8A3B(\u6731\u68E3)\u3001\u68B5\u6587\u539F\u5178(");
+        t1 = text("\u672C\u5716\u6587\u5C0D\u7167\u6578\u64DA\u5EAB\u4E3B\u8981\u57FA\u65BC\u4EE5\u4E0B\u7D20\u6750\uFF1A\n");
+        br1 = element("br");
+        t2 = text("\u6C38\u6A02\u5357\u5317\u85CF(\u5C71\u6771\u7701\u5716\u66F8\u9928)\u3001\u91D1\u525B\u7D93\u96C6\u8A3B(\u6731\u68E3)\u3001\u68B5\u6587\u539F\u5178(");
         a0 = element("a");
         a0.textContent = "DSBC";
-        t3 = text(", ");
+        t4 = text(", ");
         a1 = element("a");
         a1.textContent = "Ancient Buddhist Texts";
-        t5 = text(")\u3001\n\u7D93\u6587\u65B0\u5F0F\u6A19\u9EDE(CBETA)\u3001\u68B5\u6F22\u4F5B\u7D93\u5C0D\u52D8\u53E2\u66F8\uFF08\u793E\u6703\u79D1\u5B78\u51FA\u7248\u793E\uFF09\u3001\u7DAD\u57FA\u767E\u79D1\u53CA\u5404\u7A2E\u4F5B\u5B78\u8A5E\u5178\u4E4B\u8A5E\u689D\u3002\n");
-        br1 = element("br");
-        t6 = text("\u6388\u6B0A\u65B9\u5F0F\uFF1A");
+        t6 = text(")\u3001\n\u7D93\u6587\u65B0\u5F0F\u6A19\u9EDE(CBETA)\u3001\u68B5\u6F22\u4F5B\u7D93\u5C0D\u52D8\u53E2\u66F8\uFF08\u793E\u6703\u79D1\u5B78\u51FA\u7248\u793E\uFF09\u3001\u7DAD\u57FA\u767E\u79D1\u53CA\u5404\u7A2E\u4F5B\u5B78\u8A5E\u5178\u4E4B\u8A5E\u689D\u3002\n");
+        br2 = element("br");
+        t7 = text("\u6388\u6B0A\u65B9\u5F0F\uFF1A");
         a2 = element("a");
         a2.textContent = "Creative Common Zero";
-        t8 = text("\u3002\n");
-        br2 = element("br");
-        t9 = text("\u6578\u5B57\u52A0\u5DE5\uFF1A\u6309\u624B\u6A5F\u6BD4\u4F8B\u88C1\u5716\u53CA\u4FEE\u5716\u3001\u6587\u5B57\u8207\u5716\u7247\u9010\u884C\u5C0D\u9F4A\u3001\u539F\u6587\u53CA\u5404\u7A2E\u8B6F\u672C\u9010\u53E5\u5C0D\u9F4A\u3001\u8AA6\u7D93\u5F71\u7247\u6642\u9593\u8EF8\u3002\n");
+        t9 = text("\u3002\n");
+        br3 = element("br");
+        t10 = text("\u6578\u5B57\u52A0\u5DE5\uFF1A\u6309\u624B\u6A5F\u6BD4\u4F8B\u88C1\u5716\u53CA\u4FEE\u5716\u3001\u6587\u5B57\u8207\u5716\u7247\u9010\u884C\u5C0D\u9F4A\u3001\u539F\u6587\u53CA\u5404\u7A2E\u8B6F\u672C\u9010\u53E5\u5C0D\u9F4A\u3001\u8AA6\u7D93\u5F71\u7247\u6642\u9593\u8EF8\u3002\n");
         create_component(switch0.$$.fragment);
-        t10 = space();
+        t11 = space();
         create_component(switch1.$$.fragment);
         attr(a0, "target", "_new");
         attr(a0, "href", "https://www.dsbcproject.org/");
@@ -14386,18 +14390,20 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         insert(target, t0, anchor);
         insert(target, br0, anchor);
         insert(target, t1, anchor);
-        insert(target, a0, anchor);
-        insert(target, t3, anchor);
-        insert(target, a1, anchor);
-        insert(target, t5, anchor);
         insert(target, br1, anchor);
+        insert(target, t2, anchor);
+        insert(target, a0, anchor);
+        insert(target, t4, anchor);
+        insert(target, a1, anchor);
         insert(target, t6, anchor);
-        insert(target, a2, anchor);
-        insert(target, t8, anchor);
         insert(target, br2, anchor);
+        insert(target, t7, anchor);
+        insert(target, a2, anchor);
         insert(target, t9, anchor);
-        mount_component(switch0, target, anchor);
+        insert(target, br3, anchor);
         insert(target, t10, anchor);
+        mount_component(switch0, target, anchor);
+        insert(target, t11, anchor);
         mount_component(switch1, target, anchor);
         current = true;
       },
@@ -14441,28 +14447,32 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (detaching)
           detach(t1);
         if (detaching)
+          detach(br1);
+        if (detaching)
+          detach(t2);
+        if (detaching)
           detach(a0);
         if (detaching)
-          detach(t3);
+          detach(t4);
         if (detaching)
           detach(a1);
         if (detaching)
-          detach(t5);
-        if (detaching)
-          detach(br1);
-        if (detaching)
           detach(t6);
-        if (detaching)
-          detach(a2);
-        if (detaching)
-          detach(t8);
         if (detaching)
           detach(br2);
         if (detaching)
+          detach(t7);
+        if (detaching)
+          detach(a2);
+        if (detaching)
           detach(t9);
-        destroy_component(switch0, detaching);
+        if (detaching)
+          detach(br3);
         if (detaching)
           detach(t10);
+        destroy_component(switch0, detaching);
+        if (detaching)
+          detach(t11);
         destroy_component(switch1, detaching);
       }
     };
@@ -18447,12 +18457,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let br3;
     let t5;
     let div0;
+    let t8;
+    let br5;
     let t9;
     let br6;
-    let t10;
-    let br7;
     let button;
-    let t12;
+    let t11;
     let switch_1;
     let updating_value;
     let current;
@@ -18492,15 +18502,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t5 = text("\u5DE6\u53F3\u6ED1\u52D5\u7FFB\u9801\uFF0C\u266A\u5377\u9996\u8D77\u8AA6  \u2661\u52A0\u5165\u66F8\u7C64\uFF0C\u518D\u9EDE\u4E00\u6B21\u53D6\u6D88\uFF0C\u9EDE\u6587\u5B57\u67E5\u5B57\u5178\uFF0C\u4E26\u986F\u793A\u529F\u80FD\u8868\u3002\n");
         div0 = element("div");
         div0.innerHTML = `\u2699\uFE0F\u8A2D\u7F6E\u{1F4D3}\u7D93\u5377\u{1F9ED}\u5C0E\u5F15
-<br/>\u2764\uFE0F\u66F8\u7C64\u{1F3B5}\u8AA6\u7D93\u{1F50E}\u8A5E\u5178
-<br/>\u{1F4DC}\u539F\u6587\u{1F500}\u7570\u8B6F\u{1F4DA}\u96C6\u8A3B`;
-        t9 = space();
+<br/>\u2764\uFE0F\u66F8\u7C64\u{1F3B5}\u8AA6\u7D93\u{1F50E}\u8A5E\u5178`;
+        t8 = space();
+        br5 = element("br");
+        t9 = text("\u9019\u662F\u53EF\u4EE5\u81EA\u7531\u5206\u4EAB\u7684\u7D50\u7DE3\u54C1\uFF0C\u4E0D\u6703\u6536\u96C6\u500B\u4EBA\u8CC7\u8A0A\uFF0C\u4F7F\u7528\u672C\u8EDF\u4EF6\u6240\u7522\u751F\u7684\u4EFB\u4F55\u7D50\u679C\u8ACB\u81EA\u884C\u627F\u64D4\u3002\n");
         br6 = element("br");
-        t10 = text("\u9019\u662F\u53EF\u4EE5\u81EA\u7531\u5206\u4EAB\u7684\u7D50\u7DE3\u54C1\uFF0C\u4E0D\u6703\u6536\u96C6\u500B\u4EBA\u8CC7\u8A0A\uFF0C\u4F7F\u7528\u672C\u8EDF\u4EF6\u6240\u7522\u751F\u7684\u4EFB\u4F55\u7D50\u679C\u8ACB\u81EA\u884C\u627F\u64D4\u3002\n");
-        br7 = element("br");
         button = element("button");
         button.textContent = "\u540C\u610F";
-        t12 = space();
+        t11 = space();
         create_component(switch_1.$$.fragment);
         attr(span, "class", "welcome");
         set_style(div0, "color", "white");
@@ -18524,12 +18533,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         append(div1, br3);
         append(div1, t5);
         append(div1, div0);
+        append(div1, t8);
+        append(div1, br5);
         append(div1, t9);
         append(div1, br6);
-        append(div1, t10);
-        append(div1, br7);
         append(div1, button);
-        append(div1, t12);
+        append(div1, t11);
         mount_component(switch_1, div1, null);
         current = true;
         if (!mounted) {
