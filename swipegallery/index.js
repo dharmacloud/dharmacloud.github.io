@@ -9737,7 +9737,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let span;
     let t_value = (
       /*$videoid*/
-      ctx[14] ? "\u23F9" : "\u{1F3B5}"
+      ctx[14] ? "\u25FC" : "\u266A"
     );
     let t;
     let mounted;
@@ -9764,7 +9764,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         if (dirty[0] & /*$videoid*/
         16384 && t_value !== (t_value = /*$videoid*/
-        ctx2[14] ? "\u23F9" : "\u{1F3B5}"))
+        ctx2[14] ? "\u25FC" : "\u266A"))
           set_data(t, t_value);
       },
       d(detaching) {
