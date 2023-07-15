@@ -7716,14 +7716,17 @@
     const newbie2 = localStorage.getItem(AppPrefix + "newbie") || "on";
     const playnextjuan2 = localStorage.getItem(AppPrefix + "playnextjuan") || "on";
     let _favorites = localStorage.getItem(AppPrefix + "favorites") || "{}";
-    let favorites2 = {};
+    let _prefervideo = localStorage.getItem(AppPrefix + "prefervideo") || "{}";
+    let favorites2 = {}, prefervideo2 = {};
     try {
       favorites2 = JSON.parse(_favorites);
+      prefervideo2 = JSON.parse(_prefervideo);
     } catch (e) {
       console.log(e);
       favorites2 = {};
+      prefervideo2 = {};
     }
-    return { activefolioid: activefolioid2, advancemode: advancemode2, videohost, newbie: newbie2, favorites: favorites2, playnextjuan: playnextjuan2 };
+    return { activefolioid: activefolioid2, advancemode: advancemode2, videohost, newbie: newbie2, favorites: favorites2, playnextjuan: playnextjuan2, prefervideo: prefervideo2 };
   };
   var saveSettings = () => {
     for (let key in settingsToBeSave) {
@@ -7852,6 +7855,7 @@
   var activefolioid = writable(settings.activefolioid);
   var maxfolio = writable(0);
   var favorites = writable(settings.favorites);
+  var prefervideo = writable(settings.prefervideo);
   var isAndroid = writable(false);
   var mediaurls = writable([silence]);
   var ytplayer = writable(null);
@@ -7893,6 +7897,7 @@
   advancemode.subscribe((advancemode2) => updateSettings({ advancemode: advancemode2 }));
   newbie.subscribe((newbie2) => updateSettings({ newbie: newbie2 }));
   favorites.subscribe((favorites2) => updateSettings({ favorites: favorites2 }));
+  prefervideo.subscribe((prefervideo2) => updateSettings({ prefervideo: prefervideo2 }));
   var findByVideoId = (id, column = "timestamp") => {
     const ptk2 = usePtk("dc");
     if (!ptk2.columns[column])
@@ -7953,6 +7958,11 @@
       remainrollback.set(-1);
     if (!vid)
       stopVideo();
+    else {
+      const prefer = get_store_value(prefervideo);
+      prefer[get_store_value(activefolioid)] = vid;
+      prefervideo.set(Object.assign({}, prefer));
+    }
     videoid.set(vid || "");
   };
 
@@ -9468,8 +9478,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   // src/swipezipimage.svelte
   function get_each_context4(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[40] = list[i];
-    child_ctx[42] = i;
+    child_ctx[41] = list[i];
+    child_ctx[43] = i;
     return child_ctx;
   }
   function create_else_block(ctx) {
@@ -9565,7 +9575,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           ) }
         ]) : {};
         if (dirty[1] & /*$$scope*/
-        4096) {
+        8192) {
           swipe_changes.$$scope = { dirty, ctx: ctx2 };
         }
         swipe.$set(swipe_changes);
@@ -9602,7 +9612,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ctx[20][
           /*images*/
           ctx[20].length - /*idx*/
-          ctx[42] - 1
+          ctx[43] - 1
         ]))
           attr(img, "src", img_src_value);
       },
@@ -9636,7 +9646,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         const swipeitem_changes = {};
         if (dirty[1] & /*$$scope*/
-        4096) {
+        8192) {
           swipeitem_changes.$$scope = { dirty, ctx: ctx2 };
         }
         swipeitem.$set(swipeitem_changes);
@@ -10393,6 +10403,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let audiolist;
     let $activefolioid;
     let $activepb;
+    let $prefervideo;
     let $favorites;
     let $activePtk;
     let $folioChars;
@@ -10405,8 +10416,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let $tapmark;
     component_subscribe($$self, activefolioid, ($$value) => $$invalidate(1, $activefolioid = $$value));
     component_subscribe($$self, activepb, ($$value) => $$invalidate(2, $activepb = $$value));
+    component_subscribe($$self, prefervideo, ($$value) => $$invalidate(34, $prefervideo = $$value));
     component_subscribe($$self, favorites, ($$value) => $$invalidate(10, $favorites = $$value));
-    component_subscribe($$self, activePtk, ($$value) => $$invalidate(34, $activePtk = $$value));
+    component_subscribe($$self, activePtk, ($$value) => $$invalidate(35, $activePtk = $$value));
     component_subscribe($$self, folioChars, ($$value) => $$invalidate(11, $folioChars = $$value));
     component_subscribe($$self, showpaiji, ($$value) => $$invalidate(12, $showpaiji = $$value));
     component_subscribe($$self, ytplayer, ($$value) => $$invalidate(13, $ytplayer = $$value));
@@ -10565,7 +10577,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (audiolist.length < 2)
           return;
         const pick = Math.floor(Math.random() * (audiolist.length - 1)) + 1;
-        selectmedia(audiolist[pick]?.vid);
+        const vid = $prefervideo[$activefolioid] || audiolist[pick]?.vid;
+        console.log(vid);
+        selectmedia(vid);
       } else {
         selectmedia("");
       }
