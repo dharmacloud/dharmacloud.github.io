@@ -9760,7 +9760,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let span;
     let t_value = (
       /*$videoid*/
-      ctx[14] ? "\u25FC" : "\u266A"
+      ctx[14] ? "\u25FC" : "\u266B"
     );
     let t;
     let mounted;
@@ -9787,7 +9787,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         if (dirty[0] & /*$videoid*/
         16384 && t_value !== (t_value = /*$videoid*/
-        ctx2[14] ? "\u25FC" : "\u266A"))
+        ctx2[14] ? "\u25FC" : "\u266B"))
           set_data(t, t_value);
       },
       d(detaching) {
@@ -11663,7 +11663,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const out = [];
       for (let i = 0; i < folio.linepos.length; i++) {
         const id = folio.fields.id.values[i];
-        if (!~id.indexOf("_") && !id.match(/[23456789]$/)) {
+        const endingnumber = id.match(/(\d+)$/);
+        if (!~id.indexOf("_") && (!endingnumber || endingnumber[1] == "1")) {
           out.push([i, id, parallelFolios(id)]);
         }
       }
@@ -18512,7 +18513,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         br2 = element("br");
         t4 = text("iOS:Safari\uFF0C\u5206\u4EAB\u2192\u52A0\u5230\u4E3B\u756B\u9762\n");
         br3 = element("br");
-        t5 = text("\u5DE6\u53F3\u6ED1\u52D5\u7FFB\u9801\uFF0C\u266A\u5377\u9996\u8D77\u8AA6  \u2661\u52A0\u5165\u66F8\u7C64\uFF0C\u518D\u9EDE\u4E00\u6B21\u53D6\u6D88\uFF0C\u9EDE\u6587\u5B57\u67E5\u5B57\u5178\uFF0C\u4E26\u986F\u793A\u529F\u80FD\u8868\u3002\n");
+        t5 = text("\u5DE6\u53F3\u6ED1\u52D5\u7FFB\u9801\uFF0C\u266B\u5377\u9996\u8D77\u8AA6  \u2661\u52A0\u5165\u66F8\u7C64\uFF0C\u518D\u9EDE\u4E00\u6B21\u53D6\u6D88\uFF0C\u9EDE\u6587\u5B57\u67E5\u5B57\u5178\uFF0C\u4E26\u986F\u793A\u529F\u80FD\u8868\u3002\n");
         div0 = element("div");
         div0.textContent = "\u2699\uFE0F\u8A2D\u7F6E\u{1F4D3}\u7D93\u5377\u{1F9ED}\u5C0E\u5F15\u2764\uFE0F\u66F8\u7C64\u{1F3B5}\u8AA6\u7D93\u{1F50E}\u8A5E\u5178";
         t7 = space();

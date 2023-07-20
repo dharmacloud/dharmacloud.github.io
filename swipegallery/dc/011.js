@@ -1,379 +1,2741 @@
-jsonp(11,{"name":"dc","start":14019},`sv
-Ylg";Fg!#Y&gQ&R^\\-i8\\Y<g<ngr{g,hzoh4KOKiU{g=FU;#@%\\qA;fShQp^y
-@!?f<UgIg5O2h?'B+?:iJZ#Bi\\h@>^g2<>?ag3EpC4[D;Zb;&<^g#Xg$qg/wUaghg3ecXAL?\\gaE7ghgd^/g?GRbg[gbg QxgVfgXvAg<B
-j|FhLgnLCoC";
-rX
-j-Sh&
-h3GRgg:iXg}|ag;7;*j'gX;Scg[Wc4@Vk!Kg=nb,
-PWg8TO<DPy>tG!@Zg$IqJd>mBIg$;:;8g'cg*3M?t^K<b;m>'A&;04<1()H1gBgUtg)U;SX\`aKRg.tVk6<@HOLhJ4<K;zAG<e<%LB>SV6I"=f;0&;?0<>>Ac;d;b1<<;*<A>z#!!);;^2?J8-:<1;?y>";F=j=Y;XH_A#;T?pK@>4=<0<B<|H<,+F6C/g;lV.H3<ggo;!;ugc<p;m,;Rhwh4Ta'>+^"=/\\*gg7/'g%* g'6L+F<f=siueg)@Xg-k!=g+A
-igy;boH-X(B.\`w=bKNgEgS|=OBB@2@H@DS^gAghbU!D\\b)1Cg9G=j^OgE<DO2KM]Lh;ATC\\tA<<>Ig:k
-lvSiw&>U\`)\`.dNN_G-5<-;'E
-h1Agep;+;3;*;D;C;0;Qh>>AkdYDT;*g!8gv;S;>>j;lgInMH{#,;/Qg7;"<X<XgqWa&;$=<"=V*g4Ig,/9Eg;n;;6;5-;1;%/(;9=*A|;80;Q6);z>sI7;TNg|g\`Km:%<s;\\<6;+;='<g/?DG;K;V=DG|FpCc;<Kh!j8HGbhGOIE
-g*rHiVLj!jgLg~J:gt_faiEg&qg@?,g\\<=LgkeSgK7a{?:g!Y;FJog(#gLmMig"_@&=X>3@S?V(<+g\\
-rY
-iHPkm.g~
-g|i}Qg:>>g-Mhh;h*g_hKs$O+;}<.;!P<W%D"E-g(\\ph!g MTg._G>G@QEdgA|cSGr>S=;Y=i;dAjg!LB$g1g&g3x<wXg4hJ[gEQg8g,Og*v
-jFg$,
-Z%j#g@hvMg'
-<Q;1A8=2@Y>%I&Nbg4;)3@8;1;Dc<?x;E")=eINV%Rd5<v26>s={<z;>bM!B?+=-< ;+4=?3<FSF{L';A%20;;>}+;";p(!<g Ma4;!gx;G?S!<[N;6EW@TUE;gR<4S)UyMS;-$K*)11 ";&;7!;;+%;E"5/&<~@@;P';a;4I"S?Z>0ht[-Q=HBgd&=d^Si#[0g0(;7;p(gK0=:<gPgq$<O1&-'&----,=u//7';"g4Itgd{MA<>GLg-SV)gah2=5dz>#\`jSr-])'^e'g_[W")[CiZ}  bv!aW!(g0W},\\
-w
-s2c
-wW<
-<9gx% %:GpIj>:=c>H;\\Dy=W=|=)?e;;%Ad;\`;BF~JsI=+Cog'?'<~;-=<7=5D*<5EN;UPI<hg}<E<8SyJUE?IkKHrA=DJ?_A[B$<U*DvQAKZH:g*HD<wB6B3LLndsg==3h.;j;GBlgXSp75lb
-hL hd^"RAh?g>Sg:jpge\`P>KCgajM(lg"
-hCshC~gaTxee+g<pL!W9U[fi<ng=='<'DP;|eO<D=?V#;E1W<W[ gugKB@=v;;NN<L\`<N<tD2A~?p=+BRF.;^E=@b>agJDj_c8=D;#C;xC+gJR3<kg%<;79;]yIkDugCNgp;{NMCrgBlg.j=;;='A\`Kzgf hI]gX g,GwjNERu
-hP~?HsU3<5/kfjlRg,ohg Q
-<]g#V?c;Tg7GQWnAvgP+KgmDN6JV<<=,gNH'7D"gRqg1#dZy=MD9;";uH|;D=$;V;I&L&C5I+;G=.;G,Z_<R;-BJA!;E;&;W<$a6=cK<?86;;;5@PB=&;8?$CH^?gIV@_;1A;Q>uBA>;=B(L>;!<Z<'DX;E@R<D;[gJM%_p\\kR<XS3E+I,>S;Qzgj-;6gs-gGR4h$KJ@+ggEQh&l<chZg@DWwcv7?zg+r3g0Bg'JDU:g3
-iHK
-gk|si<#gr60t2+
-qrP
-iX]i75mvOb@pn_
-kK
-g5hg(egPJgGKgbzhDVVeinDuE
-udI
-w^.
-;?lAih>~g7C1gV<%g2hkg)m;_]gLF@SZEBbPgk2gG'?lg->;\\IHGaA);>Ili\\i,G==?1g7vX;AIwg N/=Zgy^j0W;/;\`JNGhjJ2
-gH*pQG
-?FDGt3V(CaBKMcK=Y><L;wECD8@FX?==S?1F#<=c<rD[@HF4?u=@MUBPQ"A0CBG7QJJ$?G?9P4=(=t<S=Q<=@>q>Q?A?SD0<_L)>bA~>VFR@6L2Gv;_;B-; XGD@Ar>MA#IJE1M2<WSYAjJ,@@<G8ABRH4UhEI]f;{@)=<Ag]N6?=ESc6\\'<"=EQ85Ve>tK3=3g(5MO+D;IH=d;QB'RXgN;;?;@98;c;g$L;Fb{<gDw@g-HD-I'JuNBM@u?#?7g/3DqHwA> =/R"cBLi<@;NDHgvCH2<VGJP1XTI(7Ka;Fg(;2DlCS\`xg;Kg6q]}bWE,>;<;O=V<.>-=\`>]B'=@;Z;=?v6<<<@<?}<D=p<B<1;M;;!=<>B0EB;iP<LCD?~;34AG38;C='=C<tB;.(Lr>J?><C=U;XLm>4ARi/-AYB=1> B(1&$><;=;8;5=C:??A$@**<FZ=]C ;?
-kFU
-taie'kFv
-;{g(xHx;3;m!; @@"dfXl)>!"(f^YT"=a?5;Rgd'?n&; I=<;,;=.g';3(L@;@&ai;Q?1;(^;;Mg.<!Lv.PI;G;=GhH|ga;;S!;%<|<HXDMV@,EgB%=D=>*%;p;A<@;s5;+;;;"=Cy<(;4;26;=nV~;f@[Ct>[;>2<:cfC@=t;>$?JZC0;U?OEUCx<H,>RK]y<7>5>!XrA#^QJG%FRg0=gjW#=qgi*>J?==k=O>y<G@|g(r?+Dz;VF(:<">X=fgBSDg5uC,>%D5<S;?p<c8<p;(?j;*5;";#;[ggI6?RAyR"g'g4LH.<8>1;<<*BT;>Im;X;a;r/;$,B=;[D1;T<%4>x;Q;Y!;$;5;;Y;6;B'"@$E0;h>@q;J>(<V;U4<Y;<-;?w;y?6FP>F;9;_;a=;]*=dB>NVg;,!CB;l<);;9BB<t&;-Pl=e;;Q;Q; WF\\; gW;8#-g&;4;=#=$=%@BpFv>gs>e6 &@0Dn'<.;?M>r>zC6<RA+;C#AX;2+@H<vHp5<O;;AJG&FY=;C8D"@0;@lG6 <;2;@4E3E-=BK;#B]@e; +A,F7'<):;@@?7?WE=BA;?=#;j;k@;?8Kd:>U>-K%=; >kE_;wCQD8>?;)>y<GDL(<@CBF<u@d=
-wV)
-Kq?<!;eAN=gpAf.Dh8;#;|K\`BM|<=u;[$!";;;S>:>;M;2.GA>>2=:;5C*@w\\.=C;@?6KwS>;XH/;z@"LNQG1N~=e>Z=qRLN}<[;3/=COne&?; @HRDpDMI@xTsL;8BIQ8>)K|<4S\\Sg='BWH[?_g@?jT9L{Fk<JVMV>NORg2j2SH=[WVYgo.g\\;C@"?8Bygg,;r;z<.?C;wIFD^gj&XDg92c<4;C6Oq;>S:;gSha!;
->)kq.o#
-gV;';/3<N=|;;;(=*QJg-7C1<}Nr4Eo>*<\\<t!)!/ ;C;;E;u;89?\`>7;g;.=%*;;'";P<n?p?AC$g/F#"3!;;7;">[<2; *;WC\\=A>F];oCv;"BnB1;2]lC:VkMB.A@?Z;4>;M=Fc<CA<[>G$?R;!5Bb4;n";<A;p;l;G<K;6<0>S;m?$<|=PwE#@^;;4;D0&>;>;o;f;tJ4!"8;I40;;6;f;;@;M@y;G<v,$;@T?g<=2@I>i;$Q@;mEW,$+;!222&@G-F;=(?MDgA%;u<f>%;v$H"=1N;2B~Cs;2;z;;m<&;+<!<;D);\\=}L<<f;Ag?B?==%<D<T?g]$-J=0BgD9E*Bg3bNJ%<QJyBc;<\`@mJ=i=x=?NP?;h@J<;e;>;FF|AA>w@3:<:=JaB|=??0@\`I+"?8@ @iDp!@(H[;q;;'<];#;;B;;A ;<=9 9;=q<?V%$;<,C;X@i<2.;<=e;tDkHc<.?>;5;,F)NKB)>=}\\hGg0?>;u;/#A>nQ?<;{"<gI$>R?Y;:;I.<-6;$Co>M>N;^E;Bj>L>);:<JA7;5;i;>.<1BaIF<t>k;;l<<;_;s;%;,=B;7GB@C*<<S;Y;@$<U<;M;\`&=H??h<+> =U@y;==Z@2<P;E;C*#D ><;0=2C;C=S<h*;1;'AR9?0;) =;&FP<;N<B+R:>:@GIVH7<h9;+<<f;;<x=?1>q?YCc>W<----';5?=;;Y@3;S<<;=f; =;K>R;j;=<Y#;m;#;T<aLO;c=#?)O1>6=<_.;>;+9CR?9<p;=A;+=Y3DQ<'=D<y;U?xAfC] <;X;!'(!;GB;<@<%#6<#Bo;bA~;k;;D'=:);B;u>.<.?><<lA*;z2F\\?1==O-gA;#X9SXV';-OC%M);sC+,>c;?iO=6<ZP4C#?w=8@L;3;PAQA;@9?A;/;g?H;$;%;(;.<R;,;hA?RS>Q);6<5>;A;*;;;:>u ;9&$;};6;P;=AOC:MF;HBF;C><<;v=?B^=s=eB4<6>'?D;b'6;%3;/<;X;W;B<W"'*;n<X&6;9 ;!;2<Z+;7;P; (;;-<-<&;(%6=S<H;&;;<=>;4A_6;L);@k;=><>~?<*<O8;C161$;;)%"?#;b$&=V1$42>K/%-<n=<l-<Ig";XC#;K ;<=S<pDb(>w;jGz<*G^<U?>SDu;;Y%;IA3;;=r!<6CZ=a=:;;g8:.52;;1?n(;s5>93;246+?/*;o<H >U>:;C@:;;N<v:;\`!;V>p7<e;. =Z<?U?g<I<r6;M1;7$;;7-"@;p*3>,3+$5*?3+)0.==+=B;IW;!;}(;e*D;@(;<<Y,;*<{?# =?#2?e;s> ;;8;&<;A<.<'8A#;0@1<^>d;;}!Fk;?A[;<Q<u#<Q'BCb;gCr<>
-FBnhff5;Ag*V;mi"tg(Ea"W}gaC^;JGO^;gU;<&E+O/HkOB=B/NxA+E$AqBE@m.=0={;?<%;XP@(@a<XN]O'D}<G;'P1.<,<,COQ$D=X;_PMAP?/Al>A3J?QKD8=,LT=:;/?\`>m<PKI4]=c;;p>"C8X9<Q?EXEg[fCs<p9=&gNg;JjSI<eOug1D?z[Mg9POG=8;BB)P;<JcDU;e<I2MMC8D= I;);uA%9QK=O]Ig7;6gK^;Mu_NAWS,=XI4g54D,=cK OL;8g?A9N6@XgP"g1Pg+og6S
-;jg7UU=<BbD'?\\;9M/h;eO-g6d|goW(h(IIiS$GY; ;i<z;=-;#$)=*?}gO4;Es7g;Ed:X7XoV@]%>&<g9I_=8<k);B; ?Z;%2E*bn>kkRx=PiJgrq?di=0?fgj[g8g,Rg*og??g.
-<9;.;;.Av+$;w<<\`;Cr<&<;9;;;:<Q ;K>O<?{;l;(@0E?;*:?*"?C=M;Q//< (=Bp<U=A?rBN5?~;k<%0;w;$B-,,<^AU=6;P>l#<<k=#><s8;W<8<#;Z<4?1-Ev<=c;j;[=jADA\\.<,=[;U>G8;3=<5;=@;w;U<x<;Q68;r?b;>p=Y?JL-<K<l;7?o<<W=!><h;|<g<;<;t=T-;*#<18!!( 1,(&";S';!<8 1=O;w?;F;;>p;&=k%;A7?1@};!>&?G;Q;);q<G<{>J;4;2;x@/AK=(=C;<S=Q<4=2>N1<m&!;];?;W>';X;s=R#==<1;U;V#;A?N;<D=L@ ;9<;B<0/A^>VFR@.@<9%);++3;"3;!;9;.<=S7<D;>< 7B2;D<C;Q;;<h<J=;6; Av;X=9;9@~==r<,>mA*=.@;A@b1>M;M;.66(<*<L?<h;:@<H>S;};;o;=[>.>?b@}D <d>@?h;l=*<L<8;@EG?@3@<?-;<&0;A=B<~;(>D=QE<?A';&CC;+>6.?w?ID\\;;<z=c;=x;5A2?CB;{:;\\BmF^=I=;2<[;=;x<=;&;D;<kC6;$8;)4;H;K;*;?K;'3;*>\`=mB9;n=O(<s;b;;3;;?8;7;<;f;+5;Q;Q;Q;qA%;2*;C)(;7;%<?(;51;;;!;4;C;J;2;6;B;:<*@^C2<hBv<<a;R>h;[=J;W?&!<^;z);;F$2;0;!<?$870;/;;";+;=;B;-;";5;3;GH2<E;'<A@$;6<j;;/=v;S;?-;!<0;J -(;p;f;F=;9;5;vA=;=@H>/K>D@=5C};D;S0;;@;9</;=5<U<<B;?5= 3?/>;L;C@<p?@@C,<;@<_;x<1;|;qAl;>g>[#;/;2<z<]@qA ;N;?<0?)7 );X;;p<E;%;m;\\;X;S/;d<W=Y<Q=1;&;;N!;;,><>$;x<F;S4;,;b<:==/;=;=j)<]/+;^;B;&;;;|=P<=;_<;;$>;7;g;;7;#,98;c7<V=;2@\\)<b>j??~>%<><C;b8?-;<[=d;H=q;7<9#;;L;><e>~A)7=;H;=,;/;2;j;;;;",;J;d;4;3;/> ;!Iw#,>'3*;;1;q>G-;D!;:<7;x?<>=K>X;<<q=6<[<s=O(;?E%;;";j4?);a>_Al7;QB<\`<\\;s(<1<x7<Q;0;D<H;?=;K<_&;c;$;(=N*;<=<};2-; ;1;{;3"<?<3>*;$;?;@;3;#>P"<K;J==;|<";u2;XJ;AT;(;5>k;%;=\`;F;5?=);h6;F;H;U1%=H<?c#;W%;L== ;\`;/<:<L<9;;*!<r>[;^;?;27;;L:>;g<%+;s;;#>;N;;,;X5=1;;{;\\?)=<D<;-<( <.<W;O);;t;I<_;;;J;!;<K<!-;;;I=|*:+; ;.;=;M14;$;,;@*<N<0;^<G,C;;;:/< ;=k<D<2=r(;;<>;);v+<4>;6;4<=;;z<?;!<=;J>=;f;y@r;I<B-=<;m@{<A?{>,=Z='"3;;;;((;51;8+;Q;o;;-;w(8;a(9=4<,;$=X3+;;;u;';h@y);]/0;;#&?h"<A9"<R;<&<<+;S;E=<!;H?] >R<7?@B;=W=9!;K<(;N ;k<;;H;u:1$<]<;?<c;<;D=R;<;;,;o ;;";49&; <2.;*;K;V6;P;<<D/6<g;6$&;r7;8?o'$%<*<<.=8>%;4<i?f;5=q(;c<X;*;9;D;1>DJKN;l>u;h;C@3;(;H;O<:=<I/;w?I<4A3<<;I;,;X4<u<N>d;4;,;A<">J;w;';?;0;0@};M<r;%<$=(?,<9;\`<#/<H<\\>\`3;9<>#<R<;';h-;7<<P=_?5<1;O<(?+:;{<!?>2?#;;E;A<W>nA(;=a;\`;$N+;H;Y=;3?W;$;G=)<w;?;_;6=u;L@c;~=e<z;;42;+;:;Y=9>1(=7;:;[<>>D>2;7;)">B=$#?;<];:Hh;6;I;3;B;.<?2?j<x;8';%GbC@q;_;?<k=V><<6<j;;C;I;f<v;;;;";hC7Bx<H?>T!;>r!;=!;;><r!;>+<6!;+;X;/AP#';< <Q<<}<>d5;v'>d;;=3;39;U;f;6;<>g<"Ay>#&>l*</@$0=#1<(A4;U<6:;"<;l;);~;% (&<.3*;%<9=S=s;;V;3;D<;]<f;Z;k;; ;03*;h;<.;E;<;=U<.;I<n;==!1<Z+;>@p<9<7A\`;+@C;9S/;;; = ,;*<<N<};j;/=h@@,2=_;l!43;*EQ;;X;";*<Q;<;]<=}D5;A*;,<J<!>B;:?LD3;J(;?W=n=E;;A;-;;=j>J;7;\`;$3.*;v;7<|=T?F>BZ=?;,Bv+;;~-;<0BDA;S=KD8C-"?6?n@x;;>K;E4>F@;wBC;842?(;K1.(Rb*&? ;$<#AkBw;j#?;:/;P=&DE;\\@j&>+<;I.@BCB#@ AH@B<;^>C;\`.;U;2;C;Dz;eA?;<0DZD1"@-@zB;Y?;@5>5G;kCN/>o<G: :1&$W))AYAbC;_?\\;8;R<YC;&A3=^;0;CG@w<P??L@<;H>=
-;!>#;2=.Aa>$<G;{=)HJ4?1;6,4!2Cz@CQ@?MK[<5= GJLOL>CDnI;<;@%>-;"<C<;<?<_<,<BJ<?;;+;(;U=m5$0;8=ZCh5B1@E=I&G=A/;+;?l+Ey;,>1;<S;-#7<HC<O<4.<gGa@A Dv;;1?6Il<YTDA=s>V-R;3>+3;x+<5=yF]FD;+FT<{Bl;hF\\<]M;C;W< ;U;-;{<P<;E@mO>cB Fp;\`<wGOKH;^;"AT*M;=G0TP=1F>];<D;u;u?2JU;">&';6<<}=1"!K~<c*@<<R;';=wH]G=h;y=FRh-<Z;Q@T>;A;3<9;eP23<Q;<!?iP";7<W;MA*F?;$;i;h;9<7,;)E =>z2@F<%%=H;$;n.;l==1E*<g=Q2;wG?PD<Y;~;(#;$;A;t=O;DE;*;J;;tO/-;EA;;#<]2;;$;t>:;hD3=P<;<X=$=_<a<G@6>=2#<Q2; .;*%5<w;J;BD!?|;^$;p ;$;9(<H;j;E;r;R9I?;?>~?p<tB$C>DW<\`=,;Fu%=p;%;F<g;!C'?3;(>8=;];%=(?9;T=/;~=ZA!D$;b;>;sT$C*>9A1De=I2<G-@o;/;3%"4J4@Ng58AS;#;+C;>=7AD>Q>O>J<~;*>L;<e<a?B;;>%:;+<v)#2&;82;;3;;L3;c;;+4;;+$;-;23;;V;.%3;;+;q+) <;,%3;;);;6<f3;>,<#L-!;Me;D/=(Df<A> =8A'<PEP?e<P<I<$?]<*;p;;q>0=|@C>x+0@I/; 7<Am;}<C'?]<;-])0DgU-H"M#8@---<;,<p';\`;!;.F1?Z;L;=j;C!B'>4<!;N;x<1 <9;=;%!1 *==_//0.;&=':=X;B/!=U0>@>>.;\`;*DI@Z<;n?IC_;D;V<=;;<?/<F;R;s=21;$$A[<>6BT@];G@@DA<\`= ;L,;VE&=6?oA};aD(;=0?=3;!>G;;mC};.;d<W6=oB=>/+-95:;;-<;<X=F1<t;3<I*0;@:;:;V7;4>;Q<E;W @+D ;c"=/>9<2$= ;U";;9>-<$<"<=C'<"DB;o<u>>RF4;2<:;e;#;k=\`;r= ;?;w=;X2=5;k;;b;O=\`;C<l<A;N=;;?<,J1Ce<o?GA};\\=k=N<>S=W?<6=}<0BnK9?=:=-? .<+EPK:;&JS=o>fFk'<a;;vA;bAc;&4CEH0=T;a;!;038<>\\;O=@;%;>;7;4=Y;K[><2E?i?D"?<=;jJC=C>H#O-G]DMCX@LDH7%S;;SMI\\F@$Q;S0I>E3$QZ;PI4&TPbGChL6
-I#Bf;@;x1;_kg?g.;/J\`R#?UHog/}CCd&EJZ=^2g|@uCSK\\_gPj])gfgYB!B?hhlRPg"gF.jz"gGh*
-<,<>U;m<lfh=T;;;J6J.Bg=1;}<NDADA8=G?+Bt@^=x;^;S@g=uBMI;XIRg<]<&MIC6DQBP=f?$;g-GVB1G5OG>r>GA\\=zD?<!AN[h?yaEIR*AJ;&K F>HfAb@e;^;vN#DOAiLu>; ;H ;<#;=,;N!L:FY<v;LGJ = 0!.,;;#; ;:YGN=;jg#@B;\`?nMl\`W;K?gKT[N'g+z;X=eA7>:eYgc<g'{gDwg,gR?nNBM@u?#?7g/3Dq@ICA> g$^Li<gL|gz^[<V](L\\FKg!$C(;;1<??KekgQ+>F;iI];a>[el<AC@==ag!hrs@HW=<^71?51.(&C-3;kH-*K)'B<g%& Aag#@  AIE(AYB=1> B(1&$><;=;8;5=C:??A$@**<FZ=]3B";;?UJ;KaF?}
-w*<
-k%h"i,.hQ?mF@j3_dN
-gM82g(uh>; g$26g"abOg98\`i'_;1gI@6@$S1J+>>3IS4g#CY>s<z;tg_At>><(A*J@<$;2Am;d5=g6l\\Cg <t<$56QAP+WSHDJVPg*WZXV(bL>rg?;QAggi;_)8hmMg"Pg'g?fE-Y [@U/g$6=%g#J?-*U&4\\|?;7GxjSn
-mIg:;@G<Bg^,gL}?hddGeh>a$O+;}<.;!P<W%D"E1g$hf^U\`MTg._?BU>D@QgMcSGr>S=;Y=iB{g!LB$g1jq]gEQg8g,Ng*w
-l^/jYg
-h)3jfoh!rWWOkp_<lg^tg?%iozgkF6M>MZ=hr+g/g*?iR&
-i*7gfg([XAg>^tt@h0h
-INZC6gTC>g!gOp+;,;&;O@10jh9;7WOfb;g+;,;@Lw^@;4;!Kgd#ggJg*FvU>B/;R[B6g!6=rg&FgXQ3=&<,>/@B3Mi<!>Y@H@D=kQy;FLWW/=Zg2?GHI?,Hlg_}@7g;A8ZGD}=f;!R+g&gRe\`C#;&@ Z.TbgU7;a>?HDz>!>;9=C<c;';8;K;;};?<4g>FZ?;62<m;=BN?{E1Bm=>q;>1;d=I?_Q2cgR-0gTM3gh;We;L<v;a0HA!<G;C?F->|^x
-o3gYW<E,qH5F< hL_L{cN'
-NfgaAQ=kgIHO!TWg~@<Lgbg'gjR3gs3CBg&#?gTNZ
-t:
-gN]m!U)g!j+uS/-
-?Wh(DgD_k7\`
-h\`gpg!EwE(j\`\`Q?
-;Lh[r*sm#b
-h^/g]ah OhyPg^gA6KD_fApp_h CuMh>E=
-p*n;mhi-Jj7B
-gP0=r=|?C{[q>Rh@>;=<ngZg%BL[l=M>)cHk@t5Wnh8.W!gaBK(;mS;+;KGy<;U=PF(?2<E)=+;=1<K<k;xCg?WNz(>V;~Cc= $;<~<0<h;zBcO?=;"=H>D=M;d<1;*;&=O<5<\\<r;v@4?c=Q]=R4#*;4;'$;;;'7;0;=0$35;;w;1.";;!;9;;>#?RCMAp;'?J<l;PU;;1; #-;;;O<D;><D<=6G;$F+=0;y;X=-<.> ;.;;%;;;;;;;KAw<-;;6;3;[?-<$@X<.=P;m<Q;.1;R<D<M<]Bf<j;b;>;^ZS;$NI6.;_?7iuMDqB ZU</Gx-?geB?h<3$;o';;)8,;8N2,;>G; 2#;TgEY;S>@=j<4?8;A,<NH>;;<r;Q=1>a<*<-<3;,<!;*; <H=-;N1>\`>GPKw?IP+"%Q;-Eh-;W?0G;;A.=q;#=;O;F>\`A'1;";<>>#;J=dG}\`Y#g5:glCk;<(gv%g'A@}gmU6;5JF;>@A=; =T<;?8O">&L5;2;#D271:?{D;8>@=A H\`+;G8<P?>x<CA;=Q6;BF;8)>v-BR;#=p=0;1;E3;F%<L>_6J;8;BB5+7>ZBF;*><DF<;Ew<7>fMM*7;))E*;9;?|8F;G?5=XIg0;@u3@Q<a?4HX;'E{Ad;=CNv<#
-UnAE@gR?'gkglQgH_g4hjQ@<zg^@jT3<
-wB
-gTgOgP(HLg>wCn\\EkRbQgngP'"SlgH~gZcBn@@FfIB>?I?7\`UG?Bg!bag$g*1@9=J;g>I;Yg(F%gA*S)<;R<dR?V1EgAMGDB?A g2b,g2E=\\F<D=(:@^BM\\MH;-; ;:[A"=:BY=G4I\\=F@egvW@oK^aVh_#?3OB>dF<d{g_Bt@2;j,>pLK?C@<$={'KfgiWqaJ
-<A,<;<J<<+;a= <_7.- 5!; 5=/@0;d;:;)@6;w@_&;&;!($<S$;&%<$>^;-<-0;U);<};u+=8<P'<v;"%$?1;J<=;;^<|;?<$;4<";<J3;7;;1<3<?o=/;&;3<H+-=?;M;<;;v0;8<L*;;y<=T;;;;]?P=2;><$;L=#;9$;8;k;(;/";X$ 2;$;5;#;#;.4;,"&290<|;,816(;<;)=&<1;#@=*;A5=&=;;';/;!;C;"<);-;=+;.;9;l<#;R<!>f&?*2;<s<C<3;!> ; ";J;,@x-;8$+<B?;t@Q3JE:>'>!%$;b;();14;V;+$;X;;@;;g;;>T;9;<;++!>);i;&(;A');c;d;<$<&;)?K;R;=3-=:;*;&=; ;&;w;t;g;C<>,//2(%&;'%;;;J;;K@N;:<3!)<7;L<=U<<Q#;M<U"<.;b;$;2$$$$$ %%()))$!;;*;79;\`<P!< ';8;e;$><O-&;;b;&#;W;P-5>(-;H=+;%;,<*;n<;;U;A)<U;q;;[;-<E)!;<;(;A<F ;?;@{;)<X;/;-$;^=42;.;;;E,;n.<C-;(";<:-;;;$"8#;5;-;a=;&;!19;1;;*';!,#<6;1;5;0;$;+!;;4;K;/;5<7;~?>;n;0 =;=;52=O<^!;!;R;K=H+;Y<0<1<=;/;;;7>Q<Z<d;o?7<0;<*AU;J=X$)!#;;&<;U;=/;5;*;;;1=@+;#;1;;10"/>S;L,%;2!0)#"4)*!7;%;p;&'6+; ;8;N0<=;<M;<=;#;>;QAS;E);P;<;<*<T+;=<;0;Q;O$<;6;p"145;"1;,"#;Q$/<&8;;$;J;*6);f;)?R;O>s;,?F;X*&;;;';5</;7;#;R;!.;;; ;/;|(<=$;O<(1<;v%;I>j=;;08=w;;+<*;t$<T3?'>C<M2=-<;Z;;;e;]=6' 4:;;%(-;-;{!+4+;<3;0;1,<;H"3;?;;#<$;N*6!  7;(;$8; ;6;4;;i7;;#;e;u;0;;$;s;G,;S1#;:;<<O;k&;\\<,<3<B;|/;X;O<#;.;m;'2% 27;?;:4;:+;;%#;$;&='2<W;;o<>8;(;(0BI; <b);<&#!+;>8<s;<5<R= &18;;1;@; ;-6;A.;0-  ;;$ <;&.;;#8;'*96,;;8!,;3%;;X4&; >-;S*5>;e;=;;O;?;o:<;K<1;;M;R;H;K;\`=U<t;5;*1;P<>=;!;Y;3<*;?<3;'%;#;;X'; 4!;:;S;H;-$;[;t//(*;4;4;4;4';4;4 ;4 ;4 ;4 ;<E#;,;&#;N;&<P%<22<<?;#;L/B=;*;;K;9;q;H;P;V;#9;<><}<6<0(;;<2;(5;d;q;g<^;) ;$;H;.; -;2=_;7;+;!;J&)<3<i=f=);@;*;;07;T!2=i;;C/A{;!8;B; ;p;6 ;P9;J 4<<i;s'<5$;</;);M";P;+2;m;?;-/##;";;;1/$=+;:;;;)#<'<%<?<2;@;3;1";2;-=];z+,9;$;|<q<;66;F;;e<3;s>1<\\<H;>X>L<$=t;<7;^;"<.?]C ;A;^;W;$;~;_;P;>;S<e;3;'<;%<m;;w<;<;P;?;);H@4;!;t;j;/;9<<p<2;C;N;;7=*;Q;$=;5/;V<-<(;<<1;">;2%;!;&;%;-;;u<3> -3?;a;-<<*;: <9<n;<;;;p=Z=k;L>;M1,<Q;D;U<g;1=5;n;##;=<i:;0;64=-;3<:;5=;u;; ;<54<*;.;;%<;;;;4>:;;<W1;;;9;=*;L+.;L;<F<p;=?B(;w<|,A7;A*?'<;3;'<~6!7;5;&&7;m;<;T;>7);%;N;/=#;0$;<!<0225;q="=<<8>aBo;;;;<0?\\=B;<;Z@@;);G==gAf=?O<P;0<I<x;-0)<>';y;(=8=v;;(<"=+1=a&<n!;;B;};R(/;#;(;<><";0<x=E";D<#;;<i17=&;;);+;j;;&>A<7;2;B<i<)</;r;B;2;R;z;< <0';K;W;D5=f;];1;[";0< ;$(<.+7>;\\<(;$;)=e;F<";;)<\\;}=Y;@<+<};/<x<N;U,;&8;h;e;;;#58;; 90;3=<Q;.=6<}<<M=3;1=QBb;/<;n<,+2+-;;#;>9;(9+9;;(9;?\\<C;@";;j=6;u"5<;<<R; ?L(=#<Q;;I<5;;&=B=0;;<%*;);*;F! 6&;'#;4;1;>;'<.-;*#<K;=$$;2<C;x;$?=;I;;;;6=8<<<,<(=<!=Z<0;&1;M;&;;';E;P;;vB2;:=@;J;f;:=j<J;:;w<7 ;l;+;:?R>W>P>@;p;(;=L;P; ?<;9=);s<W?F=S;#<<<k< ;C<N;;((;p;y;B;1;8#;R;*;*;F;2 <3<?;Y8<>;K;;;U;";;!;1<s3;_<;R;;/<M;k;J=;8;$<<%';;%</;<7.<L;;4@^;r<B5=.;<5>q3;$;$;;$;!;B-;(;z&;;9:;F;|;=X;P;nA{>1<j<g;7B};;$<<_;(1<:9<<;K<l;r= ;$=K=%<B;@>e"<<=a;;;8<8<,;?8;;$,<;5+2;=;=;;&8>$/>Z6;K;<V;5;X:+<'<A;B>&<=\\<N3;-;9;=X;*;$<O2"$;;;<;;Z;x;A;&;1;(;.;/;&-%;p<-<Z:=q;w;M;<)6>;%=3;;:)-;m;>;u;l;Z<;%4/;4;<-!;=7;=)<!;*;;m%;y;Q/=;(;;N;8<m;>B%;/;J;:=0=w=&<r<1;}=D;7Aj<A;\\?:;A< ;1;r<;J<;$;m;<;6%<_;y<w=j>d;09<n<<%;'.';'#(=.<1 (<7;7*"*8 ;-; <g;N<~;!;f3;;>U>;L;^*&7#"" '263 ;<I";Z;j5;<X8:;k<J<z=a;G;<9!@%;0;1;;;Ao;3;:<'?V=5;C;wB>G}0<'?b'<[;J<=4<'<3 !'<=@6;=:>k,;/;;3'<;#;\\<;j<<W=w=p18;;<(;(;;;=,;;v;1;/;5+>';E7+;|; /3<V;;<O;QBp;j=/;M=X;;=!>Y;e=<;%<I=J,<G;.;w;1;;B+C<>+;I;;<6;f<7=o;"1;\`;s=n1;j6;-->3;;U;B"8->;u< =\\;V) <H;H?=m!<C?@B>;j=G<N=;&<O<1;U<]<r;1==G<994;;r2:7<J<Z<;);/;8';\\;>3;l<;(=E<P(> =~:=+;/;8;");w<;;g=-;;3!;e;V;G=N69;-;X;-;A;W;''5<g7$>M;:;&;!;E;9;;<.;>")8;<o;g<u"@r;<&;X7=3;^;X(;#;?)==e;;58.(;j+;h)!$";3)0#4;P1<W=l;;:<;}7<O;4;; ;(;3;+;@;;3;|;;$;; ;/;#;&;-;/;"; ;E;';(;!;;.;;";a;#<*;X;f0;"<#+9;B;2;,;5;)2;0;2;J;H;S;;0;18;";Z;/;=;_52;5;c;;;)=?;"<<;DP/!;;0.4;x+<o5-6";;;;l2;7453;lD=<=i;~32>);]1:;;X<<|<(;;&><U9;"6-;;3;;;+;;;!>@C;^>z@L<w=:C|2(<H;\\;;_!;5;/;R;;w=9=<)At< 8,,+'+**.*+.0*;&$9/<q<X;><X;8;_=$*<y;y;&;;;,;V;K#!7,(;=;e0+;T?$(;0;;<A; ;M$;0%;Y#;;\`72"<J,"-&;;=;004>^;M.2$;D7); ,;I1+!!!!1!!6;B.;1#6);S;;]7;@/"/1#5&/<R,;P7;Q;8$;H;];Y;+;*; /;;8;t ;&76 "3;*;;v*;V+;,#!;3;@;;&94$;#5#;$;#5./!;#,!%*:;#;",;;X4;x"&0;# 1".;4;'";;m';9<i;#"$!$;';;;$;<G;#;<|*;);G""+)$++ -%##/&!5,$&;- 7062$$$$9;i;h;'..0#6!&;;;2,;V;;g#&012""  ;2"##+;8;<!#$;+; /$;&%!*+;)1*.;V;K;[;\\;#;;);h;1;(&!;3;;w&;n; $2;\\;C;g<;2;( ,"6*1*;;.'<P;(;$;;' 3.0;L!;5;z; %<[)', ""#;;-;-;/+(;M;55;-;+;;Y%;=8%.;+*;!.&*",;','48$$$$,;#;]97*.*.#;4;53%<8;S$,-6;%,),1<+(";;8!;;+;;-;_;\\;A;[;?.##+;9;-;$;-:#$))97:<'";z; !<;R>Q3;#4;;.;B<!;";M";"6&;s#;7!;Z52)<X/&!(14;C;@30=<d';>52);)3!;);##;b;*$$$$$%$!;;R'6; '(22-;@13";h8;\\1##68"58,<},;o;;*;!;/(;s$;i;T;";+;5+;! 7;*(;/;d;2;,'(;;;;n!<I;)&* <';:.;;d=1:6&1/0. .);0!;;;G;L;;59:;/!,';&/1%;;;/;5";0<2#."!"=};-0079;T/-.;2 ;J;;;D;;(*;W;F.;*;-;92,.',#3;'/&#'(;18!)54 & & & & 02&&;+;8;64*#1*#1,;=;70);c;K);.(829!!;:.-,;!;f3;;1";;0;,;2$;;:3;j<:;/;;;$;e;U%%;<;};*;f;<.=]/,;.'.;=63;(<*';B);g:;*;d;,';5;R.!0";;;;*0;>Y*;3'&;> ):#"*;;+.#;2;U4%!*#)(;H;-;Q6;R",)5#<n7;084;.;2+;e
-j6)k*gWUgB*
-;f;)6DFD1JBo=!@V;@;z>Z@:<];=?<16$SZEe;!=u>//;>\\=q@->]$<EIF;;U8;1+=*>A($<@ADEL>sQcI ?M.=;#B&DrI8->$?2=dM[=2.>^@2<,A|C$;>>u3<b;#;xNoP.?]$1=>2;\`;{<4C +@(AG}=:c;,<\`<G@=jCy=1;d=V%;E;A;,?NBbGf<Q;C2AC2;;/>%;\`;<0;@;4;*=.&<@>k;dAQ<C!<C?R@hK=A,;+@1?G=;!< D C;3RC3M"<<;L(<E7;z>P^<w;1$>,<b;="gezgD*Ozg$yU)DZg/A6ga;3gNCC"Dg-4;0E/ST;ehYTgP?<7>5]<HoA;'@rg@Zi/?I<C=I<zg-vg\\<gB/ghg"['I2\`fFXIDIX[U2FW__KP\`0E4FdD-G@)
-w:[8
-ws
-ogYI;
--GcgU;;I?="?nEOChCJ?~G?E\\v>K<6I-/?/;<<M8Fh[1;o?D@$ThB*1XMFM;l;G3;?;>|=yG"AU>p<]S0DPO&5>n;Y>DN:;0L8=5Nw>yAJU~;i@fGd<\\,\`)GM=A&7;YI?[<Lr;&AyKA( ;RKEHW>MOLc<S>0<TXZ;7;&<9?]F<9;N!0";;i;w;#;; ";;k;;!+;s;";<m;Q;B@7> ;_2U;*;(;4Oo?[]*;+g3><;;UJc;4H4<DQ6g\`_y?fKOI};<.@4?=9CP=m>@<;I?#gKI)>#;];<#%@VCw4BW;;<;);X:;_=$?m%<I);l;><x;1="6;;< @=p;3=C;;\`< =)>MFA;rGNAb=;=?r<>?0?G<4CH;t;Q?G)>^;)>5Pe%I4FQ@<>>d;uF!P3@z@b==<<USgLXGnG,;;=>7/;,<iK]@IF('<;nEi<1;2=;b;";;6=t%;n<={J6Jz<VMa=_;3?AMkJ?Q$;>>e&;>CBz@4;i=c;>:>>@^<&B9=b>qA;>I/<\\;;:?V=T);IQ!O%,<0<H;?,;<<T>;;';/';<q!<57;';<Ju/?;z;MU;:<!A;_;8;&'';i;\\<;6;;#5;NMh=1=E;^<a;Y?U</=};H>u<1<0<;;gF==yBS2;P>,"<?@eB|;N.=4>B;=;X%;l;9=F;1;V;7;+<tBM;#:<0;@^<;O;32>L@zgxEMAiDv>(;nA~);B;<b7?G;;N(>>;'@{;R>3;2<);*;]@H?tF>B|GP@o;BR;.TuHIYfFm=4;@@*+<6;B:>>;->>P-O!+K@)=>A6g!g7|gV"JQIi;yO<;WO;*K&;Z;;*;[;;2#00$5;89;.;g;.;353;-,**;8+1+1,;d9,*;;%!;7'4:;Q%'$;(;;!;$<I9;;8;\\;($;";;N;P;;5;;\`/88;('#+2;B'923.2+.;9!;\\;..100;-;%;)2;,#3;-*;N;0)/7;Y;;!+5$&$;e:75;.;q
-h/3gE%gO:%N+Y%h@K0gasjn9
-k3%jo#gw!g8jjH1hUGK>g8#
-wD6
-pzxg,X;PDq
-mtg:?g g,gmKh,zjPQhy>D%iP;
-rV
-qT|;PDq
-;'DegG{g#*g"y;GA]g#_P>k>k;~]Q;>5\`I=;^\\<HW2JHE^ADgGg"g8f8G{L C;BMl!gjhNmJ8gLkKd@gRJjl}Y;?mL/;g FH$
-gbrla
-ogNT3a7gDBh7kMSn/S
-\`=Cvh+^g-]@g(j9m&$'hs(
-IFmi)jK0e_RFgW"gcRgXLgifgeag[^l=
-sgXcgGZ
-uT
-vi#
-p)
-w#8;>io3
-i5=LZEM>(Yhvpg!gw;H?;=;X<GgiPDyDA~;(GKKb@,>WHbL3<#GQ?Hg I$?@3S(It;BY@=\\;\`;NKiDAH;TOvK1F%?>WiK>#;FSRI:E5gdga<>"KhYgM\\Di;&CN?0G|?\`;=gN5gBS\\'W?H&gT;;A;3;=x@eg2<.HX>;=\`WKJ;C;BlRN;E;@\`<4;,;,<WbE?=B;4<DGB@n?@DT<@CRKu<M2E';/B2TM@ggAAN|D|<.R<?Kn<;M0>MMl'DlTbJ.P|g?0g6ag@NP@*g*pf%gvg!
-KG=k)Ig3NhC<>4CP'ccg~B?J<&;)S]Yi;a?[g>JItLfg?p<~Fv;iRgF (;TD-Q>@2;8=gH;*;;Ls;<pIMasg8r<_;d;2;GV?-W;;D;U<O=[AX(7=);OCv?q<pEa;TF!B>;hLrDVh--
-i!Kihkn
-m)Mi[j\\1>Dwg(j)^;:TgAMh"jj2sg"s
-l,]vw
-ObgUFg'0[5g0T|Gdg?Ag]Pg-ub5EJYgNgI=;BNrCaVU\\N;e;;";%P\\<fHnHS*"g y?E<&;)A~;6;4;;;H;O<;>c;j;;?;JYi;a?[SecC@_<!;R;|;^J;ItgiL=E# #;;j<;KC1=';M;';2%<r;n<*;P8=TN={@gE)g$COg+HgDX@2@H=0=g@@E$aqU20MP;AyB(;TD-G?Z;) =E:;8=CiAC??a=@>@@MJt;*;;Ls;<pIMasHgNOJ;#;G8>O<{;U=e;H'AW"<1;d;2;GV;>k;>+H]E;D;U<O=[@.'*;6(7=);OCv=E# #;;k;y;JF><;.<h;<.;~?}>JG6>!7;?<-;hE>=a;_=B=@g)hg,5@XGg=3gEMg8;.g;1UP;78HHHsK\`U:&ALA\\TF;=;5;8B^A<|;&VS;?e,
-n~rgWJp9:N
-wChKJ
-Re
-n[u@gR?'gkgE!;Z*;\`)gH^g4hjQ@g @jT3<
-iPf$g@k6Wg  L2>.h0gJkmKyLSh:F>F;iI];ah+goJgS471@5Di
-k!)jBAgUc*g:+?[Z'g/g'1hJJhDAWgeMiThUg?h
-nc^s.;
-qs!
-kwMqjo#gwgJjC\`gH4hVJgD.;q=NhRLK>g8#gdBq6NdB,?*
-hxPhgsIi\\@Rgi?]gJms
-qs"
-j>AleL;jf6
-ok28<&P@A;<~=hiKegzN
-j>@
-mw'h+wPm Aa
-w1
-k*
-J(BO;x1;;B3>4>:C*=x=|?ng'm?3Im>;=Z(.?MS?DNH:R}JpE0C^;b;=f*EG;B0>=C;;"';J;=s;=Fm;)%0% <X;>E-=;;9BTFE?A8;J<UQ;I>I;n@BM?8!<5>-;hBvP[?];;[]r;?&Hk@t5EUC2'Z+Ok?=!=GW;DBOBf<L%>V[og.IW!>eCHOU=g<s!B!$</?p=.(;m=d;l;;H";;0;=!;;+696;t;;q;D;;P6;I&5,;1%/8%;1;&1;^;;+$;+;!;y;d;x;l-;d;f;Q;Q;Q;Q.;I;J;;L;<,;.%;~<F;MHK4;\\Cl=R.=1=Z;\`<>C9;?;BF ;H;/Fx3;MBE=L1<~=;;\`<=B8:>q<AT<EDh;#<J?1=.;;^</;+?x>zAbB%CQAm=q>';D//@e@V?KHUC<;X*;>#JA;=i;O<F=->wG>n<]2;;$;t;v;->X=+;;;;R<.> ;.;;;;;;;;DG;;6;3;[?-<$E2=i;P;R;;{<M;;D<j;b;>@Rd=|&;";92;S<^;*<:9BU=w><B*C.=:0<z>\`><<P<\`;R;=&;;X;X9;f9;&<~;=_=+1<mA(<C;J;RAS;CB>>IDD/@1@z>A<F$<">"?9<E=W=;G?H;;E;&";.$;G93;;y;1/;<->}= ;;D'+;6;>D/;#;P:,:;6;#%;:;<c;2;\`;J<.;?D/Ak;6@E;?';))&;I;A/;4;-$2,; !;:;T%;.;,;)4;!;<n0;9;<<f"-;J;;M);;643;-;?;#%;;O;.;F=;';M?kKq?^?+=k<";bD[=<r>L<>&?P4?~4@#4@4@=F;t?%;5=B_;=v;"CY $<A,<;C>V;!H#8?7=B+,9'/=\`>r</?5C%-J}<+<<<<8,;O;=< =;D;}2;o?N;n<;AK;[?A;9>5D'AW<S"=&<X@R=UAL=HE7;9<0<<\\=?;5=h<D>>;;;g=:;j;<s<3<z;%;s#<{<A;8;f;G4;1;1<L<v;),;.9;@;V;6$AE?e<Q@ ;S;G>n<H<4?8;@7;H<NH>;;<r;X=;>\`<1>2<n;5?-;N;b$=;<5=w;#KgB\`;w)FJ<mAI;(>;<f={<51=b>6;9B4;&<Y=E[<G;;@=s=j<BC;;E#@x<;+;9;U";%;&;P<C;=;21;#;;=:=S1;";;G?EFCE=0Yig'[Br>A;kIZ;a?c@=F;DO;?CfArH^_\`=F?;W=6C"?>G;:G(d;g%vIt;<#$=I"DG?5AQ;+;S;T1AkMr;5JF;;k=(A=; =T<;?8O">&L3;2;#@.?[I<?$=B H_+;G8<P?>{;0;fA;=Q6;>n>+;8)>v-BR;#=p=0;1;E3;F%<L>_6J:8;BB5+7>ZBF;*><DF<;Ew<7>fMM*7;))@h?;9;?|8F;G?5=XIg0;@u3@Q<a?4HY;'D<GAb;=DNw<#
-Q/h:_gswemg^Kg8@h@sW"l4k9"f8g-g<nh#5CggWV;\\_
-JiVigqcAlG2J6<|g"wQSG;-;+A==m;g[=9g'cD^mL<g>v./M!D_%g#x:=@gRh T?\\Q;%F?;t>vFz?TDFwVYFWg>~g$!HEATgBg_/g>wg_,=6i ~Ng6gJgYag:PgQg#d;;%;<H;;-;;;O7hJahSg:tg{g,0g2
-g Cg[M;gF=bTLD3evgg+(ggeQ&_rJI J"C[.gI7Mhp;Bg0,gZE2e0kalkH*_FiMCm
-g Gs9I
-oWgXeYREjo;CgI@gl/ELg\\g'
-Hb@3>\\< :?k=4hNFZ2;cQ;p"4j/VieCguRg,Gg+g?=
-q4@gbB
-hUUQ1g'^Tj(B
-BwFvg<UE<IC"P<LkDOMOY>7!@VSpG-I&R/I[?iZV9g7PN>Pk?>1&;=<h;4;R^ghQgI?E>J;\`!EY?<HJ@;;k$;Rg:=?~g-"<'hf;g.C;=m;X;(]<gTJEzA6@W)gb1g$O\`}Mw<D--=AT}g;B;[M*F_<\`WH~Aegv=Qg3W^F>B!;|glgk
-j48
-ggGg"+gLgtowI7g,*?4
-hV)h>j>elhZ[g+^^);PV+FY6C\\@u>$F0h@s;)$;=q;>7<B<;s;;4<F;;E%=b?l+<y,3,</<0;>q;KaW+CM;g_ihS@6j/s_!<i
-hUQgegpbik@
-UUdgM6gp;O|gcg#cgJ(i41I/k_Bhq]g,XZBG>2gpg)S<Bg7\`';bB*;MhPIhWw hfg5L
-<\`?^AO<S\`h>[gWI5?q<<(ELVDPC0>ggg!xNCjD; HZPgg8h*7c/U]&gQ'=BBD_GJ?K;?\`=N;F2&<x=kH =$=4;V;4;2?cG"AI<<?8=?;U2(><Hd<rBET.><<@=M;6G=A:<?GpG-BggN#=4ON@ ;;;=f5;XISBDNJ<!;& ;G;M=5;\\1E'>k<o>v;?m/ ;5FAug V>?wKsB0T/;ZIP@-<=#=:El>N;nD<;"<II">;,ArWW\\c;qBj;">3FkSh/ ;H;.MgB?B+Ck;"H@Sy=F'==Lc?JQNe-B8;/;SC]<<));;2;&;<t;5&=2=FIFV;8;6F'TgB]NcrFM_^XFH0KR;K_=H8IT=y@;[BbD\\@.Dw@Y<\\4<eQS>CsF/;XJ9<{;;{<w=Y@-L'LR;6<Sg@H;X@iQLRTO|;>E-;w;@MuKj=]Mk;M<7;oJDH;\\R^I=D5gy>cam
-=vphPlp5'
-nRjgWtY)J[gx ;:qeug)R:g}NIJ#Cp]\`; M.
-<Iyg+hDIbTDg)0<z=61<mg)cg2wgmgE4N\\;=S)A+kBd>8hpXhp8gz6mRg Yg7wg,g+mg>G
-l7ziQLMg?^D:*K(>%^jhKP;5Dj>gVs??hw=9Km;5Eg!h9]
-mV\`
-gl"L0g5GW>M=*S4KBEs,;@(;J%;;;B%;q3;:J,d<?;NG>F=,JAxgBEmJ>>p@6K_@kBgWGyGrg+@AYTrh]bHwL !;r!>7W<E;tgo;pg\`Kc<b;(M<<9;?;)A);*OR;W;<L<AA<q;;U>AxGg.KG:Hc"&0?=g!_;,RYDjDfOo='\`4;0Y[>$O<X8gU27g'Qf>&BFY=hg!k?IP|W\\dJC; E!\\N7c!;DB?5Amg3ZGg:cVL/@fLnI+Ad\\#P&;@\\%gLM>=IdOJNDs;zJGSX4<];Hig<<R/AkNrBC@,<gshRZ!
-irhptWjj|lIN
-h.gI<2g:W^>lg=*gA\\A{g:\`XOk@~gJQ9.gN1Nde7<}>WG_>#?R<_=PP{gOU9;RC1#g2F,g}g?Ybe?|OUghkGg$JgC/L;qg[
-QQ1iMwd~gmg-PhD|l~0Cmk/I
-hU@7kuP<$M(CQ;sg\\1WOAkJXgEMM^\\wgN<a+;r>g5RI=eCdAXBn>l<>FfPp@7DGP?oSaSxZ*?[Y)>~DB<BBV@P>z@:g>-;=IC\\;&;!<8>,<t;|?B=f>nB8@5=HDGkT*H;;8Bu<JHh;>H6B;]AoD'VS9<<;BBcGNeHlE@jAH>qD+FM>g>pJlFa<@_Zg+]]>A'<S<!Kg.{Gq;sSo\`?Z~gA4C5@#F(IVBg sZ}in<kFG;;(?'=!<yA<I;;<A;J<J;yQ*D\\=<+FFKS
-h\`i&f<W>cg12i0g;M ;,;@D-;<S:= =_<c<c=q=8!>gVR;I:!/;>D<77=<b<V<I=i= >Fh^Mg}G#jC'Ng'#)>7>Fg1+jl'?OIc<4?0?v_#g'3k2f;gI
-gj@g5tg$@g)g+Jg6)g:i9G\`"@2g_Ko\\A?TH=hQ?'g0wXM,; g[gs@gp7(;);1;w(;p;|;3;?;m(=Z88;.;l(;\\<N8;;&;l(=DQa9;L-g!1c];)g"?U(D\\g>>>B4Kz>_@>@zg;[g7;kZP;D=\`7[u>h@"A9gD]>;*<=7;VLZ<=7FfCPT Oxga>.;)-;j?mgc?;u<L?=#<&
-p=@gOg!gN;5mKd9Km;5
-h#hrj~;[B:QBXlB$M;7Yp>q:P4g~;:LwcBA})LT=s;Z<rVdKh=I>DMV@A?W=;+Hm;Q;.8gw;lP[<Z;l;@<DiPmV=hbb;.HU;k;@;gW};yg,TJS?|FO_l;!;?%BPgu0g/q;813;
-j5yntWiQA
->O0;);H9K#gN_gSF^LD[G,QfP?FC>p?%D\`BjGSg<RKFl@[;=g0Ug[;5JgJzg1<.FnAzgA&B:]m=z@.&AUBc.\\o? \\hC$4;[Mm?6JzFi=7P@uP<=I;I@W<Gg1;,#BP D'g-'CQBg#7MAlg$7]M;tN;Y>fQyCog42NFBaa:D\\@#grg;k=T1;;L>[;[g,zd8BIYX=?QIc<$>W;*?v-gEUIIg$LEg2hj;-;@)?[I7? ==H[&;G3<K?
-Zg3Rb&g)JxgYnE[;CphPgkg]<^gscC=*<iQC laKi!gjgD\`6W;=;zH(h4~gCAg!q+;BW6[8=B
-h!hLgMgghF9^Lh6 @bXtZQZjXwW"d+gg3>'TA(<G;d<POg.Me;';g>g7hlLFtgAG%F1b&DgOicTj;\\I;;e>2==q;1;';;s;~;o;P;,=Y>6=lAzAy^:<;E=@<};=d<c'gKFUg;9MB>uN!JP^HPPgtA5;ggDMF]j)u&
-a}CEE>2;jBh;?R6JEQQQ?M@/:Fn>D;QG2B>V0B,?j<mBQ<7;EH=I>>=u<lM@xVg$C4=}A<|@zS$@,=bE0A\`<<?gl&;UB$D5D;EJ!!OTBQ;}AfM{Ig=S=i?~eO]wJ<;L>P<v<(B'HZCEUm>Ag&ei}]H]?hF1g=_O'G]]kEAA1g$P<gJ?g6^%Nfg4VRhxwh2B{MtUE<V;7^*hgTP?Y;(E@c+g-'[bdgP^kam]g\`\\fgFzN-Gz>1Hm
-pIqM'
-kE|
-*hP=:h@T<iUD%NjpW;] g}gb{g[hkC@~hQolGg;
-]"9j/gt:R0g:gL g%xgUgM3>jDdh[19ghgnbAE=C3K[Y1>DD$?W;lG~g^]<-;:;R;@x>-Eb;~j/sA)T{gL&b!<BqET?6=^HKY*;=g1aAVg+&LvgEI
-mg%ibB><
-N4gn!SE4g'rKMG<g$g3g0ZgX, g>GCE?.giWgX3g Og1uMg*Q6nowh !U?@_);b[
-=\`gyB
-v0M
-g7vhq:=iGvg,pho%VpibphK$>/g+iB<k9Ig:sh;;;Ph_h~@X
-hG~j%gs[p(e>sjvQ
-h+
-o4\`i$l;H
-i.
-g$)>0Es;[;K6;&C@[#=\\B;L?k?X>><Y>5:;;'<E=Ko?,F0FAXA;B;Q8@?M;;};;94;;;;L>7;N;@;7;r$%;\`@O8;,>f;>c;97<%;f+@_;>gB?C; ;g?<?ZFM=BC;j;#A'4!;K;??B2;v<]>A;:7;@##:###,;8@P;B5;r>u@q@!; &R<&<,;;;+ .;G;,);;3(1;0?E%>U<l;0'?t6;H;w>2CFC1;;Qs<BB6;:;&;T>><<";*;*;N";;->V;@;"<y;@=);M;H76:;$):%?H;"<u<|<k;6&;*;;><@/?>i"L6<:E;C;;#=K<T=;@o@{=~*AY(2;4^W;8;];f&@;4<;tfZAF;\`!&;;;>w0;&7;1<D;);">0>u$5<,Ol.; :;L?;<)CF*9@J;M;R;H;K;gLLg+6Fbgb{BJFg0jXkg5=p;6=9A=<?>Q>fg)?;l>o>>X<K@@QC(<i?<'<sE%;rNT<j;9AhgV:;5;u$[a>MGe=lA=<=]@C#;Keg"3;@\`A\\8;>f@qHK>"[4End]DmHo>1;?;JV}P?*=^>'?5>k;9+;{<M/@~?Y%7gVPKi;H\\8OWgT{=KEY?5gF88888:-C^<1gl<SD8BYK-g%HY$EV=IJ==5<gKAH$D!>F;Z<j>B'a#MGI&NZUqHEA!=a@0<Z;[;@@;&;;a;+<g@)$>|/A|;;K;(;>8;d?>@M@;(@U#;l;;*#;H05;* ;(&"';;;!; ;/;#15;-;!,;L;);0;=53&;U%;#&;$<7)98);*;;57;(;;@;759"%52 ;9';;;>;A!<.;8,;;;;c.:.!1:9*;].;5&;(;;K;";*;1;:;; ;"5;;;;2$4*4*;;*;;*;////.'99-4/3;+;'/;-;0#2# $;.'5%4;;(1;";:( !;149(;;K&&,8;#*+2 5;<;2;$;0<C0;5;%;";\\@1;);%<;/DV?W5C{<L;[0Cb*;=(<IA$;8Ci;#>:;AH;0;";!;^;6;<kA/$?<,C$;;W;-;&67;|$;V?BAH%A;/HH</;I(F7%!BVJ7;; DF)G\`;o;,F_;p:=F@;c=?a!>l2B5;5;I8-C=B,;0;
-h%NGKG<\\<mg%w=DGMz;/agq^g"$gC=Ggg=gh{{a>h^$gp7ejw[h#GgQ\\Nvg8)@H@-h3uc<7g?&AQTKG9gS:YhJ@NJBaXDIwQZEf;\\>z^Y<FJ$U_
-ju&
-g*ix$ho criFq;jgbNioNg}
-i <h( C<frhXimLlaW<$g-tA^gIgK\\=XBMGY@B>LL>@VA(g:d2>^=jkx<fcKg,}g1Hg+qg%!LGg.1
-g!hI.hl3css;$CI>hIU
-hUPkSXS
-w6
-<N<yXZQvWC\\#N?K9C?[5>8;;I;S;Y;-;;w57;*<$=I=T;;B;X?.g9;uQF?T=;o;!;[%:;1;K;;';eA;Z\`m_$HsIq=2>ogC;O4PQg,=q?maX;=;O8;x<f;;)g0;<x;;(;)6"-;S;5gZ;#96A.b/;b<@<Q,InK8>40"!>C#AW=?C]-;+;H .<{<T=+9G6Y<=;B;QEM;_=7EEI<M><+HpE*Uy<%=a@UGQmNqD!CW>%R;@@KJ@TfU=;AG^=k@(;L2?ANF@%;f"<PDj3/<Ee;;@~AB;>:< <H;<|>cDzgW<&Y>;8=E5Hm+;b;:@<@IFz=;2;u;?%Qj;N;t;D;#B/;0<^<%<N;5>%2@h='>B<z,T| <??v$ <H=C;\`<)<I;a<!g5;B;1;E<UE<BC"<=.>t-Bw;S4<v;!;:Ds;-=F<+BU<V?XF@-+;(;;6;=-+;m1;0<$;K#7:$!;b+;;3+; ;F&;%;8,;9;#;z;X;6$;p*;1; Hj;;o;6;t<K?07;0fr@4;'F)*FPFTM;MA ;3?=8-DL<!@8&C3>:B1L$=Y;G@&[50;V#<M.?8;A(=K$=G><B;m+=7;h;\\>T=)?pA';'<= ;$;9:;r'(!<;A$;'=.<NDg.;|Z'?pB|;KC_F8<VIxCoJ>s@p>,;f;p<;)D&;;Q88888:;p('=;("<;';D<;d=o=| #! ;;{>9?bFo3X&]>=,;;;W< ="KN<wB%);4<e%+;;&.+;0;(-$/;73-7<r ;C !',=]3;\\;A ;;|>;;$?=#;k<Z&=>=;*><=(BJ+<>(0;6Y<h?(;F?";oBR<q;Bv>'K+41&;+"%(>\`;;;;n;>E};+';0+=C#>=rLQ%#6:N^Bb?,B^BuD*NgB)U?z??\`LN;wD/;X_At@p@_Jh;\\B>;8YWAU?q@?JY;eB;;2X>A@'@/Mj;kE=;OdAT@~A!Hx;&B@Si?X>b?C
-j|lg|)gVTtF3
-\\>hoPahh4;<gnhj9<&D=g"gv@U;llkg[2=C
-iF
-gDv=5gWh3/gYihgrANrtOjy
-iVU
-?eUy;CDg7[Y[Jv<~W(K3DydfN/EYFgLdOb#DtL}A;CD_G3Q#P^@bA$<2BKg,$;0A@OG|=N=[=;W?DgTTKg\`!<^;WgX!<0;Yg3zJwG^gU%=%:X<>4!PSO(A,g49g)gqa(;;;Q;>D,=CRog3Eg,fZg ;OkMfI~;LBJ.;g3qCagQg&TE/@}gigI#Y6g9YKL;$;8>7?NeFPATqB8?<rQt@>RjiU!;;UHKO
-iiyiL}c=g(|gE\\;?S(gKfkS>j'OlhNE;zd*<<@gJjH>C=gnNj;'g/gb<"<1g#"
-;U,>},;:%@;&;9,;<8B:AqU{CxAIUKHZ*;A/-D7;o@]f{U}B>W>,<W>~'<+?1;"<E;;s@3;d@,N >,;)B<@x<\\<&?3;);<;^;>HEE;>8<iBQH} ;?A==X=Ig6\`|K5J<?;"AI,;O/+++*=n;-@&;;K:D>}=4=K[BX==R[C"*;T;4=^;=0@pN=%IU;;<@K DSL9GRX!<';\\-;_;+;;;v;)=K<r<}D-;<1;%AJ>\`<N;162;E#;S=>I;8;;M;g<%<?<P;J<dBN</*;>;~;BCY<C; >D<R<i<<{</>w;n;?;&";4;<)5;;A<%<;;<='?P ;@;+;=W=O<:HS<9;>@?I;C@;<W<C<v@(;8;,@]GA?R'=MCb;8<";F>C4;75;@I\`<#';;GE>]7;<;[;;x<NCA;6!;*5@;Q<=p;5=k,;;@ <T;EN;;8<#:=\`=O;;#<3Hg@:>g;%;M;0@fN;p;;0;41>9;#;(?6DbAo;G@,<v,@OC3=i!Jx<<CV;b;}<&<V;!<@)=f?~;p;E;7<)<F;2;+;;2;a;U;*;i(!=T?+An>;2.Am;rI:;";;'=};/=,=h>")=H=H%)-;$;= 3Cg;Aq;;O@4Mn;;; ;Y=7;aAn=3;,/;+:;P@;G;|>,>;?#;>B3;7=k?g9;$;t;3*<g9&<1.:;%;}=a8<;X<F0;{;>;>;b;21?j*;;);r";T;?:;\\06>j;S(?;H3;>l);<Q;).>g$-?9E<A<3<CDa;>h= A;l;;>';<z;;D<g<,;d;2<*<R<2;];M;s;3;&1<;9A;J<[=q<P@HAx.8;I=.;lG; I>>=';pB:=%;U;;@<;;I;9$;$;/;?;T/;C5@;C#Ad;t=@N=}A3>X;<*)%;;1;9;;7;8>U;e;E<.;s<L=C9;;;<2;4<;X=H;<D;%Fl;%B8?}(=;}=O?06Ch@n3?%@AH>q>Q@-B=>c>g>p?3<V@b=z>~;Q;B$B_,<);f@=UC?G.<L<G;f;g;,=;2;;?A<B<AN;?@'<k2Ak;T;C;>Z;K<';;%;-;8;i>IT1<Z;I>9;;t=,<<Z=5B6<wCx 0;#49Ao<J=(;;^=?ME;?y?>N<TM;';Fu;\`;;!=4;X=]<\\D~>)<#Bn<r<#Ah>j>+;t<\`Fm@>R@cCR>B;>/$3;;&%;%3;f2 ;$>-H/KMIS<H?7Dq;<E.<=1;;>%;';'5;?)/;8=Q;2A>;P?X759;;0;3;&&;);#;{;;;$;; ;/;#;&;-;/;"; ;E;';(;!;(;;R;a;#<*;X<;";O%;;(;B;2;,;9;L;0;2;J;H;S;C;2;-;";18;/;=;,;;+;5@<z=6=M;t=9;*<q4;;D=a>A3;?/;=;3EM1;/(;;Q'=T@DDAj%<c<$;AJy;#-;>I;9;y;;;8;;&,;;C?7;+;>5'"Bo>(>t;d<3$-;d;M%;^=,;);/>m;w;2;&;& 0; ;4:;V;,;1;;E*;M;;&;h/3&Ea<:=<<C11117; ;i;8;(;m;;>u*<p;~;;u!=p3-6/;%; /;R=R;;L9;%;">\\;;6;<4;Z:8;77;9*7#:%!;;(<!('&;#;H1;<;V-$;M/%;:/6;V&+1-';7;;LEP<i(<!2<V<[$$;.<L////;$;<;i-)/#66!;*;;H?!;B$=<;! ;':;L#,<\`9;M<";;;c=M;;/;;@0;a;5;i 7,";]<+;9;R;G;Y-;L;;.;|9)/+&8;>CC<J>;J<#9999;)<;Z;5;|;f@?";5;I=;w<1;u=E:;J;?@h<=;0;";! 0 # ;9</;9;E;9;M*;K;;3<A3(>xC<E=a;C<9999;;.;|;U;2<;Y?j=;</;<<b<O;J;/;6;z>5;;H;S?q;;l3<;@)5;5););)%;&3;^<s;B;\\;b;f7;p;;I*<0;$20;M; ;!;CH<y=?9;H<X;;;;;;?<F;R#;(#;~;w@i=;<P;-<=19<;o;;l=-0;#;3?;\\;*9;+; ;!4 .;G<&;9;9;B;;;+;e$;$*(;+/Dc>_;5;x((((;&;r;#;%;b?B;%=\`4<<=
-g{VCSD>gANg;GgK^sHsg#pg5cR9W%h(3E'i;AwV'g,v\`!<cE/g\\JW;cg2g$g9WNg??j;@H@DVB:Ujh<]h,pJe<g3og=/gRbG=US/Kgfg)ES'<hFPj#
-g16WBP.g"gQogKP\`KJ1g>Gc]H!_CgUg{Q*\`""g,Ti;#Vh>.5%=t>8AC;dodgzg%:g,5;0?>gDC=;!;X>HH^;w=W;Rg\`T%<Fg9CH?s?cA>JAAAi0V
-hoR}gg(CGin@V;]g3Cq_C>m\\EIs@M^].g0g~f.!".<;,<D<6&<;><<g$dgVHP\`bI:=|7HxBDagb-RzgY@F{[M;?=<rg@WI,FaOgW#DQg=Fg)@3;3;>;|;dT]<w]5j7g""
-P{B{0aDgj4;gK)=|g('DK<?]dO;|N$\\~+?0^>C;;";;A~<g<);vABD/<MgN_K(gR]Vjhg>7>0%U'bnS;?Z';r@C;bB~@!Je?F&@gB\`eP\\M\\@x<!";;vBv=I\\t<;=p;!EI;)CF=L@rGc";><r'CM?X<@O.>TDECXUm;?;P;:F2=D<zB6)C;?;?;a<!;_=b>;<0=A=\\=0>h="@L;O:(<\`fQ@ePy;0Fg(Vg;>=AyG(N%)=YY ;N=?fI4@T\`/D@=g";TJP>%B+Km^0gCY2g&ACoB^AY=c>)_LA#Az<j?u=HgM5hTg-JRm>+'@E %% ";ZgW/hN
-d^h'~g-3cQZ.g2"fbQHRr;iOgJ[Id%DR=c;.< ;.gwK@g?X)Jp\\8WX["YUXY1Y^L$C1\\zg"[;KJ9R];BwQCBPJ=@) '&g9g2Z6LBXg0.<;KgC<(EGgrD><[<<6;Z;rg%_sMSJkUd;;2KM;C;|>O;<K@|gp=PYM$;V]g)gJGi;2X9V~<n?rM(H%@ZFB=<grePi%<rg:_X1Bx;W@g KhXi;PC")4)>u;r;9;9<W6BG'Sb;;;8;%<C<I'Eh;4=|>@2Nm>U; ;<"?#'JL=kB:
-[)gJ0h>rg*bhEqWM
-jBi
-w>g4;
-_Ze4Gs@y;>JIEvFZZ8HJ;r';<;F;'4\\K+g+$;5;P@;k@G<S<PVX|C 2gmBTg*L\`>"?]Vnb<QcUXg74]V$?[V<CTW<gG;vh!qJ/g';A[iYyg;n\\gF$g(bhg8Gg\\BI3E";$?SugWxg$wAggqgKgbug_=gVHgg>sOJ\\JC6gpDUg,Zg#,H==LXgnD#
-s%Z
-h+&gNjDdtvZ
-p3gHBqOBX
-hegYr_ ?<=ggv;x;eY.<WOnP/;b<k;Q$Kw;8MsAPgi]gEg4i;O=<,Y6;:;S;H<gORAI9GUg;;RDKDG?I?<(g8_\\SBMg)dg!|;V;'SAa"\\)g5H3K1gE(\`M<=MQE <>DXUfg'c>SYF_>sU+Y~WRBZX#?hgb=i<}KfJrbM?k;y(=J;$DAL2g#;AE<g@Bg#FYg&&ZAI>E(@8%;E;(;B;$;; ;/;#;&;-;/;!; ;E;';#;&;;.;R;V;-<*;X;|;"<;(;B;2;(;=;L;0;2;J;H;N;:;2;.;!;Z;/;=;_;;5;;3;;%;;@ =m>+SSC<<>;#2>o;0;4;>;e<MA<f"=B<1;<>C>;_>:4;813;?G;r;><6;!;@<d?^BLEuIl?_;8>4)RD>b@E<7gd]yA5'gGb(Kg?*A(<VRe+)#$;?+cF@H;n<7DrgDIICf
-Wlg3 ;^OnivgE,gOiiEgE3WP\`FODgP3ge<i@Yi2h@tn 4
-iQ@#hO#g(Dg[Tg=hGKghjI(m2h-!
-h?Ig's<a0gB<g:gr>#;=P<whhgIQ;V3g*<ECguDldFlV{??tR@\`g~Y;;?gA$>XCt;$4A;N;<.;!?VK9I+HM=s@sCL<*g2h?PQ]<-dMT>S?8A<P!<=<A;I,;1;!;-;#%;/PO?Cd;^;V;g;;+DU;S>zBc>J@QGQ@<G;V;dD8;o6LQc;=&;(<-V>A}G#>KKaGr>S=;Y=i;\`An;V;i;;#;2B[>HDUK&>m;;+;\`<"8=y<"<d<0;>?& ;:Fw$>KC/<?<=80;<;-;b;6@oNr>d(;H8;3;S=T;l%%>\`S/g[>Ee)g5*IW=B?<,&F\`;<bGRS\`;:LOV/D4g~f%";RW|=8;\\\\Wa|;Ptg^;/Y/g;1U;gk;I+FOg)?\`;&LoGfb_+@JS
-s;n
-pgT>Fi^!
-kwA
-LZ@\\^gC>G/?WgZg*|g2Lmg*#h95gVo="g)iPd@D\\N<"Nk@WR4H=gKg!C<y4KZuBg6b%;Fh1;S"?\\D-I'gowg[@XgcBMTg;X?L7Ka;Fgb-\\Dg"Q~h#.C;?Dg=&
-p"jDdom
-ph:ty
-ncfYUYLgCk#
-mnk!lZ[
-gvDPjl#
-hU2g?!ksg;lgwgh"h[SL-MPg#B<PgvAh/<??<QL#Ajh|6g)?dA,?\`=X>3@S;wh0\\^]C"4;OQ;@FQ;#C?g|
-gnIwZ2JDgLJF1@f>LDgV|g\`#h3
-osm]riV
-jCg7V
-nx^g[\\;:
-hYgghQyag!oh"^Vj?ULu<3n}V.4;;.><=bCrPhgI?g2%h(|g3PjK
-g=_Uwk>ha^N;<}G|;nGR;uFiL6<UQD;mK0g"[P/GU|;6C:;?;#;c;<;n<;4;UEu=W+;N;@;!EEFh@kC;<";&;T+@4>M<zE/g)b%<a0$/;*;;;;"ITg6_g<=*<#=.fSGgQyEfg*mg)@2_zF;=:;x';Bn<IgP{B<"=gi$?\\Do=?[G4HEgaaKp??4@;w;JdgN?x<Fh*<
-E>^$g0>\`I9a=@D?<YOEP;Pog>NY;;;;";};;h;);;X;<;T;|?C]?QU>CB#%QR-?/IP<+@CSpLGF*Cc>+O+_TgH%>D?u=9/&; <6;D&;h;65Q1Ko:R4/LDJ?D>KUX>g%I~JWXRI&\`Dx:b&>CED+C9I0F\\>q;+=\`}T;a/@(;\\A0\\h@@N=VO$;8g,=g1bg\\CX@n=IHKWO@1@H@Dg7RH<.;;?IcO=7<$<&U;e^#VKgZ;|RAXy;r?E;0G-<\`ZTUU;bK2<?#XpfLo?<HJg\`;?UZN*;zgR;KF,Bv<>^;@0=PB.d""<H;='g?e;&0g=5<JCp<;5gE[V_(g8^Fb~]2\`|c;g\\tZ
-piZ
-mZh
-=9>R&&;6=F=hU;;>;SgaNQ,/<>U$=L?0_dJ>4;p=dgl?M2gmUg7XO;%]Z>rj<mg6vmb<I@g]LD%g(O\`#;xh&Ig@,=nh6W1A0&%"\\BG
-i7,gSigQ|F>gm=l\\Im^4
-w=$
-w(i
-w(z
-w'gvg}sYA;}g _;:"g(=
-l_FW*
-j-^
-h)6higi:'iEn|Ng9C
-l_GW*
-j-_
-r+RRjQKhgn=?#g+5Loh:9<>^;@0g*{
-idopi5
-wM(J1g( 
-k2
-kWg%K
-wc
-nngiHg_+kEbE;
-j8[
-Ngh"kgwl
-w(j
-iWBePg!gg3Gh*(dC
-YjMj[jMgXC;Q^(hy:m^9g: ;Clgzg+l\`H
-oK
-H[>=8<J;6BcAF+@DCI[g0$@MA@g?B@>rBc=7=r?O>q@5F<E=@/>,KuEMDbAUAYC9>"E*=B";{Hi@p?-?DbH8@G=X@;=Y;m=V?@CD(@H<IN&={>V>VGB#B7BB#DB-Ar@lBfAO=;A,?o@/>=4<eC%DxE2DL<nCH0F)<E?aB"CBSAmCB%A<E@D%GR>@CDDBEF%CQAU?J;^LGA"hqyRKjojCXh+hEVg7=
-h-g/ORgq|g(g?hGDgM}?EDn.MHg#X;M&
-kXS
-g
-g7mu< 
-d<i(BEIg+NiwLi'njV2mg_nODAh0hi_
-m!dh5?5g/is9S,g'njM@>^gR{hb?g3^
-j"wg;l?Gh&hYZiHha[
-KRgQL@g3HP0;$);E;<5 ;Mg]9?AS0gVEhr?";hgX=Z[TgYjg5g76gCg)A??8[yi0~aIHmg7fiUG;WguV;gi]5k+s)f*h6;
-Q%Ag_xOJ;tTE>gA;G<B=v@o4U<g5agPD9;HP; CE;1WBdO^^B\\Eaj&Bfb/HFJg#?6Kb<7ds;20B7iogGXg"gq!g:Avi=g-oD/U6i]g0Mm^|CAeEg>kLA;MHEuQ:M:g;VemI)ESLA?h
-O$HD;1&8<UKPJ];0;uGVJ9QM7Ph>H&?}<&>P^8;)@@@TA%;<U;;8=*;7;|;p=o>pQK6DS?9WmF@H;;O1F=[Vg~J?2ASE>>;CP;9A<5EL(;<#>S<s=O;?U=D=Af?VRH?T>?[;9=VGREsBj@~;nDv<zS9?XQuDO CDCq;C$D5CxVpH7=E7;<V@vA+<t<a@,;9HE ;x?^Bq;9<&Ac@D1OC)B<5=>A<E@CIBj?z?:+><=>J7G<JpC*@>m?;T>b*<3@];1;PA}@aH;P<-?k=E<*;>1A6A5?Ad=cBn;yN@Q?JXB V;T>BFW;n=c@w[oB+>L5>9;=y;P;8=K?z+;l<?;=C;L=8C\\;C;<C}<m;[@C=:=$;g/;"/;";b;r/<<Ab=<<r>35;|=0<i;n@;7;mCc%;1?i>4J1<1<=K>rBx@CR<V;M@><o;<#:<t=1?y>Q;'@@q@:)=I=nEs&?<3;Y==;o=>=d;<f<+>j<?>;<Q>J<0>g>>>?;;*;33;9;R;B};[<{;q?s?!;;|;|F1<|?< ;7;B>r;3Bg=S<H@>CP;7;<"<;@'CDFMTD<ZEq=iXdGZ@9?X'>2;i;/DU;+?A;?;K <G;/?*;X<k<S<Q@X*;@;W";:;F>Q<h@6;#<C#Q@RB;A>0>T=>+B;]@@0%@>;_;)<+ ';F);;=<2;!;d<(DA;U=A<z;UC>q@oZN= =>rBq&=;_=&6<2;y;8;NAi@sANCzFz?0;B;|=.;P=f;V?26TUBLOaOE;A1A#NzB<@75;0Ad=jA+=<5;A<;2;+Cq;%>+=h=H<8?@;v;)=>zC=;m?a30?)<v=);5= ;.<-;H=;oT,C;dV7,G;Hh]CL&BZ^!APE?<;>?#?r"A,WS(<-;;;T<";>V; A;w-D;X+<6>!;=,Ao,>;=$>N;Et? =T@R<W>\\=9(3<-=><2BW8A@O?&@=ZX<";CPShBTW[<>"7< =->^; <}Mz2B0A>B)=X<!;J;Kn;;t">#>mgR
-llgW
-w+
-mh=
-hemjS^u,C
-D4I|!E0g2=G4$;&<'<+;;<K1;H]"--(<X;&;a)&);f!;(69C=>YJff@=!;2;;%;I<,;(;O;F;9;<T5AK=(=^g(>g;gTb<~;o;,;;\`;;;mKI^<7;g;<4R;#[M;6;"-;U=)&#+;7>kCU&'%;7;$;$@,3>h;U;]8;:=[<f#e5;;;XgxJ*Y6;1<;x;s;;;g;<p;;D;x;M,VLZ;J6?l!;QbU;,;<b<ZIpOpSkg\`e{MqFKSEKy6;Rg*8^f\`4;&bD;;0;V"(;\`+;E,;G;L;q;8;';Z;DH.G2Gmg:s;Yg2=!\`[gNy>hChJQ\\=f<=LsgtC;E@n@x;*g4/Et?$?F7gC3KIIhg;M?>EC;UCcbJXvBg!Bd*KS]#R?RMDnCA=oA5bRDh<E7Ap!;jG\\FR@G";/?kB7>o?k%;<&;OH|?~??\`g?z6;TA6;&C,?!@m="+KgA]?i@>B#;Q0A;;eC">m@G%;\`:;N*KA@$@/Ca%&;U/B[;jUM"/;a;;k  %X;N{#A;&Ex@%;A";UH%?^>\\?E
-jW
-by; ;iNtUl@2A;3>&guHe4gSu=og;]<2<;VA;?W;k.a* M[;$h;;>gXg|qK\`SW<(;6fgtggRch!g>B;IlItHg&;@YTOg<bH}KH=y<_<!DfgFC=>='@EHlVI]g&@D'Sk;"g#G]_g3KV5gTE>sg/g#;^g/?!;U7;=;c<;;1;*9;&?\`AN;G;">q>z>tE9<VCT?p=9=='=kg+H]?6gu<5\\eQw_?H&?mGh>;#;4;Q\`lAzNP?D;;";;tgZA:K>V;/;;;KgZQ^>4;@;0;OfpB_P$?X;;;;1<7C\`AAaO@8Hh=6;S;(;QD
-o3AW]SKM?
-hRgvgg&8g1f<EhZg?PU<g5P;";h6\`gjbBSR0@Yg GN'gLpL<?y>WEgZnh\\gohh-gH4U%K,Kk;%;y AR?rU9;P*+g(ZOCS)< ;\\.8gdjg+Xg$;Cb\`U)h L[
-Ek$=0=:;-=9<J;6?+=|?P<<=B5@D=k>U</FoMw;F=\`<xAi@;$+=L=/;JJ?=x=e=P?E9;e@;6>Q+"<l@'=';.;R;d;J<R;9=m@V?O=o;U?P;8=VC9>v<=.=<;|=E=;gAr;sC6EMAh=M<";2;;m<E;8;A@kB2;Z<;<:A3>J</;<;|@j;D;Bn<4<-;#%6;%%(>);\\;';C?-=$;P;@@@;>8CO?<<?=X@;=Y;m=V;<=@C=,;)=\`;}/<;x?#<I#A];-;{>E=~=M={>V>VG>P>&;7@i;==8;<X#<G=w7>H>x?\\B-?p1<3@l?9$$;}5;pAO;I;+;^===U;@?o?*;X>=(<L(C=ZAqE2CA;^<W&;2B;?<J?o;R;WCZ<;W<E?a@k;{;? =.;@<@<1?Am<+A8=]<e&<c?h;l<E@@>ZBL<>>>-<i;AY8<<BED^<>n=e<$?r<6>S;J+DwAR!;r;j?|=II2A$XEr>&=u6)D-;<1<f=3=)<}<6<N;6<2;S=;> <;.;s2=_<;!;J<d>?&;@;];8;|&>4&CY8<<S=<R<i<=</=^;<N;?;9=q;=;\\9;;<='=C<q;@;3;1;e;v;;<(:'B6;;a;5;N<O;V<0;}/;S;q6<G8;8;67; "0,<);1;\\;8%;T;O79;#;%-;;<$;e;J;)4FE@g<[>4=n;%/;;X;V;>8;6HQJg&K*\`c>vN$T=BbBTRF=l;@B;i;!<6<.<_@[;n=<+=:?e<IA=";R;Y;g1@;ZAA;%@f@EXuJY]3<7K{;}Dk@h>LNBM@u?#?7;N>M>n@N<<>I@H@DIx?C4.<;,<<\\@K<;6&<;><<;@<DqHwA> =R?<IE0<<<<8;l;=< ={;}I7=\`';D&;-;;F);E;;J;;%<3A<';1;=;n"Bb4;?]<";<b;*;p<4<;\`;y;@9=j@*<8@:>}<Oe;H-H.<+JJCG;D"P6<VC A[;X;w)Hd<pGCC5Av;_<n=,;-;%;P9>JCXYP;;<+;; <!;l;q<1<7@';%Uz;xFS;s?GAX;.<UXd;X>$g$;ML/J3=?DTC,;F(g(PD\`B=g=F?7_Y*3;3;>;|;dW]5Flg<yg(S}g\\VZHgrE)gL
-tJI
-t4MjrUIUi=ThV\\g P
-jI$w6Bg+XG\`[=Q
-ElG0O(=y;/B6<e=?*ACq@2<P;;=?<FAvG;?>{C};%>tE!:=3;d=+<;QFg=;L!M?H'KSQH?"=">_Ag<,;=t>eNp;:;>V=D;<BbHoJ#;D&?@~<}T0>;";g=ANk=E<X@cWQ=C=?iCCEO\`IR;F~=1;9ECA#G;#?,;B5;1?);-; H]F%O-=mA;(>"BIK:A;>;;2E!?$C@=.D:HR?.;uB:;3>L@{?/<b;x;^@;@,=^0;,M?;R;_<4;;c=;>$;A;^<Be\`B;P;H_'Qp;-;Dgy>cM\\\`\`=CN,;";Q0(@/K<&;U>d;<>>YDTUv;A.;X;@%;^<H<9?u;G)A-bS%;G<6=G;R<";=;@;1<O;%>\`;QPv$$;I_;K?;)K@iAKLT6J<DK0B_AU=4</?J<f;}=E!@zFfI;GJ>Cp;<R<,;;S<><E?;.;4>'@4?ZQ A8;6<.;!<JA@>?;-<1<PCo;YB>=1;&>kP;;&D/;K<0<-BdAYCE;a,;";Y<Q?;*?_/=N<]>z<R<T<3<==F<T=_V>-BFBs>bL=;<C<;^;4>_;^=U<C>H</;=-;,@0={;.>TD,Ab@b';G;5=c@J@,>H;R@<<3;;Z;k9;=/J ;>v@Y=$<1;@<+Ch@H;y=\`=;?OF<+=H<S//'">7?m>W<<;!*<r5;-;[01;U;EgIY#$#;JC;cF_>)JA=gDRKX<I?};I$H*A,?>5<{;=<o;&=Lg>A=F>/);";B>;O<D>/>1DB?|=>:>dFv@<.[qA';SI<6F\`g*kgRINg7AH$gmCg,@Fgk
-r\\Vj0,<*=J<<nDY
-wb<>]cC\\YM
-iodwkvg<nGj<<<=V;L>X\\{<MIB_1QM.+;;[<i)\\g+/gQCg*m?,gMz<3G<=LBGFO7;HEP<=Swge4?H0CH=0g;.J>c@WDhg(&gFI[2Pqg(c_fgLJ<>]cC\\YM
-i5J\`k#<LYW<n%=#gHgD<Phg gxfhs9?,g\\<=LBGFOa{gjHCJgk;gHG>:gn[2PqD!g>;i?W=R>p<.g$O7Y<>]cC\\YMFIZ
-w5S
-sfR
-gPP<gnWT%bZg4gKTg0=A396;jm3;;;;"g.Sg!_?h= NG;negFPgWvhJfavg F6UmEnSkE|j:Uf(+,-,,022131043Q]glhX"
-ALJ>FH0=OIJ2E?+Ts\`Q#<1h6D<<{N-=>LLAZ;ITg"Lg$gu;wPe@;-; KHT#/;;;&$&;&;&.;);(>b;(;#<Z';f(!ED4f\`f@K1"g2,X\\MU+WS\\AH-gR9hjGc'NgRg7=X@8=)?H@k?-g4#g"NE<<g+UgCdQE>}g1Zwg)\\RKGGiW)b*B9<W;&DCaq';j@RLg*eg4s/g,k;;g*G2g= 7g#)5
-?n[\\4gO<Vg.I@ZgA0gZTCO?#Hg'g,g;-5CYg?5<z=N?\`]>WgCgAVk[Gg'Eeg,yEU>gNS?lhXhg k;S;\\)<>?:;<=@.<:4@;wgzig>U#gv;k(>VB\\gj0gAh{gh6MdgymgG;"Lx<\`gD1@%;T
-_2g<hf/iASghcgz@-=h~+c%AIe=g,]F'E6g3xYGf=4g+e@1@H@DSC<Bg 1UYg<Cgjg<D\`[FtcGSA1FZU;]g>LQi Rgf;;g;j*iP'=k
-hNUg%fk6;l}:lRlhyq)IZg3<ZWdgHI;
-;k;Fg6US=>BcD$?^;:^%g1gLEU@pVbg/FL>gGh\`g\\f\\7gIn>n;AcG:GY; ;}<Z;=4;;".<[* ;-;T>(rq?<4gD]gA;h$7K%g)ngA!g8g,Tg*mg?Ag.
-pJog3i5W?]gXMj(=
-g_PPhG,i/i;&h[gX>k\`ggYFi%'i"-gu???s
-g!{gVIOh/GgMg.Ge$g?WbKgl<J\\)?Ujhb-h8kD'g~V6h}g7?ZJgA|HnKb
-wn
-j:2g[bk(=eHbB/g_$;;X<kI:j;hsaglgLU@RgKHg@7hG[9grqZgf=~g$\{
-?TkLi6%Q7f}g!$ghsUKBd>8?R5n%#h:Hk/[
-h"=g]P]S2epXug(\\Tgog1Wg]8RBFdSogB?q%*= [h^C?gg0AEPgSpg<uh)Sj0*G
-iT/
-BC<=";4>1;}@y>D\`Gb;S;#=R;u$;3(;N+>2;-<T0;,G%QM<TIwIB=YALStCi.Y-;+NBDmU#!QlA\\;Sg![g-.;(1%;RrS';$;2!;<g<<I'=? <LX>;_.@;K\`86S[;"g)2' ,#!;Q; 6/++(=;e;P<Y5;C']?;}4gV\\>gX9@@;l;>=<gc;h;I>e;<N<%?>Ya<]C8?+<2<u='<jB:>WKm;;9%<%;;;Fu;e<u!;;$A});=f;5;<,Ha>b=jMdD<IH.O*;#L]D@Y<U;3A9<T?tEM>w#$;U<7CT>6Gb($##$&'&$###$0;&;#:GzPM@6AE/=5A|;<%;{!Al;Q-A0>1<<9/=U<B;%;&?ZF(;?E<=7>i1;'<Z&L=>z<!;\`Q=5+>2gHQ=I;dE$<"@-@&<7;o<@(<P5<>=\`A\`;<;> 8@;">v=N1A<>F<O,(,;/=:;JCD)>L;YDy;a;<;i;Q;;@G<)=;1>0I<f=y.BUEAK; Go<k11;<J:>G;>%@k@9;8>r;-F\\H8D\`F@j@Ar;i;jXC;o;0<<F$@;E";;|>w?GzD9Agy;Z;>I@CV<<SK=;,J%<D0=);<0?E"" $;0F($##$&'&$###$0;&;#:WFgA=.;w;U?t=K><0C{?P@Da]=vBI*A9;*<G.<=*;>;;,>2=Q>+;q;V>A=/;5>vLZ;\`@JMg5?\\a;^{>eIRcFg4Ze>]E;)Jg@oIZ4%g;1Iy-Jka!?GW+#LgNACJ1L*[Q>SDp"
-^>#<2<}Q:iu;;jY,g@XN<9ELOLadJgTOfFK>gSg/*O4g/_Q_{?u?KT\\gIX;:@qK{;}g%{ DN@2@H@DF/;6MlCNBZ;cZO;=u7@oB#(;r<<<8;m;-;P&!'=lFRND;D?QO2P9=j@*FQg7<]sB<g.;w)D8?ElHGF(KLQk;JQGW]KihGn>|;>&HiVBB6J4YZgfg(2V@,g%g6<?;5g+^;4g*L;4g>K;%
-mbgWrgebNjzsYJ;]=8A;0CL
-q'u
-tKA
-n~yqg2
-nRvg!g>qgDP
-j\`r
-ni;+GPwyo@;sROg
-kWuP_g}S
-w.<;
-h8Qgi g<Dng^M]\\gghtj@gKs
-wpN
-iD_<;#<4!;;Qir,k&G;>gp ;;/g'~7<i<XgqWa&;$>\\=qguMh16m./hT^g1XP
-i=hiSYku>Q"C1gG1i3TBS_h53
-=N;UOQVYFFgNgRq=[g1G=)<bg~<n5;@g#E(?;#]V=;E<:;@?D>;;nEUg$"[?U1gDOggegr;M;R;H;K;gXU;d;x;l<;f;2.;Q;Q;6*D0?QC Wv\\g;@vMr\`>c>";z;*ER<S;p?:EP=<eAB<J;6<E:;@;IQ;;v5;@4$;!<Z;b;?<6,=g;$;N;5;H;f<D;Q;D;$=nPyFTHuM(F}ac?|Z7;VxJEBO<i=7;dA?I|@iGp)A3@:g7v^+H?-b~?@ J|gr;;>?y?#;$;.=>0N1DjBG;F;7?o<4B';?/;><!ga=_;<g?K?BW=L;f?>>dEV>|gxAz=C;D;f;FE;)ImJfFZ\\N;"TJDOIoLuH=p;L;;,T.<wHaEKWn;p?gB&=%g(DSA><[Ck?J<AM@Mz?H>;6>Q$gW;;OK?!co^og4;g[E2;#;AAa<;?<;9<3^*as]haY;)gOC?=E;_?'=!C=<I;N<A;J<JRPGE],=DRo
-iVa;3
-i7!k#6gOi>[;<<<b=Bg5=t;<<w;gW<H,;Y"ih8Z^g(7BL=]jnFgh.i$!g"gQ;#
-T;)hyh7sgWkhs};YgmJg Ujam;Qg^>X-g%|
-AWg>F<=BR+@gJZuVXSXgkTDuG=g(*g5T;A]c^Ub'g%igy_Z
-wS
-mf!
-kfg<
-kj\`nWA-g';H@9DOhqIjo
-oG4jNMnoA
-iv#gG&
-Tt@DgbIh)Igzi^^h/!]g>"g A<CaBg7z<.A*gF+g9{BVTBbF\\o;gags@5g$Ng@?>vgUNY)gqgh8]g3pgN5Bd
->Ah;Sk3gQ%<:9;;a*;4+;H/;;+#4.-8*;;#;L9;];M;R;H;K<);'*;'2;\\;j\\=;8VJgx;>;;+*=v/<I;<n;G=t2;(;;6;(;w;\`$+$.!;<;C'4.!;&;*;?;;$$3;;;l<'@]="G4?"<#;D=B;\`;u=B;';)<<!;Q;>4=;B;m;*<@>^<p-;w =&;;C<~<H<8;ZK2=5<R>C<C;C!<E=C;HiR<<ah^fgeb<Ni^
-'jvhx]i_tBghMkhVCkZ,g$FSNF+Kygg7\\gR"
-J'TDhOPg$";)%0%&<XgDgP%iTB3$X~;\`;A>^gqLbMg@lg,W;PDqKxRdg/Q=LF)BR;CP%/\\eg[2ECP|BC<";bD[=<rgj=rP5D);C>V;!HLBB?g0g3c Cqg6g"rg?<fg8,;Ah<>F;iIZ;dG?gY]haj]
-R^aTl#K^&; <)6;D&;h;\\gCd
-gTtMh ;6gaj'wRgiHX
-gHX?b\\g8*i!7g9gWg2>Dg9lE.X7hyLkj\`Hli$X
-MP'i_Rkgvg>>U]g@@0g,I7>;ri$eFoU1<wg+.EzgA)Chb3FX;l;KAgd-h>d<7jYpID=>>Ngi2g*xg7<4j5MB?
-i]+hNkTWg*{nvA6j%
-h?.;BA2G?W]$?XBGJx;;G;";};;h;)<;T;!4;]g<|cg&gVgc]gkE=?4;c,6<_;,;!$;K>Y<uB]ga*GaS;\\ACSB,\\vP;OFg/gIiAz=AN;~;=J#=X>>hF]h6[g>@1@H@DB]<;1;*;V<W;#;!2;+Gc<;";#AW<-g1<<F-X 5;]JA3b6;$Aa;<a??J?K<qOt?P@+P_;7>j;G:W<\\gAglgEUKgQ;GN1E4\\3G;l<b;V=C-QW<Z?M.<11;/?N;@;q;c8250>';:;<?=AD^;_;L>IACb>a=x.A2Bh;J<<;!<e=;=(<;<.<N=A=3BE<+Dc;!<X5g6cCw;50g=5<JCw<'g'[Vg4~^Fb~]2\`|
-g(:BqGH?GAGK'KsE<a@r=t2>}Hu;1?gdF3geG;&7=\\)>5Ka+;kC@B<3PK}>Q4=IB B_;HgZHr;,;QCS>L#Au/Mgi;:,;W=<S|;;NIVBZ<Gagq>:>Q>S<:E"DqH0>aCo>>><<9@7S~BpAA^GK>L>G;GH5AdWD>m=~;k;V<G^->Dd??;H>a?w<$<!7<-*7;<:;N>?E>T;,=-g@igGM@Dg,M-FHC<<N\`j5 COYVg5H4"E@bTg,C}e;>d;.; <{<g;=$P<g@Ig-Fg1GN<i?{gsL@
-<Vi_[XbKlFUg("i}p1hg0T<0<Is;:=)gy
-ia\`ip:@Qg+jSIu%
-;mg5ag0TW\\Qh/AphH$_g5enNyXX@T; <6<x=@;;{<*5<.<H;)\`srQ"gAjZ8
-h}^hYj/pg&
-A7/-;6?x(LP@gpabb5NP;>X?;J@2<@3ODg!s=$;;\`M/<>U$Iy@;CQfJ>4;p=dDS>!g;P;.ASV$An@ g;,;~;gn:;[(<@&I:;AE!B0P*E#_d>FMD(<{;.<W2;KRFhB*;-< ;P;Z;&;A5;8;F;;mBW70?L8;b=O;Y;3;H;5;}6';';D,,<&;3;:;S6;!6(;5=JZBmD/;)2;U;<;=A";s=H5<M>Y;S";[;g;D;;h;I;.<C<K;<;20;6;e;J0<8$@7DC;!B6;3;%;);Q;<&5<Z#;g;*<Y<*4<\`</;M;V;c;;;;q;?;9<&;;S*6=<;;0<';D?];3J\\FD;;J};V; C?ggyjgrHI;O)))))))))))<')?;AM"=A>^UAB7^=eD;>/<QIM?D=6;;D#<8.g$Qz>]B}=<-B>$;6IrG/;o2<(;|CK<x=_=>0<k>.<iCr?>K@G;Y;'<|<;\`;bDZ;#gD;"?QHN;.;';{;];Bh?"Y.gdg APVV;u]KCDCm?3BJ;\`?RTp;2=x;.J^H;g///////////<Q/N#<$=q;b<Y<2AmR[(C}H==p;/;R$=<r?@A&;O";Ax>u=T<>u@'";E;:+;+0;(;B;##;!;G6;a<R;^9=j;;;;#2>;';u;x@#NCV#>N;;R;5,;;;;;2;#.;S.;j;; ;&;J,;$%)&)'%%&%&&&;/;D3Kt;<h ;;?B4<C=[<T$+<;<oI<3;; ';}<p<DC=5;S;c$<yT7hGxMoKpFq==07;,;K;~2$;S#;W;4=;3+&'!-;;1(;';; 1$#7+$%6$75#!;B);C ;1&!&#'4(6;; ;;I#;8; /;87;#+66$+#;!)&"',$+.;+;$; ;a;O;;+5 ;?";4;.;y!:;a! %;;%;X;;%78 "3$;;;&0+::::;!/%!*64;,69,!7*';0;M  270; 3)+;/+58+#;8;'))+7;5;;"%;&&!.$79-;';*0,; JnC+?$CZL=t"C*<Q>]Ek?6;L?_;|;r+=q?D@+>oEI<0=n@t!>L>SH0;#.;;-GY 'EaR<B#<5>(Ak/<Y>#H;&#$(/<<<Q; ;>?(<Y>=Jj=2=F;Z?W
-RX;M<p_<gifWP;Jr$%!;*!"+;.,?;\\>l$c8gG/HaZfg#<E^h0Mb<c4[GLEO0EgoCH;;;GY{;'EQAe;;s@fE6OSgL;^hYgu|a;@I;e<'H=D<pg9A{\`hg^g?WAM?mP+BdD4\\hgQ4;a<W=wR9M(>aCBR4BqI>D< K~dP=;/;+<\`<8P_H>Gg'G;W<L;p;.;;6?@H=WDi)\\tT$;];$1(()%%%&%&%;/8,A~Ame3>O;;&<?^=C=</g==qg @%Y;;%2;@;U;@CI;Dk;%g VmHg\\)JCRT;Qg"w
-w]@gY
-hfH
-h^Fh gXLN>z\`hgpkl<IgNieD<)g4hj?;;@?gsh4
-h 2
-wUk<$Jgj%\`f
-U4j5nj hhx!mr
-;)Az>W>_AOEj;n>$DSg?jgA)<G9Q\\GXg>?K=Y<#=#;L9>8+=W;5ABG?F];WK_CCB;tFG;K=A"G+;=UH|?PAW<0I;B?HLv>=I;5=!>#OPJo=r?=!;\\=,?Y@jdLO4MB)BkRw[5;Q{?Dr=D?4(J9?{RR?>>|;Ac<B;u;4R gb\\@KaY{I Ik2IVe5&=6?K<1>CbCDH(=IKP@JF+'C>ES;=N;";0 B<}A;3>OEA>/CF>;p;L;%;$;^BzEs^fAEPP;#A=SE'>B<4FxaLHp@;z*@F;0E}<2AC;R<kN-;$g;<n;EmAg=@G;AQ7SO;X;PX;mDM;gI$=W=D;u<e<(=/=.;/=*;{;.<x<e%CyF"<t;Ix>~=Z=z=6?!>p<>?l<p<=G=x.>k;#=m?j;F>lAL;'<MH\`<|=s;;;;6;6;=;uA;cBT<^>/B;>@~&,@,@3;m%>n;x<_=8;t@A;X=5;*@ ;=;WJ\\EoJj[Q<J;l<};\\A;Db<!<p]QBT;9?.;q=W;4>X;M<V?5<}= ;BGF+>.;;F#>&N8g7;k=JBG6;$'=,@|=b;9BCVpHc;>L;[gv<?Ib=?p?k=~;b>5;KEa<%=u;:;W>I)M=MfFYXh?a;BKf(;$;X;/;#;&;-;/;"h3Kz@B>5;#VMA=;(;\`CN@LpCgUz=x;#;;Rg&D?;)[-D;;UBDm@fOTl:R'>-
-t8mLADP
-Bq@!gFsg kM#hg^
-g_7g)(TmgF5TMg92M,T0QG?8Jo[ggWjirZq?bg_Fg(<
-=Z<0@VAN?lAT<IF;,?e;<|?N<<XD=@B<l';S;z;&(;N>Z&><BA#;E<aBQ;%?|%?=7?@;J><6.4=6>B>S<//<c>d;K<J1;1<=?W?\`(><&;T;7;3'<R>Q;.<m!7>(>{;F<4"<E;:;;.-;t;AQ;>8;^?r;R;e;N&**;1=M;(;!;<.;O:;f<h;a;k:;<;J;2%;o; ;B0<);K;\\;m;O;_; ";N'1<F';';v;t%*9 8;,1".-;*4+;)!AmCy<>?r@C?9=^=82;[>7=*;;+E\`+>2;A";@>N>dBn<'<1'?b<Z1=2;<&=z;!;;;4;=;=y<*;=;$;;%>d$+&!;B<#?I;=_;;&=,;<jC=7<E<OD;G<c;;0<>T;~+;G;H0<;w?d;;_<1<=8;hFH;b;8;Dp;(;$9;z=}?:=<5;r;F;J;+;Y;>P<4;f;C;;u;6/;g>)?<y;o=Y;J;;8/5+;Q;.*##<9;;F.;A;-=.2;,;/7; $(;);&+"+;;<>!</?\`?<:=8=:>;6;?6;b'<qC,;3;<=P*<;<e;o1;*+=%<0 !;n;)-; 9<; "<G;<;r;";=<;;l;=A!6<B;r;8>e>=\\0;.;+7/-AB<F:&.=2Bu;=H;Z5A <;1?X?.;-?g?);b6<;N,;R2@<8?E+8 =6;=/;.;R@Q,<4<|@W;_;6B"B9;"=@N<A;5=G<G;.<m@.; 0;2;~;Q<Q;<;)?W<O;R";QF3;EB!;2;~;>ZCs>u>k;K4<#G{;<<\\;<7?l&;6;<'5;".%,;4;&)7);&;%"*9";?4%';b;g;1;-;I=4>/;6<i<f";|@u >I;=@<;4;:;q;M<=*<"Ag;/;P;;$/8;/;;;-;;!;!!?3-#<N/<^<Y;o;-;v<d<v";o=<5<;=y>c;?;O;a<U>.;;z;-<Q&<T;S;-;;1;1/+,=3);(>O)=9;B%?);";?;@;g<B , ';(<|<.;W;%<y;H=d;g=&;;g;<4;H;\\<2<<B=p;GC,>p<=Et@b?~?<Z>T<);F;)<2;S;C;><L=Z=I<Z;_<;F;(<;w$>^?2;S;>7;;;<m;V5;K;R;n;f;$;%;y;@;D+;&>";0?=e<y;g=+;B(>=;#;<P;%*=C?p;B=&=5<0;];K==P,7;7%9;<d;;6;<;j<6@,<;7;s$<,<+;$;;;<2; ?&;+?p;>,;=;;8;;>;;0;$$=.;@($##$&'&$###$0;&;#@H;d>f<9;F@W;R>@>4<^Ah;7<*<<.<R;<>+C^<";hA;+=b;@2;57;~0;@};2=<T;*;?;T<*;;<6</;|<?Cz=0<<3;+C3;j;-'0;;Z<R(<P<a;?E ;@;(;b<=";;P=5;+; <0<q;{5;T<b;#;Ha;T@>; ;=%<o;a&+=?M;F<]?s<X;B;%(;<<=<0$<I;,;a;Z>i;;Y-;%<5;=IAq::;D;<J2< +%=V>P<;Z-)1;;(= <_+<=o#= ,9:9;w4<d;5=S75;}<s;;^==<e<";a<<T=t;5<);q;Q;7';C:;@;>^A>;;>L;pEA;?f;86>;;/<U)02;\`;,;T;2=k8&;=><#;#<9=;a;];V.;42;V;2=h;@;C;;F;O>!;(;D;;M40"&;7;Z;r/;5<3;';E<};-;0;a;k<u>W<:">\\;'<F;q;#=l;.;;R=z#9>e;2=TP>x;/<T@&;s;0);H@76;_<$,;4<R6<$9<\`;+;9;=;V=IN;K>p?^(<;_<a,;s;<1;5=|<e;>=A;<;<A}<C];f9';G=f9;q;D;R;;.<v;I>C;V=n>g?k;b@<%;; &&;2----;= ';R;9=y=r;q=6Af>}<*<(6>8.$;;;Q:;;)<|;c;"=;;H<%;R;<\\=~;;;;2<nE5&:@B=p;(;h=U;A;(<<0;0;Q<!;(;;&2;!;.;>;0<p;=<1<.=t>o<[;R"<e;+7;O@}!>];"?i;H;*;.;A?: ;8-;h;5<,;-;;l=<;A?|>Y@))"" 2<#;u&*;\`;;6;;A;;.;$#=;:($##$&'&$###$0;&;#@w<>|;@G7?Y=|<<E<\`;x=G;;K=;R;;8;>X<a4;$;;%;b$/;j=@y;<;.;MA8;(>;K;3; =m=0;9A2>v(=4,/+-9/466-472;;-8;;;0;b;;4%8*;##.;;G;)*;$;;);0;""(#;;;$;#$####=3@Y@h;L+;>Cx;6EE;,;##;X=->->m@H;J;f;-=0=O<:;/C>';Z;3;W-/<^;j<; ;=;*;7 ;z;"<*>';K?e<);;E<<.1.<(;d <R;K<<K(=3<9B;5;);x; @G%;1;:;(<%=<>1@%<r2)#?(;=C;G=1<~=9=a;6@q;?j<\\;&<\`=*3<&;#;|8.<T;j=Y<H=;e(;;d>&;B;&<:,9?#BH;c;@o;);$;; ;/;#5-54;/;!; 6;%;,3*8%/%;%;<%6;09&&;m&;A&;p&8&;}&%(&;+&;&0*;"&;5&;&5"&;)&;$&;7+;,&$3&;%8&);)&$0&++&%;2&;&;&/1;!08;:>B>x;>G{G?2>0DoA!";=pA?'=X<">s;813;6;R=CA;4><DPK2)>&A:=$-<g;b;=+);6" ;M@r<x;/;d< ;q;w;1;%;&;*;;2(=>7;o;/;M=s;U<7<K0;;"<l61$,!05%"?q;#&=E 5;->K/;UMQ<h>};8;1;;$;;>TJT>t;m;8B>L>=7*;<<:;p;;I>o@dF!;;<;.;<N8:.076;/&@Q;;>$"3;;r;S=O;/*;c;?Aq=\\;E:>,:;; 7<3;0;";";);;'7=X+@;;);M>4;{>j4;,;(<q;7$,!4;-"@t;)2>!3;;$ =Y+)8;?+<GnA==5;!>Q.;";/;0;0;;2%)GAK;;=eGl>K;\\;MB[If>h;x<1;';; ; ;/;#=n>a<s@T<F7;=A4/;)?Q5=^;@$
-wJO
-J=?.H\\==VIVCJSP};A;CqF'@SH /blYV,; ;M;5;(%G5]F)=JH.?1I$MKXKEsIFz=Sgh<eIbBDH F*W^C]C;i<H?jZkKI=O<|<MSXA\\NI<dG<F;o!>%;g;0KAg#~D'A:;"=T;sP=VLICiXN<qHIBk@_;RB-AyG\`<<<?-@q;_>Ui?[E|;2L-b=~]>F%?<I==Z_6DLQJ&PD7B#;L=JA\`@g<f?-;+;?IDYB_;3@I)<3@cGK?;L??C~;;N9HF\`4CyCI?xC-aFVB1LO@D>K<?=4F<;:;&D;#NA~;/;cTYH=4;%<mEfGY=iB_;F';[EH;D?H8A6W;= <+;H?H";E;=G;*;;;;2=m<;<b;f>\\;8<;D?~S@WIGugN=.DP@ B0DZZrJ4Qk;JNX={Cl;|=G;?D$<;Bfg?h>UDbM'?Z#A6>Bg>m<!="D'Pv>1>DB>@J;VCA@C4B;O$B6?y=QB>r?RUMHD;1;#BT>6g 4=\\;}OF?oG=%<H6;0;%*,(*+).*,;!+;(J~EF:[g?2H#;><;>F; >V;AF;O<A*?>HbGY\`YBvKmg%C:F$E{
-nFYBg!#g gN0hcjgDwg[FNBM@u?#?7g/3DqHwA> g$^Li<h6:<V](XTgK?RB&@g(hAwj2G
-gEg%TP\`FJWvg"chKtU4fRN]g_Yf+g}J&; I2Vz;_ND
-S};rThM7GCG:?}AaJ]Jk<u<7NAw/=qcb;1=jMiApD$=oH*:gA>PW+VW@)ES>Lca'Fv;t6=1CXAP$?E;;7;bZ_@<;FL|PDg/g@>rJ;nM/M?g=>@Ht;*L_a2=;A<;;p<B;|;:<c; ;o;y;W<<H;<<N@\\@<J>j=#<|;0C4;= ?b<\`;=</;*<<V<I;;V(;$</;Q7"<n<J;=$@8=%3=t<<+;/Ee<@l;><N<;R<$;:;lBc<,=*<m;b={$; 4$;Q>Q>J=;)Fm;6=CD5=[@B3;I?=1=_<K;2;v@1>A<D%;;b;?;r;2;#=h<*;H;f=\\=;>V>rD6;p$H]BC;R;|;];1;;6;3;[?*D|<M=h;R;-3=(;hE@@l<=H)A>r==v@i>a@:;/>M;A_D;p=$@U,;2AG<QCg<<BD_A%>><!AU;q>I@b<nMXCe;>/=NJ4@; <0</<x;U<i>;Y=S;G5;t=O<<;j>99%?kBjDL;>;<=e++@<<X<j<U%>2=M;=MF;nBG='L>K?8A);a>;X@H;><)=9?vMvNN=0<2;?S@G=f=M>JHV;zF0<*=<CC<;";K<g<vLd>z>B}T>>@ICL=(;!;?IM;6;5I/C{Iu?}#;!=q;-;&=]>f<5;&>8@9"&*('----->!//;B@G/;"@*;%=C ;#6;;4>;2??I;0;EQ@o<1<F@B>GBy<N=m;;Q<2>?zRQ;g;Q=N<j<";<;0/0-*;;3+;g;z;;&IlCA<;2>6;ANRyB=&C\\;A2;"<B <?;;ElCC"AJHcN3<;(<RF%=6>>?&=uC;)S|<#"<L;KC;<#;q?O>U;;=R=f;-<QFY=E;5;/;"0= =3=!>3<qC;;E<z<*;Id@>w&>DHV<NIhb.<==_BM>);H<5?78<};ZId@'C#>{<h=;;1<l;:<wE5;?;>\`=6<S=5;P;J;?;F%<f=-;2;=qF@?W;L<!3<@<#4/8;#;$;>>gBn<9<f<;f=(<*BA$<<r;9;F;(;4;;;e<V<KE6-6Mg<5<Y;;;U<=0CT>;;v<1>h:;K6=5;zL*CGH<U;I;#;Q;1=R=PFL;G<=o;@$>K;9;);;F3;^=A;;b!=-N};a@0;';+;/;<?B.<>y<2Am5!;=k<<!?8:={;{BA >\\?E
-l1hA\`uYYg\`}
-;Th50g<=BQG\\g:n';P%2;%;#;?+;";p(!<g g>x<[O4O GSgy^1LJg(-)11 ";&;7!;;+%;8"5=DA='@<V5O==SLvEU"->);BazgV@[Q6A%gwgW0C>NHB>P=C;;\`< SIy=nK;gugQJ=;+\\ig(B=:g"?D&;n<^g$.<<%Mj&-'&----,=u//7';"@)dN=bZ;Itg]a?mOAo<a]O=I;a=@>!>!;9?';d6<tCHE2?O@z?y\`rD3X6I!7?~GXgLC-gMGzgAh-])'g,\`e1")[CiZ}  bv!aW!(g0$ 'gq6
-wC
-=M<YV?@<.Tsf0=pG,;;<v0<CX;M<>62;Hz@<t7=1\\y=r*;2/;-!-$;x5+6,6;=!6C%;[?-<(g4]=Q=6248$>c?kTrVI;v&+;)[<M);?SC3<CBd;W;<I;K(<#A;!8;<^"&@;,;Lx3@k@R3<<.;%;%;!#&;C;!1;W;P;E*;5^N@KH#'_@D&179;-;;;;n;;="CzE/X"=H;#;);G;1;@%;;)6Y8Go;s+8='8';,%1.; gX>|U,?z;];O=<,;g<";5;M;R;H;K;$;%=0=\\>;<};Y;3;7;F<;^;i$;;<A;!(;)%#;H;0$;$;#<;(;G;d;x;l;4;(;;0;Q9;'5;+;Q95;<:<%=5;~<=;.=Q@d=4;AG}><d?w/;7;<U;w>h?V,B;:;|@BiQ=6;<9<;~=v<BHAxA,<)>.;X<.;};s<=E>6;'=?o<%;< ;*;U;#;F;-@9;^@@;<[<[=&H?wgw;;=0=%?lI@<Xy<;h<B|@?Q;=v<8<:&X\\"?o;1;J=>E={Wm&;#;;??XCJ;4>=/<0T?3#E-^%BHAg;bPiCX=AX^ca>"KhJ1#@RKKFDi;&CNA)==T@|@!2?B?UCGQ2;$@;?p;ZL6;K@JIOHBg%<W;BEZQ)Hm<OD-=/>4A}=b;@F=E{;9;>*=;-?\\0;.;O>F;O"<1<t=/$(;!";;-;;)<I@ ;;e<B;GY@A>M@Cm@#Cf>=7AA<q;/<<U;><,;~<4<=<A@;F1<R";R;=3<d51=I<l<^=Z(;J;$$<s<H-;=!@\\%;W;>?RD];3<MK));VBA=;(=-;+;;-;$;=;C;;[C_;^<]A9;O">{/+?K<2@>!;Hn;";Q;;8<$Ba>k-4<T;o;D;D?>3H2?<=q;(;>;>);Z;F;;S;;8==C?>G=j==};K;=;;X>#>%;};B=,<,>A;|;F;;r<l>;;\`=X<7 <=@i>1/;D;j;(>=F;a6;n=(;f<\`&=#>ZU|XQ=:=<?A9C<I\`<uC=;8;_;/;-;\\<*XTKFHv1M~EI$;;;,@>]HpBQ=N@C;8/BtRn<+<><-;-?s@;.==?(BE?E@E;g;(=;E?]?!&LZeg%;T2*=Q>;+C+G,?c";)G0A?b$#!@;*AE;P=<=8;;Cg@A(<;*=W;Fm@D@$I4;U=I@YB=($@JzL6$$^LQF;c=l;
->YhO5ghm@:LgOZtgqh(W@D<GgBrgXFgCspq;@^EQ!g,$gDYh)S
-gb2
-<;uC;F;xE0<j;e!G@X;%8;,);z=;#)$3<;507!(/$.&;)/"!=?";h0;);\\$';>3;<-;;;);8;';;> ;;4<;;|9;;-<0>u1=7;%;K5.*:<;e;-< >j;:;f;v1;~;q;(& ;K;T;W<F;<1;H;P;*;X<=l<;X;=;:<E=3=;.CjBr;7<("*<U;";$;<;E7+;1;7<G75!;I,;+;7);;94( ;6,;/;I;<@F,>4>G<kDs<\\?;$;K>e?;N=8;<\\;/=E;=W;H;0;Z;>";m;';<; %=->%<g*;D>7-'=Y;4";,;<$;(<0;@>6+;0<^;;@.;2=3;V;*;K#;;) ;l"0;*;''(&%;8;f$$(3;;;?-;;;6)<b;};@Dp=y)$;h;?,!"#;I%=<;3,$)5;>a;5-1<F<{;>y;.<+<&;9<,;-;&;V;2N=?<;E;z-#<:>G8=#=m=- ;%-:Ak;z@;;;F;|<>[:&;76;;#;:;*$6:;T(&1!(;@;:;G";/;X;,;==;#5; ;8<>C;*;{;3;n;3<H&;o;;$;{"<4;i;a3<,=X;3;,>$/0;R;2;Y+;?=t=m2*!'";G;6;0;n<<4<E<.; ==;8);@;U#;n>;MEB;';l&9)<;\`;G);";"<!)!!#$!;1;%;#;F;g44; "8;2;,%;-/2 =+=+<;"061@>(,<o<u<<i;J/EF5;&;D ;l;N@0>>^;;#?/<\\;#8 9)7&; %.;) );"$,;-;&#*;,(!. !4<:;a;q&3+;I&;;,;<P;3;7>!;9;J?l=-.;<;m;+?+"<n<<WC;@;?;Y<&<O;@=<! ;,!EV;;,<l<2<CBB!;(=0;R=<W>X<F+;g2=,:.=%<6;[<Q<F!>4BW>?@Y<(F?>~;7.;+;+<;&;[;q;t;q);2;A>>1;D+>f=D;:$<<A;F6;%<iD*>/I,AGfKGy;.<q<K=.;I=Q><Y:=~=C;t)<f;U<=^D>>?7G=#>\`;I>&=%;]1;=1;<~;;=H>a@=G@:A;]>&B)=I<-;(@.;D=';;\`<?;=k6;%;>2.=.=Y></GZE1E;>BtJVA<JCA)<;3='>K<;FAA!Df;Pd;';B<@;)<,;5;)=K;OM;C<9<.;7;"<6=>;M1.;7&;@;J=\`Ah?A=.;,,;29;D;r!;I;7;.,;G=:;6;".<J';<5<J<g;?,>%<o;|=A=:=i<?B*>3;n?<;XB*;e=j;YCO<WCP;h<*B\\;*<N;Q<b<l=+?;/;<F;P>R>'BZ=\`<A<r;!0?E=/;E=X;;/;R=e<d?|?l;E==t-;X"%<)Da>$=z<;=;T;<dK9H(<O=w;(Er=K-+< ;R<-);P;(==?@^;-+;,<;Z6;U;);D>G=6:;=+>YA/@;;c=$=k@^;x;;;2;+="@HG1=H;I=O?Y<0;K;H<^<A;k=C<1;w=@A#; ;{=D,<.=?;?=a<+>b;HC3>p;=a?1>2;r<7?7;?=d;A={@4;A>:@r=)D^H:J/#<"<;=%;b:==X+?o;&=#82>;C<l;,>i<P=M;)<<,<%<)<,;r<P7;0;&;#;7;~<(;*'/,;?"54CLG!;<<"<|>6;-;Y;E;T;*;_;.6>"<p<&;t>=>?;E;r;d)9.;S;=9$;u>)>b?V= >%;"2-;P;t<';Y>+?m;r;7F9<U=g<fLM?t=X7;"/@HCl>MC;!?!=A9B]*CU8;*<m>DDFyFM=e<0B>5<@+Ox;\`;x=m>(<<!;?<:<=@=OK4=Bd>V;;"<@;7>w"=~;;#A;TFXC];X;wD#@>>QAW;,;O6(;o%;=h?*?0<\\<;2<:;*<q;?;C<;d=K;b;@&/;H<;<%)= ;_;.?,;C;-;;+;) ;r<2*;^=C;C;f9;/;B;*<^'<!</;B ;],B$;g; E =3C*>u;\`2<F+;R;">]G{;#?b;;E<*5<A!-<%<=I;7;)<IA/=#;q;g;,29>.;35>sA==qD;6<[+>@O(@9;*?V;a;KB$<K@oEAI;QG>CQF9:";.3*!;Y;A9;72; ?^=@!;);>;}<7;/;G;w;@;l;y;e<)IQ;I<#>_5;+<OA];y?m5=N;B;<P=M;';>m;fBnA@>/!;Q&<>k;,2Bd=u;p?T-?7;B?,;S;B<FwIXDv;9'F]& ALq';7*#;<d;TGzG7#C;1&+D$"+@JH5=h!;1 ;@>FB[>K;t<T?L;)&;FC+ >V<@D0.?s;O?F;v;B>HN K{ F;?)G\\ !@_MZ;D;?rD2 AB=H(;q@N;8'B !=P;m
-g_XqIJQ4IjQ9aH>6]$<DOF?I]g!M~gkDXI(;{H"gC;,=jQDF1>4aj^zg!$;)<GC&J;,QyBOD1Nm;|g;L(<fgO?FC{<BW@*;PfB<9WxF']9S~gg$go;g7O"A;+g$8LTh%9G|;gJSgbgz?HXg'L=gw>mH#=ug;;=LJzg=aAS@.O<X=\\g5&\`UTq
-h@&h_i:aj>%=R=cMd;g>g0w;*<l;TbMpS"???\\iniim8h)3g+JW2g<"
-M{hGNm$iuC;
-DFMV>kg0y(;+LP=![_Oz>_g- XYgGUyW:=p<Q/*;*%=2";A;9=P;=;Q;jL>YpXdW_g&.g@~@ha;0;$"BMKWg5iag;7;*hagBgE; !g0f&PYgcgx(g*UgNf>);ddIBu=0;;T=4Kc>~C^<]M@B=GHTfH";D<?Bg)KgKK;CEd'g s<xMSA9@ON;5@XWaF&gK<fY0D<TeKo=rJcU0g\`FYc/aI=rE[<rWvJX;QW;GVEgP;gaVc;_\\1b;S[Dgl#<2d2^u;6U
-r_^EO
-gHhg;VhoghghjkH?o<PRI;3BK;FKfQd;Bg g>Z>XgfXi?B?$>==g'Dp@U>)+FQ=?;u<?GgqfTDMUg$gZQ]?Kg4E};*Cc1E8gih+VA;tP7<v=j;tgd< E ;.;>9/i92AugD
-g-\\F(g=HgvL+h)_FKWVg[FgIg"Y;.g."bhE%hC=<U@;\\Y-;&>(g6lF8g/%g%ah1Nbp>rhn~g}ZgahkgsDgo
-Qyhxi1ni2N
-hWHi,ci'8t$B;
-omKhAs
-w(KdR
->};%g%d$R.i;.;fi{fh8bhIgQGgK<a)L ;D=NYeSAg(g;ZrGvghO/h$G1S5E9P_a<>AfQtMP>d>F;TA=@W<UE?E:Y[g=f[K>kKE<<tDj;PZBcGqg"(+<5
-<=;'?OHt@hH{?(;%;;I@=;B;>ZE[;;;KR%NmLUAHsB31?4;u/$!;e@;8;-;)<D?^<A1?8<{>@;Y=c;;<,>V:;;{<q7*;T;&<t;d;b;.<Q;L;E;x;5QP>BXK.>^;5;@gA|C<+";^;S;< &R\`W.<*I90E^gi;EA;~L@Iv<;)<G!';oABjJgJxABC]AC;<c;73;o<V;<_=i"#<@kO)P$I@>V;@R5;k;;&$D";LE,-';1;2=X(<k*;4;P%;G?N|;2)9;iFb\\:-O ;m?|;M;R;H;K;g;(;J(2<r?q;{;wGWOM;??\`?aE<X9;k=\`O?aIHC'<1;?J>U;I?=E;->J&<==b;B,=[?x[$=<;zF<AD@^=@;V?\\*?=+;R;t?&<A3ME<+?$;>.;";%@WQ};@Y;R<;G;H;O?N;|<2<VA4?iC2&#/>!=1SL$$;E{()))))))))))<'3D:=F;;+E)E1=5>G-Q*ClFl=?Kk>U<G<CADA/=J==Cd< ;=>$@:?%;uG)N_DN<l;7=0;<$;/!;>Bg?I;u;<]=<-;~L}RMD<KWP;:D}&<oF@-@/BJ:@B&@#:;r;BX;A3?jD!==;KLJ4FE?=#-;D<D=i@F?~=<?CAMUW;';9DF<a<Q!;gNx>-<Cp@O?iBGN >rDdA]SPL-;_B7;JWO$#;En.///////////<Q;B;=E><2Ac>T@UAc&;L;d<<;2H<X=K;;X=L?_E:-;=>;IC[@Yc?T;:<<.A;@?-E+<<<&;<K@JIt?M=?o"<=A.EfA6G?7<7<z:DA;5;R<=S<Q={<\\;J:>HH4<+ 2=yCI<,UBkVX@{g a<";M-;Pn;>HEVNsD1@J;,@%>|;1;%;&;;#F=A0G~>K<r./(C.==r<@d;i;<~;8718;;;,!; <H;I;m>3;{ACCV>zB3::::;;$<"<';;;=*<H=i<<f>&A[;V;];Au@;p;;*!f@"=yD);P;>B0@5;0;";";;#H$B2J+#?.!=V-0DJM.;";/;0;0;;4&ge@.I9G*;';; ; ;;# FM^
-j7J
-g+!g!7hp}g=hyKgE<igVg gHk=]>g'GO;i^Q@BrgY*h 0=mg+5hxg<pgy"
-w<^ i06
-wk6g'
-i8gwRHZjz#g,qIgO_;>?UwaGgEHg;@6"gEw
-S!hV/g;<J>q{o>C;813;
-S#gLch~B;6&&hQ=,+i,\`;$;~PFPIa+.M*GlN,g_Ng4ig@E>j@;D1@><WgmgA ;;NB <]A?J;J;&=<-<6ArYN<TK7gRa>*;);5Gg#b'g'=mCsF=g/0h(sD@{=ghIzg^g,\`iG4g+&g2<g+gg4Bg1n
-rA5h69jHhAYgu{g"=
-lFiX<i'
-gzH]~=rMD;<x<9CU<O*-3+=6;#;WRbg,o>GF~g!AXY[WNhgU6*<@P;,F3;>BJ$=lJm;()<&;.g<]U*B'YA?qXMJ*g)G3;5;M;R;H;K;g=0FW?nAJ!;~;&;G;d;x;l<;f;Q;Q;Q;Q95;=v%<=?\\ZA g\`ANkRsLdO/B;m=/?C$<C>HJRG&Lg;MEv=l>EKL:IP;NH?@?C;S;D;u>c?LB$;<;<;p!?m?=JT>WcgLMCD\`WZ;;";4/(>P?2<z<~Zp;];C<CCG<;<!;,@<FCb>w+;1Wn]a=[D<BvAL<\`@MC%V\`Ezg%\`GRNZ?VX"I7g1\\B=<\\D@K;"WMP|g'<@=5EZFr\`+?bSfJz<!?sBZCdE=?NGH1;s;;;$;=0<@cAi <^=6X?I=!?qL|;"<$+@V3&<A;fHb;J4;f;>v@BUx=-IgDG-CGE/?gKs<u;-;J;K>h=E5A0BN=;kL(%Um<"<1H|<"H1BpgS",/Sz;/=}g&=8;S?Iae]&;0?\`#:;Y;(>ZgzX]=v;j@A0g G;)>
-h+Oj[Ug+j&Mljf;wglsU<]9g]g<g;>&=8g&i~]CZiO\\
-I$j?(glg.kh\`Whkbh!xS:HS_qh#7?'b*:k\`ih5/?
-<%?L<d<S;,;!;N;O=T+;\`D9;/;6D!;l<4;";<;D>6<m;/6(.;T>7/=BJ!;'"/.';f">\`;G$;;s)I#? !;Y=)<e@B-;J>z@-;>]BK9'=%=C;%2.;$;_-F@y<=A<@*>+?#=!>?;&<Z;?@<G#;#!7<+"+"2!&;9;8<#B#8>q';;e<VF_@^@G;'<k=y=x;#"<c;=R+B9.>7?\\;(7;<;D$<<<@]A.F.=? ?P>"==@;AB\\<D=;<6;2# ?\`);SLU>3;@DlD_;4<j;8;)DU=1$>1;V;W.$>N1AG;q'.;2?W;:<x#A>L?DG&;R#<j;F*?+;9?A*;j.<1;A<';H<8;/$;[A;;.>o;0;;>=7;W<E;Y8<U;;3"<u<#;(;e'?'<%@";/;";e;Bs?>2<a;U;0=;A ;O@;)<i<s>;>"4)'?<';3>D>U'<;<2>+;V>a</;<=p?k;;s!>k*%<:<);%;!$<#=A;.&;7;-";>>Y<;1/7?M;>\\?";(4EO; ;9(;;';d;:;kAi;.<L<!;*;;9=[;"BF;R);{;#<\`0;?L3<_#<(<w;4;;P;I;j5;O@d%";4;;;~.<#;j,<K>=g;Ab;1;m>Y;Hi8Fg'%=H;Hb)G$;_};cgeZ<4P8?YM(<;4HbLg=(=k;@;=?&@hg2<OYgn%g.wgD3h kBp=gNmh4L)gvcg!*i2E;9;(;aJ'?{T*; R_=B<\`?i>N=;;c`)
+jsonp(11,{"name":"dc","start":31390},`初夜、後夜精勤覺悟，當知是等善根功德日夜增長，終不退減。
+當如是學：『善閉根門，飲食知量，初夜、後夜精勤覺悟，功德善法日夜增長。』
+當如是學。」
+^cb346a6佛說此經已，諸比丘聞佛所說，歡喜奉行。
+^n1262【一二六二】^cb346a8如是我聞：
+一時，佛住王舍城迦蘭陀竹園。
+爾時，世尊於後夜時聞野狐鳴。
+^cb346a9爾時，世尊夜過天明，於大眾前敷座而坐，
+告諸比丘：「汝等後夜時聞野狐鳴不？」
+^cb346a11諸比丘白佛：「如是，世尊！」
+^cb346a12佛告諸比丘：「有一愚癡人作如是念：『令我受身得如是形類，
+作如是聲。』此愚癡人欲求如是像類處所受生，何足不得？
+是故，比丘！汝等但當精勤方便，求斷諸有，
+莫作方便，增長諸有，當如是學。」
+^cb346a17佛說此經已，諸比丘聞佛所說，歡喜奉行。
+^n1263【一二六三】^cb346a18如是我聞：
+一時，佛住王舍城迦蘭陀竹園。
+^cb346a19爾時，世尊告諸比丘：「我不讚歎受少有身，況復多受？
+所以者何？受有者苦。
+譬如糞屎，少亦臭穢，何況於多？
+如是諸有，少亦不歎，乃至剎那，況復於多？
+所以者何？有者，苦故。
+是故，比丘！當如是學：『斷除諸有，莫增長有。』
+當如是學。」
+^cb346a24佛說此經已，諸比丘聞佛所說，歡喜奉行。
+^n1264【一二六四】^cb346a26如是我聞：
+一時，佛住王舍城迦蘭陀竹園。
+爾時，世尊夜後分時聞野狐鳴。
+^cb346a27是夜過已，於大眾前敷座而坐，告諸比丘：「汝等於夜後分聞野狐鳴不？」
+^cb346a29比丘白佛：「如是，世尊！」
+^cb346b1佛告比丘：「彼野狐者，疥瘡所困，是故鳴喚。
+若能有人為彼野狐治疥瘡者，野狐必當知恩報恩。
+而今有一愚癡之人，無有知恩報恩。
+是故，諸比丘！當如是學：『知恩報恩。』
+其有小恩尚報，終不忘失，況復大恩？」
+^cb346b5佛說此經已，諸比丘聞佛所說，歡喜奉行。
+^ck39b【病相應1265】^n1265【一二六五】^cb346b7如是我聞：
+一時，佛住王舍城迦蘭陀竹園。
+爾時，有尊者跋迦梨住王舍城金師精舍，
+疾病困苦，尊者富隣尼瞻視供養。
+^cb346b9時，跋迦梨語富隣尼：「汝可詣世尊所，為我稽首禮世尊足，
+問訊世尊少病少惱、起居輕利、安樂住不？
+言：『跋迦梨住金師精舍，疾病困篤，委積床褥，願見世尊。
+疾病困苦，氣力羸惙，無由奉詣。
+唯願世尊降此金師精舍，以哀愍故！』」
+^cb346b15時，富隣尼受跋迦梨語已，詣世尊所，稽首禮足，
+退住一面，白佛言：「世尊！
+尊者跋迦梨稽首世尊足，問訊世尊少病少惱、
+起居輕利、安樂住不？」
+^cb346b18世尊答言：「令彼安樂。」
+富隣尼白佛言：「世尊！
+尊者跋迦梨住金師精舍，疾病困篤，委在床褥，
+願見世尊，無有身力來詣世尊。
+善哉！世尊！詣金師精舍，以哀愍故！」
+^cb346b22爾時，世尊默然聽許。
+時，富隣尼知世尊聽許已，禮足而去。
+^cb346b23爾時，世尊晡時從禪覺，往詣金師精舍，至跋迦梨住房。
+跋迦梨比丘遙見世尊，從床欲起。
+^cb346b25佛告跋迦梨：「且止！
+勿起！」
+世尊即坐異床，語跋迦梨：「汝心堪忍此病苦不？
+汝身所患，為增、為損？」
+^cb346b27跋迦梨白佛……如前叉摩比丘修多羅廣說。
+「世尊！我身苦痛，極難堪忍，欲求刀自殺，不樂苦生。」
+^cb346b29佛告跋迦梨：「我今問汝，隨意答我。
+云何？跋迦梨！色是常耶？
+為非常耶？」
+^cb346c2跋迦梨答言：「無常。
+世尊！」
+^cb346c3復問：「若無常，是苦耶？」
+答言：「是苦。世尊！」
+復問：「跋迦梨！若無常、苦者，是變易法，於中寧有可貪、可欲不？」
+^cb346c5跋迦梨白佛：「不也，世尊！」
+受、想、行、識亦如是說。
+^cb346c6佛告跋迦梨：「若於彼身無可貪、可欲者，
+是則善終，後世亦善。」
+^cb346c7爾時，世尊為跋迦梨種種說法，示、教、照、
+喜已，從座起去。即於彼夜，尊者跋迦梨思惟解脫，
+欲執刀自殺，不樂久生。
+^cb346c10時，有二天身極端正，於後夜時詣世尊所，
+稽首禮足，退住一面，白佛言：「世尊！
+尊者跋迦梨疾病困苦，思惟解脫，欲執刀自殺，不樂久生。」
+^cb346c13第二天言：「彼尊者跋迦梨已於善解脫而得解脫。」
+說此語已，俱禮佛足，即沒不現。
+^cb346c15爾時，世尊夜過晨朝，於大眾前敷座而坐，
+告諸比丘：「昨夜有二天子，形體端正，來詣我所，
+稽首作禮，退住一面。
+而作是言：『尊者跋迦梨住金師精舍，疾病困苦，
+思惟解脫，欲執刀自殺，不樂久生。』
+第二天言：『尊者跋迦梨已於善解脫而得解脫。』
+說此語已，稽首作禮，即沒不現。」
+^cb346c21爾時，世尊告一比丘：「汝當往詣尊者跋迦梨比丘所，
+語跋迦梨言：『昨夜有二天來詣我所，稽首作禮，
+退住一面，語我言：「尊者跋迦梨疾病困篤，
+思惟解脫，欲執刀自殺，不樂久生。」
+第二天言：「尊者跋迦梨於善解脫而得解脫。」
+說此語已，即沒不現。
+此是天語，佛復記汝：「汝於此身不起貪欲，
+是則善終，後世亦善。」』」
+^cb346c29時，彼比丘受世尊教已，詣金師精舍跋迦梨房。
+^cb347a1爾時，跋迦梨語侍病者：「汝等持繩床，共舉^mc02436我身，
+著精舍外，我欲執刀自殺，不樂久生。」
+^cb347a3時，有眾多比丘出房舍，露地經行。
+受使比丘詣眾多比丘所，問眾多比丘言：「諸尊！
+跋迦梨比丘住在何所？」
+^cb347a5諸比丘答言：「跋迦梨比丘告侍病者，令舉^mc02436繩床，
+出精舍外，欲執刀自殺，不樂久生。」
+受使比丘即詣跋迦梨所。
+^cb347a8跋迦梨比丘遙見使比丘來，語侍病者：
+「下繩床著地，彼比丘疾來，似世尊使。」
+彼侍病者即下繩床著地。
+^cb347a10時，彼使比丘語跋迦梨：「世尊有教及天有所說。」
+^cb347a11時，跋迦梨語侍病者：「扶我著地，不可於床上受世尊教及天所說。」
+時，侍病者即扶跋迦梨，下置於地。
+^cb347a14時，跋迦梨言：「汝可宣示世尊告勅及天所說。」
+^cb347a15使比丘言：「跋迦梨！
+大師告汝：『夜有二天來白我言：「跋迦梨比丘疾病困篤，
+思惟解脫，欲執刀自殺，不樂久生。」
+第二天言：「跋迦梨比丘已於善解脫而得解脫。」
+說此語已，即沒不現。』
+世尊復記說，汝善於命終，後世亦善。」
+^cb347a20跋迦梨言：「尊者！大師善知所知，善見所見；
+彼二天者亦善知所知，善見所見。
+然我今日於色常、無常，決定無疑；無常者是苦，決定無疑。
+若無常、苦者，是變易法，於彼無有可貪、
+可欲，決定無疑。受、想、行、識亦復如是。
+然我今日疾病苦痛猶故隨身，欲刀自殺，不樂久生。」
+即執刀自殺。
+^cb347a26時，使比丘供養跋迦梨死身已，還詣佛所，
+稽首禮足，退坐一面，白佛言：「世尊！
+我以世尊所勅，具告尊者跋迦梨。
+彼作是言：『大師善知所知，善見所見；彼二天者亦善知所知，
+善見所見……』」廣說乃至「執刀自殺。」
+^cb347b3爾時，世尊告諸比丘：「共詣金師精舍跋迦梨尸所。」
+見跋迦梨死身，有遠離之色。
+見已，語諸比丘：「汝等見是跋迦梨比丘死身在地，有遠離之色不？」
+^cb347b6諸比丘白佛：「已見。
+世尊！」
+復告諸比丘：「遶跋迦梨身，四面周匝，有闇冥之相圍遶身不？」
+^cb347b8諸比丘白佛：「已見。
+世尊！」
+佛告諸比丘：「此是惡魔之像，周匝求覓跋迦梨善男子識神當生何處。」
+^cb347b10佛告諸比丘：「跋迦梨善男子不住識神，以刀自殺。」
+^cb347b11爾時，世尊為彼跋迦梨說第一記。
+^cb347b12佛說此經已，諸比丘聞佛所說，歡喜奉行。
+^n1266【一二六六】^cb347b14如是我聞：
+一時，佛住王舍城迦蘭陀竹園。
+時，有尊者闡陀，住那羅聚落好衣菴羅林中，疾病困篤。
+^cb347b16時，尊者舍利弗聞尊者闡陀在那羅聚落好衣菴羅林中，疾病困篤。
+聞已，語尊者摩訶拘絺羅：「尊者知不？
+闡陀比丘在那羅聚落好衣菴羅林中疾病困篤，當往共看。」
+摩訶拘絺羅默然許之。
+^cb347b20時，尊者舍利弗與尊者摩訶拘絺羅共詣那羅聚落好衣菴羅林中，
+至尊者闡陀住房。
+^cb347b22尊者闡陀遙見尊者舍利弗、尊者摩訶拘絺羅，凭床欲起。
+^cb347b23尊者舍利弗語尊者闡陀：「汝且莫起！」
+^cb347b24尊者舍利弗、尊者摩訶拘絺羅坐於異床，
+問尊者闡陀：「云何？
+尊者闡陀！所患為可堪忍不？
+為增、為損？……」如前叉摩修多羅廣說。
+^cb347b27尊者闡陀言：「我今身病，極患苦痛，難可堪忍。
+所起之病，但增無損，唯欲執刀自殺，不樂苦活。」
+^cb347b29尊者舍利弗言：「尊者闡陀！
+汝當努力，莫自傷害！
+若汝在世，我當與汝來往周旋；汝若有乏，
+我當給汝如法湯藥；汝若無看病人，我當看汝，
+必令適意，非不適意。」
+^cb347c4闡陀答言：「我有供養，那羅聚落諸婆羅門長者悉見看視，
+衣被、飲食、臥具、湯藥無所乏少；自有弟子修梵行者隨意瞻病，
+非不適意。但我疾病苦痛逼身，難可堪忍，
+唯欲自殺，不樂苦生。」
+^cb347c8舍利弗言：「我今問汝，隨意答我。
+闡陀！眼及眼識、眼所識色，彼寧是我、異我、相在不？」
+^cb347c10闡陀答言：「不也。」
+^cb347c11尊者舍利弗復問：「闡陀！
+耳、鼻、舌、身、意及意識、意識所識法，彼寧是我、
+異我、相在不？」
+^cb347c12闡陀答言：「不也。」
+^cb347c13尊者舍利弗復問：「闡陀！
+汝於眼、眼識及色，為何所見、何所識、何所知故，
+言眼、眼識及色，非我、不異我、不相在？」
+^cb347c15闡陀答言：「我於眼、眼識及色，見滅、知滅故，
+見眼、眼識及色，非我、不異我、不相在。」
+^cb347c17復問：「闡陀！汝於耳、鼻、舌、身、意、意識及法，
+何所見、何所知故，於意、意識及法，見非我、
+不異我、不相在？」
+^cb347c19闡陀答言：「尊者舍利弗！
+我於意、意識及法，見滅、知滅故，於意、意識及法，
+見非我、不異我、不相在。
+尊者舍利弗！然我今日身病苦痛，不能堪忍，
+欲以刀自殺，不樂苦生。」
+^cb347c23時，尊者摩訶拘絺羅語尊者闡陀：「汝今當於大師修習正念，
+如所說句：『有所依者，則為動搖；動搖者，
+有所趣向；趣向者，為不休息；不休息者，
+則隨趣往來；隨趣往來者，則有未來生死；
+有未來生死故，有未來出沒；有未來出沒故，
+則有生、老、病、死、憂、悲、苦、惱。
+如是純一苦聚集。』
+如所說句：『無所依者，則不動搖；不動搖者，
+得無趣向；無趣向者，則有止息；有止息故，
+則不隨趣往來；不隨趣往來，則無未來出沒，
+無未來出沒者；則無生、老、病、死、憂、悲、惱、苦。
+如是純大苦聚滅。』」
+^cb348a5闡陀言：「尊者摩訶拘絺羅！
+供養世尊事，於今畢矣！
+隨順善逝，今已畢矣！
+適意，非不適意。弟子所作，於今已作。
+若復有餘弟子所作供養師者，亦當如是供養大師，
+適意，非不適意。然我今日身病苦痛，難可堪忍，
+唯欲以刀自殺，不樂苦生。」
+爾時，尊者闡陀即於那羅聚落好衣菴羅林中以刀自殺。
+^cb348a12時，尊者舍利弗供養尊者闡陀舍利已，
+往詣佛所，稽首禮足，退住一面，白佛言：「世尊！
+尊者闡陀於那羅聚落好衣菴羅林中以刀自殺。
+云何？世尊！彼尊者闡陀當至何趣？
+云何受生？後世云何？」
+^cb348a16佛告尊者舍利弗：「彼不自記說言：『尊者摩訶拘絺羅！
+我供養世尊，於今已畢；隨順善逝，於今已畢，
+適意，非不適意。若復有餘供養大師者，
+當如是作，適意，非不適意。』
+耶？」
+^cb348a20爾時，尊者舍利弗復問：「世尊！
+彼尊者闡陀先於鎮珍尼婆羅門聚落，
+有供養家、極親厚家、善言語家。」
+^cb348a23佛告舍利弗：「如是，舍利弗！
+正智、正善解脫善男子，有供養家、親厚家、善言語家。
+舍利弗！我不說彼有大過。
+若有捨此身，餘身相續者，我說彼等則有大過；
+若有捨此身已，餘身不相續者，我不說彼有大過也。
+無大過故，於那羅聚落好衣菴羅林中以刀自殺。」
+^cb348a29如是，世尊為彼尊者闡陀說第一記。
+佛說此經已，尊者舍利弗歡喜作禮而去。
+雜阿含經卷第四十七
+
+^pb1^folio#agms48雜阿含經卷第四十八
+^ck49b【諸天相應1267】^au〔宋天竺三藏求那跋陀羅譯〕
+^n1267【一二六七】^cb348b7如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb348b8時，有一天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+身諸光明遍照祇樹給孤獨園。
+^cb348b10時，彼天子白佛言：「世尊！
+比丘！比丘度駛流耶？」
+^cb348b11佛言：「如是，天子！」
+天子復問：「無所攀緣，亦無所住，度駛流耶？」
+^cb348b12佛言：「如是，天子！」
+^cb348b13天子復問：「無所攀緣，亦無所住而度駛流，其義云何？」
+^cb348b14佛言：「天子！我如是如是抱，如是如是直進，則不為水之所㵱。
+如是如是不抱。如是如是不直進，則為水所㵱。
+如是，天子！名為無所攀緣，亦無所住而度駛流。」
+^cb348b18時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb348b21時，彼天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1268【一二六八】^cb348b23如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+時，有一天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb348b26時，彼天子白佛言：「比丘知一切眾生所著、
+所集，決定解脫、廣解脫、極廣解脫耶？」
+^cb348b28佛告天子：「我悉知一切眾生所著、所集，
+決定解脫、廣解脫、極廣解脫。」
+天子白佛：「比丘云何知一切眾生所著、
+所集，決定解脫、廣解脫、極廣解脫？」
+^cb348c2佛告天子：「愛喜滅盡，我心解脫；心解脫已，
+故知一切眾生所著、所集，決定解脫、廣解脫、極廣解脫。」
+^cb348c4時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb348c7時，彼天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1269【一二六九】^cb348c9如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb348c10時，有一天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，身諸光明遍照祇樹給孤獨園。
+^cb348c12時，彼天子說偈問佛：
+^gatha「誰度於諸流？　晝夜勤精進，
+^gatha不攀亦不住，何染而不著？」
+^cb348c15爾時，世尊說偈答言：
+^gatha「一切戒具足，智慧善正受，
+^gatha內思惟繫念，度難度諸流。
+^gatha不樂於欲想，超越於色結，
+^gatha不繫亦不住，於染亦不著。」
+^cb348c20時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb348c23時，彼天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1270【一二七〇】^cb348c25如是我聞：
+一時，佛住王舍城山谷精舍。
+^cb348c26時，有拘迦尼，是光明天女，容色絕妙，於後夜時來詣佛所，
+稽首佛足，身諸光明遍照山谷。
+^cb348c28時，拘迦尼天女而說偈言：
+^gatha「其心不為惡，及身口世間，
+^gatha五欲悉虛空，正智正繫念，
+^gatha不習近眾苦，非義和合者。」
+^cb349a3佛告天女：「如是，如是。
+^gatha「其心不為惡，及身口世間，
+^gatha五欲悉虛空，正智正繫念，
+^gatha不習近眾苦，非義和合者。」
+^cb349a7時，拘迦那娑天女聞佛所說，歡喜隨喜，
+稽首佛足，即沒不現。
+^cb349a9爾時，世尊夜過晨朝，入於僧中，敷尼師壇，
+於大眾前坐，告諸比丘：「昨日夜後，有拘迦那天女，
+容色絕妙，來詣我所，稽首我足，退坐一面而說偈言：
+^gatha「其心不為惡，及身口世間，
+^gatha五欲悉虛空，正智正繫念，
+^gatha不習近眾苦，非義和合者。」
+^cb349a16我即答言：「如是，天女！
+如是，天女！
+^gatha「其心不為惡，及身口世間，
+^gatha五欲悉虛空，正智正繫念，
+^gatha不習近眾苦，非義和合者。
+^cb349a20「說是語時，拘迦尼天女聞我所說，歡喜隨喜，
+稽首我足，即沒不現。」
+^cb349a21佛說此經已，諸比丘聞佛所說，歡喜奉行。
+^n1271【一二七一】^cb349a23如是我聞：
+一時，佛住王舍城山谷精舍。
+^cb349a24爾時，尊者阿難告諸比丘：「我今當說四句法經。
+諦聽，善思，當為汝說何等為四句法經。」
+^cb349a26爾時，尊者阿難即說偈言：
+^gatha「其心不為惡，及身口世間，
+^gatha五欲悉虛空，正智正繫念，
+^gatha不習近眾苦，非義和合者。
+^cb349b1「諸比丘！是名四句法經。」
+爾時，有一異婆羅門，去尊者阿難不遠，為諸年少婆羅門受誦經。
+時，彼婆羅門作是念：「若沙門阿難所說偈，
+於我所說經，便是非人所說。」
+^cb349b4時，彼婆羅門即往詣佛所，與世尊面相問訊慰勞已，
+退坐一面，白佛言：「瞿曇！
+沙門阿難所說偈言：
+^gatha「其心不為惡，及身口世間，
+^gatha五欲悉虛空，正智正繫念，
+^gatha不習近眾苦，非義和合者。
+^cb349b10「如是等所說，則是非人語，非為人語。」
+佛告婆羅門：「如是，如是，婆羅門！
+是非人語，非為人語也。
+時，有拘迦尼天女來詣我所，稽首我足，
+退坐一面而說偈言：
+^gatha「其心不為惡，及身口世間，
+^gatha五欲悉虛空，正智正繫念，
+^gatha不習近眾苦，非義和合者。」
+^cb349b17「我時答言：『如是，如是，如天女所言：
+^gatha「『「其心不為惡，及身口世間，
+^gatha五欲悉虛空，正智正繫念，
+^gatha不習近眾苦，非義和合者。」』
+^cb349b21「是故，婆羅門！當知此所說偈，是非人所說，非是人所說也。」
+^cb349b22佛說此經已，彼婆羅門聞佛所說，歡喜隨喜，禮佛足而去。
+^n1272【一二七二】^cb349b24如是我聞：
+一時，佛住王舍城山谷精舍。
+^cb349b25時，有拘迦那娑天女，是光明天女，起大電光熾然，
+歸佛、歸法、歸比丘僧，來詣佛所，稽首佛足，退坐一面。
+其身光明普照山谷，即於佛前而說偈言
+^gatha「其心不為惡，及身口世間，
+^gatha五欲悉虛空，正智正繫念，
+^gatha不習近眾苦，非義和合者。」
+^cb349c3爾時，世尊告天女言：「如是，如是，天女！
+如汝所說：
+^gatha「『其心不為惡，及身口世間，
+^gatha五欲悉虛空，正智正繫念，
+^gatha不習近眾苦，非義和合者。』」
+^cb349c8爾時，拘迦那娑天女聞佛所說，歡喜隨喜，
+稽首佛足，即沒不現。
+^cb349c9爾時，世尊夜過晨朝入僧中，敷尼師壇，
+於大眾前坐，告諸比丘：「於昨後夜，拘迦那娑天女，
+光明之天女，來詣我所，稽首我足，退坐一面。
+而說偈言：
+^gatha「『其心不為惡，及身口世間，
+^gatha五欲悉虛空，正智正繫念，
+^gatha不習近眾苦，非義和合者。』
+^cb349c16「我時答言：『如是，天女！
+如是，天女！如汝所說：
+^gatha「『「其心不為惡，及身口世間，
+^gatha五欲悉虛空，正智正繫念，
+^gatha不習近眾苦，非義和合者。」』
+^gatha「拘迦那天女，電光炎熾然，
+^gatha敬禮佛法僧，說偈義饒益。」
+^cb349c22佛說此經已，諸比丘聞佛所說，歡喜奉行。
+^n1273【一二七三】^cb349c23如是我聞：
+一時，佛住王舍城山谷精舍。
+^cb349c24時，有拘迦那娑天女，光明之天女，放電光明，
+炎照熾然，於後夜時來詣佛所，稽首佛足，退坐一面。
+其身光明普照山谷，即於佛前而說偈言：
+^gatha「我能廣分別，如來正法律，
+^gatha今且但略說，足以表其心。
+^gatha其心不為惡，及身口世間，
+^gatha五欲悉虛空，正智正繫念，
+^gatha不習近眾苦，非義和合者。」
+^cb350a4佛告天女：「如是，天女！
+如是，天女！如汝所說：
+^gatha「『其心不為惡，及身口世間，
+^gatha五欲悉虛空，正智正繫念，
+^gatha不習近眾苦，非義和合者。』」
+^cb350a8時，拘迦那娑天女聞佛所說，歡喜稽首，即沒不現。
+^cb350a10爾時，世尊夜過晨朝，入於僧前，於大眾中敷座而坐，
+告諸比丘：「昨後夜時，拘迦那娑天女來詣我所，
+恭敬作禮，退坐一面而說偈言：
+^gatha「我能廣分別，如來正法律，
+^gatha今且但略說，足以表我心。
+^gatha其心不為惡，及身口世間，
+^gatha五欲悉虛空，正智正繫念，
+^gatha不習近眾苦，非義和合者。」
+^cb350a19「我時答言：『如是，天女！
+如汝所說：
+^gatha「『「其心不為惡，及身口世間，
+^gatha五欲悉虛偽，正智正繫念。
+^gatha不習近眾苦，非義和合者。」』
+^cb350a23「時，彼天女聞我所說，歡喜隨喜，稽首我足，即沒不現。」
+^cb350a24佛說此經已，諸比丘聞佛所說，歡喜奉行。
+^n1274【一二七四】^cb350a26如是我聞：
+一時，佛住毘舍離獼猴池側重閣講堂。
+^cb350a27時，有拘迦那娑天女、朱盧^mc13371陀天女，容色絕妙，
+於後夜時來詣佛所，稽首佛足，退坐一面。
+其身光明遍照一切獼猴池側。
+^cb350b1時，朱盧陀天女說偈白佛：
+^gatha「大師等正覺，住毘舍離國，
+^gatha拘迦那朱盧，稽首恭敬禮。
+^gatha我昔未曾聞，牟尼正法律，
+^gatha今乃得親見，現前說正法。
+^gatha若於聖法律，惡慧生厭惡，
+^gatha必當墮惡道，長夜受諸苦。
+^gatha若於聖法律，正念律儀備，
+^gatha彼則生天上，長夜受安樂。」
+^cb350b10拘迦娑天女復說偈言：
+^gatha「其心不為惡，及身口世間，
+^gatha五欲悉虛偽，正智正繫念。
+^gatha不習近眾苦，非義和合者。」
+^cb350b14佛告天女：「如是，如是，如汝所說：
+^gatha「『其心不為惡，及身口世間，
+^gatha五欲悉虛偽，正智正繫念。
+^gatha不習近眾苦，非義和合者。』」
+^cb350b18時，彼天女聞佛所說，歡喜隨喜，即沒不現。
+^cb350b19爾時，世尊夜過晨朝入僧中，敷座而坐，
+告諸比丘：「昨後夜時，有二天女，容色絕妙，
+來詣我所，為我作禮，退坐一面。
+朱盧陀天女而說偈言：
+^gatha「『大師等正覺，住毘舍離國，
+^gatha我拘迦那娑，及以朱盧陀。
+^gatha如是二天女，稽首禮佛足，
+^gatha我昔未曾聞，牟尼正法律。
+^gatha今乃見正覺，演說微妙法，
+^gatha若於正法律，厭惡住惡慧。
+^gatha必墮於惡道，長夜受大苦，
+^gatha若於正法律，正念律儀備。
+^gatha生善趣天上，長夜受安樂。』
+^cb350c2「拘迦那天女復說偈言：
+^gatha「『其心不為惡，及身口世間，
+^gatha五欲悉虛偽，正智正繫念。
+^gatha不習近眾苦，非義和合者。』
+^cb350c6「我時答言：『如是，如是，如汝所說：
+^gatha「『「其心不為惡，及身口世間，
+^gatha五欲悉虛偽，正智正繫念。
+^gatha不習近眾苦，非義和合者。」』」
+^cb350c10佛說此經已，諸比丘聞佛所說，歡喜奉行。
+^n1275【一二七五】^cb350c11如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb350c12時，有天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb350c14時，彼天子而說偈言：
+^gatha「無觸不報觸，觸則以觸報，
+^gatha以觸報觸故，不瞋不招瞋。」
+^cb350c17爾時，世尊說偈答言：
+^gatha「有於不瞋人，而加之以瞋，
+^gatha清淨之正士，離諸煩惱結。
+^gatha於彼起惡心，惡心還自中，
+^gatha如逆風揚塵，還自坌其身。」
+^cb350c22時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb350c25時，彼天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1276【一二七六】^cb350c27如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb350c28時，有一天子，容色絕妙，來詣佛所，稽首佛足，身諸光明遍照祇樹給孤獨園。
+^cb350c29時，彼天子而說偈言：
+^gatha「愚癡人所行，不合於黠慧，
+^gatha自所行惡行，為自惡知識。
+^gatha所造眾惡行，終獲苦果報。」
+^cb351a4爾時，世尊說偈答言：
+^gatha「既作不善業，終則受諸惱，
+^gatha造業雖歡喜，啼泣受其報。
+^gatha造諸善業者，終則不熱惱，
+^gatha歡喜而造業，安樂受其報。」
+^cb351a9時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb351a12時，彼天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1277【一二七七】^cb351a14如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb351a15時，有一天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，身諸光明遍照祇樹給孤獨園。
+^cb351a17時，彼天子而說偈言：
+^gatha「不可常言說，亦不一向聽，
+^gatha而得於道跡，堅固正超度。
+^gatha思惟善寂滅，解脫諸魔縛，
+^gatha能行說之可，不行不應說。
+^gatha不行而說者，智者則知非，
+^gatha不行己所應，不作而言作。
+^gatha是則同賊非。」
+^cb351a25爾時，世尊告天子言：「汝今有所嫌責耶？」
+天子白佛：「悔過，世尊！
+悔過，善逝！」
+^cb351a26爾時，世尊熙怡微笑。
+^cb351a27時，彼天子復說偈言：
+^gatha「我今悔其過，世尊不納受，
+^gatha內懷於惡心，抱怨而不捨。」
+^cb351b1爾時，世尊說偈答言：
+^gatha「言說悔過辭，內不息其心，
+^gatha云何得息怨？　何名為修善？」
+^cb351b4時，彼天子復說偈言：
+^gatha「誰不有其過？　何人無有罪？
+^gatha誰復無愚癡？　孰能常堅固？」
+^cb351b7時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb351b10時，彼天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1278【一二七八】^cb351b12如是我聞：
+一時，佛住王舍城迦蘭陀竹園。
+^cb351b13時，有瞿迦梨比丘，是提婆達多伴黨，來詣佛所，
+稽首佛足，退坐一面。
+^cb351b14爾時，世尊告瞿迦梨比丘：「瞿迦梨！
+汝何故於舍利弗、目揵連清淨梵行所，起不清淨心？
+長夜當得不饒益苦。」
+^cb351b17瞿迦梨比丘白佛言：「世尊！
+我今信世尊語，所說無異，但舍利弗、大目揵連心有惡欲。」
+如是第二、第三說，瞿迦梨比丘——提婆達多伴黨於世尊所再三說中，
+違反不受，從座起去。
+去已，其身周遍生諸疱瘡，皆如栗，漸漸增長，皆如桃李。
+^cb351b22時，瞿迦梨比丘患苦痛，口說是言：「極燒！
+極燒！」膿血流出，身壞命終，生大鉢曇摩地獄。
+^cb351b24時，有三天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+時，一天子白佛言：「瞿迦梨比丘——提婆達多伴黨今已命終。」
+時，第二天子作是言：「諸尊當知，瞿迦梨比丘命終墮地獄中。」
+第三天子即說偈言：
+^gatha「士夫生世間，斧在口中生，
+^gatha還自斬其身，斯由其惡言。
+^gatha應毀便稱譽，應譽而便毀，
+^gatha其罪生於口，死墮惡道中。
+^gatha博弈亡失財，是非為大咎，
+^gatha毀佛及聲聞，是則為大過。」
+^cb351c7彼三天子說是偈已，即沒不現。
+爾時，世尊夜過晨朝，來入僧中，於大眾前敷座而坐，
+告諸比丘：「昨後夜時，有三天子來詣我所，
+稽首我足，退坐一面。
+第一天子語我言：『世尊！
+瞿迦梨比丘——提婆達多伴黨今已命終。』
+第二天子語餘天子言：『瞿迦梨比丘命終墮地獄中。』
+第三天子即說偈言：
+^gatha「『士夫生世間，斧在口中生，
+^gatha還自斬其身，斯由其惡言。
+^gatha應毀便稱譽，應譽而便毀，
+^gatha其罪口中生，死則墮惡道。』
+^cb351c18「說是偈已，即沒不現。
+諸比丘！汝等欲聞生阿浮陀地獄眾生其壽齊限不？」
+^cb351c19諸比丘白佛：「今正是時，唯願世尊為諸大眾說阿浮陀地獄眾生壽命齊限。
+諸比丘聞已，當受奉行。」
+^cb351c22佛告比丘：「諦聽，善思，當為汝說。
+譬如拘薩羅國，四斗為一阿羅，四阿羅為一獨籠那，
+十六獨籠那為一闍摩那，十六闍摩那為一摩尼，
+二十摩尼為一佉梨，二十佉梨為一倉，滿中芥子。
+若使有人百年百年取一芥子。
+如是乃至滿倉芥子都盡，阿浮陀地獄眾生壽命猶故不盡。
+如是二十阿浮陀地獄眾生壽等一尼羅浮陀地獄眾生壽，
+二十尼羅浮陀地獄眾生壽等一阿吒吒地獄眾生壽，
+二十阿吒吒地獄眾生壽等一阿波波地獄眾生壽，
+二十阿波波地獄眾生壽等一阿休休地獄眾生壽，
+二十阿休休地獄眾生壽等一優鉢羅地獄眾生壽，
+二十優鉢羅地獄眾生壽等一鉢曇摩地獄眾生壽，二十鉢曇摩地獄眾生壽等一摩訶鉢曇摩地獄眾生壽。
+^cb352a8「比丘！彼瞿迦梨比丘命終墮摩訶鉢曇摩地獄中，
+以彼於尊者舍利弗、大目揵連比丘生惡心、誹謗故。
+是故，諸比丘！當作是學：『於彼燒燋炷所，
+尚不欲毀壞，況毀壞有識眾生？』」
+佛告諸比丘：「當如是學。」
+^cb352a12佛說此經已，諸比丘聞佛所說，歡喜奉行。
+^n1279【一二七九】^cb352a14如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb352a15時，有天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb352a17時，彼天子說偈問佛：
+^gatha「退落墮負處，云何而得知？
+^gatha唯願世尊說，云何負處門？」
+^cb352a20爾時，世尊說偈答言：
+^gatha「勝處易得知，負處知亦易，
+^gatha樂法為勝處，毀法為負處。
+^gatha愛樂惡知識，不愛善知識，
+^gatha善友生怨結，是名墮負門。
+^gatha愛樂不善人，善人反憎惡，
+^gatha欲惡不欲善，是名負處門。
+^gatha斗秤以欺人，是名墮負門。
+^gatha博弈耽嗜酒，遊輕著女色，
+^gatha費喪於財物，是名墮負門，
+^gatha女人不自守，捨主隨他行，
+^gatha男子心放蕩，捨妻隨外色，
+^gatha如是為家者，斯皆墮負門。
+^gatha老婦得少夫，心常懷嫉姤，
+^gatha懷嫉臥不安，是則墮負門。
+^gatha老夫得少婦，墮負處亦然。
+^gatha常樂著睡眠，知識同遊戲，
+^gatha怠墮好瞋恨，斯皆墮負門。
+^gatha多財結朋友，酒食奢不節，
+^gatha多費喪財物，斯皆墮負門。
+^gatha小財多貪愛，生於剎利心，
+^gatha常求為王者，是則墮負門。
+^gatha求珠璫瓔珞，革屣履傘蓋，
+^gatha莊嚴自慳惜，是則墮負門。
+^gatha受他豐美食，自慳惜其財，
+^gatha食他不反報，是則墮負門。
+^gatha沙門婆羅門，屈請入其舍，
+^gatha慳惜不時施，是則墮負門。
+^gatha沙門婆羅門，次第行乞食，
+^gatha呵責不欲施，是則墮負門。
+^gatha若父母年老，不及時奉養，
+^gatha有財而不施，是則墮負門。
+^gatha於父母兄弟，搥打而罵辱，
+^gatha無有尊卑序，是則墮負門。
+^gatha佛及弟子眾，在家與出家，
+^gatha毀呰不恭敬，是則墮負門。
+^gatha實非阿羅漢，羅漢過自稱，
+^gatha是則世間賊，墮於負處門。
+^gatha此世間負處，我知見故說，
+^gatha猶如嶮怖道，慧者當遠避。」
+^cb352c2時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb352c5時，彼天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1280【一二八〇】^cb352c7如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb352c8時，有一天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb352c10時，彼天子說偈問佛：
+^gatha「誰屈下而屈下？　誰高舉而隨舉？
+^gatha云何童子戲，如童塊相擲？」
+^cb352c13爾時，世尊說偈答言：
+^gatha「愛下則隨下，愛舉則隨舉，
+^gatha愛戲於愚夫，如童塊相擲。」
+^cb352c16時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb352c19時，彼天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1281【一二八一】^cb352c21如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb352c22時，有天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb352c24時，彼天子而說偈言：
+^gatha「決定以遮遮，意妄想而來，
+^gatha若人遮一切，不令其逼迫。」
+^cb352c27爾時，世尊說偈答言：
+^gatha「決定以遮遮，意妄想而來，
+^gatha不必一切遮，但遮其惡業。
+^gatha遮彼彼惡已，不令其逼迫。」
+^cb353a2時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb353a5時，彼天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1282【一二八二】^cb353a7如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb353a8時，有天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb353a10時，彼天子說偈問佛：
+^gatha「云何得名稱？　云何得大財？
+^gatha云何德流聞？　云何得善友？」
+^cb353a13爾時，世尊說偈答言：
+^gatha「持戒得名稱，布施得大財，
+^gatha真實德流聞，恩惠得善友。」
+^cb353a16時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb353a19時，彼天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1283【一二八三】^cb353a21如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb353a22時，有天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，其身光明遍照祇樹給孤獨園。
+^cb353a24時，彼天子說偈問佛：
+^gatha「云何人所作，智慧以求財，
+^gatha等攝受於財，若勝若復劣？」
+^cb353a27爾時，世尊說偈答言：
+^gatha「始學功巧業，方便集財物，
+^gatha得彼財物已，當應作四分，
+^gatha一分自食用，二分營生業，
+^gatha餘一分藏密，以擬於貧乏。
+^gatha營生之業者，田種行商賈，
+^gatha牧牛羊興息，邸舍以求利，
+^gatha造屋舍床臥，六種資生具，
+^gatha方便修眾具，安樂以存世，
+^gatha如是善修業，黠慧以求財，
+^gatha財寶隨順生，如眾流歸海。
+^gatha如是財饒益，如蜂集眾味，
+^gatha晝夜財增長，猶如蟻積堆。
+^gatha不付老子財，不寄邊境民，
+^gatha不信姦狡人，及諸慳悋者，
+^gatha親附成事者，遠離不成事，
+^gatha能成事士夫，猶如火熾然。
+^gatha善友貴重人，敏密修良者，
+^gatha同氣親兄弟，善能相攝受。
+^gatha居親眷屬中，摽𢷋顯若牛王，
+^gatha各隨其所應，分財施飲食。
+^gatha壽盡而命終，當生天受樂。」
+^cb353b20時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb353b23時，彼天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1284【一二八四】^cb353b25如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb353b26爾時，世尊告諸比丘：「過去世時，拘薩羅國有彈琴人，
+名曰麁牛，於拘薩羅國人間遊行，止息野中。
+時，有六廣大天宮天女，來至憍薩羅國麁牛彈琴人所，
+語麁牛彈琴人言：『阿舅！
+阿舅！為我彈琴，我當歌舞。』
+麁牛彈琴者言：『如是，姊妹！
+我當為汝彈琴，汝當語我汝是何人？
+何由生此？』天女答言：『阿舅！
+且彈琴，我當歌舞，於歌頌中，自說所以生此因緣。』
+彼拘薩羅國麁牛彈琴人即便彈琴，彼六天女即便歌舞。
+^cb353c6「第一天女說偈歌言：
+^gatha「『若男子女人，勝妙衣惠施，
+^gatha施衣因緣故，所生得殊勝。
+^gatha施所愛念物，生天隨所欲，
+^gatha見我居宮殿，乘空而遊行。
+^gatha天身如金聚，天女百中勝，
+^gatha觀察斯福德，迴向中之最。』
+^cb353c13「第二天女復說偈言：
+^gatha「『若男子女人，勝妙香惠施，
+^gatha愛念可意施，生天隨所欲。
+^gatha見我處宮殿，乘空而遊行，
+^gatha天身若金聚，天女百中勝。
+^gatha觀察斯福德，迴向中之最。』
+^cb353c19「第三天女復說偈言：
+^gatha「『若男子女人，以食而惠施，
+^gatha可意愛念施，生天隨所欲。
+^gatha見我居宮殿，乘虛而遊行，
+^gatha天身如金聚，天女百中勝，
+^gatha觀察斯福德，迴向中之最。』
+^cb353c25「第四天女復說偈言：
+^gatha「『憶念餘生時，曾為人婢使，
+^gatha不盜不貪嗜，勤修不懈怠。
+^gatha量腹自節身，分飡救貧人，
+^gatha今見居宮殿，乘虛而遊行。
+^gatha天身如金聚，天女百中勝，
+^gatha觀察斯福德，供養中為最。』
+^cb354a3「第五天女復說偈言：
+^gatha「『憶念餘生時，為人作子婦，
+^gatha嫜姑性狂暴，常加麁澁言。
+^gatha執節修婦禮，卑遜而奉順，
+^gatha今見處宮殿，乘虛而遊行。
+^gatha天身如金聚，天女百中勝，
+^gatha觀察斯福德，供養中為最。』
+^cb354a10「第六天女復說偈言：
+^gatha「『昔曾見行跡，比丘比丘尼，
+^gatha從其聞正法，一宿受齋戒。
+^gatha今見處天宮，乘虛而遊行，
+^gatha天身如金聚，天女百中勝。
+^gatha觀察斯福德，迴向中之最。』
+^cb354a16「爾時，拘薩羅國麁牛彈琴人而說偈言：
+^gatha「『我今善來此，拘薩羅林中，
+^gatha得見此天女，具足妙天身。
+^gatha既見又聞說，當增修善業，
+^gatha緣今修功德，亦當生天上。』
+^cb354a21「說是語已，此諸天女即沒不現。」
+佛說此經已，諸比丘聞佛所說，歡喜奉行。
+^n1285【一二八五】^cb354a23如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb354a24時，有天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb354a26時，彼天子說偈問佛：
+^gatha「何法起應滅？　何生應防護？
+^gatha何法應當離？　等觀何得樂？」
+^cb354a29爾時，世尊說偈答言：
+^gatha「瞋恚起應滅，貪生逆防護，
+^gatha無明應捨離，等觀真諦樂。
+^gatha欲生諸煩惱，欲為生苦本，
+^gatha調伏煩惱者，眾苦則調伏。
+^gatha調伏眾苦者，煩惱亦調伏。」
+^cb354b6時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb354b9於是，天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1286【一二八六】^cb354b11如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb354b12時，有天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb354b14時，彼天子說偈問佛：
+^gatha「若人行放逸，愚癡離惡慧，
+^gatha禪思不放逸，疾得盡諸漏。」
+^cb354b17爾時，世尊說偈答言：
+^gatha「非世間眾事，是則之為欲，
+^gatha心法馳覺想，是名士夫欲。
+^gatha世間種種事，常在於世間，
+^gatha智慧修禪思，愛欲永潛伏。
+^gatha信為士夫伴，不信則不度，
+^gatha信增其名稱，命終得生天。
+^gatha於身虛空想，名色不堅固，
+^gatha不著名色者，遠離於積聚。
+^gatha觀此真實義，如解脫哀愍，
+^gatha由斯智慧故，世稱歎供養。
+^gatha能斷眾雜相，超絕生死流，
+^gatha超度諸流已，是名為比丘。」
+^cb354c1時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb354c4於是，天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1287【一二八七】^cb354c6如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb354c7時，有天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，其身光明遍照祇樹給孤獨園。
+^cb354c9時，彼天子說偈問佛：
+^gatha「與何人同處，復與誰共事，
+^gatha知何等人法，名為勝非惡？」
+^cb354c12爾時，世尊說偈答言：
+^gatha「與正士同遊，正士同其事，
+^gatha解知正士法，是則勝非惡。」
+^cb354c15時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb354c18時，彼天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1288【一二八八】^cb354c20如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb354c21時，有天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb354c23時，彼天子而說偈言：
+^gatha「慳悋生於心，不能行布施，
+^gatha明智求福者，乃能行其惠。」
+^cb354c26爾時，世尊說偈答言：
+^gatha「怖畏不行施，常得不施怖，
+^gatha怖畏於飢渴，慳惜從怖生。
+^gatha此世及他世，常癡飢渴畏，
+^gatha死則不隨死，獨往無資粮。
+^gatha少財能施者，多財難亦捨，
+^gatha難捨而能捨，是則為難施。
+^gatha無知者不覺，慧者知難知，
+^gatha以法養妻子，少財淨心施。
+^gatha百千耶盛會，所獲其福利，
+^gatha比前如法施，十六不及一。
+^gatha打縛惱眾生，所得諸財物，
+^gatha惠施安國土，是名有罪施。
+^gatha方之平等施，稱量所不及，
+^gatha如法不行非，所得財物施。
+^gatha難施而行施，是應賢聖施，
+^gatha所往常獲福，壽終上生天。」
+^cb355a14時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb355a17時，彼天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1289【一二八九】^cb355a19如是我聞：
+一時，佛住王舍城金婆羅山金婆羅鬼神住處石室中。
+^cb355a20爾時，世尊金鎗刺足，未經幾時，起身苦痛；
+能得捨心，正智正念，堪忍自安，無退減想。
+^cb355a22彼有山神天子八人，作是念：「今日世尊住王舍城金婆羅山金婆羅鬼神住處石室中，
+金鎗刺足，起身苦痛而能捨心，正念正智，
+堪忍自安，無所退減，我等當往面前讚嘆。」
+作是念已，往詣佛所，稽首禮足，退住一面。
+^cb355a27第一天神說偈嘆言：
+^gatha「沙門瞿曇，人中師子，身遭苦痛，
+^gatha堪忍自安，正智正念，無所退減。」
+^cb355b1第二天子復讚嘆言：
+^gatha「大士之大龍，大士之牛王，
+^gatha大士夫勇力，大士夫良馬，
+^gatha大士夫上首，大士夫之勝。」
+^cb355b5第三天子復讚嘆言：
+^gatha「此沙門瞿曇，士夫分陀利，
+^gatha身生諸苦痛，而能行捨心，
+^gatha正智正念住，堪忍以自安，
+^gatha而無所退減。」
+^cb355b10第四天子復讚嘆言：「若有於沙門瞿曇士夫分陀利所說違反嫌責，
+當知斯等長夜當得不饒益苦，唯除不知真實者。」
+^cb355b14第五天子復說偈言：
+^gatha「觀彼三昧定，善住於正受，
+^gatha解脫離諸塵，不踊亦不沒，
+^gatha其心安隱住，而得心解脫。」
+^cb355b18第六天子復說偈言：
+^gatha「經歷五百歲，誦婆羅門典，
+^gatha精勤修苦行，不解脫離塵，
+^gatha是則卑下類，不得度彼岸。」
+^cb355b22第七天子復說偈言：
+^gatha「為欲之所迫，持戒之所縛，
+^gatha勇捍行苦行，經歷於百年，
+^gatha其心不解脫，不離於塵垢，
+^gatha是則卑下類，不度於彼岸。」
+^cb355b27第八天子復說偈言：
+^gatha「心居憍慢欲，不能自調伏，
+^gatha不得三昧定，牟尼之正受，
+^gatha獨一居山林，其心常放逸，
+^gatha於彼死魔軍，不得度彼岸。」
+^cb355c3時，彼山神天子八人各各讚嘆已，稽首佛足，即沒不現。
+^n1290【一二九〇】^cb355c5如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb355c6時，有天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb355c8時，彼天子而說偈言：
+^gatha「廣無過於地，深無踰於海，
+^gatha高無過須彌，大士無毘紐。」
+^cb355c11爾時，世尊說偈答言：
+^gatha「廣無過於愛，深無踰於腹，
+^gatha高莫過憍慢，大士無勝佛。」
+^cb355c14時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb355c17於是，天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1291【一二九一】^cb355c19如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb355c20時，有天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb355c22時，彼天子說偈問佛：
+^gatha「何物火不燒？　何風不能吹？
+^gatha水災壞大地，何物不流散？
+^gatha惡王及盜賊，強劫人財物，
+^gatha何男子女人，不為其所奪？
+^gatha云何珍寶藏，終竟不亡失？」
+^cb355c28爾時，世尊說偈答言：
+^gatha「福火所不燒，福風不能吹，
+^gatha水災壞大地，福水不流散。
+^gatha惡王及盜賊，強奪人財寶，
+^gatha若男子女人，福不被劫奪。
+^gatha樂報之寶藏，終竟不亡失。」
+^cb356a5時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb356a8於是，天子聞佛所說，歡喜隨喜，即沒不現。
+^n1292【一二九二】^cb356a9如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb356a10時，有天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb356a12時，彼天子說偈問佛：
+^gatha「誰當持資粮？　何物賊不劫？
+^gatha何人劫而遮？　何人劫不遮？
+^gatha何人常來詣，智慧者喜樂？」
+^cb356a16爾時，世尊說偈答言：
+^gatha「信者持資粮，福德劫不奪，
+^gatha賊劫奪則遮，沙門奪歡喜，
+^gatha沙門常來詣，智慧者欣樂。」
+^cb356a20時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb356a23於是，天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1293【一二九三】^cb356a25如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb356a26時，有一天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+身諸光明遍照祇樹給孤獨園。
+^cb356a28時，彼天子說偈問佛：
+^gatha「一切相映障，知一切世間，
+^gatha樂安慰一切，唯願世尊說，
+^gatha云何是世間，最為難得者？」
+^cb356b3是時，世尊說偈答言：
+^gatha「為主而行忍，無財而欲施，
+^gatha遭難而行法，富貴修遠離，
+^gatha如是四法者，是則為最難。」
+^cb356b7時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb356b10於是，天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+雜阿含經卷第四十八
+
+^pb1^folio#agms49雜阿含經卷第四十九
+^au〔宋天竺三藏求那跋陀羅譯〕
+^n1294【一二九四】^cb356b18如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb356b19時，有天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb356b21時，彼天子說偈問佛：
+^gatha「大力自在樂，所求無不得，
+^gatha何復勝於彼，一切所欲備？」
+^cb356b24爾時，世尊說偈答言：
+^gatha「大力自在樂，彼則無所求，
+^gatha若有求欲者，是苦非為樂，
+^gatha於求已過去，是則樂於彼。」
+^cb356b28時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb356c2於是，天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1295【一二九五】^cb356c4如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb356c5時，有天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb356c7時，彼天子說偈問佛：
+^gatha「車從何處起？　誰能轉於車？
+^gatha車轉至何所，何故壞磨滅？」
+^cb356c10爾時，世尊說偈答言：
+^gatha「車從諸業起，心識能於車，
+^gatha隨因而轉至，因壞車則亡。」
+^cb356c13時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb356c16於是，天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1296【一二九六】^cb356c18如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb356c19時，有天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb356c21時，彼天子白佛言：「世尊！
+拘屢陀王女修波羅提沙今日生子。」
+^cb356c22佛告天子：「此則不善，非是善。」
+^cb356c23時，彼天子即說偈言：
+^gatha「人生子為樂，世間有子歡，
+^gatha父母年老衰，子則能奉養，
+^gatha瞿曇何故說，生子為不善。」
+^cb356c27爾時，世尊說偈答言：
+^gatha「當知恒無常，純空陰非子，
+^gatha生子常得苦，愚者說言樂。
+^gatha是故我說言，生子非為善，
+^gatha非善為善像，念像不可念。
+^gatha實苦貌似樂，放逸所踐蹈。」
+^cb357a4時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb357a7於是，天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1297【一二九七】^cb357a9如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb357a10時，有天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb357a12時，彼天子說偈問佛：
+^gatha「云何數所數？　云何數不隱？
+^gatha云何數中數？　云何說言說？」
+^cb357a15爾時，世尊說偈答言：
+^gatha「佛法難測量，二流不顯現，
+^gatha若彼名及色，滅盡悉無餘，
+^gatha是名數所數，彼數不隱藏，
+^gatha是彼數中數，是則說名數。」
+^cb357a20時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb357a23於時，天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1298【一二九八】^cb357a25如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb357a26時，有天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb357a28時，彼天子說偈問佛：
+^gatha「何物重於地？　何物高於空？
+^gatha何物疾於風？　何物多於草？」
+^cb357b2爾時，世尊說偈答言：
+^gatha「戒德重於地，慢高於虛空，
+^gatha憶念疾於風，思想多於草。」
+^cb357b5時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb357b8於是，天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1299【一二九九】^cb357b10如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb357b11時，彼天子容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb357b13時，彼天子說偈問佛：
+^gatha「何戒何威儀？　何得何為業？
+^gatha慧者云何住？　云何往生天？」
+^cb357b16爾時，世尊說偈答言：
+^gatha「遠離於殺生，持戒自防樂，
+^gatha害心不加生，是則生天路。
+^gatha遠離不與取，與取心欣樂，
+^gatha斷除賊盜心，是則生天路。
+^gatha不行他所受，遠離於邪婬，
+^gatha自受知止足，是則生天路。
+^gatha自為己及他，為財及戲笑，
+^gatha妄語而不為，是則生天路。
+^gatha斷除於兩舌，不離他親友，
+^gatha常念和彼此，是則生天路。
+^gatha遠離不愛言，軟語不傷人，
+^gatha常說淳美言，是則生天路。
+^gatha不為不誠說，無義不饒益，
+^gatha常順於法言，是則生天路。
+^gatha聚落若空地，見利言我有，
+^gatha不行此貪想，是則生天路。
+^gatha慈心無害想，不害於眾生，
+^gatha心常無怨結，是則生天路。
+^gatha苦業及果報，二俱生淨信，
+^gatha受持於正見，是則生天路。
+^gatha如是諸善法，十種淨業跡，
+^gatha等受堅固持，是則生天路。」
+^cb357c10時，彼天子復說偈言：
+^gatha「久見婆羅門，逮得般涅槃，
+^gatha一切怖已過，永超世恩愛。」
+^cb357c13於時，天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1300【一三〇〇】^cb357c15如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb357c16爾時，釋提桓因於後夜時來詣佛所，稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb357c18時，釋提桓因說偈問佛：
+^gatha「何法命不知？　何法命不覺？
+^gatha何法鏁於命？　何法為命縛？」
+^cb357c21爾時，世尊說偈答言：
+^gatha「色者命不知，諸行命不覺，
+^gatha身鏁於其命，受縛於命者。」
+^cb357c24釋提桓因復說偈言：
+^gatha「色者非為命，諸佛之所說，
+^gatha云何而得熟？　於彼甚深藏，
+^gatha云何段肉住？　云何知命身？」
+^cb357c28爾時，世尊說偈答言：
+^gatha「迦羅邏為初，迦羅邏生胞，
+^gatha胞生於肉段，肉段生堅厚，
+^gatha堅厚生肢節，及諸毛髮等，
+^gatha色等諸情根，漸次成形體，
+^gatha因母飲食等，長養彼胎身。」
+^cb358a5爾時，釋提桓因聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1301【一三〇一】^cb358a7如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb358a8時，有長勝天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+身諸光明遍照祇樹給孤獨園。
+^cb358a10時，彼長勝天子而說偈言：
+^gatha「善學微妙說，習近諸沙門，
+^gatha獨一無等侶，正思惟靜默。」
+^cb358a14爾時，世尊說偈答言：
+^gatha「善學微妙說，習近諸沙門，
+^gatha獨一無等侶，寂默靜諸根。」
+^cb358a17時，長勝天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1302【一三〇二】^cb358a19如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb358a20時，有尸毘天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb358a22時，彼尸毘天子說偈問佛：
+^gatha「何人應同止？　何等人共事？
+^gatha應知何等法，是轉勝非惡？」
+^cb358a26爾時，世尊說偈答言：
+^gatha「與正士同止，正士共其事，
+^gatha應知正士法，是轉勝非惡。」
+^cb358a29時，彼尸毘天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1303【一三〇三】^cb358b2如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb358b3時，有月自在天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+身諸光明遍照祇樹給孤獨園。
+^cb358b5時，彼月自在天子而說偈言：
+^gatha「彼當至究竟，如蚊依從草，
+^gatha若得正繫念，一心善正受。」
+^cb358b9爾時，世尊說偈答言：
+^gatha「彼當到彼岸，如魚決其網，
+^gatha禪定具足住，心常致喜樂。」
+^cb358b12時，彼月自在天子聞佛所說，歡喜隨喜，
+稽首佛足，即沒不現。
+^n1304【一三〇四】^cb358b14如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb358b15時，有毘瘦紐天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+身諸光明遍照祇樹給孤獨園。
+^cb358b17時，彼毘瘦紐天子而說偈言：
+^gatha「供養於如來，歡喜常增長，
+^gatha欣樂正法律，不放逸隨學。」
+^cb358b21爾時，世尊說偈答言：
+^gatha「若如是說法，防護不放逸，
+^gatha以不放逸故，不隨魔自在。」
+^cb358b24於是，毘瘦紐天子聞佛所說，歡喜隨喜，
+稽首佛足，即沒不現。
+^n1305【一三〇五】^cb358b26如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb358b27時，有般闍羅健天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+身諸光明遍照祇樹給孤獨園。
+^cb358b29時，般闍羅揵天子而說偈言：
+^gatha「憒亂之處所，黠慧者能覺，
+^gatha禪思覺所覺，牟尼思惟力。」
+^cb358c4爾時，世尊說偈答言：
+^gatha「了知憒亂法，正覺得涅槃，
+^gatha若得正繫念，一心善正受。」
+^cb358c7時，般闍羅健天子聞佛所說，歡喜隨喜，
+稽首佛足，即沒不現。
+^n1306【一三〇六】^cb358c9如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb358c10時，有須深天子與五百眷屬，容色絕妙，
+於後夜時來詣佛所，稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb358c12爾時，世尊告尊者阿難：「汝何難於尊者舍利弗善說法，心喜樂不？」
+阿難白佛：「如是，世尊！
+何等人不愚、不癡、有智慧，於尊者舍利弗善說法中，心不欣樂。
+所以者何？彼尊者舍利弗持戒多聞，少欲知足，
+精勤遠離，正念堅住，智慧正受，捷疾智慧、
+利智慧、出離智慧、決定智慧、大智慧、廣智慧、
+深智慧、無等智慧，智寶成就，善能教化，
+示、教、照、喜，亦常讚歎示、教、照、喜，常為四眾說法不惓。」
+^cb358c21佛告阿難：「如是，如是，如汝所說。
+阿難！為何等人不愚、不癡、有智慧，聞尊者舍利弗善說諸法而不歡喜？
+所以者何？舍利弗比丘持戒多聞，少欲知足，
+精勤正念，智慧正受，超智、捷智、利智、出智、
+決定智、大智、廣智、深智、無等智，智寶成就，
+善能教化，示、教、照、喜，亦常讚歎示、教、照、
+喜，常為四眾說法不惓。」
+^cb358c29世尊如是如是向尊者阿難，如是如是稱嘆舍利弗所說，
+如是如是須深天子眷屬內心歡喜，身光增明，清淨照耀。
+^cb359a2爾時，須深天子內懷歡喜，發身淨光照耀已，
+而說偈言：
+^gatha「舍利弗多聞，明智平等慧，
+^gatha持戒善調伏，得不起涅槃，
+^gatha持此後邊身，降伏於魔軍。」
+^cb359a8時，彼須深天子及五百眷屬聞佛所說，
+歡喜隨喜，稽首佛足，即沒不現。
+^n1307【一三〇七】^cb359a10如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb359a11時，有赤馬天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb359a13時，彼赤馬天子白佛言：「世尊！
+頗有能行過世界邊，至不生、不老、不死處不？」
+^cb359a15佛告赤馬：「無有能過世界邊，至不生、不老、不死處者。」
+^cb359a16赤馬天子白佛言：「奇哉！
+世尊！善說斯義。如世尊說言：『無過世界邊，
+至不生、不老、不死處者。』
+所以者何？世尊！我自憶宿命，名曰赤馬，
+作外道仙人，得神通，離諸愛欲。
+我時，作是念：『我有如是捷疾神足，如健士夫，
+以利箭橫射過多羅樹影之頃，能登一須彌，
+至一須彌，足躡東海，超至西海。』
+我時，作是念：『我今成就如是捷疾神力，今日寧可求世界邊。』
+作是念已，即便發行，唯除食息便利，減節睡眠，
+常行百歲，於彼命終，竟不能得過世界邊，
+至不生、不老、不死之處。」
+^cb359a27佛告赤馬：「我今但以一尋之身，說於世界、
+世界集、世界滅、世界滅道跡。
+赤馬天子！何等為世間？
+謂五受陰。何等為五？
+色受陰、受受陰、想受陰、行受陰、識受陰，是名世間。
+何等為色集？謂當來有愛，貪、喜俱，彼彼染著，是名世間集。
+云何為世間滅？若彼當來有愛，貪、喜俱，
+彼彼染著無餘斷、捨、離、盡、無欲、滅、息、沒，是名世間滅。
+何等為世間滅道跡？
+謂八聖道，正見、正志、正語、正業、正命、正方便、
+正念、正定，是名世間滅道跡。
+^cb359b7「赤馬！了知世間，斷世間；了知世間集，斷世間集；
+了知世間滅，證世間滅；了知世間滅道跡，修彼滅道跡。
+赤馬！若比丘於世間苦若知、若斷，世間集若知、
+若斷，世間滅若知、若證，世間滅道跡若知、若修。
+赤馬！是名得世界邊，度世間愛。」
+^cb359b13爾時，世尊重說偈言：
+^gatha「未曾遠遊行，而得世界邊，
+^gatha無得世界邊，終不盡苦邊。
+^gatha以是故牟尼，能知世界邊，
+^gatha善解世界邊，諸梵行已立。
+^gatha於彼世界邊，平等覺知者，
+^gatha是名賢聖行，度世間彼岸。」
+^cb359b20是時，赤馬天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1308【一三〇八】^cb359b22如是我聞：
+一時，佛住王舍城毘富羅山側。
+有六天子，本為外道出家，一名阿毘浮、
+二名增上阿毘浮、三名能求、四名毘藍婆、
+五名阿俱吒、六名迦藍，來詣佛所。
+^cb359b26阿毘浮天子即說偈言：
+^gatha「比丘專至心，常修行厭離，
+^gatha於初夜後夜，思惟善自攝，
+^gatha見聞其所說，不墮於地獄。」
+^cb359c1增上阿毘浮天子復說偈言：
+^gatha「厭離於黑闇，心常自攝護，
+^gatha永離於世間，言語諍論法。
+^gatha從如來大師，稟受沙門法，
+^gatha善攝護世間，不令造眾惡。」
+^cb359c6能求天子復說偈言：
+^gatha「斷截椎打殺，供養施迦葉，
+^gatha不見其為惡，亦不見為福。」
+^cb359c9毘藍婆天子復說偈言：
+^gatha「我說彼尼乾，外道若提子，
+^gatha出家行學道，長夜修難行。
+^gatha於大師徒眾，遠離於妄語，
+^gatha我說如是人，不遠於羅漢。」
+^cb359c14爾時世尊說偈答言：
+^gatha「死瘦之野狐，常共師子遊，
+^gatha終日小羸劣，不能為師子。
+^gatha尼乾大師眾，虛妄自稱嘆，
+^gatha是惡心妄語，去羅漢甚遠。」
+^cb359c19爾時天魔波旬著阿俱吒天子而說偈言：
+^gatha「精勤棄闇冥，常守護遠離，
+^gatha深著微妙色，貪樂於梵世。
+^gatha我教化斯等，令得生梵天。」
+^cb359c23爾時，世尊作是念：「若此阿俱吒天子所說偈，
+此是天魔波旬加其力故，非彼阿俱吒天子自心所說，
+作是說言：
+^gatha「『精勤棄闇冥，守護於遠離，
+^gatha深著微妙色，貪樂於梵世。』
+^gatha當教化斯等，令得生梵天。」
+^cb359c29爾時，世尊復說偈言：
+^gatha「若諸所有色，於此及與彼，
+^gatha或復虛空中，各別光照耀。
+^gatha當知彼一切，不離魔魔縛，
+^gatha猶如垂鈎餌，鉤釣於遊魚。」
+^cb360a5時，彼天子咸各念言：「今日阿俱吒天子所說偈，沙門瞿曇言是魔所說。
+何故沙門瞿曇言是魔說？」
+^cb360a7爾時，世尊知諸天子心中所念，而告之言：
+「今阿俱吒天子所說偈，非彼天子自心所說，時魔波旬加其力故。」
+作是說言：
+^gatha「精勤棄闇冥，守護於遠離，
+^gatha深著微妙色，貪樂於梵天。
+^gatha當教化斯等，令得生梵天。
+^gatha是故我說偈：
+^gatha「『若諸所有色，於此及與彼，
+^gatha或復虛空中，各別光照耀。
+^gatha當知彼一切，不離魔魔縛，
+^gatha猶如垂鈎餌，鈎釣於遊魚。』」
+^cb360a18時，諸天子復作是念：「奇哉！
+沙門瞿曇！神力大德，能見天魔波旬，而我等不見，我等當復各各說偈讚歎沙門瞿曇。」
+即說偈言：
+^gatha「斷除於一切，有身愛貪想，
+^gatha令此善護者，除一切妄語。
+^gatha若欲斷欲愛，應供養大師。
+^gatha斷除三有愛，破壞於妄語。
+^gatha已斷於見貪，應供養大師。
+^gatha王舍城第一，名毘富羅山。
+^gatha雪山諸山最，金翅鳥中名。
+^gatha八方及上下，一切眾生界，
+^gatha於諸天人中，等正覺最上。」
+^cb360b1時，諸天子說偈讚佛已，聞佛所說，歡喜隨喜，
+稽首佛足，即沒不現。
+^n1309【一三〇九】^cb360b3如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb360b4時，有摩伽天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb360b6時，有摩伽天子說偈問佛：
+^gatha「殺何得安眠？　殺何得善樂？
+^gatha為殺何等人，瞿曇所讚嘆？」
+^cb360b10爾時，世尊說偈答言：
+^gatha「若殺於瞋恚，而得安隱眠，
+^gatha殺於瞋恚者，令人得歡喜。
+^gatha瞋恚為毒本，殺者我所歎，
+^gatha殺彼瞋恚已，長夜無憂患。」
+^cb360b15於時，摩伽天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1310【一三一〇】^cb360b17如是我聞：
+一時，佛在舍衛國祇樹給孤獨園。
+^cb360b18爾時，有彌耆迦天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb360b20時，彌耆迦天子說偈問佛：
+^gatha「明照有幾種，能照明世間，
+^gatha唯願世尊說，何等明最上？」
+^cb360b24爾時，世尊說偈答言：
+^gatha「有三種光明，能照耀世間，
+^gatha晝以日為照，月以照其夜。
+^gatha燈火晝夜照，照彼彼色像，
+^gatha上下及諸方，眾生悉蒙照。
+^gatha人天光明中，佛光明為上。」
+^cb360c1佛說此經已，彌耆迦天子聞佛所說，歡喜隨喜，
+稽首佛足，即沒不現。
+^n1311【一三一一】^cb360c3如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb360c4時，有陀摩尼天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+身諸光明遍照祇樹給孤獨園。
+^cb360c6時，彼陀摩尼天子而說偈言：
+^gatha「為婆羅門事，學斷莫疲惓，
+^gatha斷除諸愛欲，不求受後身。」
+^cb360c10爾時，世尊說偈答言：
+^gatha「婆羅門無事，所作事已作，
+^gatha乃至不得岸，晝夜常勤跪。
+^gatha已到彼岸住，於岸復何跪，
+^gatha此是婆羅門，專精漏盡禪。
+^gatha一切諸憂惱，熾然永已斷，
+^gatha是則到彼岸，涅槃無所求。」
+^cb360c17時，陀摩尼天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1312【一三一二】^cb360c19如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb360c20時，有多羅揵陀天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，身諸光明遍照祇樹給孤獨園。
+^cb360c22時，彼天子說偈問佛：
+^gatha「斷幾捨幾法？　幾法上增修？
+^gatha超越幾積聚，名比丘度流？」
+^cb360c25爾時，世尊說偈答言：
+^gatha「斷五捨於五，五法上增修，
+^gatha超五種積聚，名比丘度流。」
+^cb360c28時，彼多羅揵陀天子聞佛所說，歡喜隨喜，
+稽首佛足，即沒不現。
+^n1313【一三一三】^cb361a1如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb361a2時，有迦摩天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，身諸光明遍照祇樹給孤獨園。
+^cb361a4時，迦摩天子白佛言：「甚難！
+世尊！甚難！善逝！」
+^cb361a5爾時，世尊說偈答言：
+^gatha「所學為甚難，具足戒三昧，
+^gatha遠離於非家，閑居寂靜樂。」
+^cb361a8迦摩天子白佛言：「世尊！
+靜默甚難得！」
+爾時，世尊說偈答言：
+^gatha「得所難得學，具足戒三昧，
+^gatha晝夜常專精，修習意所樂。」
+^cb361a12迦摩天子白佛言：「世尊！
+正受心難得！」
+爾時，世尊說偈答言：
+^gatha「難住正受住，諸根心決定，
+^gatha能斷死魔縻，聖者隨欲進。」
+^cb361a16迦摩天子復白佛言：「世尊！
+嶮道甚難行！」
+爾時，世尊說偈答言：
+^gatha「難涉之嶮道，當行安樂進，
+^gatha非聖墮於彼，足上頭向下。
+^gatha賢聖乘正直，嶮路自然平。」
+^cb361a21佛說此經已，迦摩天子聞佛所說，歡喜隨喜，
+稽首佛足，即沒不現。
+^n1314【一三一四】^cb361a23如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb361a24時，有迦摩天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb361a26時，彼迦摩天子說偈問佛：
+^gatha「貪恚何所因，不樂身毛竪，
+^gatha恐怖從何起，覺想由何生？
+^gatha猶如鳩摩羅，依倚於乳母。」
+^cb361b2爾時，世尊說偈答言：
+^gatha「愛生自身長，如尼拘律樹，
+^gatha處處隨所著，如榛綿叢林。
+^gatha若知彼因者，發悟令開覺，
+^gatha度生死海流，不復更受有。」
+^cb361b7時，迦摩天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1315【一三一五】^cb361b9如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb361b10時，有栴檀天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb361b12時，彼栴檀天子說偈問佛：
+^gatha「聞瞿曇大智，無障礙知見，
+^gatha何所住何學，不遭他世惡？」
+^cb361b16爾時，世尊說偈答曰：
+^gatha「攝持身口意，不造三惡法，
+^gatha處在於居家，廣集於群賓。
+^gatha信惠財法施，以法立一切，
+^gatha住彼學彼法，則無他世畏。」
+^cb361b21佛說是經已，栴檀天子聞佛所說，歡喜隨喜，
+稽首佛足，即沒不現。
+^n1316【一三一六】^cb361b23如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb361b24時，有栴檀天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb361b26時，彼天子說偈問佛：
+^gatha「誰度於諸流，晝夜勤不懈，
+^gatha不攀無住處，云何不沒溺？」
+^cb361b29爾時，世尊說偈答言：
+^gatha「一切戒具足，智慧善正受，
+^gatha內思惟正念，能度難度流，
+^gatha不染此欲想，超度彼色愛，
+^gatha貪喜悉已盡，不入於難測。」
+^cb361c5時，彼栴檀天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1317【一三一七】^cb361c7如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb361c8時，有迦葉天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb361c10時，彼迦葉天子白佛言：「世尊！
+我今當說比丘及比丘功德。」
+^cb361c11佛告天子：「隨汝所說。」
+^cb361c12時，迦葉天子而說偈言：
+^gatha「比丘修正念，其心善解脫，
+^gatha晝夜常勤求，懷有諸功德。
+^gatha了知於世間，滅除一切有，
+^gatha比丘得無憂，心無所染著。
+^cb361c17「世尊！是名比丘，是名比丘功德。」
+佛告迦葉：「善哉！善哉！
+如汝所說。」
+^cb361c18迦葉天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^n1318【一三一八】^cb361c20如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb361c21時，有迦葉天子，容色絕妙，於後夜時來詣佛所，
+稽首佛足，退坐一面。
+其身光明遍照祇樹給孤獨園。
+^cb361c23時，彼迦葉天子白佛言：「世尊！
+我今當說比丘及比丘所說。」
+^cb361c24佛告迦葉天子：「隨所樂說！」
+^cb361c25時，彼迦葉天子而說偈言：
+^gatha「比丘守正念，其心善解脫，
+^gatha晝夜常勤求，逮得離塵垢。
+^gatha曉了知世間，於塵離塵垢，
+^gatha比丘無憂患，心無所染著。
+^cb362a2「世尊！是名比丘，是名比丘所說。」
+佛告迦葉：「如是，如是，如汝所說。」
+^cb362a3迦葉天子聞佛所說，歡喜隨喜，稽首佛足，即沒不現。
+^ck50【夜叉相應1319】^n1319【一三一九】^cb362a5如是我聞：
+一時，佛在摩竭提國人間遊行，日暮與五百比丘於屈摩夜叉鬼住處宿。
+時，屈摩夜叉鬼來詣佛所，稽首佛足，退住一面。
+^cb362a8時，屈摩夜叉鬼白佛言：「世尊！
+今請世尊與諸大眾於此夜宿。」
+^cb362a9爾時，世尊默然受請。
+^cb362a10是時，屈摩夜叉鬼知世尊默然受請已，
+化作五百重閣房舍，臥床、坐床、踞床，俱襵褥枕，
+各五百具，悉皆化成。
+化作五百燈明，無諸烟炎。
+悉化現已，往詣佛所，稽首佛足，勸請世尊令入其舍，令諸比丘次受房舍及諸臥具。
+周遍受已，還至佛所，稽首佛足，退坐一面。
+而說偈言：
+^gatha「賢德有正念，賢德常正念，
+^gatha正念安隱眠，此世及他世。
+^gatha賢德有正念，賢德常正念，
+^gatha正念安隱眠，其心常寂止。
+^gatha賢德有正念，賢德常正念，
+^gatha正念安隱眠，捨降伏他軍。
+^gatha賢德有正念，賢德常正念，
+^gatha不殺不教殺，不伏不教伏。
+^gatha慈心於一切，心不懷怨結。」
+^cb362a26爾時，世尊告屈摩夜叉鬼：「如是，如是，如汝所說。」
+^cb362a27時，屈摩夜叉鬼聞佛所說，歡喜隨喜，稽首佛足，還自所住處。
+^n1320【一三二〇】^cb362a29如是我聞：
+一時，佛住摩鳩羅山，尊者那伽波羅為親侍者。
+^cb362b1爾時，世尊於夜闇時，天小微雨，電光睒現，
+出於房外，露地經行。
+^cb362b2是時，天帝釋作是念：「今日世尊住摩鳩羅山，
+尊者那伽波羅親侍供養，其夜闇冥，天時微雨，
+電光睒現，世尊出房，露地經行，我當化作毘琉璃重閣，
+執持重閣，隨佛經行。」
+作是念已，即便化作鞞琉璃重閣，持詣佛所，
+稽首佛足，隨佛經行。
+^cb362b8爾時，摩竭提國人若男若女，夜啼之時，
+以摩鳩羅鬼恐之即止，親侍供養弟子之法，
+待師禪覺，然後乃眠。
+爾時，世尊為天帝釋夜經行久。
+^cb362b11爾時，尊者那伽波羅作是念：「世尊今夜經行至久，我今當作摩鳩羅鬼形而恐怖之！」
+時，那伽波羅比丘即反被俱執，長毛在外，
+往在世尊經行道頭，白佛言：「摩鳩羅鬼來！
+摩鳩羅鬼來！」
+^cb362b15爾時，世尊告那伽波羅比丘：「汝那伽波羅愚癡人，以摩鳩羅鬼神像恐怖佛耶？
+不能動如來、應、等正覺一毛髮也，如來、
+應、等正覺久離恐怖！」
+^cb362b18爾時，天帝釋白佛言：「世尊！
+世尊正法、律中亦復有此人耶？」
+^cb362b20佛言：「憍尸迦！瞿曇家中極大廣闊，斯等於未來世亦當使得清淨之法。」
+^cb362b21爾時，世尊即說偈言：
+^gatha「若復婆羅門，於自所得法，
+^gatha得到於彼岸。　若一毘舍遮，
+^gatha及與摩鳩羅，皆悉超過去。
+^gatha若復婆羅門，於自所行法，
+^gatha一切諸受覺，觀察皆已滅。
+^gatha若復婆羅門，自法度彼岸，
+^gatha一切諸因緣，皆悉已滅盡。
+^gatha若復婆羅門，自法度彼岸，
+^gatha一切諸人我，皆悉已滅盡。
+^gatha若復婆羅門，自法度彼岸，
+^gatha於生老病死，皆悉已超過。」
+^cb362c5佛說此經已，釋提桓因聞佛所說，歡喜隨喜，
+稽首佛足，即沒不現。
+^n1321【一三二一】^cb362c7如是我聞：
+一時，佛住王舍城迦蘭陀竹園。
+^cb362c8時，尊者阿那律陀於摩竭提國人間遊行，到畢陵伽鬼子母住處宿。
+時，尊者阿那律陀夜後分時，端身正坐，
+誦憂陀那、波羅延那、見真諦、諸上座所說偈、
+比丘尼所說偈、尸路偈、義品、牟尼偈、修多羅，悉皆廣誦。
+^cb362c13爾時，畢陵伽鬼子夜啼，畢陵伽鬼子母為其子說偈呵止言：
+^gatha「畢陵伽鬼子，汝今莫得啼，
+^gatha當聽彼比丘，誦習法句偈。
+^gatha若知法句者，能自護持戒，
+^gatha遠離於殺生，實言不妄語，
+^gatha能自捨非義，解脫鬼神道。」
+^cb362c20畢陵伽鬼子母說是偈時，畢陵伽鬼子啼聲即止。
+^n1322【一三二二】^cb362c22如是我聞：
+一時，佛在摩竭提國人間遊行，與大眾俱，到富那婆藪鬼子母住處宿。
+^cb362c24爾時，世尊為諸比丘說四聖諦相應法，
+所謂苦聖諦、苦集聖諦、苦滅聖諦、苦滅道跡聖諦。
+^cb362c26爾時，富那婆藪鬼母，兒富那婆藪及鬼女欝多羅，二鬼小兒夜啼。
+時，富那婆藪鬼母教其男女故，而說偈言：
+^gatha「汝富那婆藪，欝多羅莫啼，
+^gatha令我得聽聞，如來所說法。
+^gatha非父母能令，其子解脫苦，
+^gatha聞如來說法，其苦得解脫。
+^gatha世人隨愛欲，為眾苦所迫，
+^gatha如來為說法，令破壞生死。
+^gatha我今欲聞法，汝等當默然，
+^gatha時富那婆藪，鬼女欝多羅。
+^gatha悉受其母語，默然而靜聽，
+^gatha語母言善哉，我亦樂聞法。
+^gatha此正覺世尊，於摩竭勝山，
+^gatha為諸眾生類，演說脫苦法。
+^gatha說苦及苦因，苦滅滅苦道，
+^gatha從此四聖諦，安隱趣涅槃。
+^gatha母今但善聽，世尊所說法。」
+^cb363a15時，富那婆藪鬼母即說偈言：
+^gatha「奇哉智慧子，善能隨我心，
+^gatha汝富那婆藪，善歎佛導師。
+^gatha汝富那婆藪，及汝欝多羅，
+^gatha當生隨喜心，我已見聖諦。」
+^cb363a20時，富那婆藪鬼母說是偈時，鬼子男女隨喜默然。
+^n1323【一三二三】^cb363a22如是我聞：
+一時，佛在摩竭提國人間遊行，與諸大眾至摩尼遮羅鬼住處夜宿。
+^cb363a24爾時，摩尼遮羅鬼會諸鬼神，集在一處。
+時，有一女人，持香花鬘飾、飲食，至彼摩尼遮羅鬼神住處。
+彼女人遙見世尊在摩尼遮羅鬼神住處坐，
+見已，作是念：「我今現見摩尼遮羅鬼神。」
+即說偈言：
+^gatha「善哉摩尼遮，住摩伽陀國，
+^gatha摩伽陀國人，所求悉如願。
+^gatha云何於此世，常得安樂住？
+^gatha後世復云何，而得生天樂？」
+^cb363b4爾時，世尊說偈答言：
+^gatha「莫放逸慢恣，用摩尼鬼為，
+^gatha若自修所作，能得生天樂。」
+^cb363b7時，彼女人作是念：「此非摩尼遮羅鬼，是沙門瞿曇。」
+如是知已，即以香花鬘飾供養世尊，稽首禮足，退坐一面。
+而說偈言：
+^gatha「何道趣安樂？　當修何等行，
+^gatha此世常安隱，後世生天樂？」
+^cb363b12爾時，世尊說偈答言：
+^gatha「布施善調心，樂執護諸根，
+^gatha正見修賢行，親近於沙門。
+^gatha以正命自活，他世生天樂，
+^gatha何用三十三，諸天之苦網。
+^gatha但當一其心，斷除於愛欲，
+^gatha我當說離垢，甘露法善聽。」
+^cb363b19時，彼女人聞世尊說法，示、教、照、喜。
+如佛常法，謂布施、持戒，生天之福，欲味欲患煩惱，
+清淨、出要、遠離，功德福利，次第演說清淨佛法。
+譬如鮮淨白㲲，易染其色。
+時，彼女人亦復如是。
+即於坐上，於四聖諦得平等觀苦、集、滅、道。
+^cb363b24時，彼女人見法、得法、知法、入法，度諸疑惑，
+不由於他，於正法、律得無所畏。
+即從座起，整衣服，合掌白佛：「已度，世尊！
+已度，善逝！我從今日，盡壽命，歸佛、歸法、歸比丘僧。」
+^cb363b28時，彼女人聞佛所說，歡喜隨喜，禮佛而去。
+^n1324【一三二四】^cb363b29如是我聞：
+一時，佛在摩竭提國人間遊行，到針毛鬼住處夜宿。
+爾時，針毛鬼會諸鬼神，集在一處。
+^cb363c2時，有炎鬼見世尊在針毛鬼住處夜宿。
+見已，往詣針毛鬼所，語針毛鬼言：「聚落主！
+汝今大得善利，今如來、應、等正覺於汝室宿。」
+^cb363c5針毛鬼言：「今當試看，為是如來、為非？」
+^cb363c6時，針毛鬼與諸鬼神集會已，還歸自舍，束身衝佛。
+爾時，世尊却身避之。
+如是再三，束身衝佛，佛亦再三却身避之。
+^cb363c9爾時，針毛鬼言：「沙門怖耶？」
+佛言：「聚落主！我不怖也，但汝觸惡。」
+^cb363c10針毛鬼言：「今有所問，當為我說，能令我喜者善，
+不能令我喜者，當壞汝心，裂汝胸，令汝熱血從其面出，捉汝兩手擲恒水彼岸。」
+^cb363c13佛告針毛鬼：「聚落主！
+我不見諸天、魔、梵、沙門、婆羅門、天神、世人能壞如來、
+應、等正覺心者，能裂其胸者，能令熱血從面出者，執其兩臂擲著恒水彼岸者。
+汝今但問，當為汝說。
+令汝歡喜。」
+^cb363c18時，針毛鬼說偈問佛：
+^gatha「一切貪恚心，以何為其因，
+^gatha不樂身毛竪，恐怖從何起？
+^gatha意念諸覺想，為從何所起，
+^gatha猶如新生兒，依倚於乳母。」
+^cb363c23爾時，世尊說偈答言：
+^gatha「愛生自身長，如尼拘律樹，
+^gatha展轉相拘引，如籐綿叢林，
+^gatha若知彼所因，當令鬼覺悟，
+^gatha度生死海流，不復重增有。」
+^cb363c28爾時，針毛鬼聞世尊說偈，心得歡喜，向佛悔過，受持三歸。
+^cb363c29佛說此經已，針毛鬼聞佛所說，歡喜奉行。
+雜阿含經卷第四十九
+
+^pb1^folio#agms50雜阿含經卷第五十
+^au〔宋天竺三藏求那跋陀羅譯〕
+^n1325【一三二五】^cb364a8如是我聞：
+一時，佛住王舍城迦蘭陀竹園。
+^cb364a9時，有優婆夷子，受八支齋，尋即犯戒，即為鬼神所持。
+^cb364a10爾時，優婆夷即說偈言：
+^gatha「十四十五日，及月分八日，
+^gatha神通瑞應月，八支善正受，
+^gatha受持於齋戒，不為鬼所持，
+^gatha我昔數諮問，世尊作是說。」
+^cb364a15爾時，彼鬼即說偈言：
+^gatha「十四十五日，及月分八日，
+^gatha神足瑞應月，八支修正受。
+^gatha齋肅清淨住，戒德善守護，
+^gatha不為鬼戲弄，善哉從佛聞。
+^gatha汝當說言放，我當放汝子。
+^gatha諸有慢緩業，染污行苦行，
+^gatha梵行不清淨，終不得大果。
+^gatha譬如拔菅草，執緩則傷手，
+^gatha沙門行惡觸，當墮地獄中。
+^gatha譬如拔菅草，急捉不傷手，
+^gatha沙門善攝持，則到般涅槃。」
+^cb364a27時，彼鬼神即放優婆夷子。
+爾時，優婆夷說偈告子言：
+^gatha「子汝今聽我，說彼鬼神說，
+^gatha若有慢緩業，穢污修苦行。
+^gatha不清淨梵行，彼不得大果，
+^gatha譬如拔葌草，執緩則傷手。
+^gatha沙門起惡觸，當墮地獄中，
+^gatha如急執葌草，則不傷其手。
+^gatha沙門善執護，逮得般涅槃。」
+^cb364b7時，彼優婆夷子如是覺悟已，剃除鬚髮，
+著袈裟衣，正信非家，出家學道，心不得樂，
+還歸自家，母遙見子，而說偈言：
+^gatha「邁世而出家，何為還聚落，
+^gatha燒舍急出財，豈還投火中？」
+^cb364b12其子比丘說偈答言：
+^gatha「但念母命終，存亡不相見，
+^gatha故來還瞻視，何見子不歡。」
+^cb364b15時，母優婆夷說偈答言：
+^gatha「捨欲而出家，還欲服食之，
+^gatha是故我憂悲，恐隨魔自在。」
+^cb364b18是時，優婆夷如是如是發悟其子；如是，
+其子還空閑處，精勤思惟，斷除一切煩惱結縛，得阿羅漢果證。
+^n1326【一三二六】^cb364b21如是我聞：
+一時，佛在摩竭提國人間遊行，到阿臈鬼住處夜宿。
+^cb364b22時，阿臈鬼集會諸鬼神。
+時，有竭曇鬼見世尊在阿臈鬼住處夜宿。
+見已，至阿臈鬼所，語阿臈鬼言：「聚落主！
+汝獲大利，如來宿汝住處。」
+^cb364b25阿臈鬼言：「生人今日在我舍住耶？
+今當令知，為是如來？
+為非如來？」
+^cb364b27時，阿臈鬼諸鬼神聚會畢，還歸自家，語世尊曰：「出去！
+沙門！」
+^cb364b28爾時，世尊以他家故，即出其舍。
+^cb364b29阿臈鬼復言：「沙門！
+來入！」佛即還入。以滅慢故，如是再三。
+^cb364c1時，阿臈鬼第四復語世尊言：「沙門！
+出去！」
+^cb364c2爾時，世尊語阿臈鬼言：「聚落主！
+已三見請，今不復出。」
+^cb364c3阿臈鬼言：「今問沙門，沙門答我，能令我喜者善；
+不能令我喜者，我當壞其心，裂其胸，亦令熱血從其面出，執持兩手擲著恒水彼岸！」
+^cb364c7世尊告言：「聚落主！
+我不見諸天、魔、梵、沙門、婆羅門、天神、世人，
+有能壞我心，裂我胸，令我熱血從面而出，執持兩手擲著恒水彼岸者。
+然，聚落主！汝今但問，當為汝說。
+令汝心喜。」
+^cb364c11時，阿臈鬼說偈問佛：
+^gatha「說何等名為，勝士夫事物？
+^gatha行於何等法，得安樂果報？
+^gatha何等為美味？　云何壽中勝？」
+^cb364c15爾時，世尊說偈答言：
+^gatha「淨信為最勝，士夫之事物，
+^gatha行法得樂果，解脫味中上，
+^gatha智慧除老死，是為壽中勝。」
+^cb364c19時，阿臈鬼復說偈言：
+^gatha「云何得名稱？」　如上所說偈。
+^cb364c21爾時，世尊說偈答言：
+^gatha「持戒名稱流。」　如上所說偈。
+^cb364c23時，阿臈鬼復說偈言：
+^gatha「幾法起世間？　幾法相順可？
+^gatha世幾法取受？　世幾法損減？」
+^cb364c26爾時，世尊以偈答言：
+^gatha「世六法等起，六法相順可，
+^gatha世六法取受，世六法損減。」
+^cb364c29阿臈鬼復說偈問佛：
+^gatha「誰能度諸流，晝夜勤方便？
+^gatha無攀無住處，孰能不沈沒？」
+^cb365a3爾時，世尊說偈答言：
+^gatha「一切戒具足，智慧善正受，
+^gatha正念內思惟，能度難度流。
+^gatha不樂於五欲，亦超度色愛，
+^gatha無攀無住處，是能不沒溺。」
+^cb365a8時，阿臈鬼復說偈問佛：
+^gatha「以何法度流？　以何度大海？
+^gatha以何捨離苦？　以何得清淨？」
+^cb365a11爾時，世尊說偈答言：
+^gatha「以信度河流，不放逸度海，
+^gatha精進能除苦，以慧得清淨。
+^gatha汝當更問餘，沙門梵志法，
+^gatha其法無有過，真諦施調伏。」
+^cb365a16時，阿臈鬼復說偈問佛：
+^gatha「何煩更問餘，沙門梵志法，
+^gatha即曰最勝士，以顯大法炬。
+^gatha於彼竭曇摩，常當報其恩，
+^gatha告我等正覺，無上導御師。
+^gatha我即日當行，從村而至村，
+^gatha親侍等正覺，聽受所說法。」
+^cb365a23佛說此經已，阿臈鬼歡喜隨喜，作禮而去。
+^n1327【一三二七】^cb365a24如是我聞：
+一時，佛住王舍城迦蘭陀竹園。
+^cb365a25時，有叔迦羅比丘尼住王園比丘尼眾中，
+為王舍城諸人恭敬供養，如阿羅漢。
+^cb365a27又於一時，王舍城人於一吉星日歡集大會，即於是日闕不供養。
+有一鬼神，敬重彼比丘尼故，至王舍城里巷之中，
+家家說偈：
+^gatha「王舍城人民，醉酒眠睡臥，
+^gatha不勤供養彼，叔迦比丘尼。
+^gatha善修諸根故，名曰叔迦羅，
+^gatha善說離垢法，涅槃清涼處。
+^gatha隨順聽所說，終日樂無厭，
+^gatha乘聽法智慧，得度生死流。
+^gatha猶如海商人，依附力馬王。」
+^cb365b8時，一優婆塞以衣布施叔迦羅比丘尼，復有優婆塞以食供養。
+^cb365b9時，彼鬼神即說偈言：
+^gatha「智慧優婆塞，獲福利豐多，
+^gatha施叔迦羅衣，離諸煩惱故。
+^gatha智慧優婆塞，獲福利豐多，
+^gatha施叔迦羅食，離諸積聚故。」
+^cb365b14時，彼鬼神說斯偈已，即沒不現。
+^n1328【一三二八】^cb365b15如是我聞：
+一時，佛住王舍城迦蘭陀竹園。
+^cb365b16時，毘羅比丘尼住王舍城王園比丘尼眾中，
+為王舍城諸人民，於吉星日集聚大會，
+當斯之日，毘羅比丘尼無人供養。
+^cb365b18時，有鬼神敬重毘羅比丘尼，即入王舍城，
+處處里巷四衢道頭而說偈言：
+^gatha「王舍城人民，醉酒惛睡臥，
+^gatha毘羅比丘尼，無人供養者。
+^gatha毘羅比丘尼，勇猛修諸根，
+^gatha善說離垢塵，涅槃清涼法。
+^gatha皆隨順所說，終日樂無厭，
+^gatha乘聽法智慧，得度生死流。」
+^cb365b27時，有一優婆塞持衣布施毘羅比丘尼，復有一優婆塞以食供養。
+^cb365b28時，彼鬼神而說偈言：
+^gatha「智慧優婆塞，今獲多福利，
+^gatha以衣施斷縛，毘羅比丘尼。
+^gatha智慧優婆塞，今獲多福利，
+^gatha食施毘羅尼，離諸和合故。」
+^cb365c5時，彼鬼神說偈已，即沒不現。
+^n1329【一三二九】^cb365c6如是我聞：
+一時，佛住王舍城迦蘭陀竹園。
+^cb365c7時，有娑多耆利天神、醯魔波低天神共作約誓：
+「若其宮中有寶物出者，必當相語；不相語者，得違約罪。」
+^cb365c9時，醯魔波低天神宮中有未曾有寶，波曇摩華出，
+華有千葉，大如車輪，金色寶莖。
+^cb365c11時，醯魔波低天神遣使告語娑多耆利：「聚落主！
+今我宮中忽生未曾有寶，波曇摩花，華有千葉，
+大如車輪，金色寶莖，可來觀看！」
+^cb365c14娑多耆利天神遣使詣醯魔波低舍，告言：「聚落主！
+用是波曇摩百千為？
+今我宮中有未曾有寶——大波曇摩出，
+所謂如來、應、等正覺、明行足、善逝、世間解、
+無上士、調御丈夫、天人師、佛世尊，汝便可來奉事供養。」
+^cb365c19時，醯魔波低天神即與五百眷屬往詣娑多耆利天神所，
+說偈問言：
+^gatha「十五日良時，天夜遇歡會，
+^gatha當說受何齋，從阿羅漢受。」
+^cb365c23時，娑多耆利說偈答言：
+^gatha「今日佛世尊，在摩竭勝國，
+^gatha住於王舍城，迦蘭陀竹園，
+^gatha演說微妙法，滅除眾生苦，
+^gatha苦苦及苦集，苦滅盡作證，
+^gatha八聖出苦道，安隱趣涅槃，
+^gatha當往設供養，我羅漢世尊。」
+^cb366a1醯魔波低說偈問言：
+^gatha「彼有心願樂，慈濟眾生不，
+^gatha彼於受不受，心想平等不？」
+^cb366a4娑多耆利說偈答言：
+^gatha「彼妙願慈心，度一切眾生，
+^gatha於諸受不受，心想常平等。」
+^cb366a7時，醯魔波低說偈問言：
+^gatha「為具足明達，已行成就不，
+^gatha諸漏永滅盡，不受後有耶？」
+^cb366a10娑多耆利說偈答言：
+^gatha「明達善具足，正行已成就，
+^gatha諸漏永已盡，不復受後有。」
+^cb366a13醯摩波低說偈問言：
+^gatha「牟尼意行滿，及身口業耶？
+^gatha明行悉具足，以法讚歎耶？」
+^cb366a16娑多耆利說偈答言：
+^gatha「具足牟尼心，及業身口滿，
+^gatha明行悉具足，以法而讚歎。」
+^cb366a19醯摩波低說偈問言：
+^gatha「遠離於害生，不與不取不，
+^gatha為遠於放蕩，不離禪思不？」
+^cb366a22娑多耆利復說偈言：
+^gatha「常不害眾生，不與不妄取，
+^gatha遠離於放蕩，日夜常思禪。」
+^cb366a25醯魔波低復說偈問言：
+^gatha「為不樂五欲，心不濁亂不，
+^gatha有清淨法眼，滅盡愚癡不？」
+^cb366a28娑多耆利說偈答言：
+^gatha「心常不樂欲，亦無濁亂心，
+^gatha佛法眼清淨，愚癡盡無餘。」
+^cb366b2醯魔波低復說偈問言：
+^gatha「至誠不妄語，麁澁言無有，
+^gatha得無別離說，無不誠說不？」
+^cb366b5娑多耆利說偈答言：
+^gatha「至誠不妄語，亦無麁澁言，
+^gatha不離他親厚，常說如法言。」
+^cb366b8醯摩波低復說偈問言：
+^gatha「為持清淨戒，正念寂滅不，
+^gatha具足等解脫，如來大智不？」
+^cb366b11娑多耆利說偈答言：
+^gatha「淨戒悉具足，正念常寂靜，
+^gatha等解脫成就，得如來大智。」
+^cb366b14醯魔波低復說偈問言：
+^gatha「明達悉具足，正行已清淨，
+^gatha所有諸漏盡，不復受後有。」
+^cb366b17娑多耆利說偈答言：
+^gatha「明達悉具足，正行已清淨，
+^gatha一切諸漏盡，無復後生有。」
+^cb366b20醯魔波低復說偈言：
+^gatha「牟尼善心具，及身口業跡，
+^gatha明行悉成就，故讚歎其法。」
+^cb366b23娑多耆利說偈答言：
+^gatha「牟尼善心具，及身口業跡，
+^gatha明行悉成就，讚歎於其法。」
+^cb366b26醯魔波低復說偈言：
+^gatha「伊尼延鹿𨄔𬧅，仙人之勝相，
+^gatha少食捨身貪，牟尼處林禪，
+^gatha汝今當共行，敬禮彼瞿曇。」
+^cb366c1時，有百千鬼神眷屬圍繞，娑多耆利、醯魔波低速至佛前禮拜供養，
+整衣服，偏袒右肩，合掌敬禮，而說偈言：
+^gatha「伊尼延鹿𨄔𬧅，仙人之勝相，
+^gatha少食無貪嗜，牟尼樂林禪。
+^gatha我等今故來，請問於瞿曇，
+^gatha師子獨遊步，大龍無恐畏。
+^gatha今故來請問，牟尼願決疑，
+^gatha云何得出苦？　云何苦解脫？
+^gatha唯願說解脫，苦於何所滅？」
+^cb366c11爾時，世尊說偈答言：
+^gatha「世五欲功德，及說第六意，
+^gatha於彼欲無貪，解脫一切苦。
+^gatha如是從苦出，如是解脫苦，
+^gatha今答汝所問，苦從此而滅。」
+^cb366c16娑多耆利、醯魔波低復說偈問佛：
+^gatha「泉從何轉還，惡道何不轉，
+^gatha世間諸苦樂，於何而滅盡？」
+^cb366c19爾時，世尊說偈答言：
+^gatha「眼耳鼻舌身，及以意入處，
+^gatha於彼名及色，永滅盡無餘。
+^gatha於彼泉轉還，於彼道不轉，
+^gatha於彼苦及樂，得無餘滅盡。」
+^cb366c24娑多耆利、醯魔波低復說偈問佛：
+^gatha「世間幾法起？　幾法世和合？
+^gatha幾法取受世？　幾法令世滅？」
+^cb366c27爾時，世尊說偈答言：
+^gatha「六法起世間，六法世和合，
+^gatha六法取受世，六法世損滅。」
+^cb367a1娑多耆利、醯魔波低復說偈問：
+^gatha「云何度諸流，日夜勤方便，
+^gatha無攀無住處，而不溺深淵？」
+^cb367a4爾時，世尊說偈答言：
+^gatha「一切戒具足，智慧善正受，
+^gatha如思惟繫念，是能度深淵。
+^gatha不樂諸欲想，亦超色諸結，
+^gatha無攀無住處，不溺於深淵。」
+^cb367a9娑多耆利、醯魔波低復說偈問佛：
+^gatha「何法度諸流？　以何度大海？
+^gatha云何捨離苦？　云何得清淨？」
+^cb367a12爾時，世尊說偈答言：
+^gatha「正信度河流，不放逸度海，
+^gatha精進能斷苦，智慧得清淨。」
+^cb367a15爾時，世尊復說偈言：
+^gatha「汝可更問餘，沙門梵志法，
+^gatha真實施調伏，除此更無法。」
+^cb367a18醯魔波低復說偈言：
+^gatha「更餘何所問，沙門梵志法，
+^gatha大精進今日，已具善開導。
+^gatha我今當報彼，娑多耆利恩，
+^gatha能以導御師，告語於我等。
+^gatha我當詣村村，家家而隨佛，
+^gatha承事禮供養，從佛聞正法。
+^gatha此百千鬼神，悉合掌恭敬，
+^gatha一切歸依佛，牟尼之大師。
+^gatha得無上之名，必見真實義，
+^gatha成就大智慧，於欲不染着。
+^gatha慧者當觀察，救護世間者，
+^gatha得賢聖道跡，是則大仙人。」
+^cb367b2佛說是經已，娑多耆利、醯魔波低及諸眷屬五百鬼神聞佛所說，
+皆大歡喜，隨喜禮佛而去。
+^n1330【一三三〇】^cb367b5如是我聞：
+一時，佛住王舍城迦蘭陀竹園。
+^cb367b6爾時，尊者舍利弗、尊者大目揵連住耆闍崛山中。
+^cb367b7時，尊者舍利弗新剃鬚髮。
+時，有伽吒及優波伽吒鬼。
+優波伽吒鬼見尊者舍利弗新剃鬚髮，
+語伽吒鬼言：「我今當往打彼沙門頭。」
+^cb367b10伽吒鬼言：「汝優波伽吒！
+莫作是語。此沙門大德大力，汝莫長夜得大不饒益苦！」
+如是再三說。
+^cb367b12時，優波伽吒鬼再三不用伽吒鬼語，即以手打尊者舍利弗頭。
+打已，尋自喚言：「燒我，伽吒！
+煮我，伽吒！」再三喚已，陷入地中，墮阿毘地獄。
+^cb367b15尊者大目揵連聞尊者舍利弗為鬼所打聲已，
+即往詣尊者舍利弗所，問尊者舍利弗言：「云何？
+尊者！苦痛可忍不？」
+^cb367b18尊者舍利弗答言：「尊者大目揵連！
+雖復苦痛，意能堪忍，不至大苦。」
+^cb367b19尊者大目揵連語尊者舍利弗言：「奇哉！
+尊者舍利弗！真為大德大力，此鬼若以手打耆闍崛山者，
+能令碎如糠糟，況復打人而不苦痛？」
+^cb367b23爾時，尊者舍利弗語尊者大目揵連：「我實不大苦痛。」
+^cb367b24時，尊者舍利弗、大目揵連共相慰勞。
+^cb367b25時，世尊以天耳聞其語聲，聞已即說偈言：
+^gatha「其心如剛石，堅住不傾動，
+^gatha染著心已離，瞋者不反報，
+^gatha若如此修心，何有苦痛憂？」
+^cb367b29佛說此經已，諸比丘聞佛所說，歡喜奉行。
+^ck51【林相應1331】^n1331【一三三一】^cb367c1如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb367c2時，有眾多比丘於拘薩羅國人間遊行，住一林中夏安居。
+彼林中有天神住，知十五日諸比丘受歲，極生憂慼。
+^cb367c4有餘天神語彼天神言：「汝何卒生愁憂苦惱？
+汝當歡喜諸比丘持戒清淨，今日受歲。」
+^cb367c6林中天神答言：「我知比丘今日受歲，不同無羞外道受歲，
+然精進比丘受歲，持衣鉢，明日至餘處去，此林當空。」
+^cb367c9比丘去後，林中天神而說偈言：
+^gatha「今我心不樂，但見空林樹，
+^gatha清淨心說法，多聞諸比丘，
+^gatha瞿曇之弟子，今悉何處去？」
+^cb367c13時，有異天子而說偈言：
+^gatha「有至摩伽陀，有至拘薩羅，
+^gatha亦至金剛地，處處修遠離，
+^gatha猶如野禽獸，隨所樂而遊。」
+^n1332【一三三二】^cb367c17如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb367c18爾時，有異比丘在拘薩羅國人間，止住一林中，
+入晝正受，身體疲極，夜則睡眠。
+^cb367c20時，彼林中止住天神作是念：「此非比丘法，
+於空林中入晝正受，夜著睡眠，我今當往覺悟之。」
+^cb367c22爾時，天神往至比丘前，而說偈言：
+^gatha「比丘汝起起，何以著睡眠？
+^gatha睡眠有何利？　病時何不眠？
+^gatha利刺刺身時，云何得睡眠？
+^gatha汝本捨非家，出家之所欲。
+^gatha當如本所欲，日夜求增進，
+^gatha莫得墮睡眠，令心不自在。
+^gatha無常不恒欲，迷醉於愚夫，
+^gatha餘人悉被縛，汝今已解脫。
+^gatha正信而出家，何以著睡眠？
+^gatha已調伏貪欲，其心得解脫。
+^gatha具足勝妙智，出家何故眠，
+^gatha勤精進正受，常修堅固力。
+^gatha專求般涅槃，云何而睡眠？
+^gatha起明斷無明，滅盡諸有漏。
+^gatha調彼後邊身，云何著睡眠？」
+^cb368a10時，彼天神說是偈時，彼比丘聞其所說，
+專精思惟，得阿羅漢。
+^n1333【一三三三】^cb368a12如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb368a13時，有異比丘在拘薩羅住林中，入晝正受，
+心起不善覺，依於惡貪。
+^cb368a14時，彼林中住止天神作是念：「非比丘法，
+止住林中，入晝正受，心生不善覺，依於惡貪，我今當往開悟之。」
+^cb368a17時，彼天神即說偈言：
+^gatha「其心欲遠離，正於空閑林，
+^gatha放心隨外緣，亂想而流馳。
+^gatha調伏樂世心，常樂心解脫，
+^gatha當捨不樂心，執受安樂住。
+^gatha思非於正念，莫著我我所，
+^gatha如以塵頭染，是著極難遣。
+^gatha莫令染樂著，欲心所濁亂，
+^gatha如釋君馳象，奮迅去塵穢。
+^gatha比丘於自身，正念除塵垢，
+^gatha塵者謂貪欲，非世間塵土。
+^gatha黠慧明智者，當悟彼諸塵，
+^gatha於如來法律，持心莫放逸。
+^gatha塵垢謂瞋恚，非世間塵土，
+^gatha黠慧明智者，當悟彼諸塵。
+^gatha於如來法律，持心莫放逸，
+^gatha塵垢謂愚癡，非世間塵土。
+^gatha明智黠慧者，當捨彼諸塵，
+^gatha於如來法律，持心莫放逸。」
+^cb368b7時，彼天神說是偈已，彼比丘聞其所說，
+專精思惟，斷諸煩惱心，得阿羅漢。
+^n1334【一三三四】^cb368b9如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb368b10時，有異比丘在拘薩羅人間，住一林中，
+入晝正受，起不正思惟。
+^cb368b11時，彼林中止住天神作是念：「此非比丘法，
+止住林中，入晝正受，而起不正思惟，我今當往方便善覺悟之。」
+^cb368b14時，彼天神而說偈言：
+^gatha「何不正思惟，覺觀所寢食？
+^gatha當捨不正念，專修於正受。
+^gatha遵崇佛法僧，及自持淨戒，
+^gatha常生隨喜心，喜樂轉勝進。
+^gatha以心歡喜故，速究竟苦邊。」
+^cb368b20時，彼天神說偈勸發已，彼比丘專精思惟，
+盡諸煩惱，得阿羅漢。
+^n1335【一三三五】^cb368b22如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb368b23時，有異比丘於拘薩羅人間，住一林中，入晝正受。
+時，彼比丘日中時，不樂心生，而說偈言：
+^gatha「於此日中時，眾鳥悉靜默，
+^gatha空野忽有聲，令我心恐怖。」
+^cb368b28時，彼林中住止天神而說偈言：
+^gatha「於今日中時，眾鳥悉寂靜，
+^gatha空野忽有聲，應汝不樂心，
+^gatha汝當捨不樂，專樂修正受。」
+^cb368c3時，彼天子說偈覺悟彼比丘已，時，彼比丘專精思惟，
+捨除煩惱，得阿羅漢。
+^n1336【一三三六】^cb368c5如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb368c6爾時，尊者阿那律陀在拘薩羅人間，住一林中。
+^cb368c7時，有天神名闍隣尼，是尊者阿那律陀本善知識，往詣尊者阿那律陀所。
+到阿那律所，說偈言：
+^gatha「汝今可發願，願還生本處，
+^gatha三十三天上，五欲樂悉備。
+^gatha百種諸音樂，常以自歡娛，
+^gatha每至睡眠時，音樂以覺悟。
+^gatha諸天玉女眾，晝夜侍左右。」
+^cb368c15尊者阿那律陀說偈答言：
+^gatha「諸天玉女眾，此皆大苦聚，
+^gatha以彼顛倒想，繫著有身見。
+^gatha諸求生彼者，斯亦是大苦，
+^gatha闍隣尼當知，我不願生彼。
+^gatha生死已永盡，不受後有故。」
+^cb368c21尊者阿那律說是語時，闍隣尼天子聞尊者阿那律所說，
+歡喜隨喜，即沒不現。
+^n1337【一三三七】^cb368c23如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb368c24時，有比丘在拘薩羅人間，林中止住，勤誦經、
+勤講說；精勤思惟，得阿羅漢果證已，不復精勤誦說。
+^cb368c26時，有天神，止彼林中者，而說偈言：
+^gatha「比丘汝先時，晝夜勤誦習，
+^gatha常為諸比丘，共論決定義。
+^gatha汝今於法句，寂然無所說，
+^gatha不與諸比丘，共論決定義。」
+^cb369a3時，彼比丘說偈答言：
+^gatha「本未應離欲，心常樂法句，
+^gatha既離欲相應，誦說事已畢。
+^gatha先知道已備，用聞見道為，
+^gatha世間諸聞見，無知悉放捨。」
+^cb369a8時，彼天神聞比丘所說，歡喜隨喜，即沒不現。
+^n1338【一三三八】^cb369a9如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb369a10時，有異比丘在拘薩羅人間，止一林中。
+時，彼比丘有眼患，受師教，應嗅鉢曇摩花。
+時，彼比丘受師教已，往至鉢曇摩池側，
+於池岸邊，迎風而坐，隨風嗅香。
+^cb369a13時，有天神，主此池者，語比丘言：「何以盜華？
+汝今便是盜香賊也！」
+^cb369a15爾時，比丘說偈答言：
+^gatha「不壞亦不奪，遠住隨嗅香，
+^gatha汝今何故言，我是盜香賊？」
+^cb369a18爾時，天神復說偈言：
+^gatha「不求而不捨，世間名為賊，
+^gatha汝今人不與，而自一向取，
+^gatha是則名世間，真實盜香賊。」
+^cb369a22時，有一士夫取彼藕根，重負而去。
+爾時，比丘為彼天神而說偈言：
+^gatha「如今彼士夫，斷截分陀利，
+^gatha拔根重負去，便是姦狡人，
+^gatha汝何故不遮，而言我盜香。」
+^cb369a27時，彼天神說偈答言：
+^gatha「狂亂姦狡人，猶如乳母衣，
+^gatha何足加其言，宜堪與汝語。
+^gatha袈裟污不現，黑衣墨不污，
+^gatha姦狡兇惡人，世間不與語。
+^gatha蠅脚污素帛，明者小過現，
+^gatha如墨點珂貝，雖小悉皆現。
+^gatha常從彼求淨，無結離煩惱，
+^gatha如毛髮之惡，人見如泰山。」
+^cb369b7時，彼比丘復說偈言：
+^gatha「善哉善哉說，以義安慰我，
+^gatha汝可常為我，數數說斯偈。」
+^cb369b10時，彼天神復說偈言：
+^gatha「我非汝買奴，亦非人與汝，
+^gatha何為常隨汝，數數相告語，
+^gatha汝今自當知，彼彼饒益事。」
+^cb369b14時，彼天子說是偈已，彼比丘聞其所說，
+歡喜隨喜，從座起去，獨一靜處，專精思惟，
+斷諸煩惱，得阿羅漢。
+^n1339【一三三九】^cb369b17如是我聞：
+一時，佛住王舍城迦蘭陀竹園。
+^cb369b18爾時，尊者十力迦葉住王舍城仙人窟中。
+時，有獵師名曰尺只，去十力迦葉不遠，張網捕鹿。
+爾時，十力迦葉為彼獵師哀愍說法。
+時，彼獵師不解所說。
+時，十力迦葉即以神力，指端火然，彼猶不悟。
+^cb369b22爾時，仙人窟中住止天神而說偈言：
+^gatha「深山中獵師，少智盲無目，
+^gatha何為非時說，薄德無辯慧，
+^gatha所聞亦不解，明中亦無見，
+^gatha於諸善勝法，愚癡莫能了，
+^gatha正使燒十指，彼終不見諦。」
+^cb369b29時，彼天神說是偈已，尊者十力迦葉即默然住。
+^n1340【一三四〇】^cb369c2如是我聞：
+一時，佛住王舍城迦蘭陀竹園。
+^cb369c3時，有尊者金剛子，住巴連弗邑一處林中。
+時，巴連弗邑人民夏四月過，作憍牟尼大會。
+^cb369c5時，尊者金剛子聞世間大會，生不樂心，
+而說偈言：
+^gatha「獨一處空林，猶如棄枯木，
+^gatha夏時四月滿，世間樂莊嚴，
+^gatha普觀諸世間，其苦無過我。」
+^cb369c10爾時，林中住止天神即說偈言：
+^gatha「獨一處空林，猶如棄枯木，
+^gatha為三十三天，心常所願樂，
+^gatha猶如地獄中，仰思生人道。」
+^cb369c14時，金剛子為彼天神所勸發已，專精思惟，
+斷諸煩惱，得阿羅漢。
+^n1341【一三四一】^cb369c16如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb369c17時，有異比丘在拘薩羅人間，住一林中，
+唯好樂持戒，不能增長上進功德。
+^cb369c18時，彼林中止住天神作是念：「此非比丘法，
+住於林中，唯樂持戒，不能增修上進功德，今我當作方便而發悟之。」
+即說偈言：
+^gatha「非一向持戒，及修習多聞，
+^gatha獨靜禪三昧，閑居修遠離。
+^gatha比丘偏倚息，終不得漏盡，
+^gatha平等正覺樂，遠非凡夫輩。」
+^cb369c26時，彼比丘天神勸進已，專精思惟，斷諸煩惱，得阿羅漢。
+^n1342【一三四二】^cb369c28如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb369c29有尊者那迦達多在拘薩羅人間，住一林中，
+有在家、出家常相親近。
+^cb370a1時，彼林中止住天神作是念：「此非比丘法，
+住於林中，與諸在家、出家周旋親數，我今當往方便發悟。」
+而說偈言：
+^gatha「比丘旦早出，迫暮而還林，
+^gatha道俗相習近，苦樂必同安。
+^gatha恐起家放逸，而隨魔自在。」
+^cb370a8時，那迦達多比丘為彼天神如是如是開覺已。
+如是如是專精思惟，斷諸煩惱，得阿羅漢。
+^n1343【一三四三】^cb370a11如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb370a12時，有眾多比丘在拘薩羅人間，住一林中，
+言語嬉戲，終日散亂，心不得定，縱諸根門，馳騁六境。
+^cb370a14時，彼林中止住天神見是比丘不攝威儀，
+心不欣悅，而說偈言：
+^gatha「此先有瞿曇，正命弟子眾，
+^gatha無常心乞食，無常受床臥，
+^gatha觀世無常故，得究竟苦邊，
+^gatha今有難養眾，沙門所居止，
+^gatha處處求飲食，遍遊於他家，
+^gatha望財而出家，無真沙門欲，
+^gatha垂著僧伽梨，如老牛曳尾。」
+^cb370a23爾時，比丘語天神言：「汝欲厭我耶？」
+時，彼天神復說偈言：
+^gatha「不指其名姓，不非稱其人，
+^gatha而總向彼眾，說其不善者，
+^gatha踈漏相現者，方便說其過，
+^gatha勤修精進者，歸依恭敬禮。」
+^cb370a29彼諸比丘為天神勸發已，專精思惟，斷諸煩惱，得阿羅漢。
+^n1344【一三四四】^cb370b2如是我聞：
+一時，佛在舍衛國祇樹給孤獨園。
+^cb370b3時，有異比丘在拘薩羅人間，住一林中。
+時，彼比丘與長者婦女嬉戲，起惡名聲。
+^cb370b5時，彼比丘作是念：「我今不類，共他婦女起惡名聲，我今欲於此林中自殺。」
+^cb370b6時，彼林中止住天神作是思念：「不善不類，
+此比丘不壞、無過，而於林中欲自殺身，我今當作方便開悟。」
+^cb370b9時，彼天神化作長者女身，語比丘言：「於諸巷路四衢道中，
+世間諸人為我及汝起惡名聲，言我與汝共相習近，作不正事。
+已有惡名，今可還俗，共相娛樂。」
+^cb370b12比丘答言：「以彼里巷四衢道中，為我與汝起惡名聲，
+共相習近，為不正事。
+我今且自殺身！」
+^cb370b15時，彼天神還復天身，而說偈言：
+^gatha「雖聞多惡名，苦行者忍之，
+^gatha不應苦自苦，亦不應起惱。
+^gatha聞聲恐怖者，是則林中獸，
+^gatha是輕躁眾生，不成出家法。
+^gatha仁者當堪耐，不中住惡聲，
+^gatha執心堅住者，是則出家法。
+^gatha不由他人語，令汝成劫賊，
+^gatha亦不由他語，令汝得羅漢。
+^gatha如汝自知已，諸天亦復知。」
+^cb370b25爾時，比丘為彼天神所開悟已，專精思惟，
+斷除煩惱，得阿羅漢。
+^n1345【一三四五】^cb370b27如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb370b28時，有尊者見多比丘在拘薩羅人間，住一林中，著糞掃衣。
+時，梵天王與七百梵天乘其宮殿，來詣尊者見多比丘所，恭敬禮事。
+^cb370c2時，有天神，住彼林中者，而說偈言：
+^gatha「觀彼寂諸根，能感善供養，
+^gatha具足三明達，得不傾動法，
+^gatha度一切方便，少事糞掃衣，
+^gatha七百梵天子，乘宮來奉詣，
+^gatha見生死有邊，今禮度有岸。」
+^cb370c8時，彼天神說偈讚歎見多比丘已，即沒不現。
+^n1346【一三四六】^cb370c9如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb370c10時，有異比丘在拘薩羅人間，住一林中。
+時，彼比丘身體疲極，夜著睡眠。
+^cb370c11時，有天神，住彼林中者，而覺悟之，即說偈言：
+^gatha「可起起比丘，何故著睡眠？
+^gatha睡眠有何義？　修禪莫睡眠。」
+^cb370c15時，彼比丘說偈答言：
+^gatha「不肯當云何？　懈怠少方便，
+^gatha緣盡四體羸，夜則著睡眠。」
+^cb370c18時，彼天神復說偈言：
+^gatha「且汝當執守，勿聲而大呼，
+^gatha汝已得修閑，莫令其退沒。」
+^cb370c21時，彼比丘說偈答言：
+^gatha「我當用汝語，精勤修方便，
+^gatha不為彼睡眠，數數覆其心。」
+^cb370c24時，彼天神如是如是覺悟彼比丘。
+時，彼比丘專精方便，斷諸煩惱，得阿羅漢。
+時，彼天神復說偈言：
+^gatha「汝豈能自起，專精勤方便，
+^gatha不為眾魔軍，厭汝令睡眠。」
+^cb370c29時，彼比丘說偈答言：
+^gatha「從今當七夜，常坐正思惟，
+^gatha其身生喜樂，無一處不滿，
+^gatha初夜觀宿命，中夜天眼淨，
+^gatha後夜除無明，見眾生苦樂，
+^gatha上中下形類，善色及惡色，
+^gatha知何業因緣，而受斯果報，
+^gatha若士夫所作，所作還自見，
+^gatha善者見其善，惡者自見惡。」
+^cb371a9時，彼天神復說偈言：
+^gatha「我知先一切，比丘十四人，
+^gatha皆是須陀洹，悉得禪正受，
+^gatha來到此林中，當得阿羅漢，
+^gatha見汝一懈怠，仰臥著睡眠，
+^gatha莫令住凡夫，故方便覺悟。」
+^cb371a15爾時，比丘復說偈言：
+^gatha「善哉汝天神，以義安慰我，
+^gatha至誠見開覺，令我盡諸漏。」
+^cb371a18時，彼天神復說偈言：
+^gatha「比丘應如是，信非家出家，
+^gatha抱愚而出家，逮得見清淨。
+^gatha我今攝受法，當盡壽命思，
+^gatha若汝疾病時，我當與良藥。」
+^cb371a23時，彼天神說是偈已，即沒不現。
+^n1347【一三四七】^cb371a24如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb371a25時，尊者舍利弗在拘薩羅人間，依一聚落，止住田側。
+時，尊者舍利弗於晨朝時著衣持鉢，入村乞食。
+^cb371a27時，有一尼揵子飲酒狂醉，持一瓶酒從聚落出，
+見尊者舍利弗，而說偈言：
+^gatha「米膏熏我身，持米膏一瓶，
+^gatha山地草樹木，視之一金色。」
+^cb371b3爾時，尊者舍利弗作是念：「作此惡聲，是惡邪物，
+而說是偈，我豈不能以偈答之？」
+時，尊者舍利弗即說偈言：
+^gatha「無想味所熏，持空三昧瓶，
+^gatha山地草樹木，視之如涕唾。」
+^n1348【一三四八】^cb371b8如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb371b9時，有異比丘在拘薩羅人間，住一林中，
+得他心智，煩惱有餘。
+去林不遠有井，有飲野干罐拘鉤頸。
+^cb371b11時，彼野干作諸方便求脫，而自念言：「天遂欲明，
+田夫或出，當恐怖我。
+汝汲水罐怖我已久，可令我脫？」
+^cb371b14時，彼比丘知彼野干心之所念，而說偈言：
+^gatha「如來慧日出，離林說空法，
+^gatha心久恐怖我，今可放令去。」
+^cb371b17時，彼比丘自教授已，一切結盡，得阿羅漢。
+^n1349【一三四九】^cb371b18如是我聞：
+一時，佛在拘薩羅國人間遊行，住一林中。
+^cb371b19時，有天神，依彼林者，見佛行跡，低頭諦觀，修於佛念。
+時，有優樓鳥住於道中，行欲蹈佛足跡。
+^cb371b21爾時，天神即說偈言：
+^gatha「汝今優樓鳥，團目栖樹間，
+^gatha莫亂如來跡，壞我念佛境。」
+^cb371b25時，彼天神說此偈已，默然念佛。
+^n1350【一三五〇】^cb371b26如是我聞：
+一時，佛在拘薩羅人間，住一林中，依波吒利樹下住止。
+^cb371b27時，有天神依彼林中住，即說偈言：
+^gatha「今日風卒起，吹波吒利樹，
+^gatha落波吒利花，供養於如來。」
+^cb371c2時，彼天神說偈已，默然而住。
+^n1351【一三五一】^cb371c3如是我聞：
+一時，佛住王舍城迦蘭陀竹園。
+^cb371c4時，有眾多比丘住支提山側，皆是阿練若比丘，
+著糞掃衣，常行乞食。
+^cb371c5時，山神，依彼山住者，而說偈言：
+^gatha「孔雀文繡身，處鞞提醯山，
+^gatha隨時出妙聲，覺乞食比丘。
+^gatha孔雀文繡身，處鞞提醯山，
+^gatha隨時出妙聲，覺糞掃衣者。
+^gatha孔雀文繡身，處鞞提醯山，
+^gatha隨時出妙聲，覺依樹坐者。」
+^cb371c13時，彼天神說此偈已，即默然住。
+^n1352【一三五二】^cb371c14如是我聞：
+一時，佛住王舍城迦蘭陀竹園。
+^cb371c15時，有眾多比丘住支提山，一切皆修阿練若行，
+著糞掃衣，常行乞食。
+爾時，那娑佉多河岸崩，殺三營事比丘。
+^cb371c17時，支提山住天神而說偈言：
+^gatha「乞食阿蘭若，慎莫營造立，
+^gatha不見佉多河，傍岸卒崩倒。
+^gatha壓殺彼造立，營事三比丘，
+^gatha糞掃衣比丘，慎莫營造立。
+^gatha不見佉多河，傍岸卒崩倒，
+^gatha壓殺彼造立，營事三比丘。
+^gatha依樹下比丘，慎莫營造立，
+^gatha不見佉多河，傍岸卒崩倒。
+^gatha壓殺彼造立，營事三比丘。」
+^cb371c28時，彼天神說此偈已，即默然住。
+^n1353【一三五三】^cb371c29如是我聞：
+一時，佛住迦蘭陀竹園。
+時，有異比丘住頻陀山。
+^cb372a1爾時，山林大火卒起，舉山洞然。
+時，有俗人而說偈言：
+^gatha「今此頻陀山，大火洞熾然，
+^gatha焚燒彼竹林，亦燒竹苑實。」
+^cb372a5時，彼比丘作是念：「今彼俗人能說此偈，我今何不說偈答之？」
+即說偈言：
+^gatha「一切有熾然，無慧能救滅，
+^gatha焚燒諸受欲，亦燒不作苦。」
+^cb372a9時，彼比丘說此偈已，默然而住。
+^n1354【一三五四】^cb372a10如是我聞：
+一時，佛住迦蘭陀竹園。
+時，有異比丘在恒河側，住一林中。
+^cb372a11時，有一族姓女，常為舅姑所責，至恒水岸邊，
+而說偈言：
+^gatha「恒水我今欲，隨流徐入海，
+^gatha不復令舅姑，數數見嫌責。」
+^cb372a16時，彼比丘見族姓女，聞其說偈，作是念：
+「彼族姓女尚能說偈，我今何為不說偈答耶？」
+即說偈言：
+^gatha「淨信我今欲，隨彼八聖水，
+^gatha徐流入涅槃，不見魔自在。」
+^cb372a21時，彼比丘說此偈已，默然而住。
+^n1355【一三五五】^cb372a22如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb372a23時，有異比丘在拘薩羅人間，住一林中，
+去林不遠，有種瓜𦬔田。
+^cb372a24時，有盜者夜偷其瓜，見月欲出，而說偈言：
+^gatha「明月汝莫出，待我斷其瓜𦬔，
+^gatha我持瓜𦬔去已，任汝現不現。」
+^cb372a28時，彼比丘作是念：「彼盜瓜𦬔者尚能說偈，我豈不能說偈答耶？」
+即說偈言：
+^gatha「惡魔汝莫出，待我斷煩惱，
+^gatha斷彼煩惱已，任汝出不出。」
+^cb372b3時，彼比丘說此偈已，默然而住。
+^n1356【一三五六】^cb372b4如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb372b5時，有異比丘在拘薩羅人間，住一林中。
+^cb372b6時，有沙彌而說偈言：
+^gatha「云何名為常？　乞食則為常。
+^gatha云何為無常？　僧食為無常。
+^gatha云何名為直？　唯因陀羅幢。
+^gatha云何名為曲？　曲者唯見鉤。」
+^cb372b11時，彼比丘作是念：「此沙彌能說斯偈，我今何不說偈而答？」
+即說偈言：
+^gatha「云何名為常？　常者唯涅槃。
+^gatha云何為無常？　謂諸有為法。
+^gatha云何名為直？　謂聖八正道。
+^gatha云何名為曲？　曲者唯惡徑。」
+^cb372b17時，彼比丘說此偈已，默然而住。
+^n1357【一三五七】^cb372b18如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb372b19時，有舍利弗弟子，服藥已，尋即食粥。
+^cb372b20時，尊者舍利弗到瓦師舍，從乞瓦甌。
+時，彼瓦師即說偈言：
+^gatha「云何得名勝？　而不施一錢。
+^gatha云何勝實德？　於財無所減。」
+^cb372b24爾時，舍利弗說偈答言：
+^gatha「若不食肉者，而施彼以肉，
+^gatha諸修梵行者，施之以女色，
+^gatha不坐高床者，施以高廣床，
+^gatha於彼臨行者，施以息止處，
+^gatha如是等施與，於財不損減，
+^gatha是則有名譽，而不捨一錢，
+^gatha實德名稱流，於財無所減。」
+^cb372c3時，彼瓦師復說偈言：
+^gatha「汝今舍利弗，所說實為善，
+^gatha今施汝百甌，非餘亦不得。」
+^cb372c6尊者舍利弗說偈答言：
+^gatha「彼三十三天，炎魔兜率陀，
+^gatha化樂諸天人，及他化自在，
+^gatha瓦鉢信以得，而汝不生信。」
+^cb372c10尊者舍利弗說此偈已，於瓦師舍默然出去。
+^n1358【一三五八】^cb372c12如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb372c13時，有異比丘在拘薩羅人間，住一林中。
+^cb372c14時，有貧士夫在於林側，作如是悕望思惟，
+而說偈言：
+^gatha「若得猪一頭，美酒滿一瓶，
+^gatha盛持甌一枚，人數數持與，
+^gatha若得如是者，當復何所憂。」
+^cb372c19時，彼比丘作是念：「此貧士夫尚能說偈，我今何以不說？」
+即說偈言：
+^gatha「若得佛法僧，比丘善說法，
+^gatha我不病常聞，不畏眾魔怨。」
+^cb372c23時，彼比丘說此偈已，默然而住。
+^n1359【一三五九】^cb372c24如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb372c25時，有異比丘在拘薩羅人間，住一林中。
+^cb372c26時，彼比丘作如是思惟：「若得好劫貝，長七肘，
+廣二肘，作衣已，樂修善法。」
+^cb372c27時，有天神，依彼林者，作是念：「此非比丘法，
+住於林中，作是思惟，悕望好衣。」
+^cb372c29時，天神化作全身骨鏁，於彼比丘前舞，
+而說偈言：
+^gatha「比丘思劫貝，七肘廣六尺，
+^gatha晝則如是想，知夜何所思？」
+^cb373a4時，彼比丘即生恐怖，其身戰悚，而說偈言：
+^gatha「止止不須㲲，今著糞掃衣，
+^gatha晝見骨鏁舞，知夜復何見？」
+^cb373a7時，彼比丘心驚怖已，即正思惟，專精修習，
+斷諸煩惱，得阿羅漢。
+^n1360【一三六〇】^cb373a9如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb373a10時，有異比丘在拘薩羅人間，住一林中，
+得阿羅漢，諸漏已盡，所作已作，已捨重擔，
+斷諸有結，正智心善解脫。
+^cb373a12時，有一女人於夜闇中，天時微雨，電光睒照，
+於林中過，欲詣他男子，倒深泥中，環釧斷壞，華瓔散落。
+時，彼女人而說偈言：
+^gatha「頭髮悉散解，花瓔落深泥，
+^gatha鐶釧悉破壞，丈夫何所著。」
+^cb373a18時，彼比丘作是念：「女人尚能說偈，我豈不能說偈答之？
+^gatha「煩惱悉斷壞，度生死淤泥，
+^gatha著纏悉散落，十方尊見我。」
+^cb373a22時，彼比丘說偈已，即默然而住。
+^n1361【一三六一】^cb373a23如是我聞：
+一時，佛住舍衛國祇樹給孤獨園。
+^cb373a24時，有異比丘在拘薩羅人間，住於河側一林樹間。
+^cb373a25時，有丈夫與婦相隨，度河住於岸邊，彈琴嬉戲，
+而說偈言：
+^gatha「愛念而放逸，逍遙青樹間，
+^gatha流水流且清，琴聲極和美，
+^gatha春氣調適遊，快樂何是過。」
+^cb373b1時，彼比丘作是念：「彼士夫尚能說偈，我豈不能說偈答之？
+^gatha「受持清淨戒，愛念等正覺，
+^gatha沐浴三解脫，善以極清涼，
+^gatha人道具莊嚴，快樂豈過是。」
+^cb373b6時，彼比丘說此偈已，即默然而住。
+^n1362【一三六二】^cb373b7如是我聞：
+一時佛住舍衛國祇樹給孤獨園。
+^cb373b8時，有異比丘在拘薩羅人間，住一林中。
+^cb373b9時，有天神見諸鴿鳥而說偈言：
+^gatha「鴿鳥當積聚，胡麻米粟等，
+^gatha於山頂樹上，高顯作巢窟，
+^gatha若當天雨時，安極飲食宿。」
+^cb373b13時，彼比丘作是念：「彼亦覺悟我！」
+即說偈言：
+^gatha「凡夫積善法，恭敬於三寶，
+^gatha身壞命終時，資神心安樂。」
+^cb373b16時，彼比丘說此偈已，以即覺悟，專精思惟，
+除諸煩惱，得阿羅漢。
+雜阿含經卷第五十
+
+
+^ak#vcpp^bk#vcpp_variorum<heading=集註>〔御製金剛般若波羅蜜經集註序〕^ck0【經題】
+朕惟佛道弘深精密。神妙感通。以慈悲利物。以智慧覺人。
+超萬有而獨尊。歷曠劫而不壞。
+先天地而不見其始。後天地而不見其終。
+觀之金剛般若波羅蜜經。盖可見矣。
+是經也。發三乘之奧旨。啟萬法之玄微。
+論不空之空。見無相之相。指明虛妄。
+即夢幻泡影而可知。推極根原。於我人眾壽而可見。
+誠諸佛傳心之祕。大乘闡道之宗。而羣生明心見性之機括也。
+夫一心之源。本自清淨。心隨境轉。妄念即生。如大虛起雲。輒成障翳。
+如寶鏡蒙塵。隨韜光彩。由此逐緣而墮幻。安能返妄以歸真。
+惟如來以無上正等正覺。發慈悲至願。閔凡世之沉迷。
+念眾生之冥昧。為說此經。大開方便。
+俾解粘而釋縛。咸滌垢以離塵。出生死途。登菩提岸。
+轉癡迷為智慧。去昏暗即光明是經之功德廣矣大矣。
+雖然。法由心得。非經無以寓。夫法。經以人傳。非言無以著夫經。
+爰自唐宋以來。註釋是經者無慮數十百家。雖眾說悉加於剖析。
+而羣言莫克於折衷。朕夙欽大覺。仰慕真如。
+間閱諸編。選其至精至要經旨弗違者。重加纂輯。特命鋟梓。用廣流傳。
+俾真言洞徹。祕義昭融。
+見之者。如仰日月於中天。
+悟之者。若探寶珠於滄海。
+豈不快哉。豈不偉哉。嗚呼。
+善人良士。果能勤誠修習。虔禮受持。
+緣經以求法。因法以悟覺。即得滅無量罪愆。
+即得獲最勝福田。證果人天。
+永臻快樂。功德所及。奚有涯涘哉。
+謹書為序。以示將來。
+永樂二十一年四月十七日
+^ck0【經題】 金剛般若波羅蜜經
+【僊遊翁集英曰】金剛者。金中精堅者也。剛生金中。百煉不銷。取此堅利。能斷壞萬物。
+五金皆謂之金。凡止言金者謂鐵也。
+此言金剛。乃若刀劒之有鋼鐵耳。譬如智慧。能斷絕貪嗔癡一切顛倒之見。
+般若者。梵語(梵語者西方之語也)。唐言智慧(唐言者中國之言也)。
+性軆虛融。照用自在。故云般若。
+梵語波羅蜜。唐言到彼岸。欲到彼岸。
+須憑般若。此岸者。乃眾(平聲)生作業受苦生死輪廻之地。
+彼岸者。謂諸佛菩薩究竟超脫清淨安樂之地。凡夫即此岸。
+佛道即彼岸。一念惡即此岸。一念善即彼岸。
+六道如苦海(六道者。天。人。阿修羅。地獄。餓鬼。畜生)。無舟而不能渡。
+以般若六度為舟航(度與渡同六度見此後陳雄解)。渡六道之苦海又西土俗語凡作事了辦。
+皆言到彼岸。經者。徑也。此經乃學佛之徑路也。
+【冲應真人周史卿】作楊亞夫真讚解云。鐵之為物。其生在鑛。其成為鐵。性剛而軆不變。火王(去聲)而噐乃成。佛之所以喻金剛也。又因其兄看圓覺經。以書示之曰。古人有云。青青翠竹。緫是真如。欝欝黃花。無非般若。真如與翠竹一軆。盖無色聲香味觸法也(六塵)。般若與黃花一類。盖無見聞覺知也。
+【陳雄曰】波羅蜜有六。或布施(度慳貪)。或持戒(度滛邪)。或忍辱(度嗔恚)。或精進(度懈退)。或禪㝎(度散亂)。各占六度之一。唯一般若能生八萬四千智慧。則六度兼該。萬行俱僃。是故如來以智慧力。鑿人我山。以智慧因。取煩惱鑛。以智慧火。
+鍊成佛性精金。夫植善根者。始而誦經。終而悟理。得堅固力。金剛是也。具大智慧。般若是也。度生死海。登菩提岸。波羅蜜是也。
+五祖大師常勸僧俗但持金剛經。即自見性成佛。六祖大師一夜聽五祖說法。恰至應無所住而生其心。言下便悟。茲其所以為上乘頓教也歟。
+【顏丙曰】只這一卷經。六道含靈。一切性中。皆悉具足。盖為受身之後。妄為六根(眼耳鼻舌身意)。六塵(色聲香味觸法)埋沒此一叚靈光。終日冥冥。不知不覺。故我佛生慈悲心。願救一切眾生齊超苦海。共證菩提。所以在舍衛國中為說是經。大意只是為人解粘去縛。直下明了自性。自性堅固。萬劫不壞。如金性堅剛也。
+【李文會曰】金剛者。堅利之物。能破萬物也。般若者。梵語也。唐言智慧。善破一切煩惱。轉為妙用。波羅蜜者。梵語也。唐言到彼岸。不著諸相。謂之彼岸。若著諸相。謂之此岸。又云。心迷則此岸。心悟則彼岸。經者。徑也。見性之道路也。無為軍冶父山。
+【川禪師曰】法不孤起。誰為安名。頌曰。摩訶大法王。無短亦無長。本來非皂白。隨處現青黃。華發看朝豔。林凋逐晚霜。疾雷何太急。迅電亦非光。凡聖猶難測。龍天豈度量。古令人不識。權立號金剛。
+^au【姚秦三藏鳩摩羅什奉詔譯】
+^ck1【法會因由】
+^r1:1如是我聞。
+【王日休曰】是。此也指此一經之所言也我者。乃編集經者自謂。是阿難也。如是我聞者。如此經之所言。乃我親聞之於佛也。弟子嘗問佛云。他時編集經教。當如何起首。佛言從如是我聞起。
+【李文會曰】如是我聞者。如來臨涅槃日。阿難問曰。佛滅度後。一切經首初安何字。佛言初安如是我聞。次顯處所。是故傅大士云。如來涅槃日。娑羅雙樹間。阿難沒憂海。悲慟不能前。優波初請問。經首立何言。佛教如是者。萬代古今傳。若以諸大宗師言之如者。眾生之性。萬別千差。動靜不一。無可比類。無可等倫。是者只是眾生性之別名。離性之外。更無別法。又云。法非有無謂之如。皆是佛法謂之是。
+【川禪師云】如是。古人道喚作如如。早是變了也。且道變向什麼處去。咄。不得亂走。畢竟作麼生道。火不曾燒你口。如。如。明鏡當臺萬象居。是。是。水不離波波是水。鏡水塵風不到時。應現無瑕照天地。我者。為性自在。強名之也。又云。身非有我。亦非無我。不二自在。名為真我。又云。淨躶躶。赤灑灑。沒可把。頌曰。我。我。認著今明成兩箇。不動纖毫合本然。知音自有松風和。聞者。聽聞也。經云。聽非有聞。亦非無聞。了無取捨。名為真聞。又云。切忌隨他去。頌曰。猿啼嶺上。鶴唳林間。斷雲風卷。水激長湍。最愛晚秋霜午夜。一聲新雁覺天寒。
+^r1:2一時^r1:3佛在舍衛國。祇樹給孤獨園。
+【肇法師曰】一時者。說此般若時也。
+【李文會曰】一時者。謂說理契機感應道交之時也。
+【川禪師曰】一。相隨來也。頌曰。一。一。破二成三從此出。乾坤混沌未兮前。已是一生參學畢。時。如魚飲水。冷暖自知。頌曰。時。時。清風明月鎮相隨。桃紅李白薔薇紫。問著東君緫不知。
+【疏鈔云】佛者。梵云婆伽婆。唐言佛。佛者。覺也。自覺覺他覺圓滿故。一切有情。咸具此道。悟者即名佛。迷者曰眾生。
+【李文會曰】佛者。梵音。唐言覺也。內覺無諸妄念。外覺不染六塵。又云。佛者。是教主也。非相而相應身佛也。相而非相。報身佛也。非相非非相。法身佛也。
+【川禪師云】佛。無靣目說是非漢。頌曰。小名悉逹。長號釋迦。度人無數。攝伏群邪。若言他是佛。自己却成魔。秪把一枝無孔笛。為君吹起太平歌。
+【李文會曰】在者。所在之處也。
+【川禪師云】客來須看。不得放過。隨後便打。頌曰。獨坐一爐香。金文誦兩行。可憐車馬客。門外任他忙。
+【六祖曰】舍衛國者。波斯匿王所居之國。祇者。匿王太子祇陀樹。是祇陀所施。故言祇樹。
+【疏鈔云】經云。舍衛國有一長者名須逹拏。常施孤獨貧。故曰給孤獨長者。因往王舍城中護弥長者家為男求婚。見其家僃設香花。云來旦請佛說法。須逹聞之。心生驚怖。何也。須逹本事外道。乍聞佛名。所以怕怖。至來日聞佛說法。心開意解。欲請佛歸。佛許之。令須逹先歸家卜勝地。惟有祇陀太子有園。方廣嚴潔。往白太子。太子戱曰。若布金滿園。我當賣之。須逹便歸家運金側布八十頃園並滿。是以太子更不復愛其金。同建精舍。請佛說法。曰祗樹給孤獨園。
+【李文會曰】舍衛國者。說經之處也。祇樹者。祇陀太子所施之樹。樹。謂法林也。給孤獨園者。給孤長者所施之園。共建立精舍也。
+^r1:4與大比丘眾。千二百五十人俱。
+【僧子榮】引智度論三卷云。如來臨入涅(奴結切)槃時。告阿(入聲)難言。十二部經。汝當流通。復告優波離言。一切律戒。汝當受持。阿難聞佛付囑。心沒憂海。時優波離尊者語阿難言。汝是守護佛法藏者。當問佛未來要事。於是優波離尊者。同阿難往問世尊四條事。
+第一問一切經首。當置何言。荅曰一切經首當置如是。
+第二問以何為師。荅曰。以波羅提木义。是汝大師。此云戒。
+第三問依何而住。荅曰。皆依四念處而住。四念者。一觀心不淨。二觀受是苦。三觀法性空。四觀心無我。
+第四問惡性車匿。如何共住。荅曰。惡性比(音鼻)丘以梵檀治之。此云默擯(梵語梵檀者。猶中國言默擯。
+默擯者。正如黃魯直云。萬言萬當。不如一默。百戰百勝。不如一忍。
+擯者。敬而遠之之意。此處惡性比丘之道也)。如來於是付囑言訖。在俱尸羅大城娑羅雙樹間。示般涅槃。阿難聞佛入涅槃。悶絕憂惱。不能前問四事。
+【王日休曰】梵語比丘。此云乞士。謂上乞法於諸佛。以明己之真性。下乞食於世人。以為世人種福。此所以名乞士也。大比丘則得道之深者。乃菩薩阿羅漢之類也。俱。謂同處也。謂佛與此千二百五十人。同處於給孤獨園中。
+【陳雄曰】比丘。今之僧是也。
+【李文會曰】比丘者。去惡取善。名小比丘。善惡俱遣。名大比丘也。若人悟達此理。即證阿羅漢位。能破六賊小乘四果人也。
+【川禪師云】獨掌不浪鳴。頌曰。巍巍堂堂。萬法中王。三十二相。百千種光。聖凡瞻仰。外道歸降。莫謂慈容難得見。不離祇園大道塲。
+^r1:5爾時世尊。食時著衣持鉢。
+【王日休曰】爾時者。彼時也。佛為三界之尊。故稱世尊。三界者。謂欲界。色界。無色界也。
+【僧若訥】引毗羅三昧經云。早起諸天。日中諸佛。日西異類。日暮鬼神。令言食時。正當午前。將行乞食之時也。
+【李文會曰】尓時者。佛現世時也。世尊者。三界四生中智慧福德無有等量一切世間之所尊也。食時者。正當午食將辦之時也。著衣者。柔和忍辱衣也。
+【遺教經云】慚耻之服。於諸莊嚴最為第一。
+【疏鈔云】著衣持鉢者。著僧伽之衣。即二十五條大衣也。持四天王所獻之鉢。
+^r1:6入舍衛大城乞食。
+【僧若訥曰】寺在城外。故云入也。乞食者。佛是金輪王子。而自持鉢乞食。為欲教化眾生捨離憍慢也。
+【李文會曰】乞食者。欲使後世比丘不積聚財寶也。
+^r1:7於其城中次第乞已。
+【僧若訥曰】不越貧從富。不捨賤從貴。大慈平等。無有選擇。故曰次第。
+【李文會曰】次第者。如來慈悲。不擇貧富平等普化也。
+^r1:8 還至本處。^r1:9飯食訖。收衣鉢。洗足已。
+【王日休曰】乞食而歸。故曰還至本處。飯食已畢收衣鉢洗足者。謂收起袈裟與鉢盂。然後洗足。以佛行則跣足故也。
+【李文會曰】洗足已者。淨身業也。
+^r1:10 敷座而坐。
+【顏丙曰】敷。乃排布也。排布高座而坐。
+【智者禪師頌曰】法身本非食。應化亦如然。為長人天福。慈悲作福田。收衣息勞慮。洗足離塵緣。欲證三空理。加趺示入禪(疏鈔云。三空者。三輪體空也。施者。受者。并財等名三輪也。施者反觀體空。本無一物。故云理空。
+受者。觀身無相。觀法無名。身尚不有物從何受。故曰受空。施受既空。彼此無妄。其物自空。故云三輪軆空)。
+【李文會曰】敷座而坐者。一切法空是也。
+【川禪師曰】惺惺著。頌曰。飯食訖子洗足已。敷座坐來誰共委。向下文長知不知。看看平地波濤起。
+^ck2【善現啟請】
+^r2:1 時長老須菩提。
+【李文會曰】時者。空生起問之時也。長老者。德尊年高也。須菩提者。梵語也。唐言解空是也。
+【王日休曰】長老。謂在大眾中。乃年長而老者也。
+【僧若訥曰】梵語須菩提。此翻善吉。善現。空生尊者。初生時。其家一空。相師占之。唯善唯吉。後解空法。以顯前相。
+【僧了性曰】須菩提人人有之。若人頓悟空寂之性故名解空。全空之性。真是菩提。故名須菩提。空性出生萬法。故名空生尊者。空性隨緣應現。利人利物。亦名善現。萬行吉祥。亦名善吉尊者。隨德應現。強名五種。
+^r2:2 在大眾中。^r2:3即從座起。偏袒右肩。右膝著地。合掌恭敬。而白佛言。^r2:4希有。世尊。
+【李文會曰】須菩提解空第一。故先起問。右膝著地者。先淨三業摧伏身心。整儀贊佛也。合掌者。心合於道。道合於心也。希有者。我佛性能含融萬法。無可比類也。
+【僧若訥曰】言偏袒者。此土謝過請罪。故肉袒。西土興敬禮儀。故偏袒。兩土風俗有所不同。言右肩者。弟子侍師。示執捉之儀。作用之便。言右膝著地者。文殊問般若經云。右是正道。左是邪道。用正去邪。將請以無相之正行。
+【王日休曰】白。謂啟白。希。少也。世尊佛號也。先嘆其少有。次又呼佛也。
+^r2:5如來善護念諸菩薩。^r2:6善付囑諸菩薩。
+【王日休曰】如來者。佛號也。佛所以謂之如來者。以真性謂之真如。然則如者。真性之謂也。真性所以謂之如者。以其明則照無量世界而無所蔽。慧則通無量劫事而無所礙。能變現為一切眾生而無所不可。是誠能自如者也。其謂之來者。以真性能隨所而來現。故謂之如來。真如本無去來。而謂之來者。盖謂應現於此而謂之來也。若人至誠禱告。則有感應。若欲為一切眾生設化。則現色身。皆其來者也。此佛所以謂之如來。然則言如如者。乃真性之本軆也。言來者。乃真性之應用也。是則如來二字。兼佛之軆用而言之矣。此經所以常言如來也。
+梵語菩薩。本云菩提薩埵(音朵)。欲略其文而便於稱呼。故云菩薩。
+梵語菩提。此云覺。梵語薩埵。此云有情。有情則眾生也。一切眾生有佛性者。皆有生而有情。唯菩薩在有情之中乃覺悟者。故謂之覺有情也。大畧言之。情則妄想也。菩薩未能絕盡其情想。唯修至佛地。則情想絕矣。
+故佛獨謂之覺。而不謂之有情。佛言一切諸佛解脫諸想盡無餘故是也。佛又云。十一地菩薩。皆有二種愚癡。豈非所謂愚癡者。亦情想之類乎。此菩薩所以謂之有情。而不得獨謂之覺也。
+【陳雄曰】菩薩。受如來教法者也。諸菩薩。指大眾言之也。大眾聽如來說法。固當信受奉行。儻如來不起慈悲心。衛護眷念。俾信受是法。則惡魔或得以惱亂。不付委囑託。俾奉行是法。則勝法有時而斷絕。故須菩提於大眾聽法之初。未遑它恤。惟願如來起慈悲心。為之護念付囑也。
+【李文會曰】如來者。如者不生。來者不滅。非來非去。非坐非臥。心常空寂。湛然清淨也。善護念者。善教諸人不起妄念也。諸菩薩者。諸者不一之義。菩之言照。薩之言見。照見五蘊皆空。謂色受想行識也。菩薩者。梵語也。唐言道心。眾生常行恭敬。乃至鱗甲羽毛。蛆蟲螻蟻。悉起敬愛之心。不生輕慢。此佛所謂蠢動含靈皆有佛性也。善付囑者。念念精進。勿令染著。前念纔著。後念即覺。勿令接續也。
+【川禪師曰】如來不措一言。須菩提便恁麼讚歎。具眼勝流。試著眼看。頌曰。隔墻見角。便知是牛。隔山見烟。便知是火。獨坐巍巍。天上天下。南北東西。鑽龜打瓦。咄。
+^r2:7世尊。善男子。善女人。發阿耨多羅三藐三菩提心。
+【李文會曰】善男子者。正定心也。善女人者。正慧心也。謂有剛斷决定之心。永無退轉也。發心之義。阿者。無也。無諸垢染也。耨多羅者。上也。三界無能比也。三者。正也。正見也。藐者。徧也。一切有情。無不徧有。三菩提者。知也。知一切有情皆有佛性也。
+【王日休曰】梵語阿。此云無。梵語耨多羅。此云上。梵語三。此云正。梵語藐。此云等。梵語菩提。此云覺。然則阿耨多羅三藐三菩提者。乃無上正等正覺也。謂真性也。真性。即佛也。梵語佛。此云覺。故畧言之則謂之覺。詳言之則謂之無上正等正覺也。以真性無得而上之。故云無上。
+然上自諸佛。下至蠢動。此性正相平等。故云正等。
+其覺圓明普照。無偏無虧。故云正覺。得此性者。所以為佛。所以超脫三界。不復輪廻。
+【僧若訥曰】菩薩初修行。皆發此廣大心也。
+^r2:8云何應住。云何降伏其心。
+【王日休曰】應。當也。云。言也。云何者。言如何也。須菩提於此問佛云。為善之男子。或女人。發阿耨多羅三藐三菩提心。謂求真性成佛之心也。發求真性成佛之心。云何應住。謂當住於何處也。云何降伏其心謂當如何降伏。此妄想心也。
+【僧若訥曰】須菩提正發此二問。一問眾生發無上心。欲求般若。云何可以安住諦理。二問降伏惑心。云何可以折攝散亂。一經所說。不出此降住而已。
+【李文會曰】云何降伏其心者。須菩提謂凡夫妄念。煩惱無邊。當依何法。即得調伏。
+【川禪師曰】這問從甚處出來。頌曰。你喜我不喜。君悲我不悲。雁思飛塞北。無憶舊巢歸。秋月春花無限意。箇中只許自家知。
+^r2:9佛言善哉善哉。須菩提。如汝所說。^r2:10如來善護念諸菩薩。^r2:11善付囑諸菩薩。^r2:12汝今諦聽。當為汝說。
+【李文會曰】如汝所說者。是佛贊歎須菩提。能知我意。善教諸人。不起妄念。心常精進。勿令染著諸法相也。諦聽者。諦者名了。汝當了達聲塵。本來不生勿逐語言。詳審而聽也。
+【王日休曰】諦。審也。謂仔細聽也。
+^r2:14 善男子。善女人。發阿耨多羅三藐三菩提心。應如是住。如是降伏其心。^r2:15唯然。世尊。願樂欲聞。
+【李文會曰】應如是住者。如來欲令眾生之心不生不滅。湛然清淨。即能見性也。
+【龐居士曰】世人重珎寶。我貴剎那靜。金多亂人心。靜見真如性。
+【逍遙翁曰】凡夫之心動而昬。聖人之心靜而明。又云。凡人心境清淨是佛國淨土。心境濁亂是魔國穢土也。
+【黃蘖禪師曰】凡夫多被境礙心。事礙理。常欲逃境以安心。屏事以存理。不知乃是心礙境。理礙事。但令心空境自空。理寂事自寂。勿倒用心也。又云。凡夫取境。智者取心。心境雙亡。乃是真法。亡境猶易。亡心至難。人不敢亡心。恐落於空。無撈摸處。不知空本無空。唯一真法界耳。凡夫皆逐境生心。遂生欣厭。若欲無境。當亡其心。心亡則境空。境空則心滅。若不亡心。而但除境。境不可除。秪益紛擾。故萬法惟心。心亦不可得。既無所得。便是究竟。何必區區更求解脫也。如是降伏其心者。若見自性。即無妄念。既無妄念。即是降伏其心矣。唯者。應諾之辭。然者。協望之謂。願樂欲聞者。欣樂欲聞其法也。
+【陳雄曰】唯者。諾其言也。然者。是其言也。
+【顏丙曰】發阿耨多羅三藐三菩提心。唐言謂無上正等正覺心也。應者。當也。住者。乃常住不滅也。須菩提問。有向善男女發菩提心者。應當如何得常住不滅。如何能降伏其心。佛稱善哉善哉。乃讚歎之辭。發菩提心者。應如是住。如是降伏其心。如是者。只這是也。唯然者。乃須菩提領諾之辭。與曾子曰唯無異。樂者。愛也。願愛欲聞說法也。
+【智者禪師頌曰】希有希有佛。妙理極泥洹(此云寂滅一覽集入滅品云。能事既畢入泥洹。舍利以留為佛事)。云何降伏住。降伏住為難。二儀法中妙(孚上座曰。法身之理。猶若太虛。堅窮三際橫亘十方。弥綸八極。包括二儀。所謂包括二儀者。與此二儀法中妙之意同)。三乘教喻寬(法華經三卷。佛言乘是三乘。便得快樂自求涅槃。是名聲聞乘。樂獨善寂。是名辟支佛乘。度脫一切。是名大乘)。善哉今諦聽。六賊免遮攔。
+【川禪師云】往往事從叮囑生。頌曰。七手八脚。神頭鬼靣。棒打不開。刀割不斷。閻浮跳躑幾千廻。頭頭不離空王殿。
+^ck3【大乘正宗】
+^r3:1 佛告須菩提。諸菩薩摩訶薩。應如是降伏其心。
+【李文會曰】摩訶薩者。摩訶言大。心量廣大。不可測量。乃是大悟人也。
+^r3:2 所有一切眾生之類。
+【六祖曰】一切者。緫標也。次下別列九類。
+【王日休曰】凡有生者皆謂之眾生。上自諸天。下至蠢動。不免乎有生。故云一切眾生也。
+眾生雖無數無窮。不過九種。下文所言是。
+【李文會曰】眾生者。謂於一切善惡凡聖等見有取捨心。起無量無邊煩惱妄想。輪廻六道是也。
+【古德曰】覺華有種無人種。心火無烟日日燒。謂諸愚迷之人。被諸煩惱。則熙熙然。此非悟道。其實如木偶耳。若或中根之士。而以煩惱為苦。是則智慧不如愚癡也。不亦謬乎。固當勿存于心。苟或不然。學道何用。於己何益。須令智慧力勝之可也。
+^r3:3 若卵生。若胎生。若濕生。若化生。^r3:4若有色。若無色。若有想。若無想。若非有想。非無想。
+【六祖曰】卵生者。迷性也。胎生者。習性也。濕生者。隨邪性也。化生者見趣性也。迷故造諸業。習故常流轉隨邪心不定。見趣墮阿鼻(平聲)。起心修心。妄見是非。內不契無相之理。名為有色。內心守直。不行恭敬供養。但言直心是佛。不修福慧。名為無色。不了中道。眼見耳聞。心想思惟。愛著。法相。口說佛行。心不依行。名為有想。迷人坐禪。一向除妄。不學慈悲喜捨智慧方便。猶如木石。無有作用。名為無想。不著二法想。故名若非有想。求理心在。故名若非無想。
+【王日休曰】若卵生者。如大而金翅鳥。細而蟣虱是也。若胎生者。如大而獅象。中而人。小而猫鼠是也。若濕生者。如魚鼈黿鼉。以至水中極細蟲是也。若化生者。如上而天人。下而地獄。中而人間米麥果實等。所生之蟲皆是也。上四種謂欲界眾生。若有色者。色謂色身。謂初禪天至四禪天諸天人。但有色身。而無男女之形。已絕情欲也。此之謂色界。
+若無色界者。謂無色界諸天人也。此在四禪天之上。唯有靈識。而無色身。故名無色界。若有想者。此謂有想天諸天人也。此天人唯有想念。故自此已上。皆謂之無色界。不復有色身故也。若無想者。此謂無想天諸天人也。在有想天之上。此天人一念寂然不動。故名無想天。若非有想非無想者。此謂非想非非想天諸天人也。此天又在無想天之上。其天人一念寂然不動。故云非有想。
+然不似木石而不能有想。故云非無想。
+此天於三界諸天為極高。其壽為極長。不止於八萬劫而已。
+【李文會曰】若卵生者。貪著。無明。迷暗包覆也。若胎生者。因境來觸。遂起邪心也。若濕生者。纔起惡念。即墮三塗。謂貪嗔癡因此而得也。若化生者。一切煩惱。本自無根。起妄想心。忽然而有也。
+【又教中經云】一切眾生。本自具足。隨業受報。故無明為卵生。煩惱包裹為胎生。愛水浸滛為濕生。歘起煩惱為化生也。又云。眼耳鼻舌。廻光內燭。有所貪漏。即墮四生。謂胎卵濕化是也。色聲香味。廻光內燭。無所貪漏。即證四果。謂須陀洹等是也。
+【傅大士曰】空生初請問。善逝應機酧。先答云何住。次教如是修。胎生卵濕化。咸令悲智收。若起眾生見。還同著相求。若有色者。謂凡夫執有之心。妄見是非。不契無相之理。若無色者。執著空相。不修福慧。若有想者。眼見耳聞。遂生妄想。口說佛行。心不依行。若無想者。坐禪除妄。猶如木石。不習慈悲智慧方便。若非有想者。
+【教中經云】有無俱遣。語默雙忘。有取捨憎愛之心。不了中道也。
+【臨濟禪師曰】入凡入聖。入染入淨。處處現諸國土。盡是諸法空相。是名真正見解。你若愛聖憎凡。生死海裏浮沉也。非無想者。謂有求理心也。
+^r3:5 我皆令入無餘涅槃而滅度之。
+【李文會曰】我者。佛自謂也。皆者。緫也。令者。俾也。入者。悟入也。無餘者。真常湛寂也。
+【法華經云】佛當為除斷。令盡無有餘涅槃者。菩薩心無取捨。如大月輪。圓滿寂靜。眾生迷於涅槃無相之法。而為生死有相之身也。滅者。除滅。度者。化度也。
+【六祖曰】如來指示三界九地。各有涅槃妙心。令自悟入無餘者。無餘習氣煩惱也涅槃者。圓滿清淨義。令滅盡一切習氣不生。方契此也。度者。渡生死大海也。佛心平等。普願與一切眾生。同入圓滿清淨無想涅槃。同渡生死大海。同諸佛所證也。煩惱萬差。皆是垢心。身形無數。緫名眾生。如來大悲普化。皆令得入無餘涅槃。
+【證道歌曰】達者同遊涅槃路。註云涅槃者。即不生不滅也。涅而不生。槃而不滅。即無生路也。
+【冲應真人周史卿】對喫不拓和尚指香烟云。要觀學人有餘涅槃。爐中灰即是。要觀學人無餘涅槃。爐中灰飛盡即是。
+【王日休曰】梵語涅槃此云無為。楞伽經云。涅槃乃清淨不死不生之地。一切修行者之所依歸。然則涅槃者。乃超脫輪廻。出離生死之地。誠為大勝妙之所。非謂死也。世人不知此理。乃誤認以為死。大非也。此無餘涅槃。即大涅槃也。謂此涅槃之外。更無其餘。故名無餘涅槃。此謂上文盡諸世界。所有九類眾生。皆化之成佛。而得佛涅槃也。
+^r3:6如是滅度無量無數無邊眾生。實無眾生得滅度者。
+【王日休曰】一切眾生。皆自業緣中現。故為人之業緣。則生而為人。修天上之業緣。則生於天上。作畜生之業緣。則生為畜生。造地獄之因緣。則生於地獄。如上文九類眾生。無非自業緣而生者。是本無此眾生也。故菩薩發心化之。皆成佛而得涅槃。實無一眾生被涅槃者。以本無眾生故也。
+【僧若訥曰】第一義中無生可度。即是常心也。若見可度。即是生滅。良由一切眾生本來是佛。何生可度。所謂平等真法界。佛不度眾生。
+【陳雄曰】大乘智慧。性固有之。然眾生不能自悟。佛實開悟無量無數無邊眾生。令自心中愚癡邪見煩惱眾生。舉皆滅度矣。滅度如是其多且曰實無眾生得滅度者。盖歸之眾生。自性自度。㦲何功㦲。六祖壇經云。自性自度名為真度。淨名經云。一切眾生。本性常滅。不復更滅。文殊菩薩問世尊。實無眾生得滅度者如何。世尊曰。性本清淨。無生無滅。故無眾生得滅度。無涅槃可到。此皆歸之眾生自性耳。華嚴經云。若人欲了知。三世一切佛。應觀法界性。一切惟心造。造化因心偈云。賦象各由心。影響無欺詐。元無造化工。群生自造化。
+【李文會曰】無量無數無邊眾生者。謂起無量無數無邊煩惱也得滅度者。既已覺悟。心無取捨。無邊煩惱轉為妙用。故無眾生可滅度也。
+【寶積經曰】智者於苦樂。不動如虛空。
+【逍遙翁曰】善能觀察煩惱性空。既過即止。勿使留礙也。又云。煩惱性空。勿為罣礙。觀如夢幻。不用介懷。設使情動。如響應聲。即應即止。
+^r3:8 何以故。須菩提。若菩薩有我相。人相。眾生相。壽者相。即非菩薩。
+【六祖曰】修行人亦有四相。心有能所。輕慢眾生名我相。自恃持戒。輕破戒者。名人相。厭三塗苦。願生諸天。是眾生相。心愛長年而勤修福業。法執不忘。是壽者相。有四相即是眾生。無四相即是佛。
+【僧若訥曰】言我相者。以自己六識心。相續不斷。於中執我。此見乃計內也。人相者。六道外境。通稱為人。於此諸境。一一計著。分別優劣。有彼有此。此見從外而立。故云人相。
+如眾生相者。因前識心。最初投託父母。續有色受想行四隂。計其和合名眾生相。如壽者。相者。計我一期。命根不斷。故云壽者相。
+【陳雄曰】貪嗔癡愛為四惡業。貪則為己私計。是有我相。嗔則分別爾汝。是有人相。癡則頑傲不遜是眾生相。愛則希覬長年。是壽者相。如來不以度眾生為功。而了無所得。以其四種相盡除也。圓覺經云。未除四種相。不得成菩提。菩薩發菩提無上道心。受如來無相教法。豈應有四種相哉。設若有一于此。則必起能度眾生之心。是眾生之見。非菩薩也。菩薩與眾生本無異性。悟則眾生是菩薩。迷則菩薩是眾生。有是四種相。在夫迷悟如何耳。何以故者。辯論之辭也。佛恐諸菩薩不知真空無相之說。故為之辯論。而有及於四種相。十七分。二十五分皆云。
+【顏丙曰】一切眾生者。涅槃經云。見佛性者不名眾生。不見佛性者是名眾生。摩訶者大也。佛告須菩提及大覺性之人。若卵胎濕化。乃蠢動含靈也。有形色。無形色。有情想。無情想。乃至不屬有無二境眾生。體雖不同。性各無二。此十類眾生。我皆令入無餘涅槃而滅度之。涅槃者。不生謂涅。不死謂槃。經云。如來證涅槃。永斷於生死。滅度者。滅盡一切煩惱度脫生死苦海。令者。使也。我皆使入無餘涅槃。無餘者。羅漢雖證涅槃。尚有身智之餘。經中謂之有餘涅槃。唯無身智餘剩者。方謂無餘涅槃。
+又曰。實無眾生得滅度者。眾生既悟本性空寂。更滅度箇甚麼。若四相未能直下頓空。即非菩薩覺性也。
+【傅大士頌曰】空生初請問善逝。應機酧(善逝。即世尊號)。先荅云何住。次教如是修。胎生卵濕化。咸令悲智收。若起眾生見。還同著相求。
+【李文會曰】有我相者。倚恃名位權勢。財寶藝學。攀高接貴。輕慢貧賤愚迷之流。人相者。有能所心。有知解心。未得謂得。未證謂證。自恃持戒。輕破戒者。眾生相者。謂有苟求希望之心。言正行邪。口善心惡。壽者相者。覺時似悟。見境生情。執著諸相。希求福利。有此四相。即同眾生。非菩薩也。
+【臨濟禪師曰】五蘊身田。內有無位真人。堂堂顯露。何不識取。但於一切時中。切莫間斷。觸目皆是。只為情生智隔。想變軆殊。所以輪廻三界。受種種苦。敢問諸人觸目皆是。是箇甚麼。一一山河無隔礙。重重樓閣應時開。
+【川禪師曰】頂天立地。鼻直眼橫。頌曰。堂堂大道。赫赫分明。人人本具。箇箇圓成。秪因差一念。現出萬般形。
+^ck4【妙行無住】
+^r4:1復次須菩提。
+【王日休曰】謂再編次。佛與須菩提荅問之言也。此乃敘經者自謂。
+【顏丙曰】復次。乃再說也。
+【李文會曰】復次者。連前起後之辭。
+^r4:2菩薩於法應無所住。行於布施。
+【疏鈔云】言應無所住者。應者當也。無所住者。心不執著。
+【李文會曰】菩薩於法者。緫標一切空有之法也。應無所住者。一切諸法應當無所住著也。
+【法華經云】十方國土中。惟有一乘法。謂一心也。心即是法。法即是心。二乘之人不能解悟。謂言心外即別有法。逆生執著。住於法相。此同眾生之見解也。
+【逍遙翁曰】凡夫不識自佛。一向外求。住相迷真。分別他境。不為助道。但求福門。似箭射空。如人入暗。俱胝和尚凡見僧來問話。唯豎起一指頭。
+【佛鑑禪師頌曰】不用將心向外求。箇中消息有來由。報言達磨西來意。秪在俱胝一指頭。菩薩了悟人法二空。心無取捨。能知凡聖一等。空色一般。善惡一軆。
+【龍濟和尚頌曰】心境頓消融。方明色與空。欲識本來軆。青山白雲中。是菩薩心無所住著也。行於布施者。布者普也。施者散也。謂除我人眾生壽者四相。煩惱妄想取捨憎愛之心世尊即以教法布施。內破一切執著。外即利益一切眾生。菩薩布施。皆應無住。不見有我為能施人。不見有它為受施者。不見中間有物可施。三軆皆空。住無所住。清淨行施。不愛已乏。不望報恩。不求果報也。凡夫布施。希求福利。此是住相布施也。
+【永嘉大師云】住相布施生天福。猶如仰箭射虛空。
+【逍遙翁曰】誦金剛經者。若人了知住無所住心。得無所得法者。此名慧業。若人日積課誦之功。希求福利。此名福業。二者相去絕遠。如霄壤也。
+【法華經云】若於後世讀誦是經典者。是人不復貪著。衣服臥具飲食資生之物。所願不虛。
+【張無盡云】夫學道者。不可以溫飽為志。本求無上菩提出世間法。若以事不如意為怨。而圖衣飯為心者。又何益於事乎。
+^r4:3所謂不住色布施。不住聲香味觸法布施。
+【王日休曰】色。謂形色。聲。謂音樂。香。謂鼻之所聞。味。謂食物之味。觸。謂男女之慾。法。謂心之所校量思惟者。乃教化眾生不使著於六塵也。
+【陳雄曰】摩訶般若經云。眼色識。耳聲識。鼻香識。舌味識。身細滑識。意法識。又懺法云。眼著色。耳著聲。鼻著香。舌著味。身著觸細滑。意著法塵。起種種業。此言住。亦識著之謂。凡夫六根不淨。貪是六者以快其欲。是名六塵。一不如其所欲。則必布施以求滿其欲。其所住而布施者然也。菩薩受如來無相教法。無諸欲之求。無能施之心。但以法施利益一切眾生。如水行地中。無有罣礙。無所住行布施者然也。華嚴經云。不求色聲香與味。亦不希求諸妙觸。但為救度諸群生。常求無上最勝智。正此之所謂行布施也。
+【華嚴二十四卷云】眼識所知種種諸色。耳識所知種種諸聲。鼻識所知種種諸香。舌識所知種種諸味。身識所知種種諸觸。意識所知種種諸法。又天地八陽經云。眼常見種種無盡色。耳常聞種種無盡聲。鼻常嗅種種無盡香。舌常了種種無盡味。身常覺種種無盡觸。意常思想分別種種無盡法。詳此二經。既言種種諸聲。種種無盡聲。則王氏所言聲謂音樂者。恐失之拘於音樂矣。既言種種諸觸。種種無盡觸。則王氏所言觸謂男女之慾者。恐失之執於男女之慾矣。
+【張無盡曰】不住色布施者。謂智慧性照見一切皆空也。梵語檀那。此云施菩薩。無色可捨。名為布施。如藥對病。似空含有。有病既除。空藥俱遣。色空泯絕。中道皆亡。了無一法可得。二乘之人捨色取空。為不住色而行布施。
+【玄奘法師所譯經云】不住於色。不住非色香味觸法。一例皆然。是故空有悉皆無住。無空可取。無有可捨。空有同如。一體平等。平等行施。即知法界不住有施。不住無施。不得有無二邊障礙。施心廣大。猶若虛空。所獲功德。亦復如是。故經中舉十方虛空較量施福。即斯意耳。
+【傅大士曰】施門通六行。六行束三檀。資生無畏法。聲色勿相干。二邊純莫立。中道不須安。欲覔無生理皆境向心觀。不住聲者。清淨無罣礙也。梵語尸羅。此云戒。二乘之人。意謂聲從色起。遂向聲塵中分別。聞樂則喜。聞悲則哀。欲捨此聲。而取無聲。名之為戒。菩薩無聲可捨。色若是有。聲從是生。色既本空。聲從何起。若能如是悟者。雖在生死中。生死不能拘。雖在六塵中。六塵不能染。在在處處。心常清淨。
+又云。尸羅得清淨。無量劫來因。妄想如怨賊。貪愛若參辰。在欲而無欲。居塵不染塵。權依離垢地。當證法王身。不住香者。謂見色清淨也。梵語羼提。此云忍辱。二乘之人。妄生忍辱。惟恐貪著。欲行遠離。故名忍辱。正是捨色取空。不了中道也。殊不知香性本空菩薩忍亦無忍。辱亦無辱。須是自性清淨。不生起滅之心。方始悟明心地。
+故古德曰。明心之士。其心猶如明鏡。能攝眾像。盡入其中。無有罣礙清淨含容。無有邊際。又云。忍心如幻夢。辱境若龜毛。常能修此觀。逢難轉堅牢。無非亦無是。無下亦無高。欲滅貪瞋賊。須行智慧刀。不住味者。謂眾生性。與如來性無所分別也。梵語毗離耶。此云精進。了知舌根本空。為不住味。故云受諸飲食。
+當如服藥。或好或弱。不可生憎愛也。
+【肇法師曰】會萬法歸于自己者。其惟聖人乎。
+【晁太傅曰】一切凡夫皆是迷人。內有回心起信。詢求妙理。悟明心地者。此是迷中悟人也。
+【徑山杲禪師曰】佛與眾生。本無異相。只因迷悟。遂有殊塗。
+【黃蘖禪師曰】有識食。有智食。四大之身。飢瘡為患。隨順給養。不生貪著。謂之智食。恣情取味。妄生分別。唯圖適口。不生厭離。謂之識食也。三乘之人。雖不住飲食之味。尚猶貪著諸法之味。以貪著故。名為精進。菩薩之心。於諸法相。悉如夢幻。遇緣即施。緣散即寂。
+【圓覺經云】照了諸相。猶如虛空。此名如來。隨順覺性。
+【傅大士曰】進修名燄地。良為慧光舒。二智心中遣。三空境上袪。無明念念滅。高下執情除。觀心如不間。何啻至無餘。不住觸者。謂心無取捨也。內無菩提可取。外無煩惱可捨。梵語禪那。此云靜慮。二乘之人。認觸為色身。色身若是有。即言離諸觸。色身既本無。諸觸何曾有。又云。了觸即無生。不住虛分別。一切諸萬法。本來無所動。
+【六祖曰】一切萬法。皆從心生。心無所生。法無所住。又。
+【大陽禪師曰】大陽一禪。竟日如然。滔滔不間。觸目遇緣。若能如是。法法現前。
+【傅大士曰】禪河隨浪靜。定水逐波清。澄神生覺性。亡慮滅迷情。徧計虛分別。由來假立名。若了依他起。無別有圓成。不住法者。謂照見身心法相空也。梵語般若。此云智慧。諸法屬意。意屬識。此識是妄。
+【金剛三昧經云】所見境界。非我本識。二乘之人分別諸相。皆是妄識。本識又何可得也。菩薩了知本識究竟。故無分別。
+【傅大士曰】慧燈如朗日。蘊界若乾城。明來暗便謝。無暇蹔時停。妄心猶未滅。乃見我人形。妙智圓光照。惟得一空名。又。
+【六波羅蜜有緫頌云】三大僧祇劫。萬行具齊修。既悟無人我。長依聖道流。二空方漸證。三昧任遨遊。創居歡喜地。常樂遂亡憂。
+【臨濟禪師曰】佛有六通者。謂入色界不被色惑。入聲界不被聲惑。入香界不被香惑。入味界不被味惑。入身界不被觸惑。入意界不被法惑。所以達此六種皆是空相。不能繫縛。此乃無依道人。雖是五蘊穢陋之身。便是地行菩薩。又。
+【黃蘖禪師曰】本是一精明。分為六和合一精明者。一心也。六和合者。六根也。各與塵合。眼與色合。耳與聲合。鼻與香合。舌與味合。身與觸合。意與法合。中間生六識為十八界。若了十八界。無所有一切皆空。束六和合為一精明。此乃了悟之人。唯有真心蕩然清淨。
+^r4:4須菩提。菩薩應如是布施。不住於相
+【六祖曰】應如無相。心布施者。為無能施之心。不見有施之物。不分別受施之人。故云無相布施。
+【僧若訥曰】應如是布施者。指出色香等六塵也。不住於相者。乃不住六塵之相。若住相布施者。但是人天果報而已。
+【李文會曰】菩薩應如是布施者謂捨除一切煩惱憎愛之心也。然煩惱本空。皆是妄見。有何可捨。
+【經云】一切諸有。如夢如幻。一切煩惱。是魔是賊。
+【逍遙翁曰】夫煩惱性。是佛境界。觀煩惱性空是正修行學人。若止依此觀練精至。不須求別法也。又云。夫見性之人。十二時中。凡遇逆順境界。心即安然。不隨萬境所轉。一任毀謗於我。我即不受。惡言謗黷。返自歸己。所謂自作自受者也。譬如有人手執火炬。擬欲燒天。徒自疲困。終不可得。故古德曰。心隨萬境轉。轉處實能幽。隨流認得性。無喜復無憂。
+^r4:5 何以故。若菩薩不住相布施。其福德不可思量
+【疏鈔云】何以故者。此證問意。施本求福。今令不住於相。其意云何。佛荅。若菩薩不住相布施。其福德不可思量。若逹三輪體空。方名不住相布施。不住者。心不住有為之福也。三輪者。施者。受者。并財等是三輪也。施者返觀軆空。本無一物。故云理空。
+受者觀身無相。觀法無名。身尚不有。物從何受。故曰受空。施受既空。彼此無妄。其物自空。故曰三輪體空。
+【陳雄曰】世尊荅文殊曰。財施為凡。法施為聖。盖凡夫布施。必以滿三千世界七寶。為求福之具。財施也。此住相布施也。且以人天大福報自期。數盡未免輪廻。菩薩布施。但一心清淨。利益一切為大施主。法施也。此不住相布施也。雖不徼福。自然離生死苦。受大快樂。歷千劫而不古。超三界以長今。是所謂無限福德。實不可思惟而量度也。佛憫末世眾生。被六塵染。未可遽化。姑誘以福德無限之說。使之頓悟法施之會。維摩經云。當為法施之會。何用是財施會為。
+【顏丙曰】住者著也。菩薩於佛法中。應當無所著布施。布施者。捨施也所謂不住於色聲香味觸法布施。六者謂之六塵。眼貪色。耳貪聲。鼻貪香。舌貪味。情塵相對謂觸。貪著有為謂法。人性清淨。本無六根可得。六塵又向什麼處安頓。所以佛云應當如是布施不住於相。若不著相捨施。其福德量等虛空。非思量可及。
+【傅大士曰】檀波羅蜜布施頌曰。施門通六行(六行即六度)六行束三檀(疏鈔云。三檀者。資生檀。無畏檀。法檀。布施是資生檀。能資益生諸善法。故曰資生檀。持戒忍辱是無畏檀。因戒淨。毀辱不動。心無怖畏。故曰無畏檀。法檀者。精進禪定智慧是也。因定生慧。因慧生種種法。故曰法檀。將此六行束為三檀)資生無畏法。聲色勿相干。二邊純莫立。中道不須安(子榮曰。二邊即有無。二邊不立。有無俱遣。中道何安。晁文元公曰。凡夫著有。不見有中之空。二乘著空。不見空中妙有。不著見於二邊。不取相於中道。惟佛知見)欲識無生處。背境向心觀。尸波羅蜜持戒頌曰。尸羅得清淨。無量劫來因。
+妄想如怨賊。貪愛若參辰(參辰。即參商二星。一出一沒。常相遠離)在欲而無欲。居塵不染塵。權依離垢地。當證法王身(圓覺經注云。佛為萬法之王)。羼提波羅蜜忍辱頌曰(華嚴六十卷羼初眼初鴈二切)忍心如幻夢。辱境若龜毛(華嚴經云。無則同於龜毛兔角)。常能修此觀(去聲)。逢難轉堅牢。無非亦無是。無下亦無高。欲滅貪嗔賊。須行智慧刀。毘離耶波羅蜜精進頌曰。進修名燄地。良為慧光舒。二智心中遣(真俗二智)三空境上袪。無明念念滅(十二因緣法。無明緣行。行緣識。識緣名色。名色緣六入。六入緣觸。觸緣受。受緣愛。愛緣取。取緣有。有緣生。生緣老死憂悲苦惱)高下執情除。觀心如不間。
+何啻至無餘。禪波羅蜜禪定頌曰。禪河隨浪靜。定水逐波清。澄神生覺性。息慮滅迷情。遍計虛分別。由來假立名。若了依他起。無別有圓成(華嚴合論第四卷云。遍計所執性。依他起性。圓成實性)。般若波羅蜜智慧頌曰。慧燈如朗日。蘊界若乾城(華嚴四十二卷云。龍依宮住。而能興雲。有人仰視。所見宮殿。當知是乾闥婆城。子榮曰。乾城者。即乾闥婆城。海上龍蜃化現餘氣。人見樓閣。忽尓還無。此破眾生妄執五蘊色身為實)明來暗便謝。無暇蹔時停。妄心猶未滅。乃見我人形。妙智圓光照。唯得一空名。
+【智者禪師】萬行齊修頌曰。三大僧祇劫(阿僧祇數名。阿者。無也。僧祇者。數也。乃無數劫)。萬行具齊修。既悟無人我。長依聖道流。二空方漸證(人法二空)。三咏任遨遊(三昧。梵語中國言正定。亦云正見)。創居懽喜地。常樂遂無憂。`)

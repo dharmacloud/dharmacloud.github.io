@@ -1,376 +1,845 @@
-jsonp(12,{"name":"dc","start":14398},`gH|C*OxmO%gg (BI=(hAG=#G@ O];2HM=~g}ygH?*h=g@LKhK;JAI;2HL>fh-I=YNb<DRA&
-jRP;+gfU8j M%Jg3&HD_r<Ldj|sIh@7g>[\`6j:'
-uNQh ;6ga
-w1%^~
-g|gxgD;gU;h!ga;*gCoL(
-g8yA\`;g0 v"Nieg"7
-w['1;W?CL,J1H,A9
-gjZ=K62?g->;T; Yf>K!S^Es@ W\`D-V7ct&F]v>pA%UmB<oY|g'V6g;eg^<)>}Oe=OW>]$guag+cg4gE2gh&@E>j@;h*8=Ge2hp(X"=miZg%\\"gh\\i,L
-i9$;R#;";=;l=Q;K)CVgh<a<g4H^>AJw;c;]Ae<Fg2T3,;;m!9'a_W~g!vgy.gX;M;R;H;K;gKU?mg\\:;*eWL|;A_GVQ'CfTQTH;*Ng=<)?FESo@gt\\8BbMf?F%1A_V+P/g5gQ;6KcNiD0e8>@<W==;;F,<1;aG\\SE;];R;]~B@AhA?>#D&#g#U>f;W!;x&A5;(;z!.(7;iffBig30]b;'>mM^@E<tF:=pEuLr?R=RTP=UD-I:TJ[[?m;@gGOGiL<;1>gm7QZe3;g?@;E]E=rg(9>vA~G=9EO[e42A)D_&M;$I\`gJ}(;;2>oC I2;G{
-q{X
-DKpUsgm;/;1\`(hJ0iA4>lgr{S6;+?ZgUKEKg|g1Mg-;GxB1la;
-i?k
-kwEu0'gKs
-gU;hzrd6iEailmJ"GFY8M'i~kgz0?+h2fH+h{Oge2H*@O@c
-g
-qw{;|0p Ti*#<;
-iHg96<3;R;<*;/M8.g&mg%ia|gsgJhi'hjVKtBem50HHh=h$g,0g+8$g2(g+vh>
-gG*i\`Dg1=g%Vg+rg+\`/g-ngc6g1M3hQUiD4=ejnYiU8>/; Q;YBVi49
-hes
-bqBuNFgChhS==g;fg3;<>AW>Bi{X3?;L7;o;?Ci3Fg^;lgYDMPC(L@EoC@wJE\`>*F\`;4RF<vGbgU$$;cSFHLcg&>gG-g"IF";s=r?oKNK^TBL@?-=8E/BU@2@H@Dg0A@<=$BoGm;a[{FUHzT(;h;p=*F6C+T/G:Co^2d'=2<|;"N4FsG*Yz<{C5Kv$#;\\V3Qg3o<CfO<R>W@Fg2;@q>GE;g\\SgcGGg7PY~gXLO;?>8<SES]Z\`=^Ag?Zy
-^yg ~^yYzFheg#gq;g-fi\`chnMZg}C1JQ\`uh"!IH-;EANE'g[[8;M;7F/;i;4;3gUog5QwV;i5^g qgh"'gxgF
-Fhy4MTh cT7dyh)
-hUAggi6>gyg^Ig&gseNg.&0hkHd$gaqg+tgUGA1g<Rg!h)@gTcj;>?o>U?ng[g7|g5:;-6S|F1JFATc;D27J+AW5@=h%CA;B$=<L4F&]z=L)=M=q
->CETxg-AVW1G7<>C[_QgIC]@V0e6@C?^BpXS;^=u;RLZP\\5@6evCY:;@<.;>;QfE3g|*YqS*d=;S=A=GAkD(AALkFg;mAnI>O$BK;<4<t;<UBO*@aI7B1N?E<'B^<6=g=E<,>EKBE>K2Ef?C>_@,\`;HPjJH<;JIP<M@"<<E#EY=4C@<_U[W%E-;[=~@yID=eCiNUyE;uI|>6CZOe@F@nI_CwMQG7=s]??T{6;;d^;W;QP@|@6Gg$Z<9?)Kv,==@G)AE>)Q?)=Z;@;%=2;\`;!;d;;;;;"<A;<;o<1-;";D;B;"//////; 1//<)<@;=R2';=<<><6,7@C=4G@V7I?@mAhK6Je<2;bO=;A,a=</CC<&=>]&=9;;H=;O<6??^;@<>gBA;,;uUp@L>g<?7=e>Xg/<L?%;-<d;;g#%;I<~V h^$P9<1=DngTST&<UI]Z/Ss<QI#[w]K=.=QK5Z}P\\<)=<bAz
-n[hWKj4hd7ho&;
-k!<k%hF.g]ag\\gDNg$L?\`<iH;U?tg =<TgvgcI>zge=9\`Aggh|6gZQC;)Ac?:NoKr>iY
-t<[@i<Cbj~7F)
-p\`5
-ttR
->n;@\`;9<mB%DC@QN,<&E';Q@<k?=(=)<9>;oF#<)<I)?}<hACC?!;@CPG/?Z<cC* =@>D;<<$<(;Y*>zF;>AD.6;6;.?|<pA=SOc<o<:JS>vAX<^?z?G;r=5>MCd#@D";D=(?H=)H|B<("=V;L$0;->/<U<-.8?H==+:2=>*<:?{;I;;#@(>u=F>-=>>o;Z;$;+@.;l;9@<v >+A;^4=pH=b<D?QCK<h)<B<MHw>?*T?+BF6U+EU);B<J-8A>uF\`@p=I<;;c>i;\\>Z>? ="<N?@w;A@P@D<?<X@RJ0A!;BK;)=X;cBO;>.@W;b>(;E?\`;D";<;;= >b;%A?;\\gFNh"=g<jhZg(;6==ghOgmK^D>[g3$F5gKUigigX_Ng,{gNsi{G;g?^
-m[A
-gU*i4ng>iS&g+u;9BK(DM;RXB$+=gIs>wDi?[A EB??SC(hAo=?+h/hC<vL<Bd;5gPgUh[@DRgJh{=>R6gA0;dJDe=G_G8@.gDs
-3<RDa>aLy;~E(;%B=H8@F;E=vIXKDS ?j@ZgM2O$;_(Z+c;%;=BrE{J-D/F<>pbCPX\`RgiGB!J4g $gKDR2C]G0D/KfIIC'EPCHg<;;dF}C=uSv;5;DH)E*G QB?pDs<DXMN<nC5AM;4?Z1=-;Dbz6gdgmB#g39<pgNlg=;FD3D{;.O/g*E>,cSCXd=<Ba<5g_gc.J<pgX;OiXTMj>-g'S\\q<ug,C@B?\\DY4<#>K3Kg>tXINE?wg*3g{Ag,g3g3%
-t7x;gnT
-jQB
-Xs\`daL=ieTpSE
-pw+
-O|R-#!;?""N3JD?y=o;.N?;w<AEs@;?A@^Ej?LG!CFg"r\\BQv]zg-IUO>Q?I4;AL\`L^cg8Po@8<^Ggg;?.gHr;?8<@ =e=S=p;H;a >;d;x;l<;f;Q;Q;Q;Q;V";{=[5;?!;<$;7;l;;';/;C<);6;B;:?;<;l<;<c;r=T?[B/>O@%;/(<|=X;<Z<.;:g+P*ds]yGFY8i8iD^i(hCMNUqgoqgq.idY;5%3>o;<O7;F-A=1Bn@8;;;8;;:</;:;3<L)<Z<\\;/42<A;s<;j%&.A;!?B?\`*<=$* C";?H()>z<G
-jQA
-gg$4da<Xg2[>A(KVOa<;g}3KWX3<KFES<Xg)g8V^g@[FgR<;H'gD0VYA@,EDK \`8O~gQL-gdpRd=CPj;]Rvg7<)Y#gURZAbgD_Q6g'lgl glWg/l\`[]+;a;B\`@hXa;=<;^BB'h0$Sog\`;Fi&Eg9'g+A
-rgIgVh5FZJYg;j<M<Mg1=imz
-uv
-q-%pUq
-jGjg;-;<gA;Bgs;hu[gf:gWFZF%hd77OFgA'jRPK>
-$<TQ.Q"GC@KGm@2C<g@1C(>FXcg;HlhH/EUg@DEyH;>grge gng'};oEsg"2R';\`Z=F>-<-gNgg5hx0C]EOg$T;];C<CCG<;;y(P+;1JH=]aGD@N<{AL<\`_ggW,Z?VX"\\^g((I{;"F!b-g'<@g!3g=rggj2g:jmhA\\
-hXm&lr}g-3g!
-BOC;/<(JrMOAmJW@I?PSw_;>=8<,=J>gA[;,g<yQ]Q%]cT(Pv>4;;$JbYY;>WLMLw=;<&;@<y2Gk=<gfG]xOe\\&;A>{;OELZzJ}<,E}I-ciHm;$Cw?%A;Og;7;*D7<_;C<=(<C<2=;v<s;&;!=>H=3;7 <2)>;@-=4<C>o=rF5<S<W<p<3<3=Z<G;e<f@Z;7<6)>%>>;K>\\<e<xG'BM;-;K;;L=%=F>;:9<;x;&;:<'<;A<&A\\">;k?B;<A0?*?=>>=5;<R ;<A,<x<L'<G<Q>@@=5<m,=);;d;?"<\\##0?,;^;;y<,;?5;1A?=w,<)9>\`/;;b==>9;.;P;;&;2;>L=Z>P;R2;M;?;B;|;;$;Z=;I1'.;;%A>;=B(BJ;rC);!;H;d<'DX;E=!07=.;;k;c@@\`;N;\\=\\;J$O5IQ;d(;fLDBgJ??_<0KC<e?i/'Hw],;o#8;[;<<;*<PO*?9=|KgHlLsH<0D}*;7K1<Z;TE&FcB-\\;..=X;;rG;\\W5;RT!<A<%';E;m/5;<%+<A&,<X>'B$ Q?\\P&<bI\`HJ<lF4?4X=\\CC?Ng?ADOdIK<.<COdB'?U=.?u=w=);Z.=BHWBk^;8;<EPx"?C=2@\\;,><*-;U;1<<1$+;,>$<&<c5#&; '!,;;;T;;3=;;4 9;3; ;/;&;;3";.;,-;Z;2;u;9*;5;1;6;;$;"',;r;X;O7<3E%Gb==;'>-;)AFKdR#;=<Ug6\\fWg%=fg2Yg$=D"g0Yg,g8@g,L"
-w2iH+h!*
-E#=<J\\L(BEEh:,A/;!>n;.?@<N#;"@rBWK*A</E<LDJ"IP<_D5;;;"BQ<(=o;A=oH$SogOC9 <U%[K>(Ce&g/F@[%SmJ6@$RXgOA|g4BeLaBSZD@[:Gc<p;IDB;e%3<!T<OI;<';aC;Qd<4*8CVk<P=Eh'}NA;Z&?$;Y<<<z?cBZAh<q=<\`M#;)<agk[@@&X)>kUy;>8<pJ<C;1goLkg \`D@1>SD!<,;.CAcHoSg g%k<<3<,C=>^<'Ff;;5\`T;<V?<)L5g6*_c<kAJ=~K;VF<ZMw;9I<;S&TEI!g*FLEzX;_;;|BKJP?@&=X>3@S<z_1?iH{grgPgQH< g^
-g+2<a@3FZ;w;e&3<;)!";Q<M(;<<[DW=j>N?=A%?"Oxg;I T'BlSpgv?\`g9g8g ^UM/IdL&C';*DL,<Ce\`<8@&g1gWa@V="h;(g F0hKJ;!;|>r;;b<Z;;#;]icIm)>:H@Klg_nG=>@=<g<.;HgV>fg\\Z;Igf:Q6g,F@z\\e];X('1)<C54;S(=p<.;8(<f=(;;;+(71;k&;;(;<\`Ev,;);T;iCU?pB>EY<3XVEn<bD&@oE"aBBD;;":;;cA.AvRO;R=k;D?CyF<(J_J(g T;"2;8<5<@;/<I"&+Oz!;C <3"3!;}EB ZAk;#*;&=2;.<$!L\`;-<"2!;S-D'V A<$g*';/3;Q<<:;<M#-Qx%;Y<O 3!< Fe.ZwA1;'!;*>5(J!;;m3;O%BPOq
-sw]>jf+nA
-iW]
-\`(
-nUigVxgDWgK3iG"iZRgg1iNZ;!g-A;hns
-?<iQT
-jh>d_h"\\g-h:XfdXdQ:;SgY[g/i4wiy.<x
-wS5:;-6_ZJFAI<tE"7W=h%C]GF&]z
-hIgN;la'_rEjg0[\\\\;N>0<;o?"gBQ<nX-KJf4(;g{I%doH;VdZLWD@:;6?D;;P;>Q@D;6<5<QJHHZ@bF~<$;>/gMcCHg>;jg2qgY';Iy=E>GG<tX=>>EgR4<Z<,]N<Ltk
-F\`;&FN>yU;/Ae_>;n.<Q; =7;5C!<];U>CII.=n=>MO;"Ly?+;:=t=a;$BW=/<!CqBFEB>W@0BQGm=K>NHE@*>UA5OGG=9>wDq=(<BTBDAfWq?m;>4;<5@gS+K9B>qB;lI[NG<}<<q;wBWCx=;}BBSB+++*A=a2@l<;P;5LAZ'==h>U?m%<P>AE$UUHR;<5JUM;.;0<$DMyB>YrJtEK6<b^J0=c<HMXK%I YM>>l<'Ii=1<@=)B}g'9CEg ;bWu=PM:[7;VJj+@>'>X&= ;>k;D;;;7%;#2;>z;B;3;;I/;;+>LD'ABL[;O]@S=j<YCHJXoE{GQA;^RGQBbL?;=L<<;-JMgC<_=~gwcES@P"ZlQH9P.<[ei= BPB%GH=@?KZz;HA%?cVX@;c; <f<(A<H;@;W;'cMD{C ;>_;<;:;6%;"+;>{;=;.9;H+;;:?C=hQgD{I!<<G&;=>BX=<pK9A~;h#C;~B!;g=dG;+=h.@aC>?1?=AXAG?<='=C;h;9=Y@+;I;G>8;>>];i;7;^>3=Z;D<\\<U=<Ef;wB\`<^LzB;;V@cP=\`^@E=@9P5ghRy3?WLzG"fP=IDLx;G>%;_<;1;%;&<9;;R;'=m6;0I<?;111117;p;J;'?.;c?<:Ag=r<@3;;i;<~;l;9;'<P<H;I;m>3;{NmB3::::;;$<"<';;;=<o=i<#<f>&G>;a?=;j<w;p<\\<=;';a=j;lL(?<%99998<;s;5;:<#>*;n<>1<aD8;t?q;g(<[;0;";"<7<?;4;B=O5;9KE>\`<99999;<;p;1;;<4=a;|<+>"<VB7=<;s>q;w;<.<D;U;t;8;9==;<;g;r;_<*;u<.=!;;=;6;7>C<I;N;|;;J<J=l;BP;;;;;;<C;~;<;E<F=M;A<<I>B<_#;+<3?E=H;C>24;R<>;S; ; <:<2;"<~;UIZ?);n<;2;p<=5;j>-
-t6
-gbNo;KFEFg0R^!UfgVz>g=RP0FXSb;EN;FgeBio;'g8.C1>]UJ~B<gq@K?H{Q<hkQh1QBSIY4;]hh7hQKFK%hzg<~B_>>o;;?=!COgH=8=(g07@kgE(j8B"gr?}
-N'@9QzHA ?f<h;ET<*8Eq;3E=D/C_<\\gAg.DAYgA/ <^EdgL;<]Ujg=Wg2TK"gV<Fg?.Thg03<,;n;;";3<*:<e;+;5=);:;S;Hg}!>rBO;<ex<>g[^<g:og$gNI6Bl^+>~=[WBd3]&Mcgc;$hcQxh,gmg&g8g0uW)@EB;R>;);L<%>E^=xI}gXxKeq;E=\\<~";M@QASDB<=0>p'>@;4E&;(;QM6N2B8;:DwCjF|
-.NIR)i!=^=agUhlk<;GW?f;s;/<;vQA>S.KCgD8h|ji<grig_j=xgzg9;hMMwA}<NPTvAk>X?C<-;V?6;~Dgg;U<u!G6h7ph>6=^
-qyghdoO-=C
-wXzG#<<;;P<1<X<S9C!><,>;\\KH<I;>G'1;;T";E<b;+E@,O|<t;3;4>v=eCJ=B;&Ac?05;>M=a';'=\`;M=}/D^g2
-ttS
-st;H;B"g6=;gD
-2<RDaMZ=e*;~E(;%P%A8g9S=[H%g g/X(S{@tBRdcEyJ/gW+K@hrg,gXg?gL:BAKgIIO_1AbJEgLA-ZdHM;d=eE$ELRA(>:<;o>L;)J>iYj?pC=<<DX;,=UIs<nAo<FZCGg!n=9;J>pgwkg?g!{g=E&Z2g*E>,cSC?(\`4><<|;zBk<5g@gcMg,>=X;;bNQXTCCEg+%@JVz@KW6<A9Ks@a?=J<O/<5E~@BDfVhIdK]NnAMDg>rXKNE?w
-wDUiS
-oW5hTPg!A7Nj5Rl6SgX
->/kDLkzng2>l+>gqB<#gnNht8L-
-pw*
-[min"n; ;w"hwoO-=C
-sw\\
-K"
-\\cI+aAyg0Rhgbg1j.;.;ig};&gzgR'gmsg/!gz8=D;#C;xCgNyg0h]gp<A~<}DiA6B|;ig;ig.j;5<Y;UgKCg'1KEHgHgM;=gogz?m
-j8hU&w>Wg#XW'
-9==p3>C"7<yNDkAtK4<;@x;B&MH@L@.=J=;0F;=4%<4]yOzCAm.6RG@_"=Q=">IcB/Hj=J(;s>t#7;XKB]<%BtAj&!=pG_)>6d;d<d;V;/ 2I8C+;&=RB3;Jl*D[ICQYE;W;~<-<";8;S;6;8aG?^D?%'<?Ug2)>%;q_R3g;wA8CA\`<uIt@c)Et>\\I ;AZ>q@:B=[D>?6IZ>,R;%;mWgXRX!=6H|AOB=';;"@KRbI6&@H4<f<A>f<dHHGEu;C=ZKl=; A7D ;;j@MjO{<s.;*;*=<\`<)L><1I?7M65;%J C]B;JCB<?n2>?DX@+G9;KZA0@]>E;P>@;V<3>=>t<I;w<1;R?6;(A >K'DAA2=<.;;?I>k;CBjHj@ef#g=>@=;G\`,;<OAe;k<o;;bOnEG<=GZ@?@&<$?OE+e<@VY<;&L<Av>](@ ;#=;Fs<CoJ,OJI S\\#AZ;k<\`<o; ;F;$=C;k<t;);<LK.(E;;H=J8ByMO;.<|F<<C;j<{%?k4)+=?;w8<=V;Q%<(GV;t<PQW?= E;7;=@>9g~SND,Mz;?;zZKL=4AKGgUIJJU+BR;==v=%;eIaR$; Vu@_G'?eTMV1&Xk%E9GFXMfQ-$RbBR=bJzAYI$@sVgg]&\\{]B
-ihwz<
->[Ng2i;~KbUXKi?XKygf;h\`.h=pKG'G<;_H>g%CgHgpJgnvAni8B~hTT8hy8B#hWh2
-q;_h\\gNhnPgTag7=ilhO!g%0;X
-D8jA@cmgz^ib;N?Pg0;Jg;Y;"gS%iCBl&!;g"h&ag"^
-wP55
-lG;kWOh\`EbZgA[IGFg;Wk0"Oj|
-ihwz<
-w#R
-gIX>R
-KDz="g=$?YD=ci#XFAh?oh=Pg'GgENeq@'>?8KUbBeO&<XEJg+7g-rB+=d;Yg;Lg*KTC@3;89<pSDXAn>@"<;gVg;.g>5gGLW6<L=g#6@\\go7g5Gg_Gar,(/ 9/)2)@J>U=OKW>TBMZX;<[hc_C]hQ?
-j6
-w<
-\\bjVj#jJNEG8gc;ggRg0h/S<AogEV5;]\\fg[H+gwSg WTEKg[Oe9CQ
-g-a;RoH3D/i5,g5!gTgV<@ma.\`Sg'im_B6Pz=R=?*;kge_
-Qpkm\\l"<ng$h6MgD:g=nVdaihL
-AAitb>iAE[pvL)A;6=(;/Ozg"g
-o\`khq>l~j>K
-t7w;gnT
-o1MdphrmD<gl'S:
-w(U=^
-gbbg!KhppwZPCp[D
-gn%?zG#9E'MmXnDB1[m>agd;;s@zAAWigLhOvg3&h06g@Mag_Np<g0Ih'e;L;d<<hRC#CU=KFk;nTKCM<,EuJCB"VXg)qgUXQh*JB.<Lgv)E)g,G
-rXPcx;H;B"g6=;gDgnh2yOD<M>bgC
-qS
-DSh*Oj[Uj[-kv;g9%H;;wgFx\`NIgE,^5Egg5IK)F0g<\`F>Gg1>&=8g<\`ia#gfi"P
-C=]A8<L<7Hk>$*>-#;C9 ;)=g-=h;1/4=CD^?K@<%>>-=;l 5=IPL;;@+;>C!=p;(YA;9<AH<\\<;%;;H<4=|E#Gb?3@N?~EyFXECAGM;q5;=+*;(<?0;+OW<W;?>gt;<zO<;>FW=2<n?h;1(;@0;<R6;);;m/=<d1;1!<3=8;n..FgE\\;}ALO{=Y;(<<?~<r;2#<N<f6H5;l;<b;/<Yg=2=X?=";,;-<@<i6@Qy[+B:< <Z;G@B<RFiBa(>)W!2A;+;p( ;aE3>); <T?RA%;;<MR<-C?eLJ=o;p;d;x;l<;f;Q;Q;Q;Q="<;UBDn=>pG;*;H;;3;\\;]<=<:@g;-;X?2B<h<c>DER;!:<w?{?85;]GyTV"?-=(@\`B\\;KENTr;.@=fHlBmE-gDBP>7=9<?C7<'67C0;..;F(;^@,;+J<A;F<l&%###%''%####%;/);;=z=k<wGSLy;0&g 7EX>@O0AgGi7?[W<G\\+@vMAk;PCrCpBM@u?#?7gm@5@7JQDq?UB=<A> @3;K<{;!<J=1=5>V,<Z<;EBS<d<1Qq@iLi<Gz=DAZA(;=;;.B[=zGZpLZUm?0;G/;fH;-'';LD&?HB";>?P;P;|?DiK^;3<SK\`!#!(B"<2;E<]&%###%''%####%;/);;=r>N=BLK>*I[A-=u<c>6ClKGBCM;<A]5>7M2A;A=A,@XCsLMG@KGE>)$>@K!A)<BKh;fK<<3A&<M$#?Aa<!;$;(;n;HG=ag!.JQF0eI}?CC;=4?aA;1;;y6;[=o.Aw=%Ax;#,%?; <t;DH;(@}=(>3;;U=~*1;H;;0;!;!<5.";2?'':<;w;%=p16"  ;-2;F<u;X>s+AZ6$;u6<r>#=5.!; ;;;"4*$++;O;<>;j;(@Z';"&?D;};~04"%69; ;&;N#;:>8;2>Y;+;i;#;a;4<o>+A)<A#<L<>5?8;H;K<;+1>o;M;3<F;{;;?1<?4<X?;;;z)'3;#<7;;';T=9;g=[;;B=<?O)C&0=vB_;17?};%=UF0;2BB;;w=t+3;+-,;!;q*;@%<;;3>M-,*:)4)!=8?9;0;*6;W <n;L?$B3;;U! 17>f>>;"=;1;/%;>;;8,(6,;J;<3<E?M?9;>B;k6-;;:;\\;);:;_=I;2;i=V;;%,<X#%;v;=A,B^=*<J<+=n6',(;q=k;3<>;D;%@>"+;;{.>;;a
-w-
-hUB
-w1o
-g8+icE?^gaeg+Jhw,hdMIh"1E*=!;Yg;$=1JFK2]S=g(q;(Kt<QC~g.;2g-7B JiB;]2g(/BYGOE\\d,R';U?1=3O*gr8hC~gWKII<%=>BguG9E'T^^k&B?T4>ADmG:O15;F;|>]<r+'F9<h
-h)5DtE#mCE.g@g{QJgU?Ohm|]RX+hr,Cf=I<=]8gaF%gT{hN}g7XQ<GBmhDc~
-gJ)j)eM_h2i>\`g]aqIz>
-j D;$gSk1g+k$G;2g4u<dh9Pi?zgCD SS@Z@Q_uhl~<wj
-gl.
-wn
-oag G;(BZBgg2>JdhTpjJ.B<#gnNhtG
-iRJwVO
-jig
-<HA6#<A;/B<$<dY^V%;lBA5QKb&H.JB=a;%;m?H;4;n=<$;!=@?mC@6;]Az>-=~=<qW*R\\;&[^;GCF?.<Q=>=g;<!C*A<M<P=a;?\\Nh<d;o;x;;6N74E<W>o;N$FAp;b<k;Q$)1B7CW;8?;.;>~CL3AP=E?0Id?E;yE9HoD@d@$GMM$<BQDGP*;*=p<*E%Q@[;;E!=MNNF4;W;r?TD<,;F<'@8;5;O=;V;)ENEtC;:;S;H<LdH_;?Y_O;I;?CBRAI9<cI_g!;R>Ju?C>@=;T8##AL;@g)QAB,A{;U;+Rq;3BM>D2;IgV>t_wA~?%A+>[(;=;'<?QU@;b;1BL/;R/';/;";b;9;/;3K-Hu<CLYQqH3K14D5PR;E;9=F?Z@3=U<*;>g;Z@e;;q;GV;??DAlAM<-;2=s;S=!I"<=M*(<<<H'<"<l-=g<F;^.>\`<>DXD=j;Zn;I9A+=;Y;H;;8'&;\\>:>SH<<IoC~9;q;;!>s?F<k<S<Q5BB:Ax0-GEY?{R*BZ?q=ZGFB|?h;<|@LIOS=i<}KfJr?]Z;?k;y(=J;$DADx=#<A=OK^;FE6?}<{>}<R-$;E;-;^<%;A=6)38AK>9?";V;<w<-T;;=M<[+*;w>FB@XP>eGG}HUEI<'9@;;>;)<-=A;R<p><H;+=j;;pA~@9=H\`;lHP ;$=i>^%;|<@\`@uDRI(=:;VC'>:Q*@z=^C{C>;X;aCvG1/BL=Q?^=E@H;_; F9<N>Q>b@E<7QwY@]yA5'^=A@^I~<VH(Kg?*A(<VRe+)#$;?+]B@W@H;n<7DrICgTIICf
-;xCe<I=/%!03<Z"#@v=ZG4Hx;D<Mc#DJ:;-";F6=N;#<@v;M;1;?*Fm;)>{,<pAYAVH@/=;a"(?=f;.<_;z<cF!M;n3;;Ht<n<<i< >51<Y6=t:6;|=V;4-)<V;g;j;% <D;<!;*<!;[=9;}A!<==.B5>+F\`=%P{;_=6<'C C_@ET;~?t;BL>u%;*Dm=e1;.=<)$:9;(<8<e=<X>+;1>dH&DaBj><*Rd;!;W=;N;/3BE6;$5A1;B;P<K6<>;4;%<=8<9;K;e(=}7;U;\`36<;j;};U;Z<mN,;_'> ;$;H;5;T<(>W);l&4*!<.&X3<7''=/)IrA!1>;8BE>J<+;2B[;14;M@[DJ;Q,;Y<.;T-;)*%=;.;$<@;Y>h< =;e;T"17;;)$;\\ ;I<-";%5Dr>S;#/;,"B*<>;!?C;pBcA|=<~),;$4;!%;:6;}<DC8>[L|??EF/:Ar;\`&;F;kQt;>H<<D4;y=b<\`;<;"#;<; ;"$.-;7;;4:;6;10;5;~JD;>$Hx<4;>;;S<_<^5<';$;1.;;$;;3;936;";-.;-IOCC;=WFK1;;Al5$;&; ;$;";#!;;;;4;;o<@/;T<O;V<0;};s;oA{#; ;];C;j;w9;#<+<i.4*.;\\;n<<@;R>N@U;\\;?A!;6>X.=.;/2;6=G5=;;<$@|*;7=DR;>N;};)=@;]1);3>F;]?(=@=\\EhCj;<=E<U<B3;,;Q@5;6;u ;};;%<(;S5<&-By;;"D~;r<{@\`E0K7;-A<3Kh=(=e-;;/;N;+?oS\\;7<$;+A2F'?S2<<B=;5;~6D~;7@1;b;C>J@%'>;2<;*;g;|=Z;;,;"<);j?N<<v=-;";2;+<(;"7 /.;r;';Cb<z.7;Z/;K;/4;;;0;S;;%;1<=k"(#$-.;9;";;;7/;"";K;-;\\7';)'E.7';;;);<T;,;$;i=}02<=t;<d>5(G31;~;/$6==;p1;f<\`$=R2;\\;zBZ;/?<;;0;*=</58":;f;[<L;v, ;q.(;0/;;,2%:;=E<U;P"&<P;6;;;=&+);;26++;69;(;;J;);+;#AH;1C@;F;6+;v;Q<.=5;E<{>*;08;=>=@=V<0==9=%5AI;H;\`/=?<l;K1<a<p;!;Q<I7<^;^<;K;<V=,);;N>\\?D<K,(-;$6<y;};3<U<C>=Q<!<E;>J!/,;<'@4 >v*;)>);t/;n;=;'2;=/3+;;;=I<$;1";Y&<F;<q<*;~;=].?K;E;G5At; )=-0;R;?c$;;a2%/2<A^<O<<$%<f;*;&;+<H;Q;7;6*;";=D);G;-<+Ae;<8<G<03=;;;;_&<'<.;:28;P//;D;40$;./;R*G-@,;K? <!BC=&+A;37A**+;0;%?W->;;2;<@ ;;(;"=&!<;-<^<<A';I<;4+;5;?!<R/<-<B<A (;2;L;);A1;!;);B;2;5;;B2,;^I|;;*/;<B< ;{;^=;[Bk<"6;z@og3;(;;+>:0;"=I<);1<Q/@.>c%&<Y;0;+Bd";L=R;&;;);-!);<6;a2#G%@W;u;%<\`;;>2CxIB;2< ;:C_?R<b;.;$<N<;j;@?';;;<F;;%3;D!=i<(=V><D;I;*,;Z;0?<;[<H>wI ;lCZ</)29#;)&=2;1,/+-98;;;-472;;-!&3'2#0;S;;4.;&;7.;;G'1&-&:'2&;;0;"-;.4;8);+--<R>:@B=>;UK)O\`==s=\\>E2BtG9<h;}?W;GG(>M,<E#;N=\\<D<;p;;N*<361<$;R=|>>A'=oY2=E<}<_>6Ee@+5<$?DR;;40;2 ;)!;6)=w<.((8(.(4(;(7(:(;(;(5)3);(/)0-)(,('*(-/(";*36)<);>);m)5)*;_););(););-;);2););)39)37)6:.;)););(#!)";-)6) ;) ;4);)'0)";;$;0#)1'=:2am =T@~;V>$*7$EZ@HH6A";!;; ;8L";Y>K;>6>";I?=~;>e9 &8;$<x;1;%;&;&=[<\`=h;4;#;u%;?P<;%;";;8:;<;<;<H;*;@+2<;+<(;";V3<-;\\<e*-=F?RB6;4+;m>1;851;;&;$%;i;Q'%$ ;D>=y;L;5;)/<C!$#>b&!<M1<H; <;1;0<|<a<S;<6;)>+>b*!==<a;);G;X*<C;d=^;$$=^>*<;*@0;;_=w;p;. ;t<n=V>*;U; <$+*)@2<3;;;>;(;@<f;+<s;+(;!=N>*:=D<W;!;8;B<Y;c=>;#=[>}>L=?;#(;[=q;0;";";;\`<v=.>;R;"<1;@F<*2&7;);e;w;B;<o;F;A;;<@=);%;';I<n;Z=$;=~?kB@;H-;w>d.;"5/;0;0;2!;oA/?I;;;R;<v;%;!;B)<};!;3;0;A;+<Q;{;&<<<;j;->Q>L;<9;K=#;-;3;d<W;k=I;?;>>d;'?;);T=*;'1; ; ;$#&;:<q>s*;R;(<-?J<';\`;";&<24<O;*=+=9,<P<u#<;\\;V<u;
-D>KJ;Wg$BJD;Nx<V3;V";wD[MSg=RQ?d/UxW9MDg<g97gg\\hh;NA>:EpC5Ga;E#"@lDV%)$CRJx;8;";I*?m=metXgbL;<$% ->{;N;<gRjP{as>ABjgKzckN{h;df/gK/Dh;w?Ih:g31;^g.}CJJ_IJZM<V=)D\\eqBr<5&@?;HX=;pgfgB0g$g#=g6rg+ehq
-D3_TAGe3gfDeS5'UC#g.Mgq{g5m>\`h>Pg 2g+[;;KGy;s;U=PGxA?c>P;V;4<<>};)<H;:Be-Gj;C)DN;\`0;k1<#=<?<@</><;&<;Y<t?q<g>$TO.;R;<PEXQ);d;&JVBS?,@,&=<(;a;0>s=+ByBBH<G>m9>n< ;4:;S;;;E;;d4=I=m;<3<:>mG);<43<\`8<J;sA%AV;\\;S&>Z;M;6;G\\(<";t<U<&=n;N;M$<wBp=A<T;{g M)))));P=;6;n>%9;D+N&cLE ;j;R/;2;r;";DN!Pt<Pv;\`Q{<f;D<QEr>>4KI;=;6[~h_g!Bn;"R[@/NKKZE}=a<,D>C;bg /;z;A:Jg-=!R/////;"Tb;&g?r?|9AU'   ""88888:@;f<]#CK\`Nb<#;D>;fH=};4>BF9F*U\`PQPTI{=9=G<L=h'P\\;J\`4U^$=l#?y;3AAf;K>*N&C0/;J&=?S @0@MI'c)gl L>g+Cgn*7;))E*;9;<.>08@c>G;T;G?5=XAnBV0;@u3@Q<a?4_3<9IG
-pH
-wM
-h 6<NDIhig$B<=1;S-iYt}Aj#xhU9hX
-nU]fqg*\`r4Cy
-WBvt3<<=4<q<9
-SY
-oiTq+g'g,,<g;F;37;iB;9F[?9<-;;S;~=h>uPgJii<>v;'<)8E8<pgD%cQ)=J;l=\`H#g*B7=8j,gGOF6enA|I/j/j
-tUPh_Fglgksbg.X@
-vCBnB
-hll4pBhE2giwZ4
-q(it-imq0
-?T>B=,;O=+,;>A ;(";F;q%>M=O;3B9;g,!&;);<-=>G<D;\\5>Q=f<B;9?>E+?<!,;#<N>Q=#?I;y<# 1<n;Q;7;/;9';d;;";?0;c;=>k>N$;t<R;d=#(>;@;+@C;=<k;?;% -$;L;G;>T;2+$=4<;9A(;y;m;/?N<9;;?W@]=@===9;);=;R;";Q<3;B<4$;<4;P);?=h;p>1;Q;AD>/;/=/;/=,);0;u;s<;&98<q;I>4=@!<;X;}=>Y;U6;\`";<!$1;L;;"=f#;<;e.4;S%?3<v,;;;T;D17'<;!6-<g!<;!(<U=S;#8<w?m;;W;P= ;#<===!(;&;5<{;G;!;E<x;?(@<N2;E<%!%;Y=<^"C<=  EP;)?S;p=j;n@a;H=m;1<X;<iAF;r<b;Bc>;$$;n;N;G1;,;!(>f;5%<0-6=t;U;<@"=i<<);';6&<};8;V;;&%8<.,<;-#:;LD;;a52?2A~>2<4;';;;}<';6;>$;m<>>;q<";Z<J(6;^;?=;$#;f;C=D6;@;>,&;G">h;^0;k;;=];!+;*-<=C;q=;;b;[;$>0;+6;8;";q<S;K:*;4%<]?|;{;[;3={;e; >^A=4>+3;=*.2;N;q2+#/;"=X;_<B=b;<g1>;J?>a;M<=q;8;i>=];*#"<(;;6;+.;;Q?[<8$<e;k;_;d;-;&<<^=<D=r1;l;Y;%>o0;@;+8;P<z;Z5<;G= +=G;p;";^;:;K1&>V;{%',>)<A<6/; <n;^?z.;@==<4<1;;}!8;;7+<3;);J/$=t;9;D;!2!,;4!;B;9,&;93! <i+;v!;5=+>.;>?;6;&;d;3<;V <w=H;J<<b<<;t=DAN!0<C;FAk;R<!=a;/;K<b>;@b;;k;N;39=/;M;R;H;K;g;(;5=C;K;*D;B;;9,!@/<:"$I<;<<Y<D; ;3=A<5<;><;B;Y5;;>};^A;W>z;V<6=f;h;2;;;';P;<Y;R5;v;&;b;m2;2<=O;$2<(?U<[;=*=Q;=n<^;@,;*>\`;E@g"=9;p8';<;.=;d;1;;';I;&;h;\`;+3;N;|;l;.;19;H;&4,-;6<n;f;Q>;;"&=*=.;3;35BX?<17;d<M+;i;>@J0<<~=V*"@!;+;P<U;(-;k;9;@<#(<r>;C;e<\\<n;K;>6<>;T;l=B;S;;>@@.;"<;K></CB=3;?=w;&BV<I<gIP@i;F";};gA1<>;p@_DQE^?f=C<z/;Q;(;=\`=b>8?;;{;/?G=CBf<&<.=r;*<b;;O;$<;^;<^<<>7;02;g'#;c<[=@;;[62<l;8=>m>;m=hE[;U;b@z;R?r<W?,=s;L@7=V#>V;g/<7;;1=";V;I=K<20;=T;j=C;;8;=(;H<H=I<-<7 ;q;}3<B<Z<(3<<Y;n;5<%6<Z(;j;;6;H;b;S';;y=qB;[;;<*;8)<<F< <Z>;;F19;/?(<9;";;,*;<7;=v&;j;d;<y;j;4<0;V+;B-';;7;p;=8<6;;N<L+;*;.;1<><b;O@<J;/>\`<G+%@H<;;;T#<.;>;5=B;7;;(;!%%C+;?;.=<;.=)<#2;E;o;:;;);$;!;=;"6;q;Z;;5 =;h>c=$%=y;o<6>c<;&&;;C"<L);(;9;[;5=2+;()>b<V=';MC<*;O;@;X>/>);G=&=L>;Y(;/;Z<s;;J<;=;;m<J<w;;:<p;S;v;<b<&;l>0;)<~3';!=w!;<x;_!;O;p<g;@"=c;;\`;F;O<V;T;1;4<n<(*;r=v;L<Y)#;j;!<q=<';;^;K;I;>=S<m";H<b<h';H6;;u>>>y;t;x;Q;8;h;=_5;";6;$)=>?y@F,,;?q;<R#;<<;z;f;3?=OAU=n;;R;< =d9;g#,.9<.;&<u;9@%BY<3;[.;, =<;"<I,<o"=');*=F=@=5,>=#%<!=*;xE;|<&0)<a;s;<^/!;<]<<W;</;;<;I;P;;2=C*<J<Z;&;#'?"7<% ;j:;X;;;F>7=K=t;<2;x@\`=I<H;A;Y<F;<<;>=.@[?&<6;A<;9;O;O;;K;,<Y<=G= ;*;=e;?N<_;H;K/;p/)&;+;";";277;i;{;<%:<;;'<K<$;V<y;.);\`;S'<>;;J<;^;j;m=?;?'>\\;K;\`;+*;={;4=,"=;4=?<;W<J>D;.;^;!=<|;F;l;C<,;?Eo<>.>+;F;B;k;= ;e=]ED;p<@.;?I;&<H<!;Q;PA;~&";^<l;;L8;<+>@;%;"<<;c=o;1;<4;=T;j ;e<#;7!;u4BR=e'%;%;g;e=+;[(8:-; @>G<;!;m,;G;K<d@8<=n>;><W=h3= @C=E<.;}%3GA;"3);+;]<;;v ";<,5>i@JAk?8=?&;<;A<w;o1<y<J><;+&;V;'=w;\`<;$&;! ;%;N=K;E=;B=*;u$A1; =e!;l;|<;X;%;T<';;I<H<3<;:;%>-;<< ;%>;<g;<;=k=(?$>7=N<<<eAZB';x=}IT;5;!;1#AU>G=g;!Ad<IM=Z=EJ&=O;J;K=)Ci;CCkM0<$?FXe@D4;R?L>[;!<H;:<E;m;C<s#@>(Hi<DJ>0<P>z=?;Q;r;z;";k<[3#;;S;*=N:";C;4;7<;;7$$<\`;|<e;-;V2><#)/<=;,<K7>+912=&#;s;d5;,<Q<b;;;:,;h ;M<+<{;*<P;;/;;";f;;7=t;*;)<<;_1;5;-; $;%;%;";=;h;/;,;(16;d=;=:;]#; ;D;&;v8;;;6;<;/:?1<."%<b<);=4;%;$;*;};j=>;$9+5<x;97;E;[<u;\`;<R<5;&<A8;.&;(;B;*;2>>=s<+<Z(<a<s!$1<4;;0;);%<;4;I;P;%;S:.<{<;W=3 <d+;M<$=#;C<":0'<h02&;+;f&;+>g;><E38<8;:;7;*=e;U!;m*;I;5<3(=<";Y;;]="<G(=!5;@<2>:2;;(;E;;;z;3;c"%<~>V;:;Z->x<I*4<n3;<;:?;;={.+=D9;K<1=s;N;w;w;i<b<D<B<;;3;X;);U=i)<#<,!:"7;!7;g;;Z=y;U;/;H;;q;D99(;$.% ;&>~;*=<>6 $;\`+=;4<0; ;;.&<+;3;<;P9";8;e;];;B?=;&;#;;B;<S*1<C<R;2;#<B7;]<U;;,;p<9,<Y;;/<4<;\`;;*<-;8<<^/;r>u9-<R<T;'>>-;,!;7;3,";?0=r+<0;J;u7 5;;G>N$0=29;q#;~;L=/;7;J;n;B;d;E
-w32
-wKV
-wQPFa
-g!dg\\T,gCig$?J,;Ee=ULJg]L+=\`I$c\\g?Feg/"PpgByLXg8+YXZaZQOR4H.O\\P9Z}>)d+Q\\gT|Qsg3sf3FKg8@ V>ggYgah@{hm=Ongg(;J=J8=^g!grEa~;FX=$=B6gB; TWIe?SI;:D5D;3EgA\\
-j|hhc)i,whPOg2+jmcgZ~h|6>mAAO>,g/V@ER)gm|g6]ffrb
-Q^U7Ig9Ug>dh0E0JN>a?B=lgmgL.gdC@g$IkdQhk
-wEi
-vx,
-w$
-p02g5/q}
-h/EVcI@AgWFgwZ9g?3E>i#~g,-g!%gzg8mO8JABY@=\\@F!F)AH;S?;)U8<+5g@hLg1$UO<l$VL@gO<[$Bimg.$g0Z;g++&fm3dj%c-AaU/
-ovp
-t%z
-w^
-wh
-M8>FgzTg;[gsg4@g1vgjgEDgMao/Jn '
-h\`lhRBw=X
-j-)
-g:6iaD;Ni$EiMqM.ge|WW;Ygf
-i!X
->%gPi}ng2[jBeg_h}kClhMy
-luvZ[Og4
-wb
-jLhsQiXdgEg??t=$OH
-w/(W
-lv\\gh
-pHU
-j$aP'!g)uhjnGOoiP]<k<c
-h[ig)hGdg$q
-n$Z
-pH%rogrw5
-i]'
-RGo5J
-g19
-oYg,;H=gi?=OkNC>f@->E<A@<D*N%K)B!/=aF9gh7-V&>4<5Vph'9k$bgD2L|=V=dii
-pGw
-gM:>Ag2zho'i}8hObhzgb8i}-ifgvgdc8Np
-m</
-h%%aPg\\jj%4;.gSkg;_g\`g_WTqnN
-hchB%gNg0yg3igpgj_~;*gmG%gn!;$;kgVg4ghaM/[g~g#mgJ;L@gq>HIA0;$;b_EJiEPV>C>PV;}g<;v;:(@t;-WOUB;
-<(gwKNJg gi(GD
-w=H
-wsBwgdJhK
-mwBgs*u^M
-h!$hu ;gpBg&j
-j,RiGVixv
-i|>;hF5hBFoj$
-?'?i<J?J<4";gxB!_)<'V3;V";wD[M^Jr8&;<<B+;B<};O;0 <?F ;9%;B;1.=;ug,F:Ek;;c;8<D  ;^;,;(;<=<'-=E;n<@+++;,;#;N@11;rUx?X;/>LAO+40<^AD<m>AIVT)Ii;><a!=o;D=Z<.;">@A;4;@G=@#;m;$;r< ;<^;"=;3< <9>4;g)BZ>;,>Ig<;;J;;~;9%;n;RgJ;]G<Ll$;Q<W<&(JF=:I?u=%A8Aw8ZFHW;?=1@C?l!=!;:;p;(;O><?>T<O;\`<DW<2;$JU=n'@l= ;3;;+;$?B"E*;s6"AM;C+B'CK;;";D/LS?|<)> =l=5;:X2hI?R<;<=|<<3[U=.=V);/;IAcIL@e<<;5=[U5?1Bk?Wpg cD!<G}T}EVCzEgKIg<i;VU;!<8B>K<<4=<>#<=|<$;\\=;@(/;G;";;07<9<\\;"\\+>:;P$;w;!&+;1I>\\=;";@s;G?$=MC=<}=@?xDE;;E><hf@>a;~B*</=;5<F;$;d;g;;+;.;(;V;q(;I;;M+=ZA=;2;;o;4>q/;"?;d/=R=C<)<v=K;,;)1;;A:<:;z1<j>X<QA(<c1;;;2;{<(OC=e>%</=\\;2FG\`=+=E";.;J;r;N@=;";<;>;!DV@xAA<E;M>%;L';L;y<[;3;J;<;PF);~BXHWCf=4S<BR7ea?;RNPj;<@_??5<@\\BYCUIcA;2=5<U<;;FA;;UKC<v>4;pgfg ;;L%Bp=+CPQ{D+;aF6A&>eB(;3;,2<n<-?N4;G;<7;T;$J$'>n?\`%<cW6;4;?nA\`; ;S;:;@; ;I<3^<hD.>L;ZB@;?*;H;40=&<S@D8;^;*<5<;N-M>(?P;,$"?=/<kCN@9C%;?;-3<y<@'@/;;Y;);<0;I;u;)F&A(?|@/6=K;j*FG;_;)1;=p=!C=;-;p;M<A;K<IR/0G@=+Ex;&(BW;<8<Y;>(;P?Q3;I;;I;8;d;*5C@/'C6 
-;cHZZZ<7N38R@Q;X<3BP]@=G%3Ai<Rg9CMJ-@gH@=(UTg?J;CgP^M1;&U'=go;LeDgEVgE@g FgjgPyg*{hTiaECLgO3"glfA6M'A:g2&;Ii*GNgAjg/@g8 
-w/h9OgP4g#PK2F>
-w:j]6
-qvWrI>
-wm
-iaS
-dgkIgYXgQAjAc?>l[Qg6$LX
-m!ha
-j"WiwPk<pjt?i<FgAQ_kg)]da
-ls]j?\`lj7@K
-woo;:;rM(+ ;
-MpIC;Z=XAU<BvHb;@B.;;<)"<?&A5)@;Ab>[;W=4>]=b;r;%;]#<4T,O*@<.BQ?~ajJAg#Q;;j&H2bM@Z;m));0SkAb<!; C?_Zv<1C;,U9[!]u=W=w_<DPAJ>xA\`AjeT9KKgLYaEL";F{bBI<R$E]dLg@S;5Ra?HY;9gVAV1>0?6;?xgH=L@d HdAPkOYrI/AFa;8==Z<oA,@\`]IWEE^qN<Q\\PD>BFmUDFO>WD0Bb]LBRaTFgo8A;_g1Wby;wIeg1zZL5I#@2_TI1K4=5;FiXg$2Mh@b;b=>&!g5JJ@TQVSg)p#D;g9
-whg3
-k[Zh+r
-j3:M}k9Oi}}h;pN
-w:f
-lfehu'g
-i(giwJ^gdg %(-/hJ=g-
-ik<"g}pgBoK= 8<b;N;;Q;7\`iZJC>gagNHgH;VAAU<P<tgUQCx:Fgg%xHQg*H<PY>ZQA;kJGg+I;>'@!=n(;h@S@@;{(<;ETg&Y*;c3gONugg+g|BJw?0gAq]\`[\`T})g.=$="hc6h$V;-hH;&g)4
-w8b
-YbCa;giBht;]yd\\g*NiygiXe'OMadg ;FXNABd;MCCEPK(A"Eq<)K>;w@wBTBLqC|E|GJI)A"fTUJ@LE4I0L;I;*>,WmAcD\\g6}<|g'mAhMfg(R#J<=#=O<LrH[_x;F?!gw;4;T=?<8>8;R6W'g*W?>F>cg?RbD>DK;I<5;U@?-^2CxBsb/gMX;;QU\\C\\=GE;L>}<r=%GG=gJ:@X;<U;*;1;;PODZ{; ;T#L|g)<<VB<zF2g g7gg,:g+,g?
-^Ki[Dieym%,p8g3
-qrR
-j:FhTZw)c~
-qw;k/\`<J
->siw{wa/
-r?h4l&
-gfghiv<^g,hgb_gcdj<fCWg.t<2A*kCg3Z@uhfjag$JzFY=HPgyMH!gUg1/<yBl
-wY9@g
-;rlyFqi6&gKi5gA;gzzg+@(g4=?n;@H@Djd;%gf
-i|q9&
-gtm,7
-vAw
-=8By<I]E/;;*;H>i*=<W;5;K;<4);!;.;<;;E>X04/=Pt=h<+?o!@]Cg?N@/ECB;'*&(=j<P;m;; ;;=';4.;a; >n.;=;C@w>[B>E!';S<=S;<'>=u;3>M<W<d;aD?!);;&";P;d;+)'=j(=<C;;<S(>>(<%>E(=g<$;(<3;e&=H;4;U;%+;7<W >,;E <;<=A[F=;*>EA&;5;;Z;=@V>q<-C);m%?=<a -;B=Y(;uC+H$9<2;>8;&;IZ(=5;v;f?(;?;*DW"7DHBA>>Z>H>l<9A(BC?Z;$;Z<e>B<<=&;~?3;"<)>;;BA~<=>4;")""B2/);H5";<A;p);8)2;$"1.;E!7@0;m? ;G;3;(;>; ?38=0<N;=;?:?\`;?B+++*>@_2;G;];v;~AhIQ;;9>==C;,<:;H>|;;8!;O;j;C=H< " $;;>(-?%;F#,<;<K<;$;&/;n@Q;SB(<;}&>\`<--?8#;w(7;H/;;2Cx=W)( +4)2 !2@);X>=G;-;Y"?4D87;F;g;3=\`<5=;b;h0@f&?]-<#4<1=!;}K!Dz>??;#'?Ga;2;z;DBp=};wJl<<f;<9@;/;<; !;;4;C;2';';';B;:gp;2;P;!;;+;=;*';';";5;3g+g5LT@]A<FH\\F!;y;\`>-;x;2?NN<4B=4?P<v=?==W=><C8;DU=w;E9BxD\`A'<q@_@*==&<RWE;e>\`;!;7>;0RU;{-94;<C=iR7<.@ en>-\\GGg??,=r;uF%gr9;:;I.g&==(>aHX;*;i;?}=L;>?A;=?^;=?Z;=By;;l<<;_<E;,Q >;Y;DO;F;Av?h<+>.=U@y;==ZB/;R;C*#cU;?;) <b4>w;u;1;;h;-=]=5;0<;t\\WJP<=V;~;;<x<@?>qN9----'Bn/;9HA>ARv<~<=T;@5<_.;>;+9H8@;+IO=D<yF;g/G"@M>z;@BQ2H =-;5==?*N@LMB\\g?;N;"<gD[?!;U7;;0<9;c;b0;;1;*9;&?\`AN;G;">q>z>tE9<V@X=O?p=9=<p7;(=%=|;;<NA<}!)@p;(;$;; ;/;#;&;-;/;!; 6;%;,3*8!3!;!!;.!;D,;"*;K1";E";t";"<";";/":!";&;&";9";";";##";4";;';0";";!;";G"6""; ";,/";";#";(;;L;>Ar?3;>G{PM9;\\=EB=1)0&))+%';_=LbiBz;MBF;Y;<>;2+;:;T5:7*,'$;30;C<*!(;&5;'!&*;*7+7+;a$;;;,35,;;;;,4&"#*3;&;#<f;,(;.;";#;-!;;%;L;T;;&;!;J;1)$#;0)6!;;) +*.3:;0111117;;2;:;';/;(5"/#%$%2-;G);+)%*);0)) -%;&.;#<2);=..;_gP<[b7!;I/;0*&;])37%)#$)$6;;;;+5;4);,;"!.;*;;);2'/,;S,<5696*6"#;60;&1;97;;01%#%&;*(;;A=;;&;1; ;7;!'*,;;(;f;U;;;;;H;-;%6(/";*#.1-);$; " #.'80#")3+;!'!'!'!'!&;+1)1;+/5%;%;$&:%;#1(,3'%.#0;^$++*3$0;Z&)!,:;##%9-86$;y,'$;!;/<;4,8;R;C-;'-;[&7;:$$%',-$9;:;;;;%.*/+0;!+;*(-;*;$(*-;-1-1,;k$)/0,; ;508(-;/; ;-4%""*!9';;*;-<>:;);3;";&%;(*1;;*;d;V;';);%;;8;2%(;,#)6 &;;#" .-44#;;2!'!'!'!'!'(';";1;3(0$;%;%+;-5"3!,$%*1;e)--/3%4#;M&&#".';'/;%7$;o6+$;*31<Jq;!=bSqAR=!?x;;8;&<;Gs;157@hO,2L ?<3>%5E-0
-i!
-j'\\hH
-gnS@blxgFuF>>Bf3g O3B0gfsMmg!>Q<8(Zkh^Gh-hh8Bi6}g,g?^gJ<.aag@8;<f$?@bcT
-h^g8<g~
-jt};iQ6u.8SS;<U;*;1;;POD[|g9ca[<z
-n$YgF%gXThZ:
-o,<!geiFHkWibWg'}gj?
-hcY$g}lWgX;dTyg7{M}g4=#?g~SMRZ i5jeQNg0Qgk4?=gfF%;*g4;g95^P
-p2;j&mqg@;
-hUng$;%g#Mg 6Fvhyg/ts")i[5gL*gPg
-vU?
-i]
-n|
-q$H
-wv
-qyqw~gFJ
-c,o0ijo@(kd?hY@Z[D1i
-Hm;1g0"U@G.S\`g3mDOLHQISp=+;vCTSV;KBfg9pH;f3Q4gt-b+gqHV;$;+IGAh,@1_f;iI7WI8>Q;\`;@H!E=H*<;_;CO!>"<A< MvO^=6Ih&>d=B;A<A<]<eK73@;X=eA74<bH9AxDP-<~M=H;KE=;E?dF9*C20Cl<PAp>x?A_EnJh);;=<Y6;+>{)>;;?XBI;I<6Br;:-1;7<H<;n<,;(;tAXEm?_;)g4WN;2Q*g$O$PP%Q@H>=1L/@2@H@DJ@QyIbVeF'<0GN;><$=e@U<<a'<m=~;ZBF,;+;;<;<;GGQ<_=8;qK;99;-=\\?Z0AW=C>l\\;&&-'&----;#;O>h<qPE);7I\\?7A~;y<vDI?T<c@lCu=S'@;[;<;2;9CN;'<^;%<x;P=5M9AqA4B <j=<#AB1;I<*Ep><G=[=s=/OBE;}>AA5Pdg[>E<Cgm=B?<,&;AW?]<b>];It=bV/V@A*Wz@4\`P%";;&^tZn=LH+g*;= <E;;*;f=d;;;7/7;+DA;%F1>";A1<.D" B'*Lb@J>z!;K A7&RaIF;EgSCMl@Z<%=Y+;C+<_ 0;;(;U=5;0;X3&2S};=;5;85;wA@S/<|;&VS;?;]d"P4
-wp
-wlv"
-gqkh
-gp
-h)7wQV;gJGr;:;.;MP5J+
-kOiknP
-h8_i/&]c
-r VrVF
-j,Aj Xl^c
-w1'
-p0(j*\`iQLA$
-nUSFg.ggY
-w
-ovtgv;w?;4U;:HqI1n@9<g;!;)<I>;;F
-]2'sv-m\\ti=w
-lM,gn#ggS{i|\`BXg( h9:RgB2OgUngcg~OgEFgcC\\\\
-wL
-gunl
-iQ9gw02?7jv0h;OkZ(g3m0ugE:g0dhV'g7m
-j|7i\\
-iwhGng"^I'@uj'2g4)>=
-wB
-i]j*d
-w\\1i<Z
-g_2h%I@~hiw :@Kd0
-W.vWN\\
-m<m\`^h{*3h[$
-weangR&
-i!Y
-gFiwOh\\ChugHdr;+i#
-g@ g;bwDW
-g!O
-QZ]g9gRbgRg$Djg@GCG.;d;x;l<;f;Q;Q;Q;Q9;E;)<?xEDL>_OPSb2fIMh5}AQ;;$g)~jQ];@~gHREg40g3gC6ON=7;;h/gA;>h,h><;H;^g7|g c$"E8;g(u;!;;8;'Bfep;IVq)Dy;D@MPX@:
-pk[
-nRGg!kV
-p2<
-tbwm$L;w
-g!6gcC!ghrg8L<AA7jEOgH+ZSgwaA,H>mg$O?P^J?gO=BengqQ-@K=s;%L/g-A; <FYAgwhg'&g#g^g6g,(D<FQ?D5g=H;.@VPaGSh&ghwg'bgfg/[Pg!bL[g!NI~])[(g4Bg18
-]^.;Ea-MmgqWjzgX;r$&iB$hV)g/g;g7sg,@g+(g?1
-igWjFtj1
-wDtLd
-QXgjgLvHVQ);h1g"EAg7aQK=^ gBXHaPrg#D_<lDwg=S=L<SgMgI;gAO;A2;8guSEg0d<:b<HIgl=zC?p8;!<5@-Ak?l?WhcgCgT~g\\g1gL4g|gN-8A@bbg(>ig^qg%~H_XNOR@+0O8>>q<C?GJ"BL<bBVg%1Mbr]i>FF2)KL
-vSck/G
-A(>:<R>N?P<|/BN<L;D; 5;r+#<];E;1<c;|;9*;v?0/'!Ar@1<{;x<8,!2;!;uAz;0;/.<O;j;C<6;<?&Lk;.=,;;i<C>5> <w0);I+#>:,.Az4;<BD<k4*;*-=0=>w;mB-;/<=;k;_<50=W=<\\;$;[;SAg;T;-(>R+<I;2;6<j;;Y=7.;l8<;18<&<zAk>;:;;;*;Q<<T<<o;3?;;N;$<; 4;.;+>8;J#;0;);R<=*<";='=A?[<<U4:>;9;,.;9;9;&=-;;/=;>%?P9;(0(5;(-<;>C;V4>i!; <M<?;S>2;I;C; =R;[=@B8>n;f;6>\`?/"Bh;+;M;l;N;'BH:===!?g<4;A@m;;;G=7!&<';- 5;.;98;'>3;==n9;HCu=j;Z <+?5<4;=?.>V<H<;;?="*(<)<r1;:;$=0=k0<e>[;@=<i=K0;; <k@s<L;5"?U>B=P=h<Z;(<Q6=<\\;Y;>;M@=@d;;';O>P;v<(;;><=%;;r>(;c<-; ;]8);=w;n;;$;81;1%<<N#6;i);k>4;^+;/;I(;q;C=S7;8;;1;;<5;c?iD#2;v<;;g/#";T;/;*;7;-;];<KB;)(;8'*;Y<+;<;$1;!;s=Z;G;:=)@}&<h;>{;!;;&;I;(<*=;UBP<]<q;O=<2%<+;_;A=1;R;;G?Y3+==q<!=;Z;h<4<;;5<&.;H<|<D9.@F,;;!2;N;;*;S; 2';2</;<;:;-,;*>;N2&;';E;!;d<~;;;+;;1;;<K'<N<;N;%< ;8;B;I9;e&;;k9=;<!<>4<D%-<m;z<R??%=F=91;;+=G=0;\\;;0;'<n;'HG$;?Z+7=\\A:;5;B?)<;^=O;Y;3<*=;~;9;/;E1;:;S;H;hIJ(;k<<Z;?!;&CS;>I<Y<LFuIJ&>Q<o!>?BJ;*=f>A<O>;R;G=;>&=f<>k1Au@x!><5\`4;;P8>+<XG:CE;i<As;RI$,";3;; ;R/DAy;[?@pB<;[#;e=4>@k<%;8<(<];<=/=)>R>:<%;>;>;Q;);<T<FN*>p=<4?;}$(#E%?/? =5=\`="Fz*<&;;F=-=_+,4<z;A;F;49;d;.<];6=?[;V  3>u;H.9;r;9;D06<~=w;j;FA65;_;#A;I*Hh<E/C};'E\\Fe<<@1=i((%;;3;+;?;;);8=e=;;5+;>;~<<?1@B;-';B<<2< ;h<I;i&;<F E~;H?>4;< ;(@v=0;;?i;}=y=b?]>u;(;;=6-<R=I;;n=P;R;G_>Q<<<y;:<j=E=EKE?><?-IIU?_@]<eBFA ;*;>:; =CS>P;7C5>;3;??g;Y>',C2>H;8;}>@R<;E;<#=;q<{Fb=?U;i0;?#<:?R=I;O=TC);i:;{;(;;)CpB(;"AZ;3/(;;B;R<0@4C>Z<7;0<i=B17O%K{>}?XCK<9;;=G=2;R<;/=l;G>EBdKB'>CC,/A;.>>Ae;;J?]<$=<(;<<\\;(<^>9=};$<4;:'$=8=X<4BZ<<?CF{<@@LBHE]=q;];EA'6;S;"B);"Az= E8<6> ;7;L>x;<<P@8;9<!?;9@0K6SeRD<.;eH"A<x<S;k>S?F:;@D$ EN?#D!;i@&=X>3@SIG;{=z@F;7<2@<7D80;.H,?L;@M';;5A.?]=O=hAz=L0;<Q<b;OgBG<qXGwgS;;6\\;I<<C3;% ;S;I8;A;2;& ;<^#;B?R<7;&;;;;;0;'>[<=H<X2;9.;9$;=];p; ;(; &;5=c<v/;;7:;;";*;j<IJ>r;,+;c;&;(;p;y;p ?X;b&;N<a=.<4;;; >XCq.;.;b;;$;[;B>k<2;P;7<v;H89=E;i;F<y;8<.;;};/;h> ;K<I);D<,$;u</;3";a*;F ;>.;/$;M=5#;9!>q;W  ;<";;F%;!71;;2;(;'>R<$>I*<g;;;);;G;$=y!<W!;#;9;8';T2;/;< ;"%;=%;n;%<;%;G+$(.;_';#;^@S%;P<I=m;;#";H(;\\ ;4;R;0;";!<t-;I>Y<-<";,;#%,;;/;;4*;;>n<#=s,<H6;K5;;C;>5'<P!;";");9><;E;Z<C*;4;;;@&+-;;$;JA<P;@;P<Q> <!<; ;S&;V;";5#;S;+;+<+;l*#;| ?O*;d$;/#=%;X;Y;1;*4;;;.;>;> ;>~;e<w*=<;<<-;L;T;+;#0;";;;%*>y$<$;2%;&';(*;;!;\\56;<a;-2;f;7;#<Y;-;T8%/;;y;";r@^:;2;|6<E;;";G(;;6,;&#;6;<,;O);P>;<;!;;#;53;>;;;E=!;r;=7<");50;d;!=$<#;;&;0;D-0"'<;9;1;3;;c;;)'*,;L;!
-w:e
-Gg?.gOhVfWibPBDg#}\`(7'g%LhA}]\\>Q;<3<b;N(;*gO=o5;}<w*(Iyax;;J(;0);P";;c94=5;*=;\\;:RIRV@-;c=5<A@<JhGXK)B!>F9aKUg)h I>o?MIcgQ&=J@|EChv<:;\\B>gUDY6Ts/TNdsS$h7_gCw;;g\`);\\g$W
-kOi7hFG\\9hdh(Hn8j
-gBnmZ3g!&g
-F0>V;T?dEw;FG<BiAhDo;k;\`Hn>EAA=p;z_I;(2"=NA2Qi>&;eLIz;=gfK[<9U:;\\=K EHU$B9J-I{;*Aw;RFVOA".aOUGE+gF#JA>}DpOrBD>A?(g!pPHH|I2<W?'"g$=[g2W/cMYa;{PkGZ<Z<6Q(I#fw=$NYCHNU+gAzCLC[=5<h<2HzBPCP?===<bD<"MQ?i@A@;0;<E+G&B%GuA~J1C|G=@!;(F<];~<<K[-;Yg2<(?1;J9C(<<;8/<~>hEb>f>2<X<bTE.dM??AASGmLe9Ah@y=l;;;Q<~?g?><<=!@%=T=>(;o;b?.?o=>><=;M;B</Fkc:>"<*@Q@\\<I>KCg;}>C<xA^<:O[AO/;4<Qd84gzA:?H[;R;y>C;/;\\>&;KG>F=B<?,;$<<IN3>(B_<.=ng@=\\?ag7<*-g!wg"nGkBNG~g(m;Lg_;[OEFn<;*;L;;<YxTLg1Qg5]
-gf_Sg9g1Ng'g >gB2hUojD=/c^g@Agpji[!;!j/R;#;rgHhAHTt?
-D\\gg]J>Q?Z@@=|h(%gShS;:>>Fgo[g^N.b0;'f?g$:N9cUaiG!SZgG(P_JTgMg5<'E!Tg#p;R_%g)h;vg!<bJ^GVAe@*@B@>U2;"gc]|;~;2grQAI#'?aO%<%g1pdg<QXE])g$]'?c;)?yI!<tFx<RWDg2=T[gZUcG\\&E+<|=\`N@,O_g!gF:gbZ
-WOEv;TAtN6gCh?pg{6;U<=g;fg3;<>AW>BNYgEOhV-X3?;L7;o;?>Y?c3Fg^;l@8]3AV=+(,#"0,;X;,EeVjAS<B}@3=k<<gK<A?<1(L@@a?aC@wJ;lDG>*F\`;4RF<vGb=@? #HS\\$$;L&SFHLcW;U;;8;;,VuBt>gG-=@g\\F";s=r?oKNK49TBL@?-=8E/BU@2;|?@Dg&Pn?X;<=$=N?tGm;a[{>z<<?c;,>C#<y<!;2=>O;h;p;+<RF6C+T/G:CoQCGBd'=2<|;"D;?E?ZFsG*Yz<{C5;gJb$#;D'V3QP&H~]eE_<CZ2Fp<R>W;< >DF;!;W@fE*LhFM?9;@q>GE;g1'Q]NWB4C@*M6=R;y?cGG>M;?;:;(A',gD;A}CSY~gXLO;?>8<SES]Z\`=^Ag7e8N@G
-c1iMl]jqOm53g);gdm!g"GTpF%5K>O}cii75
-pi-nvW
-^=<2jg8j/<9jD[KYO5g6%gGg_[eh+JggchM[SQRh^L<K>A=(h[gu]g,@g++
->MZeoGz=<_<Me*D+g54Bg5m;|$%-;>.9=;K(dTIg><;?A2aB7("));w;/<F(>m;;!N:\\sPF;X;y;; =e;R;B;f>'CygK;]>{;Wg)2<JO0*;yf*;-=(;M;R;H;K;gAVBh@y<=;BJ8HlEQgDhfB?fL;<13C'>I?J;>CF@JD6>~Ni$Re?>GDQKCJ-WKH^gXFwCJ;KIc5=[;'?;4<; <a;%=7=&;;0A;N@E=;+;??PE2%'@W;";@;Z;BDcFY?O=3;a=:<.E?\\_C7?GEkewJ_>/;'<t?.;h;u;%?i<r=;&<o;<*\`U>o1K>;?GX<=I;X2LZ<;">!3<&;B<GJ.BG:?M3=nH.3QO$M'>k>?B.;:;2;""A<B<{<*>3A*./?g=+@,?Z<S;D&-'&----,=,;+//; ;";1>;3;B;q;JA{G%=rJqY?%G;7>HAfQ\\<yIZg46V5Bo;QAp;>B'>m</;|JG0DW2;();8;ZE;6<cCUR{?-,O#=lN^;Y=O;{gm?1<v>.;9<>>N;2\\U=TDtJ[=V<'=2;Y>>-;.<);-;J;K>h=Ab<<\\>k)3;|;">O;&;;;:>#0;A;1=^=sBP4J;c;-F+?X;;>>@{;[<AV;f<YEF?*;3MK<uA=_?DHM;7JPCuAUWEDJ;=@D{>M;lJBAPBE>L;9B\`!;;B?A!41<>Z;C,;;P=;cE@/C6E;0KHA4;:;.LIE#C"T&@@D;<X?\`;'G8?=<$HF&;DB>q;9I*AC4->7EI;FBhA_>>?;
-GX=B>g<;o;=?Q<T<&;&;D<6;0<s;q=\\=B=?(;n;rB;YAN>b>s;\\<d;ZC?=\\;T^>8?5@k>0<6.?^<"?t@=J?6<8<->Q@9=$=^@>Q@NA'@ @+=;i;X;=;U?24;o;u*?|AF="D!>JB4BCJ=t>Z=VBg;c@V; B$=u=q?3A]B"<Y;.=<=%;<C\`=I;@q<XA];B;f<b<=I=<#=1<U>9@R?V4=AT<:?2@b@S>\`=K>i@+@gBv?=*>#C<<#D4BZB=$>D?8;7C6>&;&??O<;r?X=B=f<{;a;?;&;7;q;J;X;E=k;'<+<!=XD_@(;z?D<_C@?7CCA]?,<I?%<|>>]A9=j@ =\`=Q>E?!.<V?@GxA_??tEv@/@R=&;[C8?!@;<>|;HXB<B h*?;;<C!<";DAt<h;<G&<n=&;c<:;i;?;<}>18;1Uc;%/;;X;V;>;\`Hg_7gRuBt;i;!><_@[;n;b;^-Fg&EioX';D&;-;;F);PI;1;;_<<Bb4@<^=9;p<4<;\`;y;h5go=,;-;%;P9>JCXg6Fh6+f\\
-gohp1hvi::g1pM g'A
-p0;!sG4<>?jWg:b_OwM2[;_/
-su{jnO
-qm
-rq
-pJ!Rv<
-iV|; ^a6g%il&*SGgcRtr=
-Rg8.g(^g;0@f$; ;;g,#>u@mguoA-E>"g,kh#ZBThng AgaHcoe{UG\\PGUZ8<+5F;cg8 ExE1+<;G^<1Ir?)NQ}AK>qVXd2<C<g<';;n<C+;D;R&BhY-AS;0E(@g!+>cMmOPE,O1U Y7@oX{>uJ;/?L;wGn=nRC'H);m=;]ADwC_c%K{HN;O ?!gT>H::D=TS^=;|Bv<DRaV)G/ZqXL>;'iB]' gy@#g,-.gv\`g6
-N0i=$GXd=T5K$H^g4ih\\h5.g,a*g(zg*=6g\`h\`h\`PgFglU]g<SgNl"5g)R
-@5;HV6=\`HKGaE-;R>"=og9D'LAW?@E~JhG=HB<i==={;n;$CVR;;?BT;_>?E=@C&?5;9cq>pNu<ELN\`KCFg4\`=WE'O(HK@#;aPW< By^hBA>T;;<,;f3;H;6#;628;4<"#4;;,$ ;;5;A)KkT~@6E/M+eg;/<%OaC;!<$gqW:g|N[h"Mg*i_.Jg;H#@5g#V<^g?vg=jgarg=?g{@Wg&gg,+<gQKI?l<AVegN)Um^O=$SYg(FU?9Jlg5Q;A.AHa<KTOp;@2g+I;|g#P;>1.BLI\`L;CvN\\OL4;N2C?!gw&
-=><M'\`c@WA6='I=?_<JD6=ZB5@PF=6;.$>&/;;'M@CK@B?CA";U<Av?s<qWHHUB&6DhJB$=8;!=tGmRB:TH;.AxD/<0=q<zA<FDNA7;<N3Ji?iBH>R>1EO;0DVM\\<gIeP,=XKY>q?=BY<@6K9E+<0<E>r=];;%E=0<JA>BgHZ=*D>W@;;-F@O:CT<ZDuIa=J ;BR%=W=i>6-;?;B;G;=;@B_B\\A3=y>$99;%;;%;&;%;;%;0;%;;5+;5+;5+;5+;k;S;1;5;z;d;;\`6>q=TCPFS=?Gu5;_PY=";M!=HLa=;Dl;{;0='?0Bb>,>^<)@6;t<:>j;T=+;n>MG[=4<;)A;m=_C;^<e0G1<{?U=_<3<E;g?;j;R>><JCk;A~%>_;hHC;M<<4=#Z'<#A<QK=i;%;2?igBe=9;<G==x<O3AtDV;8;n#=r;s&7;:;Q;=;D;LDy<u(;+;0;p2;4>&;";S<_(<+=W;);R;3AB!< ;;3;=k/;;;c;i;?>/;<y=f=n06<4FM<???X;;b=*;B;;Y@"C[<\\?r<f=;q;P<MB4A?[@e;'<LA';4&<l@;nC;AD&B[=YLtBF,;K<3<b<6<?>m<.>W<0=>C]0%!!&'#=;6;{/=;+=.;B?E;!<D<!;3;%<2;T<y?Q;;W<\\?p;@2Bb;i=g>7<;)A[A\`>KG$;;=<&5;;F(<o,<<<0:B&2<);gB-<*@$8A2=\\,BO<;?;jKR>z<~<Bm<J?W<DI7<"6A?>>g>A=$;&;/=!;:<;k<4<k;S;|>B@c@S\\rFdIW>BDTPT;2=U)>;A;A@i7EOkLGEB_>;QP\`BbD?lKh; @;jGo=5;EE8;;;5; >8;N8;;;$;<;;;-;;;O7;z;ZAl;a=C<@;Q;.FQB)C$;t;6<"<;n';/<q;n<@?i:<v>?KJt;/<M=PNwAE >>=O<{=?>+)?e5DE';<P<b;;;G<(@}BNB>;;{=->/;4;);<<&;;<b<s;=<j;[=6;|;GAD?RQ <_;?6X^ES;N;wI<F;O"%<3M<kA?b7;;;9_8.,><6C~Bg=POm'g!9g725g+B5g,:-Q)%;7O-gf(J%
-;w<g;'EqF#<R;#;=I;\`A=>;a=@_;?vA5;b@ ?N>z)>C<P)=D<=e<;8;<<5<f;6;8> 2;\\AfA?;*<$;a=l';3<i;}? <";w=~;:<G?IBl<=#;a;19=;9@<(FQ;q@h(?/>M<$>J<>&;c;0>;w;;=3?G=(6;;i<;N><;n-;1>W=q=;m<+&<*;m<B(;A@==0; /='$)6; ;e;5;R%;3<"=O;(<;M=+7;S$;O?(>@?s=A;<H;?;<22@z BB>Y1?p;C=:;r=X<CC>gBQ<L;=6;(;\`?6<\`;5=D<?#;7B")5=Z<Y=>T;1=9;7<\`>\`;{;G?UAA;'&<H;j<W;g.;;>?A;S;' ;<V>#;G>S<N@0;a;#;#==;4;VD\`>@?'3!;H2;P#=};d>G";y<%<c;9/7<w;H;A;<(<9=x; =i#;/;;l<5;;<c;.; @<W@<c=o<;-<B+++*>t;?*2<\`?<nAE=H>%;W>0A%;/;G<%;L;<:; ;x"@g?m;!<<W;3>V;<J;rD<;1>v;&>{2;*,<;h=U<<uA;>;GJ?'<;;r<0?]; ;x;E;a<6Ij>s);bA(;;$$;r;,> =|;d;0;+=x;8<<#;S1<40;[';n=k;\`;&<|->@;c@]G,;C>7;M;R;H;K;g;J;/;2;S;(>BW'<M=C>.M;F; ;;y1;;*;\`A/<->?)<;;E;I./;8;[?)<.;*;B7;)=i;x=;J;z;}<3BY;<>,<Z=?9=t;_<8=d;s==(;e;v;V;I/;;&&?$;I ;22!=9;;l=;I;Y3;p;b%<;7?&;T?k>[PbRC<<uB:C;D,<0<"<VC"<K;n;y=?=;bH]=5;2;ZA;$;1;aIZ=_<2;wAC=l;L;";$=w=&<J=r;vA=b>,@ ;;;;v<(;.;7%;;;;;<?;y<7;u;e<u=O<0#/;<!;<;+=38;H;t; ;f?S'=(6;$;s<;U0=N;0;H=>;;c&;];\`&(;@y;<4;|;;>+;A<;'<L?P=M<@;i<@!;YJ%=;/<s;-@5<R;=N=J>G81?o<+=l<A;0;h=HD>H;=d.;1<y;d(= ;J<;(;A<t;*@k=;2;[<M=V"=>?w()$<=.;!<3;Y<3/<s; .;";<;p<{<A6<r;b;I&<Q9;r;:;@< ?<R>)<t7;";b;;8!;)=J$;W==;I;;<;0+&8;q;7;1==p;-;F<N;5;c<l;?;r<m;;E=W@<@|+>N<X<<w;);a$;;;n;%>q=P?<>76!,/?X>5<w<s7;g85,;.;;?'=l)<X:;(<D<X&;Q<&,;5;C;6;8;B;W1%4<26<a%;;K;0<P= ;;s<l=;Z<;x5<Z%;'?74=i;K;SB*;(;D;(<!3<7<u;"<r</;3;-<|;t<D;;T>\\;J';&<h<R<?1:;Z)1;7;=<-; <L;M$0;d<G<5<)#;p<5;$< !*+;[<===H>y;k;);,;";f,;+></0?&=*<^";b.;= <[<#;T6;|*<H;@;>;U/<<;4;Q;R;;;< ;Z;(2"'<;'=H/;S&;*;;3;>:=y;K;1;Q';Q;@A;:;;);])5=A;:%;.<9<+ <$9;;Q;q>8;g<P;:#;g;62%1%;D;;";6;d;M;#;<o<y;P,<5;D;c;.;&&-=?<f$;U;;C;+;v%*;H;;";1";2<d<:;";A;[&,;6<<;;k<?H;<:;D(;;R<;=<@;[%!;;p;; ; ;S<<H2;Z;W;";+?3;K;S;w<(1;56=^,;];r;(;#;-*=C;);7<;Z0<r;K;;;/;O;I;g;0;&;Z;;P;C7;<;))7<_;+3;>;31) ;L<"<"';e;H<]<c;~;<7;=!;R;S=h;:;?=;M;';S'/6 ;;;;9;!;>L;0;#?=1<C<@>;B;Q;>=/'1;Z;j<\`<5;*@x;:;&;<%;Q;6;h;>;@o; ==;#=C2'&;/;) .;#;>>"=!<;9;};r;;1;O/:;)(0;79;9$;Z= ;X;5';$;D<o<t;+;;2;i<9);B!; ;+;g;=+=C;;C;;;;~;4=>.;;-<;l;K;j;/;0;#;s3>;n;E;n!;n;>@W)<%<+.;>P;=L;&8@x<~;(<b;,@0<E;>>%<p8?e;A?Y;d;V?J;C;[*;;R;;;\\;p ;/;T;A;=;1<8;b;E;8;.<";6;$*<3<;[=1;#;Q;">L7;@W;&9@g<;A<o;a;R4;0C!;d<1@<<Fx>A;6<3<:;#= ;{C;8;;"(2J|<yAJ;$<\`6=!;5@#?0=:<f;=*;] ;-?;TBj@X$=c;8;>[?H<Z/;1;L9<;E>;7<=>;.;=<4;\\;I>Q;Q; 5;;3,;6;;;;u)>=><s>B<l<K;";>Y</;<v>y;Z?}<;W;O?:;w>n@&;S<<%;3;!>H;<^0<A0;Q=6A<J;hXL>*9-;G;v%!<K;_;-;7;1;%;&<9';R;';a<_6;0;@>+7<G;$=0<4!;<k5;:;;A<w111117;p;J;'<;Y<79;c<z;<%<:;J;C4@'g4 %$;2>*;U;;T;s;8+;"?O;c=.=*<d;@.$<s2;4<D;;1";l<;/;S;-4=8:.8;1@B=\\;5;y>\\?:)@[<W?>70;_%;a:;!5)=;g(;d;J;0;";"<7;<;4;B;4<n5;9;C>Z76<m:,=C0<,; .7<s;;;;;S;y<99999;<;p;1;;;U;2;)<C;*;|<+;q<u<V;N;O=.,;(>1<"";5;s4;O;;;%=F<.<$;;G;t;8;9=&;};>;<;;;;R;);<K;u1;%8;<F)>;%82;;<W :/<8;U=9;N;;4;1<<;;8;;&<K=];;;;;;;<C;~6;6;;N;K;<5<;;6<966;5<*)<Q<s;^;T;<r:>p;-;C1;(:;%<@2;';J-;);S; ; ;R;;6;2;-;!;Z;w;U8;?<C;%=~0;)<X;&'54>/;n<;21;#:;1;1<O;9;j-4<$;|=;@6
-D5HK,<G%E+;g=G0$$<'<+&';<K%;;"-@mA."-(<X(*&";3"&;6+;(+5BK;;N<>Y;J,?&>GCWP%?2=!;2;;%;I<,;(;O;F;5;<T5AK;T?2g(>gUv;)<7;o4;;\`;;;mNL[<7;9;;5<R;*[2;6;"->+&#+%.7>kBk;=&'!;7;$;$?U;*3=c;X;U;]8;:<$;r'5<@#LwBI<rFf<V;;;;*g*KJ*Y6;1;I7;(;#;g7;;Gk\`i;<p;;D;;6;M,;<<[|*D3;J6?l!;Q;1aw;,;<b<ZIpg1fF:<1g_={&<fE?N;#=D6;RX:eQg"!g=;;0;V"#;\`+;E,;G;L;q;8;';Z;DH.TLZO!D ;-G/H;;;$*>~+++Og]g4Xglh4Ee0g7gB_;E@n@r;W5;@#g.YDX >?~LVLv?5Cr;#K*g.;I@fF\`WS<#^";^\\q;KC{NK0;)<BgDg)aRGH$H=r>DgbRgP";/?kB7>o?k%;<&;OH|?~??\`<\\;@>L;c!-;e2BH;wD/;XF{%;{7PSA}@18@lB\\);TA6;&B>;A?!@m;d8;@"+KgA]?i@>B#;Q0A;;eBB;3>m@G%;\`:;N*KA@$@/A~<3%&;U/B[;jEG;L@$#C{"/;a;;k  %Q&Ah@2;A!=*?N#";2@;&BG>@%;A"+;9H%?^>\\?E
-lNVgzPkxh<Cg00hNN>ui/WiU>cg~Ca\\UK#
-iR,[-g(gp;Gg{>5gX1Rimg>]>cgdBk_qgLh?W=^gbg8\\g7G-gneg6AIQ
-o30g/JgNVhJjh6B'AQmG@h02LEgWe
-wa<>]cC\\YM
-j[lQ@g8kM?O
-wmS
-_iQ>5<pQj;!A\`HZ0;B=2A=LACE,<=XH^@6FFU!<3;6J.BmDG?YCsFqFNRbBtFdo;:;ADxL>>ggW*A@m?%PSI>Bxb)DSM];Q=->]K#E#@F=AC_(;@Uk(CTE^BjJ3C>^~g!g;+gorMpB)g7g@}@2RXDig@.g(2gMau<7)B/AT>NA3N,A]g:x<eF<3;rR=0>#goHg|gC$Log#Oi*P;LA[klG)
->g;_AV=?;G;Bf?N<i;=@=x>;C4<T>C);Y=bE(<!Iy?|;uI:<)K!Fc;<=j?(5?S<_<C=F<GG&?}@=@?"5&;K!A\`=gC(>XI_<0H;=r>d@rCX;1&<#;<cBW?KCJ>SBS?f;:AiFgHJBY@lL8NSFLG->;;99;u<?>G; ;;46;K?;A<1Dc=Fn;N8Bk#={<#;;@1>T?c?-@=>;P;I;.>%;-> <E==9>&=N<r=A<Q@Y<1;n@CC+<S>FA:<FTcB4)<U?hB><=*?;7<e;$A>WBn@n?h>#@hDxGI;v8@8CbA?><;nAJCT@<)>3<<]5;<U<YWE;O=gAtDkAFDFL?A<A+<3;S;PMA@<uJAG@<;p;M;1IJBA<#5;Y<{;<M\`<P;XD>N@=j<o;H;L<+A\\==AGgCM>B=2=4<,>-;D;A!;!;!@H;.<<Z;n;!(&g0>[;1BQ;D;)>M;?C<"*><;+@CT|ai=_[ ;z /;}=);B;&;><1;/?.<0LCdTGF5=>;gHZT@y/;M<[FQ?(;6I6aE#Kg|=MH;ge_?s>A,P}gGg0dNh<.Aw<q;/<<U;E<,;~<4?cI1\`>?K#?LINBrUP;#?M;3;=Z?F{;uW>C_K=QG^P<nG2;;vK5D0;j?jA; ";l?3\\?*<P)=5;m;w="?<N9;;:gYHv;?*>;\`\`c;CcX%d6;?g"@CRf}^+;S"g*Q;Y_n]_Ez;w g;X\\;D
-RqjQ5if'ly%
-;M=Fh,IRjGfko4r1P@Hgj
-L,I#h0pg+LguTgX_}hc)i|\\Z8;ftPMCb@tg(7;KXqFHgLmE#
-m*ai\\sg,h/HgFLg&g:P?$E@4E._ ;wGFg+aDa+;q)<")T0ixg0gR2F>}Z"g&>;3a<;+<\`?*C>_%;>>Tg9_3@~;=F+?:$\\AUA@;-O%=V<D
-mw6
-hMmgABrXVgg0iEYUg$VgW&\`g 
-;d;;yDJ?h;C<PCJGdD*@IJ;FQB>*G?<6<R=c<F;4Fi<t<UNVA(C%!]E<<w;;@<5SOL>s7G=uQ:>+KHBf?XET?[A\\H/;\\Ja@t;AR?];^>;E9;;\`;^>n#;9AQ;,=a=@s=M<;#>>B;!A;vK;BR!Qm=e;;5/?i<+IA!B<>=m=X<[=X;t0>_?Fs>JD:@CO1<r=V<8;B<$CWHc>*<LBA+;J\\M(B>uD4@REh>@?" "!C5E+.@c;PKA;H!?A(B;W;4M?gD:B<;b;;w=d<gFe;I;>KHVB8<-HF;P;;v<yAt<{?6?NB><t<WCj<R>~=KAag?3SEg?:<MLr> L:;@U<t=W;t;;A=};^;H<k;U;,P;BAf;5;}<%F4+<g;o /;}<o:;B;*;><~>.B9;JnOtbGEDzXHL#<<@Dcu<k>.D#@e?+=u>(=/=.<H=X<2G1;6!;,;?;6?v;7?a;;Ap;;^;G>EB B}@.B\`<~;d;V*?2';<|;O;7;jEtA> <{SK@WLPJ=Li<\`)=e=';n<?A9]~>(>cdDqAT]x/>5>s<V?yPCAw<e;/<-<7;E;];";~<4?[F};%;;f<X?UBWUNq;a/Ce?!,Td<T;C;.;p;x=j;E?f;,;X;q;f;K0;z;@<yAOA<<;y>(@Ep<L+*2;!"E^<1=O=R;^BP1;?#D<b";W@)<]=s;RFQ=$;D;;;2;F<B4=x;=x?<,<;*;Y>6<1;B=e;37>3;>gIh?\\;}>><n/;<;.:;I>J;&<&=#;x;=<a;;z;s;,;F5;e;Y<";;T<$;6:;U;B=G>m;H==%;<W?q;$4;sGr#&;&5E=;.A<MU>KNBbE^g@tNy;A[;X!>;:P.,=AN=A^g^U8g{tg6Fg/$
-=Dj&rkGArjih^
-g]gyng,\\A<]g'g_gV\`i*M>Dh]qgYngF{i7h!Ph^;";!;jhFshMWN=^D|h6_g(;+X%[8=B
-h&gIG<"=_gC6@4;j;Wy6<g<1BhMlPSg|D?ydWF>'??>"<ECPA0A}=B;'_BHrhhITwV1<;WAj;DM8;%<.g"oIJ>*9E;g)V;+?C;3?y><z;S=-SeQ7F\\geu;F>b>n;kC^\\&?>g0iw+i<MB9=58gn];Cw=tC;Qg(C^=b;g#F6FN?&K[;;8gNDy
-ggj^hK|gcJgFJKcIhE^me,g/Xhp[g/#g3\`Nh_@gung?Dg.
-io;wNGgfN$;>U<O@~;]g#+g.gA<,
-gg=cKdJFStRg@vg%STDZQhPTYSt:I
-=X5g8~;wL(Ag3]w85;3'!;2-)=A;*; <';1(ghT6;&g\`z]Ng7W>MSB^Bg0g!hwOg^gpH=MQ<q@2>XB#<.<QB^g?h%bhYhd%0;-=p@6M =$<\\F./;<1fAB+(>EjS$;'G.;cSc<AM\`.UA?ZbVg&LW=!OQK,;Yhckgy?;/g,"
-gNg\\cil;O
->]hO0gVRgX$>Ug7GvC
-;D<X;@;;n;<<y&;3;;-;=;r;-;[<0<0 8$9;[;~>>$;L;V<q<;^<*;T$=A;P);=;;;W&;;L< ;B1;C9;&</;g%$1>N+.9;k=;N <;O;;3>*#<;<(;@=<A0<u<E;y;P<s>d;-;w;l/;?;\\&=$;M;D/<E  ;[; 3"',<q<A;&;Y;6&2=,=<H0=5=H;d=p;4$;%;<j;;+4;3!1"9:<x ;";Y;(-;!;;=;/;i199;6';M<);";3>:<e';;;h<<[;"5<8?>;s;k4<&;;;<+<6; ;^=0;/;+;\`;,;;V;:%;2<6;;!!;,<@<=:;:) ;!<b#;j<-;e? <[;r6;h;<5;s$>@6=";*87;R>z:<g;;h;!;;263;.=;^#&0;;/;70;/!$;D+;2!-:<#;o<%;;\\4;2;:;;B0;5;i;H;-8;&255;<;;';<Y+*<@-:;);m;;(;{: ;?);@*<E;:3;<;J;P;=E<<*5;;=:;;;k</#;<"1="9 ;;!<N;b;&!4# -&;'%1;D;-;l;!;z;";;;N/;1!&;;L<,):%=&.<Y;K;3&<-;6)!;f7:3;;9;;L; ;;;!#$$)$$$$$# %%)))))$!)));U;"<L;/>|;)$;-;N;,;Y;1;0!!&;;G;[;O%;<;;L);<Q6; ;{;b;,;{;:"14;j;g;*;M:-;-;n;M<';2;('(;H?,;J;T;A6<<t;8<i;M<R;6;<';\`&)<r;n.$1;v;5;*;X7;;1<D;;=C<d?&;/<N3;V-3;<z>(;N=<#;(=};/<5*;; 2;, ;4;b:,<)<L;;X;Q";;s;G;M;3;)=^;=Y;#$#.;.<;;AE<;(;R<z1;S;0;@>;&(<l<@;;|;D;x;U;;;%;i=U);X=A;";3';4;(&;F;0;};Y;"+#";+<+;<2;P;h2!;:;6;A;_);;9(;;!;; <<R (=;-4;B1;;<;';5*;7/ #;/ ;/6;</+++*<};C";4*=#;1<E&;: 3;Q;;@=T<-2;:;;8<.;%;;>];c=~9<D;A;;.;L.<'<:<;"!;+;D.;=;+;;w;<z;/<4;H2;=U<;;x;;;$;|;(=4;Q#;*;;;1$2;J;*;i;;N%;g;0,?[;;Y;i<i;6+;) 6,;4;\`;H;];k;>%5<;K$(%;-;<3;;<$;$1;;F;,;v;1;6;);5;(5;2;+;^4/;18;H9;;-;D;7;;_3!;8;2;6<%,-'2'1;2=;&(<;<*;3.;"*;K;o;j5;$;<;0$; <*<);;l6=<>%)%(;%/;'';;+6;--<;H;;%;&;,;1;%;*.:!;-;t;B;);(;|;V;;;w;\`-;& ""3*<;/:=i;*!=;I<<H;1;.=; ;<";%;4%;*8;# <,;-;66;';/.=;2;;6$;_<!!;74;-;];t;.;72;B;;;I<;O;1);;%.;;F-%;;[-;-9;#9;(9;9;!9;=9;O5;5;-;#;;G89;*1;%;n;N;m;H;0;I;#<;/;6;7;-2-+;;.;E(93;;;>;#$;[;;7/;61;47;4;;4;;4;(;49;4$;4$;4$;4$;;i; ;;H;;W;;;; + ;?;R<FL<U:>V!@>1=4;AG;p;.8%;>>';K@m<>;o;J=5;R;X!;wG0<;/>#E-;=e;#=M;.;#;2/?(?d;;j=2<" ;l;%A-<q< 3;U;J%;^<6(;;!<0;};2;#;L;";;3:?%; ;;K;U;@9;k9;#;C;$;L/;2;;(;J.;;^.<3<P=m=H;K;}-;P;0;Z;P;7;(<D;L;B;S<e;35.;*=-3*;x.;^<e;>/;G;O1=;V;u;\\;9<<p<2;C;N;;7<,;:;p;$=;D+;[%<j%;(>*;9;<N;/; ;%.;;.;;.<(> -+#;W=\`;a; ';(;$<*#;< 8;t,;;-0;;*!;$;;p-;&;R,; ;;;7 ;-;+4;C;Q/;/-*;-1!;6;V;D(9;;;#.0;S;<; 61;;S;B4!.;+%7<{0;A;;2;!4;,/;";#;,; ;p;B;=';);Q&+.1';2); ;2,; .;&;X!;;.7;7;;;;;;$;7%5;Z;/;&7, ;;1;%+"1;;;91;_;";O;L/ ; &;;)-;i;*;s;!!%<\\;<5<Q;s4;R*;"(;N2;;,7$.;;(5;4,;<-;])#;D(;H;"8<1-;;X ;j5;;;{;7;6;+ ;s8?v<;!<31%%;k;;F<}0=<;!(;j3;0;;$,;;;:;45--60<+;+;-&;p'8;+,;+<q,-;T;:;L;<0&<&<L% < <(;0#;I;1;D.;;;;;/&;);5?S# $;-;Y;(@8;8&;=.;o=>n;P<+.,;+;N;-=l;L@S@<P;[;,,;S;+;;0.;/;M;.;@1;>.! ;p;S/;B;#;M$&>);});+=3<%";;&;';Z;;;^;;-)<4*;;b;;;:;t;H7;!;.(;;W;K -.);L62;:;X;8;@#7;k.;c/;r;B;2;R<C,;z;-;K<9;s;)8;);&0;;;*'17;4;0;4.;$(<.;';\`8;K;H;,5;Z61;K/;<A=b;.8<S;}%<2;@30;T4;P<;'0;';/<+<8#+;./;&;<N;-:8;:;;9!;2;;9;3;&-(;,;,<x;=9=)(<R=K;<<C5);!;;!8;1";8;:;79;=;5;;\`)&=r<;n<,;f ;;#2;9;(999;;(+9'$@!;s1;/<9>R;3;~;0$0<~0;!=T<\\;+;;;Z;)<:;L;z;];I;;L;7<?A<y;;1;)5<w7<=6;.>&;+93<P9;;';2==K<;b@;O<M<(;H!< ?8.;i:;e;P;>N6;@<;7*;#;6;l<6<!;8;;b<H<l#;;b<';z;l;!;b?h<;@;7;d(/80;W;A->;7';,;;\`&;%1;9;$;0?!!;!<;8;!';2 <;C;:;<9(;0;>;5<5>t;X1;9.;r<G;J-;=N();z;&;$;4 ;7;*;!<';f;t;J=(<$;;';<c;<9(;l<j;-<&;!;?+;0.;J;S;C;2;)7'; ;;";Z;Q";i;,;0;16/;#;;\\;+(=S;;=*;V;I<;<{;v;>>q:;E);%;6-;;#;/=o</<P;;;;/;0;h9+@@v;%=Q<9 ;w=<*<-;";<9;3-;H<82;;( ;);I!5;;6,&)-;';h<j;N;;t;\`;C;!"9+;6%;X;;6<J;{;F<&;V";+;;;;/92&;[(<?;O;;P<&<P;;;>\\;q;G;5)76*;z";D*;(0<6;$;i;M;S* ;w.;#9/;;6;\\2<3;/$&6;B( 6<3;*6;Z!</<*;2(<!;W4<-/;4;;$;R;<4;0;6; %*-;4;-/;_.'"%%;e>+;w;F<0;4=G<6=2= ;>;E;";;";Z;*;!;Z;=42(;;_!;4;I ;?0; ;#;v,;<;\\<(*;9'7;0;G0;(;!*;N;2;[(96;;%#;;)<@;'&<; =;6";;M ;M;<f<r < ;b*%*;T;4;1;7;O<B?<a1;Q;};;;R;S;#=';x*';V*;"<;=R;_;-240:4);-;'07;9537;i9;-+;"<;41;9*-;h<;;x;;5;^;8;E <'-1;;2;\`/;"8";=;I';$;%;\\=b;2+;(;v:1+!$;H;;c<$;r;!;C;*;<;U;;0/0-*;33+;g;$;D();>)4;n4;7-&';<,<c<G;';8;;+&;z=J;+ ;< ;;<'6!#"6;1;!7;<!;,;0#;G;.;G.;3;3;.&;!;5?M# %;%;T;'AQ;"2&<-?08;<18;;s,;+> 5;h';k<;g;;C'';+;e;;0;;6%<9;6;;-;;$<';@4"1;(<z4;1;A;;[;;/.<h302;*;(;;;;%; *;;,;1;2!;;GCI8>_<IBg<.;T;7=K<;H?G<?u>N;5?@,<9<RJJ;)/;;=I6;,;1>f;\`=X>R>_;<D;H;<A=< C.;H>z!>;;z=r=kB}$;=<?;<M;;<<";=3;4< ;;.#<F!;|<<o;I;;E;5={>;o;v>3;7);<2=O<11(;Y;i;o;=m3/='</<I<|;;4/=r;<?;S5;2$<)<V';M;=c=;,0;@ >R4;<;Y.<n2<;D;g%>6;\`<B<k<O<Q;m;C;K;\\=;l;k%=;<j;,<Y>7 ;;d;<cB<d'=[= <'<2<<E;^;^;<0=O>\`>+=J;E;;SIKN"=t<y@%B^DL@mF_?pEs>W5*Ll;b?=;;,;V;K;@;#73*3;!<1+;Q;%;&;';;#&;Q;,,<;;$;C3; ;2+#!.7./;{;'1&;k;0;;,;K;<>;I<;>;G%;90((11111/);;*;T;&,;3;;**;#1;B;\`4; ,./(;u7;)'&)!"";;:+;_;V;Y;+;;C;0;;8;t;D;6;1;;*;;v;|+;',>?4;851;;&;(5!;p;%;;k,;<;~)& =84;:;;v';V<i;#;?6;o;;$<F;7;#=@*;);^6;>;? #<R;k;Y7777;==*&;";;l;V<-#4<;6;\`7+;8;<;P2;[3;;G;e1;;V=C(;7;;);h-;;!;4'3'&;;;))&,"!;e;364;*;),;,));;'<;;6;U;0;)9;"-!7!;.<;;57-; ;(-&;S;;R";'6;;8/:;'+9;<=?;Y%;|;g;8;;%;$/;5:9999;;q33;1;34.;);r$26;h;U"/;c/&;3;;P;-60;(86;;;;-%;B;,;J=o#+;9;o;-:#$;A ;&#<&*/,;<8;!<;*8&8&;;;l:;%,/<V;;% ;@,;!;>6#:$(7.;<;*0%1;/:;;1;*;(;;9;";E;r;E'<;D;.;*;&;(--;'99993,;-;*!;L;27#;3;;5*+;-2;^!;J;*85;2-0<'9;=1%+'"'3-;#;/;M;;\\<#;m);"5 7;*(;/;d;:;,;9( #;"4;n<r;A;;&;7;;B;65.;";/;0;0-!;%&;;Q 4#<H;Q9<T;23!#;d$;C;;;[;%;;Z8$#;H4=;O;!#(;>;;;T/92;-2+;P;[;^;C;%';F.;*;P;;u;/;V';"";0;!/;A;;;;80!;,;C9;c;>7);J<2;H;h;1%<97;c9,;>;,;&;,& +;,;$#;,;A*<,;\`=;%;;$;e;U;1;*;)%;^!;";);-;$; +;';; ; ;;3;:;;<;/<4;'&;X;14,5$ $;+% ;*2;*2:;<:;;;;+;$;7<>;?*;>3;N0;&;;;28((((5 ;p-;;;. 2-;;.;Y;[$;p;;!;^5;%.;H! ;4-;L,5
-gT>L7hSg'(h5GgU9
-J/=!<%;@,;?4;&-?S;3BsgS;&;"RC?GGEQ>/M)CO@U>4?uRO{@yN3E?>r?zIv[\\>i<S{4LC#<8=SO~;P>k.;6<v>:<J9&=|B+@d*!+<(H<BS<z>S;[;aLv>\`<CFG>wB%;Z>O=LxQ>H)JCEN,Hs>jDl@sK7@}<%>IDt<<;!@/B=\\>?<cC/AI";y>YEE)Ji@{*=]>1?s@,;(>Z;!Bo<'<?<>=F9;=<>A#Ey<Z=y>c;<<xC)Lb;7;*;B;;^;B;?;'<;;/;<; ;";4;C;J;2;6;B;:;^;<a;8;bCx<_'<AV;6?/;!;x0;Q;I;\\<4!;+<(?C;W<E;.;H<;A;7;4;s8;/;P;;$;+;=;B;-;";5;3;T<l<<=@<\\#;oA3;3;>9<1;/;I;M;[4;8;R;O</=;';N;u>2;E1;A,==A1A;B3;x<=4?@;o<H;8?@?)"0:;H;0;;43";A;T;<;<3>s9<;=g;<3;<'@q%;!<;e;R;a;#;;!D=tA?D+<mL<Z<>O?s;=;P?<R<{2;;A;w;;6;K; #;v;:@{;=;;?;sDA=0>0;Y46;pA#>V@:>g;;R?6;!<<?nHy0?;;9";;?><G>7>p;FAAA@9;#;5=Y;1=;!;?>T>;,;;4<;M;<2H+;Q;w<g;_;;;78; ;-;3<l;*;=+;K=X<~;<v=A=g@a;k;G=);+;M;>:;(;t;;4;9A<}=yO[<>,<N=y=<f<.2,=P=<;3;N;b<E<<8<S;k<$<D;H';c66,<WEC@F<o=<R<*<;-<RI[D^;v=Y;o<J;4;;~;?%<H4; ;:;(;m>X=N2;6<A:DA<O=($>5H9<v=q=<z=a=B<F=> <m=K; ;X>4<V;L; ;D;G;A<3;;);e;D;9<!3;9;7;E;C;9;q;;9+;(;C;C;7;R;p;a7;4&<?;;;l2;3;+?m;B;x=G;<$;I<L;J;w/;=R<;F?<"A&@n<q=q;T<-<<=;v;<e<";3;V/;-<#;_;A;:;C;2;%Ax?/BO./<u</<<M;1;;%;;&;a;+;N;h;;E;/;>);(;b;A;);5&;;+Fe;Y;;3+;2;8;A<; <L;1<}=w;l;f;=;$0;R;j;\`;<:;i;M;S;J@p=Q;";D<C=q=B;z;R?<_;&<U;C;<A=o;s;=l@b;<;?1=p7;l;';t;'4;$@I;P;(;?;s<L=!6;;=;p>M/;,;=(B<=-;<8<A <<&<{/)=K<A@)<9?bC]<?.;5>.@Z?z<!>q<UA ;R=d=87@/=;1;O>p;k<e>C<k;7;4=;:;D;k;&!;A;W;}2;.;M<<<A!=?9=K;Q;;<;Z<[;j<><X<61);};B;z; ;.DL>t;g;q<q<m;(<"0-=s';;z?h;I;<#9;AA%A07;";0>4;C=I;!7< ?;<^;W<@O-<e(=(<.;\`;8<+#;&-;N<<u=4=I;l;;?q<O@3;;IH=b@;@8;9;^;J;9AZDy>d=r@e<*?7C(Dc;CBf>8?<hEB0;=F;7<6;D;;{=D?4D=7C%C:>u=X;Z; <T=mFQ;H;|;;G;":%$;;;R#;/7;$;;<;^;.2=a;>b)C7;>C<<q;;B_'>I;< ;;>\`=;;%;h#;@9.<P;F;I<'<%;,;Q<<;:;K;58 ;P<S3 ?qC-A+:C=C;2?9A>\`G/>N==7g<B;+;v<[>";8<=:,AN<[B3=;=BYDC;L";O<);R9;|=0?<j<Q.;M\\=S=m0C#Fw@C=3';$;#>h<h</;,)&1<lHM;@?#;<<N<S+7$<-;P;J;>;7<f<l-;T%8L&0<2?Z6;]<>?Q<y4;/5!;v@W;;1MC;Y;<l#2 =8@6<7I$A5C_;T1;24;aA=JF=e>4;DKI@~C-<*3-4';;jB63SP<:<2<A;%82;=V;v @f;Z;>Lx$AqD32;k8;1A:JZ>+;&@M;UH?$A?4
-is.m3\\j\`hle9P8h\`k*gP
-oPF
-I?^img9$g/l%s/h5z
-h*g(3g+tiifg%Fg#j\\;gU;<&g^SgjZ"(gAEh*ho\`iDD\`tihmg_=k
-jg iT|g7
-]OL%T^;PgHg%g<lgu}K=0gN:=G<}g+AiY&;j=Ng]?y;_>;e;@4$;!<Z;b;?<6,=g;$;N;5;H;f<D;Q;D;$g\\?pDP(g6P$<(&8=t<>n?:O(<Mg2GM=0gMA@;;\`Aq;6;s<p;F>Mbr>fGT>d=)Bj\\3CC;Z;C;jQmgK>I3;h\\6gP><@&_8<,;GA,2=;3<H;<<6)9=[;P;@=A<&;/1<7H\\J)>|A<r;5<O?2BQI@HWG!=v;=9<;@:M3;]\\;zN;C_2;%=g;E<c;l<l@Ig%=MugXugO-g"h8>
-w6gR;."%;H;X..-;--
-8==p3>C"7<yGSA=oQF=~?4<N@D;EB&=-AQ;O<;Dp<X@.<#(;g=;VF=>+<&;^RE1AHCD%=T>l.6RGO7'A&HA$;A=I6=;CQ^5J(;s>t#7;A=#QM@UQ;>E>Ox<>|Lx<d;V;/;BAvC+C=?;!>PD+G:=a?FA;GB]>.b;x ;$<&;C;P]=5?sHe;W;2?0;(@7M;BOV!E4DqCkN;B3]yg.nE/AI@c)D.<f@=[D>?6IZ>,R;%;m?EA?K3Jt<(g8VHPZuBMA<,<\`=iB=';;%"@K;?b@X>nBoHa!;@4JA<%<o>w>uD&G@$;;;"'?E;f<GC-;*;?;X>:?6=?0A5=F<2=1=OI0>8=@d=8E <s.;*;*<G;\`<<)OB<1;">G;DCR$=SO5;%D@W<n@p";?:<@;I%D<?nHg@+;z= ;k4/<W;;:>9;;=O>'<]>Q<J<Y<<<U<=;[=G=i>;/?;VACx>\`;_=E>.;&<<\`;;R;ZAl<Q4<6<bQr.H9;gs$;];~";8;(;L><cCv5K>;>9< >&;{><b>=;<1;<Dg<O>">%;,;!<X;*;bH'B)EA1DB\\>?M;;\`?O=tA{e<CjB3L*<q;LSAv>](?;Y.;G;6<<&>6=l>3<<^AdI1&;"O;.<.=@<}>!<{<8IEE=z?U;6;}=<;KAU;);<LB1Ar<1(ES;\\=6C1=I;1MF<<C;j=?p;=H?<F<>v<(GV;t<PFF"AdCi;08;7;< ;s>9E~_2AtP<Lf;F;/F#;5;?;z<\`SXR7;!@K;5Gge@U+@\`<E;9<6;=v<Q;*;eH@;/;'?7H;^;\`<1; *;"7]NtQ_;TLU1&>5C<xTe;GFXgsQCUR/Ty<lKg?vE=DV4TWHYA$Mj
-w9
-gYoKs
-wM
-wuL
-O4h'hhg3
-=Eg'^UOAKsg<ug>8OnJIggQK@;8;i<+;$g+tgd;=g2g+g4&;g\\sS!gp;S<k6Zj18&j'|gng?g6Lh/B\`Y
-m~2XFkx/ghcg?MPTgGG^@i\`?@>g!zS=A(=\`SP
-jbkCnavhT4g$a<mgE5#=]g=g\\u>T;D^@f=+VKggYSiheWg:Xg=1gA=XS#gA
-Z}j-V
-j59k*7nKYk;
-qrho>$
-sabw;*hAh5;]iO7;JgS{cIhNh)jhRO
-hT")g"[;"Hg7y/g+ugL9g+,gK]g(ag,r;,g =g; E@j8Nm+~g~Og\`5R:=g"gTIF^C)g4h.dhn
-w/&;qW2
-krHi/g!g!AkWpgb@2@Y8;?\`;@VPj*ogAz=+Fx^{GcD;ZK#<nW
-;hlXirg[(i:j]jDihjhH[g\\~h)Ggh>xg 
-@>!;'<\`;u;W;L;8!=3;(;!':;4;8;1-;$;];<@#+;;m;F;$;$;A;h;1(;;&&;Y/#;;';;i;-;I;>U;b<(,;+;Y<21;N;&6;<;3;!4.;=%;f);";j;+;%;9;}<I=u<><';2;V;u;C<!;d;;;4;G;";C;>;o<i<Q;;";k;F;-;;R;';*<F<&;%>F<T=S<%;+;x;z-4;w;W;J;j;;;';e<-#<<;q;,.6*;";>;=;];6;;>;I;a;7;;i;?*<4<;!;$;6;;;P;%;e;e$;%;V;f<;;{ <@6;2;|$;-;;-<5;;#;P;7;+ ;';C<82;R;:,;!;<M;9;G;C;&;E;,<(;;u48;b;Y6;z';#;r;#-;;r;8+;;&#;z;*<#;#.;;<<s=+;T;#;<*#+6;;!;TA;>;,;Z;B<<.;Z;';3%;;L:%<!;W=/4<r;?;s;;;;-;%;G;,;;";=;;\\2;P;V;=;.';;-;o+.<3<;<;4;";;/;; ;;4';;89;l<f+;;1;G0;B/';v;};[;";9<1<w;N;x<<P<\\4;_8;d.<<I;>=@;S6;;";";M;;"';.+;+;:;d;;q<O<$<*;+;o;;;;n:;A;i;<D;;;9;^;;H4=C;[;8,5>3;5;+;j;G;F;2;C.= ;N;[;>5;;$;>$;x;;Q=+;;0@p;]<!;;;;^;u;5;U;f; 8;;;-;>$;N#;:;);$;V;01;d;;1;";T<O;5.;E;(+;*+;><;<2<;+;<;};b=\`2;;%<;;=$+;9";V;*;33;;00<V=0;n>Z;!=0<G;;V<;%;;l/;,;2;;;/<7;)7;;R<$;B;K3<;#==<9<;e;;#;u<N;x,;d<";%:;<;b;'<V; <*;d*;A?g;J;*;J?b;I;h=j;;)1;3<(;D;V;1<)<1;;y<%<K<..77;Y;N;#;O<<;7<<;4>t;V;W=;7<4;(;E:;&6;';P<H;$=";;<N-;K<;8<;;0,;#;;0;;5;;;d;);!;1;=;G;,;*;'</;e;V;N;J;T;5;C;d;L4;;[0 ;S<; <;<9</</=F<[;";g;<';9);r=13;#;@;";;E;)<<0;n;M<b';.><b;};X;x5;e;S;;(;;;K;0;]<8;;;?;<;D;X;<P<;d;F6;J&;I;;f*;2;;@;;<?;U;;5;=^;,5;1;K=;7;B;q; ;;l<4/;4/<8<<n;(;R;;a;6;;^;(<D0;(&=8;*8;o;j;;P-;/;(;Q;7;A<N</;L;p-<X;n+;T;K<;Z.<Q2:3;\\=%=;=k;C3<t;);;H;Z;!<X<u<B;<(;;N1;<<=3<j<;;;;^:;,;(;M;;#;-;n;m=;x96;g=O;_;;j;V;16=<;W;;m<!>8;%>);*;!)== <;j<7;z;V;<=b;Z;5>;JNn;';{g76>VgZMLWT{I4GB<6=3;;/7<W'$(!;;\`;#)#5!5IdFA"Fd:%BTEL\`A%gB\\@5>eKxBS=DVQ<!/;^D(<*<g/=;y<J;LgjhBM<t>P=M<(F(;eCE=:=A={=!<1<)=fAl=X;Z<ZH&<0@E[HFFPv=V'=&(>g)NA:h5(_,Dg@<0;l<d@3SyF|IN=.;*>q:XuC^S:L\\g.n5;0?>=W(&)(%%%&%'%;0E;G*jfwgW>g18D2gCA>
-kOyi(^\`=e'ORadim$;Igsug)_c_i*Aggt;g1Tg;wgHVik<;]Xpgv
-iis
-KsB[]:OQ=yC]gs=c?Yh;<Br;ZW-@B<qR={=LLm;'IEN";;<<W=A,<+FB;F>&RC@YD@[<*@d<xFzCMDM>TB$OGEE/A(;t?tADInDRD\`go;^AOIM[W;Rgr?aB\\;\`^wV[C7A>>mVg>r>:;yXDU<(<EQ>:N]<B;?KEKtgAEK<$@\`Dp?q?yE6;1BW<S4J(A;Kg<8ByH<;*>=;~E&[-<7gk/ge<ubWBe<]<<KU=?<-HQAWg>g8AUV"F]gX<<go8gwgFdVgy}g0#? > Ir4<(4;K;J3H<8;J;2F8F8gl=gs<\`K@;(g$|/a\`;KB.g,GA;LjS?;)>x<GDM(<@CBF<u@d
-lq(
-?_>Hj]xC<OR}ggU_hU@I@cW?\\H;[l@M-EYgD\`ik)hKI<$D1;B;n\`RUA^CWNNtg-<>#;j;]?&N"=XBMGY@B>L;7KZ@VA([q&gMd2>^< <';Ik<fcKg|rg+qg%!LGg.1
-wMgDP
-kniIJ4T+\`=;M ;,;@D-;<S:= =_<c<c=h=8!>gVR;I:!/;>D<77=<b<V<I=\`= >Fg|i5h?ONkB>gAHi*BCg{*AC?\\O^Y2<<<l?%gM#gM=Mh+-@<ilp
-LKfgg6eF~@megfCg6W\\8=ZPSBQTeg(RITBg/(EhWzXigUAx,X?P(gC7N?ygdh?(JvCZg!kg.n<l=&<]EJ<X@;<L_2;V;=Q@9>~<<;CHE;@!?TOK@Y<3;-BFEm^K=JEX>%;]<k<o?bAP>rE#@;O&b]E~@b==i?/?U=<Cg?l@NAPE>(C{;E6DTDsJaI|W7F*gt>e/@d=g>PG\`P?>gE&Rh@4Xg,D3<YA?kgBYgnQz=jF>g*6?@(hJT[g*9g2cg,g&Gx?#<E?gtBJUf
-qkgHA
-?BI7H2gLgUFb*=4:=&<<}AZ+gbgx}<, ;H;<C[BJeWgXU=\\qgA'=@gb;Qg8>=[ggh1o;I=|g4BnLOB g"RA#E}C$;RPET=T=;i<Q;;WF,g7>@8Og;<;\`=)*?\\=/@QKZ'g!Y;Ng[;3;gQr;AtCSLgaIv?<!gSbID];;&;;j;"gWVC(@J^DJJTSBLE<$Q;]{iR"?UF[I*;: M3;A)?M:;e;t4&%A]E3S %% "O5=R;5?Jeh@[Nw@\\GJ\`?+;C+Nk;5Ai?\`$;;n<7$##C(Fj\\I;#?)>8<32?\`
-GY<O;F>g<;o=<?Q<T<&;&;D<6;4<sAi=?(;n;rB;aAN>bC#C?=\\;K.D?yCj>0Ax<"?t@=J?6<8<->Q@9@/@>Q@NFeBs==@Y;B<1@&AF="D!>JB4BCJA{=VCwA#B$A,?3A]B"=4@K"=6<;:H3<XA];B;f<b<<R;J=<#=1<U>9@R;?=<ATA@b@S>\`;J<T>i@+@gBv?=*>#>?Q>ACIBZB=$>D?8D>&;&;>OA@w=B;v<C<{=u<h@6=j=XD_AO?D<_H$;}@M<A]@Z>[;9D-?%@9>]A9C7=\`=Q>E?@<V?@O??tDG<@/@R=&;[C8?!@;<>|I @.<aK,HyD6Cf<gg0yg_@4g~K\`>J;);4;#M0OdZ_TEC2D;E%@+N2Rt>|@%S3;C=5gM>BH\\B;\`;QZg;-;\`;A;qg3Ug#U;9h}<:F>g^B%U_@n;D;?g)rdC?>X@>U=G3cY>jgLig[H\`Jic,;Y<"c?gLKtA=C6GpgP9;@Hm@l5QM^BYIg<1;(DNE@;$1<e<];;34;>';M@r=+,;y>B;D'#At3;Q?F5;813;->F#8;0;);>[u$%;+>L;;2;',+'+**.*+;"*?;#.;Y;Z$8+#<L=;<;e;Eg<Dg6"gv<+g=f
->h;[J%]&Pdg BET0Pk>;P("5&;JNNQ'RwC|>[g@FK"@f@nc^Q0gg>9V~Ft;->*LEF@CoO-guB=]4bbZpR$@r;AOj][SDMFGeEMCfD@G"CCJGA$A;kEkgG2LnA\`dN-PGvg/g;0T%;z /;}=);B;*;><~?.hv8g33i(5<?Eh>MAw<q;/<<U;E<,;~<4?@P,g(cO3;:;:;"<{Z?F{EF>F@NDT"\`<nIVIHs>pg|F;.;A;;,>cg&NdEPn;jK}
-;?';Q=X;(B/;\`; <i=;XBJ<B=<l;X; ;;?<%;k;.+;E<,<;"Dp;T=,4%;-;];?;#-";b%;"%':;^;);H/;;,;352<8<<h>-;;22;!;;;;;7;O;m2.:,=42;P<?=@;0#< <\`<;<f!;t<; <*&;;R;b;v;=C<]"=1;7;(="-;(=AV;s4=.51%;Y;9;?<6325<R;;%=V=;-;h=g30=P;6;z;;^";';'=V;s;;<)#,$<;%%;%);B);n;K;;C;$$;J;7;";5;M;^;1<2;w<;x+<:<%;@58<y>:3<;;d@\\;A%;};\`<;?e9<4;;w@3;;!;(;55;$;d;&;\`+"=<&=;<N$64;T;;X;5$&+1;;<=#</;=|'&);g=8<A; <+@$;C;+;j;X ;;&;(;;+;_;#<0;%&;H;,/02;n ;0;N/;G;X.0;0+;9+<'6<d;>;8;<);%'(;#;)<I;-9AU;[=;j;t<7-,;N';4;#&;O;:;4<;H==<p<>+;;;-?{;n;^;:!*;;;-<<O;_;];4;6*;5;0;;)<W!;$>#;#>t9%;";#.(7<;G;C?;;><S0;:;><@A*;#<W<;; ;:>&<&<;&=S<F3;{/;S;4=5;3;i4<8;;;%;C;9;H/;m;%7)2<Y;-+<y!;S;"<S=;K;<;?+<*2&;<M<;+;;5;q;O<;";F=*=c-!;=;<\\;'>,;\`&.;$;#5>#%;n;N;_;/<F<K;,<9<;k#=Z;3<<;:+$!<g<E#;%.';.5;&;;*2<(98;m;9;(;N;0;<O5;G;8;#;<#<)<u%'1/.+);*;-;;/=#=-=m<l;;&;//&;&#1;;' :#;;;]<%<;;a=!;<-(;<<;;>\\";H;3;='.;A3;F;U#;;M;0;Q;-;-;<a;$&;;H;t</;8<>];,0<;;';u;.;;-;;5;?;;?;E =O;3;3:;&!2;<:<";+; ;;6;%;N>7<9%<4#;5>;.;2;C9!<1;r;.;<;!;6;~;7=D;y';7";m1<e;""(1;h;<4;&$;\\;,;g<!;80;d;5!<J;;.#-;&;3;m;6;e;T;z<W=\\;%<A>T<;1@=;= !;,;~<*(";=3;D<x;)>;c;,;Z2$1;L;;#;!<6><;\`!;(;<v;W<;;7* 1<D;*;)<H;x;;%;M=!$;2?F;;L#;C;<a0;s;y<|;o*;*;(;66;x; '1&5"/*;(;$;;#;<-;B;;T!;$-$;p#7;0;;<4=+;M>>=P1;7;<H;s<j;7;P;W;;K;M;R;H;K<5;B;/;-={;M;;;#;;;V#;,;);$;;3;4 ;8;<4;;;;;<";M;*;A;@;H;a ,<#;I;.;;4;;H;;<;;R;;6;; ;; ;; ;; ;V";{<;W;'5;3;>.;;-;J;7;l 0;!-;;C;I;3;6;B;:<J;/;1;;1;;N;"#,;;;3; <c;r;C4;:;;,=\`;J;W;\`;>;k;0;:;+;;O ;E5<=*;;P;^<V=;/<5;);j;}:;8;H;4/;;A;:?/<b;>/;$524;;3;m;5;3;p;Z;[;,;x;<c<U=Q; ;j<_=>;4;q<;';;8+#;3 <C;;E;z;X=I9;d<&2;J;;V@M=T;M;)<";*;:<;H;%; ;e;6;;>F=e;-;T;,=I<?=;!;@);=;;%<B;%;;!<3;W;y;;1>a;(6";U<}<h<.<j>i<;)=y;^;L<63=@=[;K;|;4=7;F;<@(<5>;]07;;;;!!9';#;B3?I;k;V;@;n+>5<v<i<+;AD<+"(;_;K;]&;<C0;l;;6;7;";b;D<G=d<t;h;<x-;Q;#<V;=O+;C<=<;G;<T;Q;M:<;;>J;2;E<4;x<\\5=];!6;3;:39-46;.<#;R;y5;R;|;^;a;6;3;[<R1<};X;;0>;&;k<= ; =h;P<!<Z;;4;\`=,3?q;D<n;.;;><$<}>n>R<!0;$><B=F;H<k<%<X;.@,#@1>j=;;;;;5;;v;5(5);;/;rAg;j?|<';f=$;8;%;;;<~<5$;;Y<8<.*;D;6@[9;<S+=5;z;5=';-;<;/<<.<<4<@{;t;p!;L;V;1=?;1;\\=k<,=g;7<<8=E;+<< ;531;!;]<;{>O<<A<>?;b);C8=m;;o<L<3;-7?e>O >o?/;D&;Y;a$<'+<4.=;:;#/<V>7<N;;<61;[.;7;=<*<9>A=0?;w2;#;r;?<h;?"<{+:=<^;Z;;):=n;Y:;X;<^%<U;;T;K<";;&<X;<;!;;I#<q2<';+;3;;*<5;%;>;D>Z<8;/>j;E;:<4<!<}6<:7>2;';R;;@'@1>;<\\?7>=x<g?0<;6<2>r!<(7?N33== ;=?'<v&@';=D<>=@;(>.<&<k<r;A8;O;;<5?l<#;B=;C;r;]=4<I;<Z=>;;(;(<[;Z'=?;<>=-;,=;<%;<L>m!;@<;@a<x6;Y=+;<;//<Q.=J;?;2;";<0;?/=e=F#;2-5;D;^)>F;J;#;l;#?<A>t<R;=%;6<z;s;}'?2;g>4+<<|;>k?=T;#=<!<<q<A;i,!;>@;$3;22;.;x;X;<<=;P=8;n;0;t;>;);<;/=3;'@%;2=4!;>\`<O>:@<#=1=T<;$;t>g;9=X=;<V;<y;u?;(<y=;C="&*('-----<<;+;1///;;;<L;(+;\\#<I<03,;b9#<1<h.;I;<a=2;"<<w8<^,<*=;;<<0<Q;:=V<;K<6=l;1;[='</>s=j=2:=>;V;1=%=;!;M;(<S;7,;\`B9;C2<z;0<7;R='8<3;)8;K8<!;L;8;5 C>d;';">=r'8=$*<(;2<D;>?1;l@ ;<=?@y;;;9;8;;o;-(4)9;.;iA\\;|A;\\4?n= =$;X@: !>l@1*;E>8;<9>:<+<Z<{,%;c;<2<; ;d4;B@;e>(=J> ;<;x>d=L;B=<74;D?l<T<:<CDsB;;X;_=d<<';H88888:>V; ;C<=\`;v;_;q;?!=:;E;%;P;<BC<&<#;<<6=V<G<t;Y?Q; *;-;5);7;(;Q<;-;7;c<2;D6=">?<x)+23;!#=;&;Y ;$;c<$<'<J$<;%1<5<+$<q;3=C>t<;b;L;\\<?((;g4;+;);F)&)'%%&%&&&;/;d;;;*;?=i;%><!!;;>S;_;r6;!;=}+;1(0;K;";;2=N3;<.">v;4=#"=Q!;;9;/%;i;f;3;*'<q<6<&;?1>8<:;F;^<,=6;\`;P=H?+=? >f;c>u'?V;2<o<(%*%;<:=>9$;$;; ;/5*5-54564); .20;';:(6;.;R;?&;<*;X<;<#;(53%52;7,%6&6;0;2;;;;;;36*;2;.;;Z;/;&&;_;+;5;;;d;3;/8;:;R<"4;~;*;p;*;\`>#<:;;D<@?";x;;O<Y<;";;=C11131135;6%-$#;3=Z:<<o; ;\\;M;U72-;+#;P;[;W,( ;3;D0;;I;-<**(;#.;;=P<U;q; <"@=\`<!;-;n#.;b;V8;K73<;);U;_;=@*!9#!=<M;!;E<};S ?<=C#;=|$;f;I=$;+;%9=X<I;E;59;',+'+**.*+;"*=&>'=J;[;9<!=<k<-*;=)8=%;;:=X<;l;&;(;x*;[;;i%;!6); #;:&;V;^<'; ;%;27;=<";*#;w%/26.%;;&'<;f!!!!#95;6;<6#;;k6;A;V"=T;L;Y;(<w#;&>*<P;1>D"+;);;$;< ;?!+;->:;+;&;)5;g;!;a'%!&1+;a;V;<$#;|#; ;6:;(3;q;{"&!@\`!#;**";";(<2<;';;%:;+;W;;R;;(<Q%$%$%$%$%,;$%!;?;y=237;2&69;C<  <&<;1<;F;%;?;7=M=M= *;&=L'/;44;;h;U(#<J<;);%;;*;C)1;K;,;%<$;(#;\\#'< ;3;/,+%&;K;c2;d;w,;;#;-,;&;_;)<;n<@)-8:.;,;F/;2; 5;;[$$$$$$$$$&;;2== $+';B35;6;d";t=g-');]<;8;5<)';?=P<N-;=;1;:4=;Q'!=u;0;";!=[;7;,<:,;[:;u%;+;&);#;:$;y;B<&2;;*;1;58;$/<D;#%<!+6;/*;;30;C;@';l$$$$$$$$$';;;:;M<F+;%;\\;7;L;t"%>6;K;x;/=(;<>;$;w;!"(5%3;>$%;;<7;: ;9)4)?>=1<-7<;c=\\9&;}'<Q8;I;$&;;,;;:!<;$78;;N;!)<Z;O;\`;&42;6;^;s<;/1(%&.;;;;8;%<C<3%' ;w&&&&&&&&&(; ;"<P<Z1;6*(;8;;Z<*5=u;&;W<.;,;A;?;?V;;E;'5#"<~5:5;{;6<(<7;; ;-;q8;a;/;;;;(2'%;l#;!;@"; ;:&;c;I</;;(62;R;;_;E;%23$&0;;g<;;;#'3=Z;%;%!(/;K;\\<\`;%;C;;m;,;(;1#;3
-nw!gVrWiiUG
-[pg'*F#ipWggi\`E6g ,$gM_TgP{Q2@]g-;U?^=5!A$=B5ED<eG%X^5>Hh6<ZAESh3g<=L<w;"gogLE@9g3;(15;'7;LPYD%@S_Fg!8L#_Lg'(BW(eoGhTi?Q<HCg);B[gq2</DKOm=XRIw<D3>'<z\\-DUQwiC3
-#>
-gY_K!giC}vL
-g"]A!ar@ZUBh|Q =gI<.gNg<;hHWhKXg4/KJK!i/8g=IgzwgO\`?kCbj.ygwTG?jF)gm6Q7H]?6gE/<5Rg,(Dg\\GZBP;qj<5
-IitcsMhg6If_ga[csg#^<]g7jEr[|
-g:Wathk<CROgGxFVg+/@mgIDg1hnUUvgi\`7;;;>OThb;g.]p:?jF8?e=X>3@Sh);gB}
-V/aO==r=zg:"AdHCgU>RgR)h[IWaG6g=|N0hs&>g6g8\\=;c;5;phC;[;3gx:;;7=H<&>;$AQj)[gfDkE<U
-O A!M<Ae#>-;fTBX;DB}T#B+HE;h<W)<={<O===4GQW<(;6(>ZCcBRD2>#V3Ia<\`-JZDs;E7Q6<3;hPX?!Pda>US=?NM;IgKwIqK):'+ ;B#<";L>&;^*=HBfKe>L<<W;?Om.S?>+D{@'<C;KA;ED<tO;'N;??9@4K0gB;DH\\giJUg%=U;H#;*<$<K</CC;%<G@Is=#;G;;W=<>5;e<N8;H?m7EE.;5>j6<T;4=?';);Z;H;f<;e;4@G<\`&;P24(;X)@-Af@[<};@@7?F;R;{;^;0;;6;4;Z=4<!:<%?j;<@;v;<;f=h;P ;B;*<Q;h=A;t;%;V;(;b;9=-;v@sE4>!=q<0J4^R??B@$?G=0;<?wG^;V;B~9C%?#B1;@!?LE0;RIu<1;-;k>n=T=aAp<[>@6@GtKm<"JE;]<k<o?b?x<+>rE#@;?#?!M =>a;3JWB<e?O;*?D;2&?c;R=<z;B ==<4BA>\`<X=g;>;C*>LA;2=IC{;E6=F=??1"D3=#;jFtBcAlB",++;;;;6;6EE=I>.;!E\\>ZR>sP">e/>K;k;T=g=*;^*;#;#=XCJ;OM?>A>;\\f=?|Bl?7D7<==UQ:Af>sJG="g5[EnYA?kgHgFAJt?,AnR^M*E<c<Y=^;i;; ;5?iCQ^fFh>P@f;A<,O\`<[gU5g9H]5OM=lR:;/;S+M;/Ct?,U;4+N;a@A<gJ=>LSg:0N4Rg>MbxGx;C[>bBJ;pMv`)
+jsonp(12,{"name":"dc","start":34131},`【李文會曰】不住於相者。非但見色是相。一切種種分別。皆名為相。如是之相。皆從因緣而生。應知一切分別。皆如夢幻。遇緣即施。緣散即寂。是故佛言凡所有相。皆是虛妄。又西明和尚云。法相若是有可言住諸相。法相既本無。故言不住相。既不住相布施。其福德更有何思量也。
+【逍遙翁曰】須知諸法。如夢如幻。如影如響。如水中月。如鏡中像。又云。了逹一切法。不住一切相。心如虛空。自然無礙。心住於相。即属有法。故知一切法不住一切相。即能見佛性也。
+【傅大士曰】若論無相施。功德極難量。行悲濟貪乏。果報勿須望。凡夫情行劣。初且略稱揚。欲知檀狀貌。如空徧十方。
+【川禪師曰】若要天下行。無過一藝精。頌曰。西川十樣錦。添花色轉鮮。欲知端的意。北斗靣南看。虛空不礙絲毫念。所以張名大覺仙。
+^r4:6 須菩提。於意云何。東方虛空可思量不。^r4:7不也。世尊。^r4:8須菩提。南西北方。四維上下虛空。可思量不。^r4:9不也。世尊。^r4:10須菩提。菩薩無住相布施。福德亦復如是不可思量。^r4:11須菩提。菩薩但應如所教住
+【李文會曰】不也世尊者。須菩提謂虛空。我思量之實無可思量也。不可思量者。既已覺悟。心無能所。即無我人眾生壽者四相豈更有可思量。但應如所教住者。謂諸學人。當依佛教。行無所住。必得悟入也。
+【謝靈運曰】聖言無謬。理不可越。但當如佛所教而安心耳。
+【陳雄曰】佛謂所教之住。與華嚴經住無所住同。如來教菩薩法。不過住無所住之法。菩薩受如來教。非敢變異。但當如其所教者。以無住為住處。楞嚴經云。得住般若波羅蜜。文殊般若經云。佛告文殊師利。當云何住般若波羅蜜。文殊言以不住法。為住般若波羅蜜。復問云何不住法名住般若波羅蜜。文殊言以無住相。即住般若波羅蜜。此住之法詳矣。無非住無所住之意。三昧經云。如來所說法。悉從於無住。我從無住處。是處禮如來。
+【顏丙曰】四維者。四隅也。如東方。東南方西方。西北方之類。東西南北。及四維上下方。緫謂十方。佛問如十方虛空可思量不。須菩提荅不可思量。盖大莫大於十方虛空。佛所以借此喻福德也。
+【傅大士頌云】欲知檀狀貌。如空遍十方。佛云。菩薩無住相布施。福德亦復如是。虛空不可思量測度。菩薩當如佛所指教處住。佛教所謂住者。湛若十方。空無所住而住。
+【又頌曰】若論無相施。功德極難量。行悲濟貧乏。果報不須望(平聲)。凡夫情行(去聲)劣。初且畧稱揚。欲知檀狀貌。如空遍十方。
+【川禪師曰】可知禮也。頌曰。虛空境界豈思量。大道清幽理更長。但得五湖風月在。春來依舊百花香。
+^ck5【如理實見】
+^r5:1須菩提。於意云何。可以身相見如來不
+【寶積如來解曰】如來真身。本無生滅。湛然常住。託隂受形。同凡演化。入神母胎。擐(胡貫切)此凡相各別。故云若見諸相非相。
+即見如來。頌曰。凡相滅時性不滅。真如覺軆離塵埃。了悟斷常根果別。此名佛眼見如來。
+【王日休曰】此如來。乃謂真性之佛也。佛呼須菩提而問之云。可以用三十二相見真性之佛否。
+^r5:2 不也。世尊。不可以身相得見如來
+【王日休曰】此須菩提言否也。而又呼世尊云。不可以身相得見如來。是其言否也者。乃大畧言之。下乃詳言之也。
+【李文會曰】不可以身相得見如來者。須菩提謂色身即有相。法身即無相。色身者。地水火風。假合成人。法身者。即無形叚相貌。色身即是凡夫。法身即是如來。須菩提以凡夫但以色身不見法身。故荅是語。
+^r5:3 何以故。如來所說身相。即非身相
+【王日休曰】此如來謂色身佛也。須菩提又自問。何故不可以身相見如來。乃自荅云。如來所說身相。非是真實。故云即非身相。謂無有真實身相也。
+【李文會曰】如來所說身相即非身相者。非者無色。凡夫謂色身是有。執著修行。所以不見佛性。生死轉重。如來法身無相。故言所說身相非身相也。
+【華嚴經云】佛以法為身。清淨如虛空。故。
+【雲門大師云】我當時若見一棒打殺與狗子喫者。此大乘先覺之人。解粘去縛。遣疑破執也。
+【黃蘖禪師曰】夫學道人。若欲得知要訣。但莫於心上著一物。佛真法身。猶若虛空。此謂法身即虛空。虛空即法身。常人謂法身徧虛空處。虛空中含容法身。不知法身即虛空。虛空即法身也。虛空與法身無異相。佛與眾生無異相。生死與涅槃無異相。煩惱與菩提無異相。離一切相。即名諸佛也。
+【川禪師曰】且道只令行住坐臥。是什麼相。休瞌睡。頌曰。身在海中休覔水。日行山嶺莫尋山。鶯啼燕語皆相似。莫問前三與後三。
+^r5:4 佛告須菩提。^r5:5凡所有相。皆是虛妄。若見諸相非相。即見如來
+【陳雄曰】須菩提欲人人見自性佛。所以有即非身相之說。色身是相。中無真實之軆。故云皆是虛妄。
+法身非相。却有真如本軆寓乎其中。若見諸相非相。是見色身中有法身。見自性中有如來。而如來豈可外求。即吾性見矣。壇經云。佛即是性。離性無別佛。
+【顏丙曰】佛問可以身相見如來不。須菩提荅不可。如來者。乃自性不属去來也。四大色身本由妄念而生。若執虛妄身相。而欲見如來之性。譬如認賊為子。終無是處。所以佛告須菩提云。凡所有相。皆是虛妄。若見諸相非相。即見如來。若能廻光返照。得見身相。無形可得。即是見自性如來。
+【李文會曰】凡所有相皆是虛妄者。虛則不實。妄則不真。既不真實。相即非相。又云。非獨佛身相即無相。凡所有相皆是虛妄。色身有相。故言虛妄。法身無相。故言非相也。若見諸相非相即見如來者。言身虛妄。即是人空。言非相者。即是法空。若悟人法二空。即見自性。
+【法華經云】一切諸相。皆悉空寂。又云。或見菩薩。觀諸法性無有二相。猶如虛空。
+【傅大士頌曰】如來舉身相。為順世間情。恐人生斷見。權且立虛名。假言三十二。八十也空聲(大藏一覽集示生品曰。菩薩以四月八日。因母晝寢以示其夢。從右脅入。夫人夢覺。自知身重。菩薩住胎十月滿足。四月八日。菩薩化從右脅而生。自行七步。舉其右手。作師子吼。天上天下。唯我獨尊。九龍空中。吐清淨水。灌太子身。
+三十二相。八十種好。放大光明。普照三千大千世界。即名太子為悉逹多。漢言頓吉)有身非覺軆。無相乃真形。
+【川禪師曰】山是山。水是水。佛在甚麼處。頌曰。有相有求俱是妄。無形無見墮偏枯。堂堂密密何曾間。一道寒光爍太虛。
+^ck6【正信希有】
+^r6:1 須菩提白佛言。^r6:2世尊。頗有眾生。得聞如是言說章句。生實信不。^r6:3佛告須菩提。莫作是說。^r6:4如來滅後。後五百歲有持戒修福者。^r6:5於此章句能生信心。以此為實
+【陳雄】引華嚴經云。信為道源功德母。長養一切諸善法。智度論云。佛法大海。信為能入。盖實信者。實諦之階也。須菩提疑眾生不能生實信。故作此問。而佛恐沮眾生實信之心。且告之以莫作是說。
+【僧若訥曰】持戒者。諸惡莫作。修福者。眾善奉行。夫持戒修福者。即種善根者也。
+【李文會曰】得聞如是言說章句生實信不者。須菩提謂前說無相行於布施。即是因深。得見無相如來。即是果深。既談因果。切恐如來滅後。濁劫惡世之中。無人聽信。故有是問。
+【傅大士曰】因深果亦深。理密奧難尋。當來末法後。惟慮法將沉。空生情未逹。聞義恐難任。如能信此法。定是覺人心。有持戒修福者。不著諸相。即是持戒。心常空寂。無諸妄念。即是修福。此人不被諸境所惑。能生信心。以此為實。
+【慈受禪師云】念念常空寂。日用有大力。此是三世諸佛行履處。六代祖師行履處。無功之功。功不虛棄。
+【川禪師曰】金佛不度鑪。木佛不度火。泥佛不度水。頌曰。三佛形儀緫不真。眼中瞳子靣前人。若能信得家中寶。啼鳥山花一樣春。
+^r6:7 當知是人。不於一佛二佛三四五佛。而種善根。^r6:8已於無量千萬佛所。種諸善根
+【李文會曰】不於一佛二佛者。謂一劫一佛出世也。種種善根者。世間種種善事。不可勝計。大槩止是諸惡莫作。眾善奉行是也。
+【法華經云】隨宜方便事。無復諸疑惑。心生大歡喜。自知當作佛。
+【傅大士曰】依它非自立。必假眾緣成。日謝樹無影。燈來室乃明。
+【六祖曰】何謂種諸善根。所謂於諸佛所。一心供養。隨順教法。於諸菩薩。善知識。師僧父母。耆年宿德尊長之處。常行恭敬供養。承順教命。不違其意。是名種諸善根。於一切貧苦眾生起慈愍心。不生輕厭。有所須求。隨力惠施。是名種諸善根。於一切惡類。自行柔和忍辱。歡喜逢迎。不逆其意。令彼發歡喜心。息剛戾心。是名種諸善根。於六道眾生不加殺害。不欺不賤。不毀不辱。不騎不箠。不食其肉。常行饒益。是名種諸善根。
+【王日休曰】何謂種善根乎。至誠稱其佛號。或拈香一炷。或為一拜。或以一物供養。皆謂之種善根。
+【僧若訥曰】顯其已多種善根者。見佛多。聞法多。修行多也。
+^r6:9聞是章句。乃至一念生淨信者。^r6:10須菩提。如來悉知悉見。是諸眾生得如是無量福德
+【六祖曰】信心者。信般若波羅蜜。能除一切煩惱。信般若波羅蜜。能成就一切出世功德。信般若波羅蜜。能出生一切諸佛。信自身佛性。本來清淨。無有染污。與諸佛性。平等無二。信六道眾生本來無相。信一切眾生盡得成佛。是名淨信心也。
+【李文會曰】乃至一念生淨信者。謂凡夫於諸法中。起一切善惡凡聖等見。有取捨心。種種妄念。不能生淨信者。菩薩了悟人法二空。無諸妄念。心常清淨。聽信其法。故言一念生淨信也。
+【傅大士頌曰】信根生一念。諸佛盡能知。修因於此日。證果未來時。三大經多劫。六度久安施。熏成無漏種(阿毘逹磨論云。漏者令心連注流散不絕。故名為漏。僧問清平和尚曰。如何是有漏。平曰。笊籬。僧曰。如何是無漏。平曰。木杓)。方號不思議。
+【李文會曰】得如是無量福德者。此謂如來知見眾生。無諸妄念。心常清淨。敬信其法。所得智慧勝妙功德。不可測量。
+【川禪師曰】種甘草甜。種黃連苦。作如是因。獲如是果。
+又曰。種瓜得瓜。種果得果。頌曰。一佛二佛千萬佛。各各眼橫兼鼻直。昔年曾種善根來。今日依前得渠力。須菩提須菩提。著衣喫飯尋常事。何須特地却生疑。
+^r6:11 何以故。是諸眾生無復我相。人相。眾生相。壽者相。^r6:12無法相。亦無非法相
+【李文會曰】無復我人眾生壽者相者。謂不倚恃名位權勢。財寶藝學。精進持戒。輕慢貧賤愚癡懈怠破戒之流。無能所知解之心。無苟求希望之心。言行相應也。無法相者。經云。心生則一切法生。心滅則一切法滅。心既清淨。諸法皆空。故無取捨一切善惡凡聖等見諸法相也。亦無非法相者。謂不著能知解心。不作有所得心。無人無法。內明實相。外應虛緣也。
+【肇法師曰】無法相者。明法非有。遣著有心也。亦無非法相者。明法非無。遣著無心也。
+【僧若訥曰】法相者。有見也。非法相者。無見也。捨二邊之著故云無也。
+【圜悟禪師曰】伶俐漢。脚跟須點地。脊梁要硬似鐵。遊人間世。幻視萬緣。把住作主。不徇人情。截斷人我。脫去知解。直下以見性成佛。直指妙心為階梯。及至作用。外應虛緣。不落窠臼。辦一片長久守寂淡身心。於塵勞中透脫去。乃善之又善者也。
+【川禪師曰】圓同太虛。無欠無餘。頌曰。法相非法相。開拳復成掌。浮雲散碧空。萬里天一樣。
+^r6:13何以故。是諸眾生。若心取相。即為著我人眾生壽者。若取法相。即著我人眾生壽者。^r6:14何以故。若取非法相。即著我人眾生壽者
+【李文會曰】心若取相。即起妄念。故著我人眾生壽者相也。
+【圜悟禪師曰】諸佛開示。祖師直指。唯心妙性。徑截承當。不起一念。透頂透底。於見成際。不勞心力。任運逍遙。了無取捨。乃真蜜印也。
+【逍遙翁曰】有念無覺。凡人境界。有念有覺。賢人境界。無念有覺。聖人境界。智者可了知。說則難為說。
+【黃蘖禪師】謂裴丞相曰。佛與眾生。唯止一心。更無差別。此心無始以來。無形無相。不曾生。不曾滅。當下便是。動念即乖。猶如虛空。無有邊際。唯此一心。即便是佛。佛與眾生。更無別異。但是眾生著相外求。求之轉失。使佛覔佛。將心捉心。窮劫盡形。終無所得。不知息念忘慮。佛自現前。此心即是佛。佛即是眾生。為眾生時。此心不滅。為諸佛時。此心不添。遇緣即施。緣散即寂。不假修證。本自具足。若不決定信此是佛。縱使累劫修行。終不成道。取法相者。謂言心外有法。故著諸相也。
+【慈受禪師曰】順天門外古招提。爛熳春光照錦溪。物物更無心外法。箇中能有幾人知。
+【逍遙翁云】欲外安和。但內寧靜。心虛境寂。念起法生。水濁波昬。潭清月朗。修行之要。靡出于斯。
+【黃蘖禪師曰】造惡造善。皆是著相。著相造惡。枉受輪廻。著相造善。枉受勞苦。都緫不如便自認取本心。心外無法。此心即法。法外無心。將心無心。心却成有。一切在我默契而已。若取非法相者。謂有取捨善惡凡聖等相也。
+【傅大士曰】人空法亦空。一相本來同。徧計虛分別。依他礙不通。圓成沉識海。流轉若飄蓬(圓成之理。墮在識海。流轉生死。有若飄蓬)。欲識無生理。心外斷行蹤。是不著諸法相也。
+^r6:15是故不應取法。不應取非法
+【李文會曰】不應取法不應取非法者。此謂有無俱遣。語默雙亡。若取法相。即有法執。若取非法相。即有空執。有執則煩惱熾然。無執則信心清淨。
+【傅大士頌曰】有因名無號。無相有馳名。有無無別軆(有之與無。本無各別之體)無有有無形(有無之形。本來無有)。有無無自性(有無之間無此自性)。妄起有無情(有無之情。人自妄起)。有無如谷響。勿著有無聲。
+【川禪師曰】金不博金。水不洗水。頌曰。得樹攀枝未足奇。懸崖撒手丈夫兒。水寒夜冷魚難覔。留得空舡載月歸。
+^r6:16 以是義故。如來常說汝等比丘。知我說法。如筏喻者。法尚應捨。何况非法
+【王日休曰】筏。謂編竹木成牌以渡人。乃過水之具。亦舡之類也。以是義理之故。乃指上文所言之意也。佛嘗謂汝等比丘。當知我之說法。如船筏之譬喻。是未渡之時。不可無船筏。喻若未了悟真性之時。不可無佛法也。既渡之後。則不須船筏。喻既了悟真性之後。即不須佛法也。如此則既悟之後。佛法尚當捨去。則非佛法而為外道法者。尤當捨去。故云法尚應捨。何況非法。
+傅大士頌曰。渡河須用筏。到岸不須船。此言盡之矣。
+【僧若訥曰】筏喻經云。若解筏喻者。善法尚捨。何況不善法。如欲濟川先應取筏。至彼岸已。捨而去之。
+【顏丙曰】法相属有。非法相属無。乃兩頭見。直須截斷。是故不應取法。不應取非法。以此義故。如來常說汝等比丘知我說法。如筏喻者。筏乃大船也。譬如人未渡河。須假舡筏。既到彼岸。當離其筏。不可執著也。人未出生死愛河。須假佛法。方得度脫。法亦當捨。所以趙州道佛之一字。吾不忍聞佛法尚應捨。何況非佛法。
+【李文會曰】執有說空。因何用筏。有執既喪。空說奚存。既已渡河。那更存筏。
+【傅大士曰】渡河須用筏。到岸不須船。人法知無我。悟理詎勞筌。中流仍被溺。誰論在二邊。(子榮曰。存心中道。尚被流溺。中道不立。二邊何安)。有無如取一。即被污心田。且未見性之時。在於生死海中。遇善知識教以言說。分別法相。得見自性。不可更執著也。法尚應捨何況非法者。經云。若人欲識佛境界。當淨其意如虛空。外無一法而建立。法尚應捨。何況非法乎。
+【川禪師曰】水到渠成。頌曰。終日忙忙。那事無妨。不求解脫。不樂天堂。但能一念歸無念。高步毘盧頂上行。
+^ck7【無得無說】
+^r7:1須菩提。於意云何。如來得阿耨多羅三藐三菩提耶。如來有所說法耶。^r7:3須菩提言。^r7:4如我解佛所說義。無有定法名阿耨多羅三藐三菩提。亦無有定法如來可說
+【僧若訥曰】空生領解佛旨。乃云第一義中。無有定實之法可得。亦無有定實之法可說。
+【陳雄曰】楞伽經論七種空有曰。一切法離言說空。第一義聖智大空。如來了真空之妙。固無法可得。亦無法可說。是以設為之問。無上菩提。乃第一義。深妙難名。或持戒忍辱而得之。或精進禪定而得之。或聚沙為塔。或稱南無。皆已得之。豈可拘以定法而名之哉。如來憫眾生之未悟。安得嘿然而離說。或為志求勝法者說。或為求無上慧者說。或為求聲聞者說(傳心法要曰。自聲教而悟者為聲聞)或為求辟支佛者說(法華經曰。樂獨善寂。是名辟支佛乘)應機而酧。隨即而荅。寧有定法耶。佛盡變通之義。無執無著須菩提兩言無有定法。非能解佛所說義乎。
+【李文會曰】如來有所說法耶者。佛所問意。恐謂如來有所說也。無有定法者。根器有利鈍。學性有淺深。隨機設教。對病用藥。
+【法華經云】諸根利鈍。精進懈怠。隨其所堪而為說法。是故法無定相。迷悟懸殊。若未悟時。似無所得。若悟了時似有所得。得與不得。皆是妄見。但不可執著。自契中道。豈有定法可說耶。
+【川禪師曰】寒即言寒。熱即言熱。頌曰。雲起南山雨北山。驢名馬字幾千般。請看浩渺無情水。幾處隨方幾處圓。
+^r7:5何以故。如來所說法。皆不可取。不可說。非法。非非法
+【謝靈運曰】非法則不有。非非法則不無。有無並無。理之極也。
+【王日休曰】此法為眾生而設。非有真實之法。故云非法。
+然亦假此以開悟眾生。又不可全謂之非法。故云非是非法也。
+【陳雄曰】如來所說者。無上菩提法也。可以性修而不可以色相取。徒取則何以深造於性理之妙。可以心傳而不可以口舌說。徒說則何以超出於言意之表。須菩提所以辨論。兩言其不可也。是法也。微妙玄通。深不可識。一以為有耶。雖有而未嘗有。一以為無耶。雖無而未嘗無。此非法非非法之意。真空不空。其若是乎。
+【李文會曰】不可取者。空生深恐學人不悟如來無相之理。不可說者。深恐學人執著如來所說章句也。非者。無也。非非者。不無也。
+【黃蘖禪師曰】法本不有。莫作無見。法本不無。莫作有見。謂無即成斷滅。謂有即成邪見。
+【傅大士曰】菩提離言說。從來無得人。須依一空理。當證法王身(子榮曰。先悟人法二空。然後證涅槃妙果)有心俱是妄。無執乃名真。若悟非非法。逍遙出六塵。
+【川禪師曰】是什麼。頌曰。恁麼也不得。不恁麼也不得。廓落太虛空。鳥飛無影迹。咄。撥轉機輪却倒回。南北東西任往來。
+^r7:6所以者何。一切聖賢皆以無為法而有差別
+【疏鈔曰】未了人空法空。皆名執著。了此二法。即曰無為。菩薩能齊證二空。聲聞方離人空。未逹法空。故云離一非。以證前之義。故云而有差別。
+【六祖云】三乘根性。所解不同。見有淺深。故言差別。佛說無為說者。即是無住。無住即無相。無相即無起。無起即無滅。蕩然空寂。照用齊施。鑑覺無礙。乃真是解脫佛性佛即是覺。覺即是觀照。觀照即是智慧。智慧即是般若也。
+【王日休曰】其言賢聖。以無為法而有差別者何哉。盖謂於無為法得之淺者則為賢人。若須陀洹之類是也。得之深者則為聖人。若佛與菩薩是也。此所以為差別歟。
+【顏丙曰】。佛問須菩提。如來得阿耨多羅三藐三菩提耶。如來有所說法耶。荅云。如我解佛所說義理。皆無一定之法。可名可說。何故如來所說法。如人飲水。冷暖自知。不可取。不可說。非法非非法。法属有。非法属無。執有著相執無落空。所以道不是法。不是非法。又以者用也。無為者自然覺性。無假人為。故一切賢聖。皆用此無為之法。然法本無為。悟有淺深。遂生差別見。到頭則一也。
+【李文會曰】無為法性。本無淺深定相可取。若有定相。應無差別。有差別者。謂根有利鈍。學有淺深。故名差別。既有差別。即無定相也。
+【海覺元禪師曰】一金成萬器。皆由匠者智。何必毘耶城。人人說不二。
+【傅太士曰】人法俱名執。了即二無為。菩薩齊能證。聲聞離一非。所知煩惱盡。空中無所依。常能作此觀。證果定無疑。
+【川禪師曰】毫釐有差。天地懸隔。頌曰。正人說邪法。邪法悉歸正。邪人說正法。正法悉皆邪。江北成枳江南橘春來都放一般花。
+^ck8【依法出生】
+^r8:1須菩提。於意云何。若人滿三千大千世界七寶。以用布施。是人所得福德寧為多不
+【王日休曰】三千大千世界者。此日月所照。為一小世界。其中間有須彌山。日月遶山運行。故南為閻浮提。東為弗婆提。西為瞿耶尼。北為欝單越。是名四天下。日月運行。乃在須彌山之中腰。故此山之高。其半出日月之上。山上分四方。每方有八所。中間又有一所。共三十三所。謂之三十三天。梵語謂之忉利天是也。日月運行於此四天下。謂之一小世界。如此一千小世界。謂之小千。如此一千小千世界謂之中千。如此一千中千世界謂之大千。以三次言千字。故云三千大千。其實則一大千耳。如此方謂之一大世界。寧為多不者。此寧字。乃譯師之言。盖若助辭耳。不必深考也。
+【六祖曰】此是如來問起此意如何。布施供養。身外之福。受持經典。身內之福。身福即衣食。性福即智慧。雖有衣食。性中愚迷。即是前生布施供養。不持經典。今生聦明智慧。而貧窮無衣食者。即是前生持經聽法。不布施供養。外修福德即衣食。內修福德即智慧。錢財見世之寶。般若在心之珎。內外雙修。方為全德。此是讚歎持經功德。勝布施福也。
+【疏鈔云】七寶者。金。銀。琉璃。珊瑚。瑪瑙。赤真珠。玻璃。佛意欲顯無為之福。先將有漏之福。問及善現。三千世界。盡著七寶以用布施。作福所得。其福德寧為多不。下文須菩提荅。
+^r8:2 須菩提言。甚多。世尊。^r8:3何以故。是福德。即非福德性。是故如來說福德多
+【謝靈運曰】福德無性。可以因緣增多。多則易著。故即遣之。
+【六祖曰】三千大千世界七寶持用布施。得福雖多。於性一無利益。依摩訶般若波羅蜜多修行。令自性不墮諸有。是名福德性。心有能所。即非福德性。能所心滅。是名福德性。心依佛教。行同佛行。是名福德性。不依佛教。不能履踐佛行。即非福德性。
+【僧若訥曰】空生謂大千七寶。寶豐福勝。故曰甚多。是福德者。事福也。即非福德性者。非般若福德種性。既非理福。不趍菩提也。是故如來說福德多者。於世間事福。乃云多也。
+【僧子榮曰】住相布施。唯成有漏之因。而得人天福業報。離相持經。則證無為之理。得福無有邊際。
+【陳雄曰】聚寶布施。持經精進。皆六度之一也。佛化度眾生。未嘗沮其布施。而獨喜其精進。盖謂世人計著。多用金銀。琉璃。珊瑚。瑪瑙。真珠。玻璃。為求福地。殊不知以覺性之寶。修其性上福德。故併為一者設為之問。以較其優劣。持經精進者。率性而修也。性彌滿六虛。其福德亦如是。夫是之謂福德性。聚寶布施者。藉物而修也。物有限而其福亦有限。又非福德性之比。故須菩提辨論曰。是福德即非福德性。且斷之曰。如來說福德多者。以其有限。得以計其多寡故也。五祖嘗曰。自性若迷。福何可救。六祖亦曰。功德在自性。不是布施供養之所求。
+又曰。自悟自修。是自性上功德。二佛之言。深契玄旨。
+【顏丙曰】佛問若人滿世界七寶捨施得福多不。須菩提荅福德雖多。畢竟非福德性。
+【李文會曰】三千大千世界七寶布施。此是住相布施。希求福利。得福雖多。而於識心見性。了無所得。
+【傅大士曰】寶滿三千界。齎持作福田。惟成有漏業。終不離人天。故知住相布施。即非福德性。若人心無能所。識心見性。方名福德性也。
+【川禪師曰】事向無心得。頌曰。寶滿三千及大千。福緣應不離人天。若知福德元無性。買得風光不用錢。
+^r8:5 若復有人。於此經中受持。乃至四句偈等。為他人說。其福勝彼
+【疏鈔云】此經者人人俱有。箇箇周圓。上及諸佛。下及螻蟻亦具此經。即妙圓覺心是也。無物堪比。
+【顏丙曰】復有人於此經中受持。乃至四句偈等。受者。直下承受。持者時時行持。更為他人解說。如一燈傳百千萬燈。其福勝彼。如何便見得勝彼處。彼以七寶乃住相布施。縱得濁福。福盡墮落。此因經悟性。四句現前。福等太虛。歷劫不壞。故云住相布施生天福。
+猶如仰箭射虛空。勢力盡箭還墜。招得來生不如意。爭似無為實相門。一超直入如來地。又四句决疑金剛經者。乃大藏經之骨髓。而四句偈者。
+又金剛經之骨髓。若人受持是經。而不明四句下落。又豈能超生脫死而成佛作祖也哉。古今論四句偈者不一。或指聲香味觸法是。或指經中二偈是。或云若見諸相非相即見如來。或云眼耳鼻舌。或云有為句。無為句。非有為句。非無為句。或云有諦無諦。真諦俗諦。各執己見。初無定論。
+唯銅牌記云。天親菩薩。昇兜率宮。請益彌勒。如何是四句偈。彌勒云。無我相。無人相。無眾生相。無壽者相是也。六祖大師復以摩訶般若波羅蜜多是也。若果執此兩轉語。便為倒根。何異數它人珎寶。於自己無半文之分。
+幸而傅大士曾露箇消息。最是親切云。若論四句偈。應當不離身。以是而觀。則四句偈者。初不假外求。而在吾心地明了。方真四句也。不然。六祖何以註四句偈云。我人頓盡。妄想既除。言下成佛。向使此偈可以言傳靣命。可以聦明測度而到。則我佛乃天人之師。住世四十九年。廣為眾生說法。三百五十度。
+而於此經凡一十四處舉四句偈。而終不明明指示端的。豈我佛吝其辭而不為說破耶。盖恐人執指為月。而徒泥紙上之死句。而不能返觀內照於自己之活句也。且我佛尚不敢執著指示。況其餘者乎。吾之所謂活句者。死生不能汩。凡聖立下風。在於常行日用中。字字放光。頭頭顯露。初無一點文墨污。若是箇漢直下承當。早是蹉過了也。何更容些小見識解會。而分別此是彼非也。唯有過量人方知鼻孔元來在靣上。
+【傅大士頌曰】寶滿三千界。賚持作福田。唯成有漏業。終不離人天。持經取四句。與聖作良緣。欲入無為海。須乘般若船。
+【玄宗皇帝云】三千七寶雖多。用盡還歸生滅。四句經文雖少。悟之直至菩提。
+【百丈禪師曰】眼耳鼻舌。各各若不貪染一切諸法。是名受持四句偈。亦名四果仙人。亦名六通羅漢。若能受持乃至四句偈等。功德廣大。勝彼三千大千世界七寶布施也。
+【陳雄曰】三昧經云。一切佛法。攝在一四句偈中。故得之者不在於文字之多。但一念頃。即入實諦。而其性天昭徹矣。若更有勤行修進。受之不忘於心。持之不厭其久。說之普得聞知。非特覺一己之性。且將覺億萬人之性。其為福德莫大焉。比之多施七寶之福為勝。
+【李文會曰】受持者。身口意皆清淨是也。曉解經義依教而行。如船如海。無所不通。亦名受持。既不曉解經義。而又懈怠。心口相違。如入小港。即有斷絕。非受持也。四句偈。川禪師注。載在卷末應化非真分中。
+【張無盡曰】佛為無上法王。金口所宣。聖教靈文。若一誦之。則為法輪轉地。夜又唱空。報四天王。天王聞已。如是展轉。乃至梵天。通暗通明。龍神悅懌。猶如綸言。誕布詔令。橫流寰宇之間。孰不欽奉。誦經之功。其旨如此。若止形留神往。外寂中搖。尋行數墨而已。何異春禽晝啼。秋蛩夜鳴。雖千萬遍果何益哉。池陽薌山因禪師遣僧往大通鎮陳宅求經。頌曰。燈籠露柱熾然說。莫學驢年紙上鑽。看經須具看經眼。多見看經被眼謾。
+^r8:6何以故。須菩提。一切諸佛。及諸佛阿耨多羅三藐三菩提法。皆從此經出
+【疏鈔云】經云。三世諸佛。及阿耨菩提一切妙法。皆從此經出。即明持經果滿顯前義也。又多心經云。三世諸佛依般若波羅蜜多故。得阿耨菩提。亦同此義。又忠國師云。茲經喻如大地。何物不從地之所生。諸佛惟指一心。何法不從心之所立。故云皆從此經出。
+【王日休曰】阿耨多羅三藐三菩提。謂真性也。一切諸佛阿耨多羅三藐三菩提法者。謂諸佛求真性之法也。何以故者。佛自問何故於此經受持講說。所得福德勝於彼三千大千世界七寶布施也。乃自荅云。一切諸佛。求真性之法。皆從此經出。則此經之功為極大而且無窮矣。
+【顏丙曰】何以故一切諸佛。及阿耨多羅三藐三菩提法。皆自此經出者。盖大藏經及從上諸佛無上正等正覺之法。皆出自此經。此經者。此外無餘經也。
+【僧若訥曰】皆從此經出者。非指此一經文句語言。乃指實相般若即是一心。遍為諸法性體。自己一念能生一切法故。
+【李文會曰】無相福德生出應身。無相智慧顯出真身謂從自己心中出菩提法也。
+【川禪師曰】且道此經從甚處出。須彌頂上。大海波心。頌曰。佛祖垂慈實有權。言言不離此經宣。此經出處還相委。便向雲中駕鐵船。切忌錯會。
+^r8:7須菩提。所謂佛法者。即非佛法
+【王日休曰】佛於此再呼須菩提而告之。所謂佛法者。乃上文所謂阿耨多羅三藐三菩提法也。佛恐人。泥於有此佛法故云所謂佛法者。非有真實佛法。乃虛名為佛法而已。盖謂佛法本來無有。唯假此以開悟眾生耳。是於本性中。非為真實也。
+【六祖曰】如來所說佛者令人覺。所說法者令人悟。若不覺不悟。取外佛外法者。即非佛法也。
+【顏丙曰】所謂佛法即非佛法者隨說隨剗也。
+【李文會曰】二乘之人執著。諸相以為佛法。遂乃向外尋求。
+【文殊師利云】一切眾生愚迷顛倒。不知覺悟。種種修行不離身內。若於身外修行。無有是處菩薩於諸佛法。都無染著。亦不捨離。見如不見。聞如不聞。心境空寂。自然清淨。是故佛法非佛法也。覺道之人。既能覺悟諸相皆空。但用所得知解。做藥治箇心中妄想執著之病。心地自然調伏無罣礙也。
+【川禪師云】能將蜜棗子。換汝苦葫蘆。頌曰。佛法非法。能縱能奪。有放有收。有生有殺。眉間常放白毫光。癡人猶待問菩薩。
+^ck9【一相無相】
+^r9:1須菩提。於意云何。須陀洹能作是念。我得須陀洹果不。^r9:2須菩提言。不也。世尊。何以故。須陀洹名為入流。而無所入。^r9:3不入色聲香味觸法。是名須陀洹
+【陳雄曰】須陀洹。斯陀含。阿那含。阿羅漢。此四羅漢。在一切凡夫人中為第一。佛告彌勒菩薩。於法華經嘗言之矣。告大慧菩薩。於楞伽經亦詳言之。大涅槃經。佛言若有。比丘欲得須陀洹果。斯陀含果。阿那含果。阿羅漢果。當勤修習奢摩他。毗婆舍那二法。大般若經。有預流果。一來果。不還果。阿羅漢果。正此之所謂四果也。
+又云。修行般若波羅蜜多時。不著預流果。不著一來果不還果。阿羅漢果。抑又見四羅漢得是果。而不存所得心也。今我佛恐四羅漢。不知以無念為宗。尚萌所得之念。故設四問。以為能作得果得道之念不。須菩提皆以不也答之。復為之辨論。以形容其所得之實。夫入流者。初入其門。得預聖人之流也。須陀洹已證入流之果。名為入流。且心無所得。故曰而無所入。其所以無所入者。不入六塵境界耳。名須陀洹。其以是歟。
+【李文會曰】問第一果須陀洹者。知身是妄。欲入無為之理。斷除人我執著之相。以無取心。契無得理無取則心空無得乃理寂。雖然能捨麄重煩惱。而未能離微細煩惱。此人不入地獄。不作修羅餓鬼異類之身。此謂學人悟初果也。
+【逍遙翁云】夫煩惱者。菩提之根本也。若人照了練習。可為出世之法。譬如高源陸地。不生蓮花。蓮花生於淤泥濁水中也。又云。煩惱勿令損於菩提心。譬如日月翳於烟雲中。而日月必無損也。珠玉落於泥滓中。珠玉亦無損也。莫管煩惱障。但存菩提心。入流者。謂捨凡入聖。初入聖流也。而無所入者。修無漏業。不入六塵。然終未能捨離塵境。
+【傅大士曰】捨凡初入聖。煩惱漸輕微。斷除人我執。剏始證無為。緣塵及身見。今者乃知非。七反人天後。趣寂不知歸。不入色聲香味觸法者。厭喧求靜。六塵之境。於念未忘。所以不入色聲香味觸法也。
+【圜悟禪師曰】報緣未謝。於人間世上有許多交涉。應須處之使綽綽然有餘裕始得。人生各隨緣分。不必厭喧求靜。但令中虛外順。雖在閙市沸湯中。亦恬然安隱。纔有纖毫見刺。即便打不過也。
+^r9:5須菩提。於意云何。斯陀含能作是念。我得斯陀含果不。^r9:6須菩提言。不也。世尊。何以故。斯陀含名一往來而實無徃來。是名斯陀含
+【肇法師曰】一往來者。一生天上。一生人中。便得涅槃。故名一往來。而實無往來者。證無為果時。不見往來相也。
+【六祖曰】斯陀含人。名一往來。行從天上。却得人間生。從人間死。却生天上竟。欲界九品思惑。斷前六品盡。名斯陀含果。大乘斯陀含者。目覩諸境。心有一生一滅。無第二生滅。故名一往來。
+【王日休曰】一往來者。但色身一次往來天上人間。而真性徧虛空世界。豈有往來哉。故此色身往來非為真實。但虛名為一往來而已。故云實無往來。以色身非真實故也。
+【陳雄曰】一往來者。一往天上一來人間。不復再來人間也。斯陀含已證一來之果。名一往來。且心無所得。而實無生滅相。名斯陀含。其以是歟。
+【李文會曰】問第二果斯陀含者。是漸修精進之行。修無漏業。念念不住六塵境界。然終未有湛然清淨之心。一往來者。謂人間報謝。一往天上。却來受生也。實無往來者。謂前念纔著。後念即覺。是無得果之心。心既無我。誰云往來。故曰而實無往來也。
+^r9:7須菩提。於意云何。阿那含能作是念。我得阿那含果不。^r9:8須菩提言。不也。世尊。何以故。阿那含名為不來。而實無不來。是故名阿那含
+【僧若訥曰】梵語阿那含。此翻不來。已斷欲界思惑。更不來生欲界。故名不來。而實無不來者。謂不計不來相也。
+【陳雄曰】不來者。謂不來欲界受生也。阿那含已證不來之果。名為不來。且心無所得。而實無不來之相。名阿那含。以是之故。豈他在耶。
+【李文會曰】第三果阿那含者。已悟人法俱空。漸修精進。念念不退菩提之心。名為不來者。謂能斷除內無欲心。外無欲境。已離欲界。不來受生。故名不來。心空無我。孰謂不來。故云而實無不來也。
+【傅大士頌曰】捨凡初入聖。煩惱漸輕微。斷除人我執。創始至無為。緣塵及身見。今者乃知非。七返人天後。趨寂不知歸(佛說四十二章經曰。佛言阿羅漢者。能飛行變化。曠劫壽命。住動天地。次為阿那含。阿那含者。壽終魂靈上十九天。於彼證阿羅漢。次為斯陀含。斯陀含者。一上一還。即得阿羅漢。一上天上。一還人間。
+次為須陀洹。須陀洹者。七死七生。便證阿羅漢。又十六菩薩因果頌。阿氏多尊者頌曰。萬行周通能覺性。驅除煩惱更勤修七生七死方成道。初等陀洹入聖流。子榮曰。七返人天後者。七度往返天上人間受生。謂初果須陀洹人。趣寂不知歸者。第四果證得阿羅漢。已悟人法二空。怕染著世間生死。一向灰心滅智。入無餘界。沉空寂滅。不來塵世。化導度生。為有智無悲。不能入生死界。且自利也)。
+【川禪師曰】諸行無常。一切皆苦。頌曰。三位聲聞已出塵。往來求靜有踈親。明明四果元無果。幻化空身即法身。
+^r9:9須菩提。於意云何。阿羅漢能作是念。我得阿羅漢道不。^r9:10須菩提言。不也。世尊。何以故。實無有法名阿羅漢。^r9:11世尊。若阿羅漢作是念。我得阿羅漢道。即為着我人眾生壽者
+【謝靈運曰】阿羅漢者。無生也。相滅生盡。謂之無生。若有計念。則見我人起相也。有註云。阿羅漢者。生已盡。行已立。所作已辦。不受後有。故於諸相諸法實無所得。更不於三界內受生。故名不生。
+【僧若訥曰】阿羅漢者。名含三義。一殺煩惱惑使。二後報不來。三應受人天供養。亦謂之無學果。自初果至阿羅漢果。無別有法。皆同證此無為之軆。無可取捨。故云實無等。
+又曰。若阿羅漢起得果之念。即有著我人等過。
+【陳雄曰】諸漏已盡。無復煩惱。名阿羅漢。阿羅漢心行般若波羅蜜故。法得是道。若自有法。是所得心未除。何以稱是名哉。故曰實無有法名阿羅漢。法華經云。於諸法不受。亦得阿羅漢。正謂此耳。自須陀洹而至於阿羅漢。自得果而至於得道。如是次第修。則菩提無上道。可以次第到。
+【顏丙曰】四果修行。名四不還。須陀洹名為入流者。隨順世間也。而無所入者。本性空故。居塵不染塵之說。斯陀含名一往來者。色身雖有來去。而法身湛然不動而實無往來也。阿那含名為不來者。離生死義。而實無不來者。假名不來。實無動靜。阿羅漢能作是念而得道者。是為著相。實無有法。但假名為阿羅漢。
+【陳雄曰】世尊者。啟咨之辭也。念者。萌之於心也。須菩提啟咨世尊曰。設若阿羅漢作得道之念。是萌所得心。則四著謬妄。無不為己。故曰即為著我人眾生壽者。
+【李文會曰】問第四果阿羅漢者此是梵語。由須菩提當此果也。諸漏已盡。無復煩惱。實無有法者。謂無煩惱可斷。無貪瞋可離。情無逆順。境智俱亡。豈有得果之心。我心既空。無得道念。若於道有得。於法有名。是凡夫之行。即著。我人眾生壽者。相也。
+^r9:12世尊。佛說我得無諍三昧。人中最為第一。是第一離欲阿羅漢。世尊。我不作是念。我是離欲阿羅漢
+【六祖曰】三昧梵音。此云正受。亦云正見。遠離九十五種邪見。是名正見。
+【王日休曰】梵語三昧。亦云三摩地。亦云三摩提。此云正定。亦云正受。乃謂入定思想法也。正定者。謂入定之法正也。正受者。謂定中所想境界。而受之非是妄想。故云正受。
+世人不知此理。乃謂三昧為妙趣(去聲)之意。故以善於點茶者。謂得點茶三昧。善於簡牘者。謂得簡牘三昧。此皆不知出處。妄為此說也。於此三昧人之中。須菩提為第一。
+【僧若訥曰】無諍者。涅槃經云。須菩提住虛空地。若有眾生嫌我立者。我當終日端坐不起。嫌我坐者。我當終日立不移處。一念不生。諸法無諍。言三昧者。得此無諍精妙之處。於諸弟子中最為苐一。
+【李文會曰】三昧者。梵語也。此名正定。心心無生滅。名為正定。故云三昧。人中最為第一。離欲阿羅漢者。能離一切法。亦無離欲之心。微細四相。皆已滅盡。愛染不生。故謂之離欲耳。
+又曰。無我心寂。不作是念。我是離欲得道果者。若作是念。即是心有生滅。不名離欲阿羅漢也。
+【川禪師曰】把定則雲橫谷口。放行則月落寒潭。頌曰。喚馬何曾馬。呼牛未必牛。兩頭都放下。中道一時休。六門迸出遼天鶻。獨步乾坤緫不收(六祖壇經曰。六門。六根也。禪宗頌古白雲端曰。趙州放出遼天鶻。鶻乎骨切)。
+^r9:13世尊。我若作是念。我得阿羅漢道。世尊則不說。須菩提。是樂阿蘭那行者。以須菩提實無所行。而名須菩提。是樂阿蘭那行
+【僧若訥曰】阿蘭那。此翻無諍。世尊雖稱歎我。我實不作是念。若作是念。世尊不應記我無諍之行最為第一。
+又曰。離三界欲。證四果法。得無諍三昧。方受須菩提名。以須菩提翻為空生。故云是樂阿蘭那行。若計著實有所行。則非無諍行也。
+【陳雄曰】三昧。梵語。此言正受也。無生法忍。證寂滅樂。是所謂無諍三昧也。華嚴經云。有諍說生死。無諍即涅槃。六祖偈曰。諍是勝負心。與道相違背。便生四相心。何由得三昧。須菩提證真空無相之妙。得六萬三昧。而無諍三昧為最。以三昧力超出物表。不為物役。名為第一離欲阿羅漢宜矣。且啟咨世尊曰。我不作如是之念。則須菩提不存所得心可知。
+又曰。須菩提恐大眾不知去所得心。是以啟咨世尊。至于再四。我者。須菩提自稱也。須菩提者。亦自稱也。樂者。好也。阿蘭那梵語。無諍之謂也。言樂阿蘭那行者。即是好無諍行之人也。夫萌之於心者曰念。見於修為者曰行。有所行則必有是行(去聲)。有是行則必有所得。須菩提得無諍三昧。有是行故也。且曰無所行者。盖以心無所得也。有是行而心無所得。宜乎。世尊以樂阿蘭那行名之也。
+【顏丙曰】若阿羅漢生一妄念作有所得想。即著四相。佛說我得無諍三昧人中最為第一。無諍者。佛性包含大千。無有鬪諍。三昧者。唐言正見。人中第一。無鬪諍也。是第一離欲阿羅漢者。六欲頓空也。阿蘭那行者。無人我行也。是樂阿蘭那行者。窮其本性空寂。畢竟實無所行。所行謂之行。樂者。愛也。
+【李文會曰】阿蘭那者。是梵語也。此名無諍。心若作是念。心有生滅。即是有諍心。須菩提實無所行。是無生滅。所以佛許須菩提是樂阿蘭那行者。
+【百丈禪師云】只如今一切諸法。若於藏府中有纖毫停留。是不出網。但有所求所得。生心動念。盡是野干。若藏府中都無所求。都無所得。此人諸惡不生。人我不起。是納須彌於芥子中。不起一切貪瞋。是能吸四大海水。不受一切喜怒語言入耳中。於一切境。不惑不亂。不瞋不喜。刮削併當得淨潔。是無事人。勝一切知解精進頭陀。是名有天眼。是名有法界性。是作車載因果。是佛出世度眾生。
+【傅大士頌曰】無生即無滅。無我復無人。永除煩惱障。長辭後有身(子榮曰。出生死苦。更不受父母胞胎之身)。境亡心亦滅。無復起貪瞋。無悲空有智。翛(思邀切)然獨任真(子榮曰。無悲空有智。翛然獨任真者。為方證得果。悟人法空寂。更有餘習。一向沉空趍寂。為不敢入眾生生死海中。教化眾生。方有智慧。未全悲愍之心。故云空有智)。
+【川禪師曰】認着依前還不是。頌曰。蚌腹隱明珠。石中藏碧玉。有麝自然香。何用當風立。活計看來恰似無。應用頭頭皆具足。
+^ck10【莊嚴淨土】
+^r10:1佛告須菩提。於意云何。如來昔在然燈佛所。於法有所得不。^r10:2不也。世尊。如來在然燈佛所。於法實無所得
+【劉虯曰】言如來作菩薩時。在然燈佛所。於法畢竟無所得。離所取也。
+【六祖曰】然燈是釋迦牟尼佛授記之師。故問須菩提。我於師處聽法。有法可得不。須菩提知法。即因師開示而實無得。但悟自性本來清淨。本無塵勞。寂而常照。即自成佛。當知世尊在然燈佛所。於法實無所得。
+【王日休曰】如來。佛自謂也。昔舊也。然燈即定光佛。乃釋迦佛本師。
+【陳雄曰】八王子皆師妙光。得成佛道。而其最後成佛者。名曰然燈。十六王子出家為沙彌。皆得如來之慧。最後者我釋迦牟尼。然燈是釋迦授記之師。釋迦如來因師開導。得無上菩提法。為諸釋之法王。於法寧無所得耶。但不存其所得心耳。佛恐諸菩薩所得心未除。故設是問。須菩提深悟佛意。以不也答之。且言於法實無所得。則以如來實得之心傳故也。言實則將以息大眾之疑心。
+【李文會曰】於法有所得不者。如來欲破二乘之人執著之心。故有此問。
+【白樂天問寬禪師云】無修無證。何異凡夫。師云。凡夫無明。二乘執著。離此二病。是名真修也。真修者。不得勤。不得怠。勤則近執著。怠則落無明。乃為心要耳。此是初學入道之法門也。於法實無所得者。須菩提謂如來自性本來清淨。而於然燈佛所。於法實無所得。
+【傅大士頌曰】昔時稱善慧。今日號能仁(善慧能仁者。皆釋迦佛號)看緣緣是妄。識體體非真。法性非因果。如理不從因(法性本乎自然。非因有果而後得。如理出於真性。不從有因而後能)謂得然燈記。寧知是舊身(然燈佛。即定光佛。乃釋迦佛本師也。舊身即本來非身也。涅槃經曰。唯有法身常住不滅是也。寒山詩曰。嘗聞釋迦佛。先受然燈記。然燈與釋迦。秪論前後智。前後體非殊。異中無一異。一佛一切佛。心是如來地)。
+【川禪師云】古之今之。頌曰。一手指天。一手指地。南北東西。秋毫不覩。生來心膽大如天。無限群魔倒赤幡。
+^r10:3 須菩提。於意云何。菩薩莊嚴佛土不。^r10:4不也世尊。何以故。莊嚴佛土者。即非莊嚴。是名莊嚴。
+【肇法師曰】是名離相莊嚴佛土。
+【疏鈔云】佛土者。佛之妙性也。眾生之真心也。如是心土。還可以相好莊嚴不。又云不也者。即善現從理以荅之。何故。自心之土。不在莊嚴。何故。為性無相。體等虛空。如何莊嚴。何名莊嚴。答。六度萬行。布施戒定慧等。一切善法。是皆莊嚴。又云。若染斷常。即非淨土。經云。欲淨其土。先淨其心。心淨故。即淨土也。問心云何淨。答。外不染六塵。內無我人。不著斷滅。故名淨土。
+【王日休曰】既曰菩薩。而言莊嚴佛土。何也。盖一大世界。必有一佛設化。如此間大世界。乃釋迦佛設化之所。東方有大世界。乃不動佛設化之所是也。唯其一大世界。有一佛設化。故凡大世界。皆謂之佛土。而菩薩莊嚴者。盖有菩薩於其佛土之中。作種種善事以變易其世界。如阿彌陀佛為菩薩時。作無量善事。故其善緣福業。能變其世界。皆以黃金為地。七寶為樹林樓臺。是為莊嚴也。佛於此又自問何以故者。謂何故菩薩言我當莊嚴清淨佛土者。為非真實語也。乃自答云。莊嚴佛土者即非莊嚴。是名莊嚴者。為真性中。非有此莊嚴。故此莊嚴。但為虛名而已。非是真實。唯真性為真實故也。
+【陳雄曰】維摩經云。隨其心淨。則佛土淨。盖此心清淨。便是莊嚴佛土。奚以外飾為哉。七寶宮殿。五采棟宇。皆外飾也。此凡夫之所謂莊嚴。非菩薩之所謂莊嚴。欲知菩薩莊嚴。當於非莊嚴中求之。則萬行莊嚴。是乃所以名其為莊嚴也。
+【李文會曰】莊嚴佛土者。謂造寺寫經布施供養。此是著相莊嚴。若人心常清淨。不向外求。任運隨緣。一無所得。行住坐臥。與道相應。是名莊嚴佛土。龐婆看藏經。維那請回向。婆於靣前取梳子就腦後插云。回向了也。此是無能所心。
+【傅大士云】莊嚴絕能所。無我亦無人。斷除俱不染。穎脫出囂塵。
+【川禪師云】娘生袴子。青州布衫。頌曰。抖擻渾身白勝霜。蘆花雪月轉爭光。幸有九皋翹足勢。更添朱頂又何妨。
+^r10:5是故須菩提。諸菩薩摩訶薩。應如是生清淨心。不應住色生心。不應住聲香味觸法生心。應無所住而生其心
+【疏鈔云】應者當也。故云當如是生清淨心。即佛勸生真如無染之心也。問云何生清淨心。答。不應住色聲香味觸法生心。又楞嚴經云。若能轉物。即同如來。凡夫被物轉。菩薩能轉物。如是轉者。故曰應無所住而生其心。
+【王日休曰】梵語菩薩摩訶薩。此云覺眾生大眾生。其實即所謂菩薩也。如是字乃指下文。謂不當住於有形色者而生心。亦不當住於有聲音馨香滋味及所觸。及一切法者而生其心。當無所住而生其心者。謂不可生心以住著於六塵。唯可於無所住著處生心也。諸佛教化眾生。有第一義第二義。此經說第一義雖至高而可曉。然不易到。淨土雖為第二義。而人人可行。佛言修淨土而明第一義。讀誦大乘經典者上品上生。則為菩薩。生死自如。然則修淨土者。豈可不曉此經之義。而受持讀誦以期於上品上生也。
+【陳雄曰】菩薩莊嚴。既不在於外飾。則當反而求之於心。心苟清淨。莊嚴莫甚焉。故云應如是生清淨心。凡住六塵而生其心者。皆非清淨心也。菩薩豈應如是且如佛心本來清淨無相。寧有所住。菩薩受如來教。亦應如是故云應無所住而生其心。與十四分應生無所住心同。佛言六塵之苦。每以色獨言於先。而継之以聲香味觸法。益以見色者。人情之所易惑。在六塵中尤其㝡者也。
+【五祖為六祖說金剛經】恰至應無所住而生其心。六祖言下大悟。乃言何期自性本自清淨。何期自性本不生滅。何期自性本自具足。何期自性本無搖動。五祖曰。不識本心。學法無益。若言下識自本心。見自本性。即名丈夫天人。
+【李文會曰】菩薩之心。心常空寂。無諸妄念。不生不滅。不動不搖。即是清淨心也。凡夫之心。無明起滅。妄想顛倒。取捨善惡凡聖等見。是名濁亂心也。不應住色生心者。心若清淨。即不被諸境惑亂也。
+【逍遙翁云】若人心境清淨。是佛國淨土。心境濁亂。是魔國穢土也。
+【傅大士頌曰】掃除心意地。名為淨土因。無論福與智。先且離貪嗔。莊嚴絕能所。無我亦無人(圓覺經曰。無能無所。清凉國師答皇太子曰。是非兩亡。能所雙絕)。斷常俱不染。穎脫出囂塵(或斷滅。或常久。此心俱不染著也。唯俱不染著。故能如穎之脫囊中而出乎囂塵也。華嚴經四十四卷十忍品云。非斷非常。史記毛遂白。使遂早得處囊中。乃脫穎而出。此言雖小。可以喻大也)。
+【川禪師云】雖然恁麼。爭奈目前何。頌曰。見色非干色。聞聲不是聲。色聲不礙處。親到法王城。
+【李文會曰】眾生之心。本無所住。因境來觸。遂生其心。不如觸境是空。將謂世法相實。便於境上住心。正猶猿猴捉月。病眼見花。一切萬法。皆從心生。若悟真性。即無所住。無所住心。即是智慧。無諸煩惱。譬如大空。無有罣礙。有所住心。即是妄念。六塵競起。譬如浮雲往來不定。
+【維摩經云】欲得淨土。但淨其心。隨其心淨。即佛土淨。
+【黃蘖禪師曰】心若清淨。何假言說。但無一切心。即名無漏智。汝每日行住坐臥。一切語言。但莫著有為法。出言瞬目。盡須無漏。如今修行學道者皆著一切聲色。何不與我心同虛空去。如枯木石頭去。如寒灰死火去。方有少分相應。若不如是。他日盡被閻羅老子𬢦訊你在。你但離却有無諸法。心如日輪。常在虛空。自然不照而照。豈不是省力底事。到此之時。無棲泊處。即是行諸佛路。便是應無所住而生其心。是你清淨法身阿耨多羅三藐三菩提也。
+【川禪師云】退後退後。看看頑石動也。頌曰。山堂靜夜坐無言。寂寂寥寥本自然。何事西風動林野。一聲寒鴈唳長天。
+^r10:6須菩提。譬如有人。身如須彌山王。於意云何。是身為大不。須菩提言。甚大。世尊。何以故。佛說非身。是名大身。
+【王日休曰】須彌山王者。以此山在四天下之中。為山之極大者。故名山王。謂在眾山之中而為王者也。日月遶山而行。以為晝夜由此而分。四靣為四天下。其上有三十三天。可謂至大矣。人身豈有如是之大者乎。盖譬喻耳。故云譬如有人身如須彌山王也。雖如是至大。亦非真實。是虛名大身而已。故云佛說非身是名大身也。何則。凡有形相者皆為虛妄。故三千大千世界亦為虛妄。况如須彌山之身者乎。唯真性為真實。此經說真性第一義。故以一切皆為虛妄也。一切所以為虛妄者。以其有形相。既有形相。則無不壞者。縱使不壞。乃業力以持之。非本不壞也。業力盡。則壞矣。
+唯真性無形相。故無得而壞。此所以為不壞之本。自無始以來至于今日。無有損動。故云常住真性。謂真性常住而無變壞。此所以為真實也。
+【陳雄曰】須彌山高廣三百三十六萬里。為眾山之王。謂人身有如是之大。萬無是理。唯佛真性清淨無相。無住著。無罣礙。包太虛。藏沙界。雖須彌山不足以擬其大。世尊欲以真心悟人。託大身以為問。而須菩提深悟佛意。遂有甚大之對。恐大眾未曉。為之辯論曰。佛說非身。是名大身。非身者。法身也。真心也。文殊菩薩問世尊。何名大身。世尊曰。非身是名大身。具一切戒定慧。了清淨法。故名大身。盖亦指真心言之也。如此則真心可以吞須彌山矣。
+【顏丙曰】色身雖大如須彌山王。畢竟非大。為有生滅。佛說非身。非身乃為此身也。本性無此妄身。是名大身。所謂佛身充滿於法界是也。
+【李文會曰】色身雖大。心量即小。縱如須彌山王形有。相有可量。不名大身。法身心量廣大。等虛空界。無形無相。無可比量。方名大身。
+【圜悟禪師曰】不登泰山。不知天之高。不涉滄溟。不知海之闊。此區中之論也。若是。其中人天在一粒粟米中。海在一毫毛頭上。浮幢王華藏界盡在眉毛眼睫間。且道此箇人什麼處安身立命。還委悉麼。無邊虛空盛不盡。直透威音更那邊。
+【傅大士頌曰】須彌高且大(子榮曰。梵語須彌山。此云妙高山。出眾山之㝡高大為第一。是眾山之王。更有六萬小山而為眷属也)。將喻法王身(子榮曰。報身佛能現千重化。化受用身。化十地菩薩。是為說法之王。示現大身。實無㝡大之相現心雖廣。亦無有廣見之心量也)。七寶齊圍繞(子榮曰。須彌外更有七重金山圍繞也)。六度次相隣(子榮曰。報身佛因中。唯修六度萬行。證得佛果。故云六度次相隣也)。四色成山相(延光集註。須彌東方玻瓈峯紅色。南方琉璃峯青色。西方真金峯赤色。北方白玉峯白色。榮曰。須彌四靣。各有色。喻報身佛有四相)。慈悲作佛因(子榮曰。菩薩人因地中。皆修四無量心。具慈悲喜捨。修諸萬行。方能成佛。故云作佛因)。
+有形終不大。無相乃為真(子榮曰。有形不名為大身。法身無相。故名為大身也)。
+【川禪師曰】設有。向甚處著。頌曰。擬把須彌作幻軀。饒君膽大更心麄。目前指出千般有。我道其中一也無。便從這裏入。
+^ck11【無為福勝】
+^r11:1須菩提。如恒河中所有沙數。如是沙等恒河。於意云何。是諸恒河沙。寧為多不
+【王日休曰】西土有河名曰恒河。佛多以此河沙為言者。盖因眾人之所見。而取以為譬喻也。然佛尚以此問須菩提寧為多不者。盖使須菩提先省悟此沙已不勝其多矣。然後為下文之說也。寧字。儒家訓豈如此。乃譯師用字。止如助字然。不須深考也。
+^r11:2須菩提言。甚多。世尊。但諸恒河尚多無數。何况其沙。
+【李文會曰】如恒河中所有沙數者。一沙即為一河。是諸河中各有其沙。河尚無數。何况其沙也。
+【川禪師云】前三三。後三三。頌曰。一二三四數河沙。沙等恒河數更多。筭盡目前無一法。方能靜處薩婆訶。
+^r11:3須菩提。我今實言告汝。若有善男子。善女人。以七寶滿爾所恒河沙數三千大千世界。以用布施。得福多不。^r11:4須菩提言。甚多。世尊。^r11:5佛告須菩提。若善男子。善女人。於此經中。乃至受持四句偈等。為他人說。而此福德。勝前福德。
+【肇法師曰】良由施福是染。沉溺三有(三有謂三界。三界不離於有。故謂之三有)。持經福淨。超昇彼岸。是故勝也。
+【疏鈔云】佛重顯無為福。勝有為福也。圓覺經云。有大陀羅尼門名為圓覺。流一切真如涅槃。如此之理。豈不是此經四句偈。何故。圓覺者。妙性也。因圓覺妙性。流出一切真如之法。涅槃之理。不生滅之道。從此而出。亦同第八分之妙義也。如是解者受持無廢。自利利他。普與有情咸達其道。而此福者。即無為福也。其福勝前恒河沙珎寶布施之福。所以題號無為福勝之分。
+【王日休曰】佛再呼須菩提言。善男子善女人。於此經中。受其義理而持守之。乃至以四句偈等為他人說。則已不為惡業所縛。而可以悟明真性。而人亦得聞此至理。而有悟明真性之漸。久而善根皆熟。可以脫離輪廻。永超生死。則萬劫無有盡期。故其福德勝於彼恒河沙數世界七寶布施。無量無數也。佛嘗言財施有盡。法施無窮。財施不出欲界。法施能出三界。此法施之福。勝於彼無量無數。不足恠也。
+【陳雄曰】七寶雖多。不過人間有限之物布施。以此但受人間有限之福。較之經中一偈。悟之者生天。豈不相去萬萬耶。三昧經云。若復有人持以滿城金銀而以布施。不如是人所受持是經一四句偈。令有善男女。非特受持。即自見性。又且解說。教人見性。則彼此生天。成無上道。回視七寶之福為不足道。故有勝前云。華嚴云。譬如暗中寶。無燈不可見。佛法無人說。雖慧不能了。是則解說之功。又孰有大於此者。
+【顏丙曰】將七寶滿世界布施。得福多多。属在有漏未免窮盡。不如於此經中受持自己四句。更能展轉教人。皆得入佛知見。此福德歷劫長存。故勝前着相福德。
+【李文會曰】甚多世尊者。謂七寶滿恒河沙數三千大千世界以用布施。福德甚多。受持四句偈者。川禪師解註甚是詳明。載在應化非真分中。為他人說而此福德勝前福德者。若能說此大乘經義。化導眾生。了悟住無所住心。得無所得法。當知受持此經。無為功德勝前以七寶滿恒河沙數三千大千世界有為之福德也。
+【智者禪師頌曰】恒河數甚多。沙數更難量。舉沙齊七寶。能持布施漿有相皆為幻。徒言智慧強。若論四句偈。此福未為長。
+【川禪師曰】真鍮不換金。頌曰。入海筭沙徒費力。區區未免走埃塵。爭如運出家中寶。枯木生花別是春。
+^ck12【尊重正教】
+^r12:1 復次須菩提。隨說是經。乃至四句偈等。當知此處。一切世間天人阿修羅。皆應供養。如佛塔廟
+【陳雄曰】隨順者。隨順眾生而為說也。但說是經一偈之處。則凡在天道。人道。阿修羅道者。舉皆以華香瓔珞幢幡繒盖香油蘇燈。恭敬供養。如佛真身舍利寶塔在此。况能持誦一經全文乎。應知盡能持誦全文者。則所成就之法。乃出世間上上法也。非尋常法也。故壇經有所謂摩訶般若波羅蜜法㝡尊㝡上㝡苐一。
+【謝靈運曰】封殯法身謂之塔。樹像虛堂謂之廟。聖體神儀。全在四句。獻供致敬。宜盡厥心也。
+【六祖曰】所在之處。見人即說是經。常行無所得心。即此身中有如來全身舍利。故言如佛塔廟。心清淨而說是經。令諸聽者除迷妄心。悟得本來佛性。常行真實感得天人阿修羅人非人等。皆來供養持經之人也。
+【王日休曰】謂隨其所在之處。乃一切處也。有人受持讀誦演說。則其功德威力為甚大。故其處即成塔寺。而一切人。及諸天與阿修羅等皆恭敬也。阿修羅有三種。一属天趣。一属人趣。一属畜生趣。大槩如人耳。唯嗔恨之心重。故託生於此類。其福力大者生天趣。其次者生於人趣。其下者生於畜生趣。
+【僧若訥曰】塔廟者。具云塔婆。此翻方墳。亦名圓塚。廟者。梵云支提。此云靈廟。安佛形貌處也。
+【李文會曰】隨說者。心無分別。理應萬差。逢凡說凡。逢聖說聖也。當知此處者。謂此心也。如佛塔廟者。若人但為名聞利養。心不清淨而說是經。轉墮輪廻。有何利益。心若清淨。即當空寂。不起妄念。以此無所得心。無能解心。而說是經。令諸聽者生清淨心。無諸妄念。是名供養。即此幻身。便是法身。中有如來全身舍利。感得天人恭敬。何殊塔廟。
+^r12:2 何况有人盡能受持讀誦。^r12:3須菩提。當知是人。成就最上苐一希有之法。若是經典所在之處。即為有佛。若尊重弟子。
+【六祖曰】自心誦得此經。自心解得經義。自心體得無著。無相之理所在之處。常修佛行。即自心是佛。故言所在之處。即為有佛。
+【王日休曰】尊重弟子。謂弟子之可尊可重者。乃大弟子。則菩薩之属也。盡能受持讀誦。則如佛與大弟子在焉。
+【僧若訥曰】經者。即法寶也。即為有佛。即佛寶也。若尊重弟子。即僧寶也。經典所在之處。即三寶共居也。弟子者。學居師後故稱弟。解從師生故稱子。又云。以父兄之禮事師。故稱弟子。
+【傅大士頌曰】恒沙為比量。分為六種多(以恒河之沙。而比量此經之功德。究此經之功德。莫大乎六種波羅蜜也。
+華嚴合論九十六卷云。六種波羅蜜海是也)持經取四句。七寶詎能過。法門遊歷處。供養感修羅。經中稱㝡勝。尊高似佛陀(佛陀。即佛也。梵語佛陀。此云覺)。
+【李文會曰】成就者。見性無疑也。㝡上苐一希有之法者。佛與眾生本無差別。若能心常清淨。不生不滅。無諸妄念使可立地成佛。
+【杲禪師曰】身口意清淨。是名佛出世。身口意不淨。是名佛滅度。所在之處。即為有佛。若尊重弟子者。若能行住坐臥。一切時中。心無起滅。湛然清淨。常修佛行。念念精進無有間斷。所在之處自心即佛。是名佛子。故可尊重矣。
+【又曰】即心是佛無餘法。迷者多于心外求。一念廓然歸本際。還如洗脚上船頭。
+【又曰】即心是佛。更無別佛。即佛是心。更無別心。如拳作掌。似水成波。波即是水。掌即是拳也。
+【無業禪師問馬祖云】如何是即心是佛。祖云。即你不了底心是。更別無物也。迷即眾生。悟即是佛。如拳作掌。似掌作拳。師於言下省悟。
+【僧問馬祖云】如何是佛。師云。即心是佛。
+【百丈問長塵云】如何是佛。師云。騎牛討牛。
+【僧問首山和尚云】如何是佛。山云。新婦騎驢。阿家牽皷。山珪禪師為作頌云。阿家新婦兩同條。咫尺家鄉路不遙。可笑騎驢覔驢者。一生錯認馬鞍橋。又。
+【僧問慈受云】如何是佛。師云。擔水河頭賣。
+【僧問大陽云】如何是佛。師云。如何不是佛。
+【僧問歸宗云】如何是佛。師云。我向汝道。汝還信否。僧云和尚誠言。安敢不信。師云。只汝便是也。
+【川禪師云】合如是。頌曰。似海之深。如山之固。左旋右轉。不去不住。出窟金毛獅子兒。全威哮吼眾狐疑。深思不動干戈處。直攝天魔外道歸。
+^ck13【如法受持】
+^r13:1 爾時須菩提。白佛言。^r13:2世尊。當何名此經。我等云何奉持。^r13:3佛告須菩提。^r13:4是經名為金剛般若波羅蜜。^r13:5以是名字。汝當奉持
+【王日休曰】梵語般若波羅蜜。此云智慧到彼岸。所云金剛智慧到彼岸者。謂明此經者。其智慧則如金之剛利。斷絕外妄。直至諸佛菩薩之彼岸也。以是名字汝當奉持者。謂奉事此義而持守之也。
+【陳雄曰】唐柳宗元曰。言之著者莫如經。此經未標名時。須菩提請名於佛。而佛目之曰金剛般若波羅蜜。俾須菩提依此名字。遵奉受持。一心流布於天下後世。
+【李文會曰】言金剛者。堅利之物。故借金為喻。般若者。智慧也。為教眾生用智慧力。照破諸法無不是空。猶如金剛觸物即碎。故名般若也。波羅蜜者。到彼岸也。心若清淨。一切妄念不生。能度生死苦海。汝當奉持者。只是奉持自心。行住坐臥。勿令分別。人我是非也。
+【圜悟禪師云】纔有是非。紛然失心。只這一句。驚動多少人做計較。若承當得。坐得斷。透出威音王那畔。若隨此語轉。特地紛然。自廻光返照始得。天壇石鼓記云。絲毫失度。即招黑暗之愆。霎頃邪言。即犯禁空之醜。天人耳目。咫尺非遙。尅告行人。自當省察。
+【廬山歸宗常禪師云】有座主來參。值宗鋤草次見一條蛇。宗遂斬之。主云。久嚮歸宗。元來却是一箇鹿行沙門。宗云。是尓鹿。我鹿。諸人且道這僧過在什麼處。汾陽昭禪師為作頌云。廬嶽宗師接上機。斬蛇特地施慈悲。癡迷座主生驚怕。却道鹿心惹是非。
+【死心和尚云】只者是。大似眼裏著刺。只者不是。正是開眼磕睡。諸人且道畢竟作麼生則是。還委悉麼。點鐵化成金即易。勸人除却是非難。
+【川禪師曰】今日小出大遇。頌曰。火不能燒。水不能溺。風不能飄。刀不能劈。軟似兜羅。硬似鐵壁。天上人間。古今不識。咦。
+^r13:6所以者何。須菩提。佛說般若波羅蜜。即非般若波羅蜜。是名般若波羅蜜。
+【王日休曰】此智慧到彼岸之說。真性中亦豈有哉。故云即非智慧。到彼岸。謂實無也。但虛名為智慧到彼岸。以此接引眾生耳。
+【陳雄曰】柳宗元曰。法之至者莫尚於般若。楞伽經曰。智慧觀察。不墮二邊。得自覺聖趣。是般若波羅蜜。三昧經曰。心無心相。不取虛空。不依諸地。不住智慧。是般若波羅蜜。然般若波羅蜜。至法也。始而親出佛口故有佛說之句。終而默傳此心則證入於般若三昧。超出於言意之末而了無所得。此非般若波羅蜜也。又孰得而名之哉。既非如是而且名其如是。是又得其所以名也。然則汝當奉持者。以是名字故。
+【顏丙曰】此是須菩提請佛為法安名。更問如何遵奉行持。佛云。是經名為金剛般若波羅蜜。夫妙明本性。湛若太虛。體既尚無。何名之有。如來恐人生斷滅見。不得已而強安是名所以傅大士頌云。恐人生斷見。權且立虛名。
+【李文會曰】佛說般若波羅蜜者。實相般若之堅。觀照般若之利。截煩惱源。達涅槃岸。即非般若波羅蜜者。既知法體元空。本無妄念。若無諸罣礙。何必持戒忍辱。湛然清淨。自在逍遙。是名即非般若也。
+【川禪師云】猶較些子。頌曰。一手擡。一手搦。左邊吹。右邊拍。無絃彈出無生樂。不属宮商格調新。知音知後徒名邈。
+^r13:7須菩提。於意云何。如來有所說法不。^r13:8須菩提白佛言。世尊。如來無所說。
+【顏丙曰】佛問有所說法不。須菩提答云。如來無所說者。盖直下無開口處。若言有說。即為謗佛。所以世尊臨入涅槃。文殊請佛再轉法輪。世尊咄云。吾住世四十九年。未嘗說著一字。汝請再轉法輪。是吾曾轉法輪耶。又佛偈曰。始從成道後。終至跋提河。於是二中間。未嘗說一字。
+【李文會曰】本心元淨。諸法元空。更有何法可說。二乘之人執著人法是有。即有所說。菩薩了悟人法皆空。即無所說。是故經云。若有人言如來有所說法。即為謗佛。
+【慈受禪師云】吾心似秋月。碧潭光皎潔。無物堪比倫。教我如何說。寒山子說不得則且止。諸人還說得麼。直須口似磉盤。方始光明透漏。若能了悟色性皆空。有無俱遣。語默雙亡。即見自性清淨。雖終日言。猶為無言。雖終日說。猶為無說。
+【保寧勇禪師云】門前諸子列成行。各逞英雄越霸王。如何獨有無言者。坐斷毘盧不可當。
+【傅大士云】名中無有義。義上復無名。金剛喻真智。能破惡堅貞。若到波羅岸。入理出迷情。智人心自覺。愚者外求聲。
+【川禪師云】低聲低聲。頌曰。入草求人不奈何。利刀斷了手摩挲。雖然出入無蹤迹。文彩全彰見也麼。
+^r13:9須菩提。於意云何。三千大千世界所有微塵。是為多不。^r13:10須菩提言。甚多。世尊。^r13:11須菩提。諸微塵。如來說非微塵。是名微塵。如來說世界非世界。是名世界
+【陳雄曰】華嚴經云。三千大千世界。以無量因緣乃成一切眾生。豈外此而別有世界耶。悟者處此。迷者亦處此。悟者之心。清淨心也。以此心處此世界。即清淨世界。迷者之心。塵垢心也。以此心處此世界。即微塵世界。然世界許多。而微塵不勝其多。宜須菩提有甚多之對。
+又曰。諸微塵者。一切眾生心上微塵也。佛分身於微塵世界中。示現無邊大神力。開闡清淨無垢法。使一切眾生。皆生清淨心。非微塵所可污。故云非微塵。得出世間法。非世界所能囿。故云非世界。世尊答文殊曰在世離世。在塵離塵。是為究竟法。此言非微塵。非世界。即離塵離世也。
+【顏丙曰】世界微塵。二者皆非真實。經云。一切山崖。會有崩裂。一切江河。會有枯竭。唯有法身。常住不滅。
+【李文會曰】微塵者。眾生妄念煩惱客塵。遮蔽淨性。喻如微塵。如是煩惱妄想。如病眼人見空中花。如愚癡人捉水中月。求鏡中像。枉用其心。
+【傅大士頌曰】積塵成世界。析界作微塵。界喻人天果。塵為有漏因。塵因因不實。界果果非真。果因知是幻。逍遙自在人。
+【又曰】妄計因成執。迷繩謂是蛇。心疑生暗鬼。眼病見空花。一境雖無異。三人乃見差。了茲名不實。長馭白牛車。
+【晁太傅云】念起念止。皆由自心。念起即一切煩惱起。無念即一切煩惱止。既由自心。何如無念。又古德云。一念不生全體現。六根纔動被雲遮。
+【察禪師云】真淨界中纔一念。閻浮早已八千年。
+【逍遙翁云】不怕念起。唯恐覺遲。覺速止速。二妙相宜。知非改過。蘧顏可師。
+【圜悟禪師上堂云】十方同聚會。箇箇學無為。此是選佛場。心空及第歸。大丈夫具决烈志氣。慷慨英靈。踏破化城。歸家穩坐。外不見一切境界。內不見有自己。上不見有諸聖。下不見有凡愚。淨躶躶。赤洒洒。一念不生。桶底子脫。豈不是心空也。到這裹還容棒喝麼。還容玄妙理性麼。還容彼我是非麼。直不如紅爐上一點雪相似。豈不是選佛場也。然雖如是。猶涉階梯在。且下涉階梯一句作麼生道。千聖會中無影迹。萬人叢裏奪高標。
+【逍遙翁云】五鼓夢回。緣念未起。靈響清徹。聞和達聦。為三妙音。一曰幽泉漱王。二曰清磬搖空。三曰秋蟬曳緒。凝聽靜專。頗資禪悅。安住妙境。何勝如之。要會麼。病覺四肢如鶴瘦。虛聞兩耳似蟬鳴。非微塵是名微塵者。一念悟來。轉為妙用。前念無諸妄想。湛然清淨。即非微塵。後念不住清淨。是名微塵。非世界是名世界者。若無妄念。即佛世界。有妄念。即眾生世界。前念清淨。即非世界。後念不住清淨。是名世界。
+【謝靈運曰】散則為微塵。合則成世界。無性則非微塵世界。假名則是名微塵世界。
+【川禪師云】南贍部洲。北欝單越。頌曰。頭指天。脚踏地。飢則食。困則睡。此土西天。西天此土。到處元正是大年。南北東西祗者是。
+^r13:12須菩提。於意云何。可以三十二相見如來不。^r13:13不也。世尊。不可以三十二相得見如來。^r13:14何以故。如來說三十二相。即是非相。是名三十二相
+【王日休曰】三千大千世界微塵。可謂極多矣。然見雨則為泥。遇火則為磚瓦。是無微塵之定軆。所以為虛妄也。是故說為非微塵。謂非有真實微塵也。但虛名為微塵而已。此謂極細而極多者也。若極大者則世界。世界亦非真實。盖劫數盡時則壞。是亦虛妄。非為真實。但名為世界而已。佛雖現色身而為三十二相。至涅槃時。則皆無矣。不可以此得見真佛。故云不可以三十二相得見如來。此如來謂真性佛也。下文言如來說三十二相。彼如來。則謂色身佛耳。乃佛謂我說三十二相者。即是非相。謂非真實相也。但名為三十二相而已。此分大意。謂細而微塵。大而世界。妙而佛之色身。皆為虛妄。但有名而已。唯真性為真實。是以自古及今。無變無壞。彼三者則有變壞故也。
+【陳雄曰】三十二相。勝妙殊絕。形軆映徹。猶如琉璃。此相非是欲愛所生。楞嚴經有是言矣。謂其非是欲愛所生。則是從三十二行上得之。世人徒著三十二相。而不修三十二行。將焉自而得見法身如來。
+又曰。如來有是行。必有是相故也。說相者。其意在於三十二行。即非相也。曰非相者。其法身之謂歟。華嚴經曰。諸佛法身不思議無色無形無影像。名三十二相。亦以是耳。豈它求哉。故如來有是名之說。
+般若經云。如來足下有平滿相。是為第一。
+如來足下。千輻輪文。無不圓滿。是為第二。
+如來手足。並皆柔軟。如兜羅綿。是為第三。
+如來兩足。一一指間。猶如鷹王。文同綺畫。是為第四。
+如來手足。諸指圓滿。纖長可愛。是為第五。
+如來足跟。廣長圓滿。與趺相稱。是為第六。
+如來足趺。修高光滿。與跟相稱。是為第七。
+如來雙腨。漸次纖圓。如鹿王腨。是為第八。
+如來雙臂。平立摩膝。如象王鼻。是為第九。
+如來隂相藏密。是為第十。
+如來毛孔。各一毛生。紺青宛轉是為苐十一。
+如來髮毛。右旋宛轉。是為第十二。
+如來身皮。細薄潤滑。垢水不住。是為第十三。
+如來身皮。金色晃耀。諸寶莊嚴。是為第十四。
+如來兩足。兩掌。中頸。雙肩。七處充滿。是第十五。
+如來肩項。圓滿殊妙。是第十六。
+如來膞腋。悉皆充實。是第十七。
+如來容儀。洪滿端直。是第十八。
+如來身相。修廣端嚴。是第十九。
+如來軆相。量等圓滿。是第二十。
+如來額臆。并身上半。威容廣大。如師子王。是二十一。
+如來常光。靣各一尋。是二十二。
+如來齒相。四十齊平。淨密根深。白逾珂雪。是二十三。
+如來四牙。鮮白鋒利。是二十四。
+如來常得味中上味。是二十五。
+如來舌相。薄淨廣長。能覆靣輪。至耳髮際。是二十六。
+如來梵音。詞韻和雅。隨眾多少。無不等聞。是二十七。
+如來眼睫。猶若牛王。紺青齊整。是二十八。
+如來眼睛。紺青鮮白紅環。是二十九。
+如來靣輪。其猶滿月。眉相皎淨。如天帝弓。是第三十。
+如來眉間。有白毫相。柔軟如綿。白逾珂雪。是三十一。
+如來頂上。烏瑟膩沙。高顯周圓。猶如天盖。是三十二。
+【顏丙曰】(注三十二相。與前般若經同。更不重述)以上乃三十二相也。若據如來妙相。本性湛然空寂。一相尚不可得。豈可以三十二相而求見也。佛在忉利天。目連令匠人雕佛三十二相。只雕得三十一相。唯有梵音相雕不得。院主問南泉。如何是梵音相。泉云。賺殺人。
+【李文會曰】三十二相者。謂眼耳鼻舌身。五根中具修六波羅蜜。謂布施。持戒。忍辱。精進。禪定。智慧是也。於意根中修無住無為。是三十二相清淨行也。如來說三十二相。即是非相。是名三十二相者。此謂法身有名無相。故云非相。既悟非相。即見如來。
+【逍遙翁云】須知諸佛法身。本性無身。而以相好莊嚴為身。故臨濟云。真佛無形。真道無軆。真法無相也。
+【川禪師云】借婆衫子拜婆年。頌曰。你有我亦有。君無我亦無。有無俱不立。相對觜盧都。
+^r13:15須菩提。若有善男子。善女人。以恒河沙等身命布施
+【李文會曰】譬如有人捨身命布施。求無上菩提。此謂住相布施也。
+【禪要經云】若於外相求之。雖經萬劫。終不能得。又。
+【教中經云】若見有身可捨。即是不了蘊空。昔日罽賔國王。仗劒詣獅子尊者所問曰。師得蘊空不。尊者曰。已得之矣。王曰。可施我頭。尊者曰。身非我有。何况於頭。王遂斬之。白乳高丈餘。王臂自落。是知人法俱空。不應住色布施。所以尊者不畏於死也。
+【傅大士云】法性無前後。無中非故新。蘊空非實軆。憑何見有人。故捨身命布施。即與菩提轉不相應。盖為不見佛性。縱捨身命如恒河沙數。何益於事。
+【又曰】施命如沙數。人天業轉深。既掩菩提相。能障涅槃心。猿猴探水月(證道歌云。水中捉月爭枯得)。䕞𦿆拾花針(玉篇。䕞。力盎切。𦿆。蔡盎切。本草作䕞菪子。亦名浪蕩。生食令人發狂。眼生花針。即以手拾之。其實無花針)愛河浮更沒。苦海出還沉。
+^r13:16若復有人於此經中。乃至受持四句偈等。為他人說。其福甚多
+【顏丙曰】若人以恒河沙等身命布施。等者。比也。雖受頑福。畢竟不明本性。如生豪貴之家。驕奢縱恣。不容不作業。反受業報。爭如受持四句。為他人說。自利利他。其福甚多。
+【傅大士頌曰】經中稱四句。應當不離身。愚人看似夢。智者見唯真。法性無前後(法性者。真佛性也。歷劫長存。故無前後)無中非故新(真性如虛空。本無形相。故云無中也。此性常住不滅。不以前生而故。不以今生而新故云非故新也)蘊空無實相。憑何見有人(心經曰。照見五蘊皆空)。
+【川禪師曰】兩彩一賽。頌曰。伏手滑槌不換劒。善使之人皆緫便。不用安排本現成。箇中須是英靈漢。囉囉哩。哩囉囉。山花笑。野鳥歌。此時如得意。隨處薩婆訶。
+^ck14【離相寂滅】
+^r14:1爾時須菩提。聞說是經。深解義趣。涕淚悲泣。而白佛言。^r14:2希有世尊。佛說如是甚深經典。我從昔來。所得慧眼。未曾得聞如是之經
+【陳雄曰】深解義趣者。須菩提心悟真空無相義趣也。涕淚悲泣者。傷我值遇之晚不獲早覺悟也。
+【顏丙曰】深解者。大徹大悟也。
+【李文會曰】須菩提聞說是經。了悟人法二空。即得中道之理。歎其希有。感極涕零也。
+【傅大士頌曰】聞經深解義。心中喜且悲。昔除煩惱障。今能離所知。遍計於先了。圓成證此時。宿乘無礙慧。方便勸人持。
+【李文會曰】未嘗得聞者昔得慧眼。於有見空。令聞是經。於空亦遣。是了中道。將欲起教以示未來也。
+【川禪師云】好笑當靣諱了。頌曰。自小來來慣遠方。幾回衡嶽渡瀟湘。一朝踏著家鄉路。始覺途中日月長。
+^r14:4世尊。若復有人得聞是經。信心清淨。即生實相。當知是人。成就第一希有功德
+【李文會曰】信心清淨者。信本來心。無法可得。不起妄念。心常空寂。湛然清淨。
+【傅大士云】未有無心境。曾無無境心。境亡心自滅。心滅境無侵。經中稱實相。語妙理能深。證知唯有佛。小聖詎能任。
+【陳雄曰】性中具如來法身。夫是之謂生實相。圓覺經曰。一切實相。性清淨故。悟理而至於證實相。吾知夫成就法身功德。莫能出乎其右者。謂之第一希有。信乎經以福兼德言者屢矣。而此獨言功德不及福者。是功成果滿之時。則其福為不足道。所以壇經有功德在法身中。非在於福之句。
+【顏丙曰】即生實相者。即是悟自性也。
+【李文會曰】即生實相者。豁然了悟萬法。由此淨心建立。是名實相。成就第一希有功德者。迷即佛是眾生。悟即眾生是佛。佛佛道齊。無法等比。
+^r14:5 世尊。是實相者。即是非相。是故如來說名實相
+【顏丙曰】佛云實相無相。所謂是實相者即是非相。如太虛空。無一形相。若悟實相。不可執著實相。當如大士云。彼岸更求離。但說假名。實相本無可得。
+【李文會曰】即是非相者。實相無相。故言為非。不是無實相。如龜毛兔角。只說龜無毛。兔無角。不說無龜毛兔角。只說實相無相。不說無實相也。
+【達磨曰】若解實相。即見非相。若了非相。其色亦然。當於色中不生色軆。於非相中不礙有也。正猶水中塩味。色裏膠青。决定是有。不見其形。此之謂也。
+【傅大士云】眾生與壽者。蘊上立虛名。如龜毛不實。似兔角無形。
+【川禪師云】山河大地。甚處得來。頌曰。遠觀山有色。近聽水無聲。春去花猶在。人來鳥不驚。頭頭皆顯露。物物軆元平。如何言不會。只為太分明。
+^r14:6世尊。我今得聞如是經典。信解受持。不足為難。
+【王日休曰】信解者。謂信其義而曉解也。受持者。謂能受其義而持守之也。
+【陳雄曰】無狐疑心曰信。曉了意義曰解。欽承不忽曰受。佩服不厭曰持。
+【李文會曰】但止了語人法二空。心無取捨。常令空寂。是名信解受持。如來慈悲方便。化導迷人。迷即佛是眾生。悟即眾生是佛。若能了悟。萬事皆空。以藥對病。以悟對迷。以善對惡。以靜對動。以慧對愚。種種修行。只是對治。莫作諸惡。勉力為善。依此修行。縱橫自在。又且何難。
+【傅大士頌曰】空生聞妙理。如蓬植在麻。凡流信此法。同火出蓮花。恐人生斷見。大聖預開遮。如能離諸相。定入法王家。
+【川禪師曰】若不得後語。前話也難圓。頌曰。難難。難如平地上青天。易易。易似和衣一覺睡。行船盡在把梢人。誰道波濤從地起。
+^r14:7若當來世。後五百歲。其有眾生得聞是經。信解受持。是人即為第一希有。
+【李文會曰】若人心常空寂。湛然清淨。不著諸相。悟住無所住心。了得無所得法。是為第一希有。
+【川禪師云】行住坐臥。著衣喫飯。更有什麼事。頌曰。冰不熱。火不寒。土不濕。水不乾。金剛脚踏地。旛竿頭指天。若人信得及。北斗靣南看。
+^r14:8何以故。此人無我相。無人相。無眾生相。無壽者相。^r14:9所以者何。我相即是非相。人相。眾生相。壽者相。即是非相。^r14:10何以故。離一切諸相。即名諸佛
+【李文會曰】即是非相者。前言無相即是滅色以明空義。復言非相。即是了悟我人眾生壽者四相本來不生。故名實相。離一切相即名諸佛者。此謂悟實相者更無等比。當知是人不著二邊。不處中道。一切無住。即名為佛又云。離相清淨。解悟三空。契合實相。究竟涅槃。三空之義。初即人空。次即法空。後即空空。三世如來同證此理。故名為佛。
+【傅大士云】空生聞妙理。如蓬植在麻。凡流信此法。同火出蓮花。恐人生斷見。大聖預開遮。如能離諸相。定入法王家。
+【川禪師云】心不負人。靣無慚色。頌曰。舊竹生新笋。新花長舊枝。雨催行客到。風送片帆歸。竹密不妨流水過。山高豈礙白雲飛(善靜禪師云。竹密不妨流水過。山高那阻野雲飛)。
+^r14:11佛告須菩提。^r14:12如是、如是。
+【李文會曰】如是如是者。佛以須菩提所解空義。善契如來之法意也。
+【陳雄曰】華嚴經云。離諸和合相。是名無上覺。佛以覺言。外覺離一切有相。內覺離一切空相。於相而離相。於空而離空。得夫真空無相之妙。所以名其為佛。
+^r14:13若復有人得聞是經。不驚不怖不畏。當知是人。甚為希有
+【肇法師曰】得大乘。聞慧解。一往聞經。身無懼相。故名不驚。得大乘。思慧解。深信不疑。故名不怖。得大乘。修慧解。順教修行。終不有謗。故名不畏。
+【陳雄曰】不驚則無疑心。不怖則無懼心。不畏則無退心。
+【李文會曰】不驚不怖不畏者。心若空寂。湛然清淨。等於虛空。有何驚怖。甚為希有者。諸上根器。得聞是經。諦聽受持。永不退轉。當知是人。甚為希有。
+【傅大士頌曰】如能發心者。應當了二邊。涅槃無有相。菩提離所緣(子榮曰。如修行初發心修菩薩行。須求大乘正知見人。悟達上乘。先了有無二邊之執。方證涅槃無相之理。故離所緣之心境也)無乘及乘者。人法兩俱捐。欲達真如理。應當識本源。
+【川禪師云】秖是自家底。頌曰。毛吞巨海水。芥子納須彌。碧漢一輪滿。清光六合輝。踏得故鄉田地穩。更無南北與東西。
+^r14:14何以故。須菩提。如來說第一波羅蜜。即非第一波羅蜜。是名第一波羅蜜
+【疏鈔云】何以故者。顯因中㝡勝。明標第一波羅蜜者有十種。一布施。二持戒。三忍辱。四精進。五禪定。六智慧。七慈。八悲。九方便。十不退。今言第一波羅蜜者。即布施波羅蜜。何故獨言布施為第一。曰布施者。通攝萬行。直至菩提。尚行法施。因布施資生眾善。言非者。恐有能所之名。先拂去假名。行無住相施。故曰是名第一波羅蜜。
+【李文會曰】如來說第一波羅蜜者。若悟非相。即達彼岸。實相無二。故名第一。非第一波羅蜜者。了悟人法俱空。即無生死可度。亦無彼岸可到。何處更有第一。故云非第一也。是名第一波羅蜜者。悟一切法。即知諸法皆是假名。
+【法華經云】但以假名字引導於眾生。於斯了悟。能入見性之門。是名第一波羅蜜也。故知假名。如將黃葉作金。止小兒啼。二乘之人聞說假名。將謂是實。執著修行。欲離生死。不知即無生死可離。
+【傅大士頌曰】波羅稱彼岸。於中十種名(華嚴六十六卷。善財童子見寶髻長者。言願為我說諸菩薩道。答言。檀波羅蜜。尸波羅蜜。忍辱波羅蜜。精進波羅蜜。禪波羅蜜。般若波羅蜜。方便波羅蜜。願波羅蜜。力波羅蜜。智波羅蜜。又合論九十六卷云。如是一百一十八大揔持門。不出十波羅蜜中行)高卑緣妄識。次第為迷情。熖裏尋求水。空中覓響聲。真如何得失。今始號圓成(子榮曰。真如之理上至諸佛。下至含生。本自具足。流轉六道。亦未曾失。縱悟成佛亦未曾得。今始號圓成者。言下頓覺即佛)。
+【川禪師云】八字打開。兩手分付。頌曰。是名第一波羅蜜。萬別千差從此出。鬼靣神頭對靣來。此時莫道不相識。
+^r14:15須菩提。忍辱波羅蜜。如來說非忍辱波羅蜜。是名忍辱波羅蜜
+【疏鈔云】忍辱波羅蜜者。即十波羅中第三是也。
+【王日休曰】佛呼須菩提而謂能忍辱。方不起嗔心以昏亂真性。乃能到諸佛菩薩之彼岸。故云忍辱波羅蜜也。佛雖有時自稱如來。自稱佛。然亦有時稱我。其稱我則特謂我身爾。若稱如來與佛。則謂己與諸佛如來皆然也。盡此一經皆如是。此佛謂我與諸佛說忍辱波羅蜜。真性中亦豈有此忍辱哉。故亦非真實。但為虛名而已。故云。是名忍辱波羅蜜。
+【李文會曰】忍辱波羅蜜者。若有能忍之心。即是見有身相。不達我人眾生壽者諸非相也。
+【大㑥禪師舉火問僧云】會麼。僧云不會。師云。起則遍周沙界。滅則了無所得。又。
+【龐居士問馬祖云】不與萬法為侶者是什麼人。祖云。廻光自照看。待你一口吸盡西江水。然後向你道。
+【圜悟禪師曰】參得此語透者。目前萬法平沉。無始妄想蕩盡。
+【又云】大空無外。大象無形。盡世界撮來如粟米粒。緫虛空似掌中珠。可以拽新羅國。與波斯國鬪額。直得東勝身洲射箭。西瞿耶尼中垜。所以道髑髏當千世界。鼻孔摩出家風。若是未出隂界。尚涉見知聞。恁麼說話。一似鴨聽雷鳴。隔靴抓癢。直饒脫却根塵。去却機境。尚餘一線路在。且二途不涉。一句作麼生道。還委悉麼。佛殿堦前石獅子。大洋海裏鐵崑崙。如來說非忍辱波羅蜜者。了悟人法二空。即無忍辱之相。是達我人眾生壽者非相。故云非忍辱也。
+^r14:16何以故。須菩提。如我昔為歌利王割截身體。我於爾時無我相。無人相。無眾生相。無壽者相。^r14:17何以故。我於往昔莭莭支解時。若有我相。人相。眾生相壽者相。應生嗔恨。須菩提。^r14:18又念過去。於五百世作忍辱仙人。於爾所世。無我相。無人相。無眾生相。無壽者相
+【肇法師曰】歌利王。即如來因緣中事也。尓時菩薩得無我解。故所以能忍也。
+【六祖曰】歌利王。是梵語。此云無道極惡君也。世者。生也。如來因中。五百生修行忍辱波羅蜜。以得四相不生。
+【李文會曰】如我昔為歌利王割截身軆者。如來設教。方便門多。若作教相言之。只是依文設教。為歌利王割截身軆。莭莭支解。曾無一念瞋恨之心。
+【肇法師曰】五蘊身非有。四大本來空。將頭臨白刃。一似斬春風。若以諸大宗師言之。即是先說有為權教。後顯無為實理。若表法言之歌者。即是慧之別名。利者。刀也。非謂世間之刀。王者。心也。是用慧刀割截無明煩惱之身軆也。應生嗔恨者。謂色身與法身即不同也。當知割截之時。即不見有身相。亦不見有我人眾生壽者四相。何處更有嗔恨也。
+【華嚴經云】譬如虛空。於十方中求不可得。然非無虛空。菩薩之心。亦復如是。
+【川禪師云】智不責愚。頌曰。如刀斷水。似火吹光。明來暗去。那事無妨。歌利王。歌利王。誰知遠烟浪。別有好商量。
+【李文會曰】忍辱仙人者。如來五百世中修忍辱波羅蜜行。欲令一切眾生成就忍辱波羅密法。不著諸相。見一切人迷悟賢愚貧富貴賤。平等恭敬。不生輕慢。以至惡罵捶打。皆悉能忍。反生歡喜。不生瞋恨之心。
+【圜悟禪師云】大凡為善知識。應當慈悲柔和善順接物。以平等無諍自處。彼以惡聲色來加我非理相干。訕謗毀辱。但退步自照。於己無嫌。一切勿與較量。亦不瞋恨。只與直下坐斷。如初不聞見。久之魔孽自消耳。若與之較。即惡聲相反。豈有了期又不表顯自己力量。與常流何以異。切在力行之。自然無思不服。且夫見性之人。聞人毀謗。如飲甘露。心自清凉。不生煩惱。則能成就定慧之力。不被六賊盜竊家寶。功德法財。遂從此增長也。
+【傅大士頌曰】暴虐唯無道。時稱歌利王。逢君出遊獵。仙人橫被傷(子榮曰。逢君出遊獵。仙人橫被傷者。謂如來因地修行。證初地菩薩。修忍辱仙行。在山中宴坐。遇歌利王出遊獵。王乃憇息。睡醒不見左右彩女。遂親入山。尋見眾妃宮女。圍繞禮拜仙人。王乃大怒問曰。云何恣情觀我女色。仙人曰。於諸女色。實無貪著。王曰。云何見色不貪。仙人曰。持戒。王曰。何名持戒。仙人曰。忍辱即是持戒。王乃持刀割仙人身。問曰。還可痛否。仙人曰。實不痛。王即莭莭支解。問曰。還可痛否。仙人曰。實不痛。其時輔相大臣諫曰。彼之大士。逢斯患苦。顏色忻然。無所搖動。奈何大王如斯刑害。王乃止。爾時王者。即憍陳如。是時仙人者。即釋迦如來也)。
+頻經五百世。前後極時長。承仙忍辱力。今乃證真常。
+【川禪師云】目前無法。從教柳綠花紅。耳畔無聞。一任鶯啼燕語。頌曰。四大元無我。五蘊悉皆空。廓落虛無理。乾坤萬古同。妙峯嶷嶷常如故。誰管顛號刮地風。
+^r14:19是故須菩提。菩薩應離一切相。發阿耨多羅三藐三菩提心
+【陳雄曰】夫離一切相。即名諸佛。而菩薩受如來無相教法者也。欲成佛道。必發菩提無上道心。盖菩提無上道心。即清淨無相心也。菩薩應當離一切相以發是心。然後可以成佛。
+【李文會曰】應離一切相者。心常空寂。不生起滅。湛然清淨。是離一切相也。
+【川禪師曰】是即此用。離此用(百丈參馬祖。祖見師來。取禪床角頭拂子豎起。師云。即此用。離此用。祖掛拂子於舊處)。頌曰。得之於心。應之於手。雪月風花。天長地久。朝朝鷄向五更啼。春來處處山花秀。
+^r14:20不應住色生心。不應住聲香味觸法生心。應生無所住心。^r14:21若心有住。即為非住
+【晁太傅曰】自定純修之法。但於一切時中。隨其辦及。止習無住之住足矣(又下文曰。金剛經云應生無所住心是也。又僧肇五論有云。聖人之心。住無所住。內解註云。安住無為。名之為住。住無方所。故名無住。又六祖壇經云。我此法門。無住為本。又司馬子微坐忘論翼云。不依一物而心常住。又云出世之法。以無著為本。華嚴云。一切境界。不生染着淨身口意。住無礙行。滅一切障。世間受生。皆由着我若離此着。則無生處。涅槃經云。凡夫著色。乃至着識。以着識故。則生貪染心。故為色縛。乃至為識之所繫縛。以繫縛故。則不得免生老病死憂悲大苦。一切煩惱。着。著同)。
+【王日休曰】應當也。不應住色生心者。謂不當住着於凡有形色而生心也。若愛廣大居宇。美好器用之類是也。不應住聲香味觸生心者。謂不當住著於聲音馨香滋味。及所觸而生心也。若愛聲樂謳唱。愛龍檀腦麝。愛飲食異味。愛嬌嬈婦女。皆是住着於聲香味觸而生心也。不應住法生心者。謂佛法本為因眾生根器而設化。若住着之。則是泥於法而無由見真性。故不當住着於此而生心也。
+應生無所住心者。謂凡有住着處。皆不得起心念也。若心有住即為非住者。謂心若有所住着。則其住着之非也。盖當使一念寂然。如虛空然。則可以見真性矣。此與第十分大畧同。然此再言之者。乃詳言之也。亦恐弟子有聽之不審者。亦恐有續來聽者。所以再言之。凡此經中重疊言者。義皆如此。
+【李文會曰】不應住色聲香味觸法生心者。心住六塵。即著諸相。取捨憎愛。無有休期。應生無所住心者。心無所住。隨處解脫內外根塵。悉皆銷殞。若一切無心。即無所住也。
+【趙州云】我見千百億箇。盡是覔作佛漢子。於中覔箇無心底難得。
+【僧若訥云】心本無形。因塵有相。塵滅心滅。真心湛然。
+【察禪師心印頌曰】問君心印作何顏。心印何人敢授傳。歷劫坦然無異色。呼為心印早虛言。須知軆似虛空性。意似紅爐火裏蓮。莫謂無心云是道。無心猶隔一重關。
+【圜悟禪師云】在家菩薩修出家行。如火中生蓮。盖名位權勢意氣。卒難調伏。而况火宅煩擾煎熬。百端千緒。除非自己直下明悟。本性妙圓。到大寂大定休歇之塲。方能放下。廓尔平常。徹證無心。觀一切法。如夢幻泡。空豁豁地。隨時應莭消遣將去。隨自己力量。轉化未悟。同入無為無事法性海中。則出來南閻浮提打一遭。必不為折本也。
+【黃蘖禪師云】供養十方諸佛。不如供養一箇無心道人。何故為無心也。無心者。如如之軆。內如木石不動不搖。外如虛空。不塞不礙。是名佛也。又云。夫恒沙者。佛說是沙。諸佛菩薩。釋梵諸天。步履而過沙亦不喜。牛羊蟲螘踐踏而行。沙亦不怒。珎寶馨香。沙亦不貪。糞溺臭穢。沙亦不惡。此即無心之心離一切相。眾生諸佛。更無差別。但能無心。即便是究竟也。若心有住即為非住者。真如之心。本無所住。若不住諸法相。即與道相應也。若住於法。即違正教。既違正教。即為非住也。
+^r14:22是故佛說菩薩心。不應住色布施
+【謝靈運曰】不住色。無財物也。
+【陳雄曰】菩薩心何心也。無所住之心也。菩薩六根清淨。生無所住心。豈應布施。以求其諸欲之滿意哉。然眾苦所本。眼根不淨為先。佛故斷之曰。不應住色而為之布施也。
+【李文會曰】不應住色布施者。菩薩不見有身相可捨。於諸宅舍道路。逢見一切愚癡貧賤之人。毀罵捶打須索財物。若能隨順其意。令生歡喜。不生阻隔瞋恨之心。即是布施之義。若秪分辯是非。顧惜物寶。阻逆其意。令生瞋恨。即不名布施也。
+【黃蘖禪師云】凡夫不肯空心。恐落於空。不知自心本空。愚人除事不除心。智者除心不除事。菩薩心如虛空。一切俱捨。所作福德。皆不貪著。然捨有三等。內外身心一切俱捨。猶如虛空無所貪著。然後隨力應物。能所皆忘。是為大捨。若一為行道布德。一邊旋捨。無希望心。是為中捨。若廣修眾善。有所希望。聞法知空。遂乃不著。是為小捨。大捨如火燭在前。更無迷悟。中捨如火燭在傍或明或暗。小捨如火燭在後。不見坑穽也。
+【傅大士頌曰】菩薩懷深智。何時不帶悲。投身憂虎餓(金光明經云。如來因地。為薩埵王子時。一虎生七子。經七日無食。將欲死。時王子見遂捨身以飼此虎也)割肉恐鷹飢(殑伽經云。如來因地時。在山中修忍辱仙。時梵王帝釋遂化身。一化為鷹。一化為鴿。來試仙人。鷹趂其鴿。鴿投仙人。仙人遂以衣藏其鴿。鷹切就仙人覔其鴿。仙人遂將自身肉割一片以代鴿還鷹。殑其矜切)精勤三大劫。曾無一念疲。如能同此行。皆得作天師。
+^r14:23須菩提。菩薩為利益一切眾生故。應如是布施
+【六祖曰】菩薩不為求望自身五欲快樂。而行布施。但為內破慳心。外利益一切眾生。而行布施。
+【陳雄曰】七寶雖滿大千界。等須彌山。亦有時而盡。布施以此。焉得人人而給諸菩薩也無諸欲之求。無能施之心。亦無所施之物。凡可以利益一切眾生者。無不為己。則含靈抱識。均被其澤布施之心。但應如是華嚴經云。不為自身求快樂。但為救護諸眾生。
+【李文會曰】應如是布施者。儉於自己。奢于他人。是名利益一切眾生。若人心口相應。行解一般。是名利益于自己也。所學佛法。自然廣大。雖具見聞覺知。萬境不能染著。即是解脫了悟之人。豈無利益。
+【傅大士云】所作依他性。修成功德林。終無趣寂意。惟有濟羣心。行悲悲廣大。用智智能深。利他兼自利。小聖詎能任。
+【川禪師云】有佛處不得住。無佛處急走過。三十年後。莫言不道。頌曰。朝遊南嶽。暮往天台。追之不及。忽然自來。獨行獨坐無拘繫。得寬懷處且寬懷。
+^r14:24如來說一切諸相。即是非相。又說一切眾生。即非眾生
+【六祖曰】如來說我人等相。畢竟可破壞。非真實軆也。一切眾生盡是假名。若離妄心。即無眾生可得。故言即非眾生。
+【陳雄曰】經云。凡所有相。皆是虛妄。人皆謂如來無所說。豈說一切虛妄之相哉。殊不知如來有所謂真說。而其所說者。乃真空無相之相繼之以即是非相者此耳。涅槃經云。見佛性者不名眾生。不見佛性者。是名眾生。如來說一切諸相者。憫之也。苟能悟真空無相之理。則見自性佛。繼之以即非眾生者此耳。
+【顏丙曰】本性虛明。實無可得。豈更有一切諸相。一切眾生之類。
+【李文會曰】謂能秉持律儀。修行善法。而用布施。饒益眾生。不住諸相。諸相本空。故云即是非相。夫眾生者。五隂和合。假名眾生。
+【川禪師云】別有長處。不妨拈出。頌曰。不是眾生不是相。春暖黃鶯啼柳上。說盡山河海月情。依前不會空惆悵。休惆悵。萬里無雲天一樣。
+^r14:26須菩提。如來是真語者。實語者。如語者。不誑語者。不異語者
+【謝靈運曰】真。不偽。實。無虛。如。必當理。不誑。則非妄語。不異。則始終恒一。聖言不謬。故宜修行也。
+【陳雄曰】是語真實。無妄無虛。是語如如。契真如理。非欺誑之語。非怪異之語。所以破眾生狐疑之心故也。
+【顏丙曰】真而非假謂之真語。實而不虛謂之實語。如如不動謂之如語。至於不誑語者。佛不誑惑於人。不異語者。佛語不為怪異。此五語者。欲人生信心。不必生疑心。
+【李文會曰】迷即種種皆妄。故不真不實不如有誑有異也。悟即一切真。一切實。一切如。不誑不異也。
+【又云】真語者。一切含生皆有佛性也。實語者。一切法空本無所有也。如語者。一切萬法本來不動也。不誑語者。聞如是法。皆得解脫也。不異語者。一切萬法本自空寂。將何為異也。
+【傅大士云】眾生與蘊界。名別軆非殊。了知心是幻。迷情見有餘。真言言不妄。實語語非虛。始終無變異。性相本來如。
+【川禪師云】知恩者少。負恩者多。頌曰。兩箇伍伯是一貫。阿爺元是丈夫漢。分明對靣向渠言。爭奈好心無好報。真語者。實語者。呵呵呵。喏喏喏。
+^r14:27須菩提。如來所得法。此法無實無虛
+【六祖曰】無實者。以法軆空寂。無相可得。然中有恒沙性德。用之不匱。故言無虛。
+【王日休曰】此法但為眾生而設。非真性中所有故非為真實也。然不可不藉此以悟明真性。又非徒然者。故非為虛妄也。
+【陳雄曰】法即以心傳心。何法不因心之所立。如來以無所得心而得夫真空無相之法。此法即此心。真軆常存。一以為實耶。然實而若虛。莫知其所以為實。妙用無方以為虛耶。然虛而若實。莫知其所以為虛。實而無實。虛而無虛。其亦真空之妙歟。
+【李文會曰】此法無實者。心軆空寂。無相可得也。無虛者。內有河沙功德。用而不竭也。欲言其實。無形可觀。無相可得。欲言其虛。見能作用是故不可言有不可言無。有而不有。無而不無。言辭不及。其惟聖人乎。若不離相修行。無由達此法也。
+【傅大士云】證空便為實。執我乃成虛。非空亦非有。誰有復誰無。對病應施藥。無病藥還祛。須依二空理。穎脫入無餘。
+【川禪師云】水中塩味。色裏膠青。頌曰。硬似鐵。軟如酥。看時有。覔還無。雖然步步常相守。要且無人識得渠。咦。
+^r14:28須菩提。若菩薩心。住於法而行布施。如人入暗。即無所見。^r14:29若菩薩心。不住法而行布施。如人有目。日光明照。見種種色
+【王日休曰】布施。謂法施。乃教化眾生也。若菩薩住於法而行布施。即是教化眾生著於法無由而見真性。故如人入暗。則無所見。若不著於法以教化眾生。則眾生由此開悟而見真性。故如人有目。又得日光明以照之。乃見種種形色也。
+【僧若訥曰】無相布施。心不住法。則見真如。如人有目。日光明照。了一切境。
+【陳雄曰】菩薩云者。修行人通稱也。設若菩薩心與法俱勝。故有所住。而行其希求布施。此則無明暗障。貪愛自蔽。不悟真空無相妙理者也。如人處闇室之中。昬昬冥冥。而一無所見矣。設若菩薩心與法俱泯。故無所住而行其無希求布施。此則豁金剛眼。然般若燈。圓悟如來無上知見者也。如有目者處於皎日之中。黑白自分。而毫髮無隱矣。
+【一註本不顯名曰】有所著。則為無明所障。不悟真如妙理。猶昬昬而不能使人昭昭。無所著。則洞達無礙。圓悟如來無上知見。自覺已圓。又能覺他。
+【李文會曰】如人入暗即無所見者。眾生之心本自無住。無住之心。即見諸法實相。名為菩薩。二乘之人。心住於法。不見諸法實相。背菩提路。何異凡夫。如人背明而入暗室。如人有目。日光明照。見種種色者。二乘之人。不見色而住色。譬如不見坑穽而墜坑穽。菩薩見色而不住色。譬如見坑穽不墜坑穽。一切諸法但有假名。二乘之人。為無慧眼。不辨真假。菩薩即有慧眼。見種種色。悉皆無相故。
+【達磨云】不見色。即是見色耳。
+【逍遙翁云】所見有是。有不是。此世間妄眼。無是。無不是。此世間之真眼。所知有可有不可。此世間妄心。無可無不可。此出世之真心也。
+^r14:30須菩提。當來之世。若有善男子。善女人。能於此經受持讀誦。即為如來以佛智慧。悉知是人。悉見是人。皆得成就無量無邊功德。
+【陳雄曰】當來世者。如來滅後。像法末法之世也。此經者。載真空無相法之經也。此經當此世。非種善根者難可得值。設若能受持讀誦。不獨為口耳之學。抑亦究心學之妙。茲其所以為能也。能爾。則如來豈庸釋於我。必以無上知見而昭鑒之。則無量無邊功德。舉皆成就矣。非特利於一身。且將普施於群生。非特利於一時。且將徧及於千萬億劫。所謂無量無邊功德者此也。
+【顏丙曰】如來所得見性之法。不属有無二境。所以道無實無虛。若菩薩心着於法布施。是為著相。既曰著相。則無智慧。故如人入闇室中。全無所見。若心不著法布施。是人洞達明了。不受人瞞。故如人本有眼目。加以日光明照。見種種形色。曉然無隱。若當來之世。有善男善女。能於此經受持讀誦。直下頓悟謂之受。行不暫捨謂之持。即為自性如來。以者。用也。能用佛之智慧。所謂智慧者。見性通徹。又非外道聦明也。悉知是人。悉見是人。皆得成就無量無邊見性功德。
+【李文會曰】當來之世者。即是如來滅後。後五百歲中濁惡之時也。即為如來以佛智慧者。若人心常精進。讀誦是經。即覺慧性漸開。應當了悟實相。人法二空。不被一切善惡凡聖諸境惑亂。即同如來智慧性也。悉知悉見是人成就功德者。三世諸佛無不知見了悟之人。故能成就無量無邊功德。
+【傅大士頌曰】證空便為實。執我乃成虛(子榮曰。修行人悟得真空之理。乃達實相。如執有我人之見。便為妄想成虛也)非空亦非有。誰有復誰無(子榮曰。空有俱忘。更何可執也)。對病應施藥。無病藥還祛。須依(一作觀)二空理。穎脫入無餘。
+【川禪師曰】因地而倒。因地而起。地向你道甚麼。頌曰。世間萬事不如常。又不驚人又久長。如常恰似秋風至。無意凉人人自凉。
+^ck15【持經功德】
+^r15:1 須菩提。若有善男子。善女人。初日分以恒河沙等身布施。^r15:2中日分復以恒河沙等身布施。^r15:3後日分亦以恒河沙等身布施。^r15:4如是無量百千萬億劫。以身布施。^r15:5若復有人聞此經典。信心不逆。其福勝彼。何况書寫受持讀誦。為人解說
+【王日休曰】初日分。謂早晨。中日分。謂日午。後日分。謂晚間。盖西土之言如此。佛生其中。而從其方言也。然於此經。一起信心。得福尚多。於此一日三時。以恒河沙等身命布施。百千萬億劫無量無數者。以彼雖受無量福報乃世間福耳。受世間福者乃染煩惱之因。又因以作惡也。聞此經典。信心不逆。則自此種善根矣。善根既種。則日見增長。愈久而愈盛。此則為出世間福。故彼不可以比。而勝於彼無量無數也。且人一日三時。烏得有恒河沙等身命布施哉。盖假喻耳。乃極言其不可以比也。
+【昧雄曰】佛恐世人執著如來忍辱之說。徒以身布施。而於自己性。與他人性。無纖毫利益。故於十三分言之。至此復言。屢救其失。
+【肇法師云】從旦至辰名初日分。從辰至未名中日分。從未至戌名後日分。於此三時。乃至無量百千萬億劫捨身布施亦不及受持是經。見自性耳。見自性者。謂深明實相。人法二空。乃是大悟人也。
+【傅大士頌曰】眾生及壽者。蘊上假虛名。如龜毛不實。似兔角無形(寒山詩曰。身著空花衣。足躡龜毛履。手把兔角弓。擬射無明鬼。龜本無毛。而謂之龜毛。兔本無角。而謂之兔角。皆假虛名耳。今眾生壽者。五蘊之上。豈有是哉。亦假虛名而謂之眾生。謂之壽者。亦猶龜毛之不實。兔角之無形也)。捨身由妄識。施命為迷情。詳論福與智。不及受持經。
+【李文會曰】信心不逆者。信順於理。故云不逆。
+【法華經云】瞻仰尊顏。目不暫捨。心常精進。無有間斷也。受持讀誦者。行解相應謂之受。勇猛精進謂之持。心不散亂謂之讀。見性不逆謂之誦。為人解說者。謂已悟人能見自性。方便為人解說此經。令悟實相。成無上道。此人所施。無所住相。功德無有邊際。勝前百千萬億劫以身布施功德。百千萬倍。
+【川禪師云】人天福報即不無。佛法未夢見在。頌曰。初心後發施心同。功德無邊筭莫窮。爭似信心心不立。一拳打破太虛空。
+^r15:6 須菩提。以要言之。是經有不可思議。不可稱量。無邊功德
+【肇法師曰】明此法門。所有功德。過心境界。故不可以心思也。過言境界。故不可以口議也。
+【王日休曰】所謂不可思議者。不可以心思。不可以言議也。不可稱量者。既言不可議。則此所謂稱者。非稱說之稱。乃稱量之稱。古者稱與秤字通用。謂不可以秤秤也。不可量者。謂不可以器物量之也。
+【顏丙曰】每日三次以恒河沙比身布施。沙者言其多也。如是積至無量不可數劫布施。不如於此經典信心不逆。不逆。乃順行也。其福尚能勝彼有為之福。何况更能發心書寫受持讀誦。為他人開解講說。佛以簡要言之。是經有不可思議稱量者。盖諸佛讚嘆。不及此功德至大無有邊際也。
+【李文會曰】無邊功德者。若人於此經典。了悟人法二空。深明實相。功德廣大。即同佛心無有邊際。不可稱量也。
+^r15:7如來為發大乘者說。為發最上乘者說
+【王日休曰】乘乃車乘之乘。大乘。謂菩薩乘也。阿羅漢獨了生死。不度眾生。故云小乘。盖如車乘之小者。唯能自載而已。緣覺之人。半為人。半為己。故為中乘。盖如車乘之適中者也。菩薩為大乘者。謂如車乘之大者。普能載度一切眾生也。此經欲普度一切眾生。故為發菩薩大乘者說也。發乃起發之發。發大乘。謂起發此以濟度眾生也。最上乘者謂佛乘也。佛又能兼菩薩而載度之。則在大乘之上。故為最上乘。以此乘之上。不復有乘。故為最上也。此經又為起發佛乘者說。謂佛之化度菩薩。亦以此經之理也。
+【李文會曰】為發大乘者說者。智慧廣大。能見自性。色空俱遣。不著二邊。二邊既無。即無中道可立。不染萬境。即是大乘菩薩所行之道也。
+【又曰】為發最上乘者說者。不見垢穢可厭。不見清淨可求。無遣可遣。亦不言無遣。無住可住。亦不言無住。心量廣大。廓若太虛。無有邊際。即是最上乘諸佛地位也。
+【黃蘖禪師云】如來現世。欲說一乘真法。則眾生不信興謗。沒於苦海。若都不說。則墮慳貪。不為眾生普捨妙道。遂設方便。說有三乘。乘有大小。得有淺深。皆非定法。故云唯有一乘道。餘二則非真也。
+【川禪師云】如斬一握絲。一斬一切斷。頌曰。一拳打倒化城關。一脚趯翻玄妙寨。南北東西信步行。休覓大悲觀自在。大乘說。最上說。一棒一條痕。一掌一握血。
+^r15:8 若有人能受持讀誦。廣為人說。如來悉知是人。悉見是人。^r15:9皆得成就不可量。不可稱。無有邊。不可思議功德。^r15:10如是人等。即為荷擔如來阿耨多羅三藐三菩提
+【謝靈運曰】千載不墜。由於人弘。任持運行。荷擔義也。
+【李文會曰】廣為人說。知見是人皆得成就不可思議功德者。此謂上根器人。深明此經。了悟佛意。持此大乘經典為人解說。令諸學者。各見自性無相之理。得見本源自心是佛。當知此人功德無有邊際。不可稱量也。
+【馬祖曰】汝等諸人。須信自心是佛。此心即是佛心。
+【又云】心外無別佛。佛外無別心。
+【佛國白禪師云】心心即佛佛心心。佛佛心心即佛心。心佛悟來無一物。將軍止渴望梅林。
+【華嚴經云】若不信自心是佛。無有是處。
+【圜悟禪師云】即心即佛。已是八字打開。非佛非心。重問當陽點破。不尋其言。一直便透。方見古人赤心片片。若也躊躕。則當靣蹉過了也。
+【心佛頌云】佛即心兮心即佛。心佛從來皆妄物。若知無佛復無心。始是真如法身佛。佛佛佛。沒模樣。一顆圓光含萬象。無軆之軆即真軆。無相之相即實相。非色非空非不空。不動不靜不來往。無異無同無有無。難取難捨難指望。內外圓明到處通。一佛國在一沙中。一粒沙含大千界。一箇身心萬箇同。知之須會無心法。不染不淨為淨業。善惡千端無有無。便是南無大迦葉。
+【黃蘖禪師云】汝但除却凡情聖境。心外更別無佛。祖師西來。直指一切人全軆是佛。汝今不識。執凡執聖。向外馳騁返自迷心。所以向汝道即心是佛。一念情生。即隨異趣。無始以來。不異今日。無有異法。故名成等正覺。即為荷擔如來阿耨多羅三藐三菩提者。聞經解義。如說修行。廣為人說無相之法。令諸學者悟明心地。能行無相無著之行。開發心中智慧光明。離諸塵勞妄念。共成無上菩提。當知此人負荷自性如來。阿耨多羅三藐三菩提。在於身內也。
+【傅大士云】徧計於先了。圓成證此時。宿乘無礙慧。方便勸人持。
+【川禪師云】擘開太華手。須是巨靈神。頌曰。堆山積嶽來。一一盡塵埃。眼裏瞳人碧。胷中氣若雷。出邊沙塞靜。入國貫英才。一片寸心如海大。波清幾見去還來。
+^r15:11何以故。須菩提。若樂小法者。^r15:12著我見。人見。眾生見。壽者見。^r15:13則於此經不能聽受讀誦。為人解說
+【王日休曰】樂。去聲。好也。小法。謂外道法也。外道之法。正為著於有我人眾生壽者。故為種種之說。如此。則於此經不相合矣。故不能聽受讀誦為人解說也。
+【陳雄曰】小法者。小乘法也。法華經云。鈍根樂小法。言其志意下劣。不發大乘心者也。是人墮於邪見。不知所謂大乘最上乘法。盡在此經。且不聽誦。况能為人解說乎。著我人見。墮邪見也。圓覺經云求大乘者。不墮邪見是也。
+【李文會曰】若樂小法者。凡夫愚鈍之重。不能聽信。廣學無上菩提。只修福慧。六道輪廻因果之法。縱能強學。執著多聞。為人解說。被明眼人覷著。手忙脚亂。一塲敗闕。
+【保寧勇禪師云】顏色䂓模恰似真。人前拈弄越光新。及乎入火重烹試。到了終歸是假銀。
+【黃蘖禪師云】古人心利。纔聞一言。便乃絕學。所以喚作絕學無為閑道人也。今時人只欲多知多解。廣求文義。喚作修行。不知多知多解。翻成壅塞。皆為毒藥。盡向生滅中取。真如之中。都無此事。從前所有一切解處。盡須併却令空。即是空如來藏。如來藏者。更無纖塵可有。即是破有法王出現世間。亦云我於然燈佛所。無有少法可得。此語只為空你情解知量。但消融表裏情盡都無依執。是無事人。三乘教綱。只是應機之藥。隨宜所說。臨時施設。各各不同。但能了知。即不被惑。苐一不得於心境上守文作解。何以如此。實無有定法如來可說。
+我此宗門不論此事。但止息念亡慮即休。更不用思前慮後。又云。學般若人。不見有一法可得。絕意三乘。唯一真實。不可證得。謂我能證能得者。皆增上慢人。法華會上拂衣而去者皆斯徒也。是故佛言。我於阿耨多羅三藐三菩提實無所得。默契而已。學者思之。但止依正法修行。放下我人眾生壽者四相。即不被一切諸境惑亂修行。
+【正法眼藏云】若欲修行。當依正法。心軆離念。相等虛空。不落聖凡。身心平等。如是修者。是為正法也。
+【川禪師云】仁者見之謂之仁。智者見之謂之智。頌曰。不學英雄不讀書。波波役役走長途。孃生寶藏無心用。甘作無知餓死夫。爭怪得別人。
+^r15:14須菩提。在在處處。若有此經。一切世間天人阿修羅。所應供養。當知此處。即為是是。皆應恭敬。作禮圍遶。以諸華香。而散其處
+【陳雄曰】在在處處。言所在之處不一也。若有此真經。譬如摩尼寶珠。瑞光輝煥。則凡在天道人道阿修羅道者。所應供養。即此處便是如來真身舍利寶塔。其誰不恭敬禮拜圍繞。以諸華香而散其處。諸華香。與法華經所謂須曼那華香。闍提華香。末利華香。瞻蔔華香。赤蓮華香。青蓮白蓮華香是也。
+【顏丙曰】大乘者。乃大根大器之人。一撥便轉。不樂小法。最上乘者。不居佛位。不重己靈。高超十地(大藏一覽集云。菩薩十地者。歡喜地。證聖位故。離垢地。身心清淨。發光地。智已生明。焰慧地。妙解廓照。現前地。通達真俗。難勝地。功行超越。遠行地。隨方應化。不動地。忍智自如。善慧地。通力自在。法雲地。大智圓明)明了大法。此謂百尺竿頭。更進一步底人。長沙云。百尺竿頭不動人。雖然得入未為真百尺竿頭須進步。十方世界現全身。僧問果如百尺竿頭。如何進步。南泉云。朗州山。澧州水。
+僧云。請師道。答云。四海五湖皇化裏。此二等人。即為負荷自性如來阿耨菩提。若愛樂小法者。小法即世間有為法。則著四相。既著四相。宜其不能聽受解說此經在在處處若有悟此經。即如佛塔。天人阿修羅。皆恭敬作禮。常持花香而散持經之處。供養此人。是謂一人辦心。諸天辦供也。
+【傅大士頌曰】所作依他性。修成功德林(子榮曰。所作依他性者。凡日用施為。皆是真如妙用。故云依他性。修成功德林者。修習成就菩提道果也)。終無趍寂意。唯有濟群心(子榮曰。終無趍寂意唯有濟群心者。即不効小乘人且期自利。沉空趍寂。唯有大乘利眾生心也。護法論云。傅大士齊建武四年丁丑五月八日生。時有天竺僧嵩頭陀來謂曰。我昔與汝毘婆尸佛所。同發誓願。今兜率天宮衣鉢見在。何日當還。大士曰。度生為急。何思彼樂乎。盖謂度生為急者。即唯有濟群心。何思彼樂者。即終無趨寂意也)行悲悲廣大。用智智能深。利他兼自利。小聖詎能任(小聖。乃小乘人也)。
+【李文會曰】在在處處若有此經者。一切眾生六根運用。種種施為。常在法性三昧之中。若悟此理。即在在處處有此經也。一切世間者。謂有為之心也。天人阿修羅者。天者逸樂心。人者善惡心。阿修羅者瞋恨心。但存此心。不得解脫。所應供養者。若無天人阿修羅心。是名供養。即為是塔者。解脫之性。巍巍高顯。故云是塔也。以諸花香而散其處者。當於解脫性中。開敷知見。薰植萬行。即法界性自然顯現。
+【川禪師曰】鎮州蘿蔔。雲門糊餅(僧問趙州親見南泉是否。州云。鎮州出大蘿蔔頭。僧問雲門。如何是超佛越祖之談。門云。糊餅。又云。作麼生是聞聲悟道。見色明心。乃云。觀音菩薩將錢來買糊餅放下手云元來只是饅頭)。頌曰。與君同步又同鄉。起坐相從嵗月長。渴飲飢餐常對靣。不須回首更思量。
+^ck16【能淨業障】
+^r16:1復次須菩提。若善男子。善女人。受持讀誦此經。若為人輕賤。^r16:2是人先世罪業。應墮惡道。以今世人輕賤故。先世罪業。即為消滅。當得阿耨多羅三藐三菩提
+【僧若訥曰】上明生善。今明滅惡。造作定業。不可逃避。行般若故。易重為輕。大論云。先世重罪。應入地獄。以行般若故。現世輕受。譬如重囚應死。有勢力護則受鞭杖而已。
+【陳雄曰】持此真經。有彌天功德。為天人所恭敬供養宜矣。今且為人所輕賤何也。盖是人前生罪業深重。當墮地獄。餓鬼。畜生。阿修羅道。永無出期。以今生持經之功。止為人輕賤罵辱而已。則前生罪業為之銷除。當來世佛果菩提。可得成就矣。世人喜於為惡。嫉於為善者多矣。一見是人為人輕賤。便為讀經為無益。福報為虛語。甚者有雲門之罵。藥山之戒。使人人起退轉心。佛之言此。所以長善而救失云。
+【顏丙曰】若人前世曾作罪業。故今世被人輕賤。應墮落惡道。若能受持讀誦此經。直下見性如大虛空。方知罪性本空。故云先世罪業即為消滅。又得無上正等正覺。昔有二比丘。一犯婬罪。一犯殺罪。中心不安。求波羅尊者懺悔。波羅即以小乘法為彼雪懺。二比丘愈生疑懼。後遇維摩大士。却為解說云。罪性本空。不在中間內外。二比丘聞之頓悟。直下寂然空闊。無罪可得。所以永嘉云。維摩大士頓除疑。猶如赫日消霜雪。
+【傅大士頌曰】先身有報障。今日受持經。暫被人輕賤。轉重復還輕。若了依他起。能除遍計情。常依般若觀(去聲)。何慮不圓成。
+【李文會曰】此謂若人受持讀誦此經。應合得人恭敬。今復有疾患貧窮諸衰。反為人所憎惡。世人不達先業。將謂誦經為善即無應驗。遂生疑惑。殊不知若非經力。應墮惡道。以今世人輕賤。故折三塗之報。速得無上菩提。
+【張無盡云】四序炎凉去復還。聖凡只在剎那間。前人罪業今人賤。倒却前人罪業山。
+【川禪師云】不因一事。不長一智。頌曰。讚不及。毀不及。若了一。萬事畢。無欠無餘若太虛。為君題作波羅蜜。
+^r16:3須菩提。我念過去無量阿僧祇劫。於然燈佛前。得值八百四千萬億那由他諸佛。悉皆供養承事。無空過者。^r16:4若復有人於後末世。能受持讀誦此經。^r16:5所得功德。於我所供養諸佛功德百分不及一。千萬億分。乃至筭數辟喻。所不能及
+【疏鈔云】佛言我之供佛功德。千萬億倍。不及持經功德一分。故云筭數譬喻所不能及。
+【王日休曰】梵語阿僧祇。此云無央數。梵語那由他。此云一萬萬。於無量無央數劫。在然燈佛先。則釋迦佛說此經時。去然燈佛已無量無數矣。又於其先。遇八百四千萬億那由他諸佛出世。則其劫數固不勝其多。佛眼皆能見之以慧性為無窮。故無始以來事皆知之。此所以為佛也。人皆有此慧性。但蔽之耳。供養如是諸佛。其功德終不可及此經功德。以彼則為財施。受財施之報者日漸少。而終至於有盡。此則為善根。善根則日滋長。而終至於成佛。故無窮也。以有盡比無窮。所以不可及也。
+【陳雄曰】阿僧祇。那由他。梵語皆無數之謂。歷無數劫。供無數佛。求福而已。不若持此真經。見自本性。永離輪廻。五祖云。終日供養。只求福田。不求出離生死苦海。自性若迷。福何可救。是故供佛功德。雖百分百千萬億分。乃至筭數之多。譬如微塵恒沙。皆不及持經功德之一分也。末世人徒知事佛。而不知佛究竟處。盡在此經。捨經何從而得。是以作如是說而第其優劣。梁武帝造寺布施。供佛設齋。問達磨祖師有何功德。答曰。實無功德。後人不了此意。韶州韋使君因問六祖。六祖大師開示之曰。造寺布施。供佛設齋。名為修福。不可將福以為功德。功德在法身中。非在修福。
+又曰。功德在自性。不是布施供養之所求。此所以福不及功德。供佛不及持經也。
+【李文會曰】阿僧祇劫者。梵語也。唐言無數。時供養阿僧祇恒河沙佛。施寶滿二千大千世界。捨身數如微塵。所得功德。不如有人於此經典得悟真性。勝前所得功德百千萬億。達磨對梁武帝云。造寺寫經供養布施功德。只獲人天小果。實非功德也。
+【川禪師云】功不浪施。頌曰。億千供佛福無邊。爭似常將古教看。白紙上頭書黑字。請君開眼目前觀。風寂寂。水漣漣。謝家人秪在漁船。
+^r16:6 須菩提。若善男子。善女人。於後末世。有受持讀誦此經。所得功德。我若具說者。或有人聞。心即狂亂。狐疑不信
+【僧若訥曰】狐疑者。狐是獸。一名野干。其性多疑。每渡河氷。且聽且渡。上雖較量顯福德之多。猶是畧說。若更具說。聞者狐疑。心必狂亂。
+【李文會曰】所得功德我若具說者。謂說悟後淨妙境界也。前為樂小法者。為說降住小乘之法。欲令悟入。尚茲不信。若便為說見性大乘之法。解通人曠。得必無涯。狂亂不信。徒使其狐疑也。
+^r16:7 須菩提。當知是經義不可思議。果報亦不可思議
+【王日休曰】具。盡也。我若盡說其功德。人聞之。心則狂亂。狐疑不信。以其極大。人則驚怪。故甚者心則狂亂。其次則疑惑不信也。當知是經義不可思議。果報亦不可思議者。謂此經之義。不可以心思。亦不可以言議。若人依此修行。及得果報。亦豈可以心思言議哉。佛數數言此經功德。至此又極稱之者。豈虛言哉。以其悟明真性。脫離輪廻之本。是豈有窮盡耶。
+【顏丙曰】梵語阿僧祇劫。此云不可數劫。佛於然燈佛前。得值無數諸佛。一一供養承事。未曾空過。若後世有人受持讀誦此經。所得見性功德。比我前供養功德。百分不及他一分。見性功德有百千萬億分。筭數譬喻。所不能及。佛言。我若說持經功德。或人聞之。心生狂亂疑惑不信。當知此經不可思議。果報亦不可思議。不信佛言。反生誹謗。惡果既熟。必受惡報。
+【李文會曰】義者。般若之義。般若者。智慧也。果報者。所得功德也。由智慧而悟真性。三世諸佛。理應不異。不可思議。
+【謝靈運曰】萬行淵深。義且難測。菩提妙果。豈有心之所議。
+【川禪師云】各各眉毛眼上橫。頌曰。良藥多苦口。忠言多逆耳。冷暖自知。如魚飲水。何須他日待龍華。令朝先授菩提記。
+^ck17【究竟無我】
+^r17:1 爾時須菩提。白佛言。世尊。善男子。善女人。發阿耨多羅三藐三菩提心。云何應住。云何降伏其心。^r17:2佛告須菩提。善男子。善女人。發阿耨多羅三藐三菩提心者。當生如是心。^r17:3我應滅度一切眾生。^r17:4滅度一切眾生已。而無有一眾生實滅度者
+【疏鈔曰】言滅度一切眾生已者。時中妄想。取捨人我。貪嗔嫉妬。一切不善心。即是一切眾生。以無我心。將忍辱以降伏。令邪惡不生。即是滅度一切眾生已。已即盡也。言而無有一眾生實滅度者。即煩惱妄念。取捨貪嗔。一切不善心本自不有。因貪財色。恩愛情重。方有此心。今既知覺。以正智而滅之。亦不可見實有滅者。本自不生。今亦不滅。故云而無有一眾生實滅度者。
+【陳雄曰】大涅槃經曰。自未得度先度他。懺法曰。先度眾生。然後作佛。故度一切眾生者。我佛之所應為也。不然。則絕物矣。又何以作佛耶。佛了真空無相。則能所俱寂。雖眾生已滅度。且不起能度之一念。亦不見所度之眾生。故曰無一眾生實滅度者。
+【李文會曰】云何應住云何降伏其心者。注見善現起請分中。當生如是心者。謂二乘之人。執著諸相。起諸妄念。如來指示。令其心常空寂。湛然清淨。
+【馬祖云】常教心如迷人。不辨方所。
+【文殊師利云】心如虛空故。敬禮無所觀。
+【百丈禪師云】心如虛空相似。學始有成也。
+【黃蘖禪師云】心淨其心。更無別法。此即真佛。佛與眾生。一心無異。猶如虛空無雜無染。如大日輪照四天下。日升之時。明徧天下。虛空不曾明。日沒之時。暗遍天下。虛空不曾暗。明暗之境。自相凌奪。虛空之性。廓然不變。佛與眾生。心亦如是。我應滅度一切眾生者。佛言我令欲令一切眾生除滅妄念。令見真性。
+【白樂天云】澹然無他念。虛靜是吾師。
+【圭峯禪師云】覺諸相空。心自無念。念起即覺。覺之即無。修行妙門。唯在此也。
+【慈受禪師云】有利根者一撥便轉。性頑鈍者只在夢中。山僧有箇醒磕睡底道理。不免傾心吐膽。而為諸人說破。良久云。且勤照管鼻孔。愚者若見此。一如路逢客。智者見點頭。恰如飢得食。滅度一切眾生已而無有一眾生實滅度者。此謂不可見有眾生是自己度者。若有此念。即著我人眾生壽者四相。即非菩薩清淨心也。
+【川禪師云】有時因好月。不覺過滄洲。頌曰。若問云何住。非中及有無。頭無纖草盖。足不履閻浮。細似鱗虛析。輕如蝶舞初。眾生滅盡知無滅。此是隨流大丈夫。
+^r17:5何以故。須菩提。若菩薩有我相。人相。眾生相。壽者相。即非菩薩。^r17:6所以者何。須菩提。實無有法。發阿耨多羅三藐三菩提心者
+【六祖曰】須菩提問佛。如來滅後。後五百歲。若有人發阿耨多羅三藐三菩提心者。依何法而住。如何降伏其心。佛言。當發度脫一切眾生心。度脫一切眾生。盡得成佛已。不得見有一眾生。是我滅度者。何以故。為除能所心也。除有眾生心也。亦除我見心也。
+【王日休曰】此分大槩如第三分所言。須菩提於此再問者。豈非為續來聽者問乎。佛再言之。唯增實無有法。發阿耨多羅三藐三菩提心者一句。且上既言發阿耨多羅三藐三菩提心者。當生如是心。生如是心。則是法矣。若無法。烏能得見真性而成佛乎。然此乃言實無有法。發阿耨多羅三藐三菩提心何也。盖上言當生如是心者。是心亦非真性中所有。亦為妄爾。故此言實無有法。其意乃在於實字。謂究其實。則真性中無此也。佛恐弟子。誤認所謂當生如是心者為真實。故此又說破以為非實也。然則非徒本無一切眾生。而發此求真性之心者。亦本無法。盖真性中本來蕩然空空。所謂一法不立。一塵不染者是也。
+【顏丙曰】當生如是心者。當發這箇心。佛度眾生已盡。性本空故。無一眾生可滅度者。若生四相望報心。即非菩薩。實無有法。發阿耨多羅三藐三菩提心者。盖實際不受一塵。何有於法。
+【李文會曰】即非菩薩者。謂二乘之人。執著我人眾生壽者四相。解注已見前。實無有法者。謂初悟人。尚有微細四相也。但少有悟心是我相。見有智慧能降伏煩惱是人相。見降伏煩惱意是眾生相。見清淨心可得是壽者相。不除此念。皆是有法。故云實無有法。發阿耨多羅三藐三菩提心者。
+【傅大士云】空生重請問。無心為自身。欲發菩提者。當了現前因。行悲疑似妄。用智最言真。度生權立我。證理即無人。
+【川禪師云】少他一分又爭得。頌曰。獨坐翛然一室空。更無南北與西東。雖然不借陽和力。爭奈桃花一樣紅。
+^r17:7須菩提。於意云何。如來於然燈佛所。有法得阿耨多羅三藐三菩提不
+【王日休曰】如來。佛自謂也。然燈佛。乃釋迦牟尼佛本師也。佛呼須菩提問云。我始於本師然燈佛處有法所得。名之為無上正等正覺之真性否。
+^r17:8不也。世尊。如我解佛所說義。佛於然燈佛所。無有法得阿耨多羅三藐三菩提
+【六祖曰】佛告須菩提。我於師處。不除四相。得授記不。須菩提深解無相之理。故言不也。
+【李文會曰】佛言如來於然燈佛所有法得三菩提不者。須菩提謂若有般若了悟心在。即是有法。尚有所得之心。故云無有法得三菩提也。
+^r17:9佛言如是如是
+【李文會曰】佛言如是如是者。善契如來之法意也。
+【川禪師云】若不同床臥。爭知紙被穿。頌曰。打鼓弄琵琶。相逢兩會家。君行楊柳岸。我宿渡頭沙。江上晚來初雨過。數峯蒼翠接天霞。
+^r17:10須菩提。實無有法。如來得阿耨多羅三藐三菩提
+【王日休曰】佛深以須菩提之言為當。故再稱如是。復呼須菩提而隨其言以為實無有法。如來所得。名為無上正等正覺之真性者。深然之之意也。
+^r17:11須菩提若有法如來得阿耨多羅三藐三菩提者。然燈佛即不與我授記。汝於來世當得作佛。號釋迦牟尼
+【王日休曰】若有法可得。則然燈佛即傳之矣。何待授記當來世。方得作佛耶。釋迦之義。此云能仁。牟尼之義。此云寂默。能仁者。即心性無邊。含容一切。寂默者。即心軆本寂。動靜不干也。釋迦於周昭王二十四年。歲在甲寅。四月八日。化從母右脇而生。自行七步。舉其右手。作師子吼。天上天下。惟我獨尊。九龍空中吐清淨水。濯太子身。名悉達多。此言頓吉。至穆王五十三年。歲次壬申。二月十五日。於俱尸羅國大城。娑羅樹間。示般涅槃。世尊住世七十九年也。
+【一註本不顯名曰】萬法本空。若於法有得。是為執相。心即有礙。若於覺有證。是於有我。能所未除。佛豈即證哉。授記者。謂能了悟真性必得成佛也。
+【李文會曰】若有一切法。是有一切心。故云即非佛法。若無一切法。是無一切心。云何不是佛。故。
+【龍牙和尚云】深念門前樹。能令鳥泊棲。來者無心喚。去者不慕歸。若人心似樹。與道不相違。與我授記當得作佛號釋迦牟尼者。始因智慧而得見性。若有能所之心。即是有法可得。性同凡夫。如何得授記耶。然無記可記。是名授記。若於心上無纖粟停留。即是無法可得。自性清淨。故云來世當得作佛。
+【慈受禪師云】一顆靈丹大似拳。服來平地便升仙。塵緣若有絲毫在。蹉過蓬萊路八千。
+【傅大士云】人與法相待。二相本來如。法空人是妄。人空法亦祛。人法兩俱實。授記可非虛。一切皆如幻。誰言得有無。
+【川禪師云】貧似范丹。氣如項羽。頌曰。上無片瓦。下無卓錐。日往月來。不知是誰。噫。
+^r17:12以實無有法。得阿耨多羅三藐三菩提。是故然燈佛與我授記。作是言。汝於來世當得作佛。號釋迦牟尼。^r17:13何以故。如來者。即諸法如義
+【王日休曰】且此所謂如來者。本謂真性佛。盖如者。謂真性徧虛空世界而常自如。若欲現而為一切。無不可者。故謂之如。又隨所感而來現。故名如來。是如來者。真性之名也。故詳言之。則為阿耨多羅三藐三菩提。畧言之。則為如來。又畧言之則為佛。然則佛與如來者。有時指色身而言。若如來有肉眼不。如來以其佛智。悉知是人是也。此則謂真性耳。真性又名真如者。謂外物皆妄。唯性為真。其言如者。乃上文所謂真性自如。而無所不可現之意也。故以真實之性為真如。而又謂之如來也。
+【僧若訥曰】如來者。即真如也。真如不離諸法。故云即諸法如義。
+【陳雄曰】佛辯論如來膺釋迦尊號者何故。盖以了諸法空。得如如之義也。如者。真如也。楞伽經云。離不實妄想。是名如如住。如如者。得無所有境界。故維摩經云。如者不二不異。一切法亦如也。眾聖賢亦如也。至於彌勒亦如也。
+【李文會曰】一切諸法。本來清淨。盖由取捨分別諸法。所以濁亂。不得自如。心若清淨。即自然如中天杲日。歷歷分明。於諸法上都無取捨分別。即是諸法如義。又云若不修因。即無證果。須無因果法之可得。諸法皆如。如理即佛。
+【傅大士云】法性非因果。如理不從因。謂得然燈記。寧知是舊身。
+【川禪師云】且住且住。文殊與淨名對談不二。如何是不二。不得動著。動著則三十棒。頌曰。上是天兮下是地。男是男兮女是女。牧童撞著看牛兒。大家齊唱囉囉哩。是何曲調。萬年歡。
+^r17:18若有人言如來得阿耨多羅三藐三菩提。須菩提。實無有法。佛得阿耨多羅三藐三菩提
+【王日休曰】佛謂若有人言。佛得無上正等正覺之真性。是人則為妄語。何則。真性者。佛本來自有之。止為除盡外妄。乃見真性耳。凡言得者。皆自外而得。此真性。豈有自外而得哉。故言得者。則為不實語也。佛乃呼須菩提而自答云。非有法如來得之。名其法為無上正等正覺之真性也。盖性則吾之本有。法則自外而來。惟假法以去除外妄而明真性。豈謂於法有所得而名為真性哉。
+【陳雄曰】如來於菩提無上道。得之心傳。於法實無所得。不善言如來者。言如來有所得。是不明如來心傳之語。佛故呼須菩提而告之曰。實無有法可得。盖沮人言之謬妄也。
+^r17:19須菩提。如來所得阿耨多羅三藐三菩提。於是中無實無虛
+【王日休曰】如來所得正覺之法者。謂佛所得以明真性之法也。此非真性中所有。故曰非實。謂亦為妄也。然必賴於此以明真性。故云非虛。
+【陳雄曰】如來了無所得。而其所得者。菩提無上道耳。盖菩提無上道。有真空妙理存乎其間。實而無實。虛而無虛。與十四分如來所得法同。
+【僧微師曰】無實者。以菩提無色相故。無虛者。色相空處即是菩提。故知如來所證菩提之法。不空不有。故曰無實無虛。
+【李文會曰】於是中者。清淨心也。無實者。真空無分別。故。
+【境界經云】諸欲不染故。敬禮無所觀。無虛者。妙用也。具河沙德用也。
+【川禪師云】富嫌千口少。貧恨一身多。頌曰。生涯如夢若浮雲。活計都無絕六親。留得一雙青白眼。笑看無限往來人。
+^r17:20是故如來說一切法。皆是佛法
+【王日休曰】因是之故。佛說諸法。皆是用之以修行。而成佛之法也。然則法又豈可以無哉。令禪家絕不用法。大背經意矣。佛所以隨說而又掃去者。盖謂不可泥於法耳。豈可絕無法哉。傅大士之頌曰。渡河須用筏。到岸不須船。令禪家不用法。乃未到岸而不須船者。豈不自溺於苦海。且誤人於苦海哉。
+【陳雄曰】佛即心也。心即法也。有是佛心。則必有佛法。如來說一切法。無一切外道邪說廁於其間。故斷之曰。皆是佛法。
+【李文會曰】。一切世法。皆是佛法。
+【涅槃經云】佛即是法。法即是佛。
+【馬祖云】一切眾生從無量劫來。不出法性三昧。長在法性中著衣喫飯。言譚秪對。六根運用。一切施為盡是法性。不解返源。所以隨名逐相。迷情妄起。造種種業。若能一念廻光返照。全軆聖心。何處不是佛法。
+【川禪師曰】明明百草頭。明明祖師意。頌曰。會造逡巡酒。能開頃刻花。琴彈碧玉調。爐煉白硃沙。幾般伎倆從何得。須信風流出當家。
+^r17:21須菩提。所言一切法者。即非一切法。是故名一切法
+【王日休曰】佛又恐人泥於法。故又呼須菩提而言。所言一切法者。即非真實一切法。但假此以修行耳。非真性中所有。故虛名為一切法而已。
+【顏丙曰】如來者。即諸法如義。乃如如不動之意。於是中無實無虛。無實者。向甚處摸索。無虛者。何處不分明虛實乃斷見常見。大士云。斷常俱不染。所以道即非一切法。
+【李文會曰】謂於諸法心無所得。了諸法空。本無一切法也。
+【法華經云】諸法從本來。常自寂滅相。故古德云。用即知而常寂。不用即寂而常知。方契妙覺。是故名一切法也。
+【川禪師云】上大人。丘乙己。頌曰。是法非法不是法。死水藏龍活潑潑。是心非心不是心。逼塞虛空古到今。秪者是。絕追尋。無限野雲風捲盡。一輪孤月照天心。
+^r17:22須菩提。譬如人身長大。^r17:23須菩提言。世尊。如來說人身長大。即為非大身。是名大身
+【王日休曰】須菩提以嘗聞佛說此語。故曉此理。乃呼世尊而答云。如來說人身長大。則非真實大身是虛名為大身而已。苐十分所言是也(傳本第十分王本十二分)。
+【李文會曰】色身有相。為非大身。法身無相。廣大無邊。是名大身。
+【黃蘖禪師云】虛空即法身。法身即虛空。是名大身也。
+【川禪師曰】喚作一物即不中(南嶽懷讓禪師見六祖。祖問什麼處來。曰。嵩山來。祖曰。是什麼物恁麼來。曰。說似一物即不中)。頌曰。天產英靈六尺軀。能文能武善經書。一朝識破娘生靣。方信閑名滿五湖。
+^r17:24須菩提。菩薩亦如是。若作是言。我當滅度無量眾生。即不名菩薩
+【王日休曰】梵語菩薩。此云覺眾生。佛又呼須菩提而言。菩薩亦如是者。此如是乃指上文。盖謂覺眾生者亦非為真實。亦如大身之不為真實。徒虛名而已。何則。真性中豈有覺眾生哉。惟有佛謂之覺。覺即真性也。若作是言者。此是言乃指下文。謂我當滅度無量眾生。即不名菩薩者。謂以眾生為有。而我乃化之成佛。而得滅度。如此見識。則不可名之為覺眾生。以一切眾生。於真性中本無。惟從業緣中現。故不可以為有也。
+【李文會曰】即不名菩薩者。二乘之人。若有煩惱妄想。不能除滅。即同凡夫。滅色取空。不了色性。即非菩薩。
+【淨名經云】色性自空。非色滅空。如病眼人見空中花。無有是處。
+【傅大士云】名因共業變。萬象即微生。若悟真空色。翛然獨有名。
+^r17:25何以故。須菩提。實無有法。名為菩薩
+【王日休曰】佛又自問。何故上文之意。謂一切眾生為有者。不名為覺眾生乎。乃呼須菩提而自答云。實無有法名為覺眾生者。謂真性中實無法以名為覺眾生也。且修行而至於菩薩者。誠賴佛所說之法。故知修行之理。而此言實無有法者。特謂真性中無此法耳。
+【李文會曰】實無有法名為菩薩者。一切空寂。本來不生。不見有生死。不見有涅槃。不見有善惡。不見有凡聖。不見一切法。是名見法。正見之時。了無可見。即是菩薩。故云實無有法。名為菩薩。
+^r17:28是故佛說一切法。無我無人無眾生無壽者
+【王日休曰】是故者。謂上文所言之故也。乃謂實無有法名為覺眾生之說也。佛說一切法。無我。無人。無眾生。無壽者。謂佛說諸法。皆謂我人眾生壽者本無有也。此四者。統而言之。皆謂之眾生。此眾生既本無有。烏得有覺眾生乎。
+【陳雄曰】上文言實無有法。尚何有法可說耶。然佛本無言說。其所說者。不過真空無相。維摩經云。法無眾生。離眾生垢故。法無有我。離我垢故。法無壽命。離生死故。法無有人。前後際斷故。此真空無相法也。佛說一切法者此耳。外此則我佛無所說。
+【顏丙曰】色身長大。爭奈有生滅。有限量。即非大身。若造作此言。我當滅度無量眾生。即不名菩薩。迷則佛眾生。悟則眾生佛。實無有法名為菩薩。是故佛說一切法。無四相可得。
+【川禪師曰】喚牛即牛。呼馬即馬。頌曰。借婆衫子拜婆門。禮數周旋已十分。竹影掃堦塵不動。月輪穿海水無痕。
+^r17:29須菩提。若菩薩作是言。我當莊嚴佛土。是不名菩薩
+【疏鈔云】言佛土者。心土也。佛土無相。云何莊嚴。若有莊嚴。法即是增。
+【陳雄曰】以㝎慧之寶。莊嚴心佛土者。菩薩也。不言其功。而人莫見其迹。以金珠之寶莊嚴世間佛土者。凡夫也。自言其功而常急於人知。文殊般若經云。為一切眾生。發大莊嚴。而心不見莊嚴之相。菩薩如是。豈肯自言其功哉。若作是言。是四種相未除。即凡夫之見。其誰名為菩薩耶。
+【李文會曰】我當莊嚴佛土是不名菩薩者。妙定經云。若人造作白銀精舍滿三千大千世界。雖有無量布施福德。謂心有能所。即非菩薩。不如一念無能所心所得功德。勝前功德百千萬倍。
+^r17:30何以故。如來說莊嚴佛土者。即非莊嚴。是名莊嚴
+【肇法師曰】此明不達法空。取莊嚴淨土。故非菩薩。復明離相無為莊嚴佛土也。
+【王日休曰】此與苐十分之意同(溥本第十分。王本十一分)。於此再言者。為續來聽者說。故兼說下文也。
+【陳雄曰】如來所說者。莊嚴心佛土也。心佛土本來清淨無相。何假莊飾。故云即非莊嚴。常人以莊嚴為莊嚴。而如來則以非莊嚴為莊嚴。有妙莊嚴存焉是則所以名其為莊嚴。故淨土論云。備諸珎寶性。具足妙莊嚴。世人著世間佛土而不知反。佛前言而此復言。救弊云爾。
+【顏丙曰】心常清淨。不染世緣。是為莊嚴佛土也。雖日莊嚴。不可作莊嚴相。故曰即非莊嚴。但強名而已。
+【李文會曰】即非莊嚴是名莊嚴者。實無有法可得阿耨多羅三藐三菩提。實無有法名為菩薩。豈復取莊嚴相如是。即逍遙自在。無纖毫罣礙。云何是莊嚴。云何不是莊嚴。故云即非莊嚴。是名莊嚴也。
+^r17:31須菩提。若菩薩。通達無我法者。如來說名真是菩薩
+【王日休曰】據楞伽經說二無我謂人無我與法無我也。人無我者。謂人無本軆因業而生法無我者。謂法無本軆。因事而立。若作富貴之業。則生於富貴中。作貧賤之業。則生於貧賤中。是人無本軆也。若因欲渡水。則為舟楫之法。因欲行陸。則為車輿之法。是法本無軆也。一切法皆因事而立。即是假合。假合即為虛妄。若信此理而悟解之。是真菩薩之見識。故云如來說名真是菩薩。
+【顏丙曰】通達無我法者。直下大悟。如漆桶底脫。四通八達。廓然無我。我身既無。何更有法。人法雙忘。只這真是菩薩。更莫別求。
+【李文會曰】通達無我法者。於諸法相無所滯礙。是名通達。若作有所能解。是名我相。若作無所能解。湛然清淨。是名無我。故云真是菩薩。僧問馬祖作何見解。即得達道。答云。自性本來具足。但於善惡事上不滯。方喚作道。人的取善捨惡。觀空入定。皆属造作。更若向外馳求。轉踈轉遠。一念妄想。便是三界生死根本。但無一念。是除生死根本。即得法王無上珎寶。
+【傅大士頌曰】人與法相待。二相本來如。法空人是妄。人空法亦祛。人法兩俱實。授記可非虛一切皆如幻。誰言得有無。
+【川禪師曰】寒即普天寒。熱即普天熱。頌曰。有我元無我。寒時燒軟火。無心似有心。半夜拾金針。無心無我分明道。不知道者是何人。呵呵。
+^ck18【一體同觀】
+^r18:1須菩提。於意云何。如來有肉眼不。^r18:2如是。世尊。如來有肉眼。^r18:3須菩提。於意云何。如來有天眼不。^r18:4如是。世尊。如來有天眼。^r18:5須菩提。於意云何。如來有慧眼不。^r18:6如是。世尊。如來有慧眼。^r18:7須菩提。於意云何。如來有法眼不。^r18:8如是。世尊。如來有法眼須菩提。^r18:9於意云何。如來有佛眼不。^r18:10如是。世尊。如來有佛眼
+【日月殊光如來解曰】言肉眼者。照見胎卵濕化。色身起滅因緣也。言天眼者。照見諸天宮殿。雲雨明暗。五星二曜。旋伏因緣也。言慧眼者。照見眾生慧性深淺。上品下生。輪廻託隂因緣也。言法眼者。照見法身遍充三界。無形無相。盡虛空遍法界因緣也。言佛眼者。照見佛身世界無比。放光普照。破諸黑暗。無障無礙。圓滿十方。尋光見軆。知有涅槃國土也。此五眼如來其中若有上根上智之人。能識此五種因緣。即名為大乘菩薩也。
+【陳雄曰】華嚴經云。肉眼見一切色故。天眼見一切眾生心故。慧眼見一切眾生諸根境界故。法眼見一切法如實相故。佛眼見如來十力故(一是處非處如實力。二知三世報業力。三知諸禪解脫三昧力。四知眾生諸根上下力。五知眾生種種欲力。六知世間種種性力。七知一切道至力。八得夙命智力。九得天眼能觀一切力。十得漏盡智力)大般若經。所謂清淨五眼是也。世尊設五眼之問。須菩提皆答以有如是之理。可謂善問答矣。
+【顏丙曰】化身觀見為肉眼。普照大千為天眼。智燭常明為慧眼。了諸法空為法眼。自性常覺為佛眼。有僧問尊宿云。觀音菩薩用許多手眼作麼。尊宿云。通身是手眼。若人於這裏薦得。一眼也無。豈更落三落四。然雖如是。須是箇漢始得。能具足此五眼者。唯自性如來也。五眼度世品經云。佛言隨世開化。入於五道而淨五眼。一肉眼。處於世間。現四大身。因此開化。度脫眾生。
+二天眼。諸天在上。及在世間。未識至道。示以三乘。三慧眼。其不能解智度無極皆開化之。使入大慧。四法眼。其在褊局。不能恢泰。悉開化之。解法身一無去來。令平等三世。五佛眼。其迷惑者。不識正真。隂盖(盖者遮也)所覆。譬如睡眠。示以四等四恩之行。布施持戒忍辱精進。一心智慧。善權方便。進退隨宜。不失一切。令發正真道意。
+【李文會曰】一切凡夫皆具五眼。而被迷心盖覆。不能自見。若無迷心妄念。如得翳障退滅五眼開明。見一切色也。內外空寂。名為肉眼。見自真性。是法平等。名為天眼。見自性中。般若之智。名為慧眼。見諸色相心不動搖。見一切法無一切法。見一切相無一切相。是名法眼。見前際無煩惱可斷。中際無自性可守。後際無佛可求。三際清淨。是名佛眼。
+又云。若以無相為法身者。名為慧眼而見如來指空論有。假立名相。名為法眼。而見如來。若了有無即非有無。二邊寂滅。全軆法身周徧法界者。具足佛眼。而見如來。
+【傅大士頌曰】天眼通非閡。肉眼閡非通。法眼唯觀俗。慧眼直緣空。佛眼如千日。照異軆還同。圓明法界內。無處不含容。
+【川禪師云】盡在眉毛下。頌曰。如來有五眼。張三秪一雙。一般分皁白。的的別青黃。其間些子爻訛處。六月炎天下雪霜。
+^r18:11須菩提。於意云何。如恒河中所有沙。佛說是沙不。^r18:12如是。世尊。如來說是沙。^r18:13須菩提。於意云何。如一恒河中所有沙。有如是沙等恒河。是諸恒河所有沙數佛世界。如是寧為多不。^r18:14甚多。世尊。
+【六祖曰】恒河者。西國祇洹精舍側近之河。如來說法。常指此河為喻。佛說此河中沙一沙况一佛世界以為多不須菩提言甚多。世尊。
+【王日休曰】恒河中所有沙。有如是沙等恒河者。謂一粒沙為一恒河也。是諸恒河所有沙數佛世界如是者。是諸恒河。謂一粒沙。為一恒河。如此恒河中所有之沙。則不勝其多矣。佛世界如是者。謂世界如是之多也。此其為多。不在所言矣。然而佛又以問須菩提者何也。亦以廣坐說法。欲人先明了於心。故不厭其詳復。而將為下文之說也。佛世界者。謂凡一大世界。必有一佛設化。故凡大世界。皆謂之佛世界。
+【顏丙曰】以沙數世界。言其多也。有如是等恒河。是諸恒河所有沙者等者。比也。將如此沙。比恒河之多。又將諸多恒河中之沙。而數佛世界。佛舉此以問。如是寧為多不。須菩提答云甚多。
+【僧若訥曰】明諸恒河中沙。一沙為一世界。舉此為問。
+【李文會曰】恒河沙數者。欲明眾生有種種妄念。故舉無窮之沙以為喻耳。
+【楞嚴經云】琉璃光法王子觀世間眾生。皆是妄緣風力所轉。觀世動時。觀身動止。觀心動念。諸動無二。等無差別。此羣動性。來無所從。去無所至。十方卻塵。顛倒眾生。盡同一虛妄也。
+^r18:15佛告須菩提。爾所國土中所有眾生若干種心。如來悉知
+【王日休曰】所有眾生。謂彼世界中。凡有之眾生。乃一切眾生也。其眾生之心。如來所以悉知者。以此心為妄想。乃自真性中現。既生此妄想心。自佛觀之。則有形相矣。有形相。故可得而知也。若寂然如虛空。則無得而知矣。且所謂他心通者(六通。天眼通。徹視大千。天耳通。洞視十方。他心通。悉知種類。宿命通。達三世事神境通。形無窒礙。如意通。任運自在)。
+謂彼既起心念。則此可得而知也。聞有人把棊子於手中。令他心通者觀之。則知其為棊子。以己知為棊子故也。然己則不知其數之多寡。使彼言之。則亦不知其數。以己不知其數故也。由是言之。若一起心念。則如有形相。故可得而知。如佛者。豈止他心通而已哉。故無量眾生。一起心念。皆悉知見。無足疑也。
+【顏丙曰】若干。乃幾多之意。若幾多心。如來悉知。心鏡一明。無不遍知。
+【僧若訥曰】若干者。若如也。干數也。顏師古云。設數之辭也。若干有二種。一世間凡夫心。二出世間聖人心。如來盡能知之。故名正遍知也。
+【李文會曰】若干種心。如來悉知者。眼耳鼻舌身意。若起心動念處皆是國土。於國土中。所有眾生。若干種種差別之心。心數雖多。緫名妄心。既覺是妄。故云悉知。
+【川禪師云】曾為浪子偏憐客。慣愛貪盃識醉人。頌曰。眼觀東南。意在西北。將謂猴白。更有猴黑。一切眾生一切心。盡逐無窮聲與色。喝。
+^r18:16何以故。如來說諸心。皆為非心。是名為心
+【六祖曰】爾所國土中所有眾生。一一眾生。皆有若干差別。心數雖多。緫名妄心。識得妄心非心。是名為心。
+【顏丙曰】如來說諸心。實無心可得。故曰非心。但強名曰心。
+【李文會曰】覺妄之心。即是非心。本無妄念。不起妄心。即是自性本心。故云是名為心。即是菩薩心。亦名涅槃心。亦名大道心。亦名佛心。故。
+【臨濟禪師云】若一念心能解縛。此是觀音三昧法。
+【川禪師云】病多諳藥性。頌曰。一波纔動萬波隨。似蟻循環豈了期。咄。今日為君都割斷。出身方號丈夫兒。
+^r18:17所以者何。須菩提。過去心不可得。現在心不可得。未來心不可得
+【肇法師曰】聞說諸心。謂有實心。故須破遣。明三世皆空。故論云。過去已滅。未來未起。現在虛妄。三世推求。了不可得。
+【疏鈔云】未覺不知。隨時流轉。故有三世。若悟真一之心。即無過去現在未來。若有過去心可滅即是自滅。若有未來心可生。即是自生。既有生有滅。即非常住真心。即為依他心。虛妄心。若一念有生滅心。即成六十二種邪見。九百種煩惱。
+【王日休曰】常住真心。即真性也。是以自無量無數劫來。常一定而不變動。豈有過去未來現在哉。若有過去未來現在。則為妄想。此三心是也。且若飽而未欲食。則欲食之心為未來。飢而正欲食。則欲食之心為現在。食畢而放匕箸。則欲食之心為過去。是此心因事而起。事過而滅。故為妄想也。不可得者。謂無也。言此三心本來無有。乃因事而有耳。圓覺經所以言六塵緣影為自心相者。謂眾生以六種塵緣之影為自己之心相也。
+【僧若訥曰】本生心地觀經云。如佛所說。唯將心法為三界主。心法本源。不染塵穢。云何心法。染貪瞋癡。於三世法。誰說為心。過去心已滅。未來心未至。現在心不住。諸法之內性不可得。諸法之外相不可得。諸法中間都不可得。心法本來無有形相。心法本來無有住處。一切如來尚不可見心。何况餘人得見心法。
+【顏丙曰】謂思念前事者為過去心。思念令事者為現在心。思念後事者為未來心。三念緫放下著。謂之不可得。經云。前念後念及今念。念念不被邪見染。此為三心不可得。古云。一念不生全軆現。亦謂三際俱斷。三念俱妄。了不可得。
+【傅大士頌曰】依他一念起。俱為妄所行。便分六十二。九百亂縱橫(法華經二卷。世尊偈言。薄德少福人。眾苦所逼迫。入邪見稠林。若有若無等。依止此諸見。具足六十二。毗婆沙論云。六十二見者。五蘊中各起四見。四五二十。三世各二十。通為六十。斷常二見為根本。揔為六十二見。且於色蘊中。即色是我。離色非我。我中有色。色中有我。五蘊中具有此四。疏鈔解三心云。若一念有生滅心。即成六十二種邪見。九百種煩惱)。過去滅無滅(一作不滅)當來生不生。常能作此觀(去聲)。真妄坦然平(晁文元公遇高士劉惟一。訪以生滅之事。劉曰。人常不死。公駭之。劉曰。形死性不滅。是知此性。歷劫長存)。
+【川禪師曰】低聲低聲。直得鼻孔裏出氣。頌曰。三際求心心不見。兩眼依然對兩眼。不須遺劒刻舟尋。雪月風花常見靣。
+【未曾有經云】妙吉祥菩薩因見一人。言我造殺業。决墮地獄。如何救度。菩薩即化一人。亦曰我造殺業。决墮地獄。前人聞已。言我亦然。化人告之。唯佛能救。相隨共詣。化人白佛。我造殺業。怖墮地獄。願佛救度。佛即告言。如汝所說造殺業者。汝從何心而起業相。為過去耶。未來耶。見在耶。若起過去心者。過去已滅。心不可得。若起未來心者。未來未至。心不可得。
+若起見在心者。見在不住。心不可得。三世俱不可得故。即無起作。無起作故。於其罪相何所見耶。善男子。心無所住。不在內外中間。心無色相。非青黃赤白。心無造作。無作者故。心非幻化。本真實故。心無邊際。非限量故。心無取捨。非善惡故。心無轉動。非生滅故。心等虛空。無障礙故。心非染淨。離一切數故。善男子。作是觀者。即於一切法中。求心不可得。何以故。心之自性。即諸法性。諸法性空。即真實性。由是義故。汝今不應妄生怖畏。是時化人聞佛說法。
+即白佛言。我今得悟罪業性空。不生怖畏。尓時實造業者。亦白佛言。我今得悟罪業性空。而不復生怖畏之想。
+【李文會曰】謂三世心無性可得。故可從緣而生。
+【肇法師云】聞說諸心。謂有實心。故須破遣。明三世皆空。故云過去已滅。未來未起。現在虛妄。三世推求。了不可得。故云若悟無法無相無事平常真心。即法軆空寂。不生不滅。湛然清淨。豈有前念今念後念可得也。
+【馬祖云】道不用修。但莫洿染。何謂洿染。但有生死造作趣向。皆是洿染。若欲直會其道。平常心即是道。何謂平常心。無造作。無是非。無取捨。無憎愛。無凡聖。是故經云。非凡夫行。非聖賢行。是菩薩行。
+【趙州問南泉云】如何是道。泉云。平常心是道。
+【圜悟禪師頌曰】欲識平常道。天真任自然。行船宜舉棹。走馬即加鞭。若遇飢來飯。還應困即眠。盡從緣所得。所得亦非緣。
+^ck19【法界通化】
+^r19:1須菩提。於意云何。若有人滿三千大千世界七寶。以用布施。是人以是因緣。得福多不。^r19:2如是。世尊。此人以是因緣得福甚多。^r19:4須菩提。若福德有實。如來不說得福德多。以福德無故。如來說得福德多
+【自在力王如來解曰】此雖如是布施。只是有礙之寶。不是無為清淨功德。是故如來不說多也。若有菩薩。以盧舍那身中七覺菩提。持齋禮讚。從其心燈。化生功德。不生不滅。堅如金剛。乘香花雲。入無邊界。起光明臺。供養十方。一切諸佛。此是無為功德。見性之施。化為菩薩。頌曰。廣將七寶持為施。如來不說福田多。若用心燈充供養。威光徧照滿娑婆。
+【疏鈔云】若據捨大千珎寶布施。其福極多。若執著。希望福德。有餘則有盡。故云若福德執實有。如來不說得福德多。此是反釋之義。言以福德無者。無希望心也。既無希望。即為無住相施。是名無為福。若依無住無為而施者。故如來說得福德多。
+【僧若訥曰】福有者。取相也。福無者。離相也。離相故稱性。性如虛空。其福無量。
+【顏丙曰】假使盡世界七寶布施。此乃人天小果。有漏之因。終不免輪廻。畢竟有墮落。不足為多。以福德無故。此其所以為多也。所謂無之一字。趙州教人見性看話頭。自云。狗子還有佛性無。應云無。只將這無字。貼向鼻頭上。崖來崖去。久久自然有箇入頭處。是則是。切不得作無字會。
+【僧微師曰】世尊召云須菩提。若能施之人。以妄識為本。修布施行。即取著能所者。以為實有此福。即成顛倒。如來不說此福德多。以福德無故者。若能施之人。以佛智為本。修布施行。悉皆離相。不見福為實有。即非顛倒。如來說此人福德甚多。
+【智者禪師頌曰】三千大世界。七寶滿其中。有人持布施。得福也如風。猶勝慳貪者。未得達真宗。終須四句偈。知覺證全空。
+【李文會曰】凡夫住相。布施七寶。希求福利。此是妄心。所得福德。不足為多。不如淨妙無住之福。無得之德。同於虛空。無有邊際。
+【川禪師云】猶勝別勞心。頌曰。羅漢應供薄。象身七寶珎。雖然多濁富。爭似少清貧。冈象只因無意得。離婁失在有心親。
+^ck20【離色離相】
+^r20:1須菩提。於意云何。佛可以具足色身見不。^r20:2不也。世尊。如來不應以具足色身見
+【陳雄曰】色身者。三十二相也。具足者。無一而虧欠也。備三十二行而具足是相。三十二行。法身中有之。欲見法身如來識自本心。見自本性足矣。豈應見於具足色身也哉。
+^r20:3 何以故。如來說具足色身。即非具足色身。是名具足色身
+【陳雄曰】壇經云。皮肉是色身。華嚴經云。色身非是佛。觀此則知肉身無如來。殊不知有生如來存焉。知色身非法身。殊不知有妙色身存焉。華嚴經又云。清淨妙色身。神力故顯現。曰妙色身。則現一切色身三昧。便是法身如來。即非具足色身可知。以非具足色身。而名為具足色身者。盖得其所以具足色身故也。
+^r20:4須菩提。於意云何。如來可以具足諸相見不。^r20:5不也。世尊。如來不應以具足諸相見。^r20:6何以故。如來說諸相具足。即非具足。是名諸相具足
+【陳雄曰】楞伽經云。相者。若處所形相。色像等現。是名為相。此言諸相者。種種變現神通之。相也。又不止於三十二相而已。如來離色離相。以淨行則具足三十二。以智慧則具足八萬四千。具足三明。六神通。八解脫(法華經三卷云。佛於天人大眾之中。說是法時。六百萬億那由他人。皆得三明六通。具八解脫)此之具足。即非諸相之所謂具足也。然此之具足。乃其實也。而諸相具足。特其華耳。充其實則其華必副之。是以有諸相具足之名。
+【顏丙曰】佛。覺也。覺性如虛空。不應以具足色身見。唯見性人。方知即非色身。如夫子毋我。顏子坐忘是也。自性如來。不應以具足諸相見。性尚不可得。又何有諸相。故以即非之說為掃除之。
+【王日休曰】此分與苐五分苐十三分之意同。於此再言者。為續來聽者說也(傳本十三分。王本十六分)。
+【李文會曰】心既空寂。湛然清淨。豈有色身諸相可得。凡夫既不著有。即著於空。有此斷常二見。謂觀空莫非見色。觀色莫不皆空。即是具足色身具足諸相。非具足也。空色一如。有無不異。方可能觀。無身而見一切身。無相而見一切相。是名色身具足。諸相具足也。
+【僧問趙州】狗子有佛性麼。州云。狗子無佛性。進云。蠢動含靈。皆有佛性。為什麼狗子無佛性。州云。為他有業識在。夫有業識之人。種種著於有。起諸妄想者。此名顛倒知見。種種落於空。都無所悟者。此名斷滅知見。宿有善根之人。無此顛倒斷滅二病。而能洞曉空趣。此名正真知見。若悟此理。乃可隨時著衣喫飯。長養聖胎。任運過時。更有何事。
+【四祖謂牛頭融禪師云】百千妙門。同歸方寸。恒沙功德。緫在心源。一切空門。一切慧門。一切行門。悉皆具足。神通妙用。只在你心。業障煩惱。本來空寂。一切果報。性相平等。大道虛曠。絕思絕慮。如是之法。無欠無餘。與佛無殊。更無別法。但只令心自在。莫懷妄想。亦莫歡欣。莫起貪瞋。莫生憂慮。蕩蕩無礙。任意縱橫。不作諸善。不作諸惡。行住坐臥。觸目遇緣。皆是佛之妙用。
+【祖印明禪師云】養就家欄水牯牛。自歸自去有來由。如令穩坐深雲裏。秦不管兮漢不收。
+【傅大士頌曰】八十隨形好。相分三十二(般若經第十卷。言八十種好。文繁不錄)。應物萬般形理中非一異。人法兩俱遣。色心齊一棄。所以證菩提。實由諸相離(去聲)。
+【川禪師云】官不容針。私通車馬。頌曰。請君仰靣看虛空。廓落無邊不見蹤。若解轉身些子力。頭頭物物緫相逢。
+^ck21【非說所說】
+^r21:3須菩提。汝勿謂如來作是念。我當有所說法。莫作是念。何以故。若人言如來有所說法。即為謗佛。不能解我所說故
+【李文會曰】心既清淨。語默皆如。遇緣即施。緣散即寂。
+【張無盡云】非法無以談空。非人無以說法。此謂不同生滅之心有法可說也。若有生滅心在而說法者。是教一切人不能得見自性。謂之謗佛。但無生滅心。方可說法。
+【川禪師云】是即是。大藏小藏從甚處得來。頌曰。有說皆為謗。無言亦不容。為君通一線。日出嶺東紅。
+^r21:4須菩提。說法者。無法可說是名說法
+【王日休曰】若人言。如來有所說法。即為謗佛者。謂佛本不說法。以真性無法可說。若以為佛本說法。即為志在於法耳。佛豈志在於法哉。此所以為謗佛。所以為不能解佛所說之故也。佛又呼須菩提。而言說法者實無有法。謂本來無法。特為眾生去除外妄而說耳。此法豈真實哉。眾生既悟。則不用此法矣。故但虛名為說法而已。此分與第七分。言無有少法如來所得之意大略同。亦與十三分。所謂無有少法如來所說之意同(傳本在十三分。王本在十五分)。然此再舉者。後詳言之。亦為續來聽者說也。
+【顏丙曰】終日喫飯。不曾咬著一粒米。終日著衣。不曾掛著一莖絲。所以我佛橫說直說。四十九年未嘗道著一字。唯同道方知。若言如來有所說。即為謗佛。不能解會我所說。直饒說得天花亂墜。也落在苐二著。唯能坐斷十方。打成一片。非言語可到。是名真說法也。所以道。墻壁瓦礫。說禪浩浩。前輩頌云。也大奇。也大奇。無情說法不思議。若將耳聽終難會。眼處聞聲方得知。
+【謝靈運曰】教傳者。說法之意也。向言無說。非杜默而不語。但無存而說。則說滿天下。無乖。法理之過。無存。謂不著諸相。心無所住也。
+【傅大士云】相寂名亦遣。心融境亦亡。去來終莫見。語默永無妨。智入圓成理。身同法性常。證真還了俗。不廢是津梁。
+【川禪師云】兔角𣐀。龜毛拂。頌曰。多年石馬放毫光。鐵牛哮吼入長江。虛空一喝無蹤跡。不覺潛身北斗藏。且道是說法不是說法。
+^r21:5爾時慧命須菩提
+【疏鈔云】尓時。當起問之時也。言慧命者。善現達佛智海入深法門。悟慧無生。覺本源之命非去非來。故曰慧命須菩提。
+【陳雄曰】慧命須菩提。見於法華經信解品。慧以德言。命以壽言。即長老之異名也。
+【顏丙曰】慧命者。具智慧性也。故曰。天命之謂性。
+^r21:6白佛言。世尊。頗有眾生於未來世。聞說是法。生信心不。^r21:7佛言。須菩提。彼非眾生。非不眾生。^r21:8何以故。須菩提。眾生眾生者。如來說非眾生。是名眾生
+【疏鈔云】佛言彼非眾生者。皆具真一之性。與佛同源。故曰非眾生。言非不眾生者。背真逐妄。句喪己靈。故曰非不是眾生。
+【王日休】解第二分云。命者壽之意。壽者老之意。其言慧命者。以須菩提既得慧眼。且年高矣。須菩提於此問頗有眾生。於未來世。聞說是法。生信心不。佛言彼非眾生非不眾生者。恐聽法者誤認眾生以為實有。故曰彼非眾生。謂自業緣中現。業盡則滅。豈有真實眾生也。然亦有眾生之身現在。此又不可謂之非眾生。故曰非不眾生。但非真實而為虛幻耳。佛又自問云。何以故者。謂何故非不眾生。乃呼須菩提而自答云眾生眾生者。謂凡為眾生者。則所謂一切眾生也。如來說非眾生。是名眾生者。謂一切眾生。佛皆以為非真實眾生。但虛名為眾生而已。此佛自言也。而又言如來說者。豈非諸佛亦如是說乎。
+【顏丙曰】須菩提問佛。眾生於未來世。聞說是法。生信心不。佛答曰。彼非眾生。非不眾生者。盖眾生屬有。不眾生屬無。彼眾生性。本同太虛。不落有無二見。如來說非眾生。但假名眾生。故佛嘗曰。我不敢輕於汝等。汝等皆當作佛。我佛未嘗輕眾生也如此。
+【智者禪師頌曰】不言有所說。所說妙難窮。有說皆為謗。至道處其中。多言無所解。默耳得三空(二空。即見第一分。又疏鈔云。有無中道。亦曰三輪軆空)。智覺剎那頃。無生無始終(俱舍等論。謂時之最少。名一剎那。一百二十剎那。名一怛剎那。六十怛剎那。名一羅婆。三十羅婆。名一牟呼栗多。亦云須㬰。三十牟呼栗多。為一晝夜)。
+【川禪師曰】火熱。風動。水濕。地堅。頌曰。指鹿豈能成駿馬。言鳥誰謂是翔鸞。雖然不許纖毫異。馬字驢名幾百般。靈幽法師。加此慧命須菩提六十二字。是唐長慶二年。今在濠州鍾離寺石碑上記。六祖解在前故無解。今亦存之。
+【李文會曰】此則魏譯偈也。長慶中僧靈幽入冥所。指魏譯則存。秦譯則無也。謂言若敬信佛法。即著聖見。非眾生也。若不信佛法。即著凡夫見。非不眾生。若起此二見者。是不了中道也。須是令教凡聖皆盡。不住兩頭。方是真正見解。故云眾生眾生者。如來說非眾生是名眾生也。
+^ck22【無法可得】
+^r22:2須菩提。白佛言。^r22:3世尊。佛得阿耨多羅三藐三菩提。為無所得耶。^r22:4佛言如是如是。須菩提。我於阿耨多羅三藐三菩提。乃至無有少法可得。是名阿耨多羅三藐三菩提
+【王日休曰】此分與第七分。大槩同。於此再言者。為續來聽者說也。佛言如是如是者。盖深許其言之當也。阿耨多羅三藐三菩提無有少法可得者。謂性中無有少法可得。無有所得。則蕩然空空。是不可以形相求。不可以言說求也。但說名為無上正等止覺而已。
+【陳雄曰】壇經云。妙性本空。無有一法可得。既無一法可得。寧須有菩提可證耶。我佛無得無證。無名可名。是以強名曰阿耨菩提。
+【顏丙曰】有法可得。是名法縛。無法可得。方名解脫。須菩提。以無所得之辭而告世尊。世尊即以如是如是而證據之。佛又云。我於無上正等正覺。乃至無少法可得。虛名而已。
+【智者禪師頌曰】諸佛智明覺。覺性本無涯。佛因有何得。所得為無耶。妙性難量比。得理即無差。執迷不悟者。路錯幾河沙。
+【李文會曰】若有少法可得。亦是著相。
+【誌公云】但有纖毫即是塵。舉意便遭魔所擾。經云。若人欲識佛境界。當淨其意如虛空。學道之人。但於一切諸法無取無捨。見如不見。聞如不聞。心如木石。刮削併當令內外清淨。方是逍遙自在底人。
+【法句經云】雖終日見。猶為無見。雖終日聞。猶為無聞。
+【草堂清和尚云】擊石乃出火。火光終不然。碧潭深萬丈。直下見青天。
+【逍遙翁云】內覺身心空。外覺萬事空。破諸相訖。自然無可執。無可爭。此謂禪悅。所謂大明了人。勿令有秋毫許障礙。微塵許染著。堅久不渝。便是無上士不動尊也。
+【琪禪師云】念念釋迦出世。步步弥勒下生。分別現文殊之心。運用動普賢之行。門門而皆出甘露。味味而盡是醍醐。不出旃檀之林。長處華藏之境。若如此也。行住坐臥。觸目遇緣。雖應用千差。且湛然清淨。
+【川禪師云】求人不如求己。頌曰。滴水生氷信有之。綠楊芳草色依依。春花秋月無窮事。不妨閑聽鷓鴣啼。
+^ck23【淨心行善】
+^r23:1復次須菩提。是法平等。無有高下。是名阿耨多羅三藐三菩提
+【王日休曰】六本皆作是法平等無有高下。然此所謂是法。乃真性也。真性豈可謂之法哉。強名曰法耳。上自諸佛。下至蠢動含靈其真性一同。故云平等無有高下。謂色身則有高下。真性則無高下也。
+【謝靈運曰】結成菩提義也。人無貴賤。法無好醜。蕩然平等。菩提義也。
+【肇法師曰】明此法身菩提。在六道中亦不減下。在諸佛心中。亦不增高。是名平等無上菩提。
+【真武說報父母恩重經云】物不能平物。惟水不動。則可以平物。物不能等物。惟權衡之公。則可以等物。平則無高無下。等則無重無輕。
+【李文會曰】是法平等無有高下者。凡夫不見自性。妄識分別。自生高下。謂佛是高眾生是下。菩薩了悟人法二空。上至諸佛。下至螻蟻。皆有佛性。無所分別。故一切法皆平等。豈有高下也。
+【黃蘖禪師云】若觀佛作清淨光明解脫之相。觀眾生作垢濁暗昧生死之相。作此解者。歷恒河沙劫。終不能得阿耨菩提。又云。心若平等。不分高下。即與眾生諸佛。世界山河。有相無相。徧十方界一切平等。無彼我相。此本源清淨心。常自圓滿。光明徧照也。
+【傅大士云】水陸同真際。飛行軆一如。法中何彼此。理上起親踈。自他分別遣。高下執情除。了斯平等性。咸共入無餘。
+^r23:2以無我。無人。無眾生。無壽者
+【王日休曰】所以名為無上正等正覺者。以真性中本無我人眾生壽者。此四者乃妄緣中現。而真性則平等。豈有四者之異哉。故名為無上正等正覺也。
+^r23:3修一切善法。即得阿耨多羅三藐三菩提
+【王日休曰】一切善法。乃佛接引眾生悟明真性之法也。依此法修行。即得無上正等正覺之真性。此真性我本有之。豈可謂之得哉。盖凡言得者。皆謂自外而得。此則非自外而得。故不可謂之得。然此則言得者。盖不得已而強名曰得耳。
+【李文會曰】修一切善法者。若不能離諸相而修善法。終不能得解脫。但離諸相而修善法。即得阿耨多羅三藐三菩提也。又云。若人於一切事。無染無著。於一切境。不動不搖。於一切法。無取無捨。於一切時。常行方便。隨順眾生。令皆歡喜。而為說法。令悟菩提真性。此即名為修善法也。
+【川禪師云】山高水深。日生月落。頌曰。僧是僧兮俗是俗。喜則笑兮悲則哭。若能於此善參詳。六六從來三十六。
+^r23:4須菩提。所言善法者。如來說即非善法。是名善法
+【王日休曰】佛又呼須菩提。而謂所言善法者即非善法。謂本來無此善法。乃假此以開悟眾生耳。故但虛名為善法而已。
+【顏丙曰】兩頭話有三十六對。善與惡對。有與無對。生與死對。去與來對。動與靜對。語與默對。勝與負對。高與下對。不作兩頭見。是為平等法。亦名無上正等正覺。以無四相心。修一切善法。即得阿耨多羅三藐三菩提。所謂即非善法者。盖凡夫執惡。聲聞著善。若不離善法。又落兩頭機。豈為平等。
+【傅大士頌曰】水陸同真際。飛行軆一如(子榮曰。水陸同真際者。緫標四生有情之本。皆有一真之性。故云飛行軆一如。今據經云。是法平等無有高下。故此頌亦緫四生而言之也。水之所產。陸之所生。水陸雖不同。而一性之真際則未嘗不同也。有翼者能飛。有足者能行。飛行雖不一。而一性之本軆則未嘗不一也)法中何彼此。理上豈親踈(性中所有之法。曾何彼此之間。性中所具之理。豈有親踈之殊)自他分別遣(自者。己也。他者。人也。自己他人妄生分別者。皆當遣去。圓覺經曰。自他身心。注云。自之身心。即我相也。他之身心。即人相也。
+又曰。自性憎愛故。注云。於自則愛。於他則憎)高下執情除(妄分高下而生執著之情亦當除之)。
+了斯平等性。咸共入無餘(經曰。是法平等。無有高下。有人若能了悟平等之性。則咸共入於無餘涅槃矣。寒山詩曰。佛性元平等。緫有真如性。但自審思量。不用閑爭競)。
+【李文會曰】不住相故。即非善法。無漏福故。是名善法。
+【法華經云】初善中善後善者。初謂發善心時。須是念念精進。不生疑惑懈怠之心。中謂常修一切善法。令悟真性。不著諸法相也。後謂即破善法。直教一切善惡凡聖。無取捨憎愛之心。平常無事。故云即非善法是名善法也。
+【古德云】了取平常心是道。飢來喫飯困來眠。又云。常平等心。如此廣大。妙觀察智。如日光明。軆用及此。是佛境界。
+【川禪師云】靣上夾竹桃花。肚裏侵天荊棘。頌曰。是惡非惡。從善非善。將逐符行。兵隨印轉。有時獨上妙高峯。却來端坐閻王殿。見盡人間祇點頭。大悲手眼多方便。
+^ck24【福智無比】
+^r24:1須菩提。若三千大千世界中。所有諸須彌山王。如是等七寶聚。有人持用布施
+【疏鈔云】大千世界中。所有須弥山王。上至忉利天。下至崐崘際。若有將七寶如須弥山高。持用布施。獲福不可知數。問。還有過此福者不。下文答。
+【僧微師曰】佛召云。須菩提。且如一四天下。則有一須弥山。若據三千大千世界。所有百億須弥山。是眾山之最。故言山王。
+^r24:2 若人以此般若波羅蜜經。乃至四句偈等。受持讀誦。為他人說。於前福德。百分不及一。百千萬億分。乃至筭數譬喻。所不能及
+【疏鈔云】若於無住般若。受持真四句偈。及書寫誦念。為他人演說。如是等人。所得功德。不可稱計。何以故。悟性圓融。不斷有為而證無為。不除妄想而趣真常。達第一義。於一念之間。得無為福。無為福德。量等虛空。不可思議。故經云於前捨須弥山珎寶布施福德。若比無為福。百千萬億倍。不及一倍。
+【王日休曰】此言所有諸須弥山王。如是等七寶聚布施。而不可以比受持演說之功者。以彼則世間福。終有時而受盡。此則為出世間福。愈增長而終無窮故也。
+【陳雄曰】佛以性上福德為最上。以身中七寶為希有。儻七寶滿三千大千世界之多。等須弥山之高大。有能持以布施。則其福德。想不下於須弥山。令有人焉持誦真經。并四句渴說與他人。是修自性上福德。是聚自身中七寶。回視多施七寶之福。萬萬不侔。五祖曰。自性若迷。福何可救。六祖曰。乘船永世求珠。不知身是七寶。二佛之言。皆為世人不修身修性。徒施寶以為求福之道。
+【顏丙曰】此一分專較量福德輕重。若有人將七寶比於須弥山王布施。所得福德。比之持經之人。百分不及一分。况持經之人。又能悟四句偈等。受持讀誦。為他人說。不特自利。又且利他。如此福德無量。有百千萬億分。乃至不可筭數譬喻。正如寒山云。無物堪比倫。教我如何說。
+【李文會曰】聚七寶布施。如三千大千世界中須弥山王。所得無量無邊功德。此為住相布施。終無解脫之期。不如受持讀誦此經乃至四句偈等。所得無住相淨妙功德。勝前功德百千萬倍。
+【傅大士頌曰】施寶如沙數。唯成有漏因。不如無我觀(去聲)。了妄乃名真。欲證無生忍。要假離貪嗔。人法知無我。逍遙出六塵。
+【川禪師曰】千錐劄地。不如鈍鍬一捺。頌曰。麒麟鸞鳳不成群。尺璧寸珠那入市。逐風之馬不並馳。倚天長劒人難比。乾坤不覆載。劫火不能壞。凜凜威光混太虛。天上人間緫不如。噫。
+^ck25【化無所化】
+^r25:1須菩提。於意云何。汝等勿謂如來作是念。我當度眾生。須菩提。莫作是念。^r25:2何以故。實無有眾生如來度者
+【僧若訥曰】如來雖設法施。廣度眾生。而不作是念。故誡云。汝等勿謂也。莫作是念者重誡也。度無度相。能所一如故論偈云。平等真法界。佛不度眾生。
+【李文會曰】實無有眾生如來度者。如來不見有眾生可度。又云。謂諸眾生起無量無邊煩惱妄想。於一切善惡凡聖等見。有取捨分別之心。迷情盖覆菩提之性。佛出于世。教令覺悟。降六賊。斷三毒。除人我。若能了悟人法二空。無諸妄念。心常空寂。湛然清淨。更不停留纖毫滯礙。即是見性實無眾生可化度也。
+【石霜禪師云】休去歇去。古廟香爐去。枯木寒灰去。一念萬年去。如大死人去。若能如此用心。安有不成道乎。
+^r25:3 若有眾生如來度者。如來即有我人眾生壽者
+【王日休曰】佛謂須菩提云。汝等勿謂如來作是念。我當度眾生。又呼須菩提而再言曰。莫作是念。何以故者。以實無眾生如來所度。謂一切眾生。皆是妄緣中現。其實無有。若言有眾生如來所度。即是執著。於有我人眾生壽者也。
+【僧若訥曰】若見有可度者。即同凡夫有我執也。
+【李文會曰】若有眾生如來度者。即有我人眾生壽者者。人人具足。箇箇圓成。本來是佛。與佛無異。
+【圜悟禪師云】赤肉團上。人人古佛家風。毘盧頂門。處處祖師巴鼻。若也恁麼返照。凝然一段光明。非色非心。非內非外。行棒也打他不著。行喝也驚他不得。直得淨躶躶。赤洒洒。是箇無生法忍。不退轉輪。截斷兩頭。歸家穩坐。正當恁麼時。不須他處覓。秪此是西方。
+【傅大士云】夜夜抱佛眠。朝朝還共起。起坐鎮相隨。語默同居止。纖毫不相離。如身影相似。欲識佛去處。只這語聲是。眾生但為業障深重。與佛有殊。若能廻光返照。一刀兩段。即便見自性也。若不因佛經教。一切眾生無因自悟。憑何修行得至佛地。此是如來無所得心。故云若有眾生如來度者。即有我人眾生壽者相也。
+【川禪師曰】春蘭秋菊。各自馨香。頌曰。生下東西七步行。人人鼻直兩眉橫。哆啝悲喜皆相似。那時誰更問尊堂。還記得在麼。
+^r25:4須菩提。如來說有我者。即非有我。而凡夫之人。以為有我
+【僧若訥曰】如來既無我人等相。云何有時稱我。須知假名稱我。對所度眾生。隨時說我。
+【李文會曰】有我者即是凡夫。非我者隨處作主。應用無方。故云。凡是佛因。佛是凡果。
+【境界經云】三世諸佛皆無所有。唯有自心。既明因果無差。乃知心外無法。二乘之人執有我相。欲離生死而求涅槃。欲捨煩惱而求滅度。是捨一邊。不了中道乃同凡夫行也。
+^r25:5 須菩提。凡夫者。如來說即非凡夫。是名凡夫
+【王日休曰】佛又呼須菩提而言凡夫者。謂非有真實凡夫。但虛名為凡夫而已。此所謂隨舉隨掃也。上言凡夫。是之謂舉。下必言無真實凡夫。是之謂掃。與其掃之。曷若不舉。盖不舉則無以明其理。譬如過渡而不用筏者也。不掃則恐人泥其說譬如到岸而不登。乃住於筏上者也。此所以必舉之而又必掃之。
+【僧若訥曰】因上如來說我釋非凡夫。却見佛與凡夫有隔。於是止泯。則聖凡平等。故云即非凡夫。
+【顏丙曰】當人自性自度。迷來悟度。邪來正度。從上諸佛言句。但為指出路頭。須是自行自履。豈由他人。所以道。實無眾生如來度者。若有可度。是如來有四相。如來。乃見性人也。所以無我。凡夫。未見性人也。所以我相未忘。佛又恐人落分別界。故曰即非凡夫。所以見如來凡夫本同一性。不容分別。
+【智者禪師頌曰】眾生修因果。果熟自然圓。法船自然度。何必要人牽。恰似捕魚者。得魚忘却筌。若道如來度。從來度幾船(經上文曰。實無有眾生如來度者。一切眾生本來是佛。何生可度)。
+【李文會曰】即非凡夫者。一念清淨。非凡非佛。故云即非凡夫。凡夫亦空。迷者妄執。但無執著。即一切清淨耳。
+【川禪師云】前念眾生後念佛佛與眾生是何物。頌曰。不見三頭六臂。却能拈匙放筯。有時醉酒罵人。忽爾燒香作禮。手把破沙盆。身披羅錦綺。做模打樣百千般。驀鼻牽來秪是你。嗄。
+^ck26【法身非相】
+^r26:1須菩提。於意云何。可以三十二相觀如來不。^r26:2須菩提言。如是如是。以三十二相觀如來
+【王日休曰】如來。謂真佛也。苐五分已言此意矣。於此再言者。為續來聽者說。故兼及轉輪聖王之說也。
+【李文會曰】空生疑謂眾生是有。可他成聖。法身不無。可以妙相而見妙也。
+【川禪師云】錯。頌曰。泥塑木雕縑綵畫。堆青抹綠更裝金。若言此是如來相。笑殺南無觀世音。
+^r26:3佛言。須菩提。若以三十二相觀如來者。轉輪聖王。即是如來。^r26:4須菩提白佛言。世尊。如我解佛所說義。不應以三十二相觀如來`)
