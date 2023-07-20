@@ -7965,7 +7965,7 @@
     }
     return out;
   };
-  var selectmedia = (vid) => {
+  var selectmedia = (vid, restart) => {
     if (get_store_value(remainrollback) == 0)
       remainrollback.set(-1);
     if (!vid)
@@ -7976,6 +7976,8 @@
       prefervideo.set(Object.assign({}, prefer));
     }
     videoid.set(vid || "");
+    if (restart)
+      activepb.set(0);
   };
 
   // src/nav.js
@@ -13135,11 +13137,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           dispose = listen(span, "click", function() {
             if (is_function(selectmedia(
               /*media*/
-              ctx[24].vid
+              ctx[24].vid,
+              true
             )))
               selectmedia(
                 /*media*/
-                ctx[24].vid
+                ctx[24].vid,
+                true
               ).apply(this, arguments);
           });
           mounted = true;
@@ -14523,7 +14527,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         div = element("div");
-        t0 = text("\u7248\u672C\uFF1A2023.7.15 ");
+        t0 = text("\u7248\u672C\uFF1A2023.7.20 ");
         create_component(switch_1.$$.fragment);
         t1 = space();
         if_block.c();
@@ -18395,8 +18399,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if (bookid !== $activefolioid) {
         stopVideo();
       } else {
-        activepb.set(0);
-        const start = timestamp && timestamp[0] || 0;
+        const t = get_store_value(activepb) * folioLines();
+        const start = timestamp && timestamp[t] || 0;
         const host = mediabyid(vid)?.videohost;
         console.log(host, player(vid));
         if (host == "youtube") {
@@ -18438,7 +18442,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       1) {
         $:
           if (document.location.protocol !== "file:")
-            loadVideo($videoid);
+            loadVideo(false, $videoid);
       }
     };
     return [$videoid, $activepb];
