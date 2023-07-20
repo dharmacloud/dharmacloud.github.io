@@ -7394,6 +7394,30 @@
 
   // ../ptk/basket/folio.ts
   var VALIDPUNCS = "\u300C\u300D\u300E\u300F\u3002\uFF0C\uFF1B\uFF1A\u3001\uFF01\uFF1F";
+  var toFolioText = (lines) => {
+    if (!lines || !lines.length)
+      return [];
+    let firstline = lines[0];
+    let lastline = lines[lines.length - 1];
+    let m4 = firstline.match(/(\^pb\d+)/);
+    if (m4)
+      lines[0] = firstline.slice(m4?.index + m4[1].length);
+    else {
+      console.log("missing pb markup at first line", firstline);
+    }
+    m4 = lastline.match(/(\^pb\d+)/);
+    let till = m4?.index || 0;
+    let remain = "";
+    if (m4) {
+      till = m4.index;
+      remain = lines[lines.length - 1].slice(m4.index + m4[1].length);
+    }
+    lines[lines.length - 1] = lastline.slice(0, till);
+    const text2 = lines.join("	").split("^lb");
+    if (remain)
+      text2.push(remain);
+    return text2;
+  };
   var fetchFolioText = async (ptk2, bkfolio, pb) => {
     let bk = "", folio = bkfolio;
     if (bkfolio.match(/\d$/)) {
@@ -7408,24 +7432,7 @@
       return ["", from, to];
     await ptk2.loadLines([from, to + 1]);
     const lines = ptk2.slice(from, to + 1);
-    let firstline = lines[0];
-    let lastline = lines[lines.length - 1];
-    let m4 = firstline.match(/(\^pb\d+)/);
-    if (m4)
-      lines[0] = firstline.slice(m4?.index + m4[1].length);
-    else {
-      console.log("error page", pb);
-    }
-    m4 = lastline.match(/(\^pb\d+)/);
-    let till = m4?.index || 0;
-    let remain = "";
-    if (m4) {
-      till = m4.index;
-      remain = lines[lines.length - 1].slice(m4.index);
-    }
-    lines[lines.length - 1] = lastline.slice(0, till);
-    const text2 = lines.join("	").replace(/\^folio#[a-z\d]+【([^】]+?)】/g, "").replace(/\^ck(\d+)【([^】]+?)】/g, "^ck$1<caption=$2>").split("^lb");
-    text2.push(remain);
+    const text2 = toFolioText(lines);
     return [text2, from, to];
   };
   var concreateLength = (linetext) => {
@@ -7542,6 +7549,8 @@
         if (~line.indexOf("^ck"))
           break;
       }
+      if (!out.length)
+        out.push("");
       const at2 = out[0].indexOf("^ck");
       out[0] = out[0].slice(at2);
       s = out.join("	") + "	" + s;
@@ -8002,7 +8011,6 @@
     const newpb = parseInt(pbid) - 1;
     activepb.set(newpb);
     if (ck) {
-      console.log("gopb", ck);
       const [foliotext] = await fetchFolioText(ptk2, get_store_value(activefolioid), newpb + 1);
       const fc = get_store_value(folioChars);
       const fl = folioLines();
@@ -10558,6 +10566,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $$invalidate(6, hidepunc = true);
       const fl = folioLines();
       $$invalidate(3, [foliotext, foliofrom] = await fetchFolioText(ptk2, $activefolioid, 1 + Math.floor($activepb)), foliotext);
+      $$invalidate(3, foliotext = foliotext.join("\n").replace(/【[^】]+】/, "").split("\n"));
       setTimeout(
         () => {
           $$invalidate(6, hidepunc = false);
@@ -14365,11 +14374,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         br1 = element("br");
         t2 = text("\u6C38\u6A02\u5357\u5317\u85CF(\u5C71\u6771\u7701\u5716\u66F8\u9928)\u3001\u91D1\u525B\u7D93\u96C6\u8A3B(\u6731\u68E3)\u3001\u68B5\u6587\u539F\u5178(");
         a0 = element("a");
-        a0.textContent = "DSBC";
+        a0.textContent = "Digital Sanskrit Buddhist Canon";
         t4 = text(", ");
         a1 = element("a");
         a1.textContent = "Ancient Buddhist Texts";
-        t6 = text(")\u3001\n\u7D93\u6587\u65B0\u5F0F\u6A19\u9EDE(CBETA)\u3001\u68B5\u6F22\u4F5B\u7D93\u5C0D\u52D8\u53E2\u66F8\uFF08\u793E\u6703\u79D1\u5B78\u51FA\u7248\u793E\uFF09\u3001\u7DAD\u57FA\u767E\u79D1\u53CA\u5404\u7A2E\u4F5B\u5B78\u8A5E\u5178\u4E4B\u8A5E\u689D\u3002\n");
+        t6 = text(")\u3001\n\u7D93\u6587\u65B0\u5F0F\u6A19\u9EDE(CBETA)\u3001\u68B5\u6F22\u4F5B\u7D93\u5C0D\u52D8\u53E2\u66F8\uFF08\u4E2D\u570B\u793E\u6703\u79D1\u5B78\u51FA\u7248\u793E\uFF09\u3001\u7DAD\u57FA\u767E\u79D1\u53CA\u5404\u7A2E\u4F5B\u5B78\u8A5E\u5178\u4E4B\u8A5E\u689D\u3002\n");
         br2 = element("br");
         t7 = text("\u6388\u6B0A\u65B9\u5F0F\uFF1A");
         a2 = element("a");
@@ -15145,7 +15154,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   }
   function create_each_block10(ctx) {
     let show_if = !~/*item*/
-    ctx[20].heading.bkid.indexOf("_variorum");
+    ctx[20].heading?.bkid?.indexOf("_variorum");
     let t;
     let div;
     let if_block = show_if && create_if_block8(ctx);
@@ -15167,7 +15176,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (dirty & /*translations*/
         4)
           show_if = !~/*item*/
-          ctx2[20].heading.bkid.indexOf("_variorum");
+          ctx2[20].heading?.bkid?.indexOf("_variorum");
         if (show_if) {
           if (if_block) {
             if_block.p(ctx2, dirty);
@@ -18457,12 +18466,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let br3;
     let t5;
     let div0;
+    let t7;
+    let br4;
     let t8;
     let br5;
-    let t9;
-    let br6;
     let button;
-    let t11;
+    let t10;
     let switch_1;
     let updating_value;
     let current;
@@ -18493,23 +18502,22 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         span.textContent = "\u6C38\u6A02\u85CF";
         t1 = space();
         br0 = element("br");
-        t2 = text("\u5B89\u88DD\u5230\u684C\u9762\u5F8C\u53EF\u4EE5\u5168\u87A2\u5E55\u986F\u793A\uFF0C\u6B65\u9A5F\uFF1A\n");
+        t2 = text("\u5B89\u88DD\u684C\u9762\u53EF\u4EE5\u5168\u87A2\u5E55\u986F\u793A\uFF0C\u6B65\u9A5F\uFF1A\n");
         br1 = element("br");
         t3 = text("Android:\u4F7F\u7528Chrome\uFF0C\u53F3\u4E0A\u89D2\u529F\u80FD\u8868\u2192\u5B89\u88DD\u61C9\u7528\u7A0B\u5F0F\n");
         br2 = element("br");
-        t4 = text("iOS:\u4F7F\u7528Safari\uFF0C\u5206\u4EAB\u2192\u52A0\u5230\u4E3B\u756B\u9762\n");
+        t4 = text("iOS:Safari\uFF0C\u5206\u4EAB\u2192\u52A0\u5230\u4E3B\u756B\u9762\n");
         br3 = element("br");
         t5 = text("\u5DE6\u53F3\u6ED1\u52D5\u7FFB\u9801\uFF0C\u266A\u5377\u9996\u8D77\u8AA6  \u2661\u52A0\u5165\u66F8\u7C64\uFF0C\u518D\u9EDE\u4E00\u6B21\u53D6\u6D88\uFF0C\u9EDE\u6587\u5B57\u67E5\u5B57\u5178\uFF0C\u4E26\u986F\u793A\u529F\u80FD\u8868\u3002\n");
         div0 = element("div");
-        div0.innerHTML = `\u2699\uFE0F\u8A2D\u7F6E\u{1F4D3}\u7D93\u5377\u{1F9ED}\u5C0E\u5F15
-<br/>\u2764\uFE0F\u66F8\u7C64\u{1F3B5}\u8AA6\u7D93\u{1F50E}\u8A5E\u5178`;
-        t8 = space();
+        div0.textContent = "\u2699\uFE0F\u8A2D\u7F6E\u{1F4D3}\u7D93\u5377\u{1F9ED}\u5C0E\u5F15\u2764\uFE0F\u66F8\u7C64\u{1F3B5}\u8AA6\u7D93\u{1F50E}\u8A5E\u5178";
+        t7 = space();
+        br4 = element("br");
+        t8 = text("\u9019\u662F\u53EF\u4EE5\u81EA\u7531\u5206\u4EAB\u7684\u7D50\u7DE3\u54C1\uFF0C\u4E0D\u6703\u6536\u96C6\u500B\u4EBA\u8CC7\u8A0A\uFF0C\u4F7F\u7528\u672C\u8EDF\u4EF6\u6240\u7522\u751F\u7684\u4EFB\u4F55\u7D50\u679C\u8ACB\u81EA\u884C\u627F\u64D4\u3002\n");
         br5 = element("br");
-        t9 = text("\u9019\u662F\u53EF\u4EE5\u81EA\u7531\u5206\u4EAB\u7684\u7D50\u7DE3\u54C1\uFF0C\u4E0D\u6703\u6536\u96C6\u500B\u4EBA\u8CC7\u8A0A\uFF0C\u4F7F\u7528\u672C\u8EDF\u4EF6\u6240\u7522\u751F\u7684\u4EFB\u4F55\u7D50\u679C\u8ACB\u81EA\u884C\u627F\u64D4\u3002\n");
-        br6 = element("br");
         button = element("button");
         button.textContent = "\u540C\u610F";
-        t11 = space();
+        t10 = space();
         create_component(switch_1.$$.fragment);
         attr(span, "class", "welcome");
         set_style(div0, "color", "white");
@@ -18533,12 +18541,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         append(div1, br3);
         append(div1, t5);
         append(div1, div0);
+        append(div1, t7);
+        append(div1, br4);
         append(div1, t8);
         append(div1, br5);
-        append(div1, t9);
-        append(div1, br6);
         append(div1, button);
-        append(div1, t11);
+        append(div1, t10);
         mount_component(switch_1, div1, null);
         current = true;
         if (!mounted) {
@@ -18646,14 +18654,22 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   // src/app.svelte
   function create_else_block8(ctx) {
     let span;
+    let t1;
+    let a;
     return {
       c() {
         span = element("span");
-        span.textContent = "\u5982\u679C\u505C\u5728\u6B64\u756B\u9762\uFF0C\u8868\u793A\u624B\u6A5F\u700F\u89BD\u5668\u592A\u820A\uFF0C\u4E0D\u652F\u6301 ES2015 \u3002";
+        span.textContent = "\u5982\u679C\u505C\u5728\u6B64\u756B\u9762\uFF0C\u8868\u793A\u700F\u89BD\u5668\u4E0D\u76F4\u6301 Emcascript 2015\uFF0C\u7121\u6CD5\u904B\u884C\u672C\u8EDF\u4EF6 \u3002";
+        t1 = space();
+        a = element("a");
+        a.textContent = "\u5B98\u65B9\u7DB2\u7AD9";
         attr(span, "class", "loading");
+        attr(a, "href", "_new");
       },
       m(target, anchor) {
         insert(target, span, anchor);
+        insert(target, t1, anchor);
+        insert(target, a, anchor);
       },
       p: noop,
       i: noop,
@@ -18661,6 +18677,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       d(detaching) {
         if (detaching)
           detach(span);
+        if (detaching)
+          detach(t1);
+        if (detaching)
+          detach(a);
       }
     };
   }

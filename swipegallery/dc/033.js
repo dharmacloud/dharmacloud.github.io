@@ -1,2 +1,2 @@
-jsonp(25,{"name":"dc","start":16698},`t
+jsonp(33,{"name":"dc","start":24296},`t
 供養於世尊，　　為求無上慧。』`)
