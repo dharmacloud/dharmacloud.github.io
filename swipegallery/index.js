@@ -102,11 +102,11 @@
     return a != a ? b == b : a !== b || (a && typeof a === "object" || typeof a === "function");
   }
   var src_url_equal_anchor;
-  function src_url_equal(element_src, url) {
+  function src_url_equal(element_src, url2) {
     if (!src_url_equal_anchor) {
       src_url_equal_anchor = document.createElement("a");
     }
-    src_url_equal_anchor.href = url;
+    src_url_equal_anchor.href = url2;
     return element_src === src_url_equal_anchor.href;
   }
   function is_empty(obj) {
@@ -1388,6 +1388,15 @@
   var vowels = "a,o,e,e,ai,ei,ao,ou,an,en,ang,eng,er,i,u,v".split(",");
 
   // ../ptk/utils/cnumber.ts
+  var toChineseNumber = (n) => {
+    let out = "";
+    while (n) {
+      const digit = ["\u3007", "\u4E00", "\u4E8C", "\u4E09", "\u56DB", "\u4E94", "\u516D", "\u4E03", "\u516B", "\u4E5D"][n % 10];
+      out = digit + out;
+      n = Math.floor(n / 10);
+    }
+    return out;
+  };
   var StyledNumber1 = {
     "\u2160": 10,
     "\u2170": 10,
@@ -6079,7 +6088,7 @@
     const at = firstline.indexOf("\n");
     firstline = at > -1 ? firstline.slice(0, at) : firstline;
     const [text2, tags] = parseOfftext(firstline);
-    let lazy = true, sourcetype, name2, caption2;
+    let lazy = true, sourcetype, name2, caption3;
     let consumed = false;
     sourcetype = filename?.endsWith(".tsv") ? "tsv" /* TSV */ : "txt" /* Offtext */;
     if (tags.length && tags[0].name == ":") {
@@ -6088,14 +6097,14 @@
         lazy = !!attrs.lazy;
       sourcetype = tags[0].attrs.type?.toLowerCase() || sourcetype;
       name2 = attrs.name;
-      caption2 = attrs.caption;
+      caption3 = attrs.caption;
       consumed = true;
       if (sourcetype == "tsv") {
         consumed = false;
         lazy = false;
       }
     }
-    return { sourcetype, tag: tags[0], lazy, name: name2, caption: caption2, consumed };
+    return { sourcetype, tag: tags[0], lazy, name: name2, caption: caption3, consumed };
   };
   var Compiler2 = class {
     constructor(opts = {}) {
@@ -6173,7 +6182,7 @@
       let processed, samepage = false, tagdefs = [], attributes = {};
       const sa = new StringArray(buffer, { sequencial: true });
       const firstline = sa.first();
-      const { sourcetype, tag, lazy, name: name2, caption: caption2, consumed } = sourceType(firstline, filename);
+      const { sourcetype, tag, lazy, name: name2, caption: caption3, consumed } = sourceType(firstline, filename);
       if (sourcetype == "txt" && consumed)
         tagdefs.push(firstline);
       let compiledname = name2 || filename;
@@ -6232,7 +6241,7 @@
       }
       this.compiledFiles[filename] = {
         name: compiledname,
-        caption: caption2,
+        caption: caption3,
         lazy,
         sourcetype,
         processed,
@@ -6544,8 +6553,8 @@
           cachekey = getCacheKey(name2, field, simtofind);
         }
       }
-      const caption2 = this.columns[name2].caption || name2;
-      cache = { name: name2, field, caption: caption2, contain };
+      const caption3 = this.columns[name2].caption || name2;
+      cache = { name: name2, field, caption: caption3, contain };
       this.scanCache[cachekey] = cache;
     }
     return cache;
@@ -6573,8 +6582,8 @@
         const start = sa.enumStart(tofind);
         const middle = sa.enumMiddle(tofind);
         const end = sa.enumEnd(tofind);
-        const caption2 = this.columns[name2].caption || name2;
-        cache = { name: name2, caption: caption2, start, middle, end };
+        const caption3 = this.columns[name2].caption || name2;
+        cache = { name: name2, caption: caption3, start, middle, end };
         this.scanCache[cachekey] = cache;
       }
       out.push(cache);
@@ -6878,28 +6887,28 @@
   // ../ptk/basket/chunk.ts
   function getCaption(at, short = false) {
     const chunktag = this.defines.ck;
-    let caption2 = chunktag?.innertext.get(at);
+    let caption3 = chunktag?.innertext.get(at);
     const id = chunktag?.fields?.id?.values[at];
     const onChunkCaption = this.template.onChunkCaption;
-    if (!caption2) {
-      caption2 = this.columns[chunktag?.column]?.keys?.get(at) || "";
-      if (!caption2 && onChunkCaption)
-        caption2 = onChunkCaption(id);
+    if (!caption3) {
+      caption3 = this.columns[chunktag?.column]?.keys?.get(at) || "";
+      if (!caption3 && onChunkCaption)
+        caption3 = onChunkCaption(id);
     }
-    const at2 = caption2?.indexOf(";");
-    let shortcaption = caption2 || "";
+    const at2 = caption3?.indexOf(";");
+    let shortcaption = caption3 || "";
     if (~at2) {
-      shortcaption = caption2.slice(at2);
-      caption2 = caption2.slice(0, at2);
+      shortcaption = caption3.slice(at2);
+      caption3 = caption3.slice(0, at2);
     }
-    return short ? shortcaption : caption2;
+    return short ? shortcaption : caption3;
   }
-  function caption(at) {
-    let caption2 = this.getCaption(at);
+  function caption2(at) {
+    let caption3 = this.getCaption(at);
     let depth = 0;
-    while (caption2 && caption2.endsWith("-")) {
+    while (caption3 && caption3.endsWith("-")) {
       depth++;
-      caption2 = caption2.slice(0, caption2.length - 1);
+      caption3 = caption3.slice(0, caption3.length - 1);
     }
     let at2 = at, parents = [];
     while (at2 > 0 && depth) {
@@ -6916,7 +6925,7 @@
         }
       }
     }
-    return caption2 + parents.join("");
+    return caption3 + parents.join("");
   }
   function nearestChunk(line) {
     const chunktag = this.defines.ck;
@@ -6949,13 +6958,13 @@
     const bkid = bk.id;
     const id = chunktag.fields.id.values[at];
     const innertext2 = chunktag.innertext.get(at);
-    const caption2 = this.caption(at);
+    const caption3 = this.caption(at);
     const depth = chunktag.depths ? chunktag.depths[at] || 1 : 1;
     return {
       bk,
       bkid,
       bkat,
-      caption: caption2,
+      caption: caption3,
       at: at + 1,
       id,
       depth,
@@ -7086,7 +7095,7 @@
       this.addForeignLinks = addForeignLinks;
       this.addBacklinks = addBacklinks;
       this.getCaption = getCaption;
-      this.caption = caption;
+      this.caption = caption2;
       this.nearestChunk = nearestChunk;
       this.getChunk = getChunk;
       this.neighborChunks = neighborChunks;
@@ -7214,8 +7223,8 @@
       const bkat = this.nearestTag(line, booktag) - 1;
       const bk = getBookInfo.call(this, bkat);
       const bkid = bk?.id;
-      const caption2 = this.caption(at);
-      return { id, tagname: "ck", caption: caption2, lineoff, bk, bkid };
+      const caption3 = this.caption(at);
+      return { id, tagname: "ck", caption: caption3, lineoff, bk, bkid };
     }
     getPostings(s) {
       const nPostings = this.inverted.nPostingOf(s);
@@ -7510,7 +7519,7 @@
     const bk = ptk2.defines.bk;
     const ck = ptk2.defines.ck;
     if (!pb)
-      return -1;
+      return [null, -1];
     if (typeof _pb == "number")
       _pb = _pb.toString();
     const [start, end] = ptk2.rangeOfAddress("bk#" + _bk);
@@ -7518,7 +7527,7 @@
     const pbat = pb.fields.id.values.indexOf(_pb, from);
     const line = pb.linepos[pbat];
     const at = bsearchNumber(ck.linepos, line + 1);
-    return ck.fields.id.values[at];
+    return [ck.fields.id.values[at], at];
   };
   var folio2ChunkLine = async (ptk2, foliotext, from, cx, pos) => {
     const out = [];
@@ -7584,6 +7593,8 @@
         while (ntag < tags.length && textsum > tags[ntag].choff) {
           if (tags[ntag].name == "ck") {
             puncs.push({ line: i, ch, text: styledNumber(parseInt(tags[ntag].attrs.id), "\u2460") });
+          } else if (tags[ntag].name == "n") {
+            puncs.push({ line: i, ch, text: "n" + parseInt(tags[ntag].attrs.id) });
           }
           ntag++;
         }
@@ -8402,14 +8413,17 @@
   // src/punclayer.svelte
   function get_each_context2(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[8] = list[i];
+    child_ctx[9] = list[i];
     return child_ctx;
   }
   function create_each_block2(ctx) {
     let span;
     let t_value = (
-      /*punc*/
-      ctx[8].text + ""
+      /*formatPuncText*/
+      ctx[2](
+        /*punc*/
+        ctx[9].text
+      ) + ""
     );
     let t;
     let span_style_value;
@@ -8419,13 +8433,13 @@
         t = text(t_value);
         attr(span, "class", "punc");
         attr(span, "style", span_style_value = /*puncStyle*/
-        ctx[2](
+        ctx[3](
           /*punc*/
-          ctx[8].line,
+          ctx[9].line,
           /*punc*/
-          ctx[8].ch,
+          ctx[9].ch,
           /*punc*/
-          ctx[8].text
+          ctx[9].text
         ));
       },
       m(target, anchor) {
@@ -8434,18 +8448,21 @@
       },
       p(ctx2, dirty) {
         if (dirty & /*puncs*/
-        2 && t_value !== (t_value = /*punc*/
-        ctx2[8].text + ""))
+        2 && t_value !== (t_value = /*formatPuncText*/
+        ctx2[2](
+          /*punc*/
+          ctx2[9].text
+        ) + ""))
           set_data(t, t_value);
         if (dirty & /*puncs*/
         2 && span_style_value !== (span_style_value = /*puncStyle*/
-        ctx2[2](
+        ctx2[3](
           /*punc*/
-          ctx2[8].line,
+          ctx2[9].line,
           /*punc*/
-          ctx2[8].ch,
+          ctx2[9].ch,
           /*punc*/
-          ctx2[8].text
+          ctx2[9].text
         ))) {
           attr(span, "style", span_style_value);
         }
@@ -8488,8 +8505,8 @@
         }
       },
       p(ctx2, [dirty]) {
-        if (dirty & /*puncStyle, puncs*/
-        6) {
+        if (dirty & /*puncStyle, puncs, formatPuncText*/
+        14) {
           each_value = /*puncs*/
           ctx2[1];
           let i;
@@ -8527,13 +8544,21 @@
   }
   function instance3($$self, $$props, $$invalidate) {
     let $folioChars;
-    component_subscribe($$self, folioChars, ($$value) => $$invalidate(3, $folioChars = $$value));
+    component_subscribe($$self, folioChars, ($$value) => $$invalidate(4, $folioChars = $$value));
     let { frame = {} } = $$props;
     let { puncs = [] } = $$props;
     const fl = folioLines(), fc = $folioChars;
     const unitw = frame.width / fl, unith = frame.height / fc;
+    const formatPuncText = (text2) => {
+      if (isPunc(text2[0])) {
+        return text2;
+      } else if (text2[0] == "n") {
+        return text2.slice(1);
+      }
+      return text2;
+    };
     const puncStyle = (line, ch, text2) => {
-      let fontsize = unith * 0.9, yinc = unith * 0.2, xinc = -unitw * 0.1;
+      let fontsize = unith * 0.9, yinc = unith * 0.2, xinc = -unitw * 0.1, extrastyle = "";
       if (text2 == "\uFF1F" || text2 == "\uFF01") {
         fontsize = fontsize / 1.5;
         yinc += unith * 0.4;
@@ -8544,10 +8569,16 @@
         xinc += -unitw * 0.6;
         yinc += unith * 0.4;
       } else if (!isPunc(text2[0])) {
-        yinc += unith;
+        if (text2[0] == "n") {
+          xinc -= unitw * 0.5;
+          extrastyle = "background:var(--n)";
+          text2 = text2.slice(1);
+        } else {
+          yinc += unith;
+        }
         fontsize = fontsize / 1.5;
       }
-      const style = "left:" + Math.floor(xinc + unitw * (fl - line) - unitw * 0.25) + "px; top:" + Math.floor(yinc + unith * (ch - 1) - unith * 0.2) + "px;font-size:" + fontsize + "px";
+      const style = "left:" + Math.floor(xinc + unitw * (fl - line) - unitw * 0.25) + "px; top:" + Math.floor(yinc + unith * (ch - 1) - unith * 0.2) + "px;font-size:" + fontsize + "px;" + extrastyle;
       return style;
     };
     $$self.$$set = ($$props2) => {
@@ -8556,7 +8587,7 @@
       if ("puncs" in $$props2)
         $$invalidate(1, puncs = $$props2.puncs);
     };
-    return [frame, puncs, puncStyle];
+    return [frame, puncs, formatPuncText, puncStyle];
   }
   var Punclayer = class extends SvelteComponent {
     constructor(options) {
@@ -10620,6 +10651,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       while (t.charAt(0) == "\u3000")
         t = t.slice(1);
       t = t.replace(/　.+/, "");
+      console.log(address);
       await onTapText(t, address, ptk2.name);
     };
     const gotoPb = (pb) => {
@@ -10744,10 +10776,107 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   // src/dictpopup.svelte
   function get_each_context5(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[17] = list[i][0];
-    child_ctx[18] = list[i][1];
-    child_ctx[20] = i;
+    child_ctx[21] = list[i][0];
+    child_ctx[22] = list[i][1];
+    child_ctx[24] = i;
     return child_ctx;
+  }
+  function get_each_context_1(ctx, list, i) {
+    const child_ctx = ctx.slice();
+    child_ctx[25] = list[i][0];
+    child_ctx[26] = list[i][1];
+    return child_ctx;
+  }
+  function create_each_block_1(ctx) {
+    let a;
+    let t_value = (
+      /*caption*/
+      ctx[25] + ""
+    );
+    let t;
+    let a_href_value;
+    return {
+      c() {
+        a = element("a");
+        t = text(t_value);
+        attr(a, "href", a_href_value = /*url*/
+        ctx[26]);
+        attr(a, "target", "_new");
+      },
+      m(target, anchor) {
+        insert(target, a, anchor);
+        append(a, t);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*externallinks*/
+        128 && t_value !== (t_value = /*caption*/
+        ctx2[25] + ""))
+          set_data(t, t_value);
+        if (dirty & /*externallinks*/
+        128 && a_href_value !== (a_href_value = /*url*/
+        ctx2[26])) {
+          attr(a, "href", a_href_value);
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(a);
+      }
+    };
+  }
+  function create_key_block3(ctx) {
+    let each_1_anchor;
+    let each_value_1 = (
+      /*externallinks*/
+      ctx[7]
+    );
+    let each_blocks = [];
+    for (let i = 0; i < each_value_1.length; i += 1) {
+      each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+    }
+    return {
+      c() {
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          each_blocks[i].c();
+        }
+        each_1_anchor = empty();
+      },
+      m(target, anchor) {
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          if (each_blocks[i]) {
+            each_blocks[i].m(target, anchor);
+          }
+        }
+        insert(target, each_1_anchor, anchor);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*externallinks*/
+        128) {
+          each_value_1 = /*externallinks*/
+          ctx2[7];
+          let i;
+          for (i = 0; i < each_value_1.length; i += 1) {
+            const child_ctx = get_each_context_1(ctx2, each_value_1, i);
+            if (each_blocks[i]) {
+              each_blocks[i].p(child_ctx, dirty);
+            } else {
+              each_blocks[i] = create_each_block_1(child_ctx);
+              each_blocks[i].c();
+              each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+            }
+          }
+          for (; i < each_blocks.length; i += 1) {
+            each_blocks[i].d(1);
+          }
+          each_blocks.length = each_value_1.length;
+        }
+      },
+      d(detaching) {
+        destroy_each(each_blocks, detaching);
+        if (detaching)
+          detach(each_1_anchor);
+      }
+    };
   }
   function create_if_block_12(ctx) {
     let t0;
@@ -10783,15 +10912,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t4 = text("\u767E\u5EA6");
         attr(a0, "target", "_new");
         attr(a0, "href", a0_href_value = /*googlelink*/
-        ctx[9](
+        ctx[10](
           /*entry*/
-          ctx[18]
+          ctx[22]
         ));
         attr(a1, "target", "_new");
         attr(a1, "href", a1_href_value = /*baidulink*/
-        ctx[10](
+        ctx[11](
           /*entry*/
-          ctx[18]
+          ctx[22]
         ));
       },
       m(target, anchor) {
@@ -10841,17 +10970,17 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
         if (dirty & /*entries*/
         8 && a0_href_value !== (a0_href_value = /*googlelink*/
-        ctx2[9](
+        ctx2[10](
           /*entry*/
-          ctx2[18]
+          ctx2[22]
         ))) {
           attr(a0, "href", a0_href_value);
         }
         if (dirty & /*entries*/
         8 && a1_href_value !== (a1_href_value = /*baidulink*/
-        ctx2[10](
+        ctx2[11](
           /*entry*/
-          ctx2[18]
+          ctx2[22]
         ))) {
           attr(a1, "href", a1_href_value);
         }
@@ -10930,7 +11059,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             button,
             "click",
             /*setOneline*/
-            ctx[12]
+            ctx[13]
           );
           mounted = true;
         }
@@ -10954,9 +11083,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t = text("\u4E00\u884C");
         attr(a, "target", "_new");
         attr(a, "href", a_href_value = /*onelinelink*/
-        ctx[8](
+        ctx[9](
           /*entry*/
-          ctx[18]
+          ctx[22]
         ));
       },
       m(target, anchor) {
@@ -10966,9 +11095,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         if (dirty & /*entries*/
         8 && a_href_value !== (a_href_value = /*onelinelink*/
-        ctx2[8](
+        ctx2[9](
           /*entry*/
-          ctx2[18]
+          ctx2[22]
         ))) {
           attr(a, "href", a_href_value);
         }
@@ -11035,7 +11164,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             button,
             "click",
             /*setWikipedia*/
-            ctx[11]
+            ctx[12]
           );
           mounted = true;
         }
@@ -11059,9 +11188,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t = text("Wiki");
         attr(a, "target", "_new");
         attr(a, "href", a_href_value = /*wikilink*/
-        ctx[7](
+        ctx[8](
           /*entry*/
-          ctx[18]
+          ctx[22]
         ));
       },
       m(target, anchor) {
@@ -11071,9 +11200,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         if (dirty & /*entries*/
         8 && a_href_value !== (a_href_value = /*wikilink*/
-        ctx2[7](
+        ctx2[8](
           /*entry*/
-          ctx2[18]
+          ctx2[22]
         ))) {
           attr(a, "href", a_href_value);
         }
@@ -11091,7 +11220,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let input_value_value;
     let t0_value = (
       /*entry*/
-      ctx[18] + ""
+      ctx[22] + ""
     );
     let t0;
     let t1;
@@ -11101,12 +11230,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let dispose;
     let if_block = (
       /*idx*/
-      ctx[20] == /*nentry*/
+      ctx[24] == /*nentry*/
       ctx[4] && create_if_block_12(ctx)
     );
     binding_group = init_binding_group(
       /*$$binding_groups*/
-      ctx[15][0]
+      ctx[17][0]
     );
     return {
       c() {
@@ -11121,13 +11250,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         attr(input, "type", "radio");
         attr(input, "name", "dict");
         input.__value = input_value_value = /*idx*/
-        ctx[20];
+        ctx[24];
         input.value = input.__value;
         toggle_class(
           span,
           "dictgroup",
           /*idx*/
-          ctx[20] == /*nentry*/
+          ctx[24] == /*nentry*/
           ctx[4]
         );
         binding_group.p(input);
@@ -11148,7 +11277,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             input,
             "change",
             /*input_change_handler*/
-            ctx[14]
+            ctx[16]
           );
           mounted = true;
         }
@@ -11161,11 +11290,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
         if (dirty & /*entries*/
         8 && t0_value !== (t0_value = /*entry*/
-        ctx2[18] + ""))
+        ctx2[22] + ""))
           set_data(t0, t0_value);
         if (
           /*idx*/
-          ctx2[20] == /*nentry*/
+          ctx2[24] == /*nentry*/
           ctx2[4]
         ) {
           if (if_block) {
@@ -11185,7 +11314,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             span,
             "dictgroup",
             /*idx*/
-            ctx2[20] == /*nentry*/
+            ctx2[24] == /*nentry*/
             ctx2[4]
           );
         }
@@ -11233,7 +11362,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   function create_fragment7(ctx) {
     let div;
     let span;
-    let t;
+    let previous_key = (
+      /*externallinks*/
+      ctx[7]
+    );
+    let t0;
+    let t1;
+    let key_block = create_key_block3(ctx);
     let each_value = (
       /*entries*/
       ctx[3]
@@ -11250,10 +11385,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       c() {
         div = element("div");
         span = element("span");
+        key_block.c();
+        t0 = space();
         for (let i = 0; i < each_blocks.length; i += 1) {
           each_blocks[i].c();
         }
-        t = space();
+        t1 = space();
         if (if_block)
           if_block.c();
         attr(span, "class", "header svelte-q5fwfc");
@@ -11262,18 +11399,30 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       m(target, anchor) {
         insert(target, div, anchor);
         append(div, span);
+        key_block.m(span, null);
+        append(span, t0);
         for (let i = 0; i < each_blocks.length; i += 1) {
           if (each_blocks[i]) {
             each_blocks[i].m(span, null);
           }
         }
-        append(div, t);
+        append(div, t1);
         if (if_block)
           if_block.m(div, null);
       },
       p(ctx2, [dirty]) {
+        if (dirty & /*externallinks*/
+        128 && safe_not_equal(previous_key, previous_key = /*externallinks*/
+        ctx2[7])) {
+          key_block.d(1);
+          key_block = create_key_block3(ctx2);
+          key_block.c();
+          key_block.m(span, t0);
+        } else {
+          key_block.p(ctx2, dirty);
+        }
         if (dirty & /*nentry, baidulink, entries, googlelink, wikilink, showing, setWikipedia, wikipedia, onelinelink, setOneline, fgdzd, dfb*/
-        8159) {
+        16223) {
           each_value = /*entries*/
           ctx2[3];
           let i;
@@ -11313,6 +11462,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       d(detaching) {
         if (detaching)
           detach(div);
+        key_block.d(detaching);
         destroy_each(each_blocks, detaching);
         if (if_block)
           if_block.d();
@@ -11320,9 +11470,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function instance8($$self, $$props, $$invalidate) {
+    let $activefolioid;
+    let $activepb;
+    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(15, $activefolioid = $$value));
+    component_subscribe($$self, activepb, ($$value) => $$invalidate(18, $activepb = $$value));
     let { entries = [], ptk: ptk2, wikipedia, fgdzd, dfb } = $$props;
     let nentry = 0;
     let src = "", showing = "";
+    let externallinks = [];
     const wikilink = (entry) => "https://zh.wikipedia.org/w/index.php?action=render&title=" + encodeURIComponent(entry);
     const onelinelink = (entry) => "https://buddhaspace.org/dict/index.php?keyword=" + encodeURIComponent(entry);
     const googlelink = (entry) => "https://www.google.com/search?q=" + encodeURIComponent(entry);
@@ -11348,6 +11503,20 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       else if (wikipedia)
         setWikipedia();
     };
+    const getExternalLinks = (folioid) => {
+      const [from, to] = ptk2.rangeOfAddress("folio#" + folioid + ".pb#" + ($activepb + 1));
+      const n = ptk2.defines.n;
+      const at = ptk2.nearestTag(from + 1, "n") - 1;
+      const out = [];
+      if (~at) {
+        const sutra = parseInt(n.fields.id.values[at]);
+        const juan = folioid.match(/(\d+)$/)[1];
+        caption = juan + "\u5377" + sutra + "\u7D93\u5C0E\u8B80";
+        url = "https://buddhaspace.org/agama/" + juan + ".html#" + toChineseNumber(sutra);
+        out.push([caption, url]);
+      }
+      return out;
+    };
     const $$binding_groups = [[]];
     function input_change_handler() {
       nentry = this.__value;
@@ -11357,7 +11526,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ("entries" in $$props2)
         $$invalidate(3, entries = $$props2.entries);
       if ("ptk" in $$props2)
-        $$invalidate(13, ptk2 = $$props2.ptk);
+        $$invalidate(14, ptk2 = $$props2.ptk);
       if ("wikipedia" in $$props2)
         $$invalidate(0, wikipedia = $$props2.wikipedia);
       if ("fgdzd" in $$props2)
@@ -11371,6 +11540,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         $:
           availableDict(nentry);
       }
+      if ($$self.$$.dirty & /*$activefolioid*/
+      32768) {
+        $:
+          $$invalidate(7, externallinks = getExternalLinks($activefolioid));
+      }
     };
     return [
       wikipedia,
@@ -11380,6 +11554,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       nentry,
       src,
       showing,
+      externallinks,
       wikilink,
       onelinelink,
       googlelink,
@@ -11387,6 +11562,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       setWikipedia,
       setOneline,
       ptk2,
+      $activefolioid,
       input_change_handler,
       $$binding_groups
     ];
@@ -11396,7 +11572,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       super();
       init(this, options, instance8, create_fragment7, safe_not_equal, {
         entries: 3,
-        ptk: 13,
+        ptk: 14,
         wikipedia: 0,
         fgdzd: 1,
         dfb: 2
@@ -11413,12 +11589,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     child_ctx[12] = list[i][2];
     return child_ctx;
   }
-  function get_each_context_1(ctx, list, i) {
+  function get_each_context_12(ctx, list, i) {
     const child_ctx = ctx.slice();
     child_ctx[15] = list[i];
     return child_ctx;
   }
-  function create_each_block_1(ctx) {
+  function create_each_block_12(ctx) {
     let span;
     let t_value = (
       /*getFolioName*/
@@ -11517,7 +11693,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     );
     let each_blocks = [];
     for (let i = 0; i < each_value_1.length; i += 1) {
-      each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+      each_blocks[i] = create_each_block_12(get_each_context_12(ctx, each_value_1, i));
     }
     return {
       c() {
@@ -11572,11 +11748,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           ctx[12];
           let i;
           for (i = 0; i < each_value_1.length; i += 1) {
-            const child_ctx = get_each_context_1(ctx, each_value_1, i);
+            const child_ctx = get_each_context_12(ctx, each_value_1, i);
             if (each_blocks[i]) {
               each_blocks[i].p(child_ctx, dirty);
             } else {
-              each_blocks[i] = create_each_block_1(child_ctx);
+              each_blocks[i] = create_each_block_12(child_ctx);
               each_blocks[i].c();
               each_blocks[i].m(div, t2);
             }
@@ -14528,7 +14704,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         div = element("div");
-        t0 = text("\u7248\u672C\uFF1A2023.7.20 ");
+        t0 = text("\u7248\u672C\uFF1A2023.7.21 ");
         create_component(switch_1.$$.fragment);
         t1 = space();
         if_block.c();
@@ -14637,7 +14813,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var import_colors = __toESM(require_colors(), 1);
 
   // src/sentencenav.svelte
-  function create_key_block3(ctx) {
+  function create_key_block4(ctx) {
     let div;
     let span0;
     let t1;
@@ -14721,7 +14897,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ctx[0]
     );
     let key_block_anchor;
-    let key_block = create_key_block3(ctx);
+    let key_block = create_key_block4(ctx);
     return {
       c() {
         key_block.c();
@@ -14736,7 +14912,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         1 && safe_not_equal(previous_key, previous_key = /*humanaddr*/
         ctx2[0])) {
           key_block.d(1);
-          key_block = create_key_block3(ctx2);
+          key_block = create_key_block4(ctx2);
           key_block.c();
           key_block.m(key_block_anchor.parentNode, key_block_anchor);
         } else {
@@ -15669,7 +15845,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     child_ctx[13] = list[i][1];
     return child_ctx;
   }
-  function get_each_context_12(ctx, list, i) {
+  function get_each_context_13(ctx, list, i) {
     const child_ctx = ctx.slice();
     child_ctx[16] = list[i];
     return child_ctx;
@@ -15700,7 +15876,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     );
     let each_blocks = [];
     for (let i = 0; i < each_value_1.length; i += 1) {
-      each_blocks[i] = create_each_block_12(get_each_context_12(ctx, each_value_1, i));
+      each_blocks[i] = create_each_block_13(get_each_context_13(ctx, each_value_1, i));
     }
     return {
       c() {
@@ -15729,11 +15905,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           ctx2[1];
           let i;
           for (i = 0; i < each_value_1.length; i += 1) {
-            const child_ctx = get_each_context_12(ctx2, each_value_1, i);
+            const child_ctx = get_each_context_13(ctx2, each_value_1, i);
             if (each_blocks[i]) {
               each_blocks[i].p(child_ctx, dirty);
             } else {
-              each_blocks[i] = create_each_block_12(child_ctx);
+              each_blocks[i] = create_each_block_13(child_ctx);
               each_blocks[i].c();
               each_blocks[i].m(div, t1);
             }
@@ -15751,7 +15927,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_each_block_12(ctx) {
+  function create_each_block_13(ctx) {
     let span;
     let t_value = (
       /*item*/
@@ -16876,9 +17052,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t5 = space();
         div0 = element("div");
         div0.textContent = "\u203B\u203B\u203B";
-        attr(span, "class", "jumper svelte-1wwnshb");
+        attr(span, "class", "jumper svelte-54dz0e");
         attr(div0, "class", "endmarker");
-        attr(div1, "class", "toc svelte-1wwnshb");
+        attr(div1, "class", "toc svelte-54dz0e");
         attr(div2, "class", "toctext");
       },
       m(target, anchor) {
@@ -16985,7 +17161,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const setFolio = async (e) => {
       const v = e.detail[0];
       activepb.set(parseInt(v));
-      $$invalidate(8, address = "folio#" + $activefolioid + ".ck#" + chunkOfFolio(ptk2, $activefolioid, v));
+      $$invalidate(8, address = "folio#" + $activefolioid + ".ck#" + chunkOfFolio(ptk2, $activefolioid, v)[0]);
     };
     let tocitems = [], cknow;
     const getTocItems = (address2) => {
@@ -17396,6 +17572,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ptk: (
           /*ptk*/
           ctx[3]
+        ),
+        address: (
+          /*address*/
+          ctx[0]
         )
       }
     });
@@ -17426,6 +17606,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         8)
           dictpopup_changes.ptk = /*ptk*/
           ctx2[3];
+        if (dirty & /*address*/
+        1)
+          dictpopup_changes.address = /*address*/
+          ctx2[0];
         dictpopup.$set(dictpopup_changes);
         if (!current || dirty & /*thetab*/
         4) {
@@ -18702,7 +18886,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let if_block2_anchor;
     let current;
     player2 = new player_default({});
-    let key_block = create_key_block4(ctx);
+    let key_block = create_key_block5(ctx);
     let if_block0 = (
       /*shownewbie*/
       (ctx[3] || /*showdict*/
@@ -18755,7 +18939,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           group_outros();
           transition_out(key_block, 1, 1, noop);
           check_outros();
-          key_block = create_key_block4(ctx2);
+          key_block = create_key_block5(ctx2);
           key_block.c();
           transition_in(key_block, 1);
           key_block.m(t1.parentNode, t1);
@@ -18890,7 +19074,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_key_block4(ctx) {
+  function create_key_block5(ctx) {
     let t;
     let swipezipimage;
     let current;

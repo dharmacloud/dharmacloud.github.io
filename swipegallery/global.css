@@ -7,7 +7,8 @@ body {
 :root{
   --pinmark : rgba(247, 4, 4, 0.4);
   --selected-color:rgb(255, 173, 42);
-  --menubar-color:rgb(143, 81, 0)
+  --menubar-color:rgb(143, 81, 0);
+  --n:rgba(233, 233, 233, 0.7);
 }
 .popup { position:absolute;top:2vh;left:2vw;width:96vw;height:95vh;
   border-radius: 5px;
