@@ -10773,6 +10773,40 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     }
   }
 
+  // src/paiji.svelte
+  function create_fragment7(ctx) {
+    let div3;
+    return {
+      c() {
+        div3 = element("div");
+        div3.innerHTML = `<img alt="frame" src="frames/red.jpg" class="svelte-1f7k46b"/> 
+<div class="sponsor">\u4E2D\u90E8\u5168\u570B\u4F9B\u4F5B\u9F4B\u50E7\u5927\u6703</div> 
+
+<div class="paijitextcontainer"><div class="paijitext"><br/>\u3000\u8AF8\u4F9B\u990A\u4E2D\u3000\u6CD5\u4F9B\u990A\u6700
+<br/>\u9858\u4EE5\u6B64\u529F\u5FB7\u3000\u666E\u53CA\u65BC\u4E00\u5207
+<br/>\u6211\u7B49\u8207\u773E\u751F\u3000\u7686\u5171\u6210\u4F5B\u9053</div></div>`;
+        attr(div3, "class", "paiji");
+      },
+      m(target, anchor) {
+        insert(target, div3, anchor);
+      },
+      p: noop,
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(div3);
+      }
+    };
+  }
+  var Paiji = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, null, create_fragment7, safe_not_equal, {});
+    }
+  };
+  var paiji_default = Paiji;
+
   // src/dictpopup.svelte
   function get_each_context5(ctx, list, i) {
     const child_ctx = ctx.slice();
@@ -11359,7 +11393,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment7(ctx) {
+  function create_fragment8(ctx) {
     let div;
     let span;
     let previous_key = (
@@ -11510,10 +11544,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const out = [];
       if (~at) {
         const sutra = parseInt(n.fields.id.values[at]);
-        const juan = folioid.match(/(\d+)$/)[1];
-        caption = juan + "\u5377" + sutra + "\u7D93\u5C0E\u8B80";
-        url = "https://buddhaspace.org/agama/" + juan + ".html#" + toChineseNumber(sutra);
-        out.push([caption, url]);
+        const juan = folioid.match(/(\d+)$/);
+        if (juan) {
+          caption = juan[1] + "\u5377" + sutra + "\u7D93\u5C0E\u8B80";
+          url = "https://buddhaspace.org/agama/" + juan[1] + ".html#" + toChineseNumber(sutra);
+          out.push([caption, url]);
+        }
       }
       return out;
     };
@@ -11570,7 +11606,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Dictpopup = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance8, create_fragment7, safe_not_equal, {
+      init(this, options, instance8, create_fragment8, safe_not_equal, {
         entries: 3,
         ptk: 14,
         wikipedia: 0,
@@ -11772,7 +11808,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment8(ctx) {
+  function create_fragment9(ctx) {
     let each_1_anchor;
     let each_value = (
       /*folios*/
@@ -11885,7 +11921,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Foliolist = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance9, create_fragment8, safe_not_equal, { ptk: 5, closePopup: 6 });
+      init(this, options, instance9, create_fragment9, safe_not_equal, { ptk: 5, closePopup: 6 });
     }
   };
   var foliolist_default = Foliolist;
@@ -11931,7 +11967,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   }
 
   // src/3rd/thumb.svelte
-  function create_fragment9(ctx) {
+  function create_fragment10(ctx) {
     let div1;
     let div0;
     let div1_style_value;
@@ -12086,7 +12122,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Thumb = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance10, create_fragment9, safe_not_equal, { pos: 0 });
+      init(this, options, instance10, create_fragment10, safe_not_equal, { pos: 0 });
     }
   };
   var thumb_default = Thumb;
@@ -12248,7 +12284,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment10(ctx) {
+  function create_fragment11(ctx) {
     let input;
     let input_value_value;
     let input_name_value;
@@ -12474,7 +12510,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Rangeslider = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance11, create_fragment10, safe_not_equal, {
+      init(this, options, instance11, create_fragment11, safe_not_equal, {
         name: 1,
         range: 5,
         min: 6,
@@ -12851,7 +12887,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment11(ctx) {
+  function create_fragment12(ctx) {
     let if_block_anchor;
     function select_block_type(ctx2, dirty) {
       if (
@@ -12941,7 +12977,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Switch = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance12, create_fragment11, safe_not_equal, {
+      init(this, options, instance12, create_fragment12, safe_not_equal, {
         label: 1,
         design: 2,
         options: 3,
@@ -13759,7 +13795,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment12(ctx) {
+  function create_fragment13(ctx) {
     let div;
     let current_block_type_index;
     let if_block;
@@ -13958,7 +13994,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Audio = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance13, create_fragment12, safe_not_equal, { ptk: 0 });
+      init(this, options, instance13, create_fragment13, safe_not_equal, { ptk: 0 });
     }
   };
   var audio_default = Audio;
@@ -14667,7 +14703,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment13(ctx) {
+  function create_fragment14(ctx) {
     let div;
     let t0;
     let switch_1;
@@ -14800,7 +14836,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var About = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance14, create_fragment13, safe_not_equal, {});
+      init(this, options, instance14, create_fragment14, safe_not_equal, {});
     }
   };
   var about_default = About;
@@ -14891,7 +14927,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment14(ctx) {
+  function create_fragment15(ctx) {
     let previous_key = (
       /*humanaddr*/
       ctx[0]
@@ -15007,7 +15043,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Sentencenav = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance15, create_fragment14, safe_not_equal, { ptk: 5, address: 4 });
+      init(this, options, instance15, create_fragment15, safe_not_equal, { ptk: 5, address: 4 });
     }
   };
   var sentencenav_default = Sentencenav;
@@ -15063,7 +15099,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment15(ctx) {
+  function create_fragment16(ctx) {
     let div;
     let sentencenav;
     let updating_address;
@@ -15211,7 +15247,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Sourcetext = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance16, create_fragment15, safe_not_equal, { start: 4, ptk: 1, address: 0 });
+      init(this, options, instance16, create_fragment16, safe_not_equal, { start: 4, ptk: 1, address: 0 });
     }
   };
   var sourcetext_default = Sourcetext;
@@ -15381,7 +15417,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment16(ctx) {
+  function create_fragment17(ctx) {
     let div2;
     let sentencenav0;
     let updating_address;
@@ -15643,13 +15679,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Translations = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance17, create_fragment16, safe_not_equal, { closePopup: 8, address: 0, ptk: 1 });
+      init(this, options, instance17, create_fragment17, safe_not_equal, { closePopup: 8, address: 0, ptk: 1 });
     }
   };
   var translations_default = Translations;
 
   // src/variorum.svelte
-  function create_fragment17(ctx) {
+  function create_fragment18(ctx) {
     let div1;
     let sentencenav0;
     let updating_address;
@@ -15833,7 +15869,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Variorum = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance18, create_fragment17, safe_not_equal, { ptk: 1, address: 0 });
+      init(this, options, instance18, create_fragment18, safe_not_equal, { ptk: 1, address: 0 });
     }
   };
   var variorum_default = Variorum;
@@ -16090,7 +16126,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment18(ctx) {
+  function create_fragment19(ctx) {
     let t0;
     let hr;
     let t1;
@@ -16237,7 +16273,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Favorite = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance19, create_fragment18, safe_not_equal, { ptk: 4, closePopup: 5 });
+      init(this, options, instance19, create_fragment19, safe_not_equal, { ptk: 4, closePopup: 5 });
     }
   };
   var favorite_default = Favorite;
@@ -16343,7 +16379,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment19(ctx) {
+  function create_fragment20(ctx) {
     let span;
     let input;
     let setfocus_action;
@@ -16539,7 +16575,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Inputnumber = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance20, create_fragment19, safe_not_equal, {
+      init(this, options, instance20, create_fragment20, safe_not_equal, {
         stepper: 1,
         style: 2,
         min: 3,
@@ -16756,7 +16792,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment20(ctx) {
+  function create_fragment21(ctx) {
     let current_block_type_index;
     let if_block;
     let if_block_anchor;
@@ -16893,7 +16929,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Juan = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance21, create_fragment20, safe_not_equal, { closePopup: 4, ptk: 5 });
+      init(this, options, instance21, create_fragment21, safe_not_equal, { closePopup: 4, ptk: 5 });
     }
   };
   var juan_default = Juan;
@@ -16974,7 +17010,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment21(ctx) {
+  function create_fragment22(ctx) {
     let div2;
     let juan;
     let t0;
@@ -17245,7 +17281,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Toc = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance22, create_fragment21, safe_not_equal, { ptk: 0, address: 8, closePopup: 1 });
+      init(this, options, instance22, create_fragment22, safe_not_equal, { ptk: 0, address: 8, closePopup: 1 });
     }
   };
   var toc_default = Toc;
@@ -17638,7 +17674,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment22(ctx) {
+  function create_fragment23(ctx) {
     let div9;
     let div0;
     let span0;
@@ -18445,13 +18481,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Taptext = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance23, create_fragment22, safe_not_equal, { tofind: 7, address: 0, closePopup: 1 });
+      init(this, options, instance23, create_fragment23, safe_not_equal, { tofind: 7, address: 0, closePopup: 1 });
     }
   };
   var taptext_default = Taptext;
 
   // src/player.svelte
-  function create_fragment23(ctx) {
+  function create_fragment24(ctx) {
     let div0;
     let t;
     let div1;
@@ -18635,13 +18671,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Player = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance24, create_fragment23, safe_not_equal, {});
+      init(this, options, instance24, create_fragment24, safe_not_equal, {});
     }
   };
   var player_default = Player;
 
   // src/newbie.svelte
-  function create_fragment24(ctx) {
+  function create_fragment25(ctx) {
     let div2;
     let div1;
     let span;
@@ -18801,44 +18837,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Newbie = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance25, create_fragment24, safe_not_equal, { closePopup: 0 });
+      init(this, options, instance25, create_fragment25, safe_not_equal, { closePopup: 0 });
     }
   };
   var newbie_default = Newbie;
-
-  // src/paiji.svelte
-  function create_fragment25(ctx) {
-    let div3;
-    return {
-      c() {
-        div3 = element("div");
-        div3.innerHTML = `<img alt="frame" src="frames/red.jpg" class="svelte-1f7k46b"/> 
-<div class="sponsor">\u4E2D\u90E8\u5168\u570B\u4F9B\u4F5B\u9F4B\u50E7\u5927\u6703</div> 
-
-<div class="paijitextcontainer"><div class="paijitext"><br/>\u3000\u8AF8\u4F9B\u990A\u4E2D\u3000\u6CD5\u4F9B\u990A\u6700
-<br/>\u9858\u4EE5\u6B64\u529F\u5FB7\u3000\u666E\u53CA\u65BC\u4E00\u5207
-<br/>\u6211\u7B49\u8207\u773E\u751F\u3000\u7686\u5171\u6210\u4F5B\u9053</div></div>`;
-        attr(div3, "class", "paiji");
-      },
-      m(target, anchor) {
-        insert(target, div3, anchor);
-      },
-      p: noop,
-      i: noop,
-      o: noop,
-      d(detaching) {
-        if (detaching)
-          detach(div3);
-      }
-    };
-  }
-  var Paiji = class extends SvelteComponent {
-    constructor(options) {
-      super();
-      init(this, options, null, create_fragment25, safe_not_equal, {});
-    }
-  };
-  var paiji_default = Paiji;
 
   // src/app.svelte
   function create_else_block8(ctx) {
