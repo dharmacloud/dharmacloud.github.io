@@ -2,6 +2,7 @@ body {
   overflow:hidden;
   font-family:"Tahoma","San-Serif" , "Microsoft Yahei UI Light";
   margin: 0px;
+  /* font-size:16px; */
 }
 
 :root{
@@ -10,17 +11,17 @@ body {
   --menubar-color:rgb(143, 81, 0);
   --n:rgba(233, 233, 233, 0.7);
 }
-.popup { position:absolute;top:2vh;left:2vw;width:96vw;height:95vh;
+.popup { position:absolute;top:0;left:0;width:100%;height:100%;
   border-radius: 5px;
   background:rgba(255, 235, 164, 0.9);overflow:hidden;z-index: 99}
-.tabs {--webkit-user-select: none;overflow:hidden  ; font-size:3.5vh;
+.tabs {--webkit-user-select: none;overflow:hidden  ; font-size:2rem;
   user-select: none;padding-left: 0.05em; background:var(--menubar-color);color:gold}
 
-.loading {font-size:4vh}
+.loading {font-size:2rem}
 .app {height:100vh;top:0px;background-color: rgb(243, 208, 160); } /* splitpane divider need this */
-.closepopup {cursor:pointer;z-index:999;font-size:4vh;position:absolute;right:2vw;top:1vh;color:black;font-weight: bold;}
+.closepopup {cursor:pointer;z-index:999;font-size:2rem;position:absolute;right:1rem;top:0.3rem;color:black;font-weight: bold;}
 
-select {font-size:4vh}
+select {font-size:2rem}
 .selected {background: rgb(255, 173, 42);border-radius: 0.25em;color:white}
 .tab-content {
   position: absolute;
@@ -34,29 +35,45 @@ select {font-size:4vh}
   /* overflow:hidden; */
   overflow-y:auto;
 }
+
+.subtab-content {
+  position: absolute;
+  height:100%;
+  width:100%;
+  opacity: 0;
+  pointer-events: none;
+  /* overflow:hidden; */
+  overflow-y:none;
+}
+.subtab-content.visible {/* can't use visibility due to a weird painting bug in Chrome */
+  opacity: 1;
+  pointer-events: all;
+  position:relative
+}
+
 .tab-content.visible {/* can't use visibility due to a weird painting bug in Chrome */
   opacity: 1;
   pointer-events: all;
   position:relative
 }
 
-.book {font-size:4vh;cursor:pointer}
+.book {font-size:2rem;cursor:pointer}
 .refer {text-decoration: underline;}
-.clickable {border-bottom: rgb(255, 230, 0) solid 1px;cursor:pointer;}
+.clickable {cursor:pointer;}
 
 .author {border:gray solid 1px ;border-radius: 0.25em;}
 .selecteditem {background:rgb(255, 173, 42)}
 .hr {height: 1px ;background:black}
-.paralleltext {font-size:3vh;}
-.toctext {font-size:3vh;}
+.paralleltext {font-size:1.5rem;}
+.toctext {font-size:1.5rem;}
 
 .tocitem{margin-left: 0.5em;cursor: pointer;}
-.dicttext {font-size:4vh}
-.dictentry {font-size:6vh}
+.dicttext {font-size:2rem}
+.dictentry {font-size:3rem}
 .endmarker {width:100%;text-align: center;height: 3em;}
 .sourcetext{font-weight: bold;color:brown}
 
-
+.activeline {background:rgb(255, 173, 42)}
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
@@ -77,7 +94,7 @@ select {font-size:4vh}
   margin: 2vh 2vh;
   position: relative;
   height: 2vh;
-  width: calc(100% - 4vh);
+  width: calc(100% - 2rem);
   border-radius: 100vh;
   background: var(--track-bg, #fffdf6);
 }
@@ -93,18 +110,18 @@ select {font-size:4vh}
 }
 
 .thumb {
-  width: 3vh;
-  height: 3vh;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 100vh;
   background: var(--thumb-bg, #d27700);
 }
 .subtitle{
-  font-size:4vh;
+  font-size:2rem;
 }
-.pagenumber {position:absolute ; bottom:4vh;font-size: 5vh;left:0.5em;z-index: 99;color:brown}
-.playbtn {cursor:pointer; position:absolute ; top:1vh;font-size: 5vh;left:0.5em;z-index: 99;color:brown;opacity: 0.7;}
-.favoritebtn {cursor:pointer; position:absolute ; top:1vh;font-size: 5vh;right:0.5em;z-index: 99;color:brown;opacity: 0.7;}
-.favoriteitem {cursor:pointer;padding-right:0.3em;padding-left:0.3em}
+.pagenumber {position:absolute ; bottom:1rem;font-size: 2rem;left:0.5em;z-index: 99;color:brown}
+.playbtn {cursor:pointer; position:absolute ; top:1rem;font-size: 4rem;left:0.5em;z-index: 99;color:brown;opacity: 0.7;}
+.favoritebtn {cursor:pointer; position:absolute ; top:1rem;font-size: 3rem;right:0.5em;z-index: 99;color:brown;opacity: 0.7;}
+.favoriteitem {cursor:pointer;padding-right:0.3rem;padding-left:0.3rem}
 @keyframes blinker {
   50% {
     opacity: 0;
@@ -114,12 +131,12 @@ select {font-size:4vh}
 
 .remainrollback {
   animation: blinker 2s linear infinite;
-  position:absolute; bottom:4vh;font-size: 200%;right:0.5em;z-index: 99;color:red
+  position:absolute; bottom:2rem;font-size: 200%;right:0.5em;z-index: 99;color:red
 }
 
 .idletime {
   animation: blinker 5s linear infinite;
-  position:absolute; bottom:4vh;font-size: 100%;right:1em;z-index: 99;color:black
+  position:absolute; bottom:2rem;font-size: 100%;right:1em;z-index: 99;color:black
 }
 
 
@@ -128,13 +145,14 @@ select {font-size:4vh}
   font-size:80%;color:brown;
 }
 
-.welcome {font-size:6vh}
+.welcome {font-size:4rem}
 
-.center{
+.qrcode{
     width:100%;
     position: relative;
     display: flex;
     justify-content: center;
+    flex-direction:column
 }
 @keyframes paijiblinker {
   50% {
@@ -142,6 +160,15 @@ select {font-size:4vh}
   }
 }
 
+@keyframes favorblinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.blinkfavorbtn {
+  animation: favorblinker 1s linear infinite;
+}
 .paiji {
   pointer-events: none;
   animation: paijiblinker 8s linear infinite;
@@ -158,16 +185,16 @@ select {font-size:4vh}
   color:yellow;
   z-index: 1999;
 }
-.sponsor {user-select:none;pointer-events:none;font-size:5vh;font-weight: bold; 
+.sponsor {user-select:none;pointer-events:none;font-size:4rem;font-weight: bold; 
   line-height: 1.1em;
-  position:absolute; color:yellow; width:1em; padding-left:46vw; padding-top:15vh}
+  position:absolute; color:yellow; width:1em; padding-left:46vw; padding-top: 4rem}
 
 .dictgroup {background:#ffb85b}
-button {font-size:2.8vh}
+button {font-size:2rem}
 
 a{color:#563100}
 
 .parallelfolio {font-size:90% ; padding-left:0.1em;padding-right:0.1em;border-radius: 5px;border:#d27700 1px dotted}
 
 .nav {width:100%;text-align: center; user-select: none;}
-.navbutton {cursor:pointer;font-size:3vh}
+.navbutton {cursor:pointer;font-size:1.5rem}
