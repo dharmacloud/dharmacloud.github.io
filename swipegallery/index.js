@@ -10784,7 +10784,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
     const holderWidth = (ls) => {
       if (ls) {
-        return "width:" + screen.height * 0.5 + "pt";
+        return "width:" + screen.height * 0.45 + "pt";
       } else {
         return "width:100%";
       }
@@ -18094,14 +18094,128 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var toc_default = Toc;
 
   // src/taptext.svelte
-  function create_if_block_18(ctx) {
+  function create_if_block_72(ctx) {
+    let t;
+    return {
+      c() {
+        t = text("\u8A2D\u5B9A");
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_if_block_63(ctx) {
+    let t;
+    return {
+      c() {
+        t = text("\u7D93\u5377");
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_if_block_54(ctx) {
+    let t;
+    return {
+      c() {
+        t = text("\u76EE\u9304");
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_if_block_44(ctx) {
+    let t;
+    return {
+      c() {
+        t = text("\u6587\u5B57");
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_if_block_35(ctx) {
     let span;
     let mounted;
     let dispose;
     return {
       c() {
         span = element("span");
-        span.textContent = "\u{1F50E}";
+        span.textContent = "\u{1F3B5}";
+        attr(span, "class", "clickable");
+        toggle_class(
+          span,
+          "selected",
+          /*thetab*/
+          ctx[2] == "audio"
+        );
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        if (!mounted) {
+          dispose = listen(
+            span,
+            "click",
+            /*click_handler_4*/
+            ctx[14]
+          );
+          mounted = true;
+        }
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*thetab*/
+        4) {
+          toggle_class(
+            span,
+            "selected",
+            /*thetab*/
+            ctx2[2] == "audio"
+          );
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(span);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_if_block_18(ctx) {
+    let span;
+    let t;
+    let mounted;
+    let dispose;
+    let if_block = (
+      /*ls*/
+      ctx[5] && create_if_block_25(ctx)
+    );
+    return {
+      c() {
+        span = element("span");
+        t = text("\u{1F50E}");
+        if (if_block)
+          if_block.c();
         attr(span, "class", "clickable");
         toggle_class(
           span,
@@ -18112,17 +18226,34 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       m(target, anchor) {
         insert(target, span, anchor);
+        append(span, t);
+        if (if_block)
+          if_block.m(span, null);
         if (!mounted) {
           dispose = listen(
             span,
             "click",
             /*click_handler_5*/
-            ctx[14]
+            ctx[15]
           );
           mounted = true;
         }
       },
       p(ctx2, dirty) {
+        if (
+          /*ls*/
+          ctx2[5]
+        ) {
+          if (if_block) {
+          } else {
+            if_block = create_if_block_25(ctx2);
+            if_block.c();
+            if_block.m(span, null);
+          }
+        } else if (if_block) {
+          if_block.d(1);
+          if_block = null;
+        }
         if (dirty & /*thetab*/
         4) {
           toggle_class(
@@ -18136,8 +18267,25 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       d(detaching) {
         if (detaching)
           detach(span);
+        if (if_block)
+          if_block.d();
         mounted = false;
         dispose();
+      }
+    };
+  }
+  function create_if_block_25(ctx) {
+    let t;
+    return {
+      c() {
+        t = text("\u67E5\u8A62");
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
       }
     };
   }
@@ -18224,30 +18372,33 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let div6;
     let div0;
     let span0;
+    let t0;
     let t1;
     let span1;
+    let t2;
     let t3;
     let span2;
+    let t4;
     let t5;
     let span3;
+    let t6;
     let t7;
-    let span4;
+    let t8;
     let t9;
-    let t10;
     let div1;
     let foliolist;
-    let t11;
+    let t10;
     let div2;
     let toc;
-    let t12;
+    let t11;
     let div3;
     let textual;
     let updating_address;
+    let t12;
     let t13;
-    let t14;
     let div4;
     let audio;
-    let t15;
+    let t14;
     let div5;
     let about;
     let div6_style_value;
@@ -18255,6 +18406,24 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let mounted;
     let dispose;
     let if_block0 = (
+      /*ls*/
+      ctx[5] && create_if_block_72(ctx)
+    );
+    let if_block1 = (
+      /*ls*/
+      ctx[5] && create_if_block_63(ctx)
+    );
+    let if_block2 = (
+      /*ls*/
+      ctx[5] && create_if_block_54(ctx)
+    );
+    let if_block3 = (
+      /*ls*/
+      ctx[5] && create_if_block_44(ctx)
+    );
+    let if_block4 = !/*ls*/
+    ctx[5] && create_if_block_35(ctx);
+    let if_block5 = (
       /*entries*/
       ctx[4].length && create_if_block_18(ctx)
     );
@@ -18287,7 +18456,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     });
     function textual_address_binding(value) {
-      ctx[15](value);
+      ctx[16](value);
     }
     let textual_props = {
       closePopup: (
@@ -18308,7 +18477,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     }
     textual = new textual_default({ props: textual_props });
     binding_callbacks.push(() => bind(textual, "address", textual_address_binding));
-    let if_block1 = (
+    let if_block6 = (
       /*entries*/
       ctx[4].length && create_if_block11(ctx)
     );
@@ -18322,38 +18491,46 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         div6 = element("div");
         div0 = element("div");
         span0 = element("span");
-        span0.textContent = "\u2699\uFE0F";
-        t1 = space();
-        span1 = element("span");
-        span1.textContent = "\u{1F4DA}";
-        t3 = space();
-        span2 = element("span");
-        span2.textContent = "\u{1F9ED}";
-        t5 = space();
-        span3 = element("span");
-        span3.textContent = "\u{1F4DC}";
-        t7 = space();
-        span4 = element("span");
-        span4.textContent = "\u{1F3B5}";
-        t9 = space();
+        t0 = text("\u2699\uFE0F");
         if (if_block0)
           if_block0.c();
-        t10 = space();
-        div1 = element("div");
-        create_component(foliolist.$$.fragment);
-        t11 = space();
-        div2 = element("div");
-        create_component(toc.$$.fragment);
-        t12 = space();
-        div3 = element("div");
-        create_component(textual.$$.fragment);
-        t13 = space();
+        t1 = space();
+        span1 = element("span");
+        t2 = text("\u{1F4DA}");
         if (if_block1)
           if_block1.c();
-        t14 = space();
+        t3 = space();
+        span2 = element("span");
+        t4 = text("\u{1F9ED}");
+        if (if_block2)
+          if_block2.c();
+        t5 = space();
+        span3 = element("span");
+        t6 = text("\u{1F4DC}");
+        if (if_block3)
+          if_block3.c();
+        t7 = space();
+        if (if_block4)
+          if_block4.c();
+        t8 = space();
+        if (if_block5)
+          if_block5.c();
+        t9 = space();
+        div1 = element("div");
+        create_component(foliolist.$$.fragment);
+        t10 = space();
+        div2 = element("div");
+        create_component(toc.$$.fragment);
+        t11 = space();
+        div3 = element("div");
+        create_component(textual.$$.fragment);
+        t12 = space();
+        if (if_block6)
+          if_block6.c();
+        t13 = space();
         div4 = element("div");
         create_component(audio.$$.fragment);
-        t15 = space();
+        t14 = space();
         div5 = element("div");
         create_component(about.$$.fragment);
         attr(span0, "class", "clickable");
@@ -18383,13 +18560,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           "selected",
           /*thetab*/
           ctx[2] == "textual"
-        );
-        attr(span4, "class", "clickable");
-        toggle_class(
-          span4,
-          "selected",
-          /*thetab*/
-          ctx[2] == "audio"
         );
         attr(div0, "class", "tabs");
         attr(div1, "class", "tab-content");
@@ -18429,39 +18599,55 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         );
         attr(div6, "class", "popup");
         attr(div6, "style", div6_style_value = /*textWidth*/
-        ctx[6](get_store_value(landscape)));
+        ctx[7](
+          /*ls*/
+          ctx[5]
+        ));
       },
       m(target, anchor) {
         insert(target, div6, anchor);
         append(div6, div0);
         append(div0, span0);
+        append(span0, t0);
+        if (if_block0)
+          if_block0.m(span0, null);
         append(div0, t1);
         append(div0, span1);
+        append(span1, t2);
+        if (if_block1)
+          if_block1.m(span1, null);
         append(div0, t3);
         append(div0, span2);
+        append(span2, t4);
+        if (if_block2)
+          if_block2.m(span2, null);
         append(div0, t5);
         append(div0, span3);
+        append(span3, t6);
+        if (if_block3)
+          if_block3.m(span3, null);
         append(div0, t7);
-        append(div0, span4);
-        append(div0, t9);
-        if (if_block0)
-          if_block0.m(div0, null);
-        append(div6, t10);
+        if (if_block4)
+          if_block4.m(div0, null);
+        append(div0, t8);
+        if (if_block5)
+          if_block5.m(div0, null);
+        append(div6, t9);
         append(div6, div1);
         mount_component(foliolist, div1, null);
-        append(div6, t11);
+        append(div6, t10);
         append(div6, div2);
         mount_component(toc, div2, null);
-        append(div6, t12);
+        append(div6, t11);
         append(div6, div3);
         mount_component(textual, div3, null);
+        append(div6, t12);
+        if (if_block6)
+          if_block6.m(div6, null);
         append(div6, t13);
-        if (if_block1)
-          if_block1.m(div6, null);
-        append(div6, t14);
         append(div6, div4);
         mount_component(audio, div4, null);
-        append(div6, t15);
+        append(div6, t14);
         append(div6, div5);
         mount_component(about, div5, null);
         current = true;
@@ -18471,30 +18657,24 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               span0,
               "click",
               /*click_handler*/
-              ctx[9]
+              ctx[10]
             ),
             listen(
               span1,
               "click",
               /*click_handler_1*/
-              ctx[10]
+              ctx[11]
             ),
             listen(
               span2,
               "click",
               /*click_handler_2*/
-              ctx[11]
+              ctx[12]
             ),
             listen(
               span3,
               "click",
               /*click_handler_3*/
-              ctx[12]
-            ),
-            listen(
-              span4,
-              "click",
-              /*click_handler_4*/
               ctx[13]
             )
           ];
@@ -18502,6 +18682,20 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
       },
       p(ctx2, dirty) {
+        if (
+          /*ls*/
+          ctx2[5]
+        ) {
+          if (if_block0) {
+          } else {
+            if_block0 = create_if_block_72(ctx2);
+            if_block0.c();
+            if_block0.m(span0, null);
+          }
+        } else if (if_block0) {
+          if_block0.d(1);
+          if_block0 = null;
+        }
         if (!current || dirty & /*thetab*/
         4) {
           toggle_class(
@@ -18510,6 +18704,20 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             /*thetab*/
             ctx2[2] == "about"
           );
+        }
+        if (
+          /*ls*/
+          ctx2[5]
+        ) {
+          if (if_block1) {
+          } else {
+            if_block1 = create_if_block_63(ctx2);
+            if_block1.c();
+            if_block1.m(span1, null);
+          }
+        } else if (if_block1) {
+          if_block1.d(1);
+          if_block1 = null;
         }
         if (!current || dirty & /*thetab*/
         4) {
@@ -18520,6 +18728,20 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             ctx2[2] == "list"
           );
         }
+        if (
+          /*ls*/
+          ctx2[5]
+        ) {
+          if (if_block2) {
+          } else {
+            if_block2 = create_if_block_54(ctx2);
+            if_block2.c();
+            if_block2.m(span2, null);
+          }
+        } else if (if_block2) {
+          if_block2.d(1);
+          if_block2 = null;
+        }
         if (!current || dirty & /*thetab*/
         4) {
           toggle_class(
@@ -18528,6 +18750,20 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             /*thetab*/
             ctx2[2] == "toc"
           );
+        }
+        if (
+          /*ls*/
+          ctx2[5]
+        ) {
+          if (if_block3) {
+          } else {
+            if_block3 = create_if_block_44(ctx2);
+            if_block3.c();
+            if_block3.m(span3, null);
+          }
+        } else if (if_block3) {
+          if_block3.d(1);
+          if_block3 = null;
         }
         if (!current || dirty & /*thetab*/
         4) {
@@ -18538,29 +18774,33 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             ctx2[2] == "textual"
           );
         }
-        if (!current || dirty & /*thetab*/
-        4) {
-          toggle_class(
-            span4,
-            "selected",
-            /*thetab*/
-            ctx2[2] == "audio"
-          );
+        if (!/*ls*/
+        ctx2[5]) {
+          if (if_block4) {
+            if_block4.p(ctx2, dirty);
+          } else {
+            if_block4 = create_if_block_35(ctx2);
+            if_block4.c();
+            if_block4.m(div0, t8);
+          }
+        } else if (if_block4) {
+          if_block4.d(1);
+          if_block4 = null;
         }
         if (
           /*entries*/
           ctx2[4].length
         ) {
-          if (if_block0) {
-            if_block0.p(ctx2, dirty);
+          if (if_block5) {
+            if_block5.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_18(ctx2);
-            if_block0.c();
-            if_block0.m(div0, null);
+            if_block5 = create_if_block_18(ctx2);
+            if_block5.c();
+            if_block5.m(div0, null);
           }
-        } else if (if_block0) {
-          if_block0.d(1);
-          if_block0 = null;
+        } else if (if_block5) {
+          if_block5.d(1);
+          if_block5 = null;
         }
         const foliolist_changes = {};
         if (dirty & /*ptk*/
@@ -18634,22 +18874,22 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           /*entries*/
           ctx2[4].length
         ) {
-          if (if_block1) {
-            if_block1.p(ctx2, dirty);
+          if (if_block6) {
+            if_block6.p(ctx2, dirty);
             if (dirty & /*entries*/
             16) {
-              transition_in(if_block1, 1);
+              transition_in(if_block6, 1);
             }
           } else {
-            if_block1 = create_if_block11(ctx2);
-            if_block1.c();
-            transition_in(if_block1, 1);
-            if_block1.m(div6, t14);
+            if_block6 = create_if_block11(ctx2);
+            if_block6.c();
+            transition_in(if_block6, 1);
+            if_block6.m(div6, t13);
           }
-        } else if (if_block1) {
+        } else if (if_block6) {
           group_outros();
-          transition_out(if_block1, 1, 1, () => {
-            if_block1 = null;
+          transition_out(if_block6, 1, 1, () => {
+            if_block6 = null;
           });
           check_outros();
         }
@@ -18677,6 +18917,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             ctx2[2] == "about"
           );
         }
+        if (!current || dirty & /*ls*/
+        32 && div6_style_value !== (div6_style_value = /*textWidth*/
+        ctx2[7](
+          /*ls*/
+          ctx2[5]
+        ))) {
+          attr(div6, "style", div6_style_value);
+        }
       },
       i(local) {
         if (current)
@@ -18684,7 +18932,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         transition_in(foliolist.$$.fragment, local);
         transition_in(toc.$$.fragment, local);
         transition_in(textual.$$.fragment, local);
-        transition_in(if_block1);
+        transition_in(if_block6);
         transition_in(audio.$$.fragment, local);
         transition_in(about.$$.fragment, local);
         current = true;
@@ -18693,7 +18941,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         transition_out(foliolist.$$.fragment, local);
         transition_out(toc.$$.fragment, local);
         transition_out(textual.$$.fragment, local);
-        transition_out(if_block1);
+        transition_out(if_block6);
         transition_out(audio.$$.fragment, local);
         transition_out(about.$$.fragment, local);
         current = false;
@@ -18703,11 +18951,21 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           detach(div6);
         if (if_block0)
           if_block0.d();
+        if (if_block1)
+          if_block1.d();
+        if (if_block2)
+          if_block2.d();
+        if (if_block3)
+          if_block3.d();
+        if (if_block4)
+          if_block4.d();
+        if (if_block5)
+          if_block5.d();
         destroy_component(foliolist);
         destroy_component(toc);
         destroy_component(textual);
-        if (if_block1)
-          if_block1.d();
+        if (if_block6)
+          if_block6.d();
         destroy_component(audio);
         destroy_component(about);
         mounted = false;
@@ -18718,7 +18976,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   function create_fragment25(ctx) {
     let previous_key = (
       /*$landscape*/
-      ctx[5]
+      ctx[6]
     );
     let key_block_anchor;
     let current;
@@ -18735,8 +18993,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, [dirty]) {
         if (dirty & /*$landscape*/
-        32 && safe_not_equal(previous_key, previous_key = /*$landscape*/
-        ctx2[5])) {
+        64 && safe_not_equal(previous_key, previous_key = /*$landscape*/
+        ctx2[6])) {
           group_outros();
           transition_out(key_block, 1, 1, noop);
           check_outros();
@@ -18766,12 +19024,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function instance26($$self, $$props, $$invalidate) {
+    let ls;
     let $activePtk;
     let $autodict;
     let $landscape;
-    component_subscribe($$self, activePtk, ($$value) => $$invalidate(8, $activePtk = $$value));
-    component_subscribe($$self, autodict, ($$value) => $$invalidate(16, $autodict = $$value));
-    component_subscribe($$self, landscape, ($$value) => $$invalidate(5, $landscape = $$value));
+    component_subscribe($$self, activePtk, ($$value) => $$invalidate(9, $activePtk = $$value));
+    component_subscribe($$self, autodict, ($$value) => $$invalidate(17, $autodict = $$value));
+    component_subscribe($$self, landscape, ($$value) => $$invalidate(6, $landscape = $$value));
     let { tofind = "" } = $$props;
     let { address = "" } = $$props;
     let { closePopup } = $$props;
@@ -18789,10 +19048,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         $$invalidate(2, thetab = "textual");
       }
     };
-    const textWidth = (ls) => {
-      if (ls) {
-        const w = screen.height * 0.5;
-        return "left:" + w + "pt;width:" + (screen.width - w / 2) + "pt";
+    const textWidth = (ls2) => {
+      if (ls2) {
+        const w = screen.height * 0.45;
+        return "left:" + w + "pt;width:calc(75vw)";
       }
       return "";
     };
@@ -18808,7 +19067,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     }
     $$self.$$set = ($$props2) => {
       if ("tofind" in $$props2)
-        $$invalidate(7, tofind = $$props2.tofind);
+        $$invalidate(8, tofind = $$props2.tofind);
       if ("address" in $$props2)
         $$invalidate(0, address = $$props2.address);
       if ("closePopup" in $$props2)
@@ -18816,22 +19075,25 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*$activePtk*/
-      256) {
+      512) {
         $:
           $$invalidate(3, ptk2 = usePtk($activePtk));
       }
       if ($$self.$$.dirty & /*tofind*/
-      128) {
+      256) {
         $:
           onDict(tofind);
       }
     };
+    $:
+      $$invalidate(5, ls = get_store_value(landscape));
     return [
       address,
       closePopup,
       thetab,
       ptk2,
       entries,
+      ls,
       $landscape,
       textWidth,
       tofind,
@@ -18848,7 +19110,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Taptext = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance26, create_fragment25, safe_not_equal, { tofind: 7, address: 0, closePopup: 1 });
+      init(this, options, instance26, create_fragment25, safe_not_equal, { tofind: 8, address: 0, closePopup: 1 });
     }
   };
   var taptext_default = Taptext;
@@ -19287,12 +19549,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let if_block0 = (
       /*shownewbie*/
       (ctx[4] || /*showdict*/
-      ctx[3]) && create_if_block_35(ctx)
+      ctx[3]) && create_if_block_36(ctx)
     );
     let if_block1 = (
       /*showdict*/
       (ctx[3] || /*$landscape*/
-      ctx[0]) && create_if_block_25(ctx)
+      ctx[0]) && create_if_block_26(ctx)
     );
     let if_block2 = (
       /*shownewbie*/
@@ -19351,7 +19613,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block0) {
             if_block0.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_35(ctx2);
+            if_block0 = create_if_block_36(ctx2);
             if_block0.c();
             if_block0.m(t1.parentNode, t1);
           }
@@ -19371,7 +19633,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block_25(ctx2);
+            if_block1 = create_if_block_26(ctx2);
             if_block1.c();
             transition_in(if_block1, 1);
             if_block1.m(t2.parentNode, t2);
@@ -19443,7 +19705,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_44(ctx) {
+  function create_if_block_45(ctx) {
     let paiji;
     let current;
     paiji = new paiji_default({});
@@ -19479,7 +19741,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ctx[8] && !/*$playing*/
       ctx[9] && !/*showdict*/
       ctx[3] && !/*shownewbie*/
-      ctx[4] && create_if_block_44(ctx)
+      ctx[4] && create_if_block_45(ctx)
     );
     swipezipimage = new swipezipimage_default({
       props: {
@@ -19529,7 +19791,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block_44(ctx2);
+            if_block = create_if_block_45(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(t.parentNode, t);
@@ -19573,7 +19835,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_35(ctx) {
+  function create_if_block_36(ctx) {
     let span;
     let mounted;
     let dispose;
@@ -19604,7 +19866,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_25(ctx) {
+  function create_if_block_26(ctx) {
     let taptext;
     let current;
     taptext = new taptext_default({
