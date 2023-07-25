@@ -63,21 +63,20 @@
 }
 
 /* fakecss:d:/2023/swipegallery/src/swipezipimage.esbuild-svelte-fake-css */
-img.svelte-1novhme {
+img.svelte-1nw6vnk {
   height: 100%;
 }
-.message.svelte-1novhme {
+.message.svelte-1nw6vnk {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.swipe-holder.svelte-1novhme {
+.swipe-holder.svelte-1nw6vnk {
   height: 100%;
 }
-.swipe.svelte-1novhme {
+.swipe.svelte-1nw6vnk {
   position: absolute;
-  top: 50%;
 }
 
 /* fakecss:d:/2023/swipegallery/src/dictpopup.esbuild-svelte-fake-css */
@@ -279,12 +278,12 @@ input.svelte-1nnnvg0 {
 }
 
 /* fakecss:d:/2023/swipegallery/src/toc.esbuild-svelte-fake-css */
-.jumper.svelte-22rzve {
+.jumper.svelte-kd31zj {
   height: 10vh;
 }
-.toc.svelte-22rzve {
+.toc.svelte-kd31zj {
   overflow-y: auto;
-  height: 85vh;
+  height: 100%;
 }
 
 /* fakecss:d:/2023/swipegallery/src/player.esbuild-svelte-fake-css */

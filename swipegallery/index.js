@@ -625,7 +625,7 @@
     }
     component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
   }
-  function init(component, options, instance30, create_fragment30, not_equal, props, append_styles, dirty = [-1]) {
+  function init(component, options, instance31, create_fragment31, not_equal, props, append_styles, dirty = [-1]) {
     const parent_component = current_component;
     set_current_component(component);
     const $$ = component.$$ = {
@@ -651,7 +651,7 @@
     };
     append_styles && append_styles($$.root);
     let ready = false;
-    $$.ctx = instance30 ? instance30(component, options.props || {}, (i, ret, ...rest) => {
+    $$.ctx = instance31 ? instance31(component, options.props || {}, (i, ret, ...rest) => {
       const value = rest.length ? rest[0] : ret;
       if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
         if (!$$.skip_bound && $$.bound[i])
@@ -664,7 +664,7 @@
     $$.update();
     ready = true;
     run_all($$.before_update);
-    $$.fragment = create_fragment30 ? create_fragment30($$.ctx) : false;
+    $$.fragment = create_fragment31 ? create_fragment31($$.ctx) : false;
     if (options.target) {
       if (options.hydrate) {
         start_hydrating();
@@ -7962,6 +7962,7 @@
       activepb.set(0);
       loadingbook.set(true);
       activefolioid.set(folioid);
+      tapmark.set(0);
       timer = setInterval(() => {
         if (!get_store_value(loadingbook)) {
           clearInterval(timer);
@@ -9475,8 +9476,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   // src/swipezipimage.svelte
   function get_each_context4(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[48] = list[i];
-    child_ctx[50] = i;
+    child_ctx[47] = list[i];
+    child_ctx[49] = i;
     return child_ctx;
   }
   function create_else_block(ctx) {
@@ -9484,7 +9485,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         div = element("div");
-        attr(div, "class", "message svelte-1novhme");
+        attr(div, "class", "message svelte-1nw6vnk");
       },
       m(target, anchor) {
         insert(target, div, anchor);
@@ -9500,71 +9501,130 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function create_if_block_6(ctx) {
-    let previous_key = (
-      /*$landscape*/
-      ctx[14]
-    );
-    let key_block_anchor;
+    let div;
+    let swipe;
+    let div_style_value;
     let current;
-    let key_block = create_key_block_3(ctx);
+    let mounted;
+    let dispose;
+    const swipe_spread_levels = [
+      /*swipeConfig*/
+      ctx[25],
+      { defaultIndex: (
+        /*defaultIndex*/
+        ctx[8]
+      ) }
+    ];
+    let swipe_props = {
+      $$slots: { default: [create_default_slot] },
+      $$scope: { ctx }
+    };
+    for (let i = 0; i < swipe_spread_levels.length; i += 1) {
+      swipe_props = assign(swipe_props, swipe_spread_levels[i]);
+    }
+    swipe = new swipe_default({ props: swipe_props });
+    ctx[35](swipe);
+    swipe.$on(
+      "click",
+      /*onclick*/
+      ctx[29]
+    );
+    swipe.$on(
+      "start",
+      /*swipeStart*/
+      ctx[26]
+    );
+    swipe.$on(
+      "change",
+      /*swipeChanged*/
+      ctx[27]
+    );
     return {
       c() {
-        key_block.c();
-        key_block_anchor = empty();
+        div = element("div");
+        create_component(swipe.$$.fragment);
+        attr(div, "class", "swipe-holder svelte-1nw6vnk");
+        attr(div, "style", div_style_value = /*holderWidth*/
+        ctx[32](
+          /*$landscape*/
+          ctx[14]
+        ));
       },
       m(target, anchor) {
-        key_block.m(target, anchor);
-        insert(target, key_block_anchor, anchor);
+        insert(target, div, anchor);
+        mount_component(swipe, div, null);
         current = true;
+        if (!mounted) {
+          dispose = listen(
+            div,
+            "wheel",
+            /*mousewheel*/
+            ctx[28]
+          );
+          mounted = true;
+        }
       },
       p(ctx2, dirty) {
-        if (dirty[0] & /*$landscape*/
-        16384 && safe_not_equal(previous_key, previous_key = /*$landscape*/
-        ctx2[14])) {
-          group_outros();
-          transition_out(key_block, 1, 1, noop);
-          check_outros();
-          key_block = create_key_block_3(ctx2);
-          key_block.c();
-          transition_in(key_block, 1);
-          key_block.m(key_block_anchor.parentNode, key_block_anchor);
-        } else {
-          key_block.p(ctx2, dirty);
+        const swipe_changes = dirty[0] & /*swipeConfig, defaultIndex*/
+        33554688 ? get_spread_update(swipe_spread_levels, [
+          dirty[0] & /*swipeConfig*/
+          33554432 && get_spread_object(
+            /*swipeConfig*/
+            ctx2[25]
+          ),
+          dirty[0] & /*defaultIndex*/
+          256 && { defaultIndex: (
+            /*defaultIndex*/
+            ctx2[8]
+          ) }
+        ]) : {};
+        if (dirty[1] & /*$$scope*/
+        524288) {
+          swipe_changes.$$scope = { dirty, ctx: ctx2 };
+        }
+        swipe.$set(swipe_changes);
+        if (!current || dirty[0] & /*$landscape*/
+        16384 && div_style_value !== (div_style_value = /*holderWidth*/
+        ctx2[32](
+          /*$landscape*/
+          ctx2[14]
+        ))) {
+          attr(div, "style", div_style_value);
         }
       },
       i(local) {
         if (current)
           return;
-        transition_in(key_block);
+        transition_in(swipe.$$.fragment, local);
         current = true;
       },
       o(local) {
-        transition_out(key_block);
+        transition_out(swipe.$$.fragment, local);
         current = false;
       },
       d(detaching) {
         if (detaching)
-          detach(key_block_anchor);
-        key_block.d(detaching);
+          detach(div);
+        ctx[35](null);
+        destroy_component(swipe);
+        mounted = false;
+        dispose();
       }
     };
   }
   function create_default_slot_1(ctx) {
     let img;
-    let img_style_value;
     let img_src_value;
     return {
       c() {
         img = element("img");
         attr(img, "alt", "no");
-        attr(img, "class", "swipe svelte-1novhme");
-        attr(img, "style", img_style_value = /*swipeStyle*/
-        ctx[33](get_store_value(landscape)));
+        attr(img, "class", "swipe svelte-1nw6vnk");
         if (!src_url_equal(img.src, img_src_value = /*images*/
         ctx[23][
           /*images*/
           ctx[23].length - /*idx*/
-          ctx[50] - 1
+          ctx[49] - 1
         ]))
           attr(img, "src", img_src_value);
       },
@@ -9598,7 +9658,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         const swipeitem_changes = {};
         if (dirty[1] & /*$$scope*/
-        1048576) {
+        524288) {
           swipeitem_changes.$$scope = { dirty, ctx: ctx2 };
         }
         swipeitem.$set(swipeitem_changes);
@@ -9650,8 +9710,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, dirty) {
         if (dirty[0] & /*images*/
-        8388608 | dirty[1] & /*swipeStyle*/
-        4) {
+        8388608) {
           each_value = /*images*/
           ctx2[23];
           let i;
@@ -9693,107 +9752,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         destroy_each(each_blocks, detaching);
         if (detaching)
           detach(each_1_anchor);
-      }
-    };
-  }
-  function create_key_block_3(ctx) {
-    let div;
-    let swipe;
-    let div_style_value;
-    let current;
-    let mounted;
-    let dispose;
-    const swipe_spread_levels = [
-      /*swipeConfig*/
-      ctx[25],
-      { defaultIndex: (
-        /*defaultIndex*/
-        ctx[8]
-      ) }
-    ];
-    let swipe_props = {
-      $$slots: { default: [create_default_slot] },
-      $$scope: { ctx }
-    };
-    for (let i = 0; i < swipe_spread_levels.length; i += 1) {
-      swipe_props = assign(swipe_props, swipe_spread_levels[i]);
-    }
-    swipe = new swipe_default({ props: swipe_props });
-    ctx[36](swipe);
-    swipe.$on(
-      "click",
-      /*onclick*/
-      ctx[29]
-    );
-    swipe.$on(
-      "start",
-      /*swipeStart*/
-      ctx[26]
-    );
-    swipe.$on(
-      "change",
-      /*swipeChanged*/
-      ctx[27]
-    );
-    return {
-      c() {
-        div = element("div");
-        create_component(swipe.$$.fragment);
-        attr(div, "class", "swipe-holder svelte-1novhme");
-        attr(div, "style", div_style_value = /*holderWidth*/
-        ctx[32](get_store_value(landscape)));
-      },
-      m(target, anchor) {
-        insert(target, div, anchor);
-        mount_component(swipe, div, null);
-        current = true;
-        if (!mounted) {
-          dispose = listen(
-            div,
-            "wheel",
-            /*mousewheel*/
-            ctx[28]
-          );
-          mounted = true;
-        }
-      },
-      p(ctx2, dirty) {
-        const swipe_changes = dirty[0] & /*swipeConfig, defaultIndex*/
-        33554688 ? get_spread_update(swipe_spread_levels, [
-          dirty[0] & /*swipeConfig*/
-          33554432 && get_spread_object(
-            /*swipeConfig*/
-            ctx2[25]
-          ),
-          dirty[0] & /*defaultIndex*/
-          256 && { defaultIndex: (
-            /*defaultIndex*/
-            ctx2[8]
-          ) }
-        ]) : {};
-        if (dirty[1] & /*$$scope*/
-        1048576) {
-          swipe_changes.$$scope = { dirty, ctx: ctx2 };
-        }
-        swipe.$set(swipe_changes);
-      },
-      i(local) {
-        if (current)
-          return;
-        transition_in(swipe.$$.fragment, local);
-        current = true;
-      },
-      o(local) {
-        transition_out(swipe.$$.fragment, local);
-        current = false;
-      },
-      d(detaching) {
-        if (detaching)
-          detach(div);
-        ctx[36](null);
-        destroy_component(swipe);
-        mounted = false;
-        dispose();
       }
     };
   }
@@ -10566,9 +10524,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let $showpunc;
     component_subscribe($$self, activefolioid, ($$value) => $$invalidate(1, $activefolioid = $$value));
     component_subscribe($$self, activepb, ($$value) => $$invalidate(2, $activepb = $$value));
-    component_subscribe($$self, prefervideo, ($$value) => $$invalidate(40, $prefervideo = $$value));
+    component_subscribe($$self, prefervideo, ($$value) => $$invalidate(39, $prefervideo = $$value));
     component_subscribe($$self, favorites, ($$value) => $$invalidate(11, $favorites = $$value));
-    component_subscribe($$self, activePtk, ($$value) => $$invalidate(41, $activePtk = $$value));
+    component_subscribe($$self, activePtk, ($$value) => $$invalidate(40, $activePtk = $$value));
     component_subscribe($$self, folioChars, ($$value) => $$invalidate(12, $folioChars = $$value));
     component_subscribe($$self, showpaiji, ($$value) => $$invalidate(13, $showpaiji = $$value));
     component_subscribe($$self, landscape, ($$value) => $$invalidate(14, $landscape = $$value));
@@ -10706,17 +10664,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       while (t.charAt(0) == "\u3000")
         t = t.slice(1);
       t = t.replace(/　.+/, "");
-      console.log(address);
       await onTapText(t, address, ptk2.name);
     };
-    const gotoPb = (pb) => {
+    const gotoPb = async (pb) => {
       if (!totalpages || !swiper)
         return;
       const go = totalpages - pb - 1;
       if (go !== defaultIndex) {
         swiper.goTo(go);
       }
-      console.log("pb", pb, go);
     };
     const confirmfavorite = () => {
       if (favoritetimer) {
@@ -10784,16 +10740,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
     const holderWidth = (ls) => {
       if (ls) {
-        return "width:" + screen.height * 0.45 + "pt";
+        const w = screen.height * 0.45;
+        const r = Math.floor(w * 100 / screen.width) + 1;
+        return "width:" + r + "vw";
       } else {
         return "width:100%";
-      }
-    };
-    const swipeStyle = (ls) => {
-      if (ls) {
-        return "left:0%;transform: translate(0%,-50%);";
-      } else {
-        return "left:50%;transform: translate(-50%,-50%);";
       }
     };
     function swipe_binding($$value) {
@@ -10804,15 +10755,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     }
     $$self.$$set = ($$props2) => {
       if ("src" in $$props2)
-        $$invalidate(34, src = $$props2.src);
+        $$invalidate(33, src = $$props2.src);
       if ("totalpages" in $$props2)
         $$invalidate(0, totalpages = $$props2.totalpages);
       if ("onTapText" in $$props2)
-        $$invalidate(35, onTapText = $$props2.onTapText);
+        $$invalidate(34, onTapText = $$props2.onTapText);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty[1] & /*src*/
-      8) {
+      4) {
         $:
           loadZip(src);
       }
@@ -10861,7 +10812,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       favoritebtn,
       toggleplaybtn,
       holderWidth,
-      swipeStyle,
       src,
       onTapText,
       swipe_binding
@@ -10870,7 +10820,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Swipezipimage = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance7, create_fragment6, safe_not_equal, { src: 34, totalpages: 0, onTapText: 35 }, null, [-1, -1]);
+      init(this, options, instance7, create_fragment6, safe_not_equal, { src: 33, totalpages: 0, onTapText: 34 }, null, [-1, -1]);
     }
   };
   var swipezipimage_default = Swipezipimage;
@@ -11482,6 +11432,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $$invalidate(5, src = onelinelink(entry));
     };
     const availableDict = (n) => {
+      if (n >= entries.length) {
+        n = 0;
+      }
+      if (!entries[n])
+        return;
       const at = entries[n][2];
       const flag = ptk2.columns.entries.dict[at];
       $$invalidate(0, wikipedia = flag & 1);
@@ -11510,10 +11465,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         $$invalidate(2, dfb = $$props2.dfb);
     };
     $$self.$$.update = () => {
-      if ($$self.$$.dirty & /*nentry*/
-      16) {
+      if ($$self.$$.dirty & /*nentry, entries*/
+      24) {
         $:
-          availableDict(nentry);
+          availableDict(nentry, entries);
       }
     };
     return [
@@ -15551,46 +15506,151 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   };
   var translations_default = Translations;
 
+  // src/chunknav.svelte
+  function create_fragment17(ctx) {
+    let span0;
+    let t1;
+    let span1;
+    let t3;
+    let span2;
+    let mounted;
+    let dispose;
+    return {
+      c() {
+        span0 = element("span");
+        span0.textContent = "\u2190";
+        t1 = space();
+        span1 = element("span");
+        span1.textContent = `${/*ck*/
+        ctx[0]?.caption}`;
+        t3 = space();
+        span2 = element("span");
+        span2.textContent = "\u2192";
+        attr(span0, "class", "navbutton");
+        attr(span1, "class", "navbutton");
+        attr(span2, "class", "navbutton");
+      },
+      m(target, anchor) {
+        insert(target, span0, anchor);
+        insert(target, t1, anchor);
+        insert(target, span1, anchor);
+        insert(target, t3, anchor);
+        insert(target, span2, anchor);
+        if (!mounted) {
+          dispose = [
+            listen(
+              span0,
+              "click",
+              /*prevChunk*/
+              ctx[1]
+            ),
+            listen(
+              span2,
+              "click",
+              /*nextChunk*/
+              ctx[2]
+            )
+          ];
+          mounted = true;
+        }
+      },
+      p: noop,
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(span0);
+        if (detaching)
+          detach(t1);
+        if (detaching)
+          detach(span1);
+        if (detaching)
+          detach(t3);
+        if (detaching)
+          detach(span2);
+        mounted = false;
+        run_all(dispose);
+      }
+    };
+  }
+  function instance18($$self, $$props, $$invalidate) {
+    let maxchunk;
+    let { ptk: ptk2 } = $$props;
+    let { address } = $$props;
+    let ck;
+    const getMaxChunk = () => {
+      const addr = parseAddress(address);
+      const act = parseAction(addr.action);
+      console.log(addr, act);
+    };
+    const prevChunk = () => {
+    };
+    const nextChunk = () => {
+    };
+    $$self.$$set = ($$props2) => {
+      if ("ptk" in $$props2)
+        $$invalidate(3, ptk2 = $$props2.ptk);
+      if ("address" in $$props2)
+        $$invalidate(4, address = $$props2.address);
+    };
+    $$self.$$.update = () => {
+      if ($$self.$$.dirty & /*address*/
+      16) {
+        $:
+          maxchunk = getMaxChunk(address);
+      }
+    };
+    return [ck, prevChunk, nextChunk, ptk2, address];
+  }
+  var Chunknav = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance18, create_fragment17, safe_not_equal, { ptk: 3, address: 4 });
+    }
+  };
+  var chunknav_default = Chunknav;
+
   // src/chunktext.svelte
   function get_each_context11(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[9] = list[i];
-    child_ctx[11] = i;
+    child_ctx[11] = list[i];
+    child_ctx[13] = i;
     return child_ctx;
   }
   function create_each_block11(ctx) {
     let div;
-    let t_value = (
-      /*line*/
-      ctx[9] + ""
+    let raw_value = (
+      /*renderLine*/
+      ctx[4](
+        /*line*/
+        ctx[11]
+      ) + ""
     );
-    let t;
     let mounted;
     let dispose;
     function click_handler() {
       return (
         /*click_handler*/
-        ctx[6](
+        ctx[8](
           /*idx*/
-          ctx[11]
+          ctx[13]
         )
       );
     }
     return {
       c() {
         div = element("div");
-        t = text(t_value);
         toggle_class(
           div,
           "activeline",
           /*lineoff*/
-          ctx[0] == /*idx*/
-          ctx[11]
+          ctx[2] == /*idx*/
+          ctx[13]
         );
       },
       m(target, anchor) {
         insert(target, div, anchor);
-        append(div, t);
+        div.innerHTML = raw_value;
         if (!mounted) {
           dispose = listen(div, "click", click_handler);
           mounted = true;
@@ -15599,17 +15659,21 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(new_ctx, dirty) {
         ctx = new_ctx;
         if (dirty & /*lines*/
-        2 && t_value !== (t_value = /*line*/
-        ctx[9] + ""))
-          set_data(t, t_value);
+        8 && raw_value !== (raw_value = /*renderLine*/
+        ctx[4](
+          /*line*/
+          ctx[11]
+        ) + ""))
+          div.innerHTML = raw_value;
+        ;
         if (dirty & /*lineoff*/
-        1) {
+        4) {
           toggle_class(
             div,
             "activeline",
             /*lineoff*/
-            ctx[0] == /*idx*/
-            ctx[11]
+            ctx[2] == /*idx*/
+            ctx[13]
           );
         }
       },
@@ -15621,11 +15685,31 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment17(ctx) {
+  function create_fragment18(ctx) {
     let div;
+    let chunknav;
+    let updating_address;
+    let t;
+    let current;
+    function chunknav_address_binding(value) {
+      ctx[7](value);
+    }
+    let chunknav_props = { ptk: (
+      /*ptk*/
+      ctx[1]
+    ) };
+    if (
+      /*address*/
+      ctx[0] !== void 0
+    ) {
+      chunknav_props.address = /*address*/
+      ctx[0];
+    }
+    chunknav = new chunknav_default({ props: chunknav_props });
+    binding_callbacks.push(() => bind(chunknav, "address", chunknav_address_binding));
     let each_value = (
       /*lines*/
-      ctx[1]
+      ctx[3]
     );
     let each_blocks = [];
     for (let i = 0; i < each_value.length; i += 1) {
@@ -15634,6 +15718,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         div = element("div");
+        create_component(chunknav.$$.fragment);
+        t = space();
         for (let i = 0; i < each_blocks.length; i += 1) {
           each_blocks[i].c();
         }
@@ -15641,17 +15727,33 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       m(target, anchor) {
         insert(target, div, anchor);
+        mount_component(chunknav, div, null);
+        append(div, t);
         for (let i = 0; i < each_blocks.length; i += 1) {
           if (each_blocks[i]) {
             each_blocks[i].m(div, null);
           }
         }
+        current = true;
       },
       p(ctx2, [dirty]) {
-        if (dirty & /*lineoff, setAddress, lines*/
-        7) {
-          each_value = /*lines*/
+        const chunknav_changes = {};
+        if (dirty & /*ptk*/
+        2)
+          chunknav_changes.ptk = /*ptk*/
           ctx2[1];
+        if (!updating_address && dirty & /*address*/
+        1) {
+          updating_address = true;
+          chunknav_changes.address = /*address*/
+          ctx2[0];
+          add_flush_callback(() => updating_address = false);
+        }
+        chunknav.$set(chunknav_changes);
+        if (dirty & /*lineoff, setAddress, renderLine, lines*/
+        60) {
+          each_value = /*lines*/
+          ctx2[3];
           let i;
           for (i = 0; i < each_value.length; i += 1) {
             const child_ctx = get_each_context11(ctx2, each_value, i);
@@ -15669,52 +15771,82 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           each_blocks.length = each_value.length;
         }
       },
-      i: noop,
-      o: noop,
+      i(local) {
+        if (current)
+          return;
+        transition_in(chunknav.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(chunknav.$$.fragment, local);
+        current = false;
+      },
       d(detaching) {
         if (detaching)
           detach(div);
+        destroy_component(chunknav);
         destroy_each(each_blocks, detaching);
       }
     };
   }
-  function instance18($$self, $$props, $$invalidate) {
+  function instance19($$self, $$props, $$invalidate) {
     let { ptk: ptk2, start, lineoff, address } = $$props;
     let ck, lines = [];
     const loadChunk = async (line) => {
       ck = ptk2.nearestChunk(line + 2);
       await ptk2.loadLines([ck.line, ck.lineend]);
-      $$invalidate(1, lines = ptk2.slice(ck.line, ck.lineend));
+      $$invalidate(3, lines = ptk2.slice(ck.line, ck.lineend));
+    };
+    const renderLine = (line) => {
+      return line.replace(/\^[a-z]#?[a-z\d]*/g, "");
     };
     const setAddress = (lo) => {
       const newaddress = address.replace(/:\d+$/, "") + (lo ? ":" + lo : "");
-      if (newaddress)
-        $$invalidate(3, address = newaddress);
+      if (newaddress && address !== newaddress) {
+        $$invalidate(0, address = newaddress);
+        const pb = ptk2.defines.pb;
+        const at = bsearchNumber(pb.linepos, start + lo) - 1;
+        goPb(ptk2, pb.fields.id.values[at]);
+      }
     };
+    function chunknav_address_binding(value) {
+      address = value;
+      $$invalidate(0, address);
+    }
     const click_handler = (idx2) => setAddress(idx2);
     $$self.$$set = ($$props2) => {
       if ("ptk" in $$props2)
-        $$invalidate(4, ptk2 = $$props2.ptk);
+        $$invalidate(1, ptk2 = $$props2.ptk);
       if ("start" in $$props2)
-        $$invalidate(5, start = $$props2.start);
+        $$invalidate(6, start = $$props2.start);
       if ("lineoff" in $$props2)
-        $$invalidate(0, lineoff = $$props2.lineoff);
+        $$invalidate(2, lineoff = $$props2.lineoff);
       if ("address" in $$props2)
-        $$invalidate(3, address = $$props2.address);
+        $$invalidate(0, address = $$props2.address);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*start, lineoff*/
-      33) {
+      68) {
         $:
           loadChunk(start + lineoff);
       }
     };
-    return [lineoff, lines, setAddress, address, ptk2, start, click_handler];
+    return [
+      address,
+      ptk2,
+      lineoff,
+      lines,
+      renderLine,
+      setAddress,
+      start,
+      chunknav_address_binding,
+      click_handler
+    ];
   }
   var Chunktext = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance18, create_fragment17, safe_not_equal, { ptk: 4, start: 5, lineoff: 0, address: 3 });
+      init(this, options, instance19, create_fragment18, safe_not_equal, { ptk: 1, start: 6, lineoff: 2, address: 0 });
     }
   };
   var chunktext_default = Chunktext;
@@ -15770,7 +15902,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment18(ctx) {
+  function create_fragment19(ctx) {
     let div;
     let sentencenav;
     let updating_address;
@@ -15874,7 +16006,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function instance19($$self, $$props, $$invalidate) {
+  function instance20($$self, $$props, $$invalidate) {
     let { address, start, lineoff } = $$props;
     let { ptk: ptk2 } = $$props;
     let sourcetexts = [];
@@ -15919,13 +16051,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Sourcetext = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance19, create_fragment18, safe_not_equal, { address: 0, start: 4, lineoff: 5, ptk: 1 });
+      init(this, options, instance20, create_fragment19, safe_not_equal, { address: 0, start: 4, lineoff: 5, ptk: 1 });
     }
   };
   var sourcetext_default = Sourcetext;
 
   // src/variorum.svelte
-  function create_fragment19(ctx) {
+  function create_fragment20(ctx) {
     let div1;
     let sentencenav0;
     let updating_address;
@@ -16053,7 +16185,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function instance20($$self, $$props, $$invalidate) {
+  function instance21($$self, $$props, $$invalidate) {
     let { ptk: ptk2 } = $$props;
     let { address } = $$props;
     let text2 = "";
@@ -16109,7 +16241,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Variorum = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance20, create_fragment19, safe_not_equal, { ptk: 1, address: 0 });
+      init(this, options, instance21, create_fragment20, safe_not_equal, { ptk: 1, address: 0 });
     }
   };
   var variorum_default = Variorum;
@@ -16158,7 +16290,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment20(ctx) {
+  function create_fragment21(ctx) {
     let each_1_anchor;
     let each_value = (
       /*links*/
@@ -16214,7 +16346,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function instance21($$self, $$props, $$invalidate) {
+  function instance22($$self, $$props, $$invalidate) {
     let { links = [] } = $$props;
     $$self.$$set = ($$props2) => {
       if ("links" in $$props2)
@@ -16225,7 +16357,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Externals = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance21, create_fragment20, safe_not_equal, { links: 0 });
+      init(this, options, instance22, create_fragment21, safe_not_equal, { links: 0 });
     }
   };
   var externals_default = Externals;
@@ -16419,7 +16551,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment21(ctx) {
+  function create_fragment22(ctx) {
     let div0;
     let span;
     let t1;
@@ -16976,7 +17108,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function instance22($$self, $$props, $$invalidate) {
+  function instance23($$self, $$props, $$invalidate) {
     let end;
     let _from;
     let _till;
@@ -17073,7 +17205,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Textual = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance22, create_fragment21, safe_not_equal, {
+      init(this, options, instance23, create_fragment22, safe_not_equal, {
         start: 1,
         ptk: 2,
         closePopup: 3,
@@ -17184,7 +17316,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment22(ctx) {
+  function create_fragment23(ctx) {
     let span;
     let input;
     let setfocus_action;
@@ -17305,7 +17437,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function instance23($$self, $$props, $$invalidate) {
+  function instance24($$self, $$props, $$invalidate) {
     let { stepper = true } = $$props;
     let { style = "width:2rem" } = $$props;
     let { min = 1 } = $$props;
@@ -17380,7 +17512,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Inputnumber = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance23, create_fragment22, safe_not_equal, {
+      init(this, options, instance24, create_fragment23, safe_not_equal, {
         stepper: 1,
         style: 2,
         min: 3,
@@ -17597,7 +17729,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment23(ctx) {
+  function create_fragment24(ctx) {
     let span;
     let current_block_type_index;
     let if_block;
@@ -17669,7 +17801,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function instance24($$self, $$props, $$invalidate) {
+  function instance25($$self, $$props, $$invalidate) {
     let $activefolioid;
     component_subscribe($$self, activefolioid, ($$value) => $$invalidate(6, $activefolioid = $$value));
     let { closePopup } = $$props;
@@ -17735,7 +17867,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Juan = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance24, create_fragment23, safe_not_equal, { closePopup: 4, ptk: 5 });
+      init(this, options, instance25, create_fragment24, safe_not_equal, { closePopup: 4, ptk: 5 });
     }
   };
   var juan_default = Juan;
@@ -17816,7 +17948,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment24(ctx) {
+  function create_fragment25(ctx) {
     let div2;
     let juan;
     let t0;
@@ -17894,9 +18026,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t5 = space();
         div0 = element("div");
         div0.textContent = "\u203B\u203B\u203B";
-        attr(span, "class", "jumper svelte-22rzve");
+        attr(span, "class", "jumper svelte-kd31zj");
         attr(div0, "class", "endmarker");
-        attr(div1, "class", "toc svelte-22rzve");
+        attr(div1, "class", "toc svelte-kd31zj");
         attr(div2, "class", "toctext");
       },
       m(target, anchor) {
@@ -17989,7 +18121,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function instance25($$self, $$props, $$invalidate) {
+  function instance26($$self, $$props, $$invalidate) {
     let $activefolioid;
     let $activepb;
     let $maxfolio;
@@ -18088,13 +18220,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Toc = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance25, create_fragment24, safe_not_equal, { ptk: 0, address: 8, closePopup: 1 });
+      init(this, options, instance26, create_fragment25, safe_not_equal, { ptk: 0, address: 8, closePopup: 1 });
     }
   };
   var toc_default = Toc;
 
   // src/taptext.svelte
-  function create_if_block_72(ctx) {
+  function create_if_block_63(ctx) {
     let t;
     return {
       c() {
@@ -18109,7 +18241,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_63(ctx) {
+  function create_if_block_54(ctx) {
     let t;
     return {
       c() {
@@ -18124,7 +18256,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_54(ctx) {
+  function create_if_block_44(ctx) {
     let t;
     return {
       c() {
@@ -18139,7 +18271,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_44(ctx) {
+  function create_if_block_35(ctx) {
     let t;
     return {
       c() {
@@ -18154,7 +18286,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_35(ctx) {
+  function create_if_block_25(ctx) {
     let span;
     let mounted;
     let dispose;
@@ -18202,79 +18334,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function create_if_block_18(ctx) {
-    let span;
-    let t;
-    let mounted;
-    let dispose;
-    let if_block = (
-      /*ls*/
-      ctx[5] && create_if_block_25(ctx)
-    );
-    return {
-      c() {
-        span = element("span");
-        t = text("\u{1F50E}");
-        if (if_block)
-          if_block.c();
-        attr(span, "class", "clickable");
-        toggle_class(
-          span,
-          "selected",
-          /*thetab*/
-          ctx[2] == "dict"
-        );
-      },
-      m(target, anchor) {
-        insert(target, span, anchor);
-        append(span, t);
-        if (if_block)
-          if_block.m(span, null);
-        if (!mounted) {
-          dispose = listen(
-            span,
-            "click",
-            /*click_handler_5*/
-            ctx[15]
-          );
-          mounted = true;
-        }
-      },
-      p(ctx2, dirty) {
-        if (
-          /*ls*/
-          ctx2[5]
-        ) {
-          if (if_block) {
-          } else {
-            if_block = create_if_block_25(ctx2);
-            if_block.c();
-            if_block.m(span, null);
-          }
-        } else if (if_block) {
-          if_block.d(1);
-          if_block = null;
-        }
-        if (dirty & /*thetab*/
-        4) {
-          toggle_class(
-            span,
-            "selected",
-            /*thetab*/
-            ctx2[2] == "dict"
-          );
-        }
-      },
-      d(detaching) {
-        if (detaching)
-          detach(span);
-        if (if_block)
-          if_block.d();
-        mounted = false;
-        dispose();
-      }
-    };
-  }
-  function create_if_block_25(ctx) {
     let t;
     return {
       c() {
@@ -18384,21 +18443,23 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t6;
     let t7;
     let t8;
+    let span4;
     let t9;
+    let t10;
     let div1;
     let foliolist;
-    let t10;
+    let t11;
     let div2;
     let toc;
-    let t11;
+    let t12;
     let div3;
     let textual;
     let updating_address;
-    let t12;
     let t13;
+    let t14;
     let div4;
     let audio;
-    let t14;
+    let t15;
     let div5;
     let about;
     let div6_style_value;
@@ -18407,25 +18468,25 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let dispose;
     let if_block0 = (
       /*ls*/
-      ctx[5] && create_if_block_72(ctx)
+      ctx[5] && create_if_block_63(ctx)
     );
     let if_block1 = (
       /*ls*/
-      ctx[5] && create_if_block_63(ctx)
+      ctx[5] && create_if_block_54(ctx)
     );
     let if_block2 = (
       /*ls*/
-      ctx[5] && create_if_block_54(ctx)
+      ctx[5] && create_if_block_44(ctx)
     );
     let if_block3 = (
       /*ls*/
-      ctx[5] && create_if_block_44(ctx)
+      ctx[5] && create_if_block_35(ctx)
     );
     let if_block4 = !/*ls*/
-    ctx[5] && create_if_block_35(ctx);
+    ctx[5] && create_if_block_25(ctx);
     let if_block5 = (
-      /*entries*/
-      ctx[4].length && create_if_block_18(ctx)
+      /*ls*/
+      ctx[5] && create_if_block_18(ctx)
     );
     foliolist = new foliolist_default({
       props: {
@@ -18513,24 +18574,26 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (if_block4)
           if_block4.c();
         t8 = space();
+        span4 = element("span");
+        t9 = text("\u{1F50E}");
         if (if_block5)
           if_block5.c();
-        t9 = space();
+        t10 = space();
         div1 = element("div");
         create_component(foliolist.$$.fragment);
-        t10 = space();
+        t11 = space();
         div2 = element("div");
         create_component(toc.$$.fragment);
-        t11 = space();
+        t12 = space();
         div3 = element("div");
         create_component(textual.$$.fragment);
-        t12 = space();
+        t13 = space();
         if (if_block6)
           if_block6.c();
-        t13 = space();
+        t14 = space();
         div4 = element("div");
         create_component(audio.$$.fragment);
-        t14 = space();
+        t15 = space();
         div5 = element("div");
         create_component(about.$$.fragment);
         attr(span0, "class", "clickable");
@@ -18560,6 +18623,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           "selected",
           /*thetab*/
           ctx[2] == "textual"
+        );
+        attr(span4, "class", "clickable");
+        toggle_class(
+          span4,
+          "selected",
+          /*thetab*/
+          ctx[2] == "dict"
         );
         attr(div0, "class", "tabs");
         attr(div1, "class", "tab-content");
@@ -18630,24 +18700,26 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (if_block4)
           if_block4.m(div0, null);
         append(div0, t8);
+        append(div0, span4);
+        append(span4, t9);
         if (if_block5)
-          if_block5.m(div0, null);
-        append(div6, t9);
+          if_block5.m(span4, null);
+        append(div6, t10);
         append(div6, div1);
         mount_component(foliolist, div1, null);
-        append(div6, t10);
+        append(div6, t11);
         append(div6, div2);
         mount_component(toc, div2, null);
-        append(div6, t11);
+        append(div6, t12);
         append(div6, div3);
         mount_component(textual, div3, null);
-        append(div6, t12);
+        append(div6, t13);
         if (if_block6)
           if_block6.m(div6, null);
-        append(div6, t13);
+        append(div6, t14);
         append(div6, div4);
         mount_component(audio, div4, null);
-        append(div6, t14);
+        append(div6, t15);
         append(div6, div5);
         mount_component(about, div5, null);
         current = true;
@@ -18676,6 +18748,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               "click",
               /*click_handler_3*/
               ctx[13]
+            ),
+            listen(
+              span4,
+              "click",
+              /*click_handler_5*/
+              ctx[15]
             )
           ];
           mounted = true;
@@ -18688,7 +18766,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ) {
           if (if_block0) {
           } else {
-            if_block0 = create_if_block_72(ctx2);
+            if_block0 = create_if_block_63(ctx2);
             if_block0.c();
             if_block0.m(span0, null);
           }
@@ -18711,7 +18789,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ) {
           if (if_block1) {
           } else {
-            if_block1 = create_if_block_63(ctx2);
+            if_block1 = create_if_block_54(ctx2);
             if_block1.c();
             if_block1.m(span1, null);
           }
@@ -18734,7 +18812,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ) {
           if (if_block2) {
           } else {
-            if_block2 = create_if_block_54(ctx2);
+            if_block2 = create_if_block_44(ctx2);
             if_block2.c();
             if_block2.m(span2, null);
           }
@@ -18757,7 +18835,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ) {
           if (if_block3) {
           } else {
-            if_block3 = create_if_block_44(ctx2);
+            if_block3 = create_if_block_35(ctx2);
             if_block3.c();
             if_block3.m(span3, null);
           }
@@ -18779,7 +18857,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block4) {
             if_block4.p(ctx2, dirty);
           } else {
-            if_block4 = create_if_block_35(ctx2);
+            if_block4 = create_if_block_25(ctx2);
             if_block4.c();
             if_block4.m(div0, t8);
           }
@@ -18788,19 +18866,27 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if_block4 = null;
         }
         if (
-          /*entries*/
-          ctx2[4].length
+          /*ls*/
+          ctx2[5]
         ) {
           if (if_block5) {
-            if_block5.p(ctx2, dirty);
           } else {
             if_block5 = create_if_block_18(ctx2);
             if_block5.c();
-            if_block5.m(div0, null);
+            if_block5.m(span4, null);
           }
         } else if (if_block5) {
           if_block5.d(1);
           if_block5 = null;
+        }
+        if (!current || dirty & /*thetab*/
+        4) {
+          toggle_class(
+            span4,
+            "selected",
+            /*thetab*/
+            ctx2[2] == "dict"
+          );
         }
         const foliolist_changes = {};
         if (dirty & /*ptk*/
@@ -18884,7 +18970,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             if_block6 = create_if_block11(ctx2);
             if_block6.c();
             transition_in(if_block6, 1);
-            if_block6.m(div6, t13);
+            if_block6.m(div6, t14);
           }
         } else if (if_block6) {
           group_outros();
@@ -18973,7 +19059,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment25(ctx) {
+  function create_fragment26(ctx) {
     let previous_key = (
       /*$landscape*/
       ctx[6]
@@ -19023,13 +19109,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function instance26($$self, $$props, $$invalidate) {
+  function instance27($$self, $$props, $$invalidate) {
     let ls;
     let $activePtk;
-    let $autodict;
     let $landscape;
     component_subscribe($$self, activePtk, ($$value) => $$invalidate(9, $activePtk = $$value));
-    component_subscribe($$self, autodict, ($$value) => $$invalidate(17, $autodict = $$value));
     component_subscribe($$self, landscape, ($$value) => $$invalidate(6, $landscape = $$value));
     let { tofind = "" } = $$props;
     let { address = "" } = $$props;
@@ -19040,18 +19124,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const tap_at = t.indexOf("^");
       $$invalidate(4, entries = ptk2.columns.entries.keys.findMatches(t.replace("^", "")).map((it) => [Math.abs(it[0] - tap_at - 1), it[1], it[2]]));
       entries.sort((a, b) => a[0] - b[0]);
-      if (entries.length && $autodict == "on") {
+      if (entries.length) {
         showdict = true;
-        showmainmenu = false;
-        $$invalidate(2, thetab = "dict");
-      } else if (~address.indexOf("ck")) {
-        $$invalidate(2, thetab = "textual");
       }
     };
     const textWidth = (ls2) => {
       if (ls2) {
         const w = screen.height * 0.45;
-        return "left:" + w + "pt;width:calc(75vw)";
+        const r = Math.floor(w * 100 / screen.width) + 1;
+        return "left:" + r + "vw;width:" + (100 - r) + "vw";
       }
       return "";
     };
@@ -19079,10 +19160,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         $:
           $$invalidate(3, ptk2 = usePtk($activePtk));
       }
-      if ($$self.$$.dirty & /*tofind*/
-      256) {
+      if ($$self.$$.dirty & /*thetab, tofind*/
+      260) {
         $:
-          onDict(tofind);
+          thetab == "dict" && onDict(tofind);
       }
     };
     $:
@@ -19110,13 +19191,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Taptext = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance26, create_fragment25, safe_not_equal, { tofind: 8, address: 0, closePopup: 1 });
+      init(this, options, instance27, create_fragment26, safe_not_equal, { tofind: 8, address: 0, closePopup: 1 });
     }
   };
   var taptext_default = Taptext;
 
   // src/player.svelte
-  function create_fragment26(ctx) {
+  function create_fragment27(ctx) {
     let div0;
     let t;
     let div1;
@@ -19148,7 +19229,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function instance27($$self, $$props, $$invalidate) {
+  function instance28($$self, $$props, $$invalidate) {
     let $videoid;
     let $activepb;
     let $activefolioid;
@@ -19295,13 +19376,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Player = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance27, create_fragment26, safe_not_equal, {});
+      init(this, options, instance28, create_fragment27, safe_not_equal, {});
     }
   };
   var player_default = Player;
 
   // src/newbie.svelte
-  function create_fragment27(ctx) {
+  function create_fragment28(ctx) {
     let div2;
     let div1;
     let span;
@@ -19440,7 +19521,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function instance28($$self, $$props, $$invalidate) {
+  function instance29($$self, $$props, $$invalidate) {
     let $newbie;
     component_subscribe($$self, newbie, ($$value) => $$invalidate(3, $newbie = $$value));
     let value = $newbie;
@@ -19461,13 +19542,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Newbie = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance28, create_fragment27, safe_not_equal, { closePopup: 0 });
+      init(this, options, instance29, create_fragment28, safe_not_equal, { closePopup: 0 });
     }
   };
   var newbie_default = Newbie;
 
   // src/paiji.svelte
-  function create_fragment28(ctx) {
+  function create_fragment29(ctx) {
     let div3;
     return {
       c() {
@@ -19495,7 +19576,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Paiji = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, null, create_fragment28, safe_not_equal, {});
+      init(this, options, null, create_fragment29, safe_not_equal, {});
     }
   };
   var paiji_default = Paiji;
@@ -19537,7 +19618,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   function create_if_block12(ctx) {
     let previous_key = (
       /*$activefolioid*/
-      ctx[7]
+      ctx[6]
     );
     let t0;
     let t1;
@@ -19548,17 +19629,17 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let key_block = create_key_block5(ctx);
     let if_block0 = (
       /*shownewbie*/
-      (ctx[4] || /*showdict*/
-      ctx[3]) && create_if_block_36(ctx)
+      (ctx[3] || /*showdict*/
+      ctx[2]) && create_if_block_36(ctx)
     );
     let if_block1 = (
       /*showdict*/
-      (ctx[3] || /*$landscape*/
-      ctx[0]) && create_if_block_26(ctx)
+      (ctx[2] || /*$landscape*/
+      ctx[9]) && create_if_block_26(ctx)
     );
     let if_block2 = (
       /*shownewbie*/
-      ctx[4] && create_if_block_19(ctx)
+      ctx[3] && create_if_block_19(ctx)
     );
     player2 = new player_default({});
     return {
@@ -19593,8 +19674,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, dirty) {
         if (dirty & /*$activefolioid*/
-        128 && safe_not_equal(previous_key, previous_key = /*$activefolioid*/
-        ctx2[7])) {
+        64 && safe_not_equal(previous_key, previous_key = /*$activefolioid*/
+        ctx2[6])) {
           group_outros();
           transition_out(key_block, 1, 1, noop);
           check_outros();
@@ -19607,8 +19688,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
         if (
           /*shownewbie*/
-          ctx2[4] || /*showdict*/
-          ctx2[3]
+          ctx2[3] || /*showdict*/
+          ctx2[2]
         ) {
           if (if_block0) {
             if_block0.p(ctx2, dirty);
@@ -19623,13 +19704,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
         if (
           /*showdict*/
-          ctx2[3] || /*$landscape*/
-          ctx2[0]
+          ctx2[2] || /*$landscape*/
+          ctx2[9]
         ) {
           if (if_block1) {
             if_block1.p(ctx2, dirty);
             if (dirty & /*showdict, $landscape*/
-            9) {
+            516) {
               transition_in(if_block1, 1);
             }
           } else {
@@ -19647,12 +19728,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
         if (
           /*shownewbie*/
-          ctx2[4]
+          ctx2[3]
         ) {
           if (if_block2) {
             if_block2.p(ctx2, dirty);
             if (dirty & /*shownewbie*/
-            16) {
+            8) {
               transition_in(if_block2, 1);
             }
           } else {
@@ -19735,34 +19816,45 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   function create_key_block5(ctx) {
     let t;
     let swipezipimage;
+    let updating_address;
     let current;
     let if_block = (
       /*$showpaiji*/
-      ctx[8] && !/*$playing*/
-      ctx[9] && !/*showdict*/
-      ctx[3] && !/*shownewbie*/
-      ctx[4] && create_if_block_45(ctx)
+      ctx[7] && !/*$playing*/
+      ctx[8] && !/*showdict*/
+      ctx[2] && !/*shownewbie*/
+      ctx[3] && create_if_block_45(ctx)
     );
-    swipezipimage = new swipezipimage_default({
-      props: {
-        src: (
-          /*$activefolioid*/
-          ctx[7] + ".zip"
-        ),
-        ptk: (
-          /*ptk*/
-          ctx[1]
-        ),
-        onTapText: (
-          /*onTapText*/
-          ctx[12]
-        ),
-        onMainmenu: (
-          /*onMainmenu*/
-          ctx[11]
-        )
-      }
-    });
+    function swipezipimage_address_binding(value) {
+      ctx[13](value);
+    }
+    let swipezipimage_props = {
+      src: (
+        /*$activefolioid*/
+        ctx[6] + ".zip"
+      ),
+      ptk: (
+        /*ptk*/
+        ctx[0]
+      ),
+      onTapText: (
+        /*onTapText*/
+        ctx[12]
+      ),
+      onMainmenu: (
+        /*onMainmenu*/
+        ctx[11]
+      )
+    };
+    if (
+      /*address*/
+      ctx[4] !== void 0
+    ) {
+      swipezipimage_props.address = /*address*/
+      ctx[4];
+    }
+    swipezipimage = new swipezipimage_default({ props: swipezipimage_props });
+    binding_callbacks.push(() => bind(swipezipimage, "address", swipezipimage_address_binding));
     return {
       c() {
         if (if_block)
@@ -19780,14 +19872,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         if (
           /*$showpaiji*/
-          ctx2[8] && !/*$playing*/
-          ctx2[9] && !/*showdict*/
-          ctx2[3] && !/*shownewbie*/
-          ctx2[4]
+          ctx2[7] && !/*$playing*/
+          ctx2[8] && !/*showdict*/
+          ctx2[2] && !/*shownewbie*/
+          ctx2[3]
         ) {
           if (if_block) {
             if (dirty & /*$showpaiji, $playing, showdict, shownewbie*/
-            792) {
+            396) {
               transition_in(if_block, 1);
             }
           } else {
@@ -19805,13 +19897,20 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
         const swipezipimage_changes = {};
         if (dirty & /*$activefolioid*/
-        128)
+        64)
           swipezipimage_changes.src = /*$activefolioid*/
-          ctx2[7] + ".zip";
+          ctx2[6] + ".zip";
         if (dirty & /*ptk*/
-        2)
+        1)
           swipezipimage_changes.ptk = /*ptk*/
-          ctx2[1];
+          ctx2[0];
+        if (!updating_address && dirty & /*address*/
+        16) {
+          updating_address = true;
+          swipezipimage_changes.address = /*address*/
+          ctx2[4];
+          add_flush_callback(() => updating_address = false);
+        }
         swipezipimage.$set(swipezipimage_changes);
       },
       i(local) {
@@ -19873,11 +19972,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       props: {
         address: (
           /*address*/
-          ctx[5]
+          ctx[4]
         ),
         tofind: (
           /*tofind*/
-          ctx[6]
+          ctx[5]
         ),
         closePopup: (
           /*closePopup*/
@@ -19896,13 +19995,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         const taptext_changes = {};
         if (dirty & /*address*/
-        32)
+        16)
           taptext_changes.address = /*address*/
-          ctx2[5];
+          ctx2[4];
         if (dirty & /*tofind*/
-        64)
+        32)
           taptext_changes.tofind = /*tofind*/
-          ctx2[6];
+          ctx2[5];
         taptext.$set(taptext_changes);
       },
       i(local) {
@@ -19953,7 +20052,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment29(ctx) {
+  function create_fragment30(ctx) {
     let div;
     let current_block_type_index;
     let if_block;
@@ -19963,7 +20062,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     function select_block_type(ctx2, dirty) {
       if (
         /*loaded*/
-        ctx2[2]
+        ctx2[1]
       )
         return 0;
       return 1;
@@ -20021,29 +20120,29 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   var idleinterval = 2;
-  function instance29($$self, $$props, $$invalidate) {
-    let $landscape;
+  function instance30($$self, $$props, $$invalidate) {
     let $newbie;
     let $idlecount;
     let $activefolioid;
     let $showpaiji;
     let $playing;
-    component_subscribe($$self, landscape, ($$value) => $$invalidate(0, $landscape = $$value));
-    component_subscribe($$self, newbie, ($$value) => $$invalidate(14, $newbie = $$value));
-    component_subscribe($$self, idlecount, ($$value) => $$invalidate(15, $idlecount = $$value));
-    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(7, $activefolioid = $$value));
-    component_subscribe($$self, showpaiji, ($$value) => $$invalidate(8, $showpaiji = $$value));
-    component_subscribe($$self, playing, ($$value) => $$invalidate(9, $playing = $$value));
+    let $landscape;
+    component_subscribe($$self, newbie, ($$value) => $$invalidate(15, $newbie = $$value));
+    component_subscribe($$self, idlecount, ($$value) => $$invalidate(16, $idlecount = $$value));
+    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(6, $activefolioid = $$value));
+    component_subscribe($$self, showpaiji, ($$value) => $$invalidate(7, $showpaiji = $$value));
+    component_subscribe($$self, playing, ($$value) => $$invalidate(8, $playing = $$value));
+    component_subscribe($$self, landscape, ($$value) => $$invalidate(9, $landscape = $$value));
     let ptk2;
     registerServiceWorker();
     isAndroid.set(!!navigator.userAgent.match(/Android/i));
     let loaded = false, timer;
     onDestroy(() => clearInterval(timer));
     onMount(async () => {
-      $$invalidate(1, ptk2 = await openPtk("dc"));
+      $$invalidate(0, ptk2 = await openPtk("dc"));
       setTimestampPtk(ptk2);
       await openPtk("dc_sanskrit");
-      $$invalidate(2, loaded = true);
+      $$invalidate(1, loaded = true);
       timer = setInterval(
         () => {
           showpaiji.set($idlecount >= idletime);
@@ -20060,31 +20159,27 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
     let showdict2 = false, shownewbie = $newbie == "on", address = "", tofind = "";
     const closePopup = () => {
-      $$invalidate(4, shownewbie = false);
+      $$invalidate(3, shownewbie = false);
       if (get_store_value(landscape))
         return;
-      $$invalidate(3, showdict2 = false);
+      $$invalidate(2, showdict2 = false);
     };
     const onMainmenu = () => {
-      $$invalidate(3, showdict2 = false);
+      $$invalidate(2, showdict2 = false);
     };
     const onTapText = (t, _address, ptkname) => {
-      $$invalidate(3, showdict2 = true);
-      $$invalidate(6, tofind = t);
-      $$invalidate(5, address = _address);
-      $$invalidate(1, ptk2 = usePtk(ptkname));
+      $$invalidate(2, showdict2 = true);
+      $$invalidate(5, tofind = t);
+      $$invalidate(4, address = _address);
+      $$invalidate(0, ptk2 = usePtk(ptkname));
     };
-    $$self.$$.update = () => {
-      if ($$self.$$.dirty & /*$landscape*/
-      1) {
-        $:
-          console.log($landscape, "landscape");
-      }
-    };
+    function swipezipimage_address_binding(value) {
+      address = value;
+      $$invalidate(4, address);
+    }
     $:
       loadPlayer();
     return [
-      $landscape,
       ptk2,
       loaded,
       showdict2,
@@ -20094,15 +20189,17 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $activefolioid,
       $showpaiji,
       $playing,
+      $landscape,
       closePopup,
       onMainmenu,
-      onTapText
+      onTapText,
+      swipezipimage_address_binding
     ];
   }
   var App = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance29, create_fragment29, safe_not_equal, {});
+      init(this, options, instance30, create_fragment30, safe_not_equal, {});
     }
   };
   var app_default = App;
