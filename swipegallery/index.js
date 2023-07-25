@@ -8687,7 +8687,7 @@
     function click_handler() {
       return (
         /*click_handler*/
-        ctx[22](
+        ctx[23](
           /*i*/
           ctx[51]
         )
@@ -8737,13 +8737,13 @@
     let dispose;
     const default_slot_template = (
       /*#slots*/
-      ctx[20].default
+      ctx[21].default
     );
     const default_slot = create_slot(
       default_slot_template,
       ctx,
       /*$$scope*/
-      ctx[19],
+      ctx[20],
       null
     );
     let if_block = (
@@ -8777,7 +8777,7 @@
         if (default_slot) {
           default_slot.m(div0, null);
         }
-        ctx[21](div2);
+        ctx[22](div2);
         append(div4, t0);
         append(div4, div3);
         append(div4, t1);
@@ -8805,20 +8805,20 @@
       p(ctx2, dirty) {
         if (default_slot) {
           if (default_slot.p && (!current || dirty[0] & /*$$scope*/
-          524288)) {
+          1048576)) {
             update_slot_base(
               default_slot,
               default_slot_template,
               ctx2,
               /*$$scope*/
-              ctx2[19],
+              ctx2[20],
               !current ? get_all_dirty_from_scope(
                 /*$$scope*/
-                ctx2[19]
+                ctx2[20]
               ) : get_slot_changes(
                 default_slot_template,
                 /*$$scope*/
-                ctx2[19],
+                ctx2[20],
                 dirty,
                 null
               ),
@@ -8857,7 +8857,7 @@
           detach(div4);
         if (default_slot)
           default_slot.d(detaching);
-        ctx[21](null);
+        ctx[22](null);
         if (if_block)
           if_block.d();
         mounted = false;
@@ -8883,7 +8883,7 @@
     function init2() {
       swipeItemsWrapper = swipeWrapper.querySelector(".swipeable-slot-wrapper");
       swipeElements = swipeItemsWrapper.querySelectorAll(".swipeable-item");
-      $$invalidate(17, total_elements = swipeElements.length);
+      $$invalidate(18, total_elements = swipeElements.length);
       if (allow_infinite_swipe) {
         swipeItemsWrapper.prepend(swipeElements[total_elements - 1].cloneNode(true));
         swipeItemsWrapper.append(swipeElements[0].cloneNode(true));
@@ -8950,7 +8950,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     onMount(() => {
       init2();
       if (typeof window !== "undefined") {
-        window.addEventListener("resize", update2);
       }
     });
     onDestroy(() => {
@@ -9137,24 +9136,24 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ("allow_infinite_swipe" in $$props2)
         $$invalidate(12, allow_infinite_swipe = $$props2.allow_infinite_swipe);
       if ("$$scope" in $$props2)
-        $$invalidate(19, $$scope = $$props2.$$scope);
+        $$invalidate(20, $$scope = $$props2.$$scope);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty[0] & /*total_elements*/
-      131072) {
+      262144) {
         $:
           $$invalidate(2, indicators = Array(total_elements));
       }
       if ($$self.$$.dirty[0] & /*autoplay, run_interval, defaultIndex, active_item, delay*/
-      263872) {
+      526016) {
         $: {
           if (autoplay && !run_interval) {
             played = defaultIndex || active_item;
-            $$invalidate(18, run_interval = setInterval(changeView, delay));
+            $$invalidate(19, run_interval = setInterval(changeView, delay));
           }
           if (!autoplay && run_interval) {
             clearInterval(run_interval);
-            $$invalidate(18, run_interval = false);
+            $$invalidate(19, run_interval = false);
           }
         }
       }
@@ -9173,6 +9172,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       delay,
       is_vertical,
       allow_infinite_swipe,
+      update2,
       goLast,
       goTo,
       prevItem,
@@ -9203,26 +9203,30 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           active_item: 7,
           is_vertical: 11,
           allow_infinite_swipe: 12,
-          goLast: 13,
-          goTo: 14,
-          prevItem: 15,
-          nextItem: 16
+          update: 13,
+          goLast: 14,
+          goTo: 15,
+          prevItem: 16,
+          nextItem: 17
         },
         null,
         [-1, -1]
       );
     }
-    get goLast() {
+    get update() {
       return this.$$.ctx[13];
     }
-    get goTo() {
+    get goLast() {
       return this.$$.ctx[14];
     }
-    get prevItem() {
+    get goTo() {
       return this.$$.ctx[15];
     }
-    get nextItem() {
+    get prevItem() {
       return this.$$.ctx[16];
+    }
+    get nextItem() {
+      return this.$$.ctx[17];
     }
   };
   var swipe_default = Swipe;
@@ -10739,13 +10743,19 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
     const holderWidth = (ls) => {
+      let style = "width:100vw";
       if (ls) {
         const w = screen.height * 0.45;
         const r = Math.floor(w * 100 / screen.width) + 1;
-        return "width:" + r + "vw";
-      } else {
-        return "width:100%";
+        style = "width:" + r + "vw";
       }
+      setTimeout(
+        () => {
+          swiper.update();
+        },
+        10
+      );
+      return style;
     };
     function swipe_binding($$value) {
       binding_callbacks[$$value ? "unshift" : "push"](() => {
@@ -19823,7 +19833,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ctx[7] && !/*$playing*/
       ctx[8] && !/*showdict*/
       ctx[2] && !/*shownewbie*/
-      ctx[3] && create_if_block_45(ctx)
+      ctx[3] && !landscape && create_if_block_45(ctx)
     );
     function swipezipimage_address_binding(value) {
       ctx[13](value);
@@ -19875,7 +19885,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           ctx2[7] && !/*$playing*/
           ctx2[8] && !/*showdict*/
           ctx2[2] && !/*shownewbie*/
-          ctx2[3]
+          ctx2[3] && !landscape
         ) {
           if (if_block) {
             if (dirty & /*$showpaiji, $playing, showdict, shownewbie*/
