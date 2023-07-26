@@ -5382,17 +5382,17 @@
   var makeAddress = (ptkname = "", action = "", from = 0, till = 0, lineoff = -1) => {
     return (ptkname ? ptkname + ":" : "") + action + (from ? ">" + from : "") + (till ? "<" + till : "") + (lineoff > 0 ? ":" + lineoff : "");
   };
-  var parseAddress = (address) => {
+  var parseAddress = (address2) => {
     let m0, ptkname = "", action = "", from = "", till = "", highlightline = "";
-    let m4 = address.match(PTK_ACTION_FROMTILL);
+    let m4 = address2.match(PTK_ACTION_FROMTILL);
     if (m4) {
       [m0, ptkname, action, from, till, highlightline] = m4;
     } else {
-      m4 = address.match(PTK_FROMTILL);
+      m4 = address2.match(PTK_FROMTILL);
       if (m4) {
         [m0, ptkname, from, till, highlightline] = m4;
       } else {
-        m4 = address.match(FROMTILL);
+        m4 = address2.match(FROMTILL);
         if (m4)
           [m0, from, till, highlightline] = m4;
         else
@@ -5455,10 +5455,10 @@
     }
     return out;
   }
-  function rangeOfAddress(address) {
-    let addr = address;
-    if (typeof address == "string") {
-      addr = parseAddress(address);
+  function rangeOfAddress(address2) {
+    let addr = address2;
+    if (typeof address2 == "string") {
+      addr = parseAddress(address2);
     }
     const { from, till, action, highlightline } = addr;
     const eleid = parseAction(action);
@@ -5479,10 +5479,10 @@
     const lines = this.slice(r[0], r[1]);
     return lines;
   }
-  function innertext(address) {
-    let addr = address;
-    if (typeof address == "string") {
-      addr = parseAddress(address);
+  function innertext(address2) {
+    let addr = address2;
+    if (typeof address2 == "string") {
+      addr = parseAddress(address2);
     }
     const { action } = addr;
     const defines = this.defines;
@@ -6736,8 +6736,8 @@
     const booknotebkline = bktag.linepos[at];
     const closestchunk = ptk2.findClosestTag(chunktag, "id", ck.id, booknotebkline);
     const chunk = chunktag.fields.id.values[closestchunk];
-    const address = ptk2.name + ":" + footbk + ".ck" + (parseInt(chunk) ? chunk : "#" + chunk) + ".fn" + id;
-    return address;
+    const address2 = ptk2.name + ":" + footbk + ".ck" + (parseInt(chunk) ? chunk : "#" + chunk) + ".fn" + id;
+    return address2;
   }
   function footNoteByAddress(id, line) {
     const ptk2 = this;
@@ -6757,8 +6757,8 @@
     const footnoteat = ptk2.findClosestTag(footnotetag, "id", parseInt(id), chunktag.linepos[closestchunk]);
     const footnoteline = footnotetag.linepos[footnoteat];
     const highlightline = footnoteline - chunktag.linepos[closestchunk];
-    const address = footbk + "ck" + chunk + (highlightline ? ":" + highlightline : "");
-    return address;
+    const address2 = footbk + "ck" + chunk + (highlightline ? ":" + highlightline : "");
+    return address2;
   }
 
   // ../ptk/compiler/template.ts
@@ -6836,10 +6836,10 @@
         const tagvalues = this.defines[srctag].fields["@"].values;
         const arr = idxarr[at2];
         for (let j2 = 0; j2 < arr?.length; j2++) {
-          const address = tagvalues[arr[j2]];
+          const address2 = tagvalues[arr[j2]];
           const line2 = srclinepos[arr[j2]];
           const ck = sptk.nearestChunk(line2 + 1);
-          out.push({ text: address, line: line2, ck, basket: sptkname });
+          out.push({ text: address2, line: line2, ck, basket: sptkname });
         }
       }
     }
@@ -7264,8 +7264,8 @@
       }
       return -1;
     }
-    async fetchAddress(address) {
-      const range = this.rangeOfAddress.call(this, address);
+    async fetchAddress(address2) {
+      const range = this.rangeOfAddress.call(this, address2);
       await this.loadLines([range]);
       const out = [];
       for (let i = range[0]; i < range[1]; i++) {
@@ -7387,46 +7387,19 @@
 
   // ../ptk/basket/folio.ts
   var VALIDPUNCS = "\u300C\u300D\u300E\u300F\u3002\uFF0C\uFF1B\uFF1A\u3001\uFF01\uFF1F";
+  var tidyFolioText = (text2) => {
+    return text2.replace(/【([^】]*)】/g, (m4, m1) => "\u3010" + "-".repeat(m1.length) + "\u3011");
+  };
   var toFolioText = (lines) => {
     if (!lines || !lines.length)
       return [];
     let firstline = lines[0];
-    let lastline = lines[lines.length - 1];
     let m4 = firstline.match(/(\^pb\d+)/);
-    if (m4)
-      lines[0] = firstline.slice(m4?.index + m4[1].length);
-    else {
+    if (!m4) {
       console.log("missing pb markup at first line", firstline);
     }
-    m4 = lastline.match(/(\^pb\d+)/);
-    let till = m4?.index || 0;
-    let remain = "";
-    if (m4) {
-      till = m4.index;
-      remain = lines[lines.length - 1].slice(m4.index + m4[1].length);
-    }
-    lines[lines.length - 1] = lastline.slice(0, till);
-    const text2 = lines.join("	").replace(/【([^】]+?)】/g, "\u3010\u3011").split("^lb");
-    if (remain)
-      text2.push(remain);
+    const text2 = tidyFolioText(lines.join("	")).replace(/(..)\^pb/g, "$1^lb^pb").split("^lb");
     return text2;
-  };
-  var fetchFolioText = async (ptk2, bkfolio, pb) => {
-    let bk = "", folio = bkfolio;
-    if (bkfolio.match(/\d$/)) {
-      bk = bkfolio.replace(/\d+$/g, "");
-    } else {
-      folio = "";
-      bk = bkfolio;
-    }
-    const address = (bk ? "bk#" + bk : "") + (folio ? "." : "") + (folio ? "folio#" + folio : "") + (pb ? ".pb#" + pb : "");
-    const [from, to] = ptk2.rangeOfAddress(address);
-    if (from == to)
-      return ["", from, to];
-    await ptk2.loadLines([from, to + 1]);
-    const lines = ptk2.slice(from, to + 1);
-    const text2 = toFolioText(lines);
-    return [text2, from, to];
   };
   var concreateLength = (linetext) => {
     let [text2, tags] = parseOfftext(linetext);
@@ -7498,73 +7471,126 @@
     }
     return [textbefore + s, pos + tagstart];
   };
-  var chunkOfFolio = (ptk2, _bk, _pb) => {
-    const pb = ptk2.defines.pb;
-    const bk = ptk2.defines.bk;
-    const ck = ptk2.defines.ck;
-    if (!pb)
-      return [null, -1];
-    if (typeof _pb == "number")
-      _pb = _pb.toString();
-    const [start, end] = ptk2.rangeOfAddress("bk#" + _bk);
-    const from = bsearchNumber(pb.linepos, start);
-    const pbat = pb.fields.id.values.indexOf(_pb, from);
-    const line = pb.linepos[pbat];
-    const at = bsearchNumber(ck.linepos, line + 1);
-    return [ck.fields.id.values[at], at];
-  };
-  var folio2ChunkLine = async (ptk2, foliotext, from, cx, pos) => {
-    const out = [];
-    if (!foliotext.length)
-      return "";
-    for (let i = 0; i <= cx; i++) {
-      foliotext[i] = foliotext[i] || "";
-      if (i == cx) {
-        out.push(foliotext[i].slice(0, pos));
+  var FolioText = class {
+    constructor(ptk2) {
+      this.ptk = ptk2;
+      this.offtext = "";
+      this.pbs = [];
+      this.pbpos = [];
+      this.chunks = [];
+      this.chunkpos = [];
+    }
+    toFolioPos(ck = "1", lineoff = 0, choff = 0) {
+      const [ckstart, ckend] = this.chunkRange(ck);
+      const str = this.offtext.slice(ckstart, ckend);
+      let p = 0;
+      while (lineoff > 0 && p < str.length) {
+        if (str.charAt(p) == "\n")
+          lineoff--;
+        p++;
+      }
+      const start = ckstart + p;
+      const pbat = bsearchNumber(this.pbpos, start) - 1;
+      const [pbstart, pbend] = this.pbRange(this.pbs[pbat]);
+      const end = Math.min(start, pbend);
+      const pbstr = this.offtext.slice(pbstart, end);
+      const pblines = pbstr.split("^lb");
+      const line = pblines.length;
+      const ch = concreateLength(pblines[pblines.length - 1]);
+      return [this.pbs[pbat], line - 1, ch];
+    }
+    folioPageText(pb) {
+      const [start, end] = this.pbRange(pb);
+      return toFolioText(this.offtext.slice(start, end).split("\n"));
+    }
+    fromFolioPos(foliopos, line, ch) {
+      let pbid = foliopos;
+      if (typeof foliopos == "object") {
+        [pbid, line, ch] = foliopos;
+      }
+      const [pbstart, pbend] = this.pbRange(pbid);
+      const pbstr = tidyFolioText(this.offtext.slice(pbstart, pbend));
+      const pblines = pbstr.split("^lb");
+      let start = pbstart;
+      for (let i = 0; i < line; i++) {
+        start += pblines[i].length + 3;
+      }
+      start += getConcreatePos(pblines[line], ch)[1];
+      const ckat = bsearchNumber(this.chunkpos, start) - 1;
+      const ckid = this.chunks[ckat];
+      const [ckstart, ckend] = this.chunkRange(ckid);
+      const str = this.offtext.slice(ckstart, ckend);
+      const cklines = str.split("\n");
+      let p = ckstart;
+      let ckline = 0;
+      for (let i = 0; i < cklines.length; i++) {
+        if (p + cklines[i].length > start)
+          break;
+        ckline++;
+        p += cklines[i].length;
+      }
+      return [ckid, ckline];
+    }
+    chunkRange(ck) {
+      const at = this.chunks.indexOf(ck);
+      if (at == -1)
+        return [0, 0];
+      return [this.chunkpos[at], this.chunkpos[at + 1]];
+    }
+    pbRange(pb) {
+      if (typeof pb == "number")
+        pb = pb.toString();
+      const at = this.pbs.indexOf(pb);
+      if (at == -1)
+        return [0, 0];
+      return [this.pbpos[at], this.pbpos[at + 1]];
+    }
+    async load(bkfolio) {
+      const ptk2 = this.ptk;
+      let bk = "", folio = bkfolio;
+      if (bkfolio.match(/\d$/)) {
+        bk = bkfolio.replace(/\d+$/g, "");
       } else {
-        out.push(foliotext[i]);
+        folio = "";
+        bk = bkfolio;
       }
-    }
-    let startline = from;
-    let s = out.join("");
-    out.length = 0;
-    let at = s.lastIndexOf("^ck");
-    if (~at)
-      s = s.slice(at);
-    else {
-      while (startline > 0) {
-        startline--;
-        await ptk2.loadLines([startline]);
-        const line = ptk2.getLine(startline);
-        out.unshift(line);
-        if (out.length > 100)
-          break;
-        if (~line.indexOf("^ck"))
-          break;
+      const address2 = (bk ? "bk#" + bk : "") + (folio ? "." : "") + (folio ? "folio#" + folio : "");
+      const [from, to] = ptk2.rangeOfAddress(address2);
+      if (from == to)
+        return ["", from, to];
+      await ptk2.loadLines([from, to]);
+      this.offtext = ptk2.slice(from, to).join("\n");
+      this.from = from;
+      this.to = to;
+      let p = 0;
+      while (p < this.offtext.length) {
+        const ch3 = this.offtext.slice(p, p + 3);
+        if (ch3 == "^pb") {
+          this.pbpos.push(p);
+          p += 3;
+          const m4 = this.offtext.slice(p).match(/([\d]+)/);
+          this.pbs.push(m4[1]);
+          p += m4[1].length;
+        } else if (ch3 == "^ck") {
+          this.chunkpos.push(p);
+          p += 3;
+          if (this.offtext.charAt(p) == "#")
+            p++;
+          const m4 = this.offtext.slice(p).match(/([a-z\d]+)/);
+          this.chunks.push(m4[1]);
+          p += m4[1].length;
+        }
+        p++;
       }
-      if (!out.length)
-        out.push("");
-      const at2 = out[0].indexOf("^ck");
-      out[0] = out[0].slice(at2);
-      s = out.join("	") + "	" + s;
-    }
-    const lines = s.split("	");
-    const m4 = lines[0].match(/\^ck#?([a-z\d\-_]+)/);
-    if (!m4)
-      return "";
-    const ck = parseInt(m4[1]);
-    const lineoff = lines.length - 1;
-    if (ck) {
-      return "ck#" + ck + (lineoff ? ":" + lineoff : "");
-    } else {
-      return "";
+      this.pbpos.push(this.offtext.length - 1);
+      this.chunkpos.push(this.offtext.length - 1);
     }
   };
-  var extractPuncPos = (foliotext, foliolines = 5, validpuncs = VALIDPUNCS) => {
+  var extractPuncPos = (foliopagetext, foliolines = 5, validpuncs = VALIDPUNCS) => {
     const puncs = [];
-    for (let i = 0; i < foliotext.length; i++) {
+    for (let i = 0; i < foliopagetext.length; i++) {
       let ch = 0, ntag = 0, textsum = 0;
-      let [text2, tags] = parseOfftext(foliotext[i]);
+      let [text2, tags] = parseOfftext(foliopagetext[i]);
       const isgatha = !!tags.filter((it) => it.name == "gatha").length;
       if (i >= foliolines)
         break;
@@ -7594,33 +7620,6 @@
       }
     }
     return puncs;
-  };
-  var folioPosFromLine = async (ptk2, pb, line, bookid, fl, fc) => {
-    const [text2, start] = await fetchFolioText(ptk2, bookid, pb);
-    if (!text2)
-      return;
-    const str = text2.join("\n");
-    let linediff = line - start;
-    let foliolinecount = 0;
-    let tappos = (parseInt(pb) - 1) * fl * fc;
-    let next = 0, n = 0, linestart = 0;
-    while (n < str.length && linediff > 0) {
-      const ch = str.charAt(n);
-      if (ch == "\n") {
-        linestart = n + 1;
-        foliolinecount++;
-      } else if (ch == "	") {
-        linediff--;
-        next = n + 1;
-      }
-      n++;
-    }
-    tappos += foliolinecount * fc;
-    let str2 = str.slice(linestart, next);
-    ;
-    const [leading] = parseOfftext(str2);
-    tappos += concreateLength(leading);
-    return tappos;
   };
 
   // ../ptk/align/parallels.ts
@@ -7827,7 +7826,7 @@
   var activePtk = writable("dc");
   var loadingbook = writable(false);
   var autodict = writable(settings.autodict);
-  var activepb = writable(0);
+  var activepb = writable("1");
   var activefolioid = writable(settings.activefolioid);
   var maxfolio = writable(0);
   var favorites = writable(settings.favorites);
@@ -7835,6 +7834,7 @@
   var showpunc = writable(settings.showpunc);
   var landscape = writable(false);
   var isAndroid = writable(false);
+  var foliotext = writable({});
   var mediaurls = writable([silence]);
   var ytplayer = writable(null);
   var qqplayer = writable(null);
@@ -7866,7 +7866,7 @@
   var playing = writable(false);
   var continueplay = writable(false);
   var playnextjuan = writable(settings.playnextjuan);
-  var tapmark = writable(0);
+  var tapmark = writable(["1", 0, 0]);
   var remainrollback = writable(-1);
   var newbie = writable(settings.newbie);
   var idlecount = writable(0);
@@ -7939,7 +7939,7 @@
     }
     videoid.set(vid || "");
     if (restart)
-      activepb.set(0);
+      activepb.set("1");
   };
   var favortypes = ["\u2661", "\u{1F90D}", "\u2764\uFE0F", "\u{1F49A}", "\u{1F499}", "\u{1F49C}", "\u{1F5A4}"];
 
@@ -7950,7 +7950,7 @@
     const ckline = ck.linepos[at];
     const pbtag = ptk2.nearestTag(ckline + 1, "pb") - 1;
     const pbid = pb.fields.id.values[pbtag];
-    await goPb(ptk2, pbid, ck.fields.id.values[at]);
+    goPb(pbid, ck.fields.id.values[at]);
   };
   var loadFolio = (folioid, func) => {
     let timer = 0;
@@ -7959,32 +7959,28 @@
     else {
       stopVideo();
       videoid.set("");
-      activepb.set(0);
+      activepb.set("1");
       loadingbook.set(true);
       activefolioid.set(folioid);
-      tapmark.set(0);
+      tapmark.set(["1", 0, 0]);
       timer = setInterval(() => {
         if (!get_store_value(loadingbook)) {
           clearInterval(timer);
           setTimeout(() => {
             func && func(folioid);
-          }, 300);
+          }, 200);
         }
-      }, 500);
+      }, 300);
     }
   };
-  var goPb = async (ptk2, pbid, ck) => {
-    const newpb = parseInt(pbid) - 1;
-    activepb.set(newpb);
+  var goPb = (pbid, ck) => {
+    activepb.set(pbid);
     if (ck) {
-      const [foliotext] = await fetchFolioText(ptk2, get_store_value(activefolioid), newpb + 1);
-      const fc = get_store_value(folioChars);
-      const fl = folioLines();
-      for (let i = 0; i < foliotext.length; i++) {
-        const at2 = foliotext[i].indexOf("^ck" + ck);
+      const foliopage = get_store_value(foliotext).folioPageText(pbid);
+      for (let i = 0; i < foliopage.length; i++) {
+        const at2 = foliopage[i].indexOf("^ck" + ck);
         if (~at2) {
-          const r = newpb * fl * fc + i * fc + concreateLength(foliotext[i].slice(0, at2));
-          tapmark.set(r);
+          tapmark.set([pbid, i, 0]);
           break;
         }
       }
@@ -8005,6 +8001,11 @@
       }
     }
     return juans;
+  };
+  var makeAddressFromFolioPos = (pbid, cx = 0, cy = 0) => {
+    const [ck, lineoff] = get_store_value(foliotext).fromFolioPos(pbid, cx, cy);
+    const address2 = "folio#" + get_store_value(activefolioid) + ".ck#" + ck + (lineoff ? ":" + lineoff : "");
+    return address2;
   };
 
   // src/transcriptlayer.svelte
@@ -8208,7 +8209,7 @@
     component_subscribe($$self, playing, ($$value) => $$invalidate(2, $playing = $$value));
     component_subscribe($$self, activepb, ($$value) => $$invalidate(3, $activepb = $$value));
     let { frame = {}, totalpages } = $$props;
-    let { foliotext = [] } = $$props;
+    let { foliotext: foliotext2 = [] } = $$props;
     let { ptk: ptk2 } = $$props;
     const strips = new Array(folioLines());
     const timers = [];
@@ -8313,7 +8314,7 @@
         const ele = document.getElementById("strip" + this.idx);
         if (!ele)
           return;
-        const chcount = concreateLength(foliotext[i] || "");
+        const chcount = concreateLength(foliotext2[i] || "");
         ele.style.height = Math.floor(chcount * (frame.height / fc)) + "px";
       }.bind({ idx: i, folio: get_store_value(activepb) });
       timers.push(setTimeout(fire, delay));
@@ -8334,7 +8335,7 @@
       if ("totalpages" in $$props2)
         $$invalidate(6, totalpages = $$props2.totalpages);
       if ("foliotext" in $$props2)
-        $$invalidate(7, foliotext = $$props2.foliotext);
+        $$invalidate(7, foliotext2 = $$props2.foliotext);
       if ("ptk" in $$props2)
         $$invalidate(8, ptk2 = $$props2.ptk);
     };
@@ -8346,7 +8347,7 @@
       strips,
       stripstyle,
       totalpages,
-      foliotext,
+      foliotext2,
       ptk2
     ];
   }
@@ -8575,19 +8576,14 @@
     };
   }
   function instance4($$self, $$props, $$invalidate) {
-    let { mark = 0, frame, pb = 0 } = $$props;
+    let { mark = [], frame, pb = "" } = $$props;
     let { folioChars: folioChars2 = 17, folioLines: folioLines2 = 5 } = $$props;
     const unitw = frame.width / folioLines2, unith = frame.height / folioChars2;
     const styleString = () => {
-      if (!mark)
-        return;
-      const charperpage = folioChars2 * folioLines2;
-      const _pb = Math.floor(mark / charperpage);
-      if (_pb !== pb)
+      const [pbmark, line, ch] = mark;
+      if (pb !== pbmark)
         return "";
-      const line = Math.floor((mark - pb * charperpage) / folioChars2);
-      const ch = 1 + (mark - pb * charperpage - line * folioChars2);
-      return "left:" + Math.floor(frame.left + unitw * (folioLines2 - line - 1)) + "px; top:" + +Math.floor(frame.top + unith * (ch - 1)) + "px;width:" + unitw + "px;height:" + unith + "px;background:var(--pinmark);border-radius:5px";
+      return "left:" + Math.floor(frame.left + unitw * (folioLines2 - line - 1)) + "px; top:" + +Math.floor(frame.top + unith * ch) + "px;width:" + unitw + "px;height:" + unith + "px;background:var(--pinmark);border-radius:5px";
     };
     $$self.$$set = ($$props2) => {
       if ("mark" in $$props2)
@@ -9480,8 +9476,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   // src/swipezipimage.svelte
   function get_each_context4(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[47] = list[i];
-    child_ctx[49] = i;
+    child_ctx[46] = list[i];
+    child_ctx[48] = i;
     return child_ctx;
   }
   function create_else_block(ctx) {
@@ -9583,7 +9579,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           ) }
         ]) : {};
         if (dirty[1] & /*$$scope*/
-        524288) {
+        262144) {
           swipe_changes.$$scope = { dirty, ctx: ctx2 };
         }
         swipe.$set(swipe_changes);
@@ -9628,7 +9624,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ctx[23][
           /*images*/
           ctx[23].length - /*idx*/
-          ctx[49] - 1
+          ctx[48] - 1
         ]))
           attr(img, "src", img_src_value);
       },
@@ -9662,7 +9658,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         const swipeitem_changes = {};
         if (dirty[1] & /*$$scope*/
-        524288) {
+        262144) {
           swipeitem_changes.$$scope = { dirty, ctx: ctx2 };
         }
         swipeitem.$set(swipeitem_changes);
@@ -9945,7 +9941,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ),
         folioChars: (
           /*$folioChars*/
-          ctx[12]
+          ctx[13]
         ),
         folioLines: folioLines(),
         frame: (
@@ -9973,9 +9969,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           tapmark_1_changes.pb = /*$activepb*/
           ctx2[2];
         if (dirty[0] & /*$folioChars*/
-        4096)
+        8192)
           tapmark_1_changes.folioChars = /*$folioChars*/
-          ctx2[12];
+          ctx2[13];
         tapmark_1.$set(tapmark_1_changes);
       },
       i(local) {
@@ -9998,7 +9994,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current;
     let if_block = !/*hidepunc*/
     ctx[6] && !/*$showpaiji*/
-    ctx[13] && create_if_block_2(ctx);
+    ctx[12] && create_if_block_2(ctx);
     return {
       c() {
         if (if_block)
@@ -10014,11 +10010,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         if (!/*hidepunc*/
         ctx2[6] && !/*$showpaiji*/
-        ctx2[13]) {
+        ctx2[12]) {
           if (if_block) {
             if_block.p(ctx2, dirty);
             if (dirty[0] & /*hidepunc, $showpaiji*/
-            8256) {
+            4160) {
               transition_in(if_block, 1);
             }
           } else {
@@ -10080,8 +10076,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           /*ptk*/
           ctx[22]
         ),
-        foliotext: (
-          /*foliotext*/
+        foliopage: (
+          /*foliopage*/
           ctx[3]
         )
       }
@@ -10133,9 +10129,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         128)
           transcriptlayer_changes.swiper = /*swiper*/
           ctx2[7];
-        if (dirty[0] & /*foliotext*/
+        if (dirty[0] & /*foliopage*/
         8)
-          transcriptlayer_changes.foliotext = /*foliotext*/
+          transcriptlayer_changes.foliopage = /*foliopage*/
           ctx2[3];
         transcriptlayer.$set(transcriptlayer_changes);
       },
@@ -10171,7 +10167,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ),
         folioChars: (
           /*$folioChars*/
-          ctx[12]
+          ctx[13]
         ),
         folioLines: folioLines(),
         puncs: (
@@ -10191,9 +10187,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         const punclayer_changes = {};
         if (dirty[0] & /*$folioChars*/
-        4096)
+        8192)
           punclayer_changes.folioChars = /*$folioChars*/
-          ctx2[12];
+          ctx2[13];
         if (dirty[0] & /*puncs*/
         16)
           punclayer_changes.puncs = /*puncs*/
@@ -10328,7 +10324,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       )
         return create_if_block_3;
       if (!/*$showpaiji*/
-      ctx2[13])
+      ctx2[12])
         return create_if_block_4;
     }
     let current_block_type = select_block_type_1(ctx, [-1, -1]);
@@ -10516,8 +10512,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let $prefervideo;
     let $favorites;
     let $activePtk;
-    let $folioChars;
     let $showpaiji;
+    let $folioChars;
     let $landscape;
     let $ytplayer;
     let $videoid;
@@ -10528,11 +10524,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let $showpunc;
     component_subscribe($$self, activefolioid, ($$value) => $$invalidate(1, $activefolioid = $$value));
     component_subscribe($$self, activepb, ($$value) => $$invalidate(2, $activepb = $$value));
-    component_subscribe($$self, prefervideo, ($$value) => $$invalidate(39, $prefervideo = $$value));
+    component_subscribe($$self, prefervideo, ($$value) => $$invalidate(38, $prefervideo = $$value));
     component_subscribe($$self, favorites, ($$value) => $$invalidate(11, $favorites = $$value));
-    component_subscribe($$self, activePtk, ($$value) => $$invalidate(40, $activePtk = $$value));
-    component_subscribe($$self, folioChars, ($$value) => $$invalidate(12, $folioChars = $$value));
-    component_subscribe($$self, showpaiji, ($$value) => $$invalidate(13, $showpaiji = $$value));
+    component_subscribe($$self, activePtk, ($$value) => $$invalidate(39, $activePtk = $$value));
+    component_subscribe($$self, showpaiji, ($$value) => $$invalidate(12, $showpaiji = $$value));
+    component_subscribe($$self, folioChars, ($$value) => $$invalidate(13, $folioChars = $$value));
     component_subscribe($$self, landscape, ($$value) => $$invalidate(14, $landscape = $$value));
     component_subscribe($$self, ytplayer, ($$value) => $$invalidate(15, $ytplayer = $$value));
     component_subscribe($$self, videoid, ($$value) => $$invalidate(16, $videoid = $$value));
@@ -10543,7 +10539,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     component_subscribe($$self, showpunc, ($$value) => $$invalidate(21, $showpunc = $$value));
     let { src } = $$props;
     let ptk2 = usePtk($activePtk);
-    let foliotext = "", foliofrom = 0, puncs = [], ready, images = [], hidepunc = false;
+    let foliopage = [], puncs = [], ready, images = [], hidepunc = false;
     let { totalpages = 0 } = $$props;
     let { onTapText = function() {
     } } = $$props;
@@ -10583,6 +10579,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if (document.location.host.startsWith("yonglezang.github.io")) {
         host = "https://dharmacloud.github.io/swipegallery/folio/";
       }
+      const ftext = new FolioText(ptk2);
+      await ftext.load($activefolioid);
+      foliotext.set(ftext);
       const res = await fetch(host + src);
       const buf = await res.arrayBuffer();
       const zip = new ZipStore(buf);
@@ -10598,7 +10597,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           loadingbook.set(false);
           $$invalidate(5, ready = true);
         },
-        300
+        200
       );
     };
     const swipeStart = (obj) => {
@@ -10607,20 +10606,20 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const swipeChanged = (obj) => {
       const { active_item } = obj.detail;
       $$invalidate(8, defaultIndex = active_item);
-      activepb.set(totalpages - defaultIndex - 1);
+      activepb.set((totalpages - defaultIndex).toString());
       updateFolioText();
       useractive();
       confirmfavorite();
     };
-    const updateFolioText = async () => {
+    const updateFolioText = () => {
       $$invalidate(6, hidepunc = true);
       const fl = folioLines();
-      $$invalidate(3, [foliotext, foliofrom] = await fetchFolioText(ptk2, $activefolioid, 1 + Math.floor($activepb)), foliotext);
-      $$invalidate(3, foliotext = foliotext.join("\n").replace(/【[^】]+】/, "").split("\n"));
+      $$invalidate(3, foliopage = get_store_value(foliotext).folioPageText($activepb));
+      $$invalidate(3, foliopage = foliopage.join("\n").replace(/【[^】]+】/, "").split("\n"));
       setTimeout(
         () => {
           $$invalidate(6, hidepunc = false);
-          $$invalidate(4, puncs = extractPuncPos(foliotext, fl));
+          $$invalidate(4, puncs = extractPuncPos(foliopage, fl));
         },
         200
       );
@@ -10658,12 +10657,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $$invalidate(6, hidepunc = false);
       const { x, y } = e.detail;
       const [cx, cy] = getCharXY(x, y);
-      const tappos = folioLines() * $folioChars * $activepb + cx * $folioChars + cy;
-      tapmark.set(tappos);
-      let [t, pos] = getConcreatePos(foliotext[cx], cy, foliotext[cx + 1]);
-      const ck = await folio2ChunkLine(ptk2, foliotext, foliofrom, cx, pos);
-      ;
-      const address = "folio#" + $activefolioid + (ck ? "." + ck : "");
+      tapmark.set([$activepb, cx, cy]);
+      let [t] = getConcreatePos(foliopage[cx], cy, foliotext[cx + 1]);
+      address = makeAddressFromFolioPos($activepb, cx, cy);
       t = t.replace(/([。！？：、．；，「『（ ])/g, "\u3000");
       while (t.charAt(0) == "\u3000")
         t = t.slice(1);
@@ -10673,7 +10669,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const gotoPb = async (pb) => {
       if (!totalpages || !swiper)
         return;
-      const go = totalpages - pb - 1;
+      const go = totalpages - parseInt(pb);
       if (go !== defaultIndex) {
         swiper.goTo(go);
       }
@@ -10792,7 +10788,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       totalpages,
       $activefolioid,
       $activepb,
-      foliotext,
+      foliopage,
       puncs,
       ready,
       hidepunc,
@@ -10801,8 +10797,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       favoritetimer,
       audiolist,
       $favorites,
-      $folioChars,
       $showpaiji,
+      $folioChars,
       $landscape,
       $ytplayer,
       $videoid,
@@ -11517,15 +11513,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   // src/favoritebuttons.svelte
   function get_each_context6(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[7] = list[i][0];
-    child_ctx[8] = list[i][1];
+    child_ctx[8] = list[i][0];
+    child_ctx[9] = list[i][1];
     return child_ctx;
   }
   function create_each_block6(ctx) {
     let span;
     let t_value = favortypes[
       /*favor*/
-      ctx[8]
+      ctx[9]
     ] + "";
     let t;
     let mounted;
@@ -11533,9 +11529,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     function click_handler() {
       return (
         /*click_handler*/
-        ctx[4](
+        ctx[5](
           /*pb*/
-          ctx[7]
+          ctx[8]
         )
       );
     }
@@ -11621,9 +11617,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   }
   function instance9($$self, $$props, $$invalidate) {
     let $favorites;
-    component_subscribe($$self, favorites, ($$value) => $$invalidate(5, $favorites = $$value));
+    component_subscribe($$self, favorites, ($$value) => $$invalidate(6, $favorites = $$value));
     let { folioid } = $$props;
     let { closePopup } = $$props;
+    let { ptk: ptk2 } = $$props;
     let favors = [];
     const _favorites = $favorites[folioid];
     for (let i in _favorites) {
@@ -11642,13 +11639,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         $$invalidate(2, folioid = $$props2.folioid);
       if ("closePopup" in $$props2)
         $$invalidate(3, closePopup = $$props2.closePopup);
+      if ("ptk" in $$props2)
+        $$invalidate(4, ptk2 = $$props2.ptk);
     };
-    return [favors, gofavor, folioid, closePopup, click_handler];
+    return [favors, gofavor, folioid, closePopup, ptk2, click_handler];
   }
   var Favoritebuttons = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance9, create_fragment8, safe_not_equal, { folioid: 2, closePopup: 3 });
+      init(this, options, instance9, create_fragment8, safe_not_equal, { folioid: 2, closePopup: 3, ptk: 4 });
     }
   };
   var favoritebuttons_default = Favoritebuttons;
@@ -11670,7 +11669,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let span;
     let t0_value = (
       /*getFolioName*/
-      ctx[4](
+      ctx[5](
         /*par*/
         ctx[15]
       ) + ""
@@ -11696,9 +11695,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           /*par*/
           ctx[15]
         ),
+        ptk: (
+          /*ptk*/
+          ctx[0]
+        ),
         closePopup: (
           /*closePopup*/
-          ctx[0]
+          ctx[1]
         )
       }
     });
@@ -11713,8 +11716,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           span,
           "selecteditem",
           /*$activefolioid*/
-          ctx[1] == /*getFolioId*/
-          ctx[5](
+          ctx[2] == /*getFolioId*/
+          ctx[6](
             /*par*/
             ctx[15]
           )
@@ -11734,23 +11737,27 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(new_ctx, dirty) {
         ctx = new_ctx;
         if (!current || dirty & /*$activefolioid, getFolioId, folios*/
-        38) {
+        76) {
           toggle_class(
             span,
             "selecteditem",
             /*$activefolioid*/
-            ctx[1] == /*getFolioId*/
-            ctx[5](
+            ctx[2] == /*getFolioId*/
+            ctx[6](
               /*par*/
               ctx[15]
             )
           );
         }
         const favoritebuttons_changes = {};
-        if (dirty & /*closePopup*/
+        if (dirty & /*ptk*/
         1)
-          favoritebuttons_changes.closePopup = /*closePopup*/
+          favoritebuttons_changes.ptk = /*ptk*/
           ctx[0];
+        if (dirty & /*closePopup*/
+        2)
+          favoritebuttons_changes.closePopup = /*closePopup*/
+          ctx[1];
         favoritebuttons.$set(favoritebuttons_changes);
       },
       i(local) {
@@ -11779,7 +11786,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let span;
     let t0_value = (
       /*getFolioName*/
-      ctx[4](
+      ctx[5](
         /*nfolio*/
         ctx[10]
       ) + ""
@@ -11803,13 +11810,17 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     }
     favoritebuttons = new favoritebuttons_default({
       props: {
+        ptk: (
+          /*ptk*/
+          ctx[0]
+        ),
         folioid: (
           /*folioid*/
           ctx[11]
         ),
         closePopup: (
           /*closePopup*/
-          ctx[0]
+          ctx[1]
         )
       }
     });
@@ -11840,7 +11851,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           span,
           "selecteditem",
           /*$activefolioid*/
-          ctx[1] == /*folioid*/
+          ctx[2] == /*folioid*/
           ctx[11]
         );
         attr(div, "class", "book");
@@ -11867,23 +11878,27 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(new_ctx, dirty) {
         ctx = new_ctx;
         if (!current || dirty & /*$activefolioid, folios*/
-        6) {
+        12) {
           toggle_class(
             span,
             "selecteditem",
             /*$activefolioid*/
-            ctx[1] == /*folioid*/
+            ctx[2] == /*folioid*/
             ctx[11]
           );
         }
         const favoritebuttons_changes = {};
-        if (dirty & /*closePopup*/
+        if (dirty & /*ptk*/
         1)
-          favoritebuttons_changes.closePopup = /*closePopup*/
+          favoritebuttons_changes.ptk = /*ptk*/
           ctx[0];
+        if (dirty & /*closePopup*/
+        2)
+          favoritebuttons_changes.closePopup = /*closePopup*/
+          ctx[1];
         favoritebuttons.$set(favoritebuttons_changes);
-        if (dirty & /*folios, closePopup, $activefolioid, getFolioId, selectfolio, getFolioName*/
-        63) {
+        if (dirty & /*folios, ptk, closePopup, $activefolioid, getFolioId, selectfolio, getFolioName*/
+        127) {
           each_value_1 = /*pars*/
           ctx[12];
           let i;
@@ -11938,7 +11953,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current;
     let each_value = (
       /*folios*/
-      ctx[2]
+      ctx[3]
     );
     let each_blocks = [];
     for (let i = 0; i < each_value.length; i += 1) {
@@ -11964,10 +11979,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         current = true;
       },
       p(ctx2, [dirty]) {
-        if (dirty & /*folios, closePopup, $activefolioid, getFolioId, selectfolio, getFolioName*/
-        63) {
+        if (dirty & /*folios, ptk, closePopup, $activefolioid, getFolioId, selectfolio, getFolioName*/
+        127) {
           each_value = /*folios*/
-          ctx2[2];
+          ctx2[3];
           let i;
           for (i = 0; i < each_value.length; i += 1) {
             const child_ctx = get_each_context7(ctx2, each_value, i);
@@ -12012,7 +12027,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   }
   function instance10($$self, $$props, $$invalidate) {
     let $activefolioid;
-    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(1, $activefolioid = $$value));
+    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(2, $activefolioid = $$value));
     let { ptk: ptk2 } = $$props;
     let { closePopup = function() {
     } } = $$props;
@@ -12048,18 +12063,18 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const click_handler_1 = (par) => selectfolio(par);
     $$self.$$set = ($$props2) => {
       if ("ptk" in $$props2)
-        $$invalidate(6, ptk2 = $$props2.ptk);
+        $$invalidate(0, ptk2 = $$props2.ptk);
       if ("closePopup" in $$props2)
-        $$invalidate(0, closePopup = $$props2.closePopup);
+        $$invalidate(1, closePopup = $$props2.closePopup);
     };
     return [
+      ptk2,
       closePopup,
       $activefolioid,
       folios,
       selectfolio,
       getFolioName,
       getFolioId,
-      ptk2,
       click_handler,
       click_handler_1
     ];
@@ -12067,7 +12082,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Foliolist = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance10, create_fragment9, safe_not_equal, { ptk: 6, closePopup: 0 });
+      init(this, options, instance10, create_fragment9, safe_not_equal, { ptk: 0, closePopup: 1 });
     }
   };
   var foliolist_default = Foliolist;
@@ -14713,7 +14728,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         div2 = element("div");
-        t0 = text("\u7248\u672C\uFF1A2023.7.24\n\u5230LINE\u641C\u5C0BID @dharmacloud\uFF0C\u6216\u52A0\u5165");
+        t0 = text("\u7248\u672C\uFF1A2023.7.26\n\u5230LINE\u641C\u5C0BID @dharmacloud\uFF0C\u6216\u52A0\u5165");
         a0 = element("a");
         a0.textContent = "\u5B98\u65B9\u5E33\u865F";
         t2 = text("\uFF0C\u7372\u5F97\u66F4\u65B0\u8A0A\u606F\u3002\n");
@@ -15002,15 +15017,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   }
   function instance16($$self, $$props, $$invalidate) {
     let { ptk: ptk2 } = $$props;
-    let { address } = $$props;
+    let { address: address2 } = $$props;
     let humanaddr = "", chunklines, ckid;
     let maxchunk = 0;
-    const actionOfAddress = (address2) => {
-      const addr = parseAddress(address2);
+    const actionOfAddress = (address3) => {
+      const addr = parseAddress(address3);
       const hl = addr.highlightline;
       const act = parseAction(addr.action);
       const ckrange = ptk2.rangeOfAddress(act[0].join("#"));
-      const range = ptk2.rangeOfAddress(address2);
+      const range = ptk2.rangeOfAddress(address3);
       return {
         addr,
         act,
@@ -15020,8 +15035,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         hl
       };
     };
-    const getHumanAddress = async (address2) => {
-      const { action, act, ckrange, hl } = actionOfAddress(address2);
+    const getHumanAddress = async (address3) => {
+      const { action, act, ckrange, hl } = actionOfAddress(address3);
       const ck = ptk2.defines.ck;
       const at = bsearchNumber(ck.linepos, ckrange[1]) - 1;
       maxchunk = parseInt(ck.fields.id.values[at]);
@@ -15030,7 +15045,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       chunklines = await ptk2.fetchAddress(action);
     };
     const nextSentence = () => {
-      let { addr, act, hl } = actionOfAddress(address);
+      let { addr, act, hl } = actionOfAddress(address2);
       let action = addr.action;
       if (hl < chunklines.length - 1) {
         hl++;
@@ -15040,10 +15055,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           hl = 1;
         }
       }
-      $$invalidate(4, address = makeAddress("", action, 0, 0, hl));
+      $$invalidate(4, address2 = makeAddress("", action, 0, 0, hl));
     };
     const prevSentence = async () => {
-      let { hl, act, action } = actionOfAddress(address);
+      let { hl, act, action } = actionOfAddress(address2);
       if (hl > 1) {
         hl--;
       } else {
@@ -15053,10 +15068,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           hl = chunklines.length - 1;
         }
       }
-      $$invalidate(4, address = makeAddress("", action, 0, 0, hl));
+      $$invalidate(4, address2 = makeAddress("", action, 0, 0, hl));
     };
     const gotoPb = () => {
-      const { act, hl, range } = actionOfAddress(address);
+      const { act, hl, range } = actionOfAddress(address2);
       const pb = ptk2.defines.pb;
       const at = bsearchNumber(pb.linepos, range[0] - 1 + hl) - 1;
       activepb.set(pb.fields.id.values[at] || 0);
@@ -15065,16 +15080,16 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ("ptk" in $$props2)
         $$invalidate(5, ptk2 = $$props2.ptk);
       if ("address" in $$props2)
-        $$invalidate(4, address = $$props2.address);
+        $$invalidate(4, address2 = $$props2.address);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*address*/
       16) {
         $:
-          getHumanAddress(address);
+          getHumanAddress(address2);
       }
     };
-    return [humanaddr, nextSentence, prevSentence, gotoPb, address, ptk2];
+    return [humanaddr, nextSentence, prevSentence, gotoPb, address2, ptk2];
   }
   var Sentencenav = class extends SvelteComponent {
     constructor(options) {
@@ -15087,7 +15102,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   // src/translations.svelte
   function get_each_context10(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[20] = list[i];
+    child_ctx[19] = list[i];
     return child_ctx;
   }
   function create_if_block7(ctx) {
@@ -15097,9 +15112,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       /*getBookTitle*/
       ctx[4](
         /*item*/
-        ctx[20].ptk,
+        ctx[19].ptk,
         /*item*/
-        ctx[20].heading?.bk?.at
+        ctx[19].heading?.bk?.at
       ) + ""
     );
     let t0;
@@ -15107,7 +15122,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       /*hasfolio*/
       ctx[6](
         /*item*/
-        ctx[20].ptk
+        ctx[19].ptk
       ) ? "\u2190" : " "
     );
     let t1;
@@ -15115,7 +15130,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       /*puretext*/
       ctx[7](
         /*item*/
-        ctx[20].linetext
+        ctx[19].linetext
       ) + ""
     );
     let t2;
@@ -15126,7 +15141,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         /*click_handler*/
         ctx[10](
           /*item*/
-          ctx[20]
+          ctx[19]
         )
       );
     }
@@ -15142,7 +15157,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           div,
           "selecteditem",
           /*item*/
-          ctx[20].heading?.bkid == /*$activefolioid*/
+          ctx[19].heading?.bkid == /*$activefolioid*/
           ctx[3]
         );
       },
@@ -15163,23 +15178,23 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         4 && t0_value !== (t0_value = /*getBookTitle*/
         ctx[4](
           /*item*/
-          ctx[20].ptk,
+          ctx[19].ptk,
           /*item*/
-          ctx[20].heading?.bk?.at
+          ctx[19].heading?.bk?.at
         ) + ""))
           set_data(t0, t0_value);
         if (dirty & /*translations*/
         4 && t1_value !== (t1_value = /*hasfolio*/
         ctx[6](
           /*item*/
-          ctx[20].ptk
+          ctx[19].ptk
         ) ? "\u2190" : " "))
           set_data(t1, t1_value);
         if (dirty & /*translations*/
         4 && t2_value !== (t2_value = /*puretext*/
         ctx[7](
           /*item*/
-          ctx[20].linetext
+          ctx[19].linetext
         ) + ""))
           set_data(t2, t2_value);
         if (dirty & /*translations, $activefolioid*/
@@ -15188,7 +15203,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             div,
             "selecteditem",
             /*item*/
-            ctx[20].heading?.bkid == /*$activefolioid*/
+            ctx[19].heading?.bkid == /*$activefolioid*/
             ctx[3]
           );
         }
@@ -15203,7 +15218,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   }
   function create_each_block10(ctx) {
     let show_if = !~/*item*/
-    ctx[20].heading?.bkid?.indexOf("_variorum");
+    ctx[19].heading?.bkid?.indexOf("_variorum");
     let t;
     let div;
     let if_block = show_if && create_if_block7(ctx);
@@ -15225,7 +15240,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (dirty & /*translations*/
         4)
           show_if = !~/*item*/
-          ctx2[20].heading?.bkid?.indexOf("_variorum");
+          ctx2[19].heading?.bkid?.indexOf("_variorum");
         if (show_if) {
           if (if_block) {
             if_block.p(ctx2, dirty);
@@ -15413,13 +15428,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let _from;
     let _till;
     let lineoff;
-    let $folioChars;
     let $activefolioid;
-    component_subscribe($$self, folioChars, ($$value) => $$invalidate(17, $folioChars = $$value));
     component_subscribe($$self, activefolioid, ($$value) => $$invalidate(3, $activefolioid = $$value));
     let { closePopup = function() {
     } } = $$props;
-    let { address } = $$props;
+    let { address: address2 } = $$props;
     let { ptk: ptk2 } = $$props;
     let translations = [];
     const getBookTitle = (ptk3, nbk) => {
@@ -15433,9 +15446,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         return ~at ? folio.innertext.get(at) : bk.innertext.get(nbk);
       }
     };
-    const marktap = async (pb, line) => {
-      const pos = await folioPosFromLine(ptk2, pb, line, $activefolioid, folioLines(), $folioChars);
-      tapmark.set(pos);
+    const marktap = (pb, line) => {
     };
     const goFolioByLine = (ptk3, line) => {
       const pb = ptk3.defines.pb;
@@ -15461,23 +15472,23 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const [text2] = parseOfftext(_text);
       return text2;
     };
-    const updateTranslation = async (address2) => {
+    const updateTranslation = async (address3) => {
       $$invalidate(2, translations = await getParallelLines(ptk2, start + lineoff, null, { local: true, remote: false }));
     };
     function sentencenav0_address_binding(value) {
-      address = value;
-      $$invalidate(0, address);
+      address2 = value;
+      $$invalidate(0, address2);
     }
     const click_handler = (item) => goFolioByLine(item.ptk, item.line);
     function sentencenav1_address_binding(value) {
-      address = value;
-      $$invalidate(0, address);
+      address2 = value;
+      $$invalidate(0, address2);
     }
     $$self.$$set = ($$props2) => {
       if ("closePopup" in $$props2)
         $$invalidate(8, closePopup = $$props2.closePopup);
       if ("address" in $$props2)
-        $$invalidate(0, address = $$props2.address);
+        $$invalidate(0, address2 = $$props2.address);
       if ("ptk" in $$props2)
         $$invalidate(1, ptk2 = $$props2.ptk);
     };
@@ -15485,16 +15496,16 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ($$self.$$.dirty & /*ptk, address*/
       3) {
         $:
-          [start, end, _from, _till, lineoff] = ptk2.rangeOfAddress(address);
+          [start, end, _from, _till, lineoff] = ptk2.rangeOfAddress(address2);
       }
       if ($$self.$$.dirty & /*address*/
       1) {
         $:
-          updateTranslation(address);
+          updateTranslation(address2);
       }
     };
     return [
-      address,
+      address2,
       ptk2,
       translations,
       $activefolioid,
@@ -15521,6 +15532,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let span0;
     let t1;
     let span1;
+    let t2_value = (
+      /*ck*/
+      ctx[0]?.caption + ""
+    );
+    let t2;
     let t3;
     let span2;
     let mounted;
@@ -15531,8 +15547,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         span0.textContent = "\u2190";
         t1 = space();
         span1 = element("span");
-        span1.textContent = `${/*ck*/
-        ctx[0]?.caption}`;
+        t2 = text(t2_value);
         t3 = space();
         span2 = element("span");
         span2.textContent = "\u2192";
@@ -15544,6 +15559,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         insert(target, span0, anchor);
         insert(target, t1, anchor);
         insert(target, span1, anchor);
+        append(span1, t2);
         insert(target, t3, anchor);
         insert(target, span2, anchor);
         if (!mounted) {
@@ -15564,7 +15580,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           mounted = true;
         }
       },
-      p: noop,
+      p(ctx2, [dirty]) {
+        if (dirty & /*ck*/
+        1 && t2_value !== (t2_value = /*ck*/
+        ctx2[0]?.caption + ""))
+          set_data(t2, t2_value);
+      },
       i: noop,
       o: noop,
       d(detaching) {
@@ -15586,12 +15607,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   function instance18($$self, $$props, $$invalidate) {
     let maxchunk;
     let { ptk: ptk2 } = $$props;
-    let { address } = $$props;
-    let ck;
+    let { address: address2 } = $$props;
+    let { ck } = $$props;
     const getMaxChunk = () => {
-      const addr = parseAddress(address);
+      const addr = parseAddress(address2);
       const act = parseAction(addr.action);
-      console.log(addr, act);
     };
     const prevChunk = () => {
     };
@@ -15601,21 +15621,23 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ("ptk" in $$props2)
         $$invalidate(3, ptk2 = $$props2.ptk);
       if ("address" in $$props2)
-        $$invalidate(4, address = $$props2.address);
+        $$invalidate(4, address2 = $$props2.address);
+      if ("ck" in $$props2)
+        $$invalidate(0, ck = $$props2.ck);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*address*/
       16) {
         $:
-          maxchunk = getMaxChunk(address);
+          maxchunk = getMaxChunk(address2);
       }
     };
-    return [ck, prevChunk, nextChunk, ptk2, address];
+    return [ck, prevChunk, nextChunk, ptk2, address2];
   }
   var Chunknav = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance18, create_fragment17, safe_not_equal, { ptk: 3, address: 4 });
+      init(this, options, instance18, create_fragment17, safe_not_equal, { ptk: 3, address: 4, ck: 0 });
     }
   };
   var chunknav_default = Chunknav;
@@ -15631,7 +15653,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let div;
     let raw_value = (
       /*renderLine*/
-      ctx[4](
+      ctx[5](
         /*line*/
         ctx[11]
       ) + ""
@@ -15641,7 +15663,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     function click_handler() {
       return (
         /*click_handler*/
-        ctx[8](
+        ctx[9](
           /*idx*/
           ctx[13]
         )
@@ -15669,8 +15691,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(new_ctx, dirty) {
         ctx = new_ctx;
         if (dirty & /*lines*/
-        8 && raw_value !== (raw_value = /*renderLine*/
-        ctx[4](
+        16 && raw_value !== (raw_value = /*renderLine*/
+        ctx[5](
           /*line*/
           ctx[11]
         ) + ""))
@@ -15702,11 +15724,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t;
     let current;
     function chunknav_address_binding(value) {
-      ctx[7](value);
+      ctx[8](value);
     }
     let chunknav_props = { ptk: (
       /*ptk*/
       ctx[1]
+    ), ck: (
+      /*ck*/
+      ctx[3]
     ) };
     if (
       /*address*/
@@ -15719,7 +15744,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     binding_callbacks.push(() => bind(chunknav, "address", chunknav_address_binding));
     let each_value = (
       /*lines*/
-      ctx[3]
+      ctx[4]
     );
     let each_blocks = [];
     for (let i = 0; i < each_value.length; i += 1) {
@@ -15752,6 +15777,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         2)
           chunknav_changes.ptk = /*ptk*/
           ctx2[1];
+        if (dirty & /*ck*/
+        8)
+          chunknav_changes.ck = /*ck*/
+          ctx2[3];
         if (!updating_address && dirty & /*address*/
         1) {
           updating_address = true;
@@ -15761,9 +15790,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
         chunknav.$set(chunknav_changes);
         if (dirty & /*lineoff, setAddress, renderLine, lines*/
-        60) {
+        116) {
           each_value = /*lines*/
-          ctx2[3];
+          ctx2[4];
           let i;
           for (i = 0; i < each_value.length; i += 1) {
             const child_ctx = get_each_context11(ctx2, each_value, i);
@@ -15800,51 +15829,55 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function instance19($$self, $$props, $$invalidate) {
-    let { ptk: ptk2, start, lineoff, address } = $$props;
+    let { ptk: ptk2, start, lineoff, address: address2 } = $$props;
     let ck, lines = [];
     const loadChunk = async (line) => {
-      ck = ptk2.nearestChunk(line + 2);
+      $$invalidate(3, ck = ptk2.nearestChunk(line + 2));
       await ptk2.loadLines([ck.line, ck.lineend]);
-      $$invalidate(3, lines = ptk2.slice(ck.line, ck.lineend));
+      $$invalidate(4, lines = ptk2.slice(ck.line, ck.lineend));
     };
     const renderLine = (line) => {
       return line.replace(/\^[a-z]#?[a-z\d]*/g, "");
     };
     const setAddress = (lo) => {
-      const newaddress = address.replace(/:\d+$/, "") + (lo ? ":" + lo : "");
-      if (newaddress && address !== newaddress) {
-        $$invalidate(0, address = newaddress);
+      const newaddress = address2.replace(/:\d+$/, "") + (lo ? ":" + lo : "");
+      if (newaddress && address2 !== newaddress) {
+        $$invalidate(0, address2 = newaddress);
         const pb = ptk2.defines.pb;
         const at = bsearchNumber(pb.linepos, start + lo) - 1;
-        goPb(ptk2, pb.fields.id.values[at]);
+        const pbid = pb.fields.id.values[at];
+        goPb(pbid, ck.id, lo);
+        const foliopos = get_store_value(foliotext).toFolioPos(ck.id, lo);
+        tapmark.set(foliopos);
       }
     };
     function chunknav_address_binding(value) {
-      address = value;
-      $$invalidate(0, address);
+      address2 = value;
+      $$invalidate(0, address2);
     }
     const click_handler = (idx2) => setAddress(idx2);
     $$self.$$set = ($$props2) => {
       if ("ptk" in $$props2)
         $$invalidate(1, ptk2 = $$props2.ptk);
       if ("start" in $$props2)
-        $$invalidate(6, start = $$props2.start);
+        $$invalidate(7, start = $$props2.start);
       if ("lineoff" in $$props2)
         $$invalidate(2, lineoff = $$props2.lineoff);
       if ("address" in $$props2)
-        $$invalidate(0, address = $$props2.address);
+        $$invalidate(0, address2 = $$props2.address);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*start, lineoff*/
-      68) {
+      132) {
         $:
           loadChunk(start + lineoff);
       }
     };
     return [
-      address,
+      address2,
       ptk2,
       lineoff,
+      ck,
       lines,
       renderLine,
       setAddress,
@@ -15856,7 +15889,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Chunktext = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance19, create_fragment18, safe_not_equal, { ptk: 1, start: 6, lineoff: 2, address: 0 });
+      init(this, options, instance19, create_fragment18, safe_not_equal, { ptk: 1, start: 7, lineoff: 2, address: 0 });
     }
   };
   var chunktext_default = Chunktext;
@@ -16017,10 +16050,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function instance20($$self, $$props, $$invalidate) {
-    let { address, start, lineoff } = $$props;
+    let { address: address2, start, lineoff } = $$props;
     let { ptk: ptk2 } = $$props;
     let sourcetexts = [];
-    const updateTranslation = async (address2) => {
+    const updateTranslation = async (address3) => {
       $$invalidate(2, sourcetexts = await getParallelLines(ptk2, start + lineoff, null, { remote: true, local: false }));
     };
     const puretext = (_text) => {
@@ -16028,12 +16061,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       return text2;
     };
     function sentencenav_address_binding(value) {
-      address = value;
-      $$invalidate(0, address);
+      address2 = value;
+      $$invalidate(0, address2);
     }
     $$self.$$set = ($$props2) => {
       if ("address" in $$props2)
-        $$invalidate(0, address = $$props2.address);
+        $$invalidate(0, address2 = $$props2.address);
       if ("start" in $$props2)
         $$invalidate(4, start = $$props2.start);
       if ("lineoff" in $$props2)
@@ -16045,11 +16078,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ($$self.$$.dirty & /*address*/
       1) {
         $:
-          updateTranslation(address);
+          updateTranslation(address2);
       }
     };
     return [
-      address,
+      address2,
       ptk2,
       sourcetexts,
       puretext,
@@ -16197,13 +16230,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   }
   function instance21($$self, $$props, $$invalidate) {
     let { ptk: ptk2 } = $$props;
-    let { address } = $$props;
+    let { address: address2 } = $$props;
     let text2 = "";
-    const updateVariorum = async (address2) => {
+    const updateVariorum = async (address3) => {
       const r = ptk2.defines.r;
       if (!r)
         return;
-      const addr = parseAddress(address2);
+      const addr = parseAddress(address3);
       const act = parseAction(addr.action);
       const id = act[act.length - 1][1] + ":" + addr.highlightline;
       let at = r.fields.id.values.indexOf(id);
@@ -16226,27 +16259,27 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
     function sentencenav0_address_binding(value) {
-      address = value;
-      $$invalidate(0, address);
+      address2 = value;
+      $$invalidate(0, address2);
     }
     function sentencenav1_address_binding(value) {
-      address = value;
-      $$invalidate(0, address);
+      address2 = value;
+      $$invalidate(0, address2);
     }
     $$self.$$set = ($$props2) => {
       if ("ptk" in $$props2)
         $$invalidate(1, ptk2 = $$props2.ptk);
       if ("address" in $$props2)
-        $$invalidate(0, address = $$props2.address);
+        $$invalidate(0, address2 = $$props2.address);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*address*/
       1) {
         $:
-          updateVariorum(address);
+          updateVariorum(address2);
       }
     };
-    return [address, ptk2, text2, sentencenav0_address_binding, sentencenav1_address_binding];
+    return [address2, ptk2, text2, sentencenav0_address_binding, sentencenav1_address_binding];
   }
   var Variorum = class extends SvelteComponent {
     constructor(options) {
@@ -17130,6 +17163,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     component_subscribe($$self, activefolioid, ($$value) => $$invalidate(4, $activefolioid = $$value));
     let { start, ptk: ptk2 } = $$props;
     let { closePopup } = $$props;
+    let { address: address2 } = $$props;
     const getExternalLinks = (folioid) => {
       const [from, to] = ptk2.rangeOfAddress("folio#" + folioid + ".pb#" + ($activepb + 1));
       const n = ptk2.defines.n;
@@ -17147,27 +17181,26 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       return out;
     };
     let thetab = "chunktext";
-    let { address } = $$props;
     const click_handler = () => $$invalidate(5, thetab = "chunktext");
     const click_handler_1 = () => $$invalidate(5, thetab = "sourcetext");
     const click_handler_2 = () => $$invalidate(5, thetab = "translations");
     const click_handler_3 = () => $$invalidate(5, thetab = "variorum");
     const click_handler_4 = () => $$invalidate(5, thetab = "externals");
     function chunktext_address_binding(value) {
-      address = value;
-      $$invalidate(0, address);
+      address2 = value;
+      $$invalidate(0, address2);
     }
     function sourcetext_address_binding(value) {
-      address = value;
-      $$invalidate(0, address);
+      address2 = value;
+      $$invalidate(0, address2);
     }
     function translations_address_binding(value) {
-      address = value;
-      $$invalidate(0, address);
+      address2 = value;
+      $$invalidate(0, address2);
     }
     function variorum_address_binding(value) {
-      address = value;
-      $$invalidate(0, address);
+      address2 = value;
+      $$invalidate(0, address2);
     }
     $$self.$$set = ($$props2) => {
       if ("start" in $$props2)
@@ -17177,13 +17210,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ("closePopup" in $$props2)
         $$invalidate(3, closePopup = $$props2.closePopup);
       if ("address" in $$props2)
-        $$invalidate(0, address = $$props2.address);
+        $$invalidate(0, address2 = $$props2.address);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*ptk, address*/
       5) {
         $:
-          $$invalidate(1, [start, end, _from, _till, lineoff] = ptk2.rangeOfAddress(address), start, ($$invalidate(7, lineoff), $$invalidate(2, ptk2), $$invalidate(0, address)));
+          $$invalidate(1, [start, end, _from, _till, lineoff] = ptk2.rangeOfAddress(address2), start, ($$invalidate(7, lineoff), $$invalidate(2, ptk2), $$invalidate(0, address2)));
       }
       if ($$self.$$.dirty & /*$activefolioid, $activepb*/
       272) {
@@ -17192,7 +17225,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
     return [
-      address,
+      address2,
       start,
       ptk2,
       closePopup,
@@ -18132,27 +18165,27 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function instance26($$self, $$props, $$invalidate) {
-    let $activefolioid;
     let $activepb;
+    let $activefolioid;
     let $maxfolio;
-    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(11, $activefolioid = $$value));
-    component_subscribe($$self, activepb, ($$value) => $$invalidate(12, $activepb = $$value));
+    component_subscribe($$self, activepb, ($$value) => $$invalidate(11, $activepb = $$value));
+    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(12, $activefolioid = $$value));
     component_subscribe($$self, maxfolio, ($$value) => $$invalidate(5, $maxfolio = $$value));
-    let folio = [$activepb];
+    let folio = [parseInt($activepb) - 1];
     let { ptk: ptk2 } = $$props;
-    let { address } = $$props;
+    let { address: address2 } = $$props;
     let { closePopup } = $$props;
     const setFolio = async (e) => {
-      const v = e.detail[0];
-      activepb.set(parseInt(v) || 0);
-      $$invalidate(8, address = "folio#" + $activefolioid + ".ck#" + chunkOfFolio(ptk2, $activefolioid, v)[0]);
+      const v = ((e.detail[0] || 0) + 1).toString();
+      activepb.set(v);
+      $$invalidate(8, address2 = makeAddressFromFolioPos(v));
     };
     let tocitems = [], cknow;
-    const getTocItems = (address2) => {
+    const getTocItems = (address3) => {
       const out = [];
-      if (!address2)
+      if (!address3)
         return out;
-      const m4 = address2.match(/folio#([a-z_]+)(\d*)/);
+      const m4 = address3.match(/folio#([a-z_]+)(\d*)/);
       if (!m4)
         return [];
       const bk = m4[1];
@@ -18170,8 +18203,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
       return out;
     };
-    const getCk = (address2) => {
-      const m4 = address2.match(/ck#?(\d+)/);
+    const getCk = (address3) => {
+      const m4 = address3.match(/ck#?(\d+)/);
       if (m4)
         return m4[1];
     };
@@ -18181,11 +18214,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if (folioid !== $activefolioid) {
         loadFolio(folioid, () => {
           goPbAt(ptk3, at);
-          $$invalidate(8, address = "folio#" + folioid + ".ck#" + chunkOfFolio(ptk3, folioid, get_store_value(activepb))[0]);
+          $$invalidate(8, address2 = makeAddressFromFolioPos($activepb + 1, 0, 0));
         });
       } else {
         goPbAt(ptk3, at);
-        $$invalidate(8, address = "folio#" + folioid + ".ck#" + chunkOfFolio(ptk3, folioid, get_store_value(activepb))[0]);
+        $$invalidate(8, address2 = makeAddressFromFolioPos($activepb + 1, 0, 0));
       }
     };
     function slider_value_binding(value) {
@@ -18197,7 +18230,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ("ptk" in $$props2)
         $$invalidate(0, ptk2 = $$props2.ptk);
       if ("address" in $$props2)
-        $$invalidate(8, address = $$props2.address);
+        $$invalidate(8, address2 = $$props2.address);
       if ("closePopup" in $$props2)
         $$invalidate(1, closePopup = $$props2.closePopup);
     };
@@ -18205,12 +18238,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ($$self.$$.dirty & /*address*/
       256) {
         $:
-          $$invalidate(3, tocitems = getTocItems(address));
+          $$invalidate(3, tocitems = getTocItems(address2));
       }
       if ($$self.$$.dirty & /*address*/
       256) {
         $:
-          $$invalidate(4, cknow = getCk(address));
+          $$invalidate(4, cknow = getCk(address2));
       }
     };
     return [
@@ -18222,7 +18255,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $maxfolio,
       setFolio,
       goBookPb,
-      address,
+      address2,
       slider_value_binding,
       click_handler
     ];
@@ -19126,7 +19159,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     component_subscribe($$self, activePtk, ($$value) => $$invalidate(9, $activePtk = $$value));
     component_subscribe($$self, landscape, ($$value) => $$invalidate(6, $landscape = $$value));
     let { tofind = "" } = $$props;
-    let { address = "" } = $$props;
+    let { address: address2 = "" } = $$props;
     let { closePopup } = $$props;
     let thetab = "toc";
     let ptk2, entries = [];
@@ -19153,14 +19186,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const click_handler_4 = () => $$invalidate(2, thetab = "audio");
     const click_handler_5 = () => $$invalidate(2, thetab = "dict");
     function textual_address_binding(value) {
-      address = value;
-      $$invalidate(0, address);
+      address2 = value;
+      $$invalidate(0, address2);
     }
     $$self.$$set = ($$props2) => {
       if ("tofind" in $$props2)
         $$invalidate(8, tofind = $$props2.tofind);
       if ("address" in $$props2)
-        $$invalidate(0, address = $$props2.address);
+        $$invalidate(0, address2 = $$props2.address);
       if ("closePopup" in $$props2)
         $$invalidate(1, closePopup = $$props2.closePopup);
     };
@@ -19179,7 +19212,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     $:
       $$invalidate(5, ls = get_store_value(landscape));
     return [
-      address,
+      address2,
       closePopup,
       thetab,
       ptk2,
@@ -20131,15 +20164,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   }
   var idleinterval = 2;
   function instance30($$self, $$props, $$invalidate) {
+    let $activefolioid;
     let $newbie;
     let $idlecount;
-    let $activefolioid;
     let $showpaiji;
     let $playing;
     let $landscape;
+    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(6, $activefolioid = $$value));
     component_subscribe($$self, newbie, ($$value) => $$invalidate(15, $newbie = $$value));
     component_subscribe($$self, idlecount, ($$value) => $$invalidate(16, $idlecount = $$value));
-    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(6, $activefolioid = $$value));
     component_subscribe($$self, showpaiji, ($$value) => $$invalidate(7, $showpaiji = $$value));
     component_subscribe($$self, playing, ($$value) => $$invalidate(8, $playing = $$value));
     component_subscribe($$self, landscape, ($$value) => $$invalidate(9, $landscape = $$value));
@@ -20167,7 +20200,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       loadScript("http://vm.gtimg.cn/tencentvideo/txp/js/txplayer.js");
       loadScript("https://www.youtube.com/iframe_api");
     };
-    let showdict2 = false, shownewbie = $newbie == "on", address = "", tofind = "";
+    let showdict2 = false, shownewbie = $newbie == "on", address2 = "folio#" + $activefolioid, tofind = "";
     const closePopup = () => {
       $$invalidate(3, shownewbie = false);
       if (get_store_value(landscape))
@@ -20180,12 +20213,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const onTapText = (t, _address, ptkname) => {
       $$invalidate(2, showdict2 = true);
       $$invalidate(5, tofind = t);
-      $$invalidate(4, address = _address);
+      $$invalidate(4, address2 = _address);
       $$invalidate(0, ptk2 = usePtk(ptkname));
     };
     function swipezipimage_address_binding(value) {
-      address = value;
-      $$invalidate(4, address);
+      address2 = value;
+      $$invalidate(4, address2);
     }
     $:
       loadPlayer();
@@ -20194,7 +20227,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       loaded,
       showdict2,
       shownewbie,
-      address,
+      address2,
       tofind,
       $activefolioid,
       $showpaiji,
