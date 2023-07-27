@@ -69,15 +69,15 @@ select {font-size:2em}
   position:relative
 }
 
-.book {font-size:1.5em;cursor:pointer}
+.book {font-size:2em;cursor:pointer}
 .refer {text-decoration: underline;}
 .clickable {cursor:pointer;}
 
 .author {border:gray solid 1px ;border-radius: 0.25em;}
 .selecteditem {background:rgb(255, 173, 42)}
 .hr {height: 1px ;background:black}
-.paralleltext {font-size:1.5em;}
-.toctext {font-size:1.5em;}
+.paralleltext {font-size:2em;}
+.toctext {font-size:2em;}
 
 .tocitem{margin-left: 0.5em;cursor: pointer;}
 .dicttext {font-size:2em}
@@ -209,4 +209,4 @@ a{color:#563100}
 .parallelfolio {font-size:90% ; padding-left:0.1em;padding-right:0.1em;border-radius: 5px;border:#d27700 1px dotted}
 
 .nav {width:100%;text-align: center; user-select: none;}
-.navbutton {cursor:pointer;font-size:1.5em}
+.navbutton {cursor:pointer;font-size:2em}
