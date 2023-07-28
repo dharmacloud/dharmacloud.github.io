@@ -265,23 +265,8 @@ input.svelte-1nnnvg0 {
   border-radius: 1.5em;
 }
 
-/* fakecss:d:/2023/swipegallery/src/comps/inputnumber.esbuild-svelte-fake-css */
-.numinput.svelte-5fv0ws {
-  user-select: none;
-}
-.stepper.svelte-5fv0ws {
-  cursor: pointer;
-}
-.disabled.svelte-5fv0ws {
-  color: var(--button-unselected);
-  cursor: default;
-}
-
 /* fakecss:d:/2023/swipegallery/src/toc.esbuild-svelte-fake-css */
-.jumper.svelte-kd31zj {
-  height: 10vh;
-}
-.toc.svelte-kd31zj {
+.toc.svelte-1ubc3jc {
   overflow-y: auto;
   height: 100%;
 }
