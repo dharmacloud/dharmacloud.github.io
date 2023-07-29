@@ -265,6 +265,18 @@ input.svelte-1nnnvg0 {
   border-radius: 1.5em;
 }
 
+/* fakecss:d:/2023/swipegallery/src/comps/swipeview.esbuild-svelte-fake-css */
+.swipe.svelte-1un901g {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container.svelte-1un901g {
+  height: 100%;
+  user-select: none;
+}
+
 /* fakecss:d:/2023/swipegallery/src/toc.esbuild-svelte-fake-css */
 .toc.svelte-1ubc3jc {
   overflow-y: auto;
