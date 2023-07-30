@@ -10776,8 +10776,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $$invalidate(7, hidepunc = false);
       const { x, y } = e.detail;
       const [cx, cy] = getCharXY(x, y);
-      if (cx >= folioLines() !== cx < 0)
+      if (cx >= folioLines() !== cx < 0) {
+        onTapText("");
         return;
+      }
       tapmark.set([$activepb, cx, cy]);
       const ft = get_store_value(foliotext);
       const { choff, linetext } = ft.fromFolioPos($activepb, cx, cy);
@@ -10787,7 +10789,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       while (t.charAt(0) == "\u3000")
         t = t.slice(1);
       t = t.replace(/　.+/, "");
-      onTapText(t, ptk2.name);
+      onTapText(t);
     };
     const gotoPb = async (pb) => {
       if (!totalpages || !swiper)
@@ -20155,11 +20157,21 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function instance31($$self, $$props, $$invalidate) {
-    const texts = ["\u4E2D\u90E8\u5168\u570B\u4F9B\u4F5B\u9F4B\u50E7\u5927\u6703", "\u6642\u9593\u8EF8\u203B\u6797\u2605\u5982", "\u6642\u9593\u8EF8\u203B\u6AFB\u4E95\u2605\u5FD7", "\u9801\u6A19\u8A18\u203B\u4181\u5E38\u660E", "\u9801\u6A19\u8A18\u203B\u8B1D\u2605\u6046", "\u5207\u5716\u203B\u4181\u2605\u7F3D", "\u65BD\u4E3B\u203B\u752F\u2605\u5357"];
+    let now = 0;
+    const texts = [
+      "\u4E2D\u90E8\u5168\u570B\u4F9B\u4F5B\u9F4B\u50E7\u5927\u6703",
+      "\u65BD\u4E3B\u203B\u9673\u2B1A\u541F",
+      "\u65BD\u4E3B\u203B\u6797\u2B1A\u5A1F",
+      "\u65BD\u4E3B\u203B\u752F\u2B1A\u5357",
+      "\u5207\u5716\u203B\u4181\u2B1A\u7F3D",
+      "\u6A19\u8A18\u203B\u4181\u5E38\u660E",
+      "\u6A19\u8A18\u203B\u6797\u2B1A\u5982\u3000\u8B1D\u2B1A\u6046",
+      "\u6642\u9593\u8EF8\u203B\u6797\u2B1A\u5982\u3000\u6AFB\u4E95\u2B1A\u5FD7"
+    ];
     let text2 = texts[0];
     let timer = setInterval(
       () => {
-        $$invalidate(0, text2 = texts[Math.floor(Math.random() * texts.length)]);
+        $$invalidate(0, text2 = texts[++now % texts.length]);
       },
       5e3
     );
@@ -20408,7 +20420,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         insert(target, if_block_anchor, anchor);
         current = true;
       },
-      p: noop,
+      p(ctx2, dirty) {
+        if_block.p(ctx2, dirty);
+      },
       i(local) {
         if (current)
           return;
@@ -20438,6 +20452,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         mount_component(paiji, target, anchor);
         current = true;
       },
+      p: noop,
       i(local) {
         if (current)
           return;
@@ -20456,7 +20471,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   function create_if_block_55(ctx) {
     let sidepaiji_1;
     let current;
-    sidepaiji_1 = new sidepaiji_default({});
+    sidepaiji_1 = new sidepaiji_default({
+      props: { onTapText: (
+        /*onTapText*/
+        ctx[11]
+      ) }
+    });
     return {
       c() {
         create_component(sidepaiji_1.$$.fragment);
@@ -20465,6 +20485,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         mount_component(sidepaiji_1, target, anchor);
         current = true;
       },
+      p: noop,
       i(local) {
         if (current)
           return;
@@ -20810,10 +20831,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const onMainmenu = () => {
       $$invalidate(4, showdict2 = false);
     };
-    const onTapText = (t, ptkname) => {
+    const onTapText = (t) => {
       $$invalidate(4, showdict2 = true);
-      $$invalidate(2, tofind = t);
-      $$invalidate(1, ptk2 = usePtk(ptkname));
+      if (typeof t == "string")
+        $$invalidate(2, tofind = t);
     };
     const orientation = (ls) => {
       $$invalidate(4, showdict2 = false);
