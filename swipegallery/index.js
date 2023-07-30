@@ -625,7 +625,7 @@
     }
     component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
   }
-  function init(component, options, instance32, create_fragment32, not_equal, props, append_styles, dirty = [-1]) {
+  function init(component, options, instance33, create_fragment33, not_equal, props, append_styles, dirty = [-1]) {
     const parent_component = current_component;
     set_current_component(component);
     const $$ = component.$$ = {
@@ -651,7 +651,7 @@
     };
     append_styles && append_styles($$.root);
     let ready = false;
-    $$.ctx = instance32 ? instance32(component, options.props || {}, (i, ret, ...rest) => {
+    $$.ctx = instance33 ? instance33(component, options.props || {}, (i, ret, ...rest) => {
       const value = rest.length ? rest[0] : ret;
       if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
         if (!$$.skip_bound && $$.bound[i])
@@ -664,7 +664,7 @@
     $$.update();
     ready = true;
     run_all($$.before_update);
-    $$.fragment = create_fragment32 ? create_fragment32($$.ctx) : false;
+    $$.fragment = create_fragment33 ? create_fragment33($$.ctx) : false;
     if (options.target) {
       if (options.hydrate) {
         start_hydrating();
@@ -7897,6 +7897,7 @@
   };
 
   // src/store.js
+  var thezip = writable(null);
   var activePtk = writable("dc");
   var loadingbook = writable(false);
   var autodict = writable(settings.autodict);
@@ -7971,7 +7972,7 @@
     get_store_value(qqplayer)?.pause && get_store_value(qqplayer).pause();
     get_store_value(ytplayer)?.stopVideo && get_store_value(ytplayer).stopVideo();
   };
-  var idletime = 60;
+  var idletime = 30;
   var hasVariorum = (ptk2, bkid) => {
     const at = bkid.indexOf("_");
     if (~at)
@@ -8038,6 +8039,11 @@
     videoid.set(vid || "");
     if (restart)
       activepb.set("1");
+  };
+  var sideWidth = () => {
+    const w = screen.height * 0.45;
+    const r = Math.floor(w * 100 / screen.width) + 1;
+    return "left:" + r + "vw;width:" + (100 - r) + "vw";
   };
   var favortypes = ["\u2661", "\u{1F90D}", "\u2764\uFE0F", "\u{1F49A}", "\u{1F499}", "\u{1F49C}", "\u{1F5A4}"];
 
@@ -9461,13 +9467,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let { allow_dynamic_height = false } = $$props;
     let swipeItemInner = null;
     let _height = 0;
-    const fire = createEventDispatcher();
     function firehHeightChange() {
       if (swipeItemInner) {
         let { scrollHeight, clientHeight } = swipeItemInner;
-        fire("swipe_item_height_change", {
-          height: Math.max(scrollHeight, clientHeight)
-        });
       }
     }
     onMount(() => {
@@ -9589,8 +9591,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   // src/swipezipimage.svelte
   function get_each_context4(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[46] = list[i];
-    child_ctx[48] = i;
+    child_ctx[45] = list[i];
+    child_ctx[47] = i;
     return child_ctx;
   }
   function create_else_block(ctx) {
@@ -9622,10 +9624,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let dispose;
     const swipe_spread_levels = [
       /*swipeConfig*/
-      ctx[25],
+      ctx[24],
       { defaultIndex: (
         /*defaultIndex*/
-        ctx[8]
+        ctx[9]
       ) }
     ];
     let swipe_props = {
@@ -9636,21 +9638,21 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       swipe_props = assign(swipe_props, swipe_spread_levels[i]);
     }
     swipe = new swipe_default({ props: swipe_props });
-    ctx[35](swipe);
+    ctx[34](swipe);
     swipe.$on(
       "click",
       /*onfoliopageclick*/
-      ctx[29]
+      ctx[28]
     );
     swipe.$on(
       "start",
       /*swipeStart*/
-      ctx[26]
+      ctx[25]
     );
     swipe.$on(
       "change",
       /*swipeChanged*/
-      ctx[27]
+      ctx[26]
     );
     return {
       c() {
@@ -9658,9 +9660,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         create_component(swipe.$$.fragment);
         attr(div, "class", "swipe-holder svelte-1nw6vnk");
         attr(div, "style", div_style_value = /*holderWidth*/
-        ctx[32](
+        ctx[31](
           /*$landscape*/
-          ctx[14]
+          ctx[15]
         ));
       },
       m(target, anchor) {
@@ -9672,35 +9674,36 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             div,
             "wheel",
             /*mousewheel*/
-            ctx[28]
+            ctx[27]
           );
           mounted = true;
         }
       },
       p(ctx2, dirty) {
         const swipe_changes = dirty[0] & /*swipeConfig, defaultIndex*/
-        33554688 ? get_spread_update(swipe_spread_levels, [
+        16777728 ? get_spread_update(swipe_spread_levels, [
           dirty[0] & /*swipeConfig*/
-          33554432 && get_spread_object(
+          16777216 && get_spread_object(
             /*swipeConfig*/
-            ctx2[25]
+            ctx2[24]
           ),
           dirty[0] & /*defaultIndex*/
-          256 && { defaultIndex: (
+          512 && { defaultIndex: (
             /*defaultIndex*/
-            ctx2[8]
+            ctx2[9]
           ) }
         ]) : {};
-        if (dirty[1] & /*$$scope*/
-        262144) {
+        if (dirty[0] & /*images*/
+        64 | dirty[1] & /*$$scope*/
+        131072) {
           swipe_changes.$$scope = { dirty, ctx: ctx2 };
         }
         swipe.$set(swipe_changes);
         if (!current || dirty[0] & /*$landscape*/
-        16384 && div_style_value !== (div_style_value = /*holderWidth*/
-        ctx2[32](
+        32768 && div_style_value !== (div_style_value = /*holderWidth*/
+        ctx2[31](
           /*$landscape*/
-          ctx2[14]
+          ctx2[15]
         ))) {
           attr(div, "style", div_style_value);
         }
@@ -9718,7 +9721,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       d(detaching) {
         if (detaching)
           detach(div);
-        ctx[35](null);
+        ctx[34](null);
         destroy_component(swipe);
         mounted = false;
         dispose();
@@ -9734,17 +9737,27 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         attr(img, "alt", "no");
         attr(img, "class", "swipe svelte-1nw6vnk");
         if (!src_url_equal(img.src, img_src_value = /*images*/
-        ctx[23][
+        ctx[6][
           /*images*/
-          ctx[23].length - /*idx*/
-          ctx[48] - 1
+          ctx[6].length - /*idx*/
+          ctx[47] - 1
         ]))
           attr(img, "src", img_src_value);
       },
       m(target, anchor) {
         insert(target, img, anchor);
       },
-      p: noop,
+      p(ctx2, dirty) {
+        if (dirty[0] & /*images*/
+        64 && !src_url_equal(img.src, img_src_value = /*images*/
+        ctx2[6][
+          /*images*/
+          ctx2[6].length - /*idx*/
+          ctx2[47] - 1
+        ])) {
+          attr(img, "src", img_src_value);
+        }
+      },
       d(detaching) {
         if (detaching)
           detach(img);
@@ -9770,8 +9783,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, dirty) {
         const swipeitem_changes = {};
-        if (dirty[1] & /*$$scope*/
-        262144) {
+        if (dirty[0] & /*images*/
+        64 | dirty[1] & /*$$scope*/
+        131072) {
           swipeitem_changes.$$scope = { dirty, ctx: ctx2 };
         }
         swipeitem.$set(swipeitem_changes);
@@ -9796,7 +9810,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current;
     let each_value = (
       /*images*/
-      ctx[23]
+      ctx[6]
     );
     let each_blocks = [];
     for (let i = 0; i < each_value.length; i += 1) {
@@ -9823,9 +9837,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, dirty) {
         if (dirty[0] & /*images*/
-        8388608) {
+        64) {
           each_value = /*images*/
-          ctx2[23];
+          ctx2[6];
           let i;
           for (i = 0; i < each_value.length; i += 1) {
             const child_ctx = get_each_context4(ctx2, each_value, i);
@@ -9872,7 +9886,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let span;
     let t_value = favortypes[
       /*$favorites*/
-      ctx[11][
+      ctx[12][
         /*$activefolioid*/
         ctx[1]
       ]?.[
@@ -9889,7 +9903,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t = text(t_value);
         attr(span, "class", "favoritebtn");
         toggle_class(span, "blinkfavorbtn", !!/*favoritetimer*/
-        ctx[9]);
+        ctx[10]);
       },
       m(target, anchor) {
         insert(target, span, anchor);
@@ -9899,16 +9913,16 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             span,
             "click",
             /*favoritebtn*/
-            ctx[30]
+            ctx[29]
           );
           mounted = true;
         }
       },
       p(ctx2, dirty) {
         if (dirty[0] & /*$favorites, $activefolioid, $activepb*/
-        2054 && t_value !== (t_value = favortypes[
+        4102 && t_value !== (t_value = favortypes[
           /*$favorites*/
-          ctx2[11][
+          ctx2[12][
             /*$activefolioid*/
             ctx2[1]
           ]?.[
@@ -9918,9 +9932,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ] + ""))
           set_data(t, t_value);
         if (dirty[0] & /*favoritetimer*/
-        512) {
+        1024) {
           toggle_class(span, "blinkfavorbtn", !!/*favoritetimer*/
-          ctx2[9]);
+          ctx2[10]);
         }
       },
       d(detaching) {
@@ -9935,7 +9949,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let span;
     let t_value = (
       /*$videoid*/
-      ctx[16] ? "\u25FC" : "\u266B"
+      ctx[17] ? "\u25FC" : "\u266B"
     );
     let t;
     let mounted;
@@ -9954,15 +9968,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             span,
             "click",
             /*toggleplaybtn*/
-            ctx[31]
+            ctx[30]
           );
           mounted = true;
         }
       },
       p(ctx2, dirty) {
         if (dirty[0] & /*$videoid*/
-        65536 && t_value !== (t_value = /*$videoid*/
-        ctx2[16] ? "\u25FC" : "\u266B"))
+        131072 && t_value !== (t_value = /*$videoid*/
+        ctx2[17] ? "\u25FC" : "\u266B"))
           set_data(t, t_value);
       },
       d(detaching) {
@@ -9974,43 +9988,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function create_if_block_4(ctx) {
-    let span;
-    let t_value = (
-      /*$idlecount*/
-      (ctx[19] >= idletime - 15 ? idletime - /*$idlecount*/
-      ctx[19] : "") + ""
-    );
-    let t;
-    return {
-      c() {
-        span = element("span");
-        t = text(t_value);
-        attr(span, "class", "idletime");
-      },
-      m(target, anchor) {
-        insert(target, span, anchor);
-        append(span, t);
-      },
-      p(ctx2, dirty) {
-        if (dirty[0] & /*$idlecount*/
-        524288 && t_value !== (t_value = /*$idlecount*/
-        (ctx2[19] >= idletime - 15 ? idletime - /*$idlecount*/
-        ctx2[19] : "") + ""))
-          set_data(t, t_value);
-      },
-      d(detaching) {
-        if (detaching)
-          detach(span);
-      }
-    };
+    return { c: noop, m: noop, p: noop, d: noop };
   }
   function create_if_block_3(ctx) {
     let span;
     let t_value = (
       /*$remainrollback*/
-      (ctx[18] > 0 ? (
+      (ctx[19] > 0 ? (
         /*$remainrollback*/
-        ctx[18]
+        ctx[19]
       ) : "") + ""
     );
     let t;
@@ -10026,10 +10012,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, dirty) {
         if (dirty[0] & /*$remainrollback*/
-        262144 && t_value !== (t_value = /*$remainrollback*/
-        (ctx2[18] > 0 ? (
+        524288 && t_value !== (t_value = /*$remainrollback*/
+        (ctx2[19] > 0 ? (
           /*$remainrollback*/
-          ctx2[18]
+          ctx2[19]
         ) : "") + ""))
           set_data(t, t_value);
       },
@@ -10054,12 +10040,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ),
         folioChars: (
           /*$folioChars*/
-          ctx[13]
+          ctx[14]
         ),
         folioLines: folioLines(),
         frame: (
           /*imageFrame*/
-          ctx[24]()
+          ctx[23]()
         )
       }
     });
@@ -10082,9 +10068,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           tapmark_1_changes.pb = /*$activepb*/
           ctx2[2];
         if (dirty[0] & /*$folioChars*/
-        8192)
+        16384)
           tapmark_1_changes.folioChars = /*$folioChars*/
-          ctx2[13];
+          ctx2[14];
         tapmark_1.$set(tapmark_1_changes);
       },
       i(local) {
@@ -10106,8 +10092,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let if_block_anchor;
     let current;
     let if_block = !/*hidepunc*/
-    ctx[6] && !/*$showpaiji*/
-    ctx[12] && create_if_block_2(ctx);
+    ctx[7] && !/*$showpaiji*/
+    ctx[13] && create_if_block_2(ctx);
     return {
       c() {
         if (if_block)
@@ -10122,12 +10108,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, dirty) {
         if (!/*hidepunc*/
-        ctx2[6] && !/*$showpaiji*/
-        ctx2[12]) {
+        ctx2[7] && !/*$showpaiji*/
+        ctx2[13]) {
           if (if_block) {
             if_block.p(ctx2, dirty);
             if (dirty[0] & /*hidepunc, $showpaiji*/
-            4160) {
+            8320) {
               transition_in(if_block, 1);
             }
           } else {
@@ -10174,7 +10160,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       props: {
         frame: (
           /*imageFrame*/
-          ctx[24]()
+          ctx[23]()
         ),
         totalpages: (
           /*totalpages*/
@@ -10183,7 +10169,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         folioLines: folioLines(),
         swiper: (
           /*swiper*/
-          ctx[7]
+          ctx[8]
         ),
         ptk: (
           /*ptk*/
@@ -10239,9 +10225,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           transcriptlayer_changes.totalpages = /*totalpages*/
           ctx2[0];
         if (dirty[0] & /*swiper*/
-        128)
+        256)
           transcriptlayer_changes.swiper = /*swiper*/
-          ctx2[7];
+          ctx2[8];
         if (dirty[0] & /*foliopage*/
         8)
           transcriptlayer_changes.foliopage = /*foliopage*/
@@ -10276,11 +10262,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       props: {
         frame: (
           /*imageFrame*/
-          ctx[24]()
+          ctx[23]()
         ),
         folioChars: (
           /*$folioChars*/
-          ctx[13]
+          ctx[14]
         ),
         folioLines: folioLines(),
         puncs: (
@@ -10300,9 +10286,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         const punclayer_changes = {};
         if (dirty[0] & /*$folioChars*/
-        8192)
+        16384)
           punclayer_changes.folioChars = /*$folioChars*/
-          ctx2[13];
+          ctx2[14];
         if (dirty[0] & /*puncs*/
         16)
           punclayer_changes.puncs = /*puncs*/
@@ -10328,7 +10314,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let if_block_anchor;
     let current;
     let if_block = !/*hidepunc*/
-    ctx[6] && create_if_block3(ctx);
+    ctx[7] && create_if_block3(ctx);
     return {
       c() {
         if (if_block)
@@ -10343,11 +10329,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, dirty) {
         if (!/*hidepunc*/
-        ctx2[6]) {
+        ctx2[7]) {
           if (if_block) {
             if_block.p(ctx2, dirty);
             if (dirty[0] & /*hidepunc*/
-            64) {
+            128) {
               transition_in(if_block, 1);
             }
           } else {
@@ -10388,7 +10374,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t0;
     let previous_key = (
       /*favoritetimer*/
-      ctx[9]
+      ctx[10]
     );
     let t1;
     let t2;
@@ -10396,7 +10382,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t3_value = (
       /*totalpages*/
       ctx[0] - /*defaultIndex*/
-      ctx[8] + ""
+      ctx[9] + ""
     );
     let t3;
     let t4;
@@ -10427,17 +10413,17 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
     let key_block0 = create_key_block_2(ctx);
     let if_block1 = !/*$landscape*/
-    ctx[14] && /*$playerready*/
-    ctx[15] && /*audiolist*/
-    ctx[10].length > 1 && create_if_block_5(ctx);
+    ctx[15] && /*$playerready*/
+    ctx[16] && /*audiolist*/
+    ctx[11].length > 1 && create_if_block_5(ctx);
     function select_block_type_1(ctx2, dirty) {
       if (
         /*$playing*/
-        ctx2[17]
+        ctx2[18]
       )
         return create_if_block_3;
       if (!/*$showpaiji*/
-      ctx2[12])
+      ctx2[13])
         return create_if_block_4;
     }
     let current_block_type = select_block_type_1(ctx, [-1, -1]);
@@ -10507,8 +10493,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if_block0.m(t0.parentNode, t0);
         }
         if (dirty[0] & /*favoritetimer*/
-        512 && safe_not_equal(previous_key, previous_key = /*favoritetimer*/
-        ctx2[9])) {
+        1024 && safe_not_equal(previous_key, previous_key = /*favoritetimer*/
+        ctx2[10])) {
           key_block0.d(1);
           key_block0 = create_key_block_2(ctx2);
           key_block0.c();
@@ -10517,9 +10503,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           key_block0.p(ctx2, dirty);
         }
         if (!/*$landscape*/
-        ctx2[14] && /*$playerready*/
-        ctx2[15] && /*audiolist*/
-        ctx2[10].length > 1) {
+        ctx2[15] && /*$playerready*/
+        ctx2[16] && /*audiolist*/
+        ctx2[11].length > 1) {
           if (if_block1) {
             if_block1.p(ctx2, dirty);
           } else {
@@ -10532,9 +10518,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if_block1 = null;
         }
         if ((!current || dirty[0] & /*totalpages, defaultIndex*/
-        257) && t3_value !== (t3_value = /*totalpages*/
+        513) && t3_value !== (t3_value = /*totalpages*/
         ctx2[0] - /*defaultIndex*/
-        ctx2[8] + ""))
+        ctx2[9] + ""))
           set_data(t3, t3_value);
         if (current_block_type === (current_block_type = select_block_type_1(ctx2, dirty)) && if_block2) {
           if_block2.p(ctx2, dirty);
@@ -10632,22 +10618,20 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let $videoid;
     let $playing;
     let $remainrollback;
-    let $idlecount;
     let $tapmark;
     let $showpunc;
     component_subscribe($$self, activefolioid, ($$value) => $$invalidate(1, $activefolioid = $$value));
     component_subscribe($$self, activepb, ($$value) => $$invalidate(2, $activepb = $$value));
-    component_subscribe($$self, prefervideo, ($$value) => $$invalidate(38, $prefervideo = $$value));
-    component_subscribe($$self, favorites, ($$value) => $$invalidate(11, $favorites = $$value));
-    component_subscribe($$self, activePtk, ($$value) => $$invalidate(39, $activePtk = $$value));
-    component_subscribe($$self, showpaiji, ($$value) => $$invalidate(12, $showpaiji = $$value));
-    component_subscribe($$self, folioChars, ($$value) => $$invalidate(13, $folioChars = $$value));
-    component_subscribe($$self, landscape, ($$value) => $$invalidate(14, $landscape = $$value));
-    component_subscribe($$self, playerready, ($$value) => $$invalidate(15, $playerready = $$value));
-    component_subscribe($$self, videoid, ($$value) => $$invalidate(16, $videoid = $$value));
-    component_subscribe($$self, playing, ($$value) => $$invalidate(17, $playing = $$value));
-    component_subscribe($$self, remainrollback, ($$value) => $$invalidate(18, $remainrollback = $$value));
-    component_subscribe($$self, idlecount, ($$value) => $$invalidate(19, $idlecount = $$value));
+    component_subscribe($$self, prefervideo, ($$value) => $$invalidate(37, $prefervideo = $$value));
+    component_subscribe($$self, favorites, ($$value) => $$invalidate(12, $favorites = $$value));
+    component_subscribe($$self, activePtk, ($$value) => $$invalidate(38, $activePtk = $$value));
+    component_subscribe($$self, showpaiji, ($$value) => $$invalidate(13, $showpaiji = $$value));
+    component_subscribe($$self, folioChars, ($$value) => $$invalidate(14, $folioChars = $$value));
+    component_subscribe($$self, landscape, ($$value) => $$invalidate(15, $landscape = $$value));
+    component_subscribe($$self, playerready, ($$value) => $$invalidate(16, $playerready = $$value));
+    component_subscribe($$self, videoid, ($$value) => $$invalidate(17, $videoid = $$value));
+    component_subscribe($$self, playing, ($$value) => $$invalidate(18, $playing = $$value));
+    component_subscribe($$self, remainrollback, ($$value) => $$invalidate(19, $remainrollback = $$value));
     component_subscribe($$self, tapmark, ($$value) => $$invalidate(20, $tapmark = $$value));
     component_subscribe($$self, showpunc, ($$value) => $$invalidate(21, $showpunc = $$value));
     let { src } = $$props;
@@ -10699,11 +10683,16 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const res = await fetch(host + src);
       const buf = await res.arrayBuffer();
       const zip = new ZipStore(buf);
+      thezip.set(zip);
       for (let i = 0; i < zip.files.length; i++) {
-        const blob = new Blob([zip.files[i].content]);
-        images.push(URL.createObjectURL(blob));
+        if (i == zip.files.length - 1) {
+          const blob = new Blob([zip.files[i].content]);
+          images.push(URL.createObjectURL(blob));
+        } else {
+          images.push("frames/blank.png");
+        }
       }
-      $$invalidate(8, defaultIndex = zip.files.length - 1);
+      $$invalidate(9, defaultIndex = zip.files.length - 1);
       $$invalidate(0, totalpages = zip.files.length);
       maxfolio.set(totalpages - 1);
       setTimeout(
@@ -10716,24 +10705,39 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       );
     };
     const swipeStart = (obj) => {
-      $$invalidate(6, hidepunc = true);
+      $$invalidate(7, hidepunc = true);
     };
     const swipeChanged = (obj) => {
       const { active_item } = obj.detail;
-      $$invalidate(8, defaultIndex = active_item);
+      $$invalidate(9, defaultIndex = active_item);
       activepb.set((totalpages - defaultIndex).toString());
+      let i = totalpages - defaultIndex - 1;
+      const wrapper = document.getElementsByClassName("swipeable-slot-wrapper")[0];
+      const ele = wrapper.childNodes[defaultIndex].firstChild.firstChild;
+      if (~ele.src.indexOf("blank")) {
+        const blob = new Blob([get_store_value(thezip).files[i].content]);
+        ele.src = $$invalidate(6, images[i] = URL.createObjectURL(blob), images);
+      }
+      if (i < totalpages) {
+        i++;
+        const ele2 = wrapper.childNodes[defaultIndex - 1].firstChild.firstChild;
+        if (~ele2.src.indexOf("blank")) {
+          const blob = new Blob([get_store_value(thezip).files[i].content]);
+          ele2.src = $$invalidate(6, images[i] = URL.createObjectURL(blob), images);
+        }
+      }
       updateFolioText();
       useractive();
       confirmfavorite();
     };
     const updateFolioText = () => {
-      $$invalidate(6, hidepunc = true);
+      $$invalidate(7, hidepunc = true);
       const fl = folioLines();
       $$invalidate(3, foliopage = get_store_value(foliotext).folioPageText($activepb));
       $$invalidate(3, foliopage = foliopage.join("\n").replace(/【[^】]+】/, "").split("\n"));
       setTimeout(
         () => {
-          $$invalidate(6, hidepunc = false);
+          $$invalidate(7, hidepunc = false);
           $$invalidate(4, puncs = extractPuncPos(foliopage, fl));
         },
         200
@@ -10742,12 +10746,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const useractive = () => {
       showpaiji.set(false);
       idlecount.set(0);
-      $$invalidate(6, hidepunc = false);
+      $$invalidate(7, hidepunc = false);
     };
     const mousewheel = (e) => {
       if (e.ctrlKey)
         return;
-      $$invalidate(6, hidepunc = true);
+      $$invalidate(7, hidepunc = true);
       if (e.deltaY > 0) {
         swiper.prevItem();
       } else {
@@ -10769,9 +10773,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         useractive();
         return;
       }
-      $$invalidate(6, hidepunc = false);
+      $$invalidate(7, hidepunc = false);
       const { x, y } = e.detail;
       const [cx, cy] = getCharXY(x, y);
+      if (cx >= folioLines() !== cx < 0)
+        return;
       tapmark.set([$activepb, cx, cy]);
       const ft = get_store_value(foliotext);
       const { choff, linetext } = ft.fromFolioPos($activepb, cx, cy);
@@ -10794,7 +10800,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const confirmfavorite = () => {
       if (favoritetimer) {
         clearTimeout(favoritetimer);
-        $$invalidate(9, favoritetimer = 0);
+        $$invalidate(10, favoritetimer = 0);
       }
       cancellable = true;
       const pb = $activepb;
@@ -10815,7 +10821,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ($activePtk !== "dc")
         return;
       clearTimeout(favoritetimer);
-      $$invalidate(9, favoritetimer = setTimeout(
+      $$invalidate(10, favoritetimer = setTimeout(
         () => {
           confirmfavorite();
         },
@@ -10833,7 +10839,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (cancellable) {
           delete bookfavor[$activefolioid][$activepb];
           clearTimeout(favoritetimer);
-          $$invalidate(9, favoritetimer = 0);
+          $$invalidate(10, favoritetimer = 0);
         } else {
           let i = bookfavor[$activefolioid][$activepb] + 1;
           if (i >= favortypes.length)
@@ -10873,20 +10879,20 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     function swipe_binding($$value) {
       binding_callbacks[$$value ? "unshift" : "push"](() => {
         swiper = $$value;
-        $$invalidate(7, swiper);
+        $$invalidate(8, swiper);
       });
     }
     $$self.$$set = ($$props2) => {
       if ("src" in $$props2)
-        $$invalidate(33, src = $$props2.src);
+        $$invalidate(32, src = $$props2.src);
       if ("totalpages" in $$props2)
         $$invalidate(0, totalpages = $$props2.totalpages);
       if ("onTapText" in $$props2)
-        $$invalidate(34, onTapText = $$props2.onTapText);
+        $$invalidate(33, onTapText = $$props2.onTapText);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty[1] & /*src*/
-      4) {
+      2) {
         $:
           loadZip(src);
       }
@@ -10898,7 +10904,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ($$self.$$.dirty[0] & /*$activefolioid*/
       2) {
         $:
-          $$invalidate(10, audiolist = getAudioList($activefolioid));
+          $$invalidate(11, audiolist = getAudioList($activefolioid));
       }
     };
     return [
@@ -10908,6 +10914,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       foliopage,
       puncs,
       ready,
+      images,
       hidepunc,
       swiper,
       defaultIndex,
@@ -10921,11 +10928,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $videoid,
       $playing,
       $remainrollback,
-      $idlecount,
       $tapmark,
       $showpunc,
       ptk2,
-      images,
       imageFrame,
       swipeConfig,
       swipeStart,
@@ -10943,7 +10948,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Swipezipimage = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance7, create_fragment6, safe_not_equal, { src: 33, totalpages: 0, onTapText: 34 }, null, [-1, -1]);
+      init(this, options, instance7, create_fragment6, safe_not_equal, { src: 32, totalpages: 0, onTapText: 33 }, null, [-1, -1]);
     }
   };
   var swipezipimage_default = Swipezipimage;
@@ -14871,7 +14876,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         div2 = element("div");
-        t0 = text("\u7248\u672C\uFF1A2023.7.29\n");
+        t0 = text("\u7248\u672C\uFF1A2023.7.30\n");
         br0 = element("br");
         t1 = text("\u5230LINE\u641C\u5C0BID @dharmacloud\uFF0C\u6216\u52A0\u5165");
         a0 = element("a");
@@ -18804,7 +18809,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             span,
             "click",
             /*click_handler_4*/
-            ctx[15]
+            ctx[14]
           );
           mounted = true;
         }
@@ -19191,11 +19196,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           ctx[2] == "about"
         );
         attr(div6, "class", "popup");
-        attr(div6, "style", div6_style_value = /*textWidth*/
-        ctx[8](
+        attr(div6, "style", div6_style_value = /*ls*/
+        ctx[5] ? sideWidth(
           /*ls*/
           ctx[5]
-        ));
+        ) : "");
       },
       m(target, anchor) {
         insert(target, div6, anchor);
@@ -19255,31 +19260,31 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               span0,
               "click",
               /*click_handler*/
-              ctx[11]
+              ctx[10]
             ),
             listen(
               span1,
               "click",
               /*click_handler_1*/
-              ctx[12]
+              ctx[11]
             ),
             listen(
               span2,
               "click",
               /*click_handler_2*/
-              ctx[13]
+              ctx[12]
             ),
             listen(
               span3,
               "click",
               /*click_handler_3*/
-              ctx[14]
+              ctx[13]
             ),
             listen(
               span4,
               "click",
               /*click_handler_5*/
-              ctx[16]
+              ctx[15]
             )
           ];
           mounted = true;
@@ -19538,11 +19543,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           );
         }
         if (!current || dirty & /*ls*/
-        32 && div6_style_value !== (div6_style_value = /*textWidth*/
-        ctx2[8](
+        32 && div6_style_value !== (div6_style_value = /*ls*/
+        ctx2[5] ? sideWidth(
           /*ls*/
           ctx2[5]
-        ))) {
+        ) : "")) {
           attr(div6, "style", div6_style_value);
         }
       },
@@ -19650,7 +19655,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let $activePtk;
     let $landscape;
     let $tapAddress;
-    component_subscribe($$self, activePtk, ($$value) => $$invalidate(10, $activePtk = $$value));
+    component_subscribe($$self, activePtk, ($$value) => $$invalidate(9, $activePtk = $$value));
     component_subscribe($$self, landscape, ($$value) => $$invalidate(6, $landscape = $$value));
     component_subscribe($$self, tapAddress, ($$value) => $$invalidate(7, $tapAddress = $$value));
     let { tofind = "" } = $$props;
@@ -19666,14 +19671,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         showdict = true;
       }
     };
-    const textWidth = (ls2) => {
-      if (ls2) {
-        const w = screen.height * 0.45;
-        const r = Math.floor(w * 100 / screen.width) + 1;
-        return "left:" + r + "vw;width:" + (100 - r) + "vw";
-      }
-      return "";
-    };
     const click_handler = () => $$invalidate(2, thetab = "about");
     const click_handler_1 = () => $$invalidate(2, thetab = "list");
     const click_handler_2 = () => $$invalidate(2, thetab = "toc");
@@ -19682,7 +19679,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const click_handler_5 = () => $$invalidate(2, thetab = "dict");
     $$self.$$set = ($$props2) => {
       if ("tofind" in $$props2)
-        $$invalidate(9, tofind = $$props2.tofind);
+        $$invalidate(8, tofind = $$props2.tofind);
       if ("address" in $$props2)
         $$invalidate(0, address = $$props2.address);
       if ("closePopup" in $$props2)
@@ -19690,12 +19687,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*$activePtk*/
-      1024) {
+      512) {
         $:
           $$invalidate(3, ptk2 = usePtk($activePtk));
       }
       if ($$self.$$.dirty & /*thetab, tofind*/
-      516) {
+      260) {
         $:
           thetab == "dict" && onDict(tofind);
       }
@@ -19711,7 +19708,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ls,
       $landscape,
       $tapAddress,
-      textWidth,
       tofind,
       $activePtk,
       click_handler,
@@ -19725,7 +19721,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Taptext = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance28, create_fragment27, safe_not_equal, { tofind: 9, address: 0, closePopup: 1 });
+      init(this, options, instance28, create_fragment27, safe_not_equal, { tofind: 8, address: 0, closePopup: 1 });
     }
   };
   var taptext_default = Taptext;
@@ -20090,7 +20086,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         div3 = element("div");
-        div3.innerHTML = `<img alt="frame" src="frames/red.jpg" class="svelte-1f7k46b"/> 
+        div3.innerHTML = `<img alt="frame" src="frames/red.jpg" class="svelte-1p857lj"/> 
 <div class="sponsor">\u4E2D\u90E8\u5168\u570B\u4F9B\u4F5B\u9F4B\u50E7\u5927\u6703</div> 
 
 <div class="paijitextcontainer"><div class="paijitext"><br/>\u3000\u8AF8\u4F9B\u990A\u4E2D\u3000\u6CD5\u4F9B\u990A\u6700
@@ -20118,15 +20114,77 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   };
   var paiji_default = Paiji;
 
+  // src/sidepaiji.svelte
+  function create_fragment31(ctx) {
+    let div1;
+    let div0;
+    let t;
+    let div1_style_value;
+    return {
+      c() {
+        div1 = element("div");
+        div0 = element("div");
+        t = text(
+          /*text*/
+          ctx[0]
+        );
+        attr(div0, "class", "sidesponsor");
+        attr(div1, "class", "sidepaiji");
+        attr(div1, "style", div1_style_value = sideWidth());
+      },
+      m(target, anchor) {
+        insert(target, div1, anchor);
+        append(div1, div0);
+        append(div0, t);
+      },
+      p(ctx2, [dirty]) {
+        if (dirty & /*text*/
+        1)
+          set_data(
+            t,
+            /*text*/
+            ctx2[0]
+          );
+      },
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(div1);
+      }
+    };
+  }
+  function instance31($$self, $$props, $$invalidate) {
+    const texts = ["\u4E2D\u90E8\u5168\u570B\u4F9B\u4F5B\u9F4B\u50E7\u5927\u6703", "\u6642\u9593\u8EF8\u203B\u6797\u2605\u5982", "\u6642\u9593\u8EF8\u203B\u6AFB\u4E95\u2605\u5FD7", "\u9801\u6A19\u8A18\u203B\u4181\u5E38\u660E", "\u9801\u6A19\u8A18\u203B\u8B1D\u2605\u6046", "\u5207\u5716\u203B\u4181\u2605\u7F3D", "\u65BD\u4E3B\u203B\u752F\u2605\u5357"];
+    let text2 = texts[0];
+    let timer = setInterval(
+      () => {
+        $$invalidate(0, text2 = texts[Math.floor(Math.random() * texts.length)]);
+      },
+      5e3
+    );
+    onDestroy(() => {
+      clearInterval(timer);
+    });
+    return [text2];
+  }
+  var Sidepaiji = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, instance31, create_fragment31, safe_not_equal, {});
+    }
+  };
+  var sidepaiji_default = Sidepaiji;
+
   // src/app.svelte
-  function create_else_block6(ctx) {
+  function create_else_block_13(ctx) {
     let span;
     let t1;
     let a;
     return {
       c() {
         span = element("span");
-        span.textContent = "\u5982\u679C\u505C\u5728\u6B64\u756B\u9762\uFF0C\u8868\u793A\u700F\u89BD\u5668\u4E0D\u76F4\u6301 Emcascript 2015\uFF0C\u7121\u6CD5\u904B\u884C\u672C\u8EDF\u4EF6\u3002";
+        span.textContent = "\u5982\u679C\u505C\u5728\u6B64\u756B\u9762\uFF0C\u8868\u793A\u700F\u89BD\u5668\u4E0D\u76F4\u6301 ECMAscript 2015\uFF0C\u7121\u6CD5\u904B\u884C\u672C\u8EDF\u4EF6\u3002";
         t1 = space();
         a = element("a");
         a.textContent = "\u5B98\u65B9\u7DB2\u7AD9";
@@ -20324,6 +20382,51 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function create_if_block_45(ctx) {
+    let current_block_type_index;
+    let if_block;
+    let if_block_anchor;
+    let current;
+    const if_block_creators = [create_if_block_55, create_else_block6];
+    const if_blocks = [];
+    function select_block_type_1(ctx2, dirty) {
+      if (
+        /*sidepaiji*/
+        ctx2[12]
+      )
+        return 0;
+      return 1;
+    }
+    current_block_type_index = select_block_type_1(ctx, -1);
+    if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    return {
+      c() {
+        if_block.c();
+        if_block_anchor = empty();
+      },
+      m(target, anchor) {
+        if_blocks[current_block_type_index].m(target, anchor);
+        insert(target, if_block_anchor, anchor);
+        current = true;
+      },
+      p: noop,
+      i(local) {
+        if (current)
+          return;
+        transition_in(if_block);
+        current = true;
+      },
+      o(local) {
+        transition_out(if_block);
+        current = false;
+      },
+      d(detaching) {
+        if_blocks[current_block_type_index].d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
+      }
+    };
+  }
+  function create_else_block6(ctx) {
     let paiji;
     let current;
     paiji = new paiji_default({});
@@ -20350,6 +20453,33 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
+  function create_if_block_55(ctx) {
+    let sidepaiji_1;
+    let current;
+    sidepaiji_1 = new sidepaiji_default({});
+    return {
+      c() {
+        create_component(sidepaiji_1.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(sidepaiji_1, target, anchor);
+        current = true;
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(sidepaiji_1.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(sidepaiji_1.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(sidepaiji_1, detaching);
+      }
+    };
+  }
   function create_key_block4(ctx) {
     let t;
     let swipezipimage;
@@ -20359,7 +20489,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ctx[7] && !/*$playing*/
       ctx[8] && !/*showdict*/
       ctx[4] && !/*shownewbie*/
-      ctx[5] && !landscape && create_if_block_45(ctx)
+      ctx[5] && !/*$landscape*/
+      ctx[0] && create_if_block_45(ctx)
     );
     swipezipimage = new swipezipimage_default({
       props: {
@@ -20401,11 +20532,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           ctx2[7] && !/*$playing*/
           ctx2[8] && !/*showdict*/
           ctx2[4] && !/*shownewbie*/
-          ctx2[5] && !landscape
+          ctx2[5] && !/*$landscape*/
+          ctx2[0]
         ) {
           if (if_block) {
-            if (dirty & /*$showpaiji, $playing, showdict, shownewbie*/
-            432) {
+            if_block.p(ctx2, dirty);
+            if (dirty & /*$showpaiji, $playing, showdict, shownewbie, $landscape*/
+            433) {
               transition_in(if_block, 1);
             }
           } else {
@@ -20563,12 +20696,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment31(ctx) {
+  function create_fragment32(ctx) {
     let div;
     let current_block_type_index;
     let if_block;
     let current;
-    const if_block_creators = [create_if_block13, create_else_block6];
+    const if_block_creators = [create_if_block13, create_else_block_13];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -20631,7 +20764,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   var idleinterval = 2;
-  function instance31($$self, $$props, $$invalidate) {
+  function instance32($$self, $$props, $$invalidate) {
     let $landscape;
     let $newbie;
     let $idlecount;
@@ -20639,8 +20772,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let $showpaiji;
     let $playing;
     component_subscribe($$self, landscape, ($$value) => $$invalidate(0, $landscape = $$value));
-    component_subscribe($$self, newbie, ($$value) => $$invalidate(13, $newbie = $$value));
-    component_subscribe($$self, idlecount, ($$value) => $$invalidate(14, $idlecount = $$value));
+    component_subscribe($$self, newbie, ($$value) => $$invalidate(14, $newbie = $$value));
+    component_subscribe($$self, idlecount, ($$value) => $$invalidate(15, $idlecount = $$value));
     component_subscribe($$self, activefolioid, ($$value) => $$invalidate(6, $activefolioid = $$value));
     component_subscribe($$self, showpaiji, ($$value) => $$invalidate(7, $showpaiji = $$value));
     component_subscribe($$self, playing, ($$value) => $$invalidate(8, $playing = $$value));
@@ -20686,6 +20819,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $$invalidate(4, showdict2 = false);
       $$invalidate(5, shownewbie = false);
     };
+    const m4 = sideWidth().match(/width:(\d+)/);
+    const sidepaiji = m4 && m4[1] && parseInt(m4[1]) > 20;
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*$landscape*/
       1) {
@@ -20707,13 +20842,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $playing,
       closePopup,
       onMainmenu,
-      onTapText
+      onTapText,
+      sidepaiji
     ];
   }
   var App = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance31, create_fragment31, safe_not_equal, {});
+      init(this, options, instance32, create_fragment32, safe_not_equal, {});
     }
   };
   var app_default = App;

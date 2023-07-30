@@ -24,8 +24,8 @@ body{
   --n:rgba(233, 233, 233, 0.7);
 }
 .popup { position:absolute;top:0;left:0;width:100%;height:100%;
-  border-radius: 5px;
   background:rgba(255, 235, 164, 0.9);overflow:hidden;z-index: 99}
+.sidepaiji {position:absolute;overflow:hidden;top:0;height:100%}
 .tabs {--webkit-user-select: none;overflow:hidden  ; font-size:2em;
   user-select: none;padding-left: 0.05em; background:var(--menubar-color);color:gold}
 
@@ -132,7 +132,7 @@ select {font-size:2em}
   font-size:2em;
 }
 .pagenumber {position:absolute ; bottom:0.5em;font-size: 2em;left:0.5em;z-index: 99;color:brown;pointer-events: none;}
-.playbtn {cursor:pointer; position:absolute ; top:0px;font-size: 4em;left:0.1em;z-index: 99;color:brown;opacity: 0.7;}
+.playbtn {cursor:pointer; position:absolute ; bottom:0.1em; right:0.1em;font-size: 4em;z-index: 99;color:brown;opacity: 0.7;}
 .favoritebtn {cursor:pointer; position:absolute ; top:0px;font-size: 3em;right:0.1em;z-index: 99;color:brown;opacity: 0.7;}
 .favoriteitem {cursor:pointer;padding-right:0.3em;padding-left:0.3em}
 @keyframes blinker {
@@ -144,7 +144,7 @@ select {font-size:2em}
 
 .remainrollback {
   animation: blinker 2s linear infinite;
-  position:absolute; bottom:2em;font-size: 200%;right:0.5em;z-index: 99;color:red
+  position:absolute;font-size: 200%;z-index: 99;color:red
 }
 
 .idletime {
@@ -168,15 +168,14 @@ select {font-size:2em}
     flex-direction:column
 }
 @keyframes paijiblinker {
-  50% {
-    opacity: 0.65;
-  }
+  50% {    opacity: 0.65;  }
+}
+@keyframes sidepaijiblinker {
+  50% {    opacity: 0.35;  }
 }
 
 @keyframes favorblinker {
-  50% {
-    opacity: 0;
-  }
+  50% { opacity: 0;  }
 }
 
 .blinkfavorbtn {
@@ -190,7 +189,10 @@ select {font-size:2em}
   width: 100vw;
   top:0;left:0;z-index: 999;
 }
-
+.sidepaiji{
+  pointer-events: none;
+  animation: sidepaijiblinker 8s linear infinite;
+}
 .paijitextcontainer{width:100%;justify-content: center;display:flex;padding-top:70vh}
 .paijitext{
   pointer-events: none;
@@ -201,7 +203,13 @@ select {font-size:2em}
 .sponsor {user-select:none;pointer-events:none;font-size:4em;font-weight: bold; 
   line-height: 1.1em;
   position:absolute; color:yellow; width:1em; padding-left:46vw; padding-top: 4em}
-
+.sidesponsor {
+  font-size:3em;
+  width:1em;
+  float:right;
+  line-height: 100%;
+  padding-top:1.5em;
+}
 .dictgroup {background:#ffb85b}
 
 
