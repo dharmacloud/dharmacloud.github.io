@@ -625,7 +625,7 @@
     }
     component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
   }
-  function init(component, options, instance33, create_fragment33, not_equal, props, append_styles, dirty = [-1]) {
+  function init(component, options, instance33, create_fragment32, not_equal, props, append_styles, dirty = [-1]) {
     const parent_component = current_component;
     set_current_component(component);
     const $$ = component.$$ = {
@@ -664,7 +664,7 @@
     $$.update();
     ready = true;
     run_all($$.before_update);
-    $$.fragment = create_fragment33 ? create_fragment33($$.ctx) : false;
+    $$.fragment = create_fragment32 ? create_fragment32($$.ctx) : false;
     if (options.target) {
       if (options.hydrate) {
         start_hydrating();
@@ -7972,7 +7972,7 @@
     get_store_value(qqplayer)?.pause && get_store_value(qqplayer).pause();
     get_store_value(ytplayer)?.stopVideo && get_store_value(ytplayer).stopVideo();
   };
-  var idletime = 30;
+  var idletime = 2;
   var hasVariorum = (ptk2, bkid) => {
     const at = bkid.indexOf("_");
     if (~at)
@@ -8045,6 +8045,16 @@
     const r = Math.floor(w * 100 / screen.width) + 1;
     return "left:" + r + "vw;width:" + (100 - r) + "vw";
   };
+  var paijitexts = [
+    "\u4E2D\u90E8\u5168\u570B\u4F9B\u4F5B\u9F4B\u50E7\u5927\u6703",
+    "\u65BD\u4E3B\u203B\u9673\u2B1A\u541F",
+    "\u65BD\u4E3B\u203B\u6797\u2B1A\u5A1F",
+    "\u65BD\u4E3B\u203B\u752F\u2B1A\u5357",
+    "\u5207\u5716\u203B\u4181\u2B1A\u7F3D",
+    "\u6A19\u8A18\u203B\u4181\u5E38\u660E",
+    "\u6A19\u8A18\u203B\u6797\u2B1A\u5982\u3000\u8B1D\u2B1A\u6046",
+    "\u6642\u9593\u8EF8\u203B\u6AFB\u4E95\u2B1A\u5FD7"
+  ];
   var favortypes = ["\u2661", "\u{1F90D}", "\u2764\uFE0F", "\u{1F49A}", "\u{1F499}", "\u{1F49C}", "\u{1F5A4}"];
 
   // src/nav.js
@@ -20083,41 +20093,63 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var newbie_default = Newbie;
 
   // src/paiji.svelte
-  function create_fragment30(ctx) {
+  function create_else_block6(ctx) {
     let div3;
+    let img;
+    let img_src_value;
+    let t0;
+    let div0;
+    let t1;
+    let t2;
+    let div2;
     return {
       c() {
         div3 = element("div");
-        div3.innerHTML = `<img alt="frame" src="frames/red.jpg" class="svelte-1p857lj"/> 
-<div class="sponsor">\u4E2D\u90E8\u5168\u570B\u4F9B\u4F5B\u9F4B\u50E7\u5927\u6703</div> 
-
-<div class="paijitextcontainer"><div class="paijitext"><br/>\u3000\u8AF8\u4F9B\u990A\u4E2D\u3000\u6CD5\u4F9B\u990A\u6700
+        img = element("img");
+        t0 = space();
+        div0 = element("div");
+        t1 = text(
+          /*text*/
+          ctx[0]
+        );
+        t2 = space();
+        div2 = element("div");
+        div2.innerHTML = `<div class="paijitext"><br/>\u3000\u8AF8\u4F9B\u990A\u4E2D\u3000\u6CD5\u4F9B\u990A\u6700
 <br/>\u9858\u4EE5\u6B64\u529F\u5FB7\u3000\u666E\u53CA\u65BC\u4E00\u5207
-<br/>\u6211\u7B49\u8207\u773E\u751F\u3000\u7686\u5171\u6210\u4F5B\u9053</div></div>`;
+<br/>\u6211\u7B49\u8207\u773E\u751F\u3000\u7686\u5171\u6210\u4F5B\u9053</div>`;
+        attr(img, "alt", "frame");
+        if (!src_url_equal(img.src, img_src_value = "frames/red.jpg"))
+          attr(img, "src", img_src_value);
+        attr(img, "class", "svelte-1p857lj");
+        attr(div0, "class", "sponsor");
+        attr(div2, "class", "paijitextcontainer");
         attr(div3, "class", "paiji");
       },
       m(target, anchor) {
         insert(target, div3, anchor);
+        append(div3, img);
+        append(div3, t0);
+        append(div3, div0);
+        append(div0, t1);
+        append(div3, t2);
+        append(div3, div2);
       },
-      p: noop,
-      i: noop,
-      o: noop,
+      p(ctx2, dirty) {
+        if (dirty & /*text*/
+        1)
+          set_data(
+            t1,
+            /*text*/
+            ctx2[0]
+          );
+      },
       d(detaching) {
         if (detaching)
           detach(div3);
       }
     };
   }
-  var Paiji = class extends SvelteComponent {
-    constructor(options) {
-      super();
-      init(this, options, null, create_fragment30, safe_not_equal, {});
-    }
-  };
-  var paiji_default = Paiji;
-
-  // src/sidepaiji.svelte
-  function create_fragment31(ctx) {
+  function create_if_block13(ctx) {
     let div1;
     let div0;
     let t;
@@ -20139,7 +20171,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         append(div1, div0);
         append(div0, t);
       },
-      p(ctx2, [dirty]) {
+      p(ctx2, dirty) {
         if (dirty & /*text*/
         1)
           set_data(
@@ -20148,48 +20180,71 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             ctx2[0]
           );
       },
-      i: noop,
-      o: noop,
       d(detaching) {
         if (detaching)
           detach(div1);
       }
     };
   }
+  function create_fragment30(ctx) {
+    let if_block_anchor;
+    function select_block_type(ctx2, dirty) {
+      if (
+        /*sidepaiji*/
+        ctx2[1]
+      )
+        return create_if_block13;
+      return create_else_block6;
+    }
+    let current_block_type = select_block_type(ctx, -1);
+    let if_block = current_block_type(ctx);
+    return {
+      c() {
+        if_block.c();
+        if_block_anchor = empty();
+      },
+      m(target, anchor) {
+        if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
+      },
+      p(ctx2, [dirty]) {
+        if_block.p(ctx2, dirty);
+      },
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if_block.d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
+      }
+    };
+  }
   function instance31($$self, $$props, $$invalidate) {
     let now = 0;
-    const texts = [
-      "\u4E2D\u90E8\u5168\u570B\u4F9B\u4F5B\u9F4B\u50E7\u5927\u6703",
-      "\u65BD\u4E3B\u203B\u9673\u2B1A\u541F",
-      "\u65BD\u4E3B\u203B\u6797\u2B1A\u5A1F",
-      "\u65BD\u4E3B\u203B\u752F\u2B1A\u5357",
-      "\u5207\u5716\u203B\u4181\u2B1A\u7F3D",
-      "\u6A19\u8A18\u203B\u4181\u5E38\u660E",
-      "\u6A19\u8A18\u203B\u6797\u2B1A\u5982\u3000\u8B1D\u2B1A\u6046",
-      "\u6642\u9593\u8EF8\u203B\u6797\u2B1A\u5982\u3000\u6AFB\u4E95\u2B1A\u5FD7"
-    ];
-    let text2 = texts[0];
+    let text2 = paijitexts[0];
     let timer = setInterval(
       () => {
-        $$invalidate(0, text2 = texts[++now % texts.length]);
+        $$invalidate(0, text2 = paijitexts[++now % paijitexts.length]);
       },
       5e3
     );
     onDestroy(() => {
       clearInterval(timer);
     });
-    return [text2];
+    const m4 = sideWidth().match(/width:(\d+)/);
+    const sidepaiji = m4 && m4[1] && parseInt(m4[1]) > 20;
+    return [text2, sidepaiji];
   }
-  var Sidepaiji = class extends SvelteComponent {
+  var Paiji = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance31, create_fragment31, safe_not_equal, {});
+      init(this, options, instance31, create_fragment30, safe_not_equal, {});
     }
   };
-  var sidepaiji_default = Sidepaiji;
+  var paiji_default = Paiji;
 
   // src/app.svelte
-  function create_else_block_13(ctx) {
+  function create_else_block7(ctx) {
     let span;
     let t1;
     let a;
@@ -20222,7 +20277,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block13(ctx) {
+  function create_if_block14(ctx) {
     let previous_key = (
       /*$activefolioid*/
       ctx[6]
@@ -20394,53 +20449,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function create_if_block_45(ctx) {
-    let current_block_type_index;
-    let if_block;
-    let if_block_anchor;
-    let current;
-    const if_block_creators = [create_if_block_55, create_else_block6];
-    const if_blocks = [];
-    function select_block_type_1(ctx2, dirty) {
-      if (
-        /*sidepaiji*/
-        ctx2[12]
-      )
-        return 0;
-      return 1;
-    }
-    current_block_type_index = select_block_type_1(ctx, -1);
-    if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-    return {
-      c() {
-        if_block.c();
-        if_block_anchor = empty();
-      },
-      m(target, anchor) {
-        if_blocks[current_block_type_index].m(target, anchor);
-        insert(target, if_block_anchor, anchor);
-        current = true;
-      },
-      p(ctx2, dirty) {
-        if_block.p(ctx2, dirty);
-      },
-      i(local) {
-        if (current)
-          return;
-        transition_in(if_block);
-        current = true;
-      },
-      o(local) {
-        transition_out(if_block);
-        current = false;
-      },
-      d(detaching) {
-        if_blocks[current_block_type_index].d(detaching);
-        if (detaching)
-          detach(if_block_anchor);
-      }
-    };
-  }
-  function create_else_block6(ctx) {
     let paiji;
     let current;
     paiji = new paiji_default({});
@@ -20452,7 +20460,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         mount_component(paiji, target, anchor);
         current = true;
       },
-      p: noop,
       i(local) {
         if (current)
           return;
@@ -20465,39 +20472,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       d(detaching) {
         destroy_component(paiji, detaching);
-      }
-    };
-  }
-  function create_if_block_55(ctx) {
-    let sidepaiji_1;
-    let current;
-    sidepaiji_1 = new sidepaiji_default({
-      props: { onTapText: (
-        /*onTapText*/
-        ctx[11]
-      ) }
-    });
-    return {
-      c() {
-        create_component(sidepaiji_1.$$.fragment);
-      },
-      m(target, anchor) {
-        mount_component(sidepaiji_1, target, anchor);
-        current = true;
-      },
-      p: noop,
-      i(local) {
-        if (current)
-          return;
-        transition_in(sidepaiji_1.$$.fragment, local);
-        current = true;
-      },
-      o(local) {
-        transition_out(sidepaiji_1.$$.fragment, local);
-        current = false;
-      },
-      d(detaching) {
-        destroy_component(sidepaiji_1, detaching);
       }
     };
   }
@@ -20557,7 +20531,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           ctx2[0]
         ) {
           if (if_block) {
-            if_block.p(ctx2, dirty);
             if (dirty & /*$showpaiji, $playing, showdict, shownewbie, $landscape*/
             433) {
               transition_in(if_block, 1);
@@ -20717,12 +20690,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment32(ctx) {
+  function create_fragment31(ctx) {
     let div;
     let current_block_type_index;
     let if_block;
     let current;
-    const if_block_creators = [create_if_block13, create_else_block_13];
+    const if_block_creators = [create_if_block14, create_else_block7];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -20793,8 +20766,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let $showpaiji;
     let $playing;
     component_subscribe($$self, landscape, ($$value) => $$invalidate(0, $landscape = $$value));
-    component_subscribe($$self, newbie, ($$value) => $$invalidate(14, $newbie = $$value));
-    component_subscribe($$self, idlecount, ($$value) => $$invalidate(15, $idlecount = $$value));
+    component_subscribe($$self, newbie, ($$value) => $$invalidate(13, $newbie = $$value));
+    component_subscribe($$self, idlecount, ($$value) => $$invalidate(14, $idlecount = $$value));
     component_subscribe($$self, activefolioid, ($$value) => $$invalidate(6, $activefolioid = $$value));
     component_subscribe($$self, showpaiji, ($$value) => $$invalidate(7, $showpaiji = $$value));
     component_subscribe($$self, playing, ($$value) => $$invalidate(8, $playing = $$value));
@@ -20840,8 +20813,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $$invalidate(4, showdict2 = false);
       $$invalidate(5, shownewbie = false);
     };
-    const m4 = sideWidth().match(/width:(\d+)/);
-    const sidepaiji = m4 && m4[1] && parseInt(m4[1]) > 20;
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*$landscape*/
       1) {
@@ -20863,14 +20834,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       $playing,
       closePopup,
       onMainmenu,
-      onTapText,
-      sidepaiji
+      onTapText
     ];
   }
   var App = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance32, create_fragment32, safe_not_equal, {});
+      init(this, options, instance32, create_fragment31, safe_not_equal, {});
     }
   };
   var app_default = App;
