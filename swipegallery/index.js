@@ -8042,7 +8042,7 @@
   };
   var sideWidth = () => {
     const w = screen.height * 0.45;
-    const r = Math.floor(w * 100 / screen.width) + 1;
+    const r = (w * 100 / screen.width).toFixed(2);
     return "left:" + r + "vw;width:" + (100 - r) + "vw";
   };
   var paijitexts = [
@@ -8059,7 +8059,7 @@
 
   // src/nav.js
   var CURSORMARK = "\u25C6";
-  var goPb2 = (pbid, ck) => {
+  var goPb = (pbid, ck) => {
     activepb.set(pbid);
     if (ck) {
       const ft = get_store_value(foliotext);
@@ -8073,7 +8073,7 @@
     const ckline = ck.linepos[at];
     const pbtag = ptk2.nearestTag(ckline + 1, "pb") - 1;
     const pbid = pb.fields.id.values[pbtag];
-    goPb2(pbid, ck.fields.id.values[at]);
+    goPb(pbid, ck.fields.id.values[at]);
   };
   var loadFolio = (folioid, func) => {
     let timer = 0;
@@ -17334,7 +17334,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             span,
             "click",
             /*click_handler_1*/
-            ctx[11]
+            ctx[10]
           );
           mounted = true;
         }
@@ -17381,7 +17381,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             span,
             "click",
             /*click_handler_2*/
-            ctx[12]
+            ctx[11]
           );
           mounted = true;
         }
@@ -17428,7 +17428,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             span,
             "click",
             /*click_handler_3*/
-            ctx[13]
+            ctx[12]
           );
           mounted = true;
         }
@@ -17475,7 +17475,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             span,
             "click",
             /*click_handler_4*/
-            ctx[14]
+            ctx[13]
           );
           mounted = true;
         }
@@ -17731,7 +17731,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             span,
             "click",
             /*click_handler*/
-            ctx[10]
+            ctx[9]
           );
           mounted = true;
         }
@@ -17994,7 +17994,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let externallinks;
     let $activepb;
     let $activefolioid;
-    component_subscribe($$self, activepb, ($$value) => $$invalidate(9, $activepb = $$value));
+    component_subscribe($$self, activepb, ($$value) => $$invalidate(8, $activepb = $$value));
     component_subscribe($$self, activefolioid, ($$value) => $$invalidate(3, $activefolioid = $$value));
     let { start, ptk: ptk2 } = $$props;
     let { closePopup } = $$props;
@@ -18035,15 +18035,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ($$self.$$.dirty & /*ptk, address*/
       130) {
         $:
-          $$invalidate(0, [start, end, _from, _till, lineoff] = ptk2.rangeOfAddress(address), start, ($$invalidate(8, end), $$invalidate(1, ptk2), $$invalidate(7, address)), ($$invalidate(6, lineoff), $$invalidate(1, ptk2), $$invalidate(7, address)));
-      }
-      if ($$self.$$.dirty & /*address, start, end*/
-      385) {
-        $:
-          console.log(address, start, end);
+          $$invalidate(0, [start, end, _from, _till, lineoff] = ptk2.rangeOfAddress(address), start, ($$invalidate(6, lineoff), $$invalidate(1, ptk2), $$invalidate(7, address)));
       }
       if ($$self.$$.dirty & /*$activefolioid, $activepb*/
-      520) {
+      264) {
         $:
           $$invalidate(5, externallinks = getExternalLinks($activefolioid, $activepb));
       }
@@ -18057,7 +18052,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       externallinks,
       lineoff,
       address,
-      end,
       $activepb,
       click_handler,
       click_handler_1,
@@ -18306,7 +18300,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if (newid == fid)
         return;
       loadFolio(newid, function() {
-        goPb2("1");
+        goPb("1");
         closePopup();
         loadJuan(newid);
       });
@@ -18849,7 +18843,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t;
     return {
       c() {
-        t = text("\u67E5\u8A62");
+        t = text("\u5B57\u5178");
       },
       m(target, anchor) {
         insert(target, t, anchor);
@@ -19112,7 +19106,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if_block4.c();
         t8 = space();
         span4 = element("span");
-        t9 = text("\u{1F50E}");
+        t9 = text("\u{1F520}");
         if (if_block5)
           if_block5.c();
         t10 = space();
