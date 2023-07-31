@@ -62,15 +62,17 @@
   transition-timing-function: ease-out;
 }
 
+/* fakecss:d:/2023/swipegallery/src/paiji.esbuild-svelte-fake-css */
+img.svelte-1p857lj {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  position: absolute;
+}
+
 /* fakecss:d:/2023/swipegallery/src/swipezipimage.esbuild-svelte-fake-css */
 img.svelte-1nw6vnk {
   height: 100%;
-}
-.message.svelte-1nw6vnk {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 .swipe-holder.svelte-1nw6vnk {
   height: 100%;
@@ -277,10 +279,24 @@ input.svelte-1nnnvg0 {
   user-select: none;
 }
 
+/* fakecss:d:/2023/swipegallery/src/chunktext.esbuild-svelte-fake-css */
+.gotop.svelte-z7hiol {
+  z-index: 999;
+  position: fixed;
+  right: 1em;
+  top: 1em;
+  color: var(--selected-color);
+}
+.goactiveline.svelte-z7hiol {
+  z-index: 999;
+  position: fixed;
+  right: 1em;
+  color: var(--selected-color);
+}
+
 /* fakecss:d:/2023/swipegallery/src/searchmain.esbuild-svelte-fake-css */
-input.svelte-1cb3485 {
+input.svelte-a8ib29 {
   font-size: 1em;
-  size: 6;
 }
 
 /* fakecss:d:/2023/swipegallery/src/toc.esbuild-svelte-fake-css */
@@ -299,12 +315,4 @@ input.svelte-1cb3485 {
   position: absolute;
   bottom: -1px;
   height: 1px;
-}
-
-/* fakecss:d:/2023/swipegallery/src/paiji.esbuild-svelte-fake-css */
-img.svelte-1p857lj {
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  position: absolute;
 }
