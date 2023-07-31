@@ -7599,8 +7599,8 @@
       const pbchoff = this.skipFolioChar(pblines[line], ch);
       start += pbchoff;
       let ckat = bsearchNumber(this.chunkpos, start) - 1;
-      const ckid2 = this.chunks[ckat < 0 ? 0 : ckat];
-      const [ckstart, ckend] = this.chunkRange(ckid2);
+      const ckid = this.chunks[ckat < 0 ? 0 : ckat];
+      const [ckstart, ckend] = this.chunkRange(ckid);
       const str = this.offtext.slice(ckstart, ckend);
       const cklines = str.split("\n");
       let p = ckstart || 0;
@@ -7616,16 +7616,16 @@
       const ptkline = this.from + this.chunklinepos[ckat] + lineoff;
       const linecount = this.chunklinepos[ckat + 1] - this.chunklinepos[ckat];
       const at = bsearchNumber(this.ptk.defines.ck.linepos, ptkline + 1) - 1;
-      return { ckid: ckid2, lineoff, choff, linetext: cklines[i], ptkline, linecount, at };
+      return { ckid, lineoff, choff, linetext: cklines[i], ptkline, linecount, at };
     }
-    chunkRange(ckid2) {
-      const at = this.chunks.indexOf(ckid2);
+    chunkRange(ckid) {
+      const at = this.chunks.indexOf(ckid);
       if (at == -1)
         return [0, 0];
       return [this.chunkpos[at], this.chunkpos[at + 1]];
     }
-    chunkText(ckid2) {
-      const [s, e] = this.chunkRange(ckid2);
+    chunkText(ckid) {
+      const [s, e] = this.chunkRange(ckid);
       return this.offtext.slice(s, e);
     }
     pbRange(pb) {
@@ -8070,8 +8070,8 @@
     const ft = get_store_value(foliotext);
     if (!ft || !ft.fromFolioPos)
       return "";
-    const { ckid: ckid2, lineoff, choff } = ft.fromFolioPos(pbid, cx, cy);
-    const address = makeAddress("", "bk#" + bookByFolio(get_store_value(activefolioid)) + ".ck#" + ckid2, 0, 0, lineoff, choff);
+    const { ckid, lineoff, choff } = ft.fromFolioPos(pbid, cx, cy);
+    const address = makeAddress("", "bk#" + bookByFolio(get_store_value(activefolioid)) + ".ck#" + ckid, 0, 0, lineoff, choff);
     return address;
   };
   var tapAddress = derived(tapmark, (mark) => makeAddressFromFolioPos(mark));
@@ -8147,6 +8147,7 @@
   };
   var loadFolio = (folioid, func) => {
     let timer = 0;
+    console.log("loading folio", folioid);
     if (folioid == get_store_value(activefolioid))
       func && func(folioid);
     else {
@@ -8182,31 +8183,36 @@
     }
     return juans;
   };
-  var markChunk = (ckid2) => {
-    const fpos = get_store_value(foliotext).toFolioPos(ckid2);
+  var markChunk = (ckid) => {
+    const fpos = get_store_value(foliotext).toFolioPos(ckid);
     activepb.set(fpos[0]);
     tapmark.set(fpos);
   };
-  var goChunk = (ptk2, bkid, ckid2, direction = 0) => {
+  var goChunk = (ptk2, bkid, ckid, direction = 0) => {
     const ft = get_store_value(foliotext);
     if (direction !== 0) {
       const ck = ptk2.defines.ck;
       const [bkstart, bkend] = ptk2.rangeOfAddress("bk#" + bkid);
-      const [start, end] = ptk2.rangeOfAddress("bk#" + bkid + ".ck#" + ckid2);
+      const [start, end] = ptk2.rangeOfAddress("bk#" + bkid + ".ck#" + ckid);
       const newck = ptk2.nearestChunk(start + 1);
       const newat = newck.at + direction;
       const linepos = ck.linepos[newat];
       if (linepos < bkend && linepos >= bkstart) {
-        ckid2 = ck.fields.id.values[newat];
+        ckid = ck.fields.id.values[newat];
       }
     }
-    const at = ft.chunks.indexOf(ckid2);
+    const at = ft.chunks.indexOf(ckid);
     if (at == -1) {
-      const folioid = folioByChunk(ckid2);
-      loadFolio(folioid, () => markChunk(ckid2));
+      const folioid = folioByChunk(ptk2, get_store_value(activefolioid), ckid);
+      loadFolio(folioid, () => markChunk(ckid));
     } else {
-      markChunk(ckid2);
+      markChunk(ckid);
     }
+  };
+  var folioByChunk = (ptk2, folioid, ckid) => {
+    const [start] = ptk2.rangeOfAddress("bk#" + bookByFolio(folioid) + ".ck#" + ckid);
+    const newfolioid = ptk2.nearestTag(start + 1, "folio", "id");
+    return newfolioid;
   };
 
   // src/transcriptlayer.svelte
@@ -10758,7 +10764,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         host = "https://dharmacloud.github.io/swipegallery/folio/";
       }
       const ftext = new FolioText(ptk2);
+      console.log("loadzip", $activefolioid);
       await ftext.load($activefolioid);
+      console.log("loadzip2", $activefolioid);
       foliotext.set(ftext);
       const res = await fetch(host + src);
       const buf = await res.arrayBuffer();
@@ -16600,7 +16608,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let span;
     let t_value = (
       /*caption*/
-      ctx[11] + ""
+      ctx[10] + ""
     );
     let t;
     let mounted;
@@ -16610,7 +16618,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         /*click_handler*/
         ctx[5](
           /*idx*/
-          ctx[12]
+          ctx[11]
         )
       );
     }
@@ -16623,7 +16631,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           span,
           "selected",
           /*active*/
-          ctx[10]
+          ctx[9]
         );
       },
       m(target, anchor) {
@@ -16637,16 +16645,16 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(new_ctx, dirty) {
         ctx = new_ctx;
         if (dirty & /*caption*/
-        2048 && t_value !== (t_value = /*caption*/
-        ctx[11] + ""))
+        1024 && t_value !== (t_value = /*caption*/
+        ctx[10] + ""))
           set_data(t, t_value);
         if (dirty & /*active*/
-        1024) {
+        512) {
           toggle_class(
             span,
             "selected",
             /*active*/
-            ctx[10]
+            ctx[9]
           );
         }
       },
@@ -16679,8 +16687,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         $$slots: {
           default: [
             create_default_slot5,
-            ({ active, caption: caption3, idx: idx2 }) => ({ 10: active, 11: caption3, 12: idx2 }),
-            ({ active, caption: caption3, idx: idx2 }) => (active ? 1024 : 0) | (caption3 ? 2048 : 0) | (idx2 ? 4096 : 0)
+            ({ active, caption: caption3, idx: idx2 }) => ({ 9: active, 10: caption3, 11: idx2 }),
+            ({ active, caption: caption3, idx: idx2 }) => (active ? 512 : 0) | (caption3 ? 1024 : 0) | (idx2 ? 2048 : 0)
           ]
         },
         $$scope: { ctx }
@@ -16705,7 +16713,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           pager_changes.now = /*cknow*/
           ctx2[0];
         if (dirty & /*$$scope, active, idx, caption*/
-        15360) {
+        7680) {
           pager_changes.$$scope = { dirty, ctx: ctx2 };
         }
         pager.$set(pager_changes);
@@ -16739,8 +16747,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const ft = $foliotext;
       if (!ft || !ft.fromFolioPos)
         return;
-      const { ckid: ckid2 } = ft.fromFolioPos($tapmark);
-      if (ckid2 == chunks[cknow]?.ckid)
+      const { ckid } = ft.fromFolioPos($tapmark);
+      if (ckid == chunks[cknow]?.ckid)
         return;
       const book = bookByFolio($activefolioid);
       const [from, to] = ptk2.rangeOfAddress("bk#" + book);
@@ -16748,31 +16756,26 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const ck = ptk2.defines.ck;
       let idx2 = 0;
       $$invalidate(1, chunks.length = 0, chunks);
-      const tapckid = ckid2;
+      const tapckid = ckid;
       for (let ckat = start; ckat <= end; ckat++) {
-        const ckid3 = ck.fields.id.values[ckat];
-        const styled = parseInt(ckid3).toString() == ckid3 ? styledNumber(parseInt(ckid3), "\u2460") : ckid3 + ".";
+        const ckid2 = ck.fields.id.values[ckat];
+        const styled = parseInt(ckid2).toString() == ckid2 ? styledNumber(parseInt(ckid2), "\u2460") : ckid2 + ".";
         chunks.push({
           caption: styled + ck.innertext.get(ckat),
           idx: idx2,
           id: ckat,
-          ckid: ckid3
+          ckid: ckid2
         });
-        if (ckid3 == tapckid)
+        if (ckid2 == tapckid)
           $$invalidate(0, cknow = idx2);
         idx2++;
       }
     };
-    const folioByChunk2 = () => {
-      const [start] = ptk2.rangeOfAddress("bk#" + bookByFolio($activefolioid) + ".ck#" + ckid);
-      const folioid = ptk2.nearestTag(start + 1, "folio", "id");
-      return folioid;
-    };
     const gochunk = (idx2) => {
       const ckat = chunks[idx2].id;
       const ck = ptk2.defines.ck;
-      const ckid2 = ck.fields.id.values[ckat];
-      goChunk(ptk2, bookByFolio($activefolioid), ckid2);
+      const ckid = ck.fields.id.values[ckat];
+      goChunk(ptk2, bookByFolio($activefolioid), ckid);
       $$invalidate(0, cknow = idx2);
     };
     const click_handler = (idx2) => gochunk(idx2);
@@ -16965,12 +16968,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const ft = get_store_value(foliotext);
       if (!ft || !ft.fromFolioPos)
         return;
-      const { ckid: ckid2, lineoff } = ft.fromFolioPos(mark);
+      const { ckid, lineoff } = ft.fromFolioPos(mark);
       $$invalidate(1, loff = lineoff);
-      if (ck !== ckid2) {
-        $$invalidate(2, lines = ft.chunkText(ckid2).split("\n"));
+      if (ck !== ckid) {
+        $$invalidate(2, lines = ft.chunkText(ckid).split("\n"));
       }
-      ck = ckid2;
+      ck = ckid;
     };
     const renderLine = (line) => {
       return line.replace(/\^[a-z]#?[a-z\d]*/g, "");
@@ -18953,21 +18956,39 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let externallinks;
     let $activepb;
     let $activefolioid;
+    let $tapChunkLine;
     component_subscribe($$self, activepb, ($$value) => $$invalidate(5, $activepb = $$value));
     component_subscribe($$self, activefolioid, ($$value) => $$invalidate(2, $activefolioid = $$value));
+    component_subscribe($$self, tapChunkLine, ($$value) => $$invalidate(12, $tapChunkLine = $$value));
     let { ptk: ptk2 } = $$props;
     let { closePopup } = $$props;
     const getExternalLinks = (folioid) => {
-      const [from, to] = ptk2.rangeOfAddress("folio#" + folioid + ".pb#" + ($activepb + 1));
-      const n = ptk2.defines.n;
-      const at = ptk2.nearestTag(to + 1, "n") - 1;
+      const [from, to] = ptk2.rangeOfAddress("folio#" + folioid + ".pb#" + $activepb);
       const out = [];
-      if (~at) {
+      const agmsjuan = folioid.match(/agms(\d+)$/);
+      if (agmsjuan) {
+        const at = ptk2.nearestTag(to + 1, "n") - 1;
         const sutra = parseInt(n.fields.id.values[at]);
-        const juan = folioid.match(/agms(\d+)$/);
-        if (juan) {
-          caption = juan[1] + "\u5377" + sutra + "\u7D93\u5C0E\u8B80(\u7345\u5B50\u543C)";
-          url = "https://buddhaspace.org/agama/" + juan[1] + ".html#" + toChineseNumber(sutra);
+        const n = ptk2.defines.n;
+        caption = "\u96DC\u963F\u542B\u7B2C" + agmsjuan[1] + "\u5377" + sutra + "\u7D93\u5C0E\u8B80(\u7345\u5B50\u543C)";
+        url = "https://buddhaspace.org/agama/" + agmsjuan[1] + ".html#" + toChineseNumber(sutra);
+        out.push([caption, url]);
+      }
+      const agmdjuan = folioid.match(/agmd(\d+)$/);
+      if (agmdjuan) {
+        const { ckid } = $tapChunkLine;
+        if (ckid) {
+          caption = "\u9577\u963F\u542B\u7B2C" + agmdjuan[1] + "\u5377" + parseInt(ckid) + "\u7D93\u5C0E\u8B80(\u7345\u5B50\u543C)";
+          url = "https://buddhaspace.org/agama3/" + parseInt(ckid) + ".html";
+          out.push([caption, url]);
+        }
+      }
+      const agmmjuan = folioid.match(/agmm(\d+)$/);
+      if (agmmjuan) {
+        const { ckid } = $tapChunkLine;
+        if (ckid) {
+          caption = "\u4E2D\u963F\u542B\u7B2C" + agmmjuan[1] + "\u5377" + parseInt(ckid) + "\u7D93\u5C0E\u8B80(\u7345\u5B50\u543C)";
+          url = "https://buddhaspace.org/agama2/sub/" + ckid + ".html";
           out.push([caption, url]);
         }
       }
@@ -19018,7 +19039,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
 
   // src/juan.svelte
   function create_else_block6(ctx) {
-    let t;
     let pager;
     let current;
     pager = new pager_default({
@@ -19027,15 +19047,20 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           /*juans*/
           ctx[0]
         ),
+        caption: "\u5377",
         now: (
           /*currentjuan*/
           ctx[1]
         ),
+        onselect: (
+          /*gojuan*/
+          ctx[2]
+        ),
         $$slots: {
           default: [
             create_default_slot7,
-            ({ active, caption: caption3, id }) => ({ 8: active, 9: caption3, 10: id }),
-            ({ active, caption: caption3, id }) => (active ? 256 : 0) | (caption3 ? 512 : 0) | (id ? 1024 : 0)
+            ({ active, caption: caption3, idx: idx2 }) => ({ 8: active, 9: caption3, 10: idx2 }),
+            ({ active, caption: caption3, idx: idx2 }) => (active ? 256 : 0) | (caption3 ? 512 : 0) | (idx2 ? 1024 : 0)
           ]
         },
         $$scope: { ctx }
@@ -19043,11 +19068,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     });
     return {
       c() {
-        t = text("\u5377");
         create_component(pager.$$.fragment);
       },
       m(target, anchor) {
-        insert(target, t, anchor);
         mount_component(pager, target, anchor);
         current = true;
       },
@@ -19061,7 +19084,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         2)
           pager_changes.now = /*currentjuan*/
           ctx2[1];
-        if (dirty & /*$$scope, active, id, caption*/
+        if (dirty & /*$$scope, active, idx, caption*/
         3840) {
           pager_changes.$$scope = { dirty, ctx: ctx2 };
         }
@@ -19078,8 +19101,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         current = false;
       },
       d(detaching) {
-        if (detaching)
-          detach(t);
         destroy_component(pager, detaching);
       }
     };
@@ -19115,7 +19136,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       return (
         /*click_handler*/
         ctx[6](
-          /*id*/
+          /*idx*/
           ctx[10]
         )
       );
@@ -19237,7 +19258,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let { ptk: ptk2 } = $$props;
     let juans = [];
     let currentjuan = 0;
-    const gojuan = (juan) => {
+    const gojuan = (idx2) => {
+      const juan = juans[idx2].id;
       const fid = $activefolioid;
       const newid = fid.replace(/\d+$/, juan);
       if (newid == fid)
@@ -19263,7 +19285,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         };
       }));
     };
-    const click_handler = (id) => gojuan(id);
+    const click_handler = (idx2) => gojuan(idx2);
     $$self.$$set = ($$props2) => {
       if ("closePopup" in $$props2)
         $$invalidate(3, closePopup = $$props2.closePopup);
@@ -19620,8 +19642,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const ft = $foliotext;
       if (!ft || !ft.fromFolioPos)
         return "";
-      const { ckid: ckid2 } = ft.fromFolioPos($activepb);
-      return ckid2;
+      const { ckid } = ft.fromFolioPos($activepb);
+      return ckid;
     };
     function slider_value_binding(value) {
       folio = value;
