@@ -6776,9 +6776,7 @@
         const nextstart = TLP[groupby.linepos[i + 1]] || TLP[TLP.length - 1];
         tlp.push([TLP[groupby.linepos[i]], nextstart]);
       }
-      console.log(tlp);
       const res = plCount(postings[0], tlp);
-      console.log(res);
       const out = res.map((count, idx2) => {
         const id = groupby.fields.id.values[idx2];
         return {
@@ -7789,6 +7787,7 @@
     const newbie2 = localStorage.getItem(AppPrefix + "newbie") || "on";
     const playnextjuan2 = localStorage.getItem(AppPrefix + "playnextjuan") || "on";
     const showpunc2 = localStorage.getItem(AppPrefix + "showpunc") || "on";
+    const showsponsor2 = localStorage.getItem(AppPrefix + "showsponsor") || "off";
     let _favorites = localStorage.getItem(AppPrefix + "favorites") || "{}";
     let _prefervideo = localStorage.getItem(AppPrefix + "prefervideo") || "{}";
     let favorites2 = {}, prefervideo2 = {};
@@ -7800,7 +7799,7 @@
       favorites2 = {};
       prefervideo2 = {};
     }
-    return { activefolioid: activefolioid2, videohost, autodict: autodict2, newbie: newbie2, favorites: favorites2, playnextjuan: playnextjuan2, prefervideo: prefervideo2, showpunc: showpunc2 };
+    return { activefolioid: activefolioid2, showsponsor: showsponsor2, videohost, autodict: autodict2, newbie: newbie2, favorites: favorites2, playnextjuan: playnextjuan2, prefervideo: prefervideo2, showpunc: showpunc2 };
   };
   var saveSettings = () => {
     for (let key in settingsToBeSave) {
@@ -7976,6 +7975,7 @@
   var favorites = writable(settings.favorites);
   var prefervideo = writable(settings.prefervideo);
   var showpunc = writable(settings.showpunc);
+  var showsponsor = writable(settings.showsponsor);
   var landscape = writable(false);
   var isAndroid = writable(false);
   var searchable = writable("");
@@ -8042,7 +8042,7 @@
     get_store_value(qqplayer)?.pause && get_store_value(qqplayer).pause();
     get_store_value(ytplayer)?.stopVideo && get_store_value(ytplayer).stopVideo();
   };
-  var idletime = 2;
+  var idletime = 30;
   var hasVariorum = (ptk2, bkid) => {
     const at = bkid.indexOf("_");
     if (~at)
@@ -14900,30 +14900,33 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let switch1;
     let updating_value_1;
     let t5;
+    let switch2;
+    let updating_value_2;
+    let t6;
     let div0;
     let html_tag;
-    let t6;
+    let t7;
     let br1;
     let a1;
-    let t8;
-    let br2;
     let t9;
-    let br3;
+    let br2;
     let t10;
+    let br3;
+    let t11;
     let a2;
-    let t12;
+    let t13;
     let a3;
-    let t14;
-    let br4;
     let t15;
+    let br4;
+    let t16;
     let a4;
-    let t17;
-    let br5;
     let t18;
+    let br5;
+    let t19;
     let div1;
     let current;
     function switch0_value_binding(value) {
-      ctx[2](value);
+      ctx[3](value);
     }
     let switch0_props = {
       label: "\u986F\u793A\u6A19\u9EDE\u7B26\u865F",
@@ -14940,26 +14943,43 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     switch0 = new switch_default({ props: switch0_props });
     binding_callbacks.push(() => bind(switch0, "value", switch0_value_binding));
     function switch1_value_binding(value) {
-      ctx[3](value);
+      ctx[4](value);
     }
     let switch1_props = {
+      label: "\u975C\u7F6E\u6642\u986F\u793A\u529F\u5FB7\u699C",
+      design: "slider",
+      fontSize: "24"
+    };
+    if (
+      /*$showsponsor*/
+      ctx[1] !== void 0
+    ) {
+      switch1_props.value = /*$showsponsor*/
+      ctx[1];
+    }
+    switch1 = new switch_default({ props: switch1_props });
+    binding_callbacks.push(() => bind(switch1, "value", switch1_value_binding));
+    function switch2_value_binding(value) {
+      ctx[5](value);
+    }
+    let switch2_props = {
       label: "\u555F\u7528\u6642\u986F\u793A\u6B61\u8FCE\u756B\u9762",
       design: "slider",
       fontSize: "24"
     };
     if (
       /*$newbie*/
-      ctx[1] !== void 0
+      ctx[2] !== void 0
     ) {
-      switch1_props.value = /*$newbie*/
-      ctx[1];
+      switch2_props.value = /*$newbie*/
+      ctx[2];
     }
-    switch1 = new switch_default({ props: switch1_props });
-    binding_callbacks.push(() => bind(switch1, "value", switch1_value_binding));
+    switch2 = new switch_default({ props: switch2_props });
+    binding_callbacks.push(() => bind(switch2, "value", switch2_value_binding));
     return {
       c() {
         div2 = element("div");
-        t0 = text("\u7248\u672C\uFF1A2023.7.30\n");
+        t0 = text("\u7248\u672C\uFF1A2023.7.31\n");
         br0 = element("br");
         t1 = text("\u5230LINE\u641C\u5C0BID @dharmacloud\uFF0C\u6216\u52A0\u5165");
         a0 = element("a");
@@ -14969,34 +14989,36 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t4 = space();
         create_component(switch1.$$.fragment);
         t5 = space();
+        create_component(switch2.$$.fragment);
+        t6 = space();
         div0 = element("div");
         html_tag = new HtmlTag(false);
-        t6 = space();
+        t7 = space();
         br1 = element("br");
         a1 = element("a");
         a1.textContent = "\u5B98\u65B9\u7DB2\u7AD9 https://dharmacloud.github.io";
-        t8 = space();
+        t9 = space();
         br2 = element("br");
-        t9 = text("\u672C\u5716\u6587\u5C0D\u7167\u6578\u64DA\u5EAB\u4E3B\u8981\u57FA\u65BC\u4EE5\u4E0B\u7D20\u6750\uFF1A\n");
+        t10 = text("\u672C\u5716\u6587\u5C0D\u7167\u6578\u64DA\u5EAB\u4E3B\u8981\u57FA\u65BC\u4EE5\u4E0B\u7D20\u6750\uFF1A\n");
         br3 = element("br");
-        t10 = text("\u6C38\u6A02\u5357\u5317\u85CF(\u5C71\u6771\u7701\u5716\u66F8\u9928)\u3001\u91D1\u525B\u7D93\u96C6\u8A3B(\u6731\u68E3)\u3001\u68B5\u6587\u539F\u5178(");
+        t11 = text("\u6C38\u6A02\u5357\u5317\u85CF(\u5C71\u6771\u7701\u5716\u66F8\u9928)\u3001\u91D1\u525B\u7D93\u96C6\u8A3B(\u6731\u68E3)\u3001\u68B5\u6587\u539F\u5178(");
         a2 = element("a");
         a2.textContent = "Digital Sanskrit Buddhist Canon";
-        t12 = text(", ");
+        t13 = text(", ");
         a3 = element("a");
         a3.textContent = "Ancient Buddhist Texts";
-        t14 = text(")\u3001\n\u7D93\u6587\u65B0\u5F0F\u6A19\u9EDE(CBETA)\u3001\u68B5\u6F22\u4F5B\u7D93\u5C0D\u52D8\u53E2\u66F8\uFF08\u9EC3\u5BF6\u751F\uFF0C\u4E2D\u570B\u793E\u6703\u79D1\u5B78\u51FA\u7248\u793E\uFF09\u3001\u7DAD\u57FA\u767E\u79D1\u53CA\u5404\u7A2E\u4F5B\u5B78\u8A5E\u5178\u4E4B\u8A5E\u689D\u3001Youtube \u516C\u958B\u5F71\u7247\u3002\n");
+        t15 = text(")\u3001\n\u7D93\u6587\u65B0\u5F0F\u6A19\u9EDE(CBETA)\u3001\u68B5\u6F22\u4F5B\u7D93\u5C0D\u52D8\u53E2\u66F8\uFF08\u9EC3\u5BF6\u751F\uFF0C\u4E2D\u570B\u793E\u6703\u79D1\u5B78\u51FA\u7248\u793E\uFF09\u3001\u7DAD\u57FA\u767E\u79D1\u53CA\u5404\u7A2E\u4F5B\u5B78\u8A5E\u5178\u4E4B\u8A5E\u689D\u3001Youtube \u516C\u958B\u5F71\u7247\u3002\n");
         br4 = element("br");
-        t15 = text("\u6388\u6B0A\u65B9\u5F0F\uFF1A");
+        t16 = text("\u6388\u6B0A\u65B9\u5F0F\uFF1A");
         a4 = element("a");
         a4.textContent = "Creative Common Zero";
-        t17 = text("\u3002\n");
+        t18 = text("\u3002\n");
         br5 = element("br");
-        t18 = text("\u6578\u5B57\u52A0\u5DE5\uFF1A\u6309\u624B\u6A5F\u6BD4\u4F8B\u88C1\u5716\u53CA\u4FEE\u5716\u3001\u6587\u5B57\u8207\u5716\u7247\u9010\u884C\u5C0D\u9F4A\u3001\u539F\u6587\u53CA\u5404\u7A2E\u8B6F\u672C\u9010\u53E5\u5C0D\u9F4A\u3001\u8AA6\u7D93\u5F71\u7247\u6642\u9593\u8EF8\u3002\n\n");
+        t19 = text("\u6578\u5B57\u52A0\u5DE5\uFF1A\u6309\u624B\u6A5F\u6BD4\u4F8B\u88C1\u5716\u53CA\u4FEE\u5716\u3001\u6587\u5B57\u8207\u5716\u7247\u9010\u884C\u5C0D\u9F4A\u3001\u539F\u6587\u53CA\u5404\u7A2E\u8B6F\u672C\u9010\u53E5\u5C0D\u9F4A\u3001\u8AA6\u7D93\u5F71\u7247\u6642\u9593\u8EF8\u3002\n\n");
         div1 = element("div");
         div1.textContent = "\u203B\u203B\u203B";
         attr(a0, "href", "https://lin.ee/1tmTKXi");
-        html_tag.a = t6;
+        html_tag.a = t7;
         attr(a1, "target", "_new");
         attr(a1, "href", "https://dharmacloud.github.io/");
         attr(div0, "class", "qrcode");
@@ -15019,26 +15041,28 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         append(div2, t4);
         mount_component(switch1, div2, null);
         append(div2, t5);
+        mount_component(switch2, div2, null);
+        append(div2, t6);
         append(div2, div0);
         html_tag.m(urlqrcode, div0);
-        append(div0, t6);
+        append(div0, t7);
         append(div0, br1);
         append(div0, a1);
-        append(div2, t8);
-        append(div2, br2);
         append(div2, t9);
-        append(div2, br3);
+        append(div2, br2);
         append(div2, t10);
+        append(div2, br3);
+        append(div2, t11);
         append(div2, a2);
-        append(div2, t12);
+        append(div2, t13);
         append(div2, a3);
-        append(div2, t14);
-        append(div2, br4);
         append(div2, t15);
+        append(div2, br4);
+        append(div2, t16);
         append(div2, a4);
-        append(div2, t17);
-        append(div2, br5);
         append(div2, t18);
+        append(div2, br5);
+        append(div2, t19);
         append(div2, div1);
         current = true;
       },
@@ -15053,25 +15077,36 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
         switch0.$set(switch0_changes);
         const switch1_changes = {};
-        if (!updating_value_1 && dirty & /*$newbie*/
+        if (!updating_value_1 && dirty & /*$showsponsor*/
         2) {
           updating_value_1 = true;
-          switch1_changes.value = /*$newbie*/
+          switch1_changes.value = /*$showsponsor*/
           ctx2[1];
           add_flush_callback(() => updating_value_1 = false);
         }
         switch1.$set(switch1_changes);
+        const switch2_changes = {};
+        if (!updating_value_2 && dirty & /*$newbie*/
+        4) {
+          updating_value_2 = true;
+          switch2_changes.value = /*$newbie*/
+          ctx2[2];
+          add_flush_callback(() => updating_value_2 = false);
+        }
+        switch2.$set(switch2_changes);
       },
       i(local) {
         if (current)
           return;
         transition_in(switch0.$$.fragment, local);
         transition_in(switch1.$$.fragment, local);
+        transition_in(switch2.$$.fragment, local);
         current = true;
       },
       o(local) {
         transition_out(switch0.$$.fragment, local);
         transition_out(switch1.$$.fragment, local);
+        transition_out(switch2.$$.fragment, local);
         current = false;
       },
       d(detaching) {
@@ -15079,23 +15114,37 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           detach(div2);
         destroy_component(switch0);
         destroy_component(switch1);
+        destroy_component(switch2);
       }
     };
   }
   function instance15($$self, $$props, $$invalidate) {
     let $showpunc;
+    let $showsponsor;
     let $newbie;
     component_subscribe($$self, showpunc, ($$value) => $$invalidate(0, $showpunc = $$value));
-    component_subscribe($$self, newbie, ($$value) => $$invalidate(1, $newbie = $$value));
+    component_subscribe($$self, showsponsor, ($$value) => $$invalidate(1, $showsponsor = $$value));
+    component_subscribe($$self, newbie, ($$value) => $$invalidate(2, $newbie = $$value));
     function switch0_value_binding(value) {
       $showpunc = value;
       showpunc.set($showpunc);
     }
     function switch1_value_binding(value) {
+      $showsponsor = value;
+      showsponsor.set($showsponsor);
+    }
+    function switch2_value_binding(value) {
       $newbie = value;
       newbie.set($newbie);
     }
-    return [$showpunc, $newbie, switch0_value_binding, switch1_value_binding];
+    return [
+      $showpunc,
+      $showsponsor,
+      $newbie,
+      switch0_value_binding,
+      switch1_value_binding,
+      switch2_value_binding
+    ];
   }
   var About = class extends SvelteComponent {
     constructor(options) {
@@ -21175,7 +21224,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   function create_if_block15(ctx) {
     let previous_key = (
       /*$activefolioid*/
-      ctx[6]
+      ctx[7]
     );
     let t0;
     let t1;
@@ -21231,8 +21280,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, dirty) {
         if (dirty & /*$activefolioid*/
-        64 && safe_not_equal(previous_key, previous_key = /*$activefolioid*/
-        ctx2[6])) {
+        128 && safe_not_equal(previous_key, previous_key = /*$activefolioid*/
+        ctx2[7])) {
           group_outros();
           transition_out(key_block, 1, 1, noop);
           check_outros();
@@ -21376,17 +21425,18 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current;
     let if_block = (
       /*$showpaiji*/
-      ctx[7] && !/*$playing*/
-      ctx[8] && !/*showdict*/
+      ctx[8] && !/*$playing*/
+      ctx[9] && !/*showdict*/
       ctx[4] && !/*shownewbie*/
       ctx[5] && !/*$landscape*/
-      ctx[0] && create_if_block_45(ctx)
+      ctx[0] && /*$showsponsor*/
+      ctx[6] == "on" && create_if_block_45(ctx)
     );
     swipezipimage = new swipezipimage_default({
       props: {
         src: (
           /*$activefolioid*/
-          ctx[6] + ".zip"
+          ctx[7] + ".zip"
         ),
         ptk: (
           /*ptk*/
@@ -21394,11 +21444,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ),
         onTapText: (
           /*onTapText*/
-          ctx[11]
+          ctx[12]
         ),
         onMainmenu: (
           /*onMainmenu*/
-          ctx[10]
+          ctx[11]
         )
       }
     });
@@ -21419,15 +21469,16 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         if (
           /*$showpaiji*/
-          ctx2[7] && !/*$playing*/
-          ctx2[8] && !/*showdict*/
+          ctx2[8] && !/*$playing*/
+          ctx2[9] && !/*showdict*/
           ctx2[4] && !/*shownewbie*/
           ctx2[5] && !/*$landscape*/
-          ctx2[0]
+          ctx2[0] && /*$showsponsor*/
+          ctx2[6] == "on"
         ) {
           if (if_block) {
-            if (dirty & /*$showpaiji, $playing, showdict, shownewbie, $landscape*/
-            433) {
+            if (dirty & /*$showpaiji, $playing, showdict, shownewbie, $landscape, $showsponsor*/
+            881) {
               transition_in(if_block, 1);
             }
           } else {
@@ -21445,9 +21496,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
         const swipezipimage_changes = {};
         if (dirty & /*$activefolioid*/
-        64)
+        128)
           swipezipimage_changes.src = /*$activefolioid*/
-          ctx2[6] + ".zip";
+          ctx2[7] + ".zip";
         if (dirty & /*ptk*/
         2)
           swipezipimage_changes.ptk = /*ptk*/
@@ -21492,7 +21543,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             span,
             "click",
             /*closePopup*/
-            ctx[9]
+            ctx[10]
           );
           mounted = true;
         }
@@ -21517,7 +21568,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ),
         closePopup: (
           /*closePopup*/
-          ctx[9]
+          ctx[10]
         )
       }
     });
@@ -21558,7 +21609,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     newbie_1 = new newbie_default({
       props: { closePopup: (
         /*closePopup*/
-        ctx[9]
+        ctx[10]
       ) }
     });
     return {
@@ -21657,15 +21708,17 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let $landscape;
     let $newbie;
     let $idlecount;
+    let $showsponsor;
     let $activefolioid;
     let $showpaiji;
     let $playing;
     component_subscribe($$self, landscape, ($$value) => $$invalidate(0, $landscape = $$value));
-    component_subscribe($$self, newbie, ($$value) => $$invalidate(13, $newbie = $$value));
-    component_subscribe($$self, idlecount, ($$value) => $$invalidate(14, $idlecount = $$value));
-    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(6, $activefolioid = $$value));
-    component_subscribe($$self, showpaiji, ($$value) => $$invalidate(7, $showpaiji = $$value));
-    component_subscribe($$self, playing, ($$value) => $$invalidate(8, $playing = $$value));
+    component_subscribe($$self, newbie, ($$value) => $$invalidate(14, $newbie = $$value));
+    component_subscribe($$self, idlecount, ($$value) => $$invalidate(15, $idlecount = $$value));
+    component_subscribe($$self, showsponsor, ($$value) => $$invalidate(6, $showsponsor = $$value));
+    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(7, $activefolioid = $$value));
+    component_subscribe($$self, showpaiji, ($$value) => $$invalidate(8, $showpaiji = $$value));
+    component_subscribe($$self, playing, ($$value) => $$invalidate(9, $playing = $$value));
     let ptk2, tofind;
     registerServiceWorker();
     isAndroid.set(!!navigator.userAgent.match(/Android/i));
@@ -21679,7 +21732,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       timer = setInterval(
         () => {
           showpaiji.set($idlecount >= idletime);
-          if (!shownewbie && !showdict2) {
+          if (!shownewbie && !showdict2 && $showsponsor == "on") {
             idlecount.set($idlecount + idleinterval);
           }
         },
@@ -21724,6 +21777,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       loaded,
       showdict2,
       shownewbie,
+      $showsponsor,
       $activefolioid,
       $showpaiji,
       $playing,
