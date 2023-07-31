@@ -18968,8 +18968,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const agmsjuan = folioid.match(/agms(\d+)$/);
       if (agmsjuan) {
         const at = ptk2.nearestTag(to + 1, "n") - 1;
-        const sutra = parseInt(n.fields.id.values[at]);
         const n = ptk2.defines.n;
+        const sutra = parseInt(n.fields.id.values[at]);
         caption = "\u96DC\u963F\u542B\u7B2C" + agmsjuan[1] + "\u5377" + sutra + "\u7D93\u5C0E\u8B80(\u7345\u5B50\u543C)";
         url = "https://buddhaspace.org/agama/" + agmsjuan[1] + ".html#" + toChineseNumber(sutra);
         out.push([caption, url]);
@@ -18994,7 +18994,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
       return out;
     };
-    let thetab = "chunktext";
+    let thetab = "search";
     const click_handler = () => $$invalidate(3, thetab = "search");
     const click_handler_1 = () => $$invalidate(3, thetab = "chunktext");
     const click_handler_2 = () => $$invalidate(3, thetab = "sourcetext");
@@ -21258,7 +21258,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let if_block0 = (
       /*shownewbie*/
       (ctx[5] || /*showdict*/
-      ctx[4]) && create_if_block_36(ctx)
+      ctx[4]) && !/*$landscape*/
+      ctx[0] && create_if_block_36(ctx)
     );
     let if_block1 = (
       /*showdict*/
@@ -21316,8 +21317,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
         if (
           /*shownewbie*/
-          ctx2[5] || /*showdict*/
-          ctx2[4]
+          (ctx2[5] || /*showdict*/
+          ctx2[4]) && !/*$landscape*/
+          ctx2[0]
         ) {
           if (if_block0) {
             if_block0.p(ctx2, dirty);
