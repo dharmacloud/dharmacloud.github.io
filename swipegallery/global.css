@@ -35,7 +35,7 @@ body{
 
 select {font-size:2em}
 .selected {background: rgb(255, 173, 42);border-radius: 0.25em;color:white}
-.selectedsearchable {background: rgb(255, 173, 42);color:white}
+.selectedsearchable {background: rgb(255, 173, 42);color:white;cursor: pointer;user-select: none;}
 .tab-content {
   position: absolute;
   height:92vh;
@@ -78,11 +78,9 @@ select {font-size:2em}
 .selecteditem {background:rgb(255, 173, 42)}
 .hr {height: 1px ;background:black}
 .paralleltext {font-size:2em;}
-.toctext {font-size:2em;}
+.toctext {font-size:2.3em;}
 
 .tocitem{margin-left: 0.5em;cursor: pointer;}
-.dicttext {font-size:2em}
-.dictentry {font-size:3em}
 .endmarker {width:100%;text-align: center;height: 3em;}
 .sourcetext{font-weight: bold;color:brown}
 
@@ -222,10 +220,13 @@ a{color:#563100}
 .navbutton {cursor:pointer;font-size:1.2em}
 .diminput {color:silver}
 
-.hitbtn {padding-left:0.2em;padding-right:0.5em;color:red}
-.scopebtn {padding-left:0.3em}
+.hitbtn {padding-left:0.2em;padding-right:0.5em;color:red;cursor:pointer;user-select: none}
+.scopebtn {padding-left:0.3em;cursor:pointer;user-select: none;}
 .pager {font-size:2.5em}
 
 .hit {color:red}
 .oddline{background:#fbf4cc}
 .excerptseq {padding-left:0.3em}
+
+.gotop {z-index:999;position:fixed;right:1em;top:1em;color:var(--menubar-color)}
+.goactiveline {z-index:999;position:fixed;right:1em;color:var(--selected-color)}

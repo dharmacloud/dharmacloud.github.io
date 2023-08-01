@@ -71,13 +71,13 @@ img.svelte-1p857lj {
 }
 
 /* fakecss:d:/2023/swipegallery/src/swipezipimage.esbuild-svelte-fake-css */
-img.svelte-1nw6vnk {
+img.svelte-1ghlcj4 {
   height: 100%;
 }
-.swipe-holder.svelte-1nw6vnk {
+.swipe-holder.svelte-1ghlcj4 {
   height: 100%;
 }
-.swipe.svelte-1nw6vnk {
+.swipe.svelte-1ghlcj4 {
   position: absolute;
 }
 
@@ -279,21 +279,6 @@ input.svelte-1nnnvg0 {
   user-select: none;
 }
 
-/* fakecss:d:/2023/swipegallery/src/chunktext.esbuild-svelte-fake-css */
-.gotop.svelte-z7hiol {
-  z-index: 999;
-  position: fixed;
-  right: 1em;
-  top: 1em;
-  color: var(--selected-color);
-}
-.goactiveline.svelte-z7hiol {
-  z-index: 999;
-  position: fixed;
-  right: 1em;
-  color: var(--selected-color);
-}
-
 /* fakecss:d:/2023/swipegallery/src/searchmain.esbuild-svelte-fake-css */
 input.svelte-a8ib29 {
   font-size: 1em;
@@ -315,4 +300,12 @@ input.svelte-a8ib29 {
   position: absolute;
   bottom: -1px;
   height: 1px;
+}
+
+/* fakecss:d:/2023/swipegallery/src/left.esbuild-svelte-fake-css */
+.left.svelte-1uyqkjl {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  overflow-y: auto;
 }
