@@ -8124,19 +8124,19 @@
       activepb.set("1");
   };
   var sideWidth = () => {
-    const w = screen.height * 0.45;
-    const r = (w * 100 / screen.width).toFixed(2);
+    const w = window.innerHeight * 0.45;
+    const r = (w * 100 / window.innerWidth).toFixed(2);
     return "left:" + r + "vw;width:" + (100 - r) + "vw";
   };
   var folioHolderWidth = (ls, ratio = 1, _swiper) => {
     let style = "100vw";
     ratio = ratio || 1;
     if (get_store_value(landscape)) {
-      const w = screen.height * 0.45 * ratio;
-      const r = (w * 100 / screen.width).toFixed(2);
+      const w = window.innerHeight * 0.45 * ratio;
+      const r = (w * 100 / window.innerWidth).toFixed(2);
       style = r + "vw";
     }
-    if (_swiper)
+    if (_swiper && _swiper?.update)
       setTimeout(() => {
         _swiper?.update();
       }, 100);
@@ -10987,12 +10987,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const buf = await res.arrayBuffer();
       const zip = new ZipStore(buf);
       thezip.set(zip);
+      $$invalidate(6, images.length = 0, images);
       for (let i = 0; i < zip.files.length; i++) {
         if (i == zip.files.length - 1) {
           const blob = new Blob([zip.files[i].content]);
           images.push(URL.createObjectURL(blob));
         } else {
-          images.push("frames/blank.png");
+          images.push("blank.png");
         }
       }
       $$invalidate(9, defaultIndex = zip.files.length - 1);
@@ -11026,7 +11027,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         const blob = new Blob([get_store_value(thezip).files[i].content]);
         ele.src = $$invalidate(6, images[i] = URL.createObjectURL(blob), images);
       }
-      if (i < totalpages) {
+      if (i + 1 < totalpages) {
         i++;
         const ele2 = wrapper.childNodes[defaultIndex - 1]?.firstChild.firstChild;
         if (~ele2.src.indexOf("blank")) {
@@ -15142,9 +15143,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t15;
     let br4;
     let t16;
-    let a4;
-    let t18;
     let br5;
+    let t17;
+    let a4;
     let t19;
     let div1;
     let current;
@@ -15186,7 +15187,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ctx[5](value);
     }
     let switch2_props = {
-      label: "\u555F\u7528\u6642\u986F\u793A\u6B61\u8FCE\u756B\u9762",
+      label: "\u555F\u52D5\u6642\u986F\u793A\u6B61\u8FCE\u756B\u9762",
       design: "slider",
       fontSize: "24"
     };
@@ -15202,9 +15203,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         div2 = element("div");
-        t0 = text("\u7248\u672C\uFF1A2023.8.1\n");
+        t0 = text("\u7248\u672C\uFF1A2023.8.3 \u81EA\u7531\u8EDF\u4EF6\n");
         br0 = element("br");
-        t1 = text("\u5230LINE\u641C\u5C0BID @dharmacloud\uFF0C\u6216\u52A0\u5165");
+        t1 = text("LINE\u641C\u5C0BID @dharmacloud\uFF0C\u6216\u52A0\u5165");
         a0 = element("a");
         a0.textContent = "\u5B98\u65B9\u5E33\u865F";
         t3 = text("\uFF0C\u7372\u5F97\u66F4\u65B0\u8A0A\u606F\u3002\n\n");
@@ -15232,12 +15233,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         a3.textContent = "Ancient Buddhist Texts";
         t15 = text(")\u3001\n\u7D93\u6587\u65B0\u5F0F\u6A19\u9EDE(CBETA)\u3001\u68B5\u6F22\u4F5B\u7D93\u5C0D\u52D8\u53E2\u66F8\uFF08\u9EC3\u5BF6\u751F\uFF0C\u4E2D\u570B\u793E\u6703\u79D1\u5B78\u51FA\u7248\u793E\uFF09\u3001\u7DAD\u57FA\u767E\u79D1\u53CA\u5404\u7A2E\u4F5B\u5B78\u8A5E\u5178\u4E4B\u8A5E\u689D\u3001Youtube \u516C\u958B\u5F71\u7247\u3002\n");
         br4 = element("br");
-        t16 = text("\u6388\u6B0A\u65B9\u5F0F\uFF1A");
+        t16 = text("\u6578\u5B57\u52A0\u5DE5\uFF1A\u6309\u624B\u6A5F\u6BD4\u4F8B\u88C1\u5716\u53CA\u4FEE\u5716\u3001\u6587\u5B57\u8207\u5716\u7247\u9010\u884C\u5C0D\u9F4A\u3001\u539F\u6587\u53CA\u5404\u7A2E\u8B6F\u672C\u9010\u53E5\u5C0D\u9F4A\u3001\u8AA6\u7D93\u5F71\u7247\u6642\u9593\u8EF8\u3002\n");
+        br5 = element("br");
+        t17 = text("\u6388\u6B0A\u65B9\u5F0F\uFF1A");
         a4 = element("a");
         a4.textContent = "Creative Common Zero";
-        t18 = text("\u3002\n");
-        br5 = element("br");
-        t19 = text("\u6578\u5B57\u52A0\u5DE5\uFF1A\u6309\u624B\u6A5F\u6BD4\u4F8B\u88C1\u5716\u53CA\u4FEE\u5716\u3001\u6587\u5B57\u8207\u5716\u7247\u9010\u884C\u5C0D\u9F4A\u3001\u539F\u6587\u53CA\u5404\u7A2E\u8B6F\u672C\u9010\u53E5\u5C0D\u9F4A\u3001\u8AA6\u7D93\u5F71\u7247\u6642\u9593\u8EF8\u3002\n\n");
+        t19 = space();
         div1 = element("div");
         div1.textContent = "\u203B\u203B\u203B";
         attr(a0, "href", "https://lin.ee/1tmTKXi");
@@ -15282,9 +15283,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         append(div2, t15);
         append(div2, br4);
         append(div2, t16);
-        append(div2, a4);
-        append(div2, t18);
         append(div2, br5);
+        append(div2, t17);
+        append(div2, a4);
         append(div2, t19);
         append(div2, div1);
         current = true;
@@ -21856,10 +21857,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let br5;
     let t7;
     let br6;
-    let t8;
-    let br7;
     let button;
-    let t10;
+    let t9;
     let switch_1;
     let updating_value;
     let current;
@@ -21890,23 +21889,21 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         span.textContent = "\u6C38\u6A02\u85CF";
         t1 = space();
         br0 = element("br");
-        t2 = text("\u5B89\u88DD\u684C\u9762\u53EF\u4EE5\u5168\u87A2\u5E55\u986F\u793A\uFF0C\u6B65\u9A5F\uFF1A\n");
+        t2 = text("\u5168\u87A2\u5E55\u6A21\u5F0F\u5B89\u88DD\u6B65\u9A5F\n");
         br1 = element("br");
         t3 = text("Android:\u4F7F\u7528Chrome\uFF0C\u53F3\u4E0A\u89D2\u529F\u80FD\u8868\u2192\u5B89\u88DD\u61C9\u7528\u7A0B\u5F0F\n");
         br2 = element("br");
-        t4 = text("iOS:Safari\uFF0C\u5206\u4EAB\u2192\u52A0\u5230\u4E3B\u756B\u9762\n");
+        t4 = text("iOS: \u5206\u4EAB\u2192\u52A0\u5230\u4E3B\u756B\u9762\n");
         br3 = element("br");
-        t5 = text("\u5DE6\u53F3\u6ED1\u52D5\u7FFB\u9801\u3001\u6A6B\u5411\u6216\u9EDE\u4EFB\u4F55\u4E00\u8655\u986F\u793A\u529F\u80FD\u8868\u3002\n");
+        t5 = text("\u266B\u8AA6\u7D93 \u518D\u9EDE\u4E00\u6B21\u505C\u6B62\u3002\n");
         br4 = element("br");
-        t6 = text("\u266B\u8AA6\u7D93 \u518D\u9EDE\u4E00\u6B21\u505C\u6B62\u3002\n");
+        t6 = text("\u2661\u66F8\u7C64\u3002\u9583\u720D\u6642\u518D\u9EDE\u64CA\u6539\u8B8A\u984F\u8272\uFF0C\u4E0D\u9583\u720D\u6642\u518D\u9EDE\u53D6\u6D88\u3002\n");
         br5 = element("br");
-        t7 = text("\u2661\u66F8\u7C64\u3002\u9583\u720D\u6642\u518D\u9EDE\u64CA\u6539\u8B8A\u984F\u8272\uFF0C\u4E94\u79D2\u5F8C\u4E0D\u9583\u720D\u6642\u518D\u9EDE\u53D6\u6D88\u3002\u6BCF\u4E00\u5377\u53EA\u80FD\u6709\u4E00\u7A2E\u984F\u8272\u7684\u66F8\u7C64\u3002\n");
+        t7 = text("\u4E0D\u6703\u6536\u96C6\u500B\u4EBA\u8CC7\u8A0A\uFF0C\u4F7F\u7528\u672C\u8EDF\u4EF6\u7684\u4EFB\u4F55\u7D50\u679C\u8ACB\u81EA\u884C\u627F\u64D4\u3002\n");
         br6 = element("br");
-        t8 = text("\u7D50\u7DE3\u54C1\u3002\u4E0D\u6703\u6536\u96C6\u500B\u4EBA\u8CC7\u8A0A\uFF0C\u4F7F\u7528\u672C\u8EDF\u4EF6\u6240\u7522\u751F\u7684\u4EFB\u4F55\u7D50\u679C\u8ACB\u81EA\u884C\u627F\u64D4\u3002\n");
-        br7 = element("br");
         button = element("button");
         button.textContent = "\u540C\u610F";
-        t10 = space();
+        t9 = space();
         create_component(switch_1.$$.fragment);
         attr(span, "class", "welcome");
         set_style(button, "font-size", "150%");
@@ -21932,10 +21929,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         append(div0, br5);
         append(div0, t7);
         append(div0, br6);
-        append(div0, t8);
-        append(div0, br7);
         append(div0, button);
-        append(div0, t10);
+        append(div0, t9);
         mount_component(switch_1, div0, null);
         current = true;
         if (!mounted) {
@@ -23269,7 +23264,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
     const orientation = (ls) => {
       $$invalidate(4, showdict2 = false);
-      $$invalidate(5, shownewbie = false);
+      if (ls)
+        $$invalidate(5, shownewbie = false);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty & /*$landscape*/
