@@ -230,3 +230,4 @@ a{color:#563100}
 
 .gotop {z-index:999;position:fixed;right:1em;top:1em;color:var(--menubar-color)}
 .goactiveline {z-index:999;position:fixed;right:1em;color:var(--selected-color)}
+.uncache {color:gray}

@@ -7797,17 +7797,17 @@
     const showpunc2 = localStorage.getItem(AppPrefix + "showpunc") || "on";
     const showsponsor2 = localStorage.getItem(AppPrefix + "showsponsor") || "off";
     let _favorites = localStorage.getItem(AppPrefix + "favorites") || "{}";
-    let _prefervideo = localStorage.getItem(AppPrefix + "prefervideo") || "{}";
-    let favorites2 = {}, prefervideo2 = {};
+    let _preferaudio = localStorage.getItem(AppPrefix + "preferaudio") || "{}";
+    let favorites2 = {}, preferaudio2 = {};
     try {
       favorites2 = JSON.parse(_favorites);
-      prefervideo2 = JSON.parse(_prefervideo);
+      preferaudio2 = JSON.parse(_preferaudio);
     } catch (e) {
       console.log(e);
       favorites2 = {};
-      prefervideo2 = {};
+      preferaudio2 = {};
     }
-    return { activefolioid: activefolioid2, showsponsor: showsponsor2, videohost, autodict: autodict2, newbie: newbie2, favorites: favorites2, playnextjuan: playnextjuan2, prefervideo: prefervideo2, showpunc: showpunc2 };
+    return { activefolioid: activefolioid2, showsponsor: showsponsor2, videohost, autodict: autodict2, newbie: newbie2, favorites: favorites2, playnextjuan: playnextjuan2, preferaudio: preferaudio2, showpunc: showpunc2 };
   };
   var saveSettings = () => {
     for (let key in settingsToBeSave) {
@@ -7936,41 +7936,36 @@
   }
 
   // src/mediaurls.js
-  var silence = { vid: "", performer: "-\u975C\u9ED8-" };
   var ptk;
+  var silence = { vid: "", performer: "-\u975C\u9ED8-" };
+  var audiofolder = "/baudio/";
   var setTimestampPtk = (_ptk) => {
     ptk = _ptk;
   };
-  var mediabyid = (_vid) => {
-    if (!ptk || !_vid)
-      return;
-    const ts = ptk.columns.timestamp;
-    for (let i = 0; i < ts.keys.len(); i++) {
-      const vid = ts.keys.get(i);
-      const videohost = ts.videohost[i];
-      const performer = ts.performer[i];
-      const timestamp = ts.timestamp[i];
-      const bookid = ts.bookid[i];
-      if (vid == _vid)
-        return { videohost, vid, performer, timestamp, bookid };
-    }
-  };
-  var getAudioList = (activeid, loading) => {
+  var fetchAudioList = async (activeid, loading, store) => {
     if (loading)
       return [];
     const ts = ptk.columns.timestamp;
-    const out = [silence];
+    let out = [];
     if (!ptk)
       return out;
+    const cache = await caches.open("v1::ylz");
+    const keys = await cache.keys();
+    const incaches = keys.map((it) => it.url.slice(window.location.origin.length + audiofolder.length).replace(".mp3", ""));
     for (let i = 0; i < ts.keys.len(); i++) {
-      const vid = ts.keys.get(i);
-      const videohost = ts.videohost[i];
+      const aid = ts.keys.get(i);
+      const audiohost = ts.videohost[i];
       const performer = ts.performer[i];
       const timestamp = ts.timestamp[i];
       const bookid = ts.bookid[i];
-      activeid == bookid && out.push({ vid, performer, bookid, timestamp, videohost });
+      const incache = 1 - !~incaches.indexOf(aid);
+      activeid == bookid && out.push({ aid, performer, incache, bookid, timestamp, audiohost });
     }
     out.sort((a, b) => a.performer == b.performer ? 0 : a.performer < b.performer ? -1 : 1);
+    const cacheno = out.filter((it) => !it.incache).concat();
+    out = out.filter((it) => it.incache).concat(cacheno);
+    out.unshift(silence);
+    store.set(out);
     return out;
   };
 
@@ -7983,7 +7978,7 @@
   var activefolioid = writable(settings.activefolioid);
   var maxfolio = writable(0);
   var favorites = writable(settings.favorites);
-  var prefervideo = writable(settings.prefervideo);
+  var preferaudio = writable(settings.preferaudio);
   var showpunc = writable(settings.showpunc);
   var showsponsor = writable(settings.showsponsor);
   var landscape = writable(false);
@@ -7993,13 +7988,9 @@
   var foliotext = writable({});
   var tofind = writable("");
   var lefttextline = writable(0);
+  var player;
+  var setplayer = (p) => player = p;
   var mediaurls = writable([silence]);
-  var ytplayer = writable(null);
-  var playerready = writable(false);
-  var qqplayer = writable(null);
-  var player = function(vid) {
-    return mediabyid(vid || get_store_value(videoid))?.videohost == "youtube" ? get_store_value(ytplayer) : get_store_value(qqplayer);
-  };
   var bookByFolio = (fid, ptk2) => {
     if (ptk2) {
       const folio = dc.defines.folio;
@@ -8014,7 +8005,7 @@
       return fid.replace(/\d+$/, "");
     }
   };
-  var videoid = writable("");
+  var audioid = writable("");
   var folioLines = function(_fid) {
     const ptk2 = usePtk("dc");
     const fid = _fid || get_store_value(activefolioid);
@@ -8038,22 +8029,18 @@
   newbie.subscribe((newbie2) => updateSettings({ newbie: newbie2 }));
   showpunc.subscribe((showpunc2) => updateSettings({ showpunc: showpunc2 }));
   favorites.subscribe((favorites2) => updateSettings({ favorites: favorites2 }));
-  prefervideo.subscribe((prefervideo2) => updateSettings({ prefervideo: prefervideo2 }));
-  var findByVideoId = (id, column = "timestamp") => {
+  preferaudio.subscribe((preferaudio2) => updateSettings({ preferaudio: preferaudio2 }));
+  var findByAudioId = (id, column = "timestamp") => {
     const ptk2 = usePtk("dc");
     if (!ptk2.columns[column])
       return null;
     const ts = ptk2.columns[column].fieldsByKey(id);
     return { id, ...ts };
   };
-  var stopVideo = () => {
-    pauseVideo();
+  var stopAudio = () => {
+    player?.pause();
     playing.set(false);
     remainrollback.set(-1);
-  };
-  var pauseVideo = () => {
-    get_store_value(qqplayer)?.pause && get_store_value(qqplayer).pause();
-    get_store_value(ytplayer)?.stopVideo && get_store_value(ytplayer).stopVideo();
   };
   var idletime = 30;
   var hasVariorum = (ptk2, bkid) => {
@@ -8109,19 +8096,23 @@
     }
     return out;
   };
-  var selectmedia = (vid, restart) => {
+  var selectmedia = (aid, restart) => {
     if (get_store_value(remainrollback) == 0)
       remainrollback.set(-1);
-    if (!vid)
-      stopVideo();
+    if (!aid)
+      stopAudio();
     else {
-      const prefer = get_store_value(prefervideo);
-      prefer[get_store_value(activefolioid)] = vid;
-      prefervideo.set(Object.assign({}, prefer));
+      const prefer = get_store_value(preferaudio);
+      prefer[get_store_value(activefolioid)] = aid;
+      preferaudio.set(Object.assign({}, prefer));
+      playing.set(true);
     }
-    videoid.set(vid || "");
+    audioid.set(aid || "");
     if (restart)
       activepb.set("1");
+    setTimeout(() => {
+      player.play();
+    }, 100);
   };
   var sideWidth = () => {
     const w = window.innerHeight * 0.45;
@@ -8177,8 +8168,8 @@
     if (folioid == get_store_value(activefolioid))
       func && func(folioid);
     else {
-      stopVideo();
-      videoid.set("");
+      stopAudio();
+      audioid.set("");
       activepb.set("1");
       loadingbook.set(true);
       activefolioid.set(folioid);
@@ -8265,14 +8256,15 @@
   // src/transcriptlayer.svelte
   function get_each_context(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[15] = list[i];
-    child_ctx[17] = i;
+    child_ctx[16] = list[i];
+    child_ctx[18] = i;
     return child_ctx;
   }
   function create_if_block(ctx) {
     let previous_key = (
       /*$activepb*/
-      ctx[3]
+      (ctx[3], /*$audioid*/
+      ctx[1])
     );
     let key_block_anchor;
     let key_block = create_key_block(ctx);
@@ -8286,9 +8278,10 @@
         insert(target, key_block_anchor, anchor);
       },
       p(ctx2, dirty) {
-        if (dirty & /*$activepb*/
-        8 && safe_not_equal(previous_key, previous_key = /*$activepb*/
-        ctx2[3])) {
+        if (dirty & /*$activepb, $audioid*/
+        10 && safe_not_equal(previous_key, previous_key = /*$activepb*/
+        (ctx2[3], /*$audioid*/
+        ctx2[1]))) {
           key_block.d(1);
           key_block = create_key_block(ctx2);
           key_block.c();
@@ -8313,13 +8306,13 @@
         div = element("div");
         attr(div, "class", "strip");
         attr(div, "id", div_id_value = "strip" + /*idx*/
-        ctx[17]);
+        ctx[18]);
         attr(div, "style", div_style_value = /*stripstyle*/
         ctx[5](
           /*idx*/
-          ctx[17],
+          ctx[18],
           /*strip*/
-          ctx[15]
+          ctx[16]
         ));
       },
       m(target, anchor) {
@@ -8402,8 +8395,8 @@
   function create_fragment(ctx) {
     let show_if = (
       /*$playing*/
-      ctx[2] && findByVideoId(
-        /*$videoid*/
+      ctx[2] && findByAudioId(
+        /*$audioid*/
         ctx[1]
       )
     );
@@ -8421,11 +8414,11 @@
         insert(target, if_block_anchor, anchor);
       },
       p(ctx2, [dirty]) {
-        if (dirty & /*$playing, $videoid*/
+        if (dirty & /*$playing, $audioid*/
         6)
           show_if = /*$playing*/
-          ctx2[2] && findByVideoId(
-            /*$videoid*/
+          ctx2[2] && findByAudioId(
+            /*$audioid*/
             ctx2[1]
           );
         if (show_if) {
@@ -8452,14 +8445,16 @@
     };
   }
   function instance2($$self, $$props, $$invalidate) {
-    let $videoid;
+    let $audioid;
+    let $mediaurls;
     let $playnextjuan;
     let $activefolioid;
     let $playing;
     let $activepb;
-    component_subscribe($$self, videoid, ($$value) => $$invalidate(1, $videoid = $$value));
-    component_subscribe($$self, playnextjuan, ($$value) => $$invalidate(10, $playnextjuan = $$value));
-    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(11, $activefolioid = $$value));
+    component_subscribe($$self, audioid, ($$value) => $$invalidate(1, $audioid = $$value));
+    component_subscribe($$self, mediaurls, ($$value) => $$invalidate(10, $mediaurls = $$value));
+    component_subscribe($$self, playnextjuan, ($$value) => $$invalidate(11, $playnextjuan = $$value));
+    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(12, $activefolioid = $$value));
     component_subscribe($$self, playing, ($$value) => $$invalidate(2, $playing = $$value));
     component_subscribe($$self, activepb, ($$value) => $$invalidate(3, $activepb = $$value));
     let { frame = {}, totalpages } = $$props;
@@ -8479,13 +8474,13 @@
         remainrollback.set(r);
       }
       if (r == 0)
-        stopVideo();
+        stopAudio();
     };
     const playnext = () => {
       const juans = allJuan(ptk2);
       const folioid = $activefolioid;
-      const vid = $videoid;
-      const thisaudiolist = getAudioList(folioid);
+      const vid = $audioid;
+      const thisaudiolist = $mediaurls;
       let performer = "";
       for (let i = 0; i < thisaudiolist.length; i++) {
         if (thisaudiolist[i].vid == vid)
@@ -8499,7 +8494,7 @@
           const nextfolioid = folioid.replace(juannow, parseInt(juannow) + 1);
           console.log("loading next juan", nextfolioid);
           loadFolio(nextfolioid, function() {
-            const audiolist = getAudioList(nextfolioid);
+            const audiolist = $mediaurls;
             console.log("audiolist", audiolist, nextfolioid);
             if (audiolist) {
               const sameperformer = audiolist.filter((it) => it.performer == performer);
@@ -8525,7 +8520,7 @@
       out.push("top:0px");
       out.push("width:" + Math.floor(w) + "px");
       out.push("height:0px");
-      const { timestamp } = findByVideoId($videoid);
+      const { timestamp } = findByAudioId($audioid);
       if (!timestamp) {
         return out.join(";");
       }
@@ -8533,7 +8528,7 @@
       if (!timestamp[line] && i == 0) {
         playnext();
       }
-      const playertime = player($videoid)?.getCurrentTime();
+      const playertime = player?.currentTime;
       let timedelta = playertime - timestamp[line];
       if (Math.abs(timedelta) > 3) {
         timedelta = 0.02;
@@ -8593,7 +8588,7 @@
     };
     return [
       frame,
-      $videoid,
+      $audioid,
       $playing,
       $activepb,
       strips,
@@ -9864,8 +9859,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   // src/swipezipimage.svelte
   function get_each_context4(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[45] = list[i];
-    child_ctx[47] = i;
+    child_ctx[44] = list[i];
+    child_ctx[46] = i;
     return child_ctx;
   }
   function create_else_block2(ctx) {
@@ -9923,10 +9918,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let dispose;
     const swipe_spread_levels = [
       /*swipeConfig*/
-      ctx[25],
+      ctx[24],
       { defaultIndex: (
         /*defaultIndex*/
-        ctx[9]
+        ctx[8]
       ) }
     ];
     let swipe_props = {
@@ -9937,21 +9932,21 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       swipe_props = assign(swipe_props, swipe_spread_levels[i]);
     }
     swipe = new swipe_default({ props: swipe_props });
-    ctx[34](swipe);
+    ctx[33](swipe);
     swipe.$on(
       "click",
       /*onfoliopageclick*/
-      ctx[29]
+      ctx[28]
     );
     swipe.$on(
       "start",
       /*swipeStart*/
-      ctx[26]
+      ctx[25]
     );
     swipe.$on(
       "change",
       /*swipeChanged*/
-      ctx[27]
+      ctx[26]
     );
     return {
       c() {
@@ -9964,7 +9959,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           ctx[16],
           1,
           /*swiper*/
-          ctx[8]
+          ctx[7]
         ));
       },
       m(target, anchor) {
@@ -9976,39 +9971,39 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             div,
             "wheel",
             /*mousewheel*/
-            ctx[28]
+            ctx[27]
           );
           mounted = true;
         }
       },
       p(ctx2, dirty) {
         const swipe_changes = dirty[0] & /*swipeConfig, defaultIndex*/
-        33554944 ? get_spread_update(swipe_spread_levels, [
+        16777472 ? get_spread_update(swipe_spread_levels, [
           dirty[0] & /*swipeConfig*/
-          33554432 && get_spread_object(
+          16777216 && get_spread_object(
             /*swipeConfig*/
-            ctx2[25]
+            ctx2[24]
           ),
           dirty[0] & /*defaultIndex*/
-          512 && { defaultIndex: (
+          256 && { defaultIndex: (
             /*defaultIndex*/
-            ctx2[9]
+            ctx2[8]
           ) }
         ]) : {};
         if (dirty[0] & /*images*/
-        64 | dirty[1] & /*$$scope*/
-        131072) {
+        32 | dirty[1] & /*$$scope*/
+        65536) {
           swipe_changes.$$scope = { dirty, ctx: ctx2 };
         }
         swipe.$set(swipe_changes);
         if (!current || dirty[0] & /*$leftmode, $landscape, swiper*/
-        98560 && div_style_value !== (div_style_value = "opacity:" + /*$leftmode*/
+        98432 && div_style_value !== (div_style_value = "opacity:" + /*$leftmode*/
         (ctx2[15] !== "folio" ? "0;" : "1") + ";width:" + folioHolderWidth(
           /*$landscape*/
           ctx2[16],
           1,
           /*swiper*/
-          ctx2[8]
+          ctx2[7]
         ))) {
           attr(div, "style", div_style_value);
         }
@@ -10026,7 +10021,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       d(detaching) {
         if (detaching)
           detach(div);
-        ctx[34](null);
+        ctx[33](null);
         destroy_component(swipe);
         mounted = false;
         dispose();
@@ -10042,10 +10037,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         attr(img, "alt", "no");
         attr(img, "class", "swipe svelte-1ghlcj4");
         if (!src_url_equal(img.src, img_src_value = /*images*/
-        ctx[6][
+        ctx[5][
           /*images*/
-          ctx[6].length - /*idx*/
-          ctx[47] - 1
+          ctx[5].length - /*idx*/
+          ctx[46] - 1
         ]))
           attr(img, "src", img_src_value);
       },
@@ -10054,11 +10049,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, dirty) {
         if (dirty[0] & /*images*/
-        64 && !src_url_equal(img.src, img_src_value = /*images*/
-        ctx2[6][
+        32 && !src_url_equal(img.src, img_src_value = /*images*/
+        ctx2[5][
           /*images*/
-          ctx2[6].length - /*idx*/
-          ctx2[47] - 1
+          ctx2[5].length - /*idx*/
+          ctx2[46] - 1
         ])) {
           attr(img, "src", img_src_value);
         }
@@ -10089,8 +10084,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         const swipeitem_changes = {};
         if (dirty[0] & /*images*/
-        64 | dirty[1] & /*$$scope*/
-        131072) {
+        32 | dirty[1] & /*$$scope*/
+        65536) {
           swipeitem_changes.$$scope = { dirty, ctx: ctx2 };
         }
         swipeitem.$set(swipeitem_changes);
@@ -10115,7 +10110,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current;
     let each_value = (
       /*images*/
-      ctx[6]
+      ctx[5]
     );
     let each_blocks = [];
     for (let i = 0; i < each_value.length; i += 1) {
@@ -10142,9 +10137,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, dirty) {
         if (dirty[0] & /*images*/
-        64) {
+        32) {
           each_value = /*images*/
-          ctx2[6];
+          ctx2[5];
           let i;
           for (i = 0; i < each_value.length; i += 1) {
             const child_ctx = get_each_context4(ctx2, each_value, i);
@@ -10193,10 +10188,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       /*$favorites*/
       ctx[12][
         /*$activefolioid*/
-        ctx[1]
+        ctx[11]
       ]?.[
         /*$activepb*/
-        ctx[2]
+        ctx[1]
       ] || 0
     ] + "";
     let t;
@@ -10208,7 +10203,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t = text(t_value);
         attr(span, "class", "favoritebtn");
         toggle_class(span, "blinkfavorbtn", !!/*favoritetimer*/
-        ctx[10]);
+        ctx[9]);
       },
       m(target, anchor) {
         insert(target, span, anchor);
@@ -10218,28 +10213,28 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             span,
             "click",
             /*favoritebtn*/
-            ctx[30]
+            ctx[29]
           );
           mounted = true;
         }
       },
       p(ctx2, dirty) {
         if (dirty[0] & /*$favorites, $activefolioid, $activepb*/
-        4102 && t_value !== (t_value = favortypes[
+        6146 && t_value !== (t_value = favortypes[
           /*$favorites*/
           ctx2[12][
             /*$activefolioid*/
-            ctx2[1]
+            ctx2[11]
           ]?.[
             /*$activepb*/
-            ctx2[2]
+            ctx2[1]
           ] || 0
         ] + ""))
           set_data(t, t_value);
         if (dirty[0] & /*favoritetimer*/
-        1024) {
+        512) {
           toggle_class(span, "blinkfavorbtn", !!/*favoritetimer*/
-          ctx2[10]);
+          ctx2[9]);
         }
       },
       d(detaching) {
@@ -10253,8 +10248,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   function create_if_block_4(ctx) {
     let span;
     let t_value = (
-      /*$videoid*/
-      ctx[18] ? "\u25FC" : "\u266B"
+      /*$audioid*/
+      ctx[17] ? "\u25FC" : "\u266B"
     );
     let t;
     let mounted;
@@ -10273,15 +10268,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             span,
             "click",
             /*toggleplaybtn*/
-            ctx[31]
+            ctx[30]
           );
           mounted = true;
         }
       },
       p(ctx2, dirty) {
-        if (dirty[0] & /*$videoid*/
-        262144 && t_value !== (t_value = /*$videoid*/
-        ctx2[18] ? "\u25FC" : "\u266B"))
+        if (dirty[0] & /*$audioid*/
+        131072 && t_value !== (t_value = /*$audioid*/
+        ctx2[17] ? "\u25FC" : "\u266B"))
           set_data(t, t_value);
       },
       d(detaching) {
@@ -10296,9 +10291,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let span;
     let t_value = (
       /*$remainrollback*/
-      (ctx[20] > 0 ? (
+      (ctx[19] > 0 ? (
         /*$remainrollback*/
-        ctx[20]
+        ctx[19]
       ) : "") + ""
     );
     let t;
@@ -10314,10 +10309,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, dirty) {
         if (dirty[0] & /*$remainrollback*/
-        1048576 && t_value !== (t_value = /*$remainrollback*/
-        (ctx2[20] > 0 ? (
+        524288 && t_value !== (t_value = /*$remainrollback*/
+        (ctx2[19] > 0 ? (
           /*$remainrollback*/
-          ctx2[20]
+          ctx2[19]
         ) : "") + ""))
           set_data(t, t_value);
       },
@@ -10334,11 +10329,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       props: {
         mark: (
           /*$tapmark*/
-          ctx[21]
+          ctx[20]
         ),
         pb: (
           /*$activepb*/
-          ctx[2]
+          ctx[1]
         ),
         folioChars: (
           /*$folioChars*/
@@ -10347,7 +10342,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         folioLines: folioLines(),
         frame: (
           /*imageFrame*/
-          ctx[24]()
+          ctx[23]()
         )
       }
     });
@@ -10362,13 +10357,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         const tapmark_1_changes = {};
         if (dirty[0] & /*$tapmark*/
-        2097152)
+        1048576)
           tapmark_1_changes.mark = /*$tapmark*/
-          ctx2[21];
+          ctx2[20];
         if (dirty[0] & /*$activepb*/
-        4)
+        2)
           tapmark_1_changes.pb = /*$activepb*/
-          ctx2[2];
+          ctx2[1];
         if (dirty[0] & /*$folioChars*/
         16384)
           tapmark_1_changes.folioChars = /*$folioChars*/
@@ -10394,7 +10389,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let if_block_anchor;
     let current;
     let if_block = !/*hidepunc*/
-    ctx[7] && !/*$showpaiji*/
+    ctx[6] && !/*$showpaiji*/
     ctx[13] && /*$leftmode*/
     ctx[15] == "folio" && create_if_block_2(ctx);
     return {
@@ -10411,13 +10406,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, dirty) {
         if (!/*hidepunc*/
-        ctx2[7] && !/*$showpaiji*/
+        ctx2[6] && !/*$showpaiji*/
         ctx2[13] && /*$leftmode*/
         ctx2[15] == "folio") {
           if (if_block) {
             if_block.p(ctx2, dirty);
             if (dirty[0] & /*hidepunc, $showpaiji, $leftmode*/
-            41088) {
+            41024) {
               transition_in(if_block, 1);
             }
           } else {
@@ -10458,14 +10453,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current;
     let if_block = (
       /*$showpunc*/
-      ctx[22] == "on" && /*$leftmode*/
+      ctx[21] == "on" && /*$leftmode*/
       ctx[15] == "folio" && create_if_block_1(ctx)
     );
     transcriptlayer = new transcriptlayer_default({
       props: {
         frame: (
           /*imageFrame*/
-          ctx[24]()
+          ctx[23]()
         ),
         totalpages: (
           /*totalpages*/
@@ -10474,15 +10469,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         folioLines: folioLines(),
         swiper: (
           /*swiper*/
-          ctx[8]
+          ctx[7]
         ),
         ptk: (
           /*ptk*/
-          ctx[23]
+          ctx[22]
         ),
         foliopage: (
           /*foliopage*/
-          ctx[3]
+          ctx[2]
         )
       }
     });
@@ -10503,13 +10498,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         if (
           /*$showpunc*/
-          ctx2[22] == "on" && /*$leftmode*/
+          ctx2[21] == "on" && /*$leftmode*/
           ctx2[15] == "folio"
         ) {
           if (if_block) {
             if_block.p(ctx2, dirty);
             if (dirty[0] & /*$showpunc, $leftmode*/
-            4227072) {
+            2129920) {
               transition_in(if_block, 1);
             }
           } else {
@@ -10531,13 +10526,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           transcriptlayer_changes.totalpages = /*totalpages*/
           ctx2[0];
         if (dirty[0] & /*swiper*/
-        256)
+        128)
           transcriptlayer_changes.swiper = /*swiper*/
-          ctx2[8];
+          ctx2[7];
         if (dirty[0] & /*foliopage*/
-        8)
+        4)
           transcriptlayer_changes.foliopage = /*foliopage*/
-          ctx2[3];
+          ctx2[2];
         transcriptlayer.$set(transcriptlayer_changes);
       },
       i(local) {
@@ -10568,7 +10563,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       props: {
         frame: (
           /*imageFrame*/
-          ctx[24]()
+          ctx[23]()
         ),
         folioChars: (
           /*$folioChars*/
@@ -10577,7 +10572,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         folioLines: folioLines(),
         puncs: (
           /*puncs*/
-          ctx[4]
+          ctx[3]
         )
       }
     });
@@ -10596,9 +10591,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           punclayer_changes.folioChars = /*$folioChars*/
           ctx2[14];
         if (dirty[0] & /*puncs*/
-        16)
+        8)
           punclayer_changes.puncs = /*puncs*/
-          ctx2[4];
+          ctx2[3];
         punclayer.$set(punclayer_changes);
       },
       i(local) {
@@ -10620,7 +10615,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let if_block_anchor;
     let current;
     let if_block = !/*hidepunc*/
-    ctx[7] && create_if_block4(ctx);
+    ctx[6] && create_if_block4(ctx);
     return {
       c() {
         if (if_block)
@@ -10635,11 +10630,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(ctx2, dirty) {
         if (!/*hidepunc*/
-        ctx2[7]) {
+        ctx2[6]) {
           if (if_block) {
             if_block.p(ctx2, dirty);
             if (dirty[0] & /*hidepunc*/
-            128) {
+            64) {
               transition_in(if_block, 1);
             }
           } else {
@@ -10680,7 +10675,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t0;
     let previous_key = (
       /*favoritetimer*/
-      ctx[10]
+      ctx[9]
     );
     let t1;
     let t2;
@@ -10688,20 +10683,20 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t3_value = (
       /*totalpages*/
       ctx[0] - /*defaultIndex*/
-      ctx[9] + ""
+      ctx[8] + ""
     );
     let t3;
     let t4;
     let t5;
     let previous_key_1 = (
       /*$tapmark*/
-      ctx[21] + /*$activepb*/
-      ctx[2]
+      ctx[20] + /*$activepb*/
+      ctx[1]
     );
     let t6;
     let previous_key_2 = (
       /*puncs*/
-      ctx[4]
+      ctx[3]
     );
     let key_block2_anchor;
     let current;
@@ -10710,7 +10705,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     function select_block_type(ctx2, dirty) {
       if (
         /*ready*/
-        ctx2[5]
+        ctx2[4]
       )
         return 0;
       return 1;
@@ -10719,12 +10714,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
     let key_block0 = create_key_block_2(ctx);
     let if_block1 = !/*$landscape*/
-    ctx[16] && /*$playerready*/
-    ctx[17] && /*audiolist*/
-    ctx[11].length > 1 && create_if_block_4(ctx);
+    ctx[16] && /*$mediaurls*/
+    ctx[10].length > 1 && create_if_block_4(ctx);
     let if_block2 = (
       /*$playing*/
-      ctx[19] && create_if_block_3(ctx)
+      ctx[18] && create_if_block_3(ctx)
     );
     let key_block1 = create_key_block_1(ctx);
     let key_block2 = create_key_block2(ctx);
@@ -10791,8 +10785,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if_block0.m(t0.parentNode, t0);
         }
         if (dirty[0] & /*favoritetimer*/
-        1024 && safe_not_equal(previous_key, previous_key = /*favoritetimer*/
-        ctx2[10])) {
+        512 && safe_not_equal(previous_key, previous_key = /*favoritetimer*/
+        ctx2[9])) {
           key_block0.d(1);
           key_block0 = create_key_block_2(ctx2);
           key_block0.c();
@@ -10801,9 +10795,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           key_block0.p(ctx2, dirty);
         }
         if (!/*$landscape*/
-        ctx2[16] && /*$playerready*/
-        ctx2[17] && /*audiolist*/
-        ctx2[11].length > 1) {
+        ctx2[16] && /*$mediaurls*/
+        ctx2[10].length > 1) {
           if (if_block1) {
             if_block1.p(ctx2, dirty);
           } else {
@@ -10816,13 +10809,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if_block1 = null;
         }
         if ((!current || dirty[0] & /*totalpages, defaultIndex*/
-        513) && t3_value !== (t3_value = /*totalpages*/
+        257) && t3_value !== (t3_value = /*totalpages*/
         ctx2[0] - /*defaultIndex*/
-        ctx2[9] + ""))
+        ctx2[8] + ""))
           set_data(t3, t3_value);
         if (
           /*$playing*/
-          ctx2[19]
+          ctx2[18]
         ) {
           if (if_block2) {
             if_block2.p(ctx2, dirty);
@@ -10836,9 +10829,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if_block2 = null;
         }
         if (dirty[0] & /*$tapmark, $activepb*/
-        2097156 && safe_not_equal(previous_key_1, previous_key_1 = /*$tapmark*/
-        ctx2[21] + /*$activepb*/
-        ctx2[2])) {
+        1048578 && safe_not_equal(previous_key_1, previous_key_1 = /*$tapmark*/
+        ctx2[20] + /*$activepb*/
+        ctx2[1])) {
           group_outros();
           transition_out(key_block1, 1, 1, noop);
           check_outros();
@@ -10850,8 +10843,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           key_block1.p(ctx2, dirty);
         }
         if (dirty[0] & /*puncs*/
-        16 && safe_not_equal(previous_key_2, previous_key_2 = /*puncs*/
-        ctx2[4])) {
+        8 && safe_not_equal(previous_key_2, previous_key_2 = /*puncs*/
+        ctx2[3])) {
           group_outros();
           transition_out(key_block2, 1, 1, noop);
           check_outros();
@@ -10906,37 +10899,36 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function instance8($$self, $$props, $$invalidate) {
-    let audiolist;
-    let $activefolioid;
     let $activepb;
-    let $prefervideo;
+    let $mediaurls;
+    let $activefolioid;
+    let $preferaudio;
     let $favorites;
     let $activePtk;
     let $showpaiji;
     let $folioChars;
     let $leftmode;
     let $landscape;
-    let $playerready;
-    let $videoid;
+    let $audioid;
     let $playing;
     let $remainrollback;
     let $tapmark;
     let $showpunc;
-    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(1, $activefolioid = $$value));
-    component_subscribe($$self, activepb, ($$value) => $$invalidate(2, $activepb = $$value));
-    component_subscribe($$self, prefervideo, ($$value) => $$invalidate(37, $prefervideo = $$value));
+    component_subscribe($$self, activepb, ($$value) => $$invalidate(1, $activepb = $$value));
+    component_subscribe($$self, mediaurls, ($$value) => $$invalidate(10, $mediaurls = $$value));
+    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(11, $activefolioid = $$value));
+    component_subscribe($$self, preferaudio, ($$value) => $$invalidate(36, $preferaudio = $$value));
     component_subscribe($$self, favorites, ($$value) => $$invalidate(12, $favorites = $$value));
-    component_subscribe($$self, activePtk, ($$value) => $$invalidate(38, $activePtk = $$value));
+    component_subscribe($$self, activePtk, ($$value) => $$invalidate(37, $activePtk = $$value));
     component_subscribe($$self, showpaiji, ($$value) => $$invalidate(13, $showpaiji = $$value));
     component_subscribe($$self, folioChars, ($$value) => $$invalidate(14, $folioChars = $$value));
     component_subscribe($$self, leftmode, ($$value) => $$invalidate(15, $leftmode = $$value));
     component_subscribe($$self, landscape, ($$value) => $$invalidate(16, $landscape = $$value));
-    component_subscribe($$self, playerready, ($$value) => $$invalidate(17, $playerready = $$value));
-    component_subscribe($$self, videoid, ($$value) => $$invalidate(18, $videoid = $$value));
-    component_subscribe($$self, playing, ($$value) => $$invalidate(19, $playing = $$value));
-    component_subscribe($$self, remainrollback, ($$value) => $$invalidate(20, $remainrollback = $$value));
-    component_subscribe($$self, tapmark, ($$value) => $$invalidate(21, $tapmark = $$value));
-    component_subscribe($$self, showpunc, ($$value) => $$invalidate(22, $showpunc = $$value));
+    component_subscribe($$self, audioid, ($$value) => $$invalidate(17, $audioid = $$value));
+    component_subscribe($$self, playing, ($$value) => $$invalidate(18, $playing = $$value));
+    component_subscribe($$self, remainrollback, ($$value) => $$invalidate(19, $remainrollback = $$value));
+    component_subscribe($$self, tapmark, ($$value) => $$invalidate(20, $tapmark = $$value));
+    component_subscribe($$self, showpunc, ($$value) => $$invalidate(21, $showpunc = $$value));
     let { src } = $$props;
     let ptk2 = usePtk($activePtk);
     let foliopage = [], puncs = [], ready, images = [], hidepunc = false;
@@ -10974,7 +10966,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       transitionDuration: 250
     };
     const loadZip = async () => {
-      $$invalidate(5, ready = false);
+      $$invalidate(4, ready = false);
       loadingbook.set(true);
       let host = "folio/";
       if (document.location.host.startsWith("yonglezang.github.io")) {
@@ -10987,34 +10979,34 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const buf = await res.arrayBuffer();
       const zip = new ZipStore(buf);
       thezip.set(zip);
-      $$invalidate(6, images.length = 0, images);
+      $$invalidate(5, images.length = 0, images);
       for (let i = 0; i < zip.files.length; i++) {
         if (i == zip.files.length - 1) {
           const blob = new Blob([zip.files[i].content]);
           images.push(URL.createObjectURL(blob));
         } else {
-          images.push("blank.png");
+          images.push("frames/blank.png");
         }
       }
-      $$invalidate(9, defaultIndex = zip.files.length - 1);
+      $$invalidate(8, defaultIndex = zip.files.length - 1);
       $$invalidate(0, totalpages = zip.files.length);
       setTimeout(
         () => {
           maxfolio.set(totalpages - 1);
           loadingbook.set(false);
-          $$invalidate(5, ready = true);
+          $$invalidate(4, ready = true);
         },
         100
       );
     };
     const swipeStart = (obj) => {
-      $$invalidate(7, hidepunc = true);
+      $$invalidate(6, hidepunc = true);
     };
     const swipeChanged = (obj) => {
       if (!ready)
         return;
       const { active_item } = obj.detail;
-      $$invalidate(9, defaultIndex = active_item);
+      $$invalidate(8, defaultIndex = active_item);
       activepb.set((totalpages - defaultIndex).toString());
       let i = totalpages - defaultIndex - 1;
       const wrapper = document.getElementsByClassName("swipeable-slot-wrapper")[0];
@@ -11025,14 +11017,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         return;
       if (~ele.src.indexOf("blank")) {
         const blob = new Blob([get_store_value(thezip).files[i].content]);
-        ele.src = $$invalidate(6, images[i] = URL.createObjectURL(blob), images);
+        ele.src = $$invalidate(5, images[i] = URL.createObjectURL(blob), images);
       }
       if (i + 1 < totalpages) {
         i++;
         const ele2 = wrapper.childNodes[defaultIndex - 1]?.firstChild.firstChild;
         if (~ele2.src.indexOf("blank")) {
           const blob = new Blob([get_store_value(thezip).files[i].content]);
-          ele2.src = $$invalidate(6, images[i] = URL.createObjectURL(blob), images);
+          ele2.src = $$invalidate(5, images[i] = URL.createObjectURL(blob), images);
         }
       }
       updateFolioText();
@@ -11040,14 +11032,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       confirmfavorite();
     };
     const updateFolioText = () => {
-      $$invalidate(7, hidepunc = true);
+      $$invalidate(6, hidepunc = true);
       const fl = folioLines();
-      $$invalidate(3, foliopage = get_store_value(foliotext).folioPageText($activepb));
-      $$invalidate(3, foliopage = foliopage.join("\n").replace(/【[^】]+】/, "").split("\n"));
+      $$invalidate(2, foliopage = get_store_value(foliotext).folioPageText($activepb));
+      $$invalidate(2, foliopage = foliopage.join("\n").replace(/【[^】]+】/, "").split("\n"));
       setTimeout(
         () => {
-          $$invalidate(7, hidepunc = false);
-          $$invalidate(4, puncs = extractPuncPos(foliopage, fl));
+          $$invalidate(6, hidepunc = false);
+          $$invalidate(3, puncs = extractPuncPos(foliopage, fl));
         },
         200
       );
@@ -11055,14 +11047,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const useractive = () => {
       showpaiji.set(false);
       idlecount.set(0);
-      $$invalidate(7, hidepunc = false);
+      $$invalidate(6, hidepunc = false);
     };
     const mousewheel = (e) => {
       if ($leftmode !== "folio")
         return;
       if (e.ctrlKey)
         return;
-      $$invalidate(7, hidepunc = true);
+      $$invalidate(6, hidepunc = true);
       if (e.deltaY > 0) {
         swiper.prevItem();
       } else {
@@ -11084,7 +11076,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         useractive();
         return;
       }
-      $$invalidate(7, hidepunc = false);
+      $$invalidate(6, hidepunc = false);
       const { x, y } = e.detail;
       const [cx, cy] = getCharXY(x, y);
       if (cx >= folioLines() !== cx < 0) {
@@ -11114,7 +11106,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const confirmfavorite = () => {
       if (favoritetimer) {
         clearTimeout(favoritetimer);
-        $$invalidate(10, favoritetimer = 0);
+        $$invalidate(9, favoritetimer = 0);
       }
       cancellable = true;
       const pb = $activepb;
@@ -11135,7 +11127,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ($activePtk !== "dc")
         return;
       clearTimeout(favoritetimer);
-      $$invalidate(10, favoritetimer = setTimeout(
+      $$invalidate(9, favoritetimer = setTimeout(
         () => {
           confirmfavorite();
         },
@@ -11153,7 +11145,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (cancellable) {
           delete bookfavor[$activefolioid][$activepb];
           clearTimeout(favoritetimer);
-          $$invalidate(10, favoritetimer = 0);
+          $$invalidate(9, favoritetimer = 0);
         } else {
           let i = bookfavor[$activefolioid][$activepb] + 1;
           if (i >= favortypes.length)
@@ -11165,11 +11157,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       favorites.set(Object.assign({}, bookfavor));
     };
     const toggleplaybtn = () => {
-      if (!get_store_value(videoid)) {
-        if (audiolist.length < 2)
+      if (!get_store_value(audioid)) {
+        if ($mediaurls.length < 2)
           return;
-        const pick = Math.floor(Math.random() * (audiolist.length - 1)) + 1;
-        const vid = $prefervideo[$activefolioid] || audiolist[pick]?.vid;
+        const pick = Math.floor(Math.random() * ($mediaurls.length - 1)) + 1;
+        const vid = $preferaudio[$activefolioid] || $mediaurls[pick]?.vid;
         selectmedia(vid);
       } else {
         selectmedia("");
@@ -11178,37 +11170,31 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     function swipe_binding($$value) {
       binding_callbacks[$$value ? "unshift" : "push"](() => {
         swiper = $$value;
-        $$invalidate(8, swiper);
+        $$invalidate(7, swiper);
       });
     }
     $$self.$$set = ($$props2) => {
       if ("src" in $$props2)
-        $$invalidate(32, src = $$props2.src);
+        $$invalidate(31, src = $$props2.src);
       if ("totalpages" in $$props2)
         $$invalidate(0, totalpages = $$props2.totalpages);
       if ("onTapText" in $$props2)
-        $$invalidate(33, onTapText = $$props2.onTapText);
+        $$invalidate(32, onTapText = $$props2.onTapText);
     };
     $$self.$$.update = () => {
       if ($$self.$$.dirty[1] & /*src*/
-      2) {
+      1) {
         $:
           loadZip(src);
       }
       if ($$self.$$.dirty[0] & /*$activepb*/
-      4) {
-        $:
-          gotoPb($activepb);
-      }
-      if ($$self.$$.dirty[0] & /*$activefolioid*/
       2) {
         $:
-          $$invalidate(11, audiolist = getAudioList($activefolioid));
+          gotoPb($activepb);
       }
     };
     return [
       totalpages,
-      $activefolioid,
       $activepb,
       foliopage,
       puncs,
@@ -11218,14 +11204,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       swiper,
       defaultIndex,
       favoritetimer,
-      audiolist,
+      $mediaurls,
+      $activefolioid,
       $favorites,
       $showpaiji,
       $folioChars,
       $leftmode,
       $landscape,
-      $playerready,
-      $videoid,
+      $audioid,
       $playing,
       $remainrollback,
       $tapmark,
@@ -11247,7 +11233,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Swipezipimage = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance8, create_fragment7, safe_not_equal, { src: 32, totalpages: 0, onTapText: 33 }, null, [-1, -1]);
+      init(this, options, instance8, create_fragment7, safe_not_equal, { src: 31, totalpages: 0, onTapText: 32 }, null, [-1, -1]);
     }
   };
   var swipezipimage_default = Swipezipimage;
@@ -12464,7 +12450,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const folios = getFolioList();
     const selectfolio = (nfolio) => {
       const folio = ptk2.defines.folio;
-      stopVideo();
+      stopAudio();
       const folioid = folio.fields.id.values[nfolio];
       loadFolio(folioid, function() {
         $$invalidate(7, thetab = "toc");
@@ -13619,377 +13605,95 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var switch_default = Switch;
 
   // src/icons.js
-  var youtubeicon = `<svg style="margin-bottom:-0.2em" height="4vh" width="4vh" viewBox="0 0 461.001 461.001"><g><path style="fill:#F61C0D;" d="M365.257,67.393H95.744C42.866,67.393,0,110.259,0,163.137v134.728c0,52.878,42.866,95.744,95.744,95.744h269.513c52.878,0,95.744-42.866,95.744-95.744V163.137C461.001,110.259,418.135,67.393,365.257,67.393z M300.506,237.056l-126.06,60.123c-3.359,1.602-7.239-0.847-7.239-4.568V168.607c0-3.774,3.982-6.22,7.348-4.514l126.06,63.881C304.363,229.873,304.298,235.248,300.506,237.056z"/></g></svg>`;
-  var vqqicon = `<svg xmlns="http://www.w3.org/2000/svg" height="4vh" width="5vh" viewBox="-76 -50 250 151"><linearGradient gradientTransform="matrix(1 0 0 -1 -10.798 152.703)" y2="31.982" x2="87.691" y1="152.685" x1="87.691" gradientUnits="userSpaceOnUse" id="a"><stop offset="0" stop-color="#53c4fe"/><stop offset="1" stop-color="#0d84f4"/></linearGradient><path d="M127.402 72.303c8.6-9 7.6-17.3-.1-24.4-11.3-10.6-24.7-19.2-38.7-27.3-13.6-7.9-28-14.4-42.8-19.7-8.4-2.9-17.5 1.4-20.5 9.8-.3.8-.5 1.6-.6 2.4-5.8 31.2-5.8 63.2-.1 94.4 1.6 8.7 10 14.5 18.7 12.9.8-.2 1.7-.4 2.5-.7 15.1-5.4 29.6-12.2 43.4-20.3 13.8-7.9 27.5-16 38.2-27.1z" fill="url(#a)"/><linearGradient gradientTransform="matrix(1 0 0 -1 -10.798 152.703)" y2="44.752" x2="23.486" y1="139.715" x1="23.486" gradientUnits="userSpaceOnUse" id="b"><stop offset="0" stop-color="#f9b93b"/><stop offset="1" stop-color="#fa7535"/></linearGradient><path d="M24.602 14.203c-.4-.1-.8-.2-1.2-.4-8.5-2.6-16 .4-19.4 9.6-4.2 11.5-4 24.4-4 37 0 12.6-.1 25.3 3.9 36.8 3.7 10.6 10.9 12.2 19.4 9.6.4-.1 1.5-.6 1.8-.7-2.7-14.9-4.8-29.9-4.8-45.6.2-15.5 1.5-31 4.3-46.3z" fill="url(#b)"/><linearGradient gradientTransform="matrix(1 0 0 -1 -10.798 152.703)" y2="46.056" x2="73.193" y1="138.631" x1="73.193" gradientUnits="userSpaceOnUse" id="c"><stop offset="0" stop-color="#aef922"/><stop offset="1" stop-color="#62bb0d"/></linearGradient><path d="M24.502 14.103c-5.5 30.6-5.6 62-.1 92.6 13.4-4.1 26.5-9.3 39.1-15.6 12.7-6.3 24.9-13 35.3-21.3 7.8-6.2 7-13.4-.1-19.2-10.5-8.5-22.9-15.1-35.9-21.4-12.2-6.1-25.1-11.1-38.3-15.1z" fill="url(#c)"/><linearGradient gradientTransform="matrix(1 0 0 -1 -10.798 152.703)" y2="70.704" x2="69.642" y1="113.993" x1="69.642" gradientUnits="userSpaceOnUse" id="d"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#fff"/><stop offset="1" stop-color="#e5f6d2"/></linearGradient><path d="M38.202 41.203s-1.3 1.9-1.3 19.1c0 17.2 1.3 19.3 1.3 19.3.4 2.1 1.4 2.8 3.7 2.3 0 0 3.9-.6 19.4-8.4 15.5-7.8 18.1-10.8 18.1-10.8 1.7-1.7 2.1-2.8 0-4.6 0 0-4.2-3.9-18.1-11-13.7-7-19.4-8.2-19.4-8.2-2-.6-3.2 0-3.7 2.3z" fill="url(#d)"/></svg>`;
+  var downloadicon = `<svg width="32px" height="32px" viewBox="0 0 24 24" fill="none"><path d="M12 16L12 8" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+  // src/comps/downloader.js
+  var downloadToCache = async (url2, cb, cachename = "v1::ylz") => {
+    let response = await fetch(url2);
+    const reader = response.body.getReader();
+    const contentLength = +response.headers.get("Content-Length");
+    let receivedLength = 0;
+    let chunks = [];
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done)
+        break;
+      chunks.push(value);
+      receivedLength += value.length;
+      cb && cb(receivedLength, contentLength);
+    }
+    let chunksAll = new Uint8Array(receivedLength);
+    let position = 0;
+    for (let chunk of chunks) {
+      chunksAll.set(chunk, position);
+      position += chunk.length;
+    }
+    const cache = await caches.open(cachename);
+    const resp = {
+      status: response.status,
+      statusText: response.statusText,
+      headers: { "X-Shaka-From-Cache": true, contentType: "audio/mpeg", contentLength }
+    };
+    const res = new Response(chunksAll, resp);
+    cache.put(url2, res);
+  };
 
   // src/audio.svelte
   function get_each_context9(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[25] = list[i];
+    child_ctx[28] = list[i];
+    child_ctx[30] = i;
     return child_ctx;
   }
   function create_else_block5(ctx) {
-    let t;
-    let current_block_type_index;
-    let if_block;
-    let if_block_anchor;
-    let current;
-    let each_value = (
-      /*$mediaurls*/
-      ctx[8]
-    );
-    let each_blocks = [];
-    for (let i = 0; i < each_value.length; i += 1) {
-      each_blocks[i] = create_each_block9(get_each_context9(ctx, each_value, i));
-    }
-    const if_block_creators = [create_if_block_33, create_else_block_12];
-    const if_blocks = [];
-    function select_block_type_2(ctx2, dirty) {
-      if (
-        /*$videoid*/
-        ctx2[1] == ""
-      )
-        return 0;
-      return 1;
-    }
-    current_block_type_index = select_block_type_2(ctx, -1);
-    if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-    return {
-      c() {
-        for (let i = 0; i < each_blocks.length; i += 1) {
-          each_blocks[i].c();
-        }
-        t = space();
-        if_block.c();
-        if_block_anchor = empty();
-      },
-      m(target, anchor) {
-        for (let i = 0; i < each_blocks.length; i += 1) {
-          if (each_blocks[i]) {
-            each_blocks[i].m(target, anchor);
-          }
-        }
-        insert(target, t, anchor);
-        if_blocks[current_block_type_index].m(target, anchor);
-        insert(target, if_block_anchor, anchor);
-        current = true;
-      },
-      p(ctx2, dirty) {
-        if (dirty & /*$videoid, youtubeicon, $mediaurls, vqqicon, humanDuration, getDuration, selectmedia*/
-        1794) {
-          each_value = /*$mediaurls*/
-          ctx2[8];
-          let i;
-          for (i = 0; i < each_value.length; i += 1) {
-            const child_ctx = get_each_context9(ctx2, each_value, i);
-            if (each_blocks[i]) {
-              each_blocks[i].p(child_ctx, dirty);
-            } else {
-              each_blocks[i] = create_each_block9(child_ctx);
-              each_blocks[i].c();
-              each_blocks[i].m(t.parentNode, t);
-            }
-          }
-          for (; i < each_blocks.length; i += 1) {
-            each_blocks[i].d(1);
-          }
-          each_blocks.length = each_value.length;
-        }
-        let previous_block_index = current_block_type_index;
-        current_block_type_index = select_block_type_2(ctx2, dirty);
-        if (current_block_type_index === previous_block_index) {
-          if_blocks[current_block_type_index].p(ctx2, dirty);
-        } else {
-          group_outros();
-          transition_out(if_blocks[previous_block_index], 1, 1, () => {
-            if_blocks[previous_block_index] = null;
-          });
-          check_outros();
-          if_block = if_blocks[current_block_type_index];
-          if (!if_block) {
-            if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
-            if_block.c();
-          } else {
-            if_block.p(ctx2, dirty);
-          }
-          transition_in(if_block, 1);
-          if_block.m(if_block_anchor.parentNode, if_block_anchor);
-        }
-      },
-      i(local) {
-        if (current)
-          return;
-        transition_in(if_block);
-        current = true;
-      },
-      o(local) {
-        transition_out(if_block);
-        current = false;
-      },
-      d(detaching) {
-        destroy_each(each_blocks, detaching);
-        if (detaching)
-          detach(t);
-        if_blocks[current_block_type_index].d(detaching);
-        if (detaching)
-          detach(if_block_anchor);
-      }
-    };
-  }
-  function create_if_block7(ctx) {
-    let t;
-    let if_block1_anchor;
-    let if_block0 = !/*$qqplayer*/
-    ctx[6] && create_if_block_23(ctx);
-    let if_block1 = !/*$ytplayer*/
-    ctx[7] && create_if_block_14(ctx);
-    return {
-      c() {
-        if (if_block0)
-          if_block0.c();
-        t = space();
-        if (if_block1)
-          if_block1.c();
-        if_block1_anchor = empty();
-      },
-      m(target, anchor) {
-        if (if_block0)
-          if_block0.m(target, anchor);
-        insert(target, t, anchor);
-        if (if_block1)
-          if_block1.m(target, anchor);
-        insert(target, if_block1_anchor, anchor);
-      },
-      p(ctx2, dirty) {
-        if (!/*$qqplayer*/
-        ctx2[6]) {
-          if (if_block0) {
-          } else {
-            if_block0 = create_if_block_23(ctx2);
-            if_block0.c();
-            if_block0.m(t.parentNode, t);
-          }
-        } else if (if_block0) {
-          if_block0.d(1);
-          if_block0 = null;
-        }
-        if (!/*$ytplayer*/
-        ctx2[7]) {
-          if (if_block1) {
-          } else {
-            if_block1 = create_if_block_14(ctx2);
-            if_block1.c();
-            if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
-          }
-        } else if (if_block1) {
-          if_block1.d(1);
-          if_block1 = null;
-        }
-      },
-      i: noop,
-      o: noop,
-      d(detaching) {
-        if (if_block0)
-          if_block0.d(detaching);
-        if (detaching)
-          detach(t);
-        if (if_block1)
-          if_block1.d(detaching);
-        if (detaching)
-          detach(if_block1_anchor);
-      }
-    };
-  }
-  function create_if_block_6(ctx) {
-    let t0_value = (
-      /*humanDuration*/
-      ctx[9](
-        /*getDuration*/
-        ctx[10](
-          /*$videoid*/
-          ctx[1]
-        )
-      ) + ""
-    );
-    let t0;
-    let t1;
-    let if_block_anchor;
-    function select_block_type_1(ctx2, dirty) {
-      if (
-        /*media*/
-        ctx2[25].videohost == "youtube"
-      )
-        return create_if_block_7;
-      if (
-        /*media*/
-        ctx2[25].videohost == "qq"
-      )
-        return create_if_block_8;
-    }
-    let current_block_type = select_block_type_1(ctx, -1);
-    let if_block = current_block_type && current_block_type(ctx);
-    return {
-      c() {
-        t0 = text(t0_value);
-        t1 = space();
-        if (if_block)
-          if_block.c();
-        if_block_anchor = empty();
-      },
-      m(target, anchor) {
-        insert(target, t0, anchor);
-        insert(target, t1, anchor);
-        if (if_block)
-          if_block.m(target, anchor);
-        insert(target, if_block_anchor, anchor);
-      },
-      p(ctx2, dirty) {
-        if (dirty & /*$videoid*/
-        2 && t0_value !== (t0_value = /*humanDuration*/
-        ctx2[9](
-          /*getDuration*/
-          ctx2[10](
-            /*$videoid*/
-            ctx2[1]
-          )
-        ) + ""))
-          set_data(t0, t0_value);
-        if (current_block_type === (current_block_type = select_block_type_1(ctx2, dirty)) && if_block) {
-          if_block.p(ctx2, dirty);
-        } else {
-          if (if_block)
-            if_block.d(1);
-          if_block = current_block_type && current_block_type(ctx2);
-          if (if_block) {
-            if_block.c();
-            if_block.m(if_block_anchor.parentNode, if_block_anchor);
-          }
-        }
-      },
-      d(detaching) {
-        if (detaching)
-          detach(t0);
-        if (detaching)
-          detach(t1);
-        if (if_block) {
-          if_block.d(detaching);
-        }
-        if (detaching)
-          detach(if_block_anchor);
-      }
-    };
-  }
-  function create_if_block_8(ctx) {
-    let a;
-    let a_href_value;
-    return {
-      c() {
-        a = element("a");
-        attr(a, "target", "_new");
-        attr(a, "href", a_href_value = "https://v.qq.com/x/page/" + /*$videoid*/
-        ctx[1] + ".html");
-      },
-      m(target, anchor) {
-        insert(target, a, anchor);
-        a.innerHTML = vqqicon;
-      },
-      p(ctx2, dirty) {
-        if (dirty & /*$videoid*/
-        2 && a_href_value !== (a_href_value = "https://v.qq.com/x/page/" + /*$videoid*/
-        ctx2[1] + ".html")) {
-          attr(a, "href", a_href_value);
-        }
-      },
-      d(detaching) {
-        if (detaching)
-          detach(a);
-      }
-    };
-  }
-  function create_if_block_7(ctx) {
-    let a;
-    let a_href_value;
-    return {
-      c() {
-        a = element("a");
-        attr(a, "target", "_new");
-        attr(a, "href", a_href_value = "https://www.youtube.com/watch?v=" + /*$videoid*/
-        ctx[1]);
-      },
-      m(target, anchor) {
-        insert(target, a, anchor);
-        a.innerHTML = youtubeicon;
-      },
-      p(ctx2, dirty) {
-        if (dirty & /*$videoid*/
-        2 && a_href_value !== (a_href_value = "https://www.youtube.com/watch?v=" + /*$videoid*/
-        ctx2[1])) {
-          attr(a, "href", a_href_value);
-        }
-      },
-      d(detaching) {
-        if (detaching)
-          detach(a);
-      }
-    };
-  }
-  function create_each_block9(ctx) {
-    let span;
+    let span0;
     let t0_value = (
       /*media*/
-      ctx[25].performer + ""
+      ctx[28].performer + " "
     );
     let t0;
+    let span1;
     let t1;
-    let t2;
-    let br;
+    let if_block_anchor;
     let mounted;
     let dispose;
+    function click_handler_1() {
+      return (
+        /*click_handler_1*/
+        ctx[18](
+          /*media*/
+          ctx[28]
+        )
+      );
+    }
     let if_block = (
-      /*$videoid*/
-      ctx[1] == /*media*/
-      ctx[25].vid && /*$videoid*/
-      ctx[1] && create_if_block_6(ctx)
+      /*downloading*/
+      ctx[5] == /*media*/
+      ctx[28].aid && create_if_block_43(ctx)
     );
     return {
       c() {
-        span = element("span");
+        span0 = element("span");
         t0 = text(t0_value);
+        span1 = element("span");
         t1 = space();
         if (if_block)
           if_block.c();
-        t2 = space();
-        br = element("br");
-        attr(span, "class", "clickable");
-        toggle_class(
-          span,
-          "selected",
-          /*media*/
-          ctx[25].vid == /*$videoid*/
-          ctx[1]
-        );
+        if_block_anchor = empty();
+        attr(span0, "class", "uncache");
+        attr(span1, "class", "clickable");
       },
       m(target, anchor) {
-        insert(target, span, anchor);
-        append(span, t0);
+        insert(target, span0, anchor);
+        append(span0, t0);
+        insert(target, span1, anchor);
+        span1.innerHTML = downloadicon;
         insert(target, t1, anchor);
         if (if_block)
           if_block.m(target, anchor);
-        insert(target, t2, anchor);
-        insert(target, br, anchor);
+        insert(target, if_block_anchor, anchor);
         if (!mounted) {
-          dispose = listen(span, "click", function() {
-            if (is_function(selectmedia(
-              /*media*/
-              ctx[25].vid,
-              true
-            )))
-              selectmedia(
-                /*media*/
-                ctx[25].vid,
-                true
-              ).apply(this, arguments);
-          });
+          dispose = listen(span1, "click", click_handler_1);
           mounted = true;
         }
       },
@@ -13997,30 +13701,19 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ctx = new_ctx;
         if (dirty & /*$mediaurls*/
         256 && t0_value !== (t0_value = /*media*/
-        ctx[25].performer + ""))
+        ctx[28].performer + " "))
           set_data(t0, t0_value);
-        if (dirty & /*$mediaurls, $videoid*/
-        258) {
-          toggle_class(
-            span,
-            "selected",
-            /*media*/
-            ctx[25].vid == /*$videoid*/
-            ctx[1]
-          );
-        }
         if (
-          /*$videoid*/
-          ctx[1] == /*media*/
-          ctx[25].vid && /*$videoid*/
-          ctx[1]
+          /*downloading*/
+          ctx[5] == /*media*/
+          ctx[28].aid
         ) {
           if (if_block) {
             if_block.p(ctx, dirty);
           } else {
-            if_block = create_if_block_6(ctx);
+            if_block = create_if_block_43(ctx);
             if_block.c();
-            if_block.m(t2.parentNode, t2);
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
           }
         } else if (if_block) {
           if_block.d(1);
@@ -14029,33 +13722,345 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       d(detaching) {
         if (detaching)
-          detach(span);
+          detach(span0);
+        if (detaching)
+          detach(span1);
         if (detaching)
           detach(t1);
         if (if_block)
           if_block.d(detaching);
         if (detaching)
-          detach(t2);
-        if (detaching)
-          detach(br);
+          detach(if_block_anchor);
         mounted = false;
         dispose();
       }
     };
   }
-  function create_else_block_12(ctx) {
-    let br;
+  function create_if_block_33(ctx) {
+    let span;
+    let t0_value = (
+      /*media*/
+      ctx[28].performer + ""
+    );
     let t0;
     let t1_value = (
+      /*idx*/
+      ctx[30] ? "\u266B" : ""
+    );
+    let t1;
+    let mounted;
+    let dispose;
+    function click_handler() {
+      return (
+        /*click_handler*/
+        ctx[17](
+          /*media*/
+          ctx[28]
+        )
+      );
+    }
+    return {
+      c() {
+        span = element("span");
+        t0 = text(t0_value);
+        t1 = text(t1_value);
+        attr(span, "class", "clickable");
+        toggle_class(
+          span,
+          "selected",
+          /*media*/
+          ctx[28].aid == /*$audioid*/
+          ctx[1]
+        );
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        append(span, t0);
+        append(span, t1);
+        if (!mounted) {
+          dispose = listen(span, "click", click_handler);
+          mounted = true;
+        }
+      },
+      p(new_ctx, dirty) {
+        ctx = new_ctx;
+        if (dirty & /*$mediaurls*/
+        256 && t0_value !== (t0_value = /*media*/
+        ctx[28].performer + ""))
+          set_data(t0, t0_value);
+        if (dirty & /*$mediaurls, $audioid*/
+        258) {
+          toggle_class(
+            span,
+            "selected",
+            /*media*/
+            ctx[28].aid == /*$audioid*/
+            ctx[1]
+          );
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(span);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
+  function create_if_block_43(ctx) {
+    let t_value = (
+      /*progress*/
+      ctx[6] + "%"
+    );
+    let t;
+    return {
+      c() {
+        t = text(t_value);
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*progress*/
+        64 && t_value !== (t_value = /*progress*/
+        ctx2[6] + "%"))
+          set_data(t, t_value);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_if_block_23(ctx) {
+    let t_value = (
+      /*humanDuration*/
+      ctx[9](
+        /*getDuration*/
+        ctx[10](
+          /*$audioid*/
+          ctx[1]
+        )
+      ) + ""
+    );
+    let t;
+    return {
+      c() {
+        t = text(t_value);
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*$audioid*/
+        2 && t_value !== (t_value = /*humanDuration*/
+        ctx2[9](
+          /*getDuration*/
+          ctx2[10](
+            /*$audioid*/
+            ctx2[1]
+          )
+        ) + ""))
+          set_data(t, t_value);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_each_block9(ctx) {
+    let t0;
+    let t1;
+    let br;
+    function select_block_type(ctx2, dirty) {
+      if (
+        /*media*/
+        ctx2[28].incache || !/*media*/
+        ctx2[28].aid
+      )
+        return create_if_block_33;
+      return create_else_block5;
+    }
+    let current_block_type = select_block_type(ctx, -1);
+    let if_block0 = current_block_type(ctx);
+    let if_block1 = (
+      /*$audioid*/
+      ctx[1] == /*media*/
+      ctx[28].vid && /*$audioid*/
+      ctx[1] && create_if_block_23(ctx)
+    );
+    return {
+      c() {
+        if_block0.c();
+        t0 = space();
+        if (if_block1)
+          if_block1.c();
+        t1 = space();
+        br = element("br");
+      },
+      m(target, anchor) {
+        if_block0.m(target, anchor);
+        insert(target, t0, anchor);
+        if (if_block1)
+          if_block1.m(target, anchor);
+        insert(target, t1, anchor);
+        insert(target, br, anchor);
+      },
+      p(ctx2, dirty) {
+        if (current_block_type === (current_block_type = select_block_type(ctx2, dirty)) && if_block0) {
+          if_block0.p(ctx2, dirty);
+        } else {
+          if_block0.d(1);
+          if_block0 = current_block_type(ctx2);
+          if (if_block0) {
+            if_block0.c();
+            if_block0.m(t0.parentNode, t0);
+          }
+        }
+        if (
+          /*$audioid*/
+          ctx2[1] == /*media*/
+          ctx2[28].vid && /*$audioid*/
+          ctx2[1]
+        ) {
+          if (if_block1) {
+            if_block1.p(ctx2, dirty);
+          } else {
+            if_block1 = create_if_block_23(ctx2);
+            if_block1.c();
+            if_block1.m(t1.parentNode, t1);
+          }
+        } else if (if_block1) {
+          if_block1.d(1);
+          if_block1 = null;
+        }
+      },
+      d(detaching) {
+        if_block0.d(detaching);
+        if (detaching)
+          detach(t0);
+        if (if_block1)
+          if_block1.d(detaching);
+        if (detaching)
+          detach(t1);
+        if (detaching)
+          detach(br);
+      }
+    };
+  }
+  function create_if_block_14(ctx) {
+    let t_value = (
+      /*humanStoptime*/
+      ctx[14](
+        /*value*/
+        ctx[2][0] * /*getDuration*/
+        ctx[10](
+          /*$audioid*/
+          ctx[1]
+        )
+      ) + ""
+    );
+    let t;
+    return {
+      c() {
+        t = text(t_value);
+      },
+      m(target, anchor) {
+        insert(target, t, anchor);
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*value, $audioid*/
+        6 && t_value !== (t_value = /*humanStoptime*/
+        ctx2[14](
+          /*value*/
+          ctx2[2][0] * /*getDuration*/
+          ctx2[10](
+            /*$audioid*/
+            ctx2[1]
+          )
+        ) + ""))
+          set_data(t, t_value);
+      },
+      d(detaching) {
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
+  function create_if_block7(ctx) {
+    let switch_1;
+    let updating_value;
+    let current;
+    function switch_1_value_binding(value) {
+      ctx[20](value);
+    }
+    let switch_1_props = {
+      label: "\u81EA\u52D5\u64AD\u653E\u4E0B\u4E00\u5377",
+      design: "slider",
+      fontSize: "24"
+    };
+    if (
+      /*$playnextjuan*/
+      ctx[7] !== void 0
+    ) {
+      switch_1_props.value = /*$playnextjuan*/
+      ctx[7];
+    }
+    switch_1 = new switch_default({ props: switch_1_props });
+    binding_callbacks.push(() => bind(switch_1, "value", switch_1_value_binding));
+    return {
+      c() {
+        create_component(switch_1.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(switch_1, target, anchor);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        const switch_1_changes = {};
+        if (!updating_value && dirty & /*$playnextjuan*/
+        128) {
+          updating_value = true;
+          switch_1_changes.value = /*$playnextjuan*/
+          ctx2[7];
+          add_flush_callback(() => updating_value = false);
+        }
+        switch_1.$set(switch_1_changes);
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(switch_1.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(switch_1.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(switch_1, detaching);
+      }
+    };
+  }
+  function create_fragment14(ctx) {
+    let div2;
+    let t0;
+    let br0;
+    let t1;
+    let t2;
+    let br1;
+    let t3;
+    let t4_value = (
       /*value*/
       (ctx[2][0] || "\u7121\u9650") + ""
     );
-    let t1;
-    let t2;
-    let t3;
+    let t4;
+    let t5;
+    let t6;
     let slider;
     let updating_value;
-    let t4;
+    let t7;
     let show_if = (
       /*ptk*/
       ctx[0] && allJuan(
@@ -14063,9 +14068,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ctx[0]
       ).length > 1
     );
-    let t5;
+    let t8;
     let hr;
-    let t6;
+    let t9;
     let div0;
     let raw0_value = (
       /*htmltext*/
@@ -14074,7 +14079,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ctx[4]
       ) + ""
     );
-    let t7;
+    let t10;
     let div1;
     let raw1_value = (
       /*htmltext*/
@@ -14084,12 +14089,20 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ) + ""
     );
     let current;
+    let each_value = (
+      /*$mediaurls*/
+      ctx[8]
+    );
+    let each_blocks = [];
+    for (let i = 0; i < each_value.length; i += 1) {
+      each_blocks[i] = create_each_block9(get_each_context9(ctx, each_value, i));
+    }
     let if_block0 = (
       /*value*/
-      ctx[2][0] > 0 && create_if_block_53(ctx)
+      ctx[2][0] > 0 && create_if_block_14(ctx)
     );
     function slider_value_binding(value) {
-      ctx[16](value);
+      ctx[19](value);
     }
     let slider_props = { min: "0", max: "10" };
     if (
@@ -14104,58 +14117,97 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     slider.$on(
       "input",
       /*setRemain*/
-      ctx[12]
+      ctx[13]
     );
-    let if_block1 = show_if && create_if_block_43(ctx);
+    let if_block1 = show_if && create_if_block7(ctx);
     return {
       c() {
-        br = element("br");
-        t0 = text("\u91CD\u64AD\u6B21\u6578\uFF1A");
-        t1 = text(t1_value);
+        div2 = element("div");
+        t0 = text("\u4E0B\u8F09\u5F8C\u624D\u53EF\u4EE5\u64AD\u653E\uFF0C\u4E00\u6B21\u4E0B\u8F09\u4E00\u500B\u3002");
+        br0 = element("br");
+        t1 = space();
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          each_blocks[i].c();
+        }
         t2 = space();
+        br1 = element("br");
+        t3 = text("\u91CD\u64AD\u6B21\u6578\uFF1A");
+        t4 = text(t4_value);
+        t5 = space();
         if (if_block0)
           if_block0.c();
-        t3 = space();
+        t6 = space();
         create_component(slider.$$.fragment);
-        t4 = space();
+        t7 = space();
         if (if_block1)
           if_block1.c();
-        t5 = space();
+        t8 = space();
         hr = element("hr");
-        t6 = space();
+        t9 = space();
         div0 = element("div");
-        t7 = space();
+        t10 = space();
         div1 = element("div");
         attr(div0, "class", "subtitle");
         attr(div1, "class", "subtitle");
+        attr(div2, "class", "toctext");
       },
       m(target, anchor) {
-        insert(target, br, anchor);
-        insert(target, t0, anchor);
-        insert(target, t1, anchor);
-        insert(target, t2, anchor);
+        insert(target, div2, anchor);
+        append(div2, t0);
+        append(div2, br0);
+        append(div2, t1);
+        for (let i = 0; i < each_blocks.length; i += 1) {
+          if (each_blocks[i]) {
+            each_blocks[i].m(div2, null);
+          }
+        }
+        append(div2, t2);
+        append(div2, br1);
+        append(div2, t3);
+        append(div2, t4);
+        append(div2, t5);
         if (if_block0)
-          if_block0.m(target, anchor);
-        insert(target, t3, anchor);
-        mount_component(slider, target, anchor);
-        insert(target, t4, anchor);
+          if_block0.m(div2, null);
+        append(div2, t6);
+        mount_component(slider, div2, null);
+        append(div2, t7);
         if (if_block1)
-          if_block1.m(target, anchor);
-        insert(target, t5, anchor);
-        insert(target, hr, anchor);
-        insert(target, t6, anchor);
-        insert(target, div0, anchor);
+          if_block1.m(div2, null);
+        append(div2, t8);
+        append(div2, hr);
+        append(div2, t9);
+        append(div2, div0);
         div0.innerHTML = raw0_value;
-        insert(target, t7, anchor);
-        insert(target, div1, anchor);
+        append(div2, t10);
+        append(div2, div1);
         div1.innerHTML = raw1_value;
         current = true;
       },
-      p(ctx2, dirty) {
+      p(ctx2, [dirty]) {
+        if (dirty & /*humanDuration, getDuration, $audioid, $mediaurls, downloading, selectmedia, progress, downloadit, downloadicon*/
+        5986) {
+          each_value = /*$mediaurls*/
+          ctx2[8];
+          let i;
+          for (i = 0; i < each_value.length; i += 1) {
+            const child_ctx = get_each_context9(ctx2, each_value, i);
+            if (each_blocks[i]) {
+              each_blocks[i].p(child_ctx, dirty);
+            } else {
+              each_blocks[i] = create_each_block9(child_ctx);
+              each_blocks[i].c();
+              each_blocks[i].m(div2, t2);
+            }
+          }
+          for (; i < each_blocks.length; i += 1) {
+            each_blocks[i].d(1);
+          }
+          each_blocks.length = each_value.length;
+        }
         if ((!current || dirty & /*value*/
-        4) && t1_value !== (t1_value = /*value*/
+        4) && t4_value !== (t4_value = /*value*/
         (ctx2[2][0] || "\u7121\u9650") + ""))
-          set_data(t1, t1_value);
+          set_data(t4, t4_value);
         if (
           /*value*/
           ctx2[2][0] > 0
@@ -14163,9 +14215,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block0) {
             if_block0.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_53(ctx2);
+            if_block0 = create_if_block_14(ctx2);
             if_block0.c();
-            if_block0.m(t3.parentNode, t3);
+            if_block0.m(div2, t6);
           }
         } else if (if_block0) {
           if_block0.d(1);
@@ -14195,10 +14247,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block_43(ctx2);
+            if_block1 = create_if_block7(ctx2);
             if_block1.c();
             transition_in(if_block1, 1);
-            if_block1.m(t5.parentNode, t5);
+            if_block1.m(div2, t8);
           }
         } else if (if_block1) {
           group_outros();
@@ -14238,257 +14290,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       d(detaching) {
         if (detaching)
-          detach(br);
-        if (detaching)
-          detach(t0);
-        if (detaching)
-          detach(t1);
-        if (detaching)
-          detach(t2);
+          detach(div2);
+        destroy_each(each_blocks, detaching);
         if (if_block0)
-          if_block0.d(detaching);
-        if (detaching)
-          detach(t3);
-        destroy_component(slider, detaching);
-        if (detaching)
-          detach(t4);
+          if_block0.d();
+        destroy_component(slider);
         if (if_block1)
-          if_block1.d(detaching);
-        if (detaching)
-          detach(t5);
-        if (detaching)
-          detach(hr);
-        if (detaching)
-          detach(t6);
-        if (detaching)
-          detach(div0);
-        if (detaching)
-          detach(t7);
-        if (detaching)
-          detach(div1);
-      }
-    };
-  }
-  function create_if_block_33(ctx) {
-    let br0;
-    let t0;
-    let br1;
-    let t1;
-    return {
-      c() {
-        br0 = element("br");
-        t0 = text("\u8072\u97F3\u76F4\u63A5\u62BD\u53D6\u81EAYoutube/Tencent\u516C\u958B\u5F71\u7247\uFF0C\u82E5\u8A72\u5F71\u7247\u5DF2\u4E0B\u67B6\uFF0C\u6216\u8005\u7981\u6B62\u5D4C\u7528\u5247\u7121\u6CD5\u5728\u6B64\u64AD\u653E\u3002\n");
-        br1 = element("br");
-        t1 = text("\u6309\u6F14\u51FA\u8005\u7684\u90E8\u9996\uFF0B\u7B46\u5283\u6392\u5E8F\u3002");
-      },
-      m(target, anchor) {
-        insert(target, br0, anchor);
-        insert(target, t0, anchor);
-        insert(target, br1, anchor);
-        insert(target, t1, anchor);
-      },
-      p: noop,
-      i: noop,
-      o: noop,
-      d(detaching) {
-        if (detaching)
-          detach(br0);
-        if (detaching)
-          detach(t0);
-        if (detaching)
-          detach(br1);
-        if (detaching)
-          detach(t1);
-      }
-    };
-  }
-  function create_if_block_53(ctx) {
-    let t_value = (
-      /*humanStoptime*/
-      ctx[13](
-        /*value*/
-        ctx[2][0] * /*getDuration*/
-        ctx[10](
-          /*$videoid*/
-          ctx[1]
-        )
-      ) + ""
-    );
-    let t;
-    return {
-      c() {
-        t = text(t_value);
-      },
-      m(target, anchor) {
-        insert(target, t, anchor);
-      },
-      p(ctx2, dirty) {
-        if (dirty & /*value, $videoid*/
-        6 && t_value !== (t_value = /*humanStoptime*/
-        ctx2[13](
-          /*value*/
-          ctx2[2][0] * /*getDuration*/
-          ctx2[10](
-            /*$videoid*/
-            ctx2[1]
-          )
-        ) + ""))
-          set_data(t, t_value);
-      },
-      d(detaching) {
-        if (detaching)
-          detach(t);
-      }
-    };
-  }
-  function create_if_block_43(ctx) {
-    let switch_1;
-    let updating_value;
-    let current;
-    function switch_1_value_binding(value) {
-      ctx[17](value);
-    }
-    let switch_1_props = {
-      label: "\u81EA\u52D5\u64AD\u653E\u4E0B\u4E00\u5377",
-      design: "slider",
-      fontSize: "24"
-    };
-    if (
-      /*$playnextjuan*/
-      ctx[5] !== void 0
-    ) {
-      switch_1_props.value = /*$playnextjuan*/
-      ctx[5];
-    }
-    switch_1 = new switch_default({ props: switch_1_props });
-    binding_callbacks.push(() => bind(switch_1, "value", switch_1_value_binding));
-    return {
-      c() {
-        create_component(switch_1.$$.fragment);
-      },
-      m(target, anchor) {
-        mount_component(switch_1, target, anchor);
-        current = true;
-      },
-      p(ctx2, dirty) {
-        const switch_1_changes = {};
-        if (!updating_value && dirty & /*$playnextjuan*/
-        32) {
-          updating_value = true;
-          switch_1_changes.value = /*$playnextjuan*/
-          ctx2[5];
-          add_flush_callback(() => updating_value = false);
-        }
-        switch_1.$set(switch_1_changes);
-      },
-      i(local) {
-        if (current)
-          return;
-        transition_in(switch_1.$$.fragment, local);
-        current = true;
-      },
-      o(local) {
-        transition_out(switch_1.$$.fragment, local);
-        current = false;
-      },
-      d(detaching) {
-        destroy_component(switch_1, detaching);
-      }
-    };
-  }
-  function create_if_block_23(ctx) {
-    let t;
-    return {
-      c() {
-        t = text("QQ\u64AD\u653E\u5668\u8F09\u5165\u4E2D");
-      },
-      m(target, anchor) {
-        insert(target, t, anchor);
-      },
-      d(detaching) {
-        if (detaching)
-          detach(t);
-      }
-    };
-  }
-  function create_if_block_14(ctx) {
-    let t;
-    return {
-      c() {
-        t = text("Youtube\u64AD\u653E\u5668\u8F09\u5165\u4E2D");
-      },
-      m(target, anchor) {
-        insert(target, t, anchor);
-      },
-      d(detaching) {
-        if (detaching)
-          detach(t);
-      }
-    };
-  }
-  function create_fragment14(ctx) {
-    let div;
-    let current_block_type_index;
-    let if_block;
-    let current;
-    const if_block_creators = [create_if_block7, create_else_block5];
-    const if_blocks = [];
-    function select_block_type(ctx2, dirty) {
-      if (!/*$qqplayer*/
-      ctx2[6] && !/*$ytplayer*/
-      ctx2[7])
-        return 0;
-      return 1;
-    }
-    current_block_type_index = select_block_type(ctx, -1);
-    if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-    return {
-      c() {
-        div = element("div");
-        if_block.c();
-        attr(div, "class", "toctext");
-      },
-      m(target, anchor) {
-        insert(target, div, anchor);
-        if_blocks[current_block_type_index].m(div, null);
-        current = true;
-      },
-      p(ctx2, [dirty]) {
-        let previous_block_index = current_block_type_index;
-        current_block_type_index = select_block_type(ctx2, dirty);
-        if (current_block_type_index === previous_block_index) {
-          if_blocks[current_block_type_index].p(ctx2, dirty);
-        } else {
-          group_outros();
-          transition_out(if_blocks[previous_block_index], 1, 1, () => {
-            if_blocks[previous_block_index] = null;
-          });
-          check_outros();
-          if_block = if_blocks[current_block_type_index];
-          if (!if_block) {
-            if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
-            if_block.c();
-          } else {
-            if_block.p(ctx2, dirty);
-          }
-          transition_in(if_block, 1);
-          if_block.m(div, null);
-        }
-      },
-      i(local) {
-        if (current)
-          return;
-        transition_in(if_block);
-        current = true;
-      },
-      o(local) {
-        transition_out(if_block);
-        current = false;
-      },
-      d(detaching) {
-        if (detaching)
-          detach(div);
-        if_blocks[current_block_type_index].d();
+          if_block1.d();
       }
     };
   }
@@ -14496,18 +14304,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let $loadingbook;
     let $activefolioid;
     let $playnextjuan;
-    let $videoid;
+    let $audioid;
     let $remainrollback;
-    let $qqplayer;
-    let $ytplayer;
     let $mediaurls;
-    component_subscribe($$self, loadingbook, ($$value) => $$invalidate(14, $loadingbook = $$value));
-    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(15, $activefolioid = $$value));
-    component_subscribe($$self, playnextjuan, ($$value) => $$invalidate(5, $playnextjuan = $$value));
-    component_subscribe($$self, videoid, ($$value) => $$invalidate(1, $videoid = $$value));
-    component_subscribe($$self, remainrollback, ($$value) => $$invalidate(23, $remainrollback = $$value));
-    component_subscribe($$self, qqplayer, ($$value) => $$invalidate(6, $qqplayer = $$value));
-    component_subscribe($$self, ytplayer, ($$value) => $$invalidate(7, $ytplayer = $$value));
+    component_subscribe($$self, loadingbook, ($$value) => $$invalidate(15, $loadingbook = $$value));
+    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(16, $activefolioid = $$value));
+    component_subscribe($$self, playnextjuan, ($$value) => $$invalidate(7, $playnextjuan = $$value));
+    component_subscribe($$self, audioid, ($$value) => $$invalidate(1, $audioid = $$value));
+    component_subscribe($$self, remainrollback, ($$value) => $$invalidate(26, $remainrollback = $$value));
     component_subscribe($$self, mediaurls, ($$value) => $$invalidate(8, $mediaurls = $$value));
     let { ptk: ptk2 } = $$props;
     let value = [$remainrollback, 0];
@@ -14523,7 +14327,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       return `${minutes}:${seconds}`;
     };
     const getDuration = (id) => {
-      const timestamps = findByVideoId(id)?.timestamp;
+      const timestamps = findByAudioId(id)?.timestamp;
       if (!timestamps)
         return 0;
       return timestamps[timestamps.length - 1] - timestamps[0];
@@ -14532,12 +14336,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     onMount(() => {
       subtitletimer = setInterval(
         () => {
-          if (!$videoid)
+          if (!$audioid)
             return;
-          const plyr = player($videoid);
-          if (!plyr)
-            return;
-          const playertime = plyr.getCurrentTime && plyr.getCurrentTime();
+          const playertime = player.currentTime;
           while (playertime >= timestamp[nsub] && nsub < timestamp.length) {
             $$invalidate(3, subtitle = subtitles[nsub] || subtitle || "");
             $$invalidate(4, subtitle2 = subtitles2[nsub] || subtitle2 || "");
@@ -14554,7 +14355,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       subtitles2 = [], subtitles = [];
       if (!id)
         return;
-      timestamp = findByVideoId(id, "timestamp_sanskrit")?.timestamp || [];
+      timestamp = findByAudioId(id, "timestamp_sanskrit")?.timestamp || [];
       if (!timestamp?.length)
         return;
       const skptk = usePtk("dc_sanskrit");
@@ -14564,6 +14365,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
     const htmltext = (s) => {
       return parseOfftext(s)[0].replace(/[【《〔](.+?)[】》〕]/g, "<span class=bracket>$1 </span>");
+    };
+    let downloading = "", progress = 0;
+    const downloadit = async (aid) => {
+      $$invalidate(5, downloading = aid);
+      await downloadToCache(audiofolder + aid + ".mp3", (now, all) => {
+        $$invalidate(6, progress = Math.round(now / all * 100));
+      });
+      await fetchAudioList($activefolioid, false, mediaurls);
+      $$invalidate(5, downloading = "");
     };
     const setRemain = () => {
       const v = value[0];
@@ -14580,6 +14390,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         return "";
       return new Date(Date.now() + t * 1e3).toLocaleTimeString() + "\u505C\u6B62";
     };
+    const click_handler = (media) => !downloading && selectmedia(media.aid, true);
+    const click_handler_1 = (media) => !downloading && downloadit(media.aid);
     function slider_value_binding(value$1) {
       value = value$1;
       $$invalidate(2, value);
@@ -14593,34 +14405,37 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         $$invalidate(0, ptk2 = $$props2.ptk);
     };
     $$self.$$.update = () => {
-      if ($$self.$$.dirty & /*$videoid*/
+      if ($$self.$$.dirty & /*$audioid*/
       2) {
         $:
-          loadSubtitle($videoid);
+          loadSubtitle($audioid);
       }
       if ($$self.$$.dirty & /*$activefolioid, $loadingbook*/
-      49152) {
+      98304) {
         $:
-          mediaurls.set(getAudioList($activefolioid, $loadingbook));
+          fetchAudioList($activefolioid, $loadingbook, mediaurls);
       }
     };
     return [
       ptk2,
-      $videoid,
+      $audioid,
       value,
       subtitle,
       subtitle2,
+      downloading,
+      progress,
       $playnextjuan,
-      $qqplayer,
-      $ytplayer,
       $mediaurls,
       humanDuration,
       getDuration,
       htmltext,
+      downloadit,
       setRemain,
       humanStoptime,
       $loadingbook,
       $activefolioid,
+      click_handler,
+      click_handler_1,
       slider_value_binding,
       switch_1_value_binding
     ];
@@ -14633,521 +14448,48 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   };
   var audio_default = Audio;
 
-  // src/urlqrcode.js
-  var urlqrcode = `<?xml version="1.0" encoding="utf-8"?>
-<svg xml:space="preserve" width="400" height="400" viewBox="0 0 888 888"><g fill="#000000">
-<g transform="translate(264,48) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,48) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,48) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,48) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(480,48) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(504,48) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,48) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,48) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(600,48) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,72) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(408,72) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(432,72) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(480,72) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,72) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,72) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(240,96) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,96) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,96) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,96) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,96) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(432,96) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(504,96) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,96) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,96) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,96) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(240,120) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,120) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(480,120) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,120) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(600,120) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,120) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(240,144) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,144) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,144) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(360,144) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,144) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(408,144) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(432,144) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(456,144) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,144) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,144) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,144) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(240,168) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,168) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(360,168) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,168) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(480,168) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(504,168) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,168) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(600,168) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,168) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(240,192) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,192) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,192) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,192) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(432,192) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(480,192) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,192) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,192) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,192) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(240,216) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,216) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,216) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(432,216) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(504,216) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,216) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,216) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,216) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(600,216) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(48,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(96,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(120,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(144,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(168,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(192,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(360,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(456,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(504,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(600,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(672,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(696,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(720,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(744,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,240) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(48,264) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(120,264) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(216,264) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,264) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(360,264) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,264) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(432,264) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(456,264) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(504,264) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,264) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(600,264) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(672,264) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(696,264) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(744,264) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,264) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(792,264) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(816,264) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(96,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(120,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(144,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(168,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(192,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(216,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(240,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(360,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(408,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(432,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(456,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(648,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(672,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(720,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(792,288) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(48,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(168,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(240,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(360,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(408,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(456,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(480,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(504,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(600,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(720,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(744,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(792,312) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(72,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(96,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(120,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(192,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(216,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(432,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(504,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(648,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(696,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(720,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(744,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(816,336) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(96,360) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(168,360) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(216,360) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,360) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,360) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(360,360) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(408,360) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(480,360) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,360) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,360) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(672,360) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,360) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(792,360) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(816,360) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(48,384) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(72,384) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(192,384) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(216,384) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,384) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,384) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(408,384) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(432,384) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,384) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(648,384) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(672,384) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(696,384) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,384) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(792,384) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(120,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(144,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(168,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(360,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(408,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(480,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(600,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(648,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(672,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(720,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(744,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,408) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(120,432) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(192,432) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,432) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(360,432) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,432) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(408,432) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(456,432) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,432) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(600,432) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(648,432) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(696,432) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(720,432) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(816,432) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(72,456) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(120,456) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(168,456) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(240,456) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,456) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(360,456) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(432,456) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(480,456) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(504,456) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,456) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(600,456) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(672,456) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(696,456) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(744,456) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,456) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(816,456) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(48,480) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(72,480) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(96,480) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(168,480) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(192,480) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(240,480) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,480) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,480) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,480) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(408,480) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(480,480) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,480) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(648,480) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(696,480) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(720,480) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,480) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(792,480) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(48,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(96,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(360,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(432,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(648,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(696,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(720,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(744,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(792,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(816,504) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(72,528) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(144,528) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(168,528) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(192,528) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(216,528) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,528) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,528) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(480,528) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,528) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,528) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(648,528) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(696,528) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(720,528) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(744,528) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(792,528) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(48,552) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(144,552) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(168,552) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,552) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(360,552) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(408,552) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(432,552) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(456,552) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,552) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,552) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(600,552) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,552) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(648,552) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(672,552) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(744,552) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,552) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(816,552) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(48,576) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(144,576) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(168,576) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(192,576) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,576) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,576) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(360,576) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,576) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(480,576) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(504,576) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,576) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,576) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(648,576) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(744,576) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,576) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(792,576) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(48,600) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(96,600) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(144,600) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,600) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,600) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(432,600) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(480,600) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(504,600) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,600) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,600) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,600) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(696,600) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(744,600) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,600) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(792,600) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(816,600) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(48,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(96,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(168,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(192,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(216,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(240,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(456,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(504,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(600,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(648,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(672,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(696,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(720,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(816,624) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(240,648) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,648) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,648) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,648) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(456,648) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(504,648) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,648) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,648) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(720,648) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,648) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(792,648) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(816,648) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,672) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,672) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,672) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(360,672) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(408,672) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(456,672) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,672) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,672) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(600,672) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,672) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(672,672) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(720,672) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,672) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(792,672) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(240,696) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,696) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,696) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,696) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(456,696) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(480,696) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,696) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(600,696) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,696) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(720,696) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(744,696) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,696) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(792,696) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(816,696) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(240,720) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,720) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,720) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,720) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(408,720) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(432,720) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,720) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,720) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,720) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,720) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(648,720) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(672,720) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(696,720) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(720,720) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(744,720) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(240,744) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,744) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,744) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,744) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(408,744) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(480,744) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,744) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(648,744) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(720,744) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(744,744) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,744) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(816,744) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(240,768) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,768) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,768) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,768) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(384,768) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(408,768) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(432,768) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,768) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,768) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(672,768) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(696,768) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(744,768) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,792) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,792) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(336,792) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(408,792) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(552,792) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,792) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(600,792) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(720,792) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(744,792) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(768,792) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(240,816) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(264,816) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(288,816) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(312,816) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(360,816) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(408,816) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(456,816) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(528,816) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(576,816) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(600,816) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(624,816) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(672,816) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(696,816) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(792,816) scale(4.12)"><rect width="6" height="6"/></g>
-<g transform="translate(48,48)"><g transform="scale(12)"><path d="M0,0v14h14V0H0z M12,12H2V2h10V12z"/></g></g>
-<g transform="translate(672,48)"><g transform="scale(12)"><path d="M0,0v14h14V0H0z M12,12H2V2h10V12z"/></g></g>
-<g transform="translate(48,672)"><g transform="scale(12)"><path d="M0,0v14h14V0H0z M12,12H2V2h10V12z"/></g></g>
-<g transform="translate(96,96)"><g transform="scale(12)"><rect width="6" height="6"/></g></g>
-<g transform="translate(720,96)"><g transform="scale(12)"><rect width="6" height="6"/></g></g>
-<g transform="translate(96,720)"><g transform="scale(12)"><rect width="6" height="6"/></g></g>
-</g></svg>`;
-
   // src/about.svelte
   function create_fragment15(ctx) {
-    let div2;
+    let div1;
     let t0;
     let br0;
     let t1;
-    let a0;
+    let img0;
+    let img0_src_value;
+    let t2;
+    let br1;
     let t3;
+    let img1;
+    let img1_src_value;
+    let t4;
+    let br2;
+    let t5;
+    let a0;
+    let t7;
     let switch0;
     let updating_value;
-    let t4;
+    let t8;
     let switch1;
     let updating_value_1;
-    let t5;
+    let t9;
     let switch2;
     let updating_value_2;
-    let t6;
-    let div0;
-    let html_tag;
-    let t7;
-    let br1;
-    let a1;
-    let t9;
-    let br2;
     let t10;
     let br3;
     let t11;
-    let a2;
-    let t13;
-    let a3;
-    let t15;
     let br4;
+    let t12;
+    let a1;
+    let t14;
+    let a2;
     let t16;
     let br5;
     let t17;
-    let a4;
-    let t19;
-    let div1;
+    let br6;
+    let t18;
+    let a3;
+    let t20;
+    let div0;
     let current;
     function switch0_value_binding(value) {
       ctx[3](value);
@@ -15202,92 +14544,98 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     binding_callbacks.push(() => bind(switch2, "value", switch2_value_binding));
     return {
       c() {
-        div2 = element("div");
-        t0 = text("\u7248\u672C\uFF1A2023.8.3 \u81EA\u7531\u8EDF\u4EF6\n");
+        div1 = element("div");
+        t0 = text("\u7248\u672C\uFF1A2023.8.4 \u81EA\u7531\u8F6F\u4EF6\n\n");
         br0 = element("br");
-        t1 = text("LINE\u641C\u5C0BID @dharmacloud\uFF0C\u6216\u52A0\u5165");
+        t1 = text("\u8BF7\u7559\u8A00\u300C\u62A4\u6301\u6C38\u4E50\u85CF\u300D\u9879\u76EE\u3002\u6536\u6B3E\u4EBA\u66B1\u79F0\u662F\u300C\u6570\u5B57\u4E09\u85CF\u300D\u3002\u982D\u50CF\u662F");
+        img0 = element("img");
+        t2 = space();
+        br1 = element("br");
+        t3 = text("\u4EBA\u6C11\u5E01100\u5143\u4EE5\u4E0B\u6350\u6B3E\uFF0C\u6055\u4E0D\u5355\u72EC\u5217\u529F\u5FB7\u82B3\u540D\uFF0C\u7EDF\u4E00\u5408\u5E76\u4E3A\u300C\u4E09\u5B9D\u5F1F\u5B50\u300D\u3002\n");
+        img1 = element("img");
+        t4 = space();
+        br2 = element("br");
+        t5 = text("LINE\u641C\u5C0BID @dharmacloud\uFF0C\u6216\u52A0\u5165");
         a0 = element("a");
         a0.textContent = "\u5B98\u65B9\u5E33\u865F";
-        t3 = text("\uFF0C\u7372\u5F97\u66F4\u65B0\u8A0A\u606F\u3002\n\n");
+        t7 = text("\uFF0C\u7372\u5F97\u66F4\u65B0\u8A0A\u606F\u3002\n");
         create_component(switch0.$$.fragment);
-        t4 = space();
+        t8 = space();
         create_component(switch1.$$.fragment);
-        t5 = space();
-        create_component(switch2.$$.fragment);
-        t6 = space();
-        div0 = element("div");
-        html_tag = new HtmlTag(false);
-        t7 = space();
-        br1 = element("br");
-        a1 = element("a");
-        a1.textContent = "\u5B98\u65B9\u7DB2\u7AD9 https://dharmacloud.github.io";
         t9 = space();
-        br2 = element("br");
-        t10 = text("\u672C\u5716\u6587\u5C0D\u7167\u6578\u64DA\u5EAB\u4E3B\u8981\u57FA\u65BC\u4EE5\u4E0B\u7D20\u6750\uFF1A\n");
+        create_component(switch2.$$.fragment);
+        t10 = space();
         br3 = element("br");
-        t11 = text("\u6C38\u6A02\u5357\u5317\u85CF(\u5C71\u6771\u7701\u5716\u66F8\u9928)\u3001\u91D1\u525B\u7D93\u96C6\u8A3B(\u6731\u68E3)\u3001\u68B5\u6587\u539F\u5178(");
-        a2 = element("a");
-        a2.textContent = "Digital Sanskrit Buddhist Canon";
-        t13 = text(", ");
-        a3 = element("a");
-        a3.textContent = "Ancient Buddhist Texts";
-        t15 = text(")\u3001\n\u7D93\u6587\u65B0\u5F0F\u6A19\u9EDE(CBETA)\u3001\u68B5\u6F22\u4F5B\u7D93\u5C0D\u52D8\u53E2\u66F8\uFF08\u9EC3\u5BF6\u751F\uFF0C\u4E2D\u570B\u793E\u6703\u79D1\u5B78\u51FA\u7248\u793E\uFF09\u3001\u7DAD\u57FA\u767E\u79D1\u53CA\u5404\u7A2E\u4F5B\u5B78\u8A5E\u5178\u4E4B\u8A5E\u689D\u3001Youtube \u516C\u958B\u5F71\u7247\u3002\n");
+        t11 = text("\u672C\u5716\u6587\u5C0D\u7167\u6578\u64DA\u5EAB\u4E3B\u8981\u57FA\u65BC\u4EE5\u4E0B\u7D20\u6750\uFF1A\n");
         br4 = element("br");
-        t16 = text("\u6578\u5B57\u52A0\u5DE5\uFF1A\u6309\u624B\u6A5F\u6BD4\u4F8B\u88C1\u5716\u53CA\u4FEE\u5716\u3001\u6587\u5B57\u8207\u5716\u7247\u9010\u884C\u5C0D\u9F4A\u3001\u539F\u6587\u53CA\u5404\u7A2E\u8B6F\u672C\u9010\u53E5\u5C0D\u9F4A\u3001\u8AA6\u7D93\u5F71\u7247\u6642\u9593\u8EF8\u3002\n");
+        t12 = text("\u6C38\u6A02\u5357\u5317\u85CF(\u5C71\u6771\u7701\u5716\u66F8\u9928)\u3001\u91D1\u525B\u7D93\u96C6\u8A3B(\u6731\u68E3)\u3001\u68B5\u6587\u539F\u5178(");
+        a1 = element("a");
+        a1.textContent = "Digital Sanskrit Buddhist Canon";
+        t14 = text(", ");
+        a2 = element("a");
+        a2.textContent = "Ancient Buddhist Texts";
+        t16 = text(")\u3001\n\u7D93\u6587\u65B0\u5F0F\u6A19\u9EDE(CBETA)\u3001\u68B5\u6F22\u4F5B\u7D93\u5C0D\u52D8\u53E2\u66F8\uFF08\u9EC3\u5BF6\u751F\uFF0C\u4E2D\u570B\u793E\u6703\u79D1\u5B78\u51FA\u7248\u793E\uFF09\u3001\u7DAD\u57FA\u767E\u79D1\u53CA\u5404\u7A2E\u4F5B\u5B78\u8A5E\u5178\u4E4B\u8A5E\u689D\u3001Youtube \u516C\u958B\u5F71\u7247\u3002\n");
         br5 = element("br");
-        t17 = text("\u6388\u6B0A\u65B9\u5F0F\uFF1A");
-        a4 = element("a");
-        a4.textContent = "Creative Common Zero";
-        t19 = space();
-        div1 = element("div");
-        div1.textContent = "\u203B\u203B\u203B";
+        t17 = text("\u6578\u5B57\u52A0\u5DE5\uFF1A\u6309\u624B\u6A5F\u6BD4\u4F8B\u88C1\u5716\u53CA\u4FEE\u5716\u3001\u6587\u5B57\u8207\u5716\u7247\u9010\u884C\u5C0D\u9F4A\u3001\u539F\u6587\u53CA\u5404\u7A2E\u8B6F\u672C\u9010\u53E5\u5C0D\u9F4A\u3001\u8AA6\u7D93\u5F71\u7247\u6642\u9593\u8EF8\u3002\n");
+        br6 = element("br");
+        t18 = text("\u6388\u6B0A\u65B9\u5F0F\uFF1A");
+        a3 = element("a");
+        a3.textContent = "Creative Common Zero";
+        t20 = space();
+        div0 = element("div");
+        div0.textContent = "\u203B\u203B\u203B";
+        if (!src_url_equal(img0.src, img0_src_value = "logo128.png"))
+          attr(img0, "src", img0_src_value);
+        attr(img0, "alt", "");
+        attr(img1, "alt", "");
+        set_style(img1, "width", "100%");
+        if (!src_url_equal(img1.src, img1_src_value = "alipay.jpg"))
+          attr(img1, "src", img1_src_value);
         attr(a0, "href", "https://lin.ee/1tmTKXi");
-        html_tag.a = t7;
         attr(a1, "target", "_new");
-        attr(a1, "href", "https://dharmacloud.github.io/");
-        attr(div0, "class", "qrcode");
+        attr(a1, "href", "https://www.dsbcproject.org/");
         attr(a2, "target", "_new");
-        attr(a2, "href", "https://www.dsbcproject.org/");
-        attr(a3, "target", "_new");
-        attr(a3, "href", "https://ancient-buddhist-texts.net");
-        attr(a4, "href", "https://creativecommons.org/publicdomain/zero/1.0/deed.zh");
-        attr(div1, "class", "endmarker");
-        attr(div2, "class", "toctext");
+        attr(a2, "href", "https://ancient-buddhist-texts.net");
+        attr(a3, "href", "https://creativecommons.org/publicdomain/zero/1.0/deed.zh");
+        attr(div0, "class", "endmarker");
+        attr(div1, "class", "toctext");
       },
       m(target, anchor) {
-        insert(target, div2, anchor);
-        append(div2, t0);
-        append(div2, br0);
-        append(div2, t1);
-        append(div2, a0);
-        append(div2, t3);
-        mount_component(switch0, div2, null);
-        append(div2, t4);
-        mount_component(switch1, div2, null);
-        append(div2, t5);
-        mount_component(switch2, div2, null);
-        append(div2, t6);
-        append(div2, div0);
-        html_tag.m(urlqrcode, div0);
-        append(div0, t7);
-        append(div0, br1);
-        append(div0, a1);
-        append(div2, t9);
-        append(div2, br2);
-        append(div2, t10);
-        append(div2, br3);
-        append(div2, t11);
-        append(div2, a2);
-        append(div2, t13);
-        append(div2, a3);
-        append(div2, t15);
-        append(div2, br4);
-        append(div2, t16);
-        append(div2, br5);
-        append(div2, t17);
-        append(div2, a4);
-        append(div2, t19);
-        append(div2, div1);
+        insert(target, div1, anchor);
+        append(div1, t0);
+        append(div1, br0);
+        append(div1, t1);
+        append(div1, img0);
+        append(div1, t2);
+        append(div1, br1);
+        append(div1, t3);
+        append(div1, img1);
+        append(div1, t4);
+        append(div1, br2);
+        append(div1, t5);
+        append(div1, a0);
+        append(div1, t7);
+        mount_component(switch0, div1, null);
+        append(div1, t8);
+        mount_component(switch1, div1, null);
+        append(div1, t9);
+        mount_component(switch2, div1, null);
+        append(div1, t10);
+        append(div1, br3);
+        append(div1, t11);
+        append(div1, br4);
+        append(div1, t12);
+        append(div1, a1);
+        append(div1, t14);
+        append(div1, a2);
+        append(div1, t16);
+        append(div1, br5);
+        append(div1, t17);
+        append(div1, br6);
+        append(div1, t18);
+        append(div1, a3);
+        append(div1, t20);
+        append(div1, div0);
         current = true;
       },
       p(ctx2, [dirty]) {
@@ -15335,7 +14683,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       d(detaching) {
         if (detaching)
-          detach(div2);
+          detach(div1);
         destroy_component(switch0);
         destroy_component(switch1);
         destroy_component(switch2);
@@ -20628,7 +19976,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var toc_default = Toc;
 
   // src/taptext.svelte
-  function create_if_block_72(ctx) {
+  function create_if_block_7(ctx) {
     let t;
     return {
       c() {
@@ -20643,7 +19991,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_62(ctx) {
+  function create_if_block_6(ctx) {
     let t;
     return {
       c() {
@@ -20658,7 +20006,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_54(ctx) {
+  function create_if_block_53(ctx) {
     let t;
     return {
       c() {
@@ -20902,22 +20250,22 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let dispose;
     let if_block0 = (
       /*ls*/
-      ctx[5] && create_if_block_72(ctx)
+      ctx[5] && create_if_block_7(ctx)
     );
     let if_block1 = (
       /*ls*/
-      ctx[5] && create_if_block_62(ctx)
+      ctx[5] && create_if_block_6(ctx)
     );
     let if_block2 = (
       /*ls*/
-      ctx[5] && create_if_block_54(ctx)
+      ctx[5] && create_if_block_53(ctx)
     );
     let if_block3 = (
       /*ls*/
       ctx[5] && create_if_block_44(ctx)
     );
-    let if_block4 = !/*ls*/
-    ctx[5] && create_if_block_35(ctx);
+    let if_block4 = (!/*ls*/
+    ctx[5] || true) && create_if_block_35(ctx);
     let if_block5 = (
       /*ls*/
       ctx[5] && create_if_block_25(ctx)
@@ -21206,7 +20554,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ) {
           if (if_block0) {
           } else {
-            if_block0 = create_if_block_72(ctx2);
+            if_block0 = create_if_block_7(ctx2);
             if_block0.c();
             if_block0.m(span0, null);
           }
@@ -21229,7 +20577,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ) {
           if (if_block1) {
           } else {
-            if_block1 = create_if_block_62(ctx2);
+            if_block1 = create_if_block_6(ctx2);
             if_block1.c();
             if_block1.m(span1, null);
           }
@@ -21252,7 +20600,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ) {
           if (if_block2) {
           } else {
-            if_block2 = create_if_block_54(ctx2);
+            if_block2 = create_if_block_53(ctx2);
             if_block2.c();
             if_block2.m(span2, null);
           }
@@ -21293,7 +20641,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           );
         }
         if (!/*ls*/
-        ctx2[5]) {
+        ctx2[5] || true) {
           if (if_block4) {
             if_block4.p(ctx2, dirty);
           } else {
@@ -21652,183 +21000,158 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var taptext_default = Taptext;
 
   // src/player.svelte
-  function create_fragment31(ctx) {
-    let div0;
-    let t;
-    let div1;
+  function create_if_block16(ctx) {
+    let source;
+    let source_src_value;
     return {
       c() {
-        div0 = element("div");
-        t = space();
-        div1 = element("div");
-        attr(div0, "id", "ytplayer");
-        attr(div0, "class", "svelte-1r46xta");
-        attr(div1, "id", "qqplayer");
-        attr(div1, "class", "svelte-1r46xta");
+        source = element("source");
+        if (!src_url_equal(source.src, source_src_value = audiofolder + /*$audioid*/
+        ctx[1] + ".mp3"))
+          attr(source, "src", source_src_value);
       },
       m(target, anchor) {
-        insert(target, div0, anchor);
-        insert(target, t, anchor);
-        insert(target, div1, anchor);
+        insert(target, source, anchor);
       },
-      p: noop,
+      p(ctx2, dirty) {
+        if (dirty & /*$audioid*/
+        2 && !src_url_equal(source.src, source_src_value = audiofolder + /*$audioid*/
+        ctx2[1] + ".mp3")) {
+          attr(source, "src", source_src_value);
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(source);
+      }
+    };
+  }
+  function create_key_block4(ctx) {
+    let audio;
+    let if_block = (
+      /*$audioid*/
+      ctx[1] && create_if_block16(ctx)
+    );
+    return {
+      c() {
+        audio = element("audio");
+        if (if_block)
+          if_block.c();
+      },
+      m(target, anchor) {
+        insert(target, audio, anchor);
+        if (if_block)
+          if_block.m(audio, null);
+        ctx[3](audio);
+      },
+      p(ctx2, dirty) {
+        if (
+          /*$audioid*/
+          ctx2[1]
+        ) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+          } else {
+            if_block = create_if_block16(ctx2);
+            if_block.c();
+            if_block.m(audio, null);
+          }
+        } else if (if_block) {
+          if_block.d(1);
+          if_block = null;
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(audio);
+        if (if_block)
+          if_block.d();
+        ctx[3](null);
+      }
+    };
+  }
+  function create_fragment31(ctx) {
+    let previous_key = (
+      /*$audioid*/
+      ctx[1]
+    );
+    let key_block_anchor;
+    let key_block = create_key_block4(ctx);
+    return {
+      c() {
+        key_block.c();
+        key_block_anchor = empty();
+      },
+      m(target, anchor) {
+        key_block.m(target, anchor);
+        insert(target, key_block_anchor, anchor);
+      },
+      p(ctx2, [dirty]) {
+        if (dirty & /*$audioid*/
+        2 && safe_not_equal(previous_key, previous_key = /*$audioid*/
+        ctx2[1])) {
+          key_block.d(1);
+          key_block = create_key_block4(ctx2);
+          key_block.c();
+          key_block.m(key_block_anchor.parentNode, key_block_anchor);
+        } else {
+          key_block.p(ctx2, dirty);
+        }
+      },
       i: noop,
       o: noop,
       d(detaching) {
         if (detaching)
-          detach(div0);
-        if (detaching)
-          detach(t);
-        if (detaching)
-          detach(div1);
+          detach(key_block_anchor);
+        key_block.d(detaching);
       }
     };
   }
   function instance31($$self, $$props, $$invalidate) {
-    let $videoid;
+    let $audioid;
     let $activepb;
     let $activefolioid;
     let $playing;
     let $continueplay;
-    let $qqplayer;
-    let $ytplayer;
-    component_subscribe($$self, videoid, ($$value) => $$invalidate(0, $videoid = $$value));
-    component_subscribe($$self, activepb, ($$value) => $$invalidate(1, $activepb = $$value));
-    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(3, $activefolioid = $$value));
-    component_subscribe($$self, playing, ($$value) => $$invalidate(4, $playing = $$value));
-    component_subscribe($$self, continueplay, ($$value) => $$invalidate(5, $continueplay = $$value));
-    component_subscribe($$self, qqplayer, ($$value) => $$invalidate(6, $qqplayer = $$value));
-    component_subscribe($$self, ytplayer, ($$value) => $$invalidate(7, $ytplayer = $$value));
-    let timer;
-    const createYoutubePlayer = () => {
-      const plyr = new YT.Player(
-        "ytplayer",
-        {
-          height: "1px",
-          // 高度預設值為390，css會調成responsive
-          // width: '640', // 寬度預設值為640，css會調成responsive
-          videoId: "",
-          host: "https://www.youtube.com",
-          playerVars: {
-            controls: 0,
-            disablekb: 1,
-            rel: 0,
-            origin: document.location.origin
-          },
-          events: {
-            "onReady": onPlayerReady,
-            "onStateChange": onPlayerStateChange
-          }
-        }
-      );
-      ytplayer.set(plyr);
-    };
-    const createTencentPlayer = () => {
-      const plyr = new Txplayer({
-        containerId: "qqplayer",
-        vid: "",
-        //make it invalid, otherwise might play ads,
-        width: "1px",
-        height: "1px",
-        autoplay: false
-      });
-      plyr.on("ready", onPlayerReady);
-      plyr.on("playStateChange", onPlayerStateChange);
-      qqplayer.set(plyr);
-    };
-    onMount(() => {
-      timer = setInterval(
-        () => {
-          if (typeof YT !== "undefined" && YT.Player) {
-            console.log("youtube player ok");
-            clearInterval(timer);
-            createYoutubePlayer();
-          }
-        },
-        1e3
-      );
-    });
-    function onPlayerStateChange(e) {
-      console.log("player state change");
-      if (e.data == -1 || e.data == 5)
+    component_subscribe($$self, audioid, ($$value) => $$invalidate(1, $audioid = $$value));
+    component_subscribe($$self, activepb, ($$value) => $$invalidate(2, $activepb = $$value));
+    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(5, $activefolioid = $$value));
+    component_subscribe($$self, playing, ($$value) => $$invalidate(6, $playing = $$value));
+    component_subscribe($$self, continueplay, ($$value) => $$invalidate(7, $continueplay = $$value));
+    let audioplayer;
+    const seekToPb = (pbid, audioid2) => {
+      if (!audioid2 || $continueplay || !$playing)
         return;
-      const obj = findByVideoId($videoid);
-      if (!obj)
-        return;
-      const { bookid } = obj;
+      const { timestamp, bookid } = findByAudioId(audioid2);
       if (bookid !== $activefolioid) {
-        stopVideo();
-        return;
-      }
-      playing.set(e.data == 1 || e.state == 1);
-    }
-    function onPlayerReady(e) {
-      console.log("player ready");
-      playerready.set(true);
-      const plyr = player();
-      if ($videoid) {
-        plyr?.playVideo ? plyr.playVideo() : plyr?.play && plyr.play();
-      }
-    }
-    const loadVideo = () => {
-      const vid = $videoid;
-      const obj = findByVideoId(vid);
-      if (!obj || !vid)
-        return;
-      stopVideo();
-      console.log("load video");
-      const validvid = vid.replace(/\^\d*$/, "");
-      const { timestamp, bookid } = obj;
-      if (bookid !== $activefolioid) {
-        stopVideo();
-      } else {
-        const t = (parseInt(get_store_value(activepb)) - 1) * folioLines();
-        const start = timestamp && timestamp[t] || 0;
-        const host = mediabyid(vid)?.videohost;
-        console.log(host, player(vid));
-        if (host == "youtube") {
-          $ytplayer.loadVideoById({
-            "videoId": validvid,
-            suggestedQuality: "low",
-            autoplay: true,
-            startSeconds: start
-          });
-        } else {
-          $qqplayer.play({
-            vid: validvid,
-            autoplay: true,
-            playStartTime: start
-          });
-        }
-      }
-    };
-    const seekToPb = (pbid, videoid2) => {
-      if (!videoid2 || $continueplay || !$playing)
-        return;
-      const { timestamp, bookid } = findByVideoId(videoid2);
-      if (bookid !== $activefolioid) {
-        stopVideo();
+        stopAudio();
       }
       if (!timestamp)
         return;
       const line = (parseInt(pbid) - 1) * folioLines();
       const t = timestamp[line];
-      player(videoid2)?.seekTo(t);
+      if (player)
+        player.currentTime = t;
     };
+    function audio_binding($$value) {
+      binding_callbacks[$$value ? "unshift" : "push"](() => {
+        audioplayer = $$value;
+        $$invalidate(0, audioplayer);
+      });
+    }
     $$self.$$.update = () => {
-      if ($$self.$$.dirty & /*$activepb, $videoid*/
-      3) {
-        $:
-          seekToPb($activepb, $videoid);
-      }
-      if ($$self.$$.dirty & /*$videoid*/
+      if ($$self.$$.dirty & /*audioplayer*/
       1) {
         $:
-          if (document.location.protocol !== "file:")
-            loadVideo(false, $videoid);
+          setplayer(audioplayer);
+      }
+      if ($$self.$$.dirty & /*$activepb, $audioid*/
+      6) {
+        $:
+          seekToPb($activepb, $audioid);
       }
     };
-    return [$videoid, $activepb];
+    return [audioplayer, $audioid, $activepb, audio_binding];
   }
   var Player = class extends SvelteComponent {
     constructor(options) {
@@ -22452,7 +21775,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block16(ctx) {
+  function create_if_block17(ctx) {
     let inputhelper;
     let current;
     inputhelper = new inputhelper_default({ props: { ptk: (
@@ -22496,7 +21819,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let if_block;
     let div_style_value;
     let current;
-    const if_block_creators = [create_if_block16, create_if_block_19];
+    const if_block_creators = [create_if_block17, create_if_block_19];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -22644,7 +21967,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block17(ctx) {
+  function create_if_block18(ctx) {
     let t0;
     let previous_key = (
       /*$activefolioid*/
@@ -22664,9 +21987,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ctx[4] && !/*shownewbie*/
       ctx[5] && !/*$landscape*/
       ctx[0] && /*$showsponsor*/
-      ctx[6] == "on" && create_if_block_55(ctx)
+      ctx[6] == "on" && create_if_block_54(ctx)
     );
-    let key_block = create_key_block4(ctx);
+    let key_block = create_key_block5(ctx);
     let if_block1 = (
       /*$leftmode*/
       ctx[10] !== "folio" && create_if_block_45(ctx)
@@ -22745,7 +22068,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               transition_in(if_block0, 1);
             }
           } else {
-            if_block0 = create_if_block_55(ctx2);
+            if_block0 = create_if_block_54(ctx2);
             if_block0.c();
             transition_in(if_block0, 1);
             if_block0.m(t0.parentNode, t0);
@@ -22763,7 +22086,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           group_outros();
           transition_out(key_block, 1, 1, noop);
           check_outros();
-          key_block = create_key_block4(ctx2);
+          key_block = create_key_block5(ctx2);
           key_block.c();
           transition_in(key_block, 1);
           key_block.m(t1.parentNode, t1);
@@ -22906,7 +22229,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_55(ctx) {
+  function create_if_block_54(ctx) {
     let paiji;
     let current;
     paiji = new paiji_default({});
@@ -22933,7 +22256,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_key_block4(ctx) {
+  function create_key_block5(ctx) {
     let swipezipimage;
     let current;
     swipezipimage = new swipezipimage_default({
@@ -23144,7 +22467,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current_block_type_index;
     let if_block;
     let current;
-    const if_block_creators = [create_if_block17, create_else_block8];
+    const if_block_creators = [create_if_block18, create_else_block8];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -23244,9 +22567,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         idleinterval * 1e3
       );
     });
-    const loadPlayer = () => {
-      loadScript("https://www.youtube.com/iframe_api");
-    };
     let showdict2 = false, shownewbie = $newbie == "on";
     const closePopup = () => {
       $$invalidate(5, shownewbie = false);
@@ -23274,8 +22594,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           orientation($landscape);
       }
     };
-    $:
-      loadPlayer();
     return [
       $landscape,
       ptk2,
