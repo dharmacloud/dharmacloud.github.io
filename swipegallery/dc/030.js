@@ -2215,7 +2215,7 @@ jsonp(30,{"name":"dc","start":80112},`^gatha何物疾於風？^lb　何物多於
 ^lb^gatha佛、法及聖眾，乃至竟死念，
 ^gatha雖與上同名，^lb其義各別異。
 ^lb增壹阿含經卷第二
-
+^pb51
 ^pb1^folio#agmu3增壹阿含經卷第三
 ^lb^au〔東晉罽賓三藏瞿曇僧伽提婆譯〕
 ^lb^ck4【弟子品】弟子品第四
@@ -2665,7 +2665,7 @@ jsonp(30,{"name":"dc","start":80112},`^gatha何物疾於風？^lb　何物多於
 ^lb^gatha須倫、益一道　光明及闇冥
 ^gatha道品、沒盡、信　^lb熾盛、無與等
 ^lb增壹阿含經卷第三
-
+^pb81
 ^pb1^folio#agmu4增壹阿含經卷第四
 ^lb^au〔東晉罽賓三藏瞿曇僧伽提婆譯〕
 ^lb^ck9【一子品】一子品第九
