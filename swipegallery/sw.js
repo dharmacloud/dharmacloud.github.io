@@ -99,7 +99,7 @@
                 return cache.match(event.request.url);
               }).then(function(res) {
                 if (!res) {
-                  return fetch(event.request) //delegate to real fetch
+                  return fetch(r) //delegate to real fetch
                   .then(res => {
                     return res.arrayBuffer();  //from cache
                   });

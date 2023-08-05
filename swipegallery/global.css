@@ -5,7 +5,7 @@ body{
 }
 @media (orientation: portrait) {
   body {
-    font-size:32px;
+    font-size:12px;
   }
   button {font-size:1em}
 }
@@ -24,7 +24,7 @@ body{
   --n:rgba(233, 233, 233, 0.7);
 }
 .popup { position:absolute;top:0;left:0;width:100%;height:100%;
-  background:rgba(255, 235, 164, 0.9);overflow:hidden;z-index: 99}
+  background:rgba(255, 235, 164);overflow:hidden;z-index: 99}
 .sidepaiji {position:absolute;overflow:hidden;top:0;height:100%}
 .tabs {--webkit-user-select: none;overflow:hidden  ; font-size:2em;
   user-select: none;padding-left: 0.05em; background:var(--menubar-color);color:gold}
@@ -231,3 +231,5 @@ a{color:#563100}
 .gotop {z-index:999;position:fixed;right:1em;top:1em;color:var(--menubar-color)}
 .goactiveline {z-index:999;position:fixed;right:1em;color:var(--selected-color)}
 .uncache {color:gray}
+.bankaccount {color:brown;font-weight: bold;}
+.hof {color:brown;font-weight: bold;font-size:1.5em}
