@@ -190,8 +190,8 @@ select {font-size:2em}
 }
 .sidepaiji{
   pointer-events: none;
-  animation: sidepaijiblinker 8s linear infinite;
 }
+ 
 .paijitextcontainer{width:100%;justify-content: center;display:flex;padding-top:70vh}
 .paijitext{
   pointer-events: none;
@@ -203,12 +203,29 @@ select {font-size:2em}
   line-height: 1.1em;
   position:absolute; color:yellow; width:1em; padding-top: 1em}
 .sidesponsor {
-  font-size:3em;
+  font-size:6vh;
   width:1em;
   float:right;
+  padding-right:0.5em;
   line-height: 100%;
   padding-top:1.5em;
 }
+.sidesponsortext{
+  font-size:4vh;
+  width:1em;
+  position:absolute;
+  padding-left:1em;
+  line-height: 100%;
+  padding-top:2.5em;
+} 
+.sidesponsortext2{
+  font-size:4vh;
+  width:1em;
+  position:absolute;
+  padding-left:2.5em;
+  line-height: 100%;
+  padding-top:3.5em;
+} 
 .dictgroup {background:#ffb85b}
 
 
