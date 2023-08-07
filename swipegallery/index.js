@@ -8173,6 +8173,11 @@
       headers
     });
     cb && cb("responsed");
+    const cache = await caches.open(cachename);
+    const cached = await cache.match(url2);
+    if (cached && response.headers.get("Content-Length") == cached.headers.get("Content-Length")) {
+      return response;
+    }
     if (response.body) {
       const reader = response.body.getReader();
       const contentLength = +response.headers.get("Content-Length");
@@ -8192,18 +8197,16 @@
         chunksAll.set(chunk, position);
         position += chunk.length;
       }
-      const cache = await caches.open(cachename);
       const resp = {
         status: response.status,
         statusText: response.statusText,
-        headers: { "X-Shaka-From-Cache": true, contentType: "audio/mpeg", contentLength }
+        headers: { "X-Shaka-From-Cache": true, "Content-Type": "audio/mpeg", "Content-Length": contentLength }
       };
       const res = new Response(chunksAll, resp);
       cache.put(cachefn, res.clone());
       cb && cb("cached");
       return res;
     } else {
-      const cache = await caches.open(cachename);
       cache.put(cachefn, response.clone());
       cb && cb("cached");
       return response;
