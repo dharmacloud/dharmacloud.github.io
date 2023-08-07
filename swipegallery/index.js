@@ -7980,7 +7980,6 @@
 
   // src/store.js
   var online = writable(navigator.onLine);
-  console.log(navigator.onLine);
   var thezip = writable(null);
   var activePtk = writable("dc");
   var folioincache = writable({});
@@ -8197,7 +8196,7 @@
       const resp = {
         status: response.status,
         statusText: response.statusText,
-        headers: { "X-Shaka-From-Cache": true, contentType: response.contentType, contentLength }
+        headers: { "X-Shaka-From-Cache": true, contentType: "audio/mpeg", contentLength }
       };
       const res = new Response(chunksAll, resp);
       cache.put(cachefn, res.clone());
@@ -10067,7 +10066,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       c() {
         div = element("div");
         create_component(swipe.$$.fragment);
-        attr(div, "class", "swipe-holder svelte-1ghlcj4");
+        attr(div, "class", "swipe-holder svelte-1wt0uj8");
         attr(div, "style", div_style_value = "opacity:" + /*$leftmode*/
         (ctx[15] !== "folio" ? "0;" : "1") + ";width:" + folioHolderWidth(
           /*$landscape*/
@@ -10150,7 +10149,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       c() {
         img = element("img");
         attr(img, "alt", "no");
-        attr(img, "class", "swipe svelte-1ghlcj4");
+        attr(img, "class", "swipe svelte-1wt0uj8");
         if (!src_url_equal(img.src, img_src_value = /*images*/
         ctx[5][
           /*images*/
@@ -12189,12 +12188,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     child_ctx[13] = list[i][0];
     child_ctx[14] = list[i][1];
     child_ctx[15] = list[i][2];
-    child_ctx[16] = list[i][3];
     return child_ctx;
   }
   function get_each_context_1(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[19] = list[i];
+    child_ctx[18] = list[i];
     return child_ctx;
   }
   function create_if_block_14(ctx) {
@@ -12220,7 +12218,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       /*getFolioName*/
       ctx[7](
         /*par*/
-        ctx[19]
+        ctx[18]
       ) + ""
     );
     let t0;
@@ -12234,7 +12232,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         /*click_handler_1*/
         ctx[11](
           /*par*/
-          ctx[19]
+          ctx[18]
         )
       );
     }
@@ -12242,7 +12240,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       props: {
         folioid: (
           /*par*/
-          ctx[19]
+          ctx[18]
         ),
         ptk: (
           /*ptk*/
@@ -12268,7 +12266,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           ctx[4] == /*getFolioId*/
           ctx[8](
             /*par*/
-            ctx[19]
+            ctx[18]
           )
         );
       },
@@ -12294,7 +12292,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             ctx[4] == /*getFolioId*/
             ctx[8](
               /*par*/
-              ctx[19]
+              ctx[18]
             )
           );
         }
@@ -12337,7 +12335,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       /*$folioincache*/
       (ctx[3][
         /*par*/
-        ctx[19]
+        ctx[18]
       ] || /*$online*/
       ctx[2]) && create_if_block6(ctx)
     );
@@ -12358,7 +12356,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           /*$folioincache*/
           ctx2[3][
             /*par*/
-            ctx2[19]
+            ctx2[18]
           ] || /*$online*/
           ctx2[2]
         ) {
@@ -12402,15 +12400,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   }
   function create_each_block7(ctx) {
     let div;
-    let t0;
     let span;
-    let t1_value = (
+    let t0_value = (
       /*getFolioName*/
       ctx[7](
         /*nfolio*/
         ctx[13]
       ) + ""
     );
+    let t0;
     let t1;
     let t2;
     let favoritebuttons;
@@ -12419,10 +12417,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current;
     let mounted;
     let dispose;
-    let if_block = (
-      /*incache*/
-      ctx[16] && create_if_block_14(ctx)
-    );
     function click_handler() {
       return (
         /*click_handler*/
@@ -12432,6 +12426,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         )
       );
     }
+    let if_block = (
+      /*$online*/
+      ctx[2] && /*$folioincache*/
+      ctx[3][
+        /*folioid*/
+        ctx[14]
+      ] && create_if_block_14(ctx)
+    );
     favoritebuttons = new favoritebuttons_default({
       props: {
         ptk: (
@@ -12462,11 +12464,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         div = element("div");
+        span = element("span");
+        t0 = text(t0_value);
+        t1 = space();
         if (if_block)
           if_block.c();
-        t0 = space();
-        span = element("span");
-        t1 = text(t1_value);
         t2 = space();
         create_component(favoritebuttons.$$.fragment);
         t3 = space();
@@ -12491,11 +12493,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       m(target, anchor) {
         insert(target, div, anchor);
+        append(div, span);
+        append(span, t0);
+        append(div, t1);
         if (if_block)
           if_block.m(div, null);
-        append(div, t0);
-        append(div, span);
-        append(span, t1);
         append(div, t2);
         mount_component(favoritebuttons, div, null);
         append(div, t3);
@@ -12513,11 +12515,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(new_ctx, dirty) {
         ctx = new_ctx;
-        if (
-          /*incache*/
-          ctx[16]
-        )
-          if_block.p(ctx, dirty);
         if (!current || dirty & /*$folioincache, folios, $online*/
         44) {
           toggle_class(span, "dimmed", !/*$folioincache*/
@@ -12536,6 +12533,25 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             ctx[4] == /*folioid*/
             ctx[14]
           );
+        }
+        if (
+          /*$online*/
+          ctx[2] && /*$folioincache*/
+          ctx[3][
+            /*folioid*/
+            ctx[14]
+          ]
+        ) {
+          if (if_block) {
+            if_block.p(ctx, dirty);
+          } else {
+            if_block = create_if_block_14(ctx);
+            if_block.c();
+            if_block.m(div, t2);
+          }
+        } else if (if_block) {
+          if_block.d(1);
+          if_block = null;
         }
         const favoritebuttons_changes = {};
         if (dirty & /*ptk*/
@@ -12601,6 +12617,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function create_fragment10(ctx) {
+    let div;
+    let t1;
     let each_1_anchor;
     let current;
     let each_value = (
@@ -12616,12 +12634,18 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     });
     return {
       c() {
+        div = element("div");
+        div.textContent = "\u958B\u555F\u904E\u7684\u7D93\u5178\u53EF\u96E2\u7DDA\u95B1\u8B80";
+        t1 = space();
         for (let i = 0; i < each_blocks.length; i += 1) {
           each_blocks[i].c();
         }
         each_1_anchor = empty();
+        attr(div, "class", "toctext");
       },
       m(target, anchor) {
+        insert(target, div, anchor);
+        insert(target, t1, anchor);
         for (let i = 0; i < each_blocks.length; i += 1) {
           if (each_blocks[i]) {
             each_blocks[i].m(target, anchor);
@@ -12671,6 +12695,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         current = false;
       },
       d(detaching) {
+        if (detaching)
+          detach(div);
+        if (detaching)
+          detach(t1);
         destroy_each(each_blocks, detaching);
         if (detaching)
           detach(each_1_anchor);
@@ -14361,7 +14389,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         div2 = element("div");
-        t0 = text("\u4E0B\u8F09\u5F8C\u624D\u53EF\u4EE5\u64AD\u653E\u3002");
+        t0 = text("\u4E0B\u8F09\u5F8C\u53EF\u96E2\u7DDA\u64AD\u653E");
         br0 = element("br");
         t1 = space();
         for (let i = 0; i < each_blocks.length; i += 1) {
@@ -15007,7 +15035,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         br0 = element("br");
-        t0 = text("\u7CFB\u7D71\u8A2D\u5B9A \u7248\u672C 2023.8.6\n");
+        t0 = text("\u7CFB\u7D71\u8A2D\u5B9A \u7248\u672C 2023.8.7\n");
         br1 = element("br");
         t1 = text("\u8ACB\u52A0\u5165Line ");
         a0 = element("a");
@@ -20757,6 +20785,28 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var toc_default = Toc;
 
   // src/taptext.svelte
+  function create_if_block_8(ctx) {
+    let html_tag;
+    let raw_value = "&nbsp;";
+    let t;
+    return {
+      c() {
+        html_tag = new HtmlTag(false);
+        t = space();
+        html_tag.a = t;
+      },
+      m(target, anchor) {
+        html_tag.m(raw_value, target, anchor);
+        insert(target, t, anchor);
+      },
+      d(detaching) {
+        if (detaching)
+          html_tag.d();
+        if (detaching)
+          detach(t);
+      }
+    };
+  }
   function create_if_block_7(ctx) {
     let t;
     return {
@@ -21029,29 +21079,31 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current;
     let mounted;
     let dispose;
-    let if_block0 = (
+    let if_block0 = !/*ls*/
+    ctx[5] && create_if_block_8(ctx);
+    let if_block1 = (
       /*ls*/
       ctx[5] && create_if_block_7(ctx)
     );
-    let if_block1 = (
+    let if_block2 = (
       /*ls*/
       ctx[5] && create_if_block_6(ctx)
     );
-    let if_block2 = (
+    let if_block3 = (
       /*ls*/
       ctx[5] && create_if_block_54(ctx)
     );
-    let if_block3 = (
+    let if_block4 = (
       /*ls*/
       ctx[5] && create_if_block_44(ctx)
     );
-    let if_block4 = !/*ls*/
+    let if_block5 = !/*ls*/
     ctx[5] && create_if_block_35(ctx);
-    let if_block5 = (
+    let if_block6 = (
       /*ls*/
       ctx[5] && create_if_block_26(ctx)
     );
-    let if_block6 = (
+    let if_block7 = (
       /*$landscape*/
       ctx[6] && create_if_block_111(ctx)
     );
@@ -21101,7 +21153,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         )
       }
     });
-    let if_block7 = (
+    let if_block8 = (
       /*entries*/
       ctx[4].length && create_if_block17(ctx)
     );
@@ -21115,35 +21167,37 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         div6 = element("div");
         div0 = element("div");
         span0 = element("span");
-        t0 = text("\u{1F64F}");
         if (if_block0)
           if_block0.c();
+        t0 = text("\u{1F64F}");
+        if (if_block1)
+          if_block1.c();
         t1 = space();
         span1 = element("span");
         t2 = text("\u{1F4DA}");
-        if (if_block1)
-          if_block1.c();
+        if (if_block2)
+          if_block2.c();
         t3 = space();
         span2 = element("span");
         t4 = text("\u{1F9ED}");
-        if (if_block2)
-          if_block2.c();
+        if (if_block3)
+          if_block3.c();
         t5 = space();
         span3 = element("span");
         t6 = text("\u{1F4DC}");
-        if (if_block3)
-          if_block3.c();
-        t7 = space();
         if (if_block4)
           if_block4.c();
+        t7 = space();
+        if (if_block5)
+          if_block5.c();
         t8 = space();
         span4 = element("span");
         t9 = text("\u{1F520}");
-        if (if_block5)
-          if_block5.c();
-        t10 = space();
         if (if_block6)
           if_block6.c();
+        t10 = space();
+        if (if_block7)
+          if_block7.c();
         t11 = space();
         div1 = element("div");
         create_component(foliolist.$$.fragment);
@@ -21154,8 +21208,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         div3 = element("div");
         create_component(textual.$$.fragment);
         t14 = space();
-        if (if_block7)
-          if_block7.c();
+        if (if_block8)
+          if_block8.c();
         t15 = space();
         div4 = element("div");
         create_component(audio.$$.fragment);
@@ -21244,35 +21298,37 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         insert(target, div6, anchor);
         append(div6, div0);
         append(div0, span0);
-        append(span0, t0);
         if (if_block0)
           if_block0.m(span0, null);
+        append(span0, t0);
+        if (if_block1)
+          if_block1.m(span0, null);
         append(div0, t1);
         append(div0, span1);
         append(span1, t2);
-        if (if_block1)
-          if_block1.m(span1, null);
+        if (if_block2)
+          if_block2.m(span1, null);
         append(div0, t3);
         append(div0, span2);
         append(span2, t4);
-        if (if_block2)
-          if_block2.m(span2, null);
+        if (if_block3)
+          if_block3.m(span2, null);
         append(div0, t5);
         append(div0, span3);
         append(span3, t6);
-        if (if_block3)
-          if_block3.m(span3, null);
-        append(div0, t7);
         if (if_block4)
-          if_block4.m(div0, null);
+          if_block4.m(span3, null);
+        append(div0, t7);
+        if (if_block5)
+          if_block5.m(div0, null);
         append(div0, t8);
         append(div0, span4);
         append(span4, t9);
-        if (if_block5)
-          if_block5.m(span4, null);
-        append(div0, t10);
         if (if_block6)
-          if_block6.m(div0, null);
+          if_block6.m(span4, null);
+        append(div0, t10);
+        if (if_block7)
+          if_block7.m(div0, null);
         append(div6, t11);
         append(div6, div1);
         mount_component(foliolist, div1, null);
@@ -21283,8 +21339,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         append(div6, div3);
         mount_component(textual, div3, null);
         append(div6, t14);
-        if (if_block7)
-          if_block7.m(div6, null);
+        if (if_block8)
+          if_block8.m(div6, null);
         append(div6, t15);
         append(div6, div4);
         mount_component(audio, div4, null);
@@ -21329,19 +21385,31 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
       },
       p(ctx2, dirty) {
-        if (
-          /*ls*/
-          ctx2[5]
-        ) {
+        if (!/*ls*/
+        ctx2[5]) {
           if (if_block0) {
           } else {
-            if_block0 = create_if_block_7(ctx2);
+            if_block0 = create_if_block_8(ctx2);
             if_block0.c();
-            if_block0.m(span0, null);
+            if_block0.m(span0, t0);
           }
         } else if (if_block0) {
           if_block0.d(1);
           if_block0 = null;
+        }
+        if (
+          /*ls*/
+          ctx2[5]
+        ) {
+          if (if_block1) {
+          } else {
+            if_block1 = create_if_block_7(ctx2);
+            if_block1.c();
+            if_block1.m(span0, null);
+          }
+        } else if (if_block1) {
+          if_block1.d(1);
+          if_block1 = null;
         }
         if (!current || dirty & /*thetab*/
         4) {
@@ -21356,15 +21424,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           /*ls*/
           ctx2[5]
         ) {
-          if (if_block1) {
+          if (if_block2) {
           } else {
-            if_block1 = create_if_block_6(ctx2);
-            if_block1.c();
-            if_block1.m(span1, null);
+            if_block2 = create_if_block_6(ctx2);
+            if_block2.c();
+            if_block2.m(span1, null);
           }
-        } else if (if_block1) {
-          if_block1.d(1);
-          if_block1 = null;
+        } else if (if_block2) {
+          if_block2.d(1);
+          if_block2 = null;
         }
         if (!current || dirty & /*thetab*/
         4) {
@@ -21379,15 +21447,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           /*ls*/
           ctx2[5]
         ) {
-          if (if_block2) {
+          if (if_block3) {
           } else {
-            if_block2 = create_if_block_54(ctx2);
-            if_block2.c();
-            if_block2.m(span2, null);
+            if_block3 = create_if_block_54(ctx2);
+            if_block3.c();
+            if_block3.m(span2, null);
           }
-        } else if (if_block2) {
-          if_block2.d(1);
-          if_block2 = null;
+        } else if (if_block3) {
+          if_block3.d(1);
+          if_block3 = null;
         }
         if (!current || dirty & /*thetab*/
         4) {
@@ -21402,15 +21470,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           /*ls*/
           ctx2[5]
         ) {
-          if (if_block3) {
+          if (if_block4) {
           } else {
-            if_block3 = create_if_block_44(ctx2);
-            if_block3.c();
-            if_block3.m(span3, null);
+            if_block4 = create_if_block_44(ctx2);
+            if_block4.c();
+            if_block4.m(span3, null);
           }
-        } else if (if_block3) {
-          if_block3.d(1);
-          if_block3 = null;
+        } else if (if_block4) {
+          if_block4.d(1);
+          if_block4 = null;
         }
         if (!current || dirty & /*thetab*/
         4) {
@@ -21423,30 +21491,30 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
         if (!/*ls*/
         ctx2[5]) {
-          if (if_block4) {
-            if_block4.p(ctx2, dirty);
+          if (if_block5) {
+            if_block5.p(ctx2, dirty);
           } else {
-            if_block4 = create_if_block_35(ctx2);
-            if_block4.c();
-            if_block4.m(div0, t8);
+            if_block5 = create_if_block_35(ctx2);
+            if_block5.c();
+            if_block5.m(div0, t8);
           }
-        } else if (if_block4) {
-          if_block4.d(1);
-          if_block4 = null;
+        } else if (if_block5) {
+          if_block5.d(1);
+          if_block5 = null;
         }
         if (
           /*ls*/
           ctx2[5]
         ) {
-          if (if_block5) {
+          if (if_block6) {
           } else {
-            if_block5 = create_if_block_26(ctx2);
-            if_block5.c();
-            if_block5.m(span4, null);
+            if_block6 = create_if_block_26(ctx2);
+            if_block6.c();
+            if_block6.m(span4, null);
           }
-        } else if (if_block5) {
-          if_block5.d(1);
-          if_block5 = null;
+        } else if (if_block6) {
+          if_block6.d(1);
+          if_block6 = null;
         }
         if (!current || dirty & /*thetab*/
         4) {
@@ -21461,16 +21529,16 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           /*$landscape*/
           ctx2[6]
         ) {
-          if (if_block6) {
-            if_block6.p(ctx2, dirty);
+          if (if_block7) {
+            if_block7.p(ctx2, dirty);
           } else {
-            if_block6 = create_if_block_111(ctx2);
-            if_block6.c();
-            if_block6.m(div0, null);
+            if_block7 = create_if_block_111(ctx2);
+            if_block7.c();
+            if_block7.m(div0, null);
           }
-        } else if (if_block6) {
-          if_block6.d(1);
-          if_block6 = null;
+        } else if (if_block7) {
+          if_block7.d(1);
+          if_block7 = null;
         }
         const foliolist_changes = {};
         if (dirty & /*ptk*/
@@ -21540,22 +21608,22 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           /*entries*/
           ctx2[4].length
         ) {
-          if (if_block7) {
-            if_block7.p(ctx2, dirty);
+          if (if_block8) {
+            if_block8.p(ctx2, dirty);
             if (dirty & /*entries*/
             16) {
-              transition_in(if_block7, 1);
+              transition_in(if_block8, 1);
             }
           } else {
-            if_block7 = create_if_block17(ctx2);
-            if_block7.c();
-            transition_in(if_block7, 1);
-            if_block7.m(div6, t15);
+            if_block8 = create_if_block17(ctx2);
+            if_block8.c();
+            transition_in(if_block8, 1);
+            if_block8.m(div6, t15);
           }
-        } else if (if_block7) {
+        } else if (if_block8) {
           group_outros();
-          transition_out(if_block7, 1, 1, () => {
-            if_block7 = null;
+          transition_out(if_block8, 1, 1, () => {
+            if_block8 = null;
           });
           check_outros();
         }
@@ -21598,7 +21666,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         transition_in(foliolist.$$.fragment, local);
         transition_in(toc.$$.fragment, local);
         transition_in(textual.$$.fragment, local);
-        transition_in(if_block7);
+        transition_in(if_block8);
         transition_in(audio.$$.fragment, local);
         transition_in(about.$$.fragment, local);
         current = true;
@@ -21607,7 +21675,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         transition_out(foliolist.$$.fragment, local);
         transition_out(toc.$$.fragment, local);
         transition_out(textual.$$.fragment, local);
-        transition_out(if_block7);
+        transition_out(if_block8);
         transition_out(audio.$$.fragment, local);
         transition_out(about.$$.fragment, local);
         current = false;
@@ -21629,11 +21697,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if_block5.d();
         if (if_block6)
           if_block6.d();
+        if (if_block7)
+          if_block7.d();
         destroy_component(foliolist);
         destroy_component(toc);
         destroy_component(textual);
-        if (if_block7)
-          if_block7.d();
+        if (if_block8)
+          if_block8.d();
         destroy_component(audio);
         destroy_component(about);
         mounted = false;

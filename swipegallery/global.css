@@ -31,7 +31,7 @@ body{
 
 .loading {font-size:2em}
 .app {height:100vh;top:0px;background-color: rgb(243, 208, 160); } /* splitpane divider need this */
-.closepopup {cursor:pointer;z-index:999;font-size:2em;position:absolute;right:0;top:0;color:black;font-weight: bold;}
+.closepopup {padding-right:0.3em;cursor:pointer;z-index:999;font-size:2em;position:absolute;right:0;top:0;color:black;font-weight: bold;}
 
 select {font-size:2em}
 .selected {background: rgb(255, 173, 42);border-radius: 0.25em;color:white}
