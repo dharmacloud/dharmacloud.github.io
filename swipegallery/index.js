@@ -7940,6 +7940,9 @@
     });
   }
 
+  // src/constant.js
+  var Cachesname = "v1::ylz";
+
   // src/mediaurls.js
   var ptk;
   var silence = { vid: "", performer: "-\u975C\u9ED8-" };
@@ -7947,16 +7950,14 @@
   var setTimestampPtk = (_ptk) => {
     ptk = _ptk;
   };
-  var fetchAudioList = async (activeid, loading, store) => {
+  var fetchAudioList = async (activeid, store) => {
     let out = [];
-    if (loading)
-      return out;
     if (!ptk)
       return out;
     const ts = ptk.columns.timestamp;
     if (!ts)
       return out;
-    const cache = await caches.open("v1::ylz");
+    const cache = await caches.open(Cachesname);
     const keys = await cache.keys();
     const incaches = keys.map((it) => it.url.slice(window.location.origin.length + audiofolder.length).replace(".mp3", ""));
     for (let i = 0; i < ts.keys.len(); i++) {
@@ -7978,8 +7979,11 @@
   };
 
   // src/store.js
+  var online = writable(navigator.onLine);
+  console.log(navigator.onLine);
   var thezip = writable(null);
   var activePtk = writable("dc");
+  var folioincache = writable({});
   var loadingbook = writable(false);
   var autodict = writable(settings.autodict);
   var activepb = writable("1");
@@ -8154,6 +8158,78 @@
   };
   var favortypes = ["\u2661", "\u{1F90D}", "\u2764\uFE0F", "\u{1F49A}", "\u{1F499}", "\u{1F49C}", "\u{1F5A4}"];
 
+  // src/comps/downloader.js
+  var downloadToCache = async (url2, cb, cachename = "v1::ylz") => {
+    const cachefn = url2;
+    if (location.host !== "nissaya.cn" && location.host.indexOf("localhost") == -1 && location.host.indexOf("127.0.0.1") == -1)
+      url2 = "https://nissaya.cn/" + url2.replace(/^\//, "");
+    const headers = url2.indexOf(".zip") ? { "Accept": "application/octet-stream" } : { "Accept": "audio/mpeg" };
+    cb && cb("requesting");
+    let response = await fetch(url2, {
+      method: "GET",
+      mode: "no-cors",
+      redirect: "follow",
+      credentials: "omit",
+      origin: "https://nissaya.cn",
+      headers
+    });
+    cb && cb("responsed");
+    if (response.body) {
+      const reader = response.body.getReader();
+      const contentLength = +response.headers.get("Content-Length");
+      let receivedLength = 0;
+      let chunks = [];
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done)
+          break;
+        chunks.push(value);
+        receivedLength += value.length;
+        cb && cb(Math.floor(100 * receivedLength / contentLength) + "%");
+      }
+      let chunksAll = new Uint8Array(receivedLength);
+      let position = 0;
+      for (let chunk of chunks) {
+        chunksAll.set(chunk, position);
+        position += chunk.length;
+      }
+      const cache = await caches.open(cachename);
+      const resp = {
+        status: response.status,
+        statusText: response.statusText,
+        headers: { "X-Shaka-From-Cache": true, contentType: response.contentType, contentLength }
+      };
+      const res = new Response(chunksAll, resp);
+      cache.put(cachefn, res.clone());
+      cb && cb("cached");
+      return res;
+    } else {
+      const cache = await caches.open(cachename);
+      cache.put(cachefn, response.clone());
+      cb && cb("cached");
+      return response;
+    }
+  };
+
+  // src/folio.js
+  var url2folioid = (url2) => url2.slice(url2.indexOf("folio/") + 6).replace(".zip", "");
+  var fetchFolioList = async (store) => {
+    const cache = await caches.open(Cachesname);
+    const keys = await cache.keys();
+    const out = keys.filter((it) => it.url.endsWith(".zip") && ~it.url.indexOf("folio/")).map(
+      (it) => url2folioid(it.url)
+    );
+    if (store) {
+      const cached = {};
+      for (let i = 0; i < out.length; i++) {
+        cached[out[i]] = true;
+      }
+      store.set(cached);
+    } else {
+      return out;
+    }
+  };
+
   // src/nav.js
   var CURSORMARK = "\u25C6";
   var goPb = (pbid, ck) => {
@@ -8172,10 +8248,11 @@
     const pbid = pb.fields.id.values[pbtag];
     goPb(pbid, ck.fields.id.values[at]);
   };
-  var loadFolio = (folioid, func) => {
+  var loadFolio = (folioid, func2) => {
+    console.log("load folio", folioid);
     let timer = 0;
     if (folioid == get_store_value(activefolioid))
-      func && func(folioid);
+      func2 && func2(folioid);
     else {
       stopAudio();
       audioid.set("");
@@ -8187,7 +8264,10 @@
         if (!get_store_value(loadingbook)) {
           clearInterval(timer);
           setTimeout(() => {
-            func && func(folioid);
+            func2 && func2(folioid);
+            setTimeout(() => {
+              fetchFolioList(folioincache);
+            }, 100);
           }, 500);
         }
       }, 100);
@@ -9773,10 +9853,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         );
         t1 = space();
         div1 = element("div");
-        div1.textContent = "\u9858\u4EE5\u6B64\u529F\u5FB7\u3001\u666E\u53CA\u65BC\u4E00\u5207\uFF0C";
+        div1.textContent = "\u6211\u7B49\u8207\u773E\u751F\u3001\u7686\u5171\u6210\u4F5B\u9053\u3002";
         t3 = space();
         div2 = element("div");
-        div2.textContent = "\u6211\u7B49\u8207\u773E\u751F\u3001\u7686\u5171\u6210\u4F5B\u9053\u3002";
+        div2.textContent = "\u9858\u4EE5\u6B64\u529F\u5FB7\u3001\u666E\u53CA\u65BC\u4E00\u5207\uFF0C";
         attr(div0, "class", "sidesponsor");
         attr(div1, "class", "sidesponsortext");
         attr(div2, "class", "sidesponsortext2");
@@ -10713,6 +10793,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ctx[9]
     );
     let t1;
+    let show_if = !/*$landscape*/
+    ctx[16] && /*$mediaurls*/
+    ctx[10].filter(func).length;
     let t2;
     let span;
     let t3_value = (
@@ -10748,9 +10831,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     current_block_type_index = select_block_type(ctx, [-1, -1]);
     if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
     let key_block0 = create_key_block_2(ctx);
-    let if_block1 = !/*$landscape*/
-    ctx[16] && /*$mediaurls*/
-    ctx[10].length > 1 && create_if_block_4(ctx);
+    let if_block1 = show_if && create_if_block_4(ctx);
     let if_block2 = (
       /*$playing*/
       ctx[18] && create_if_block_3(ctx)
@@ -10829,9 +10910,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         } else {
           key_block0.p(ctx2, dirty);
         }
-        if (!/*$landscape*/
-        ctx2[16] && /*$mediaurls*/
-        ctx2[10].length > 1) {
+        if (dirty[0] & /*$landscape, $mediaurls*/
+        66560)
+          show_if = !/*$landscape*/
+          ctx2[16] && /*$mediaurls*/
+          ctx2[10].filter(func).length;
+        if (show_if) {
           if (if_block1) {
             if_block1.p(ctx2, dirty);
           } else {
@@ -10933,6 +11017,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
+  var func = (it) => it.incache;
   function instance8($$self, $$props, $$invalidate) {
     let $activepb;
     let $mediaurls;
@@ -11010,7 +11095,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       const ftext = new FolioText(ptk2);
       await ftext.load($activefolioid);
       foliotext.set(ftext);
-      const res = await fetch(host + src);
+      const res = await downloadToCache(host + src);
       const buf = await res.arrayBuffer();
       const zip = new ZipStore(buf);
       thezip.set(zip);
@@ -11030,6 +11115,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           maxfolio.set(totalpages - 1);
           loadingbook.set(false);
           $$invalidate(4, ready = true);
+          fetchAudioList($activefolioid, mediaurls);
         },
         100
       );
@@ -12093,26 +12179,48 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   };
   var favoritebuttons_default = Favoritebuttons;
 
+  // src/icons.js
+  var downloadicon = `<svg width="32px" height="32px" viewBox="0 0 24 24" fill="none"><path d="M12 16L12 8" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  var offlinable = `<svg fill="#000000" width="1em" height="1em" viewBox="0 0 24 24" ><path id="primary" d="M19.58,12.08,14,8.16V4a2,2,0,0,0-4,0V8.16L4.42,12.08a1,1,0,0,0-.42.81v.93a1,1,0,0,0,1.16,1L10,14v3.62l-1.71,1.7A1.05,1.05,0,0,0,8,20v1a1,1,0,0,0,1.45.89L12,20.62l2.55,1.27A1,1,0,0,0,16,21V20a1.05,1.05,0,0,0-.29-.71L14,17.62V14l4.84.81a1,1,0,0,0,1.16-1v-.93A1,1,0,0,0,19.58,12.08Z" style="fill: rgb(0, 0, 0);"><path d="M19.58,12.08,14,8.16V4a2,2,0,0,0-4,0V8.16L4.42,12.08a1,1,0,0,0-.42.81v.93a1,1,0,0,0,1.16,1L10,14v3.62l-1.71,1.7A1.05,1.05,0,0,0,8,20v1a1,1,0,0,0,1.45.89L12,20.62l2.55,1.27A1,1,0,0,0,16,21V20a1.05,1.05,0,0,0-.29-.71L14,17.62V14l4.84.81a1,1,0,0,0,1.16-1v-.93A1,1,0,0,0,19.58,12.08Z" style="fill: rgb(0, 0, 0);"></path></svg>`;
+
   // src/foliolist.svelte
   function get_each_context7(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[11] = list[i][0];
-    child_ctx[12] = list[i][1];
-    child_ctx[13] = list[i][2];
+    child_ctx[13] = list[i][0];
+    child_ctx[14] = list[i][1];
+    child_ctx[15] = list[i][2];
+    child_ctx[16] = list[i][3];
     return child_ctx;
   }
   function get_each_context_1(ctx, list, i) {
     const child_ctx = ctx.slice();
-    child_ctx[16] = list[i];
+    child_ctx[19] = list[i];
     return child_ctx;
   }
-  function create_each_block_1(ctx) {
+  function create_if_block_14(ctx) {
+    let span;
+    return {
+      c() {
+        span = element("span");
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        span.innerHTML = offlinable;
+      },
+      p: noop,
+      d(detaching) {
+        if (detaching)
+          detach(span);
+      }
+    };
+  }
+  function create_if_block6(ctx) {
     let span;
     let t0_value = (
       /*getFolioName*/
-      ctx[5](
+      ctx[7](
         /*par*/
-        ctx[16]
+        ctx[19]
       ) + ""
     );
     let t0;
@@ -12124,9 +12232,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     function click_handler_1() {
       return (
         /*click_handler_1*/
-        ctx[9](
+        ctx[11](
           /*par*/
-          ctx[16]
+          ctx[19]
         )
       );
     }
@@ -12134,7 +12242,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       props: {
         folioid: (
           /*par*/
-          ctx[16]
+          ctx[19]
         ),
         ptk: (
           /*ptk*/
@@ -12157,10 +12265,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           span,
           "selecteditem",
           /*$activefolioid*/
-          ctx[2] == /*getFolioId*/
-          ctx[6](
+          ctx[4] == /*getFolioId*/
+          ctx[8](
             /*par*/
-            ctx[16]
+            ctx[19]
           )
         );
       },
@@ -12178,15 +12286,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(new_ctx, dirty) {
         ctx = new_ctx;
         if (!current || dirty & /*$activefolioid, getFolioId, folios*/
-        76) {
+        304) {
           toggle_class(
             span,
             "selecteditem",
             /*$activefolioid*/
-            ctx[2] == /*getFolioId*/
-            ctx[6](
+            ctx[4] == /*getFolioId*/
+            ctx[8](
               /*par*/
-              ctx[16]
+              ctx[19]
             )
           );
         }
@@ -12222,30 +12330,105 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
+  function create_each_block_1(ctx) {
+    let if_block_anchor;
+    let current;
+    let if_block = (
+      /*$folioincache*/
+      (ctx[3][
+        /*par*/
+        ctx[19]
+      ] || /*$online*/
+      ctx[2]) && create_if_block6(ctx)
+    );
+    return {
+      c() {
+        if (if_block)
+          if_block.c();
+        if_block_anchor = empty();
+      },
+      m(target, anchor) {
+        if (if_block)
+          if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
+        current = true;
+      },
+      p(ctx2, dirty) {
+        if (
+          /*$folioincache*/
+          ctx2[3][
+            /*par*/
+            ctx2[19]
+          ] || /*$online*/
+          ctx2[2]
+        ) {
+          if (if_block) {
+            if_block.p(ctx2, dirty);
+            if (dirty & /*$folioincache, $online*/
+            12) {
+              transition_in(if_block, 1);
+            }
+          } else {
+            if_block = create_if_block6(ctx2);
+            if_block.c();
+            transition_in(if_block, 1);
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+          }
+        } else if (if_block) {
+          group_outros();
+          transition_out(if_block, 1, 1, () => {
+            if_block = null;
+          });
+          check_outros();
+        }
+      },
+      i(local) {
+        if (current)
+          return;
+        transition_in(if_block);
+        current = true;
+      },
+      o(local) {
+        transition_out(if_block);
+        current = false;
+      },
+      d(detaching) {
+        if (if_block)
+          if_block.d(detaching);
+        if (detaching)
+          detach(if_block_anchor);
+      }
+    };
+  }
   function create_each_block7(ctx) {
     let div;
+    let t0;
     let span;
-    let t0_value = (
+    let t1_value = (
       /*getFolioName*/
-      ctx[5](
+      ctx[7](
         /*nfolio*/
-        ctx[11]
+        ctx[13]
       ) + ""
     );
-    let t0;
     let t1;
-    let favoritebuttons;
     let t2;
+    let favoritebuttons;
     let t3;
+    let t4;
     let current;
     let mounted;
     let dispose;
+    let if_block = (
+      /*incache*/
+      ctx[16] && create_if_block_14(ctx)
+    );
     function click_handler() {
       return (
         /*click_handler*/
-        ctx[8](
+        ctx[10](
           /*nfolio*/
-          ctx[11]
+          ctx[13]
         )
       );
     }
@@ -12257,7 +12440,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ),
         folioid: (
           /*folioid*/
-          ctx[12]
+          ctx[14]
         ),
         closePopup: (
           /*closePopup*/
@@ -12267,7 +12450,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     });
     let each_value_1 = (
       /*pars*/
-      ctx[13]
+      ctx[15]
     );
     let each_blocks = [];
     for (let i = 0; i < each_value_1.length; i += 1) {
@@ -12279,37 +12462,49 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     return {
       c() {
         div = element("div");
+        if (if_block)
+          if_block.c();
+        t0 = space();
         span = element("span");
-        t0 = text(t0_value);
-        t1 = space();
-        create_component(favoritebuttons.$$.fragment);
+        t1 = text(t1_value);
         t2 = space();
+        create_component(favoritebuttons.$$.fragment);
+        t3 = space();
         for (let i = 0; i < each_blocks.length; i += 1) {
           each_blocks[i].c();
         }
-        t3 = space();
+        t4 = space();
+        toggle_class(span, "dimmed", !/*$folioincache*/
+        ctx[3][
+          /*folioid*/
+          ctx[14]
+        ] && !/*$online*/
+        ctx[2]);
         toggle_class(
           span,
           "selecteditem",
           /*$activefolioid*/
-          ctx[2] == /*folioid*/
-          ctx[12]
+          ctx[4] == /*folioid*/
+          ctx[14]
         );
         attr(div, "class", "book");
       },
       m(target, anchor) {
         insert(target, div, anchor);
+        if (if_block)
+          if_block.m(div, null);
+        append(div, t0);
         append(div, span);
-        append(span, t0);
-        append(div, t1);
-        mount_component(favoritebuttons, div, null);
+        append(span, t1);
         append(div, t2);
+        mount_component(favoritebuttons, div, null);
+        append(div, t3);
         for (let i = 0; i < each_blocks.length; i += 1) {
           if (each_blocks[i]) {
             each_blocks[i].m(div, null);
           }
         }
-        append(div, t3);
+        append(div, t4);
         current = true;
         if (!mounted) {
           dispose = listen(span, "click", click_handler);
@@ -12318,14 +12513,28 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       p(new_ctx, dirty) {
         ctx = new_ctx;
+        if (
+          /*incache*/
+          ctx[16]
+        )
+          if_block.p(ctx, dirty);
+        if (!current || dirty & /*$folioincache, folios, $online*/
+        44) {
+          toggle_class(span, "dimmed", !/*$folioincache*/
+          ctx[3][
+            /*folioid*/
+            ctx[14]
+          ] && !/*$online*/
+          ctx[2]);
+        }
         if (!current || dirty & /*$activefolioid, folios*/
-        12) {
+        48) {
           toggle_class(
             span,
             "selecteditem",
             /*$activefolioid*/
-            ctx[2] == /*folioid*/
-            ctx[12]
+            ctx[4] == /*folioid*/
+            ctx[14]
           );
         }
         const favoritebuttons_changes = {};
@@ -12338,10 +12547,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           favoritebuttons_changes.closePopup = /*closePopup*/
           ctx[1];
         favoritebuttons.$set(favoritebuttons_changes);
-        if (dirty & /*folios, ptk, closePopup, $activefolioid, getFolioId, selectfolio, getFolioName*/
-        127) {
+        if (dirty & /*folios, ptk, closePopup, $activefolioid, getFolioId, selectfolio, getFolioName, $folioincache, $online*/
+        511) {
           each_value_1 = /*pars*/
-          ctx[13];
+          ctx[15];
           let i;
           for (i = 0; i < each_value_1.length; i += 1) {
             const child_ctx = get_each_context_1(ctx, each_value_1, i);
@@ -12352,7 +12561,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               each_blocks[i] = create_each_block_1(child_ctx);
               each_blocks[i].c();
               transition_in(each_blocks[i], 1);
-              each_blocks[i].m(div, t3);
+              each_blocks[i].m(div, t4);
             }
           }
           group_outros();
@@ -12382,6 +12591,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       d(detaching) {
         if (detaching)
           detach(div);
+        if (if_block)
+          if_block.d();
         destroy_component(favoritebuttons);
         destroy_each(each_blocks, detaching);
         mounted = false;
@@ -12394,7 +12605,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current;
     let each_value = (
       /*folios*/
-      ctx[3]
+      ctx[5]
     );
     let each_blocks = [];
     for (let i = 0; i < each_value.length; i += 1) {
@@ -12420,10 +12631,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         current = true;
       },
       p(ctx2, [dirty]) {
-        if (dirty & /*folios, ptk, closePopup, $activefolioid, getFolioId, selectfolio, getFolioName*/
-        127) {
+        if (dirty & /*folios, ptk, closePopup, $activefolioid, getFolioId, selectfolio, getFolioName, $folioincache, $online, offlinable*/
+        511) {
           each_value = /*folios*/
-          ctx2[3];
+          ctx2[5];
           let i;
           for (i = 0; i < each_value.length; i += 1) {
             const child_ctx = get_each_context7(ctx2, each_value, i);
@@ -12467,8 +12678,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function instance11($$self, $$props, $$invalidate) {
+    let $online;
+    let $folioincache;
     let $activefolioid;
-    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(2, $activefolioid = $$value));
+    component_subscribe($$self, online, ($$value) => $$invalidate(2, $online = $$value));
+    component_subscribe($$self, folioincache, ($$value) => $$invalidate(3, $folioincache = $$value));
+    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(4, $activefolioid = $$value));
     let { ptk: ptk2, thetab } = $$props;
     let { closePopup = function() {
     } } = $$props;
@@ -12487,12 +12702,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const folios = getFolioList();
     const selectfolio = (nfolio) => {
       const folio = ptk2.defines.folio;
-      stopAudio();
       const folioid = folio.fields.id.values[nfolio];
-      loadFolio(folioid, function() {
-        $$invalidate(7, thetab = "toc");
-      });
-      closePopup();
+      if ($folioincache[folioid] || $online) {
+        stopAudio();
+        loadFolio(folioid, function() {
+          $$invalidate(9, thetab = "toc");
+        });
+        closePopup();
+      }
     };
     const getFolioName = (nfolio) => {
       const folio = ptk2.defines.folio;
@@ -12508,13 +12725,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       if ("ptk" in $$props2)
         $$invalidate(0, ptk2 = $$props2.ptk);
       if ("thetab" in $$props2)
-        $$invalidate(7, thetab = $$props2.thetab);
+        $$invalidate(9, thetab = $$props2.thetab);
       if ("closePopup" in $$props2)
         $$invalidate(1, closePopup = $$props2.closePopup);
     };
     return [
       ptk2,
       closePopup,
+      $online,
+      $folioincache,
       $activefolioid,
       folios,
       selectfolio,
@@ -12528,7 +12747,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Foliolist = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance11, create_fragment10, safe_not_equal, { ptk: 0, thetab: 7, closePopup: 1 });
+      init(this, options, instance11, create_fragment10, safe_not_equal, { ptk: 0, thetab: 9, closePopup: 1 });
     }
   };
   var foliolist_default = Foliolist;
@@ -13272,7 +13491,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_14(ctx) {
+  function create_if_block_15(ctx) {
     let span1;
     let span0;
     let t0;
@@ -13348,7 +13567,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block6(ctx) {
+  function create_if_block7(ctx) {
     let div;
     let span0;
     let t0;
@@ -13548,12 +13767,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         /*design*/
         ctx2[2] == "inner"
       )
-        return create_if_block6;
+        return create_if_block7;
       if (
         /*design*/
         ctx2[2] == "slider"
       )
-        return create_if_block_14;
+        return create_if_block_15;
       return create_else_block3;
     }
     let current_block_type = select_block_type(ctx, -1);
@@ -13641,59 +13860,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   };
   var switch_default = Switch;
 
-  // src/icons.js
-  var downloadicon = `<svg width="32px" height="32px" viewBox="0 0 24 24" fill="none"><path d="M12 16L12 8" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13L11.913 15.913V15.913C11.961 15.961 12.039 15.961 12.087 15.913V15.913L15 13" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 15L3 16L3 19C3 20.1046 3.89543 21 5 21L19 21C20.1046 21 21 20.1046 21 19L21 16L21 15" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-
-  // src/comps/downloader.js
-  var downloadToCache = async (url2, cb, cachename = "v1::ylz") => {
-    const cachefn = url2;
-    if (location.host !== "nissaya.cn" && location.host.indexOf("localhost") == -1 && location.host.indexOf("127.0.0.1") == -1)
-      url2 = "https://nissaya.cn/" + url2.replace(/^\//, "");
-    cb && cb("requesting");
-    let response = await fetch(url2, {
-      method: "GET",
-      mode: "no-cors",
-      cache: "no-cache",
-      redirect: "follow",
-      credentials: "omit",
-      origin: "https://nissaya.cn",
-      headers: { "Accept": "audio/mpeg" }
-    });
-    cb && cb("responsed");
-    if (response.body) {
-      const reader = response.body.getReader();
-      const contentLength = +response.headers.get("Content-Length");
-      let receivedLength = 0;
-      let chunks = [];
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done)
-          break;
-        chunks.push(value);
-        receivedLength += value.length;
-        cb && cb(Math.floor(100 * receivedLength / contentLength) + "%");
-      }
-      let chunksAll = new Uint8Array(receivedLength);
-      let position = 0;
-      for (let chunk of chunks) {
-        chunksAll.set(chunk, position);
-        position += chunk.length;
-      }
-      const cache = await caches.open(cachename);
-      const resp = {
-        status: response.status,
-        statusText: response.statusText,
-        headers: { "X-Shaka-From-Cache": true, contentType: "audio/mpeg", contentLength }
-      };
-      const res = new Response(chunksAll, resp);
-      cache.put(cachefn, res);
-    } else {
-      const cache = await caches.open(cachename);
-      cache.put(cachefn, response);
-    }
-    cb && cb("cached");
-  };
-
   // src/audio.svelte
   function get_each_context9(ctx, list, i) {
     const child_ctx = ctx.slice();
@@ -13701,7 +13867,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     child_ctx[30] = i;
     return child_ctx;
   }
-  function create_else_block4(ctx) {
+  function create_if_block_33(ctx) {
     let span0;
     let t0_value = (
       /*media*/
@@ -13710,22 +13876,30 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t0;
     let span1;
     let t1;
-    let if_block_anchor;
+    let t2;
+    let t3;
+    let br;
     let mounted;
     let dispose;
     function click_handler_1() {
       return (
         /*click_handler_1*/
-        ctx[18](
+        ctx[17](
           /*media*/
           ctx[28]
         )
       );
     }
-    let if_block = (
+    let if_block0 = (
       /*downloading*/
       ctx[5] == /*media*/
-      ctx[28].aid && create_if_block_43(ctx)
+      ctx[28].aid && create_if_block_53(ctx)
+    );
+    let if_block1 = (
+      /*$audioid*/
+      ctx[1] == /*media*/
+      ctx[28].vid && /*$audioid*/
+      ctx[1] && create_if_block_43(ctx)
     );
     return {
       c() {
@@ -13733,9 +13907,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         t0 = text(t0_value);
         span1 = element("span");
         t1 = space();
-        if (if_block)
-          if_block.c();
-        if_block_anchor = empty();
+        if (if_block0)
+          if_block0.c();
+        t2 = space();
+        if (if_block1)
+          if_block1.c();
+        t3 = space();
+        br = element("br");
         attr(span0, "class", "uncache");
         attr(span1, "class", "clickable");
       },
@@ -13745,9 +13923,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         insert(target, span1, anchor);
         span1.innerHTML = downloadicon;
         insert(target, t1, anchor);
-        if (if_block)
-          if_block.m(target, anchor);
-        insert(target, if_block_anchor, anchor);
+        if (if_block0)
+          if_block0.m(target, anchor);
+        insert(target, t2, anchor);
+        if (if_block1)
+          if_block1.m(target, anchor);
+        insert(target, t3, anchor);
+        insert(target, br, anchor);
         if (!mounted) {
           dispose = listen(span1, "click", click_handler_1);
           mounted = true;
@@ -13764,16 +13946,33 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           ctx[5] == /*media*/
           ctx[28].aid
         ) {
-          if (if_block) {
-            if_block.p(ctx, dirty);
+          if (if_block0) {
+            if_block0.p(ctx, dirty);
           } else {
-            if_block = create_if_block_43(ctx);
-            if_block.c();
-            if_block.m(if_block_anchor.parentNode, if_block_anchor);
+            if_block0 = create_if_block_53(ctx);
+            if_block0.c();
+            if_block0.m(t2.parentNode, t2);
           }
-        } else if (if_block) {
-          if_block.d(1);
-          if_block = null;
+        } else if (if_block0) {
+          if_block0.d(1);
+          if_block0 = null;
+        }
+        if (
+          /*$audioid*/
+          ctx[1] == /*media*/
+          ctx[28].vid && /*$audioid*/
+          ctx[1]
+        ) {
+          if (if_block1) {
+            if_block1.p(ctx, dirty);
+          } else {
+            if_block1 = create_if_block_43(ctx);
+            if_block1.c();
+            if_block1.m(t3.parentNode, t3);
+          }
+        } else if (if_block1) {
+          if_block1.d(1);
+          if_block1 = null;
         }
       },
       d(detaching) {
@@ -13783,16 +13982,22 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           detach(span1);
         if (detaching)
           detach(t1);
-        if (if_block)
-          if_block.d(detaching);
+        if (if_block0)
+          if_block0.d(detaching);
         if (detaching)
-          detach(if_block_anchor);
+          detach(t2);
+        if (if_block1)
+          if_block1.d(detaching);
+        if (detaching)
+          detach(t3);
+        if (detaching)
+          detach(br);
         mounted = false;
         dispose();
       }
     };
   }
-  function create_if_block_33(ctx) {
+  function create_if_block_23(ctx) {
     let span;
     let t0_value = (
       /*media*/
@@ -13804,12 +14009,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ctx[30] ? "\u266B" : ""
     );
     let t1;
+    let br;
     let mounted;
     let dispose;
     function click_handler() {
       return (
         /*click_handler*/
-        ctx[17](
+        ctx[16](
           /*media*/
           ctx[28]
         )
@@ -13820,6 +14026,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         span = element("span");
         t0 = text(t0_value);
         t1 = text(t1_value);
+        br = element("br");
         attr(span, "class", "clickable");
         toggle_class(
           span,
@@ -13833,6 +14040,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         insert(target, span, anchor);
         append(span, t0);
         append(span, t1);
+        insert(target, br, anchor);
         if (!mounted) {
           dispose = listen(span, "click", click_handler);
           mounted = true;
@@ -13858,12 +14066,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       d(detaching) {
         if (detaching)
           detach(span);
+        if (detaching)
+          detach(br);
         mounted = false;
         dispose();
       }
     };
   }
-  function create_if_block_43(ctx) {
+  function create_if_block_53(ctx) {
     let t;
     return {
       c() {
@@ -13890,12 +14100,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_23(ctx) {
+  function create_if_block_43(ctx) {
     let t_value = (
       /*humanDuration*/
-      ctx[9](
+      ctx[10](
         /*getDuration*/
-        ctx[10](
+        ctx[11](
           /*$audioid*/
           ctx[1]
         )
@@ -13912,9 +14122,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         if (dirty & /*$audioid*/
         2 && t_value !== (t_value = /*humanDuration*/
-        ctx2[9](
+        ctx2[10](
           /*getDuration*/
-          ctx2[10](
+          ctx2[11](
             /*$audioid*/
             ctx2[1]
           )
@@ -13928,92 +14138,62 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function create_each_block9(ctx) {
-    let t0;
-    let t1;
-    let br;
+    let if_block_anchor;
     function select_block_type(ctx2, dirty) {
       if (
         /*media*/
         ctx2[28].incache || !/*media*/
         ctx2[28].aid
       )
+        return create_if_block_23;
+      if (
+        /*$online*/
+        ctx2[9]
+      )
         return create_if_block_33;
-      return create_else_block4;
     }
     let current_block_type = select_block_type(ctx, -1);
-    let if_block0 = current_block_type(ctx);
-    let if_block1 = (
-      /*$audioid*/
-      ctx[1] == /*media*/
-      ctx[28].vid && /*$audioid*/
-      ctx[1] && create_if_block_23(ctx)
-    );
+    let if_block = current_block_type && current_block_type(ctx);
     return {
       c() {
-        if_block0.c();
-        t0 = space();
-        if (if_block1)
-          if_block1.c();
-        t1 = space();
-        br = element("br");
+        if (if_block)
+          if_block.c();
+        if_block_anchor = empty();
       },
       m(target, anchor) {
-        if_block0.m(target, anchor);
-        insert(target, t0, anchor);
-        if (if_block1)
-          if_block1.m(target, anchor);
-        insert(target, t1, anchor);
-        insert(target, br, anchor);
+        if (if_block)
+          if_block.m(target, anchor);
+        insert(target, if_block_anchor, anchor);
       },
       p(ctx2, dirty) {
-        if (current_block_type === (current_block_type = select_block_type(ctx2, dirty)) && if_block0) {
-          if_block0.p(ctx2, dirty);
+        if (current_block_type === (current_block_type = select_block_type(ctx2, dirty)) && if_block) {
+          if_block.p(ctx2, dirty);
         } else {
-          if_block0.d(1);
-          if_block0 = current_block_type(ctx2);
-          if (if_block0) {
-            if_block0.c();
-            if_block0.m(t0.parentNode, t0);
+          if (if_block)
+            if_block.d(1);
+          if_block = current_block_type && current_block_type(ctx2);
+          if (if_block) {
+            if_block.c();
+            if_block.m(if_block_anchor.parentNode, if_block_anchor);
           }
-        }
-        if (
-          /*$audioid*/
-          ctx2[1] == /*media*/
-          ctx2[28].vid && /*$audioid*/
-          ctx2[1]
-        ) {
-          if (if_block1) {
-            if_block1.p(ctx2, dirty);
-          } else {
-            if_block1 = create_if_block_23(ctx2);
-            if_block1.c();
-            if_block1.m(t1.parentNode, t1);
-          }
-        } else if (if_block1) {
-          if_block1.d(1);
-          if_block1 = null;
         }
       },
       d(detaching) {
-        if_block0.d(detaching);
+        if (if_block) {
+          if_block.d(detaching);
+        }
         if (detaching)
-          detach(t0);
-        if (if_block1)
-          if_block1.d(detaching);
-        if (detaching)
-          detach(t1);
-        if (detaching)
-          detach(br);
+          detach(if_block_anchor);
       }
     };
   }
-  function create_if_block_15(ctx) {
+  function create_if_block_16(ctx) {
     let t_value = (
       /*humanStoptime*/
-      ctx[14](
+      ctx[15](
         /*value*/
         ctx[2][0] * /*getDuration*/
-        ctx[10](
+        ctx[11](
           /*$audioid*/
           ctx[1]
         )
@@ -14030,10 +14210,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       p(ctx2, dirty) {
         if (dirty & /*value, $audioid*/
         6 && t_value !== (t_value = /*humanStoptime*/
-        ctx2[14](
+        ctx2[15](
           /*value*/
           ctx2[2][0] * /*getDuration*/
-          ctx2[10](
+          ctx2[11](
             /*$audioid*/
             ctx2[1]
           )
@@ -14046,12 +14226,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block7(ctx) {
+  function create_if_block8(ctx) {
     let switch_1;
     let updating_value;
     let current;
     function switch_1_value_binding(value) {
-      ctx[20](value);
+      ctx[19](value);
     }
     let switch_1_props = {
       label: "\u81EA\u52D5\u64AD\u653E\u4E0B\u4E00\u5377",
@@ -14132,7 +14312,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let div0;
     let raw0_value = (
       /*htmltext*/
-      ctx[11](
+      ctx[12](
         /*subtitle2*/
         ctx[4]
       ) + ""
@@ -14141,7 +14321,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let div1;
     let raw1_value = (
       /*htmltext*/
-      ctx[11](
+      ctx[12](
         /*subtitle*/
         ctx[3]
       ) + ""
@@ -14157,10 +14337,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     }
     let if_block0 = (
       /*value*/
-      ctx[2][0] > 0 && create_if_block_15(ctx)
+      ctx[2][0] > 0 && create_if_block_16(ctx)
     );
     function slider_value_binding(value) {
-      ctx[19](value);
+      ctx[18](value);
     }
     let slider_props = { min: "0", max: "10" };
     if (
@@ -14175,13 +14355,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     slider.$on(
       "input",
       /*setRemain*/
-      ctx[13]
+      ctx[14]
     );
-    let if_block1 = show_if && create_if_block7(ctx);
+    let if_block1 = show_if && create_if_block8(ctx);
     return {
       c() {
         div2 = element("div");
-        t0 = text("\u4E0B\u8F09\u5F8C\u624D\u53EF\u4EE5\u64AD\u653E\uFF0C\u4E00\u6B21\u4E0B\u8F09\u4E00\u500B\u3002");
+        t0 = text("\u4E0B\u8F09\u5F8C\u624D\u53EF\u4EE5\u64AD\u653E\u3002");
         br0 = element("br");
         t1 = space();
         for (let i = 0; i < each_blocks.length; i += 1) {
@@ -14242,8 +14422,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         current = true;
       },
       p(ctx2, [dirty]) {
-        if (dirty & /*humanDuration, getDuration, $audioid, $mediaurls, downloading, selectmedia, progress, downloadit, downloadicon*/
-        5986) {
+        if (dirty & /*$mediaurls, $audioid, downloading, selectmedia, humanDuration, getDuration, progress, downloadit, downloadicon, $online*/
+        12130) {
           each_value = /*$mediaurls*/
           ctx2[8];
           let i;
@@ -14273,7 +14453,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block0) {
             if_block0.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_15(ctx2);
+            if_block0 = create_if_block_16(ctx2);
             if_block0.c();
             if_block0.m(div2, t6);
           }
@@ -14305,7 +14485,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block7(ctx2);
+            if_block1 = create_if_block8(ctx2);
             if_block1.c();
             transition_in(if_block1, 1);
             if_block1.m(div2, t8);
@@ -14319,7 +14499,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         }
         if ((!current || dirty & /*subtitle2*/
         16) && raw0_value !== (raw0_value = /*htmltext*/
-        ctx2[11](
+        ctx2[12](
           /*subtitle2*/
           ctx2[4]
         ) + ""))
@@ -14327,7 +14507,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ;
         if ((!current || dirty & /*subtitle*/
         8) && raw1_value !== (raw1_value = /*htmltext*/
-        ctx2[11](
+        ctx2[12](
           /*subtitle*/
           ctx2[3]
         ) + ""))
@@ -14359,18 +14539,18 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     };
   }
   function instance15($$self, $$props, $$invalidate) {
-    let $loadingbook;
-    let $activefolioid;
     let $playnextjuan;
     let $audioid;
+    let $activefolioid;
     let $remainrollback;
     let $mediaurls;
-    component_subscribe($$self, loadingbook, ($$value) => $$invalidate(15, $loadingbook = $$value));
-    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(16, $activefolioid = $$value));
+    let $online;
     component_subscribe($$self, playnextjuan, ($$value) => $$invalidate(7, $playnextjuan = $$value));
     component_subscribe($$self, audioid, ($$value) => $$invalidate(1, $audioid = $$value));
+    component_subscribe($$self, activefolioid, ($$value) => $$invalidate(25, $activefolioid = $$value));
     component_subscribe($$self, remainrollback, ($$value) => $$invalidate(26, $remainrollback = $$value));
     component_subscribe($$self, mediaurls, ($$value) => $$invalidate(8, $mediaurls = $$value));
+    component_subscribe($$self, online, ($$value) => $$invalidate(9, $online = $$value));
     let { ptk: ptk2 } = $$props;
     let value = [$remainrollback, 0];
     let subtitles = [], subtitles2 = [], subtitle = "", subtitle2 = "", subtitletimer, nsub = 0;
@@ -14471,11 +14651,6 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         $:
           loadSubtitle($audioid);
       }
-      if ($$self.$$.dirty & /*$activefolioid, $loadingbook*/
-      98304) {
-        $:
-          fetchAudioList($activefolioid, $loadingbook, mediaurls);
-      }
     };
     return [
       ptk2,
@@ -14487,14 +14662,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       progress,
       $playnextjuan,
       $mediaurls,
+      $online,
       humanDuration,
       getDuration,
       htmltext,
       downloadit,
       setRemain,
       humanStoptime,
-      $loadingbook,
-      $activefolioid,
       click_handler,
       click_handler_1,
       slider_value_binding,
@@ -14741,7 +14915,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var workers_default = Workers;
 
   // src/about.svelte
-  function create_else_block5(ctx) {
+  function create_else_block4(ctx) {
     let br0;
     let t0;
     let br1;
@@ -15052,7 +15226,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_16(ctx) {
+  function create_if_block_17(ctx) {
     let hof;
     let current;
     hof = new hof_default({});
@@ -15080,7 +15254,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block8(ctx) {
+  function create_if_block9(ctx) {
     let sponsoring;
     let current;
     sponsoring = new sponsoring_default({});
@@ -15122,7 +15296,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current;
     let mounted;
     let dispose;
-    const if_block_creators = [create_if_block8, create_if_block_16, create_if_block_24, create_else_block5];
+    const if_block_creators = [create_if_block9, create_if_block_17, create_if_block_24, create_else_block4];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -15338,7 +15512,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var swipenext = '<svg width="150px" height="150px" viewBox="0 0 1024 1024" fill="#1f1f1f" ><path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"></path></svg>';
 
   // src/comps/swipeview.svelte
-  function create_if_block9(ctx) {
+  function create_if_block10(ctx) {
     let span;
     let raw_value = (
       /*swipeshapes*/
@@ -15384,7 +15558,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let if_block = (
       /*touching*/
       ctx[1] > -1 && /*direction*/
-      ctx[2] && create_if_block9(ctx)
+      ctx[2] && create_if_block10(ctx)
     );
     const default_slot_template = (
       /*#slots*/
@@ -15467,7 +15641,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block) {
             if_block.p(ctx2, dirty);
           } else {
-            if_block = create_if_block9(ctx2);
+            if_block = create_if_block10(ctx2);
             if_block.c();
             if_block.m(t0.parentNode, t0);
           }
@@ -15695,7 +15869,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ctx[0][0].id
     )
   });
-  function create_if_block_17(ctx) {
+  function create_if_block_18(ctx) {
     let current;
     const default_slot_template = (
       /*#slots*/
@@ -15825,7 +15999,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block10(ctx) {
+  function create_if_block11(ctx) {
     let current;
     const default_slot_template = (
       /*#slots*/
@@ -15897,7 +16071,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current;
     let if_block0 = (
       /*pages*/
-      ctx[0].length && create_if_block_17(ctx)
+      ctx[0].length && create_if_block_18(ctx)
     );
     let each_value = (
       /*neighbors*/
@@ -15912,7 +16086,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     });
     let if_block1 = (
       /*last*/
-      ctx[4] && create_if_block10(ctx)
+      ctx[4] && create_if_block11(ctx)
     );
     return {
       c() {
@@ -15954,7 +16128,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               transition_in(if_block0, 1);
             }
           } else {
-            if_block0 = create_if_block_17(ctx2);
+            if_block0 = create_if_block_18(ctx2);
             if_block0.c();
             transition_in(if_block0, 1);
             if_block0.m(t0.parentNode, t0);
@@ -16000,7 +16174,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block10(ctx2);
+            if_block1 = create_if_block11(ctx2);
             if_block1.c();
             transition_in(if_block1, 1);
             if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
@@ -16397,7 +16571,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     child_ctx[15] = list[i];
     return child_ctx;
   }
-  function create_if_block11(ctx) {
+  function create_if_block12(ctx) {
     let div;
     let span;
     let t0_value = (
@@ -16513,7 +16687,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     ctx[15].heading?.bkid?.indexOf("_variorum");
     let t;
     let div;
-    let if_block = show_if && create_if_block11(ctx);
+    let if_block = show_if && create_if_block12(ctx);
     return {
       c() {
         if (if_block)
@@ -16537,7 +16711,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block) {
             if_block.p(ctx2, dirty);
           } else {
-            if_block = create_if_block11(ctx2);
+            if_block = create_if_block12(ctx2);
             if_block.c();
             if_block.m(t.parentNode, t);
           }
@@ -16997,7 +17171,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     child_ctx[16] = i;
     return child_ctx;
   }
-  function create_if_block12(ctx) {
+  function create_if_block13(ctx) {
     let span0;
     let t1;
     let span1;
@@ -17153,7 +17327,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t;
     let current;
     let if_block = !/*ptkline*/
-    ctx[1] && create_if_block12(ctx);
+    ctx[1] && create_if_block13(ctx);
     let each_value = (
       /*lines*/
       ctx[3]
@@ -17195,7 +17369,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               transition_in(if_block, 1);
             }
           } else {
-            if_block = create_if_block12(ctx2);
+            if_block = create_if_block13(ctx2);
             if_block.c();
             transition_in(if_block, 1);
             if_block.m(div, t);
@@ -17790,7 +17964,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_18(ctx) {
+  function create_if_block_19(ctx) {
     let t;
     return {
       c() {
@@ -17805,7 +17979,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_else_block6(ctx) {
+  function create_else_block5(ctx) {
     let div0;
     let t0;
     let div1;
@@ -18088,7 +18262,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block13(ctx) {
+  function create_if_block14(ctx) {
     let searchhelp;
     let current;
     searchhelp = new searchhelp_default({});
@@ -18587,8 +18761,8 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       each_blocks[i] = create_each_block_3(get_each_context_3(ctx, each_value_3, i));
     }
     let if_block0 = !/*items*/
-    ctx[2].length && create_if_block_18(ctx);
-    const if_block_creators = [create_if_block13, create_else_block6];
+    ctx[2].length && create_if_block_19(ctx);
+    const if_block_creators = [create_if_block14, create_else_block5];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -18722,7 +18896,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ctx2[2].length) {
           if (if_block0) {
           } else {
-            if_block0 = create_if_block_18(ctx2);
+            if_block0 = create_if_block_19(ctx2);
             if_block0.c();
             if_block0.m(div, null);
           }
@@ -19206,7 +19380,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_19(ctx) {
+  function create_if_block_110(ctx) {
     let span;
     let mounted;
     let dispose;
@@ -19253,7 +19427,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block14(ctx) {
+  function create_if_block15(ctx) {
     let span;
     let mounted;
     let dispose;
@@ -19352,10 +19526,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let dispose;
     let if_block0 = show_if_2 && create_if_block_34(ctx);
     let if_block1 = show_if_1 && create_if_block_25(ctx);
-    let if_block2 = show_if && create_if_block_19(ctx);
+    let if_block2 = show_if && create_if_block_110(ctx);
     let if_block3 = (
       /*externallinks*/
-      ctx[4].length && create_if_block14(ctx)
+      ctx[4].length && create_if_block15(ctx)
     );
     searchmain = new searchmain_default({ props: { ptk: (
       /*ptk*/
@@ -19628,7 +19802,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block2) {
             if_block2.p(ctx2, dirty);
           } else {
-            if_block2 = create_if_block_19(ctx2);
+            if_block2 = create_if_block_110(ctx2);
             if_block2.c();
             if_block2.m(div0, t6);
           }
@@ -19643,7 +19817,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block3) {
             if_block3.p(ctx2, dirty);
           } else {
-            if_block3 = create_if_block14(ctx2);
+            if_block3 = create_if_block15(ctx2);
             if_block3.c();
             if_block3.m(div0, null);
           }
@@ -19906,7 +20080,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var textual_default = Textual;
 
   // src/juan.svelte
-  function create_else_block7(ctx) {
+  function create_else_block6(ctx) {
     let pager;
     let current;
     pager = new pager_default({
@@ -19973,7 +20147,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block15(ctx) {
+  function create_if_block16(ctx) {
     let span;
     return {
       c() {
@@ -20058,7 +20232,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let if_block;
     let if_block_anchor;
     let current;
-    const if_block_creators = [create_if_block15, create_else_block7];
+    const if_block_creators = [create_if_block16, create_else_block6];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -20613,7 +20787,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_53(ctx) {
+  function create_if_block_54(ctx) {
     let t;
     return {
       c() {
@@ -20705,7 +20879,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_110(ctx) {
+  function create_if_block_111(ctx) {
     let span;
     let t;
     return {
@@ -20736,7 +20910,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block16(ctx) {
+  function create_if_block17(ctx) {
     let div;
     let dictpopup;
     let current;
@@ -20865,7 +21039,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     );
     let if_block2 = (
       /*ls*/
-      ctx[5] && create_if_block_53(ctx)
+      ctx[5] && create_if_block_54(ctx)
     );
     let if_block3 = (
       /*ls*/
@@ -20879,7 +21053,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     );
     let if_block6 = (
       /*$landscape*/
-      ctx[6] && create_if_block_110(ctx)
+      ctx[6] && create_if_block_111(ctx)
     );
     function foliolist_thetab_binding(value) {
       ctx[16](value);
@@ -20929,7 +21103,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     });
     let if_block7 = (
       /*entries*/
-      ctx[4].length && create_if_block16(ctx)
+      ctx[4].length && create_if_block17(ctx)
     );
     audio = new audio_default({ props: { ptk: (
       /*ptk*/
@@ -21207,7 +21381,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ) {
           if (if_block2) {
           } else {
-            if_block2 = create_if_block_53(ctx2);
+            if_block2 = create_if_block_54(ctx2);
             if_block2.c();
             if_block2.m(span2, null);
           }
@@ -21290,7 +21464,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block6) {
             if_block6.p(ctx2, dirty);
           } else {
-            if_block6 = create_if_block_110(ctx2);
+            if_block6 = create_if_block_111(ctx2);
             if_block6.c();
             if_block6.m(div0, null);
           }
@@ -21373,7 +21547,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               transition_in(if_block7, 1);
             }
           } else {
-            if_block7 = create_if_block16(ctx2);
+            if_block7 = create_if_block17(ctx2);
             if_block7.c();
             transition_in(if_block7, 1);
             if_block7.m(div6, t15);
@@ -21607,7 +21781,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var taptext_default = Taptext;
 
   // src/player.svelte
-  function create_if_block17(ctx) {
+  function create_if_block18(ctx) {
     let source;
     let source_src_value;
     return {
@@ -21637,7 +21811,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let audio;
     let if_block = (
       /*$audioid*/
-      ctx[1] && create_if_block17(ctx)
+      ctx[1] && create_if_block18(ctx)
     );
     return {
       c() {
@@ -21659,7 +21833,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block) {
             if_block.p(ctx2, dirty);
           } else {
-            if_block = create_if_block17(ctx2);
+            if_block = create_if_block18(ctx2);
             if_block.c();
             if_block.m(audio, null);
           }
@@ -22337,7 +22511,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var inputhelper_default = Inputhelper;
 
   // src/left.svelte
-  function create_if_block_111(ctx) {
+  function create_if_block_112(ctx) {
     let chunktext;
     let current;
     chunktext = new chunktext_default({
@@ -22387,7 +22561,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block18(ctx) {
+  function create_if_block19(ctx) {
     let inputhelper;
     let current;
     inputhelper = new inputhelper_default({ props: { ptk: (
@@ -22431,7 +22605,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let if_block;
     let div_style_value;
     let current;
-    const if_block_creators = [create_if_block18, create_if_block_111];
+    const if_block_creators = [create_if_block19, create_if_block_112];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -22546,7 +22720,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var left_default = Left;
 
   // src/app.svelte
-  function create_else_block8(ctx) {
+  function create_else_block7(ctx) {
     let span;
     let t1;
     let a;
@@ -22579,7 +22753,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block19(ctx) {
+  function create_if_block20(ctx) {
     let t0;
     let previous_key = (
       /*$activefolioid*/
@@ -22598,7 +22772,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       ctx[4] && !/*shownewbie*/
       ctx[5] && !/*$landscape*/
       ctx[0] && /*$showsponsor*/
-      ctx[6] == "on" && create_if_block_54(ctx)
+      ctx[6] == "on" && create_if_block_55(ctx)
     );
     let key_block = create_key_block5(ctx);
     let if_block1 = (
@@ -22618,7 +22792,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     );
     let if_block4 = (
       /*shownewbie*/
-      ctx[5] && create_if_block_112(ctx)
+      ctx[5] && create_if_block_113(ctx)
     );
     player2 = new player_default({});
     return {
@@ -22678,7 +22852,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               transition_in(if_block0, 1);
             }
           } else {
-            if_block0 = create_if_block_54(ctx2);
+            if_block0 = create_if_block_55(ctx2);
             if_block0.c();
             transition_in(if_block0, 1);
             if_block0.m(t0.parentNode, t0);
@@ -22778,7 +22952,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               transition_in(if_block4, 1);
             }
           } else {
-            if_block4 = create_if_block_112(ctx2);
+            if_block4 = create_if_block_113(ctx2);
             if_block4.c();
             transition_in(if_block4, 1);
             if_block4.m(t5.parentNode, t5);
@@ -22839,7 +23013,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_54(ctx) {
+  function create_if_block_55(ctx) {
     let paiji;
     let current;
     paiji = new paiji_default({});
@@ -23039,7 +23213,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_112(ctx) {
+  function create_if_block_113(ctx) {
     let newbie_1;
     let current;
     newbie_1 = new newbie_default({
@@ -23077,7 +23251,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current_block_type_index;
     let if_block;
     let current;
-    const if_block_creators = [create_if_block19, create_else_block8];
+    const if_block_creators = [create_if_block20, create_else_block7];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -23158,9 +23332,15 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let ptk2, tofind2;
     registerServiceWorker();
     isAndroid.set(!!navigator.userAgent.match(/Android/i));
+    const handleConnection = () => {
+      online.set(navigator.onLine);
+    };
+    window.addEventListener("online", handleConnection);
+    window.addEventListener("offline", handleConnection);
     let loaded = false, timer;
     onDestroy(() => clearInterval(timer));
     onMount(async () => {
+      await fetchFolioList(folioincache);
       $$invalidate(1, ptk2 = await openPtk("dc"));
       setTimestampPtk(ptk2);
       await openPtk("dc_sanskrit");
