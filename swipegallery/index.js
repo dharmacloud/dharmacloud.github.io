@@ -628,7 +628,7 @@
     }
     component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
   }
-  function init(component, options, instance37, create_fragment40, not_equal, props, append_styles, dirty = [-1]) {
+  function init(component, options, instance37, create_fragment41, not_equal, props, append_styles, dirty = [-1]) {
     const parent_component = current_component;
     set_current_component(component);
     const $$ = component.$$ = {
@@ -667,7 +667,7 @@
     $$.update();
     ready = true;
     run_all($$.before_update);
-    $$.fragment = create_fragment40 ? create_fragment40($$.ctx) : false;
+    $$.fragment = create_fragment41 ? create_fragment41($$.ctx) : false;
     if (options.target) {
       if (options.hydrate) {
         start_hydrating();
@@ -8176,6 +8176,10 @@
     cb && cb("responsed");
     const cache = await caches.open(cachename);
     const cached = await cache.match(url2);
+    if (response.status >= 400) {
+      cb && cb(response.statusText);
+      return;
+    }
     if (cached && response.headers.get("Content-Length") == cached.headers.get("Content-Length")) {
       return response;
     }
@@ -14994,15 +14998,122 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   };
   var workers_default = Workers;
 
+  // src/project.svelte
+  function create_fragment19(ctx) {
+    let div1;
+    return {
+      c() {
+        div1 = element("div");
+        div1.innerHTML = `\u4F5B\u6CD5\u662F\u4E2D\u83EF\u6587\u660E\u7684\u4E09\u5927\u7D44\u6210\u90E8\u4EFD(\u5112\u91CB\u9053)\u4E2D\u552F\u4E00\u7684\u975E\u539F\u751F\u6587\u660E\uFF0C\u4F5B\u7D93\u7684\u7FFB\u8B6F\u548C\u7DE8\u4FEE\u662F\u5927\u898F\u6A21\u7684\u6587\u5316\u4EA4\u6D41\u5DE5\u7A0B\uFF0C\u5176\u5728\u6587\u660E\u53F2\u7684\u5730\u4F4D\uFF0C\u4E0D\u4E9E\u65BC\u963F\u62C9\u4F2F\u7684\u767E\u5E74\u7FFB\u8B6F\u904B\u52D5\u3002
+<br/>\u56E0\u6B64\uFF0C\u4EE5\u4F5B\u6CD5\u70BA\u4F9D\u6258\u7684\u6587\u5316\u7B26\u865F\uFF0C\u80FD\u5920\u5C07\u4E2D\u83EF\u6587\u660E\u7684\u4EE5\u8F03\u5C0F\u7684\u963B\u529B\uFF0C\u6563\u64AD\u81F3\u5112\u5BB6\u6587\u5316\u5708\u4EE5\u5916\u3002
+<br/>\u6F22\u50B3\u4F5B\u6559\u5F92\u7D20\u6709\u52C7\u65BC\u5617\u8A66\u65B0\u79D1\u6280\u7684\u50B3\u7D71\uFF0C\u516C\u5143868\u5E74\uFF08\u5510\u54B8\u901A\u4E5D\u5E74\uFF09\uFF0C\u5728\u96D5\u7248\u5370\u5237\u8853\u840C\u82BD\u4E4B\u521D\uFF0C\u5370\u884C\u4E86\u91D1\u525B\u7D93\uFF08\u6566\u714C\u5510\u523B\u672C\uFF09\uFF0C\u6BD4\u6B50\u6D32\u65E9\u4E94\u767E\u5E74\u3002
+<br/>\u65E5\u672C\u65BC\u4E00\u767E\u5E74\u524D\u7DE8\u4FEE\u7684\u5927\u6B63\u85CF\uFF0C\u662F\u8FD1\u4EE3\u8F03\u70BA\u9F4A\u5168\u3001\u5EE3\u70BA\u6D41\u901A\u7684\u7248\u672C\u3002\u7531\u65BC\u5927\u6B63\u85CF\uFF0C\u4EE5\u53CA\u6536\u9304\u5927\u91CF\u4E2D\u570B\u7956\u5E2B\u8457\u4F5C\u7684\uFF0C\u534D\u7E8C\u85CF\u4E4B\u6210\u5C31\uFF0C\u65E5\u672C\u4EBA\u53EF\u4EE5\u81EA\u8C6A\u5730\u5BA3\u7A31\uFF0C\u6F22\u50B3\u4F5B\u6559\u7684\u7814\u7A76\u91CD\u5FC3\uFF0C\u5DF2\u7531\u4E2D\u571F\u8F49\u79FB\u5230\u6771\u701B\u3002
+
+<br/>\u751F\u70BA\u708E\u9EC3\u5B50\u5B6B\u3001\u8EAB\u70BA\u4E09\u5BF6\u5F1F\u5B50\uFF0C\u611F\u8B1D\u65E5\u672C\u70BA\u4FDD\u5B58\u6F22\u6587\u4F5B\u7D93\u6295\u5165\u7684\u52AA\u529B\uFF0C\u4F46\u4EE5\u4F5B\u6CD5\u6D41\u50B3\u7684\u89D2\u5EA6\u800C\u8A00\uFF0C\u9019\u662F\u6B77\u53F2\u7684\u7570\u5E38\u53CA\u812B\u8ECC(Abberation)\uFF0C\u7406\u7531\u662F\uFF1A
+<br/>\u4E00\uFF09\u5927\u6B63\u85CF\u4FC2\u7531\u5B78\u8005\u4E3B\u5C0E\uFF0C\u800C\u81EA\u4E8C\u5343\u4E94\u767E\u5E74\u524D\uFF0C\u4F5B\u9640\u5165\u6EC5\u4E0D\u4E45\u5F8C\u7684\u738B\u820D\u57CE\u4E03\u8449\u7A9F\u7D50\u96C6\u4EE5\u4F86\uFF0C\u53E4\u4ECA\u4E2D\u5916\u6B77\u4EE3\u7FFB\u8B6F\u7DE8\u4FEE\u4F5B\u7D93\u7686\u7531\u50E7\u5718\u4E3B\u6301\u3002
+<br/><a href="https://www.daizoshuppan.jp/" target="_new">\u5927\u8535\u51FA\u7248\u682A\u5F0F\u4F1A\u793E</a>\u4EE5\u7DE8\u88FD\u6821\u52D8\u7522\u751F\u7684\u6CD5\u5F8B\u4FDD\u969C\uFF0C\u4E0D\u8A31\u4ED6\u4EBA\u8CA9\u552E\u8A72\u7248\u4F5B\u7D93\uFF0C\u9019\u9055\u53CD\u4F5B\u7D93\u81EA\u53E4\u4EE5\u4F86\u81EA\u7531\u516C\u958B\u7684\u5929\u7136\u5C6C\u6027\u3002
+<br/>\u800CCBETA\u7684\u5927\u6B63\u85CF\u6388\u6B0A\u4F86\u81EA\u65BC\u65E5\u672C\uFF0C\u63DB\u8A00\u4E4B\uFF0C\u4EFB\u4F55\u5728\u5176\u4E0A\u7684\u52A0\u5DE5\u8207\u52A0\u503C\uFF0C\u90FD\u53D7\u76F8\u95DC\u8457\u4F5C\u6B0A\u6CD5\u7684<a href="https://www.cbeta.org/copyright.php" target="_new">\u5236\u7D04</a>\u3002
+<br/>\u4E8C\uFF09\u4F5B\u7D93\u4E0D\u80FD\u53EA\u662F\u5B78\u8005\u7684\u7814\u7A76\u6750\u6599\uFF0C\u4E5F\u4E0D\u8A72\u662F\u71D9\u91D1\u7CBE\u5370\u3001\u7D72\u7DA2\u5305\u88F9\u4F46\u537B\u675F\u4E4B\u9AD8\u95A3\u7684\u6587\u7269\uFF0C\u5FC5\u9808\u662F\u4EFB\u4F55\u4EBA\u90FD\u5BB9\u6613\u89AA\u8FD1\u7684\u7D50\u7DE3\u54C1\u3002
+<br/>\u6211\u5011\u7121\u6CD5\u5BB9\u5FCD\u4E00\u5BB6\u65E5\u672C\u66F8\u5546\u9650\u5236\u4F5B\u7D93\u6D41\u901A\u65B9\u5F0F\uFF0C\u6211\u5011\u5FC5\u9808\u634D\u885B\u4F5B\u7D93\u300C\u4E09\u6839\u666E\u88AB\u300D\u7684\u81EA\u7531\u3002
+<br/><br/>\u5982\u4ECA\u6211\u5011\u64C1\u6709\u5E7E\u9805\u524D\u4EBA\u96E3\u4EE5\u60F3\u50CF\u7684\u6280\u8853\u689D\u4EF6\uFF0C\u6B63\u662F\u6253\u7834\u9019\u500B\u5C37\u5C2C\u5C40\u9762\u7684\u5927\u597D\u6A5F\u6703\u3002
+<br/>\u4E00\uFF09\u5927\u6B63\u85CF\u8003\u5BDF\u4E86\u591A\u500B\u4F5B\u7D93\u7248\u672C\uFF0C\u5C07\u7D93\u6587\u7684\u5DEE\u7570\u88FD\u6210\u6821\u52D8\uFF0C\u7BC0\u7701\u4E86\u5B78\u8005\u8490\u96C6\u8CC7\u6599\u7684\u6642\u9593\uFF0C\u9019\u662F\u5927\u6B63\u85CF\u7684\u6838\u5FC3\u50F9\u503C\u3002\u56E0\u70BA\u5728\u7D19\u672C\u6642\u4EE3\uFF0C\u4E0D\u53EF\u80FD\u4EBA\u4EBA\u5750\u64C1\u6240\u6709\u7248\u672C\u7684\u4F5B\u7D93\uFF0C\u6821\u52D8\u5728\u67D0\u500B\u610F\u7FA9\u4E0A\u8D77\u5230\uFF0C\u540C\u6642\u53C3\u7167\u591A\u500B\u7248\u672C\u7684\u4F5C\u7528\u3002
+<br/>\u4F46\u6821\u52D8\u7562\u7ADF\u662F\u4E8C\u624B\u8CC7\u6599\uFF0C\u4FDD\u771F\u5EA6\u9060\u4E0D\u5982\u539F\u59CB\u6587\u7269\uFF0C\u5982\u4ECA\u6240\u6709\u7D93\u6587\u6383\u5716\u6A94\uFF08\u516C\u6709\u8CA1\u7522\uFF09\u5F97\u4EE5\u7D0D\u5165\u884C\u52D5\u8F09\u5177\uFF0C\u53EF\u8F15\u6613\u5730\u8ABF\u95B1\u539F\u59CB\u5716\u7248\uFF0C\u6821\u52D8\u4E4B\u91CD\u8981\u6027\u5927\u6E1B\u3002
+<br/>\u4E8C\uFF09\u53E4\u4EE3\u4F5B\u7D93\u4E3B\u8981\u662F\u5370\u5EA6\u6587\u660E\u548C\u4E2D\u83EF\u6587\u660E\uFF08\u4EE5\u53CA\u5169\u8005\u5E45\u5C04\u5340\u57DF\uFF09\u7684\u7D50\u6676\uFF0C\u4F46\u53D7\u9650\u65BC\u5F7C\u6B64\u9AD8\u6602\u7684\u4EA4\u6D41\u6210\u672C\uFF08\u7576\u5E74\u53D6\u7D93\u672C\u8EAB\u5C31\u662F\u4E5D\u6B7B\u4E00\u751F\u7684\u5192\u96AA\uFF09\uFF0C\u5176\u7DE8\u88FD\u9AD4\u4F8B\u4E0D\u53EF\u80FD\u6709\u4E8B\u5148\u5546\u8B70\u597D\u7684\u898F\u7BC4\uFF0C\u9019\u5C31\u9020\u6210\u5404\u7A2E\u7248\u672C\u548C\u8A9E\u7CFB\u7684\u4F5B\u7D93\u5F88\u96E3\u5F7C\u6B64\u53C3\u7167\u9A57\u8B49\uFF0C\u4E5F\u8B93\u9B5A\u76EE\u6DF7\u73E0\u7684\u73FE\u8C61\u96E3\u4EE5\u675C\u7D55\u8207\u9632\u72AF\u3002
+<br/>\u4E09\uFF09\u5C07\u6240\u6709\u7248\u672C\u548C\u8B6F\u672C\u7684\u4F5B\u7D93\u6574\u5408\uFF0C\u7D71\u4E00\u53C3\u7167\u7CFB\u7D71\u7684\u5DE5\u4F5C\uFF0C\u6211\u5011\u7A31\u4E4B\u70BA\u300C\u7D93\u540C\u8ECC\u300D\uFF0C\u4E0D\u6B62\u662F\u7D93\u6587\u76EE\u9304\u5C64\u7D1A\u7684\u5C0D\u7167\uFF08\u76EE\u9304\u63D0\u4F9B\u67D0\u6A19\u984C\u7684\u5404\u7A2E\u7248\u672C\u548C\u8B6F\u672C\u7684\u6536\u9304\u60C5\u6CC1\u53CA\u6240\u5728\u4F4D\u7F6E\uFF09\uFF0C\u800C\u662F\u66F4\u9032\u4E00\u6B65\u505A\u5230\u6BCF\u500B\u53E5\u5B50\u7684\u7CBE\u6E96\u5C0D\u61C9\u3002
+<br/>\u8209\u4F8B\u4F86\u8AAA\uFF0C\u7D66\u5B9A\u4EFB\u4F55\u4E00\u53E5\u7D93\u6587\uFF0C\u96FB\u8166\u5C07\u6709\u80FD\u529B\u544A\u77E5\u5C0D\u61C9\u7684\u539F\u6587\u4EE5\u53CA\u5404\u7A2E\u8B6F\u6587\uFF0C\u53CD\u4E4B\u4EA6\u7136\u3002\u884C\u8A71\u53EB\u300C\u5E73\u884C\u8A9E\u6599\u5EAB\u300D\uFF0C\u9019\u4E5F\u662F\u81EA\u7136\u8A9E\u8A00\u8655\u7406\uFF08\u5982\u6A5F\u5668\u7FFB\u8B6F\uFF09\u7684\u57FA\u790E\u6750\u6599\u3002
+<br/>\u56DB\uFF09\u300C\u7D93\u540C\u8ECC\u300D\uFF0C\u5373\u4F5B\u7D93\u53E5\u5B50\u5C64\u7D1A\u7684\u5C0D\u61C9\uFF0C\u63D0\u4F9B\u4E86\u6BD4\u8FAD\u5178\u66F4\u6709\u6548\u7684\u5B78\u7FD2\u6750\u6599\uFF0C\u4E5F\u53EF\u4EE5\u5316\u89E3\u8FAD\u5178\u7121\u6CD5\u8655\u7406\u7684\u8A9E\u5883(context)\u548C\u591A\u7FA9(ambiguity) \u95DC\u4FC2\u3002
+<br/>\u95B1\u8B80\u53E4\u6587\u96E3\u9EDE\u4E0D\u5728\u67E5\u5B57\u5178\u672C\u8EAB\uFF0C\u800C\u662F\u67E5\u5230\u4E4B\u5F8C\uFF0C\u7FA9\u9805(senses)\u592A\u591A\uFF0C\u6311\u9078\u56F0\u96E3\uFF0C\u4E00\u500B\u53E5\u5B50\u53EA\u8981\u6709\u5E7E\u500B\u751F\u5B57\uFF0C\u6BCF\u500B\u751F\u5B57\u53C8\u6709\u5E7E\u500B\u53EF\u80FD\u7684\u89E3\u91CB\uFF0C\u7522\u751F\u6B67\u7FA9\u7684\u73FE\u8C61\u5C07\u5448\u6307\u6578\u4E0A\u5347\u3002
+<br/>\u4E94\uFF09\u8FD1\u5E74\u4F86\u96FB\u8166\u8D8A\u4F86\u8D8A\u5FEB\uFF0C\u5373\u4F7F\u662F\u624B\u6A5F\u4E5F\u80FD\u4EE5\u4E0D\u5230\u4E00\u79D2\u4EE5\u67E5\u627E\u6574\u90E8\u5927\u85CF\u7D93\u3002\u65BC\u662F\u74F6\u9838\u662F\u4F7F\u7528\u8005\u8F38\u5165\u6587\u5B57\u7684\u901F\u5EA6\uFF0C\u4EE5\u524D\u662F\u4EBA\u7B49\u96FB\u8166\uFF0C\u5982\u4ECA\u5247\u662F\u53CD\u904E\u4F86\u3002
+<br/>\u56E0\u6B64\uFF0C\u8EDF\u4EF6\u7684\u91CD\u9EDE\u61C9\u8A72\u76E1\u91CF\u638C\u63E1\u8B80\u8005\u6240\u5728\u7684\u8A9E\u5883\uFF0C\u505A\u4E00\u4E9B\u80CC\u666F\u5DE5\u4F5C\u3002\u8209\u4F8B\u800C\u8A00\uFF0C\u8B80\u8005\u5361\u505C\u5728\u67D0\u500B\u9801\u9762\uFF0C\u80CC\u666F\u7A0B\u5F0F\u5C31\u958B\u59CB\u641C\u7F85\u5F59\u6574\u8A72\u9801\u7684\u76F8\u95DC\u8A0A\u606F\uFF0C
+<br/>\u5373\uFF1A\u9019\u4E00\u9801\u6709\u90A3\u4E9B\u8271\u6F80\u540D\u8A5E\uFF1F\u90A3\u4E9B\u6CD5\u5E2B\u8B1B\u904E\u9019\u6BB5\u7D93\u6587\uFF1F\u90A3\u4E9B\u5176\u4ED6\u7D93\u6587\u53EF\u4EE5\u5E6B\u52A9\u95B1\u8B80\u7406\u89E3\u9019\u9801\u7D93\u6587\uFF1F
+<br/>\u516D\uFF09\u53E4\u4EE3\u85CF\u7D93\u96D5\u523B\u8017\u8CBB\u7684\u4EBA\u529B\u7269\u529B\u6975\u70BA\u9A5A\u4EBA\uFF0C\u5F9E\u8B6F\u7D93\u3001\u7DE8\u8F2F\u5718\u968A\uFF0C\u5230\u5A92\u6750\u7684\u6E96\u5099\uFF0C\u6284\u5BEB\u523B\u5B57\u5DE5\uFF0C\u5370\u5237\u53CA\u767C\u884C\u6D41\u901A\uFF0C\u662F\u975E\u5E38\u9F90\u5927\u7684\u751F\u7522\u93C8\u3002
+<br/><br/>\u6210\u529F\u7684\u85CF\u7D93\uFF0C\u81F3\u5C11\u6709\u5169\u500B\u5FC5\u8981\u689D\u4EF6\uFF0C\u4E00\u662F\u653F\u6B0A\u7684\u540C\u610F\uFF0C\u4E8C\u662F\u8DB3\u5920\u7684\u7D93\u8CBB\u3002\u7687\u5E1D\u672A\u5FC5\u771F\u5FC3\u4FE1\u4F5B\uFF0C\u548C\u5C1A\u4E5F\u672A\u5FC5\u670D\u81BA\u7D71\u6CBB\uFF0C\u4F46\u4F5B\u7D93\u60F3\u8981\u5B58\u6D3B\uFF0C\u5377\u9996\u5C11\u4E0D\u4E86\u6B4C\u529F\u980C\u5FB7\u3002
+<br/>\u8D0A\u52A9\u523B\u7D93\u7684\uFF0C\u5A66\u5973\u662F\u4E3B\u529B\uFF0C\u5F8C\u5BAE\u5983\u5973\u7684\u6350\u737B\u8A18\u9304\uFF0C\u5728\u85CF\u7D93\u4E2D\u4FDD\u7559\u5F88\u591A\u3002
+<br/>\u53F0\u7063\u7B2C\u4E00\u90E8\u5927\u6B63\u85CF\uFF0C\u662F\u5B6B\u5F35\u6E05\u63DA\uFF08\u5B6B\u7ACB\u4EBA\u5C07\u8ECD\u592B\u4EBA\uFF09\u8B8A\u8CE3\u9996\u98FE\uFF0C\u5F9E\u65E5\u672C\u904B\u4F86\u7684\u3002
+<br/>\u5982\u4ECA\u6211\u5011\u505A\u624B\u6A5F\u7248\uFF0C\u4E5F\u61C9\u8A72\u6BD4\u7167\u53E4\u4EBA\u7684\u8FA6\u6CD5\uFF0C\u5C07\u7DC7\u7D20\u4E8C\u773E\u7684\u8B77\u6301\u4E8B\u8E5F\u7DE8\u5165\u85CF\u7D93\uFF0C\u6211\u5011\u9019\u4E00\u4EE3\u4E5F\u4F5C\u51FA\u4E86\u7121\u6127\u5148\u4EBA\u3001\u8B93\u5F8C\u4EBA\u611F\u5FF5\u7684\u8CA2\u737B\u3002
+<br/><br/>\u56E0\u6B64\uFF0C\u6211\u5011\u6C7A\u5FC3\u4EE5\u5DF2\u6210\u70BA\u4EBA\u985E\u516C\u5171\u8CA1\u7522\u7684\u4E2D\u571F\u5927\u85CF\u7D93\u70BA\u57FA\u790E\u6750\u6599\uFF0C\u5F9E\u982D\u505A\u8D77\uFF0C\u521D\u6B65\u8A08\u5283\u662F\uFF1A
+<br/>\u4E00\uFF09\u4EE5\u5C71\u6771\u5716\u66F8\u9928\u516C\u5E03\u4E4B\u5341\u4E03\u842C\u62CD\u300C\u9AD8\u6E05\u6C38\u6A02\u5317\u85CF\u5F69\u5716\u300D\u70BA\u57FA\u790E\uFF0C\u88C1\u5207\u6210\u9069\u5408\u624B\u6A5F\u95B1\u8B80\u768450\u842C\u6298\uFF08\u6BCF\u62CD\u4E09\u6298\uFF09\u3002\u6BCF\u62985\u884C\uFF0C\u6BCF\u884C17\u5B57\uFF0C\u517185\u500B\u5B57\u3002
+<br/>\u4E8C\uFF09\u4EE5CBETA\u6821\u5C0D\u904E\u7684\u5927\u6B63\u85CF\u6587\u5B57\u6A94\u70BA\u5DE5\u4F5C\u5E95\u672C\uFF0C\u6309\u6C38\u6A02\u5317\u85CF\u7684\u7248\u5F0F\u9010\u53E5\u91CD\u6392\uFF0C\u9019\u6A23\u5C31\u5B8C\u5168\u64FA\u812B\u5927\u6B63\u85CF\u7684\u88FD\u7248\u6B0A\u3002\u52A0\u5DE5\u6210\u54C1\u63A1\u7528\u6700\u5BEC\u9B06\u7684\u6388\u6B0A\u65B9\u5F0F(CC0)\uFF0C\u9084\u4F5B\u7D93\u4EE5\u6700\u5927\u7684\u81EA\u7531\u3002
+<br/>\u4E09\uFF09\u4F7F\u7528\u8005\u9EDE\u64CA\u7684\u5716\u6A94\u4EFB\u4F55\u4E00\u8655\u3001\u7ACB\u5373\u7531\u8EDF\u9AD4\u63DB\u7B97\u70BA\u5C0D\u61C9\u7684\u6587\u5B57\uFF0C\u53EF\u641C\u5C0B\u3001\u67E5\u5B57\u5178\u3001\u9023\u7D50\u539F\u6587\u3001\u8AA6\u8B80\u3001\u986F\u793A\u76F8\u95DC\u7684\u958B\u793A\u9304\u5F71\u7B49\u3002
+<br/>\u56DB\uFF09\u53D6\u5F97\u8AF8\u5C71\u9577\u8001\u7684\u795D\u798F\uFF0C\u6211\u5011\u7684\u76EE\u6A19\u662F\u53EA\u8981\u6703\u6309\u624B\u6A5F\uFF0C\u90FD\u53EF\u4EE5\u60A0\u904A\u6CD5\u6D77\u3002
+<br/>\u4E94\uFF09\u7531\u65BC\u6C92\u6709\u7248\u6B0A\u7684\u9650\u5236\uFF0C\u53EF\u4EE5\u5C07\u6B64\u6210\u679C\u8207\u7F6E\u5165\u5546\u54C1\u5E73\u677F\u96FB\u8166\uFF0C\u8D08\u8207\u7D93\u6FDF\u6B20\u767C\u9054\u5730\u5340\u7684\u50E7\u4EBA\uFF0C\u4EE5\u505A\u70BA\u570B\u969B\u6587\u5316\u4EA4\u6D41\u7684\u62CC\u624B\u79AE\u3002
+<div class="endmarker">\u203B\u203B\u203B</div>`;
+      },
+      m(target, anchor) {
+        insert(target, div1, anchor);
+      },
+      p: noop,
+      i: noop,
+      o: noop,
+      d(detaching) {
+        if (detaching)
+          detach(div1);
+      }
+    };
+  }
+  var Project = class extends SvelteComponent {
+    constructor(options) {
+      super();
+      init(this, options, null, create_fragment19, safe_not_equal, {});
+    }
+  };
+  var project_default = Project;
+
   // src/about.svelte
+  function create_if_block_44(ctx) {
+    let span;
+    let mounted;
+    let dispose;
+    return {
+      c() {
+        span = element("span");
+        span.textContent = "\u9805\u76EE\u6982\u8981";
+        attr(span, "class", "clickable");
+        toggle_class(
+          span,
+          "selected",
+          /*show*/
+          ctx[0] == 4
+        );
+      },
+      m(target, anchor) {
+        insert(target, span, anchor);
+        if (!mounted) {
+          dispose = listen(
+            span,
+            "click",
+            /*toggleshowproject*/
+            ctx[7]
+          );
+          mounted = true;
+        }
+      },
+      p(ctx2, dirty) {
+        if (dirty & /*show*/
+        1) {
+          toggle_class(
+            span,
+            "selected",
+            /*show*/
+            ctx2[0] == 4
+          );
+        }
+      },
+      d(detaching) {
+        if (detaching)
+          detach(span);
+        mounted = false;
+        dispose();
+      }
+    };
+  }
   function create_else_block4(ctx) {
-    let br0;
     let t0;
-    let br1;
+    let br0;
     let t1;
     let a0;
     let t3;
-    let br2;
+    let br1;
     let t4;
     let hr0;
     let t5;
@@ -15017,24 +15128,22 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t8;
     let hr1;
     let t9;
-    let br3;
+    let br2;
     let t10;
-    let br4;
-    let t11;
     let a1;
-    let t13;
+    let t12;
     let a2;
+    let t14;
+    let br3;
     let t15;
-    let br5;
+    let br4;
     let t16;
-    let br6;
-    let t17;
     let a3;
-    let t19;
+    let t18;
     let div;
     let current;
     function switch0_value_binding(value) {
-      ctx[7](value);
+      ctx[8](value);
     }
     let switch0_props = {
       label: "\u986F\u793A\u6A19\u9EDE\u7B26\u865F",
@@ -15051,7 +15160,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     switch0 = new switch_default({ props: switch0_props });
     binding_callbacks.push(() => bind(switch0, "value", switch0_value_binding));
     function switch1_value_binding(value) {
-      ctx[8](value);
+      ctx[9](value);
     }
     let switch1_props = {
       label: "\u975C\u7F6E\u6642\u986F\u793A\u529F\u5FB7\u82B3\u540D",
@@ -15068,7 +15177,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     switch1 = new switch_default({ props: switch1_props });
     binding_callbacks.push(() => bind(switch1, "value", switch1_value_binding));
     function switch2_value_binding(value) {
-      ctx[9](value);
+      ctx[10](value);
     }
     let switch2_props = {
       label: "\u555F\u52D5\u6642\u986F\u793A\u6B61\u8FCE\u756B\u9762",
@@ -15086,15 +15195,14 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     binding_callbacks.push(() => bind(switch2, "value", switch2_value_binding));
     return {
       c() {
+        t0 = text("\u6C38\u6A02\u85CF \u7248\u672C 2023.8.10\n");
         br0 = element("br");
-        t0 = text("\u7CFB\u7D71\u8A2D\u5B9A \u7248\u672C 2023.8.9\n");
-        br1 = element("br");
         t1 = text("\u8ACB\u52A0\u5165Line ");
         a0 = element("a");
         a0.textContent = "\u5B98\u65B9\u5E33\u865F";
         t3 = text("@dharmacloud\n");
-        br2 = element("br");
-        t4 = text("WeChat ID: Sukhanika\n");
+        br1 = element("br");
+        t4 = text("\u7A0B\u5E8F\u554F\u984C\u56DE\u5831:Sukhanika (WeChat, GMail)\n");
         hr0 = element("hr");
         t5 = space();
         create_component(switch0.$$.fragment);
@@ -15104,24 +15212,22 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         create_component(switch2.$$.fragment);
         t8 = space();
         hr1 = element("hr");
-        t9 = space();
-        br3 = element("br");
-        t10 = text("\u672C\u5716\u6587\u5C0D\u7167\u6578\u64DA\u5EAB\u4E3B\u8981\u57FA\u65BC\u4EE5\u4E0B\u7D20\u6750\uFF1A\n");
-        br4 = element("br");
-        t11 = text("\u6C38\u6A02\u5357\u5317\u85CF(\u5C71\u6771\u7701\u5716\u66F8\u9928)\u3001\u91D1\u525B\u7D93\u96C6\u8A3B(\u6731\u68E3)\u3001\u68B5\u6587\u539F\u5178(");
+        t9 = text("\n\u672C\u5716\u6587\u5C0D\u7167\u6578\u64DA\u5EAB\u4E3B\u8981\u57FA\u65BC\u4EE5\u4E0B\u7D20\u6750\uFF1A\n");
+        br2 = element("br");
+        t10 = text("\u6C38\u6A02\u5357\u5317\u85CF(\u5C71\u6771\u7701\u5716\u66F8\u9928)\u3001\u91D1\u525B\u7D93\u96C6\u8A3B(\u6731\u68E3)\u3001\u68B5\u6587\u539F\u5178(");
         a1 = element("a");
         a1.textContent = "Digital Sanskrit Buddhist Canon";
-        t13 = text(", ");
+        t12 = text(", ");
         a2 = element("a");
         a2.textContent = "Ancient Buddhist Texts";
-        t15 = text(")\u3001\n\u7D93\u6587\u65B0\u5F0F\u6A19\u9EDE(CBETA)\u3001\u68B5\u6F22\u4F5B\u7D93\u5C0D\u52D8\u53E2\u66F8\uFF08\u9EC3\u5BF6\u751F\uFF0C\u4E2D\u570B\u793E\u6703\u79D1\u5B78\u51FA\u7248\u793E\uFF09\u3001\u7DAD\u57FA\u767E\u79D1\u53CA\u6578\u7A2E\u4F5B\u5B78\u8A5E\u5178\u4E4B\u8A5E\u689D\u3001Youtube \u516C\u958B\u5F71\u7247\u3002\n");
-        br5 = element("br");
-        t16 = text("\u6578\u5B57\u52A0\u5DE5\uFF1A\u6309\u624B\u6A5F\u6BD4\u4F8B\u88C1\u5716\u53CA\u4FEE\u5716\u3001\u6587\u5B57\u8207\u5716\u7247\u9010\u884C\u5C0D\u9F4A\u3001\u539F\u6587\u53CA\u5404\u7A2E\u8B6F\u672C\u9010\u53E5\u5C0D\u9F4A\u3001\u8AA6\u7D93\u8207\u5716\u7248\u540C\u6B65\u6642\u9593\u8EF8\u3002\n");
-        br6 = element("br");
-        t17 = text("\u6388\u6B0A\u65B9\u5F0F\uFF1A");
+        t14 = text(")\u3001\n\u7D93\u6587\u53CA\u65B0\u5F0F\u6A19\u9EDE(CBETA)\u3001\u68B5\u6F22\u4F5B\u7D93\u5C0D\u52D8\u53E2\u66F8\uFF08\u9EC3\u5BF6\u751F\uFF0C\u4E2D\u570B\u793E\u6703\u79D1\u5B78\u51FA\u7248\u793E\uFF09\u3001\u7DAD\u57FA\u767E\u79D1\u53CA\u6578\u7A2E\u4F5B\u5B78\u8A5E\u5178\u4E4B\u8A5E\u689D\u3001Youtube \u516C\u958B\u5F71\u7247\u3002\n");
+        br3 = element("br");
+        t15 = text("\u6578\u5B57\u52A0\u5DE5\uFF1A\u6309\u624B\u6A5F\u6BD4\u4F8B\u88C1\u5716\u53CA\u4FEE\u5716\u3001\u6587\u5B57\u8207\u5716\u7247\u9010\u884C\u5C0D\u9F4A\u3001\u539F\u6587\u53CA\u5404\u7A2E\u8B6F\u672C\u9010\u53E5\u5C0D\u9F4A\u3001\u8AA6\u7D93\u8207\u5716\u7248\u540C\u6B65\u6642\u9593\u8EF8\u3002\n");
+        br4 = element("br");
+        t16 = text("\u6388\u6B0A\u65B9\u5F0F\uFF1A");
         a3 = element("a");
         a3.textContent = "Creative Common Zero";
-        t19 = space();
+        t18 = space();
         div = element("div");
         div.textContent = "\u203B\u203B\u203B";
         attr(a0, "href", "https://lin.ee/1tmTKXi");
@@ -15133,13 +15239,12 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         attr(div, "class", "endmarker");
       },
       m(target, anchor) {
-        insert(target, br0, anchor);
         insert(target, t0, anchor);
-        insert(target, br1, anchor);
+        insert(target, br0, anchor);
         insert(target, t1, anchor);
         insert(target, a0, anchor);
         insert(target, t3, anchor);
-        insert(target, br2, anchor);
+        insert(target, br1, anchor);
         insert(target, t4, anchor);
         insert(target, hr0, anchor);
         insert(target, t5, anchor);
@@ -15151,20 +15256,18 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         insert(target, t8, anchor);
         insert(target, hr1, anchor);
         insert(target, t9, anchor);
-        insert(target, br3, anchor);
+        insert(target, br2, anchor);
         insert(target, t10, anchor);
-        insert(target, br4, anchor);
-        insert(target, t11, anchor);
         insert(target, a1, anchor);
-        insert(target, t13, anchor);
+        insert(target, t12, anchor);
         insert(target, a2, anchor);
+        insert(target, t14, anchor);
+        insert(target, br3, anchor);
         insert(target, t15, anchor);
-        insert(target, br5, anchor);
+        insert(target, br4, anchor);
         insert(target, t16, anchor);
-        insert(target, br6, anchor);
-        insert(target, t17, anchor);
         insert(target, a3, anchor);
-        insert(target, t19, anchor);
+        insert(target, t18, anchor);
         insert(target, div, anchor);
         current = true;
       },
@@ -15213,11 +15316,9 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       },
       d(detaching) {
         if (detaching)
-          detach(br0);
-        if (detaching)
           detach(t0);
         if (detaching)
-          detach(br1);
+          detach(br0);
         if (detaching)
           detach(t1);
         if (detaching)
@@ -15225,7 +15326,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (detaching)
           detach(t3);
         if (detaching)
-          detach(br2);
+          detach(br1);
         if (detaching)
           detach(t4);
         if (detaching)
@@ -15246,35 +15347,59 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         if (detaching)
           detach(t9);
         if (detaching)
-          detach(br3);
+          detach(br2);
         if (detaching)
           detach(t10);
         if (detaching)
-          detach(br4);
-        if (detaching)
-          detach(t11);
-        if (detaching)
           detach(a1);
         if (detaching)
-          detach(t13);
+          detach(t12);
         if (detaching)
           detach(a2);
         if (detaching)
+          detach(t14);
+        if (detaching)
+          detach(br3);
+        if (detaching)
           detach(t15);
         if (detaching)
-          detach(br5);
+          detach(br4);
         if (detaching)
           detach(t16);
         if (detaching)
-          detach(br6);
-        if (detaching)
-          detach(t17);
-        if (detaching)
           detach(a3);
         if (detaching)
-          detach(t19);
+          detach(t18);
         if (detaching)
           detach(div);
+      }
+    };
+  }
+  function create_if_block_34(ctx) {
+    let projectintro;
+    let current;
+    projectintro = new project_default({});
+    return {
+      c() {
+        create_component(projectintro.$$.fragment);
+      },
+      m(target, anchor) {
+        mount_component(projectintro, target, anchor);
+        current = true;
+      },
+      p: noop,
+      i(local) {
+        if (current)
+          return;
+        transition_in(projectintro.$$.fragment, local);
+        current = true;
+      },
+      o(local) {
+        transition_out(projectintro.$$.fragment, local);
+        current = false;
+      },
+      d(detaching) {
+        destroy_component(projectintro, detaching);
       }
     };
   }
@@ -15362,7 +15487,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment19(ctx) {
+  function create_fragment20(ctx) {
     let div0;
     let span0;
     let t1;
@@ -15370,13 +15495,24 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let t3;
     let span2;
     let t5;
+    let t6;
     let div1;
     let current_block_type_index;
-    let if_block;
+    let if_block1;
     let current;
     let mounted;
     let dispose;
-    const if_block_creators = [create_if_block9, create_if_block_17, create_if_block_24, create_else_block4];
+    let if_block0 = (
+      /*$showpunc*/
+      ctx[1] !== "on" && create_if_block_44(ctx)
+    );
+    const if_block_creators = [
+      create_if_block9,
+      create_if_block_17,
+      create_if_block_24,
+      create_if_block_34,
+      create_else_block4
+    ];
     const if_blocks = [];
     function select_block_type(ctx2, dirty) {
       if (
@@ -15394,10 +15530,16 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ctx2[0] == 3
       )
         return 2;
-      return 3;
+      if (
+        /*show*/
+        ctx2[0] == 4 && /*$showpunc*/
+        ctx2[1] !== "on"
+      )
+        return 3;
+      return 4;
     }
     current_block_type_index = select_block_type(ctx, -1);
-    if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
     return {
       c() {
         div0 = element("div");
@@ -15410,8 +15552,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         span2 = element("span");
         span2.textContent = "\u5DE5\u4F5C\u4EBA\u54E1";
         t5 = space();
+        if (if_block0)
+          if_block0.c();
+        t6 = space();
         div1 = element("div");
-        if_block.c();
+        if_block1.c();
         attr(span0, "class", "clickable");
         toggle_class(
           span0,
@@ -15443,7 +15588,10 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         append(div0, span1);
         append(div0, t3);
         append(div0, span2);
-        insert(target, t5, anchor);
+        append(div0, t5);
+        if (if_block0)
+          if_block0.m(div0, null);
+        insert(target, t6, anchor);
         insert(target, div1, anchor);
         if_blocks[current_block_type_index].m(div1, null);
         current = true;
@@ -15499,6 +15647,21 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             ctx2[0] == 3
           );
         }
+        if (
+          /*$showpunc*/
+          ctx2[1] !== "on"
+        ) {
+          if (if_block0) {
+            if_block0.p(ctx2, dirty);
+          } else {
+            if_block0 = create_if_block_44(ctx2);
+            if_block0.c();
+            if_block0.m(div0, null);
+          }
+        } else if (if_block0) {
+          if_block0.d(1);
+          if_block0 = null;
+        }
         let previous_block_index = current_block_type_index;
         current_block_type_index = select_block_type(ctx2, dirty);
         if (current_block_type_index === previous_block_index) {
@@ -15509,32 +15672,34 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
             if_blocks[previous_block_index] = null;
           });
           check_outros();
-          if_block = if_blocks[current_block_type_index];
-          if (!if_block) {
-            if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
-            if_block.c();
+          if_block1 = if_blocks[current_block_type_index];
+          if (!if_block1) {
+            if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
+            if_block1.c();
           } else {
-            if_block.p(ctx2, dirty);
+            if_block1.p(ctx2, dirty);
           }
-          transition_in(if_block, 1);
-          if_block.m(div1, null);
+          transition_in(if_block1, 1);
+          if_block1.m(div1, null);
         }
       },
       i(local) {
         if (current)
           return;
-        transition_in(if_block);
+        transition_in(if_block1);
         current = true;
       },
       o(local) {
-        transition_out(if_block);
+        transition_out(if_block1);
         current = false;
       },
       d(detaching) {
         if (detaching)
           detach(div0);
+        if (if_block0)
+          if_block0.d();
         if (detaching)
-          detach(t5);
+          detach(t6);
         if (detaching)
           detach(div1);
         if_blocks[current_block_type_index].d();
@@ -15554,6 +15719,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     const toggleshowsponsoring = () => $$invalidate(0, show = show == 1 ? 0 : 1);
     const toggleshowdonors = () => $$invalidate(0, show = show == 2 ? 0 : 2);
     const toggleshowworkers = () => $$invalidate(0, show = show == 3 ? 0 : 3);
+    const toggleshowproject = () => $$invalidate(0, show = show == 4 ? 0 : 4);
     function switch0_value_binding(value) {
       $showpunc = value;
       showpunc.set($showpunc);
@@ -15574,6 +15740,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       toggleshowsponsoring,
       toggleshowdonors,
       toggleshowworkers,
+      toggleshowproject,
       switch0_value_binding,
       switch1_value_binding,
       switch2_value_binding
@@ -15582,7 +15749,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var About = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance17, create_fragment19, safe_not_equal, {});
+      init(this, options, instance17, create_fragment20, safe_not_equal, {});
     }
   };
   var about_default = About;
@@ -15626,7 +15793,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment20(ctx) {
+  function create_fragment21(ctx) {
     let t0;
     let div;
     let span;
@@ -15856,7 +16023,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Swipeview = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance18, create_fragment20, safe_not_equal, { onSwipe: 8, caption: 0 });
+      init(this, options, instance18, create_fragment21, safe_not_equal, { onSwipe: 8, caption: 0 });
     }
   };
   var swipeview_default = Swipeview;
@@ -16301,7 +16468,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment21(ctx) {
+  function create_fragment22(ctx) {
     let swipeview;
     let current;
     swipeview = new swipeview_default({
@@ -16458,7 +16625,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Pager = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance19, create_fragment21, safe_not_equal, {
+      init(this, options, instance19, create_fragment22, safe_not_equal, {
         pages: 0,
         count: 6,
         now: 1,
@@ -16534,7 +16701,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment22(ctx) {
+  function create_fragment23(ctx) {
     let pager;
     let current;
     pager = new pager_default({
@@ -16647,7 +16814,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Sentencenav = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance20, create_fragment22, safe_not_equal, { ptk: 4 });
+      init(this, options, instance20, create_fragment23, safe_not_equal, { ptk: 4 });
     }
   };
   var sentencenav_default = Sentencenav;
@@ -16817,7 +16984,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment23(ctx) {
+  function create_fragment24(ctx) {
     let div2;
     let sentencenav0;
     let t0;
@@ -17049,7 +17216,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Translations = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance21, create_fragment23, safe_not_equal, { closePopup: 8, address: 0, ptk: 1 });
+      init(this, options, instance21, create_fragment24, safe_not_equal, { closePopup: 8, address: 0, ptk: 1 });
     }
   };
   var translations_default = Translations;
@@ -17117,7 +17284,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment24(ctx) {
+  function create_fragment25(ctx) {
     let pager;
     let current;
     pager = new pager_default({
@@ -17246,7 +17413,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Chunknav = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance22, create_fragment24, safe_not_equal, { ptk: 3 });
+      init(this, options, instance22, create_fragment25, safe_not_equal, { ptk: 3 });
     }
   };
   var chunknav_default = Chunknav;
@@ -17409,7 +17576,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment25(ctx) {
+  function create_fragment26(ctx) {
     let div;
     let t;
     let current;
@@ -17601,7 +17768,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Chunktext = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance23, create_fragment25, safe_not_equal, { ptk: 0, ptkline: 1 });
+      init(this, options, instance23, create_fragment26, safe_not_equal, { ptk: 0, ptkline: 1 });
     }
   };
   var chunktext_default = Chunktext;
@@ -17657,7 +17824,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment26(ctx) {
+  function create_fragment27(ctx) {
     let div;
     let sentencenav;
     let t;
@@ -17776,13 +17943,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Sourcetext = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance24, create_fragment26, safe_not_equal, { ptk: 0 });
+      init(this, options, instance24, create_fragment27, safe_not_equal, { ptk: 0 });
     }
   };
   var sourcetext_default = Sourcetext;
 
   // src/variorum.svelte
-  function create_fragment27(ctx) {
+  function create_fragment28(ctx) {
     let div1;
     let sentencenav0;
     let t0;
@@ -17919,13 +18086,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Variorum = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance25, create_fragment27, safe_not_equal, { ptk: 0 });
+      init(this, options, instance25, create_fragment28, safe_not_equal, { ptk: 0 });
     }
   };
   var variorum_default = Variorum;
 
   // src/searchhelp.svelte
-  function create_fragment28(ctx) {
+  function create_fragment29(ctx) {
     let div;
     return {
       c() {
@@ -17957,7 +18124,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Searchhelp = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, null, create_fragment28, safe_not_equal, {});
+      init(this, options, null, create_fragment29, safe_not_equal, {});
     }
   };
   var searchhelp_default = Searchhelp;
@@ -18826,7 +18993,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment29(ctx) {
+  function create_fragment30(ctx) {
     let div;
     let input;
     let input_size_value;
@@ -19250,7 +19417,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Searchmain = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance26, create_fragment29, safe_not_equal, { ptk: 18 }, null, [-1, -1]);
+      init(this, options, instance26, create_fragment30, safe_not_equal, { ptk: 18 }, null, [-1, -1]);
     }
   };
   var searchmain_default = Searchmain;
@@ -19300,7 +19467,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment30(ctx) {
+  function create_fragment31(ctx) {
     let each_1_anchor;
     let each_value = (
       /*links*/
@@ -19367,13 +19534,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Externals = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance27, create_fragment30, safe_not_equal, { links: 0 });
+      init(this, options, instance27, create_fragment31, safe_not_equal, { links: 0 });
     }
   };
   var externals_default = Externals;
 
   // src/textual.svelte
-  function create_if_block_34(ctx) {
+  function create_if_block_35(ctx) {
     let span;
     let mounted;
     let dispose;
@@ -19561,7 +19728,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment31(ctx) {
+  function create_fragment32(ctx) {
     let div0;
     let span0;
     let t1;
@@ -19611,7 +19778,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let current;
     let mounted;
     let dispose;
-    let if_block0 = show_if_2 && create_if_block_34(ctx);
+    let if_block0 = show_if_2 && create_if_block_35(ctx);
     let if_block1 = show_if_1 && create_if_block_25(ctx);
     let if_block2 = show_if && create_if_block_110(ctx);
     let if_block3 = (
@@ -19845,7 +20012,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block0) {
             if_block0.p(ctx2, dirty);
           } else {
-            if_block0 = create_if_block_34(ctx2);
+            if_block0 = create_if_block_35(ctx2);
             if_block0.c();
             if_block0.m(div0, t4);
           }
@@ -20166,7 +20333,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Textual = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance28, create_fragment31, safe_not_equal, { ptk: 0, closePopup: 1 });
+      init(this, options, instance28, create_fragment32, safe_not_equal, { ptk: 0, closePopup: 1 });
     }
   };
   var textual_default = Textual;
@@ -20319,7 +20486,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment32(ctx) {
+  function create_fragment33(ctx) {
     let current_block_type_index;
     let if_block;
     let if_block_anchor;
@@ -20450,7 +20617,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Juan = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance29, create_fragment32, safe_not_equal, { closePopup: 3, ptk: 4 });
+      init(this, options, instance29, create_fragment33, safe_not_equal, { closePopup: 3, ptk: 4 });
     }
   };
   var juan_default = Juan;
@@ -20578,7 +20745,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment33(ctx) {
+  function create_fragment34(ctx) {
     let div2;
     let juan;
     let t0;
@@ -20844,7 +21011,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Toc = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance30, create_fragment33, safe_not_equal, { ptk: 0, closePopup: 1 });
+      init(this, options, instance30, create_fragment34, safe_not_equal, { ptk: 0, closePopup: 1 });
     }
   };
   var toc_default = Toc;
@@ -20902,7 +21069,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_44(ctx) {
+  function create_if_block_45(ctx) {
     let t;
     return {
       c() {
@@ -20917,7 +21084,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_35(ctx) {
+  function create_if_block_36(ctx) {
     let t;
     return {
       c() {
@@ -21110,11 +21277,11 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     );
     let if_block3 = (
       /*ls*/
-      ctx[5] && create_if_block_44(ctx)
+      ctx[5] && create_if_block_45(ctx)
     );
     let if_block4 = (
       /*ls*/
-      ctx[5] && create_if_block_35(ctx)
+      ctx[5] && create_if_block_36(ctx)
     );
     let if_block5 = (
       /*ls*/
@@ -21478,7 +21645,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ) {
           if (if_block3) {
           } else {
-            if_block3 = create_if_block_44(ctx2);
+            if_block3 = create_if_block_45(ctx2);
             if_block3.c();
             if_block3.m(span2, null);
           }
@@ -21501,7 +21668,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
         ) {
           if (if_block4) {
           } else {
-            if_block4 = create_if_block_35(ctx2);
+            if_block4 = create_if_block_36(ctx2);
             if_block4.c();
             if_block4.m(span3, null);
           }
@@ -21734,7 +21901,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment34(ctx) {
+  function create_fragment35(ctx) {
     let previous_key = (
       /*$landscape*/
       ctx[6]
@@ -21868,7 +22035,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Taptext = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance31, create_fragment34, safe_not_equal, { tofind: 8, address: 0, closePopup: 1 });
+      init(this, options, instance31, create_fragment35, safe_not_equal, { tofind: 8, address: 0, closePopup: 1 });
     }
   };
   var taptext_default = Taptext;
@@ -21944,7 +22111,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment35(ctx) {
+  function create_fragment36(ctx) {
     let previous_key = (
       /*$audioid*/
       ctx[1]
@@ -22035,13 +22202,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Player = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance32, create_fragment35, safe_not_equal, {});
+      init(this, options, instance32, create_fragment36, safe_not_equal, {});
     }
   };
   var player_default = Player;
 
   // src/newbie.svelte
-  function create_fragment36(ctx) {
+  function create_fragment37(ctx) {
     let div1;
     let div0;
     let span;
@@ -22198,7 +22365,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Newbie = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance33, create_fragment36, safe_not_equal, { closePopup: 0 });
+      init(this, options, instance33, create_fragment37, safe_not_equal, { closePopup: 0 });
     }
   };
   var newbie_default = Newbie;
@@ -22378,7 +22545,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment37(ctx) {
+  function create_fragment38(ctx) {
     let div0;
     let t0;
     let hr0;
@@ -22598,7 +22765,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Inputhelper = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance34, create_fragment37, safe_not_equal, { ptk: 4 });
+      init(this, options, instance34, create_fragment38, safe_not_equal, { ptk: 4 });
     }
   };
   var inputhelper_default = Inputhelper;
@@ -22692,7 +22859,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment38(ctx) {
+  function create_fragment39(ctx) {
     let div;
     let current_block_type_index;
     let if_block;
@@ -22807,7 +22974,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var Left = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance35, create_fragment38, safe_not_equal, { ptk: 0 });
+      init(this, options, instance35, create_fragment39, safe_not_equal, { ptk: 0 });
     }
   };
   var left_default = Left;
@@ -22871,13 +23038,13 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
     let key_block = create_key_block5(ctx);
     let if_block1 = (
       /*$leftmode*/
-      ctx[9] !== "folio" && create_if_block_45(ctx)
+      ctx[9] !== "folio" && create_if_block_46(ctx)
     );
     let if_block2 = (
       /*shownewbie*/
       (ctx[5] || /*showdict*/
       ctx[4]) && !/*$landscape*/
-      ctx[0] && create_if_block_36(ctx)
+      ctx[0] && create_if_block_37(ctx)
     );
     let if_block3 = (
       /*showdict*/
@@ -22982,7 +23149,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
               transition_in(if_block1, 1);
             }
           } else {
-            if_block1 = create_if_block_45(ctx2);
+            if_block1 = create_if_block_46(ctx2);
             if_block1.c();
             transition_in(if_block1, 1);
             if_block1.m(t2.parentNode, t2);
@@ -23003,7 +23170,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
           if (if_block2) {
             if_block2.p(ctx2, dirty);
           } else {
-            if_block2 = create_if_block_36(ctx2);
+            if_block2 = create_if_block_37(ctx2);
             if_block2.c();
             if_block2.m(t3.parentNode, t3);
           }
@@ -23192,7 +23359,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_45(ctx) {
+  function create_if_block_46(ctx) {
     let left;
     let current;
     left = new left_default({ props: { ptk: (
@@ -23230,7 +23397,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_if_block_36(ctx) {
+  function create_if_block_37(ctx) {
     let span;
     let mounted;
     let dispose;
@@ -23340,7 +23507,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
       }
     };
   }
-  function create_fragment39(ctx) {
+  function create_fragment40(ctx) {
     let div;
     let current_block_type_index;
     let if_block;
@@ -23496,7 +23663,7 @@ transition-duration: ${touch_end ? transitionDuration : "0"}ms;
   var App = class extends SvelteComponent {
     constructor(options) {
       super();
-      init(this, options, instance36, create_fragment39, safe_not_equal, {});
+      init(this, options, instance36, create_fragment40, safe_not_equal, {});
     }
   };
   var app_default = App;
