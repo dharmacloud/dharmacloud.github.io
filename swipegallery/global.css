@@ -1,36 +1,39 @@
-body{
-  overflow:hidden;
-  font-family:"Tahoma","San-Serif" , "Microsoft Yahei UI Light";
-  margin: 0px;
-}
-@media (orientation: portrait) {
-  body {
-    font-size:12px;
-  }
-  button {font-size:1em}
-}
-
-@media (orientation: landscape) {
-  body {
-    font-size:12px;
-  }
-}
-
 
 :root{
   --pinmark : rgba(247, 4, 4, 0.4);
   --selected-color:rgb(255, 173, 42);
   --menubar-color:rgb(143, 81, 0);
   --n:rgba(233, 233, 233, 0.7);
+  --appbackground:rgba(255, 235, 164);
+  --doc-height:100vh;
+  --textsize:2em;
+  --track-bg: #fffdf6;
+  --progress-bg: #fef1a6;
+  --thumb-bg: #d27700;
+  --hyperlink:#f99008;
+  --hit : rgb(255, 0, 0);  
 }
+
+body{
+  overflow:hidden;
+  font-family:"Tahoma","San-Serif" , "Microsoft Yahei UI Light";
+  margin: 0;
+  padding:0;
+  height: 100vh; /* fallback for Js load */
+  height: var(--doc-height);
+  min-height: 100vh;
+}
+
+
 .popup { position:absolute;top:0;left:0;width:100%;height:100%;
-  background:rgba(255, 235, 164);overflow:hidden;z-index: 99}
+  background:var(--appbackground);overflow:hidden;z-index: 99}
 .sidepaiji {position:absolute;overflow:hidden;top:0;height:100%}
-.tabs {--webkit-user-select: none;overflow:hidden  ; font-size:2em;
+.tabs {--webkit-user-select: none;overflow:hidden  ; font-size:var(--textsize);
   user-select: none;padding-left: 0.05em; background:var(--menubar-color);color:gold}
 
-.loading {font-size:2em}
-.app {height:100vh;top:0px;background-color: rgb(243, 208, 160); } /* splitpane divider need this */
+
+.app {background-color: rgb(243, 208, 160); } /* splitpane divider need this */
+
 .closepopup {padding-right:0.3em;cursor:pointer;z-index:999;font-size:2em;position:absolute;right:0;top:0;color:black;font-weight: bold;}
 
 select {font-size:2em}
@@ -70,15 +73,16 @@ select {font-size:2em}
   position:relative
 }
 
-.book {font-size:2em;cursor:pointer}
+.bodytext {font-size:var(--textsize)}
+
+.book {font-size:var(--textsize);cursor:pointer}
 .refer {text-decoration: underline;}
 .clickable {cursor:pointer;}
 
 .author {border:gray solid 1px ;border-radius: 0.25em;}
 .selecteditem {background:rgb(255, 173, 42)}
 .hr {height: 1px ;background:black}
-.paralleltext {font-size:2em;}
-.toctext {font-size:2.3em;}
+
 
 .tocitem{margin-left: 0.5em;cursor: pointer;}
 .endmarker {width:100%;text-align: center;height: 3em;}
@@ -101,37 +105,15 @@ select {font-size:2em}
 
 
 
-.track {
-  margin: 0.2em 1em;
-  position: relative;
-  height: 1em;
-  width: calc(100% - 2em);
-  border-radius: 0.6em;
-  background: var(--track-bg, #fffdf6);
-}
 
-.progress {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  border-radius: 100vh;
-  opacity:0.7;
-  background: var(--progress-bg, #fef1a6);
-}
 
-.thumb {
-  width: 1.2em;
-  height: 1.2em;
-  border-radius: 0.6em;
-  background: var(--thumb-bg, #d27700);
-}
+
 .subtitle{
   font-size:1em;
 }
+
 .pagenumber {position:absolute ; bottom:0.5em;font-size: 2em;left:0.5em;z-index: 99;color:brown;pointer-events: none;}
-.playbtn {cursor:pointer; position:absolute ; bottom:0.1em; right:0.1em;font-size: 4em;z-index: 99;color:brown;opacity: 0.7;}
+.playbtn {cursor:pointer; position:absolute ; bottom:0.5em; right:0.1em;font-size: 4em;z-index: 99;color:brown;opacity: 0.7;}
 .favoritebtn {cursor:pointer; position:absolute ; top:0px;font-size: 3em;right:0.1em;z-index: 99;color:brown;opacity: 0.7;}
 .favoriteitem {cursor:pointer;padding-right:0.3em;padding-left:0.3em}
 @keyframes blinker {
@@ -218,10 +200,10 @@ select {font-size:2em}
   position:absolute;
   padding-left:0.5em;
   line-height: 100%;
-  padding-top:60vh;
+  padding-top:55vh;
 } 
 .sidesponsortext2{
-  font-size:3.8vh;
+  font-size:3.5vh;
   width:1em;
   position:absolute;
   padding-left:2em;
@@ -231,7 +213,8 @@ select {font-size:2em}
 .dictgroup {background:#ffb85b}
 
 
-a{color:#563100}
+a {color:var(--hyperlink)}
+.hyperlink {color:var(--hyperlink)}
 
 .parallelfolio {font-size:90% ; padding-left:0.1em;padding-right:0.1em;border-radius: 5px;border:#d27700 1px dotted}
 
@@ -242,7 +225,6 @@ a{color:#563100}
 
 .hitbtn {padding-left:0.2em;padding-right:0.5em;color:red;cursor:pointer;user-select: none}
 .scopebtn {padding-left:0.3em;cursor:pointer;user-select: none;}
-.pager {font-size:2.5em}
 
 .hit {color:red}
 .oddline{background:#fbf4cc}
@@ -253,5 +235,26 @@ a{color:#563100}
 .uncache {color:gray}
 .bankaccount {color:brown;font-weight: bold;}
 .hof {color:brown;font-weight: bold;font-size:1.5em}
-.downloading {z-index:1000;display:flex;justify-content:center;align-items: center;height: 100vh;width:100vw;font-size:3em}
+.downloading {z-index:1000;display:flex;height: 100vh;width:100vw}
 .logotitle{font-size:125%; color:brown}
+.needupdate{
+  animation: favorblinker 2s linear infinite;
+}
+.notification {position:absolute;
+  animation: favorblinker 2s linear infinite;
+  top:10vh;left:5vw;height:1.2em;background:#d27700;
+  z-index:1999;width:90vw;font-size:2em}
+
+.deceased {border:1px solid black}
+
+.delete {color:red}
+.statebutton{text-decoration: underline; user-select: none; cursor:pointer;fill:var(--button-selected);padding-right:0.2em}
+.statebutton.disabled {cursor:auto;fill:none;stroke:var(--button-unselected) }
+.statebutton.unselected {color:gray}
+.statebutton.disabled:hover {fill:none; stroke: var(--button-unselected)}
+.hl0{color:var(--hit)}
+.hl1{color:rgb(255, 86, 86)}
+.hl2{color:rgb(238, 105, 255)}
+.hl2{color:rgb(90, 181, 255)}
+.ck{font-size:80%}
+.excerptseq {padding-left:0.3em;padding-right:0.3em;font-size:90%;color:gray}
